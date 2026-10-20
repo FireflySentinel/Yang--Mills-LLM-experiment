@@ -116,4 +116,7 @@ signs of $`F_{12}`$ and $`F_{13}`$ and preserves the sign of $`F_{23}`$.
 These signs occur both in invariance of the law and in its reflected
 form.
 
-The outline also links to the separate coordinate lattice-limit outline **LLO1**, which is not included in this folder.
+
+[QEM1 assembly index](../README.md). QEO1 contract: [Q1](../QEO1.pdf#page=16).
+
+The separate coordinate lattice-limit outline LLO1 cited in the PDF is outside this assembly.
