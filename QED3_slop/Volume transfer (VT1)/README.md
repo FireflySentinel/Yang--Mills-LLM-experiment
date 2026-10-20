@@ -4,7 +4,7 @@
 
 Project codename: **VT1**.
 
-- **VTO1** — planned outline; no separate outline PDF has been created. Its current contracts are in QEO1.
+- **VTO1** — [Volume transfer and non-Gaussian continuum components](VTO1.pdf).
 - **VTM1** — *Volume transfer and component cumulants for lattice QED in three dimensions* (manuscript to be added).
 
 ## Role in the QEM1 assembly

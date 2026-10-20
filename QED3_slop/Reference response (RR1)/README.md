@@ -4,7 +4,7 @@
 
 Project codename: **RR1**.
 
-- **RRO1** — planned outline; no separate outline PDF has been created. Its current contracts are in QEO1.
+- **RRO1** — [Exact sources and normalized reference response](RRO1.pdf).
 - **RRM1** — *Exact source identities and normalized reference response for lattice QED in three dimensions* (manuscript to be added).
 
 ## Role in the QEM1 assembly

@@ -15,16 +15,18 @@ RGO1 organizes the nine renormalization and response parts of the QEM1 assembly.
 | [RNM1](../Relevant%20extraction%20and%20normalized%20contraction%20%28RN1%29/README.md) / [RNO1](../Relevant%20extraction%20and%20normalized%20contraction%20%28RN1%29/README.md) | PDF available |
 | [NLM1](../Nonlinear%20renormalization%20step%20%28NL1%29/README.md) / [NLO1](../Nonlinear%20renormalization%20step%20%28NL1%29/README.md) | PDF available |
 | [CVM1](../Cover%20agreement%20and%20common%20tuning%20%28CV1%29/README.md) / [CVO1](../Cover%20agreement%20and%20common%20tuning%20%28CV1%29/README.md) | PDF available |
-| [PRM1](../Positive%20probes%20and%20free%20response%20%28PR1%29/README.md) / [PRO1](../Positive%20probes%20and%20free%20response%20%28PR1%29/README.md) | Planned; contracts in QEO1 |
-| [RRM1](../Reference%20response%20%28RR1%29/README.md) / [RRO1](../Reference%20response%20%28RR1%29/README.md) | Planned; contracts in QEO1 |
+| [PRM1](../Positive%20probes%20and%20free%20response%20%28PR1%29/README.md) / [PRO1](../Positive%20probes%20and%20free%20response%20%28PR1%29/README.md) | PDF available |
+| [RRM1](../Reference%20response%20%28RR1%29/README.md) / [RRO1](../Reference%20response%20%28RR1%29/README.md) | PDF available |
 | [TPM1](../Terminal%20measure%20and%20pressure%20%28TP1%29/README.md) / [TPO1](../Terminal%20measure%20and%20pressure%20%28TP1%29/README.md) | PDF available |
-| [VTM1](../Volume%20transfer%20%28VT1%29/README.md) / [VTO1](../Volume%20transfer%20%28VT1%29/README.md) | Planned; contracts in QEO1 |
+| [VTM1](../Volume%20transfer%20%28VT1%29/README.md) / [VTO1](../Volume%20transfer%20%28VT1%29/README.md) | PDF available |
 
-This table records the current outline status; any earlier planning descriptions retained inside RGO1 are superseded by this index. Full hypotheses remain in the linked statements.
+All nine focused outlines are available. Full hypotheses remain in the linked statements. Green in the PRO1, RRO1 and VTO1 flowcharts marks an existing proof draft, not verified correctness.
 
 ## Stage target
 
 The target below is reproduced from **RGO1/A3**, with formatting adapted for GitHub.
+
+Expanded statement: [VTO1/A3](../Volume%20transfer%20%28VT1%29/VTO1.pdf#page=1).
 
 **Target of this stage.**
 

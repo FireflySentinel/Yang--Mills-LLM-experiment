@@ -35,13 +35,13 @@ The current construction has thirteen manuscript units. This index follows the c
 | [Chamber fermion block analysis (FB1)](Chamber%20fermion%20block%20analysis%20%28FB1%29/README.md) | FBM1 / FBO1 | Chamber inverses, locality, determinant gains and local integration |
 | [Relevant extraction and normalized contraction (RN1)](Relevant%20extraction%20and%20normalized%20contraction%20%28RN1%29/README.md) | RNM1 / RNO1 | Relevant normalization, contraction and conditional reconstruction |
 | [Nonlinear renormalization step (NL1)](Nonlinear%20renormalization%20step%20%28NL1%29/README.md) | NLM1 / NLO1 | Exact conditional nonlinear step and connected logarithm |
-| [Positive probes and free response (PR1)](Positive%20probes%20and%20free%20response%20%28PR1%29/README.md) | PRM1 / PRO1 (planned) | Positive compact probe and free second/fourth response coefficients |
+| [Positive probes and free response (PR1)](Positive%20probes%20and%20free%20response%20%28PR1%29/README.md) | PRM1 / PRO1 | Positive compact probe and free second/fourth response coefficients |
 | [Continuum existence (CE1)](Continuum%20existence%20%28CE1%29/README.md) | CEM1 / CEO1 | Gaussian/correlation stability, compactness, structural inheritance and prescribed-parent recovery |
 | [Cover agreement and common tuning (CV1)](Cover%20agreement%20and%20common%20tuning%20%28CV1%29/README.md) | CVM1 / CVO1 | Exact cover agreement, stopping arithmetic and one common tuned pair |
-| [Reference response (RR1)](Reference%20response%20%28RR1%29/README.md) | RRM1 / RRO1 (planned) | Early source identities and later normalized reference response |
+| [Reference response (RR1)](Reference%20response%20%28RR1%29/README.md) | RRM1 / RRO1 | Early source identities and later normalized reference response |
 | [Continuum components and clustering (EC1)](Continuum%20components%20and%20clustering%20%28EC1%29/README.md) | ECM1 / no separate outline | Clustering and reflection/Gaussian inheritance for the same components |
 | [Terminal measure and pressure (TP1)](Terminal%20measure%20and%20pressure%20%28TP1%29/README.md) | TPM1 / TPO1 | Terminal measure, pressure and two-torus comparison |
-| [Volume transfer (VT1)](Volume%20transfer%20%28VT1%29/README.md) | VTM1 / VTO1 (planned) | All-volume products, prescribed-parent finite-periodic moments and component cumulants |
+| [Volume transfer (VT1)](Volume%20transfer%20%28VT1%29/README.md) | VTM1 / VTO1 | All-volume products, prescribed-parent finite-periodic moments and component cumulants |
 
 The early source identities in RRM1 enter TPM1; the later response estimate in RRM1 uses TPM1. These are distinct stages within one manuscript. CEO1 covers the compactness part of CEM1; the latter also supplies structural inheritance and prescribed-parent recovery.
 

@@ -4,7 +4,7 @@
 
 Project codename: **PR1**.
 
-- **PRO1** — planned outline; no separate outline PDF has been created. Its current contracts are in QEO1.
+- **PRO1** — [Positive compact probes and free response coefficients](PRO1.pdf).
 - **PRM1** — *Positive compact probes and free response coefficients for lattice QED in three dimensions* (manuscript to be added).
 
 ## Role in the QEM1 assembly
