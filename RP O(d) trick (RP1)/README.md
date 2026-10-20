@@ -13,7 +13,7 @@ The statement below is taken from Theorem A of **RP1M1**, with its notation from
 
 Fix a number $`d\geq 2`$, and consider $`d`$-dimensional Euclidean spacetime $`\mathbb{R}^d`$.
 
-Here $`\mathcal{T}`$ is a finite-dimensional real orthogonal representation of $`\operatorname{O}(d)`$ whose planar rotation weights lie in $`\{-2,-1,0,1,2\}`$.
+Here $`\mathcal{T}`$ is a finite-dimensional real orthogonal representation of $`\mathrm{O}(d)`$ whose planar rotation weights lie in $`\{-2,-1,0,1,2\}`$.
 
 The space $`\mathcal{S}=\mathcal{S}(\mathbb{R}^d;\mathcal{T})`$ is the Fréchet space of real
 Schwartz tests, and $`\mathcal{S}'`$ is its continuous dual with the weak-$`*`$
@@ -23,7 +23,7 @@ and hence the $`L^1`$ and $`L^2`$ norms.
 By a “random distribution” is meant a Borel probability measure
 
 ```math
-\mu:\operatorname{Borel}(\mathcal{S}')\to [0,1]
+\mu:\mathrm{Borel}(\mathcal{S}')\to [0,1]
 ```
 
 on $`\mathcal{S}'`$, which we assume possesses well-defined moments $`S_N: \mathcal{S}^N\to \mathbb{R}`$. Let $`\Phi:\mathcal{S}\to \mathbb{C}`$ denote the characteristic function
@@ -81,6 +81,6 @@ The measure is invariant under spacetime translations. That is, for any $`T:\mat
 
 where $`\Theta:\mathbb{R}^d\to\mathbb{R}^d`$ denotes reflection across the hyperplane $`H`$.
 
-Then the measure is rotationally-invariant in the sense of Osterwalder--Schrader, meaning $`S_N(R^* \chi) = S_N(\chi)`$ for all $`R\in \operatorname{O}(d)`$ and $`\chi\in \mathcal{S}_N`$.
+Then the measure is rotationally-invariant in the sense of Osterwalder--Schrader, meaning $`S_N(R^* \chi) = S_N(\chi)`$ for all $`R\in \mathrm{O}(d)`$ and $`\chi\in \mathcal{S}_N`$.
 
 Here, $`R^* \chi=(R^* \chi_1,\dots,R^* \chi_N)`$.
