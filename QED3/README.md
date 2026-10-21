@@ -14,6 +14,8 @@ The measure can be chosen as a translation-ergodic component of a volume-first c
 - **AI-written manuscript:** **QEM1** — *The continuum field-strength construction for QED in three dimensions* (manuscript to be added).
 - **Human-written manuscript:** to be added.
 
+- **Main manuscript:** [Comprehensive edition](qed3.pdf) — 263 pages, including the corrections of October 20, 2026.
+
 ## Role in the QEM1 assembly
 
 Shared model, parameter admission, closed-field covariance, tensor extension and final same-component OS assembly.
