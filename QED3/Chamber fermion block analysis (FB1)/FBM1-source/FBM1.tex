@@ -2,7 +2,14 @@
 \documentclass[11pt,letterpaper,reqno]{amsart}
 \usepackage[bibliography]{manuscript-style}
 \usepackage{mathrsfs}
-\input{notation}
+% Paper-specific notation.
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+\newcommand{\dd}{\mathrm d}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\tr}{tr}
 \title[Chamber fermion locality and local integration]
  {Chamber fermion locality and local integration}
 \date{}
@@ -22,13 +29,2357 @@ conditions, the local determinant difference gains a factor
 \end{abstract}
 \maketitle
 \tableofcontents
-\input{introduction}
-\input{free}
-\input{local}
-\input{coarse}
-\input{integration}
-\input{determinant}
+\section{Introduction}\label{sec:introduction}
+Fix \(0<\rho<1\), an odd integer \(L\ge5\), \(0<\alpha<1\), and
+\(\varepsilon>0\). At level \(k\ge0\), put \(\eta=\eta_k=L^{-k}\).
+A photon site is \(c\in\eta\Z^3/\ell\Z^3\); a chamber site is
+\(x=(c,g)\), where \(g\in O_{\mathrm{cub}}\) is a signed permutation
+matrix. There are \(48\) labels \(g\) and four spin components at
+each photon site. Connections are periodic complex oriented bond
+functions, with \(A(c',c)=-A(c,c')\); spinors are antiperiodic in
+each coordinate. The chamber measure is \(\eta^3/48\), while the
+photon-site spinor measure is \(\eta^3\).
+Operator kernels use the chamber measure in their column variable;
+the identity kernel is \(48\eta^{-3}\mathbf1[x=x']1_4\).
+The cluster injection and mean are
+\[
+ (J\xi)(c,g)=\xi(c),\qquad J^*f(c)=48^{-1}\sum_g f(c,g).
+\]
+Adjoints use these Hermitian pairings. Transposes use the corresponding
+bilinear pairings, without complex conjugation.
+
+Use the Pauli and Dirac matrices
+\[
+ \sigma_1=\begin{pmatrix}0&1\\1&0\end{pmatrix},\quad
+ \sigma_2=\begin{pmatrix}0&-i\\i&0\end{pmatrix},\quad
+ \sigma_3=\begin{pmatrix}1&0\\0&-1\end{pmatrix},\qquad
+ \gamma_j=\sigma_3\otimes\sigma_j,\quad
+ \gamma_5=\sigma_1\otimes1_2.
+\]
+Let \(s_0\) reverse the third coordinate, \(s_1\) interchange
+coordinates \(2,3\), and \(s_2\) interchange \(1,2\); let \(r_{e_1}\)
+reverse the first coordinate. The four neighbours, inward normals,
+and weights are
+\[
+ \begin{gathered}
+ x^{(i)}=(c,gs_i)\quad(0\le i\le2),\qquad
+ x^{(3)}=(c+\eta ge_1,gr_{e_1}),\\
+ (n_0,n_1,n_2,n_3)
+   =(e_3,(e_2-e_3)/\sqrt2,(e_1-e_2)/\sqrt2,-e_1),\\
+ (w_0,w_1,w_2,w_3)=(6,6\sqrt2,6\sqrt2,6).
+ \end{gathered}
+\]
+For a charge \(e_k>0\), the chamber operator is
+\begin{equation}\label{eq:intro-chamber-operator}
+ (D_Af)(x)=-\eta^{-1}\sum_{i=0}^3
+       \frac{w_i}{2}(\rho+\gamma\cdot gn_i)
+       \bigl(U_A(x,x^{(i)})f(x^{(i)})-f(x)\bigr),
+\end{equation}
+where internal transports are one and the external transport is
+\(\exp(ie_k\eta A(c,c+\eta ge_1))\).
+
+The unit blocks are
+\(\Delta_z=\{c:|c-z|_\infty<1/2\}\), \(z\in\Z^3/\ell\Z^3\).
+For \(c\in\Delta_z\), let \(c=c_0,c_1,\ldots,c_k=z\) be the
+centres of its nested blocks of sides \(L^j\eta\).
+Write \(\tau A(u,v)\) for the arithmetic mean of the oriented
+fine-bond sums along the six coordinate-order paths from \(u\) to \(v\).
+Set
+\[
+ \begin{aligned}
+ \varphi_A(z,c)&=\exp\!\left(ie_k\eta
+                    \sum_{j<k}\tau A(c_{j+1},c_j)\right),&
+ (Q_k(A)\xi)(z)&=\eta^3\sum_{c\in\Delta_z}\varphi_A(z,c)\xi(c),\\
+ (Q_k^T(-A)v)(c)&=\varphi_A(z,c)^{-1}v(z).&&
+ \end{aligned}
+\]
+For \(z'\in L\Z^3/\ell\Z^3\), put \(B(z')=\{z:|z-z'|_\infty<L/2\}\).
+The next average and its algebraic reverse are
+\[
+ \begin{aligned}
+ U_A(z',z)&=\exp(ie_k\eta\tau A(z',z)),\\
+ (Q(A)v)(z')&=L^{-3}\sum_{z\in B(z')}U_A(z',z)v(z),&
+ (Q^T(-A)v')(z)&=U_A(z',z)^{-1}v'(z').
+ \end{aligned}
+\]
+The target pairing has measure \(L^3\). These maps act componentwise
+in spin. For \(k\ge1\), define
+\[
+ \Pi_1(A)=JQ_k^T(-A)Q_k(A)J^*,\qquad
+ \Pi_L(A)=JQ_k^T(-A)Q^T(-A)Q(A)Q_k(A)J^*.
+\]
+At \(k=0\) use only \(\Pi_L(A)=JQ^T(-A)Q(A)J^*\).
+Let \(b=1\), \(b_L=L^{-1}\), \(b_-=1-L^{-1}\), and
+\[
+ b_k=\frac{1-L^{-1}}{1-L^{-k}}\quad(k\ge1),\qquad
+ \alpha_y=\frac{b_ki\gamma_5y}{b_k+i\gamma_5y},\qquad
+ \beta_y=\frac{b_k^2b_L}{(b_k+b_L+i\gamma_5y)(b_k+i\gamma_5y)}.
+\]
+At \(y=\infty\), put \(\alpha_\infty=b_k\), \(\beta_\infty=0\).
+For \(0<\mu\le1\), the penalized operators are
+\begin{equation}\label{eq:intro-penalized-operator}
+ F_y(A)=
+ \begin{cases}
+ D_A+\mu+\alpha_y\Pi_1(A)+\beta_y\Pi_L(A),
+      & k\ge1,\ y\in\R\cup\{\infty\},\\
+ D_A+\mu+b_L\Pi_L(A)+i\gamma_5y,
+      & k=0,\ y\in\R.
+ \end{cases}
+\end{equation}
+The data \(k,\mu,\ell,e_k\) are independent.
+
+Let \(M\ge L^2\) be a power of \(L\), with partition \(M\)-cubes
+centred in \(M\Z^3/\ell\Z^3\), and assume \(\ell/(LM)\) is odd
+and at least \(13\). A connection belongs to
+\(\widetilde{\mathcal G}_k\) if \(A=A_0+A_1\), \(A_0\) is real,
+\(\|A_1\|_\infty<e_k^{-1+\varepsilon}\), and on every concentric
+\(11M\) enlargement of a partition cube,
+\[
+ A_0=B_0+d\lambda,\qquad B_0,\lambda\ \hbox{real},\qquad
+ \|B_0\|_\infty<e_k^{-1+\varepsilon},\qquad
+ d\lambda(c,c')=\eta^{-1}(\lambda(c')-\lambda(c)).
+\]
+The local gauges may be chosen independently.
+
+Distances are periodic sup distances. For distinct chamber sites set
+\(d_X(x,x')=\max(d(c,c'),\eta)\), and, on pairs with \(0<d_X<1\), put
+\[
+ U_A(x,x')=\exp(ie_k\eta\tau A(c,c')),\qquad
+ (\delta_{\alpha,A}v)(x,x')
+ =\frac{U_A(x,x')v(x')-v(x)}
+        {d_X(x,x')^\alpha}.
+\]
+Thus distinct labels over one photon site are included when \(k\ge1\).
+For an operator \(T\), define
+\[
+ N_\gamma(T)=\sup_z\sum_{z'}e^{\gamma d(z,z')}
+       \|\mathbf1_{\Delta_z}T\mathbf1_{\Delta_{z'}}\|_{\infty\to\infty}.
+\]
+The sup norm uses Euclidean spinor norms; for pair outputs the left
+indicator restricts the first point. At level zero,
+\(N_\gamma^{\mathrm{ker}}\) replaces the localized operator norm by
+the supremum of the normalized chamber kernel on the two clusters.
+
+\begin{theorem}\label{thm:chamber-locality}
+There are \(a'>0\) and \(0<\gamma\le(6L)^{-1}\), depending only on
+\(\rho,L,\alpha\), with the following property. Set
+\(C_V=2\exp(1)(42+6b)\) and
+\(q(p)=54\pi C_Va'p/M\). Assume
+\begin{equation}\label{eq:main-locality-conditions}
+ M>4L,\qquad q(1)\le\tfrac12,\qquad
+ 0<e_k\le e_0,\qquad
+ 6Le_0^\varepsilon\le1,\qquad 4C_Va'e_0^\varepsilon\le1.
+\end{equation}
+For every \(A\in\widetilde{\mathcal G}_k\), all the operators
+\eqref{eq:intro-penalized-operator} are invertible. Their inverses
+\(S_y(A)\) are analytic in the connection and satisfy
+\[
+ N_\gamma(S_y(A))\le32a'w_k(y),\qquad
+ N_\gamma(\delta_{\alpha,A}S_y(A))\le304a',\qquad
+ w_k(y)=
+ \begin{cases}1,&k\ge1,\\(1+|y|)^{-1},&k=0.\end{cases}
+\]
+At level zero the first bound also holds in
+\(N_\gamma^{\mathrm{ker}}\); there are no short pairs at that level.
+The constants are independent of the level, mesh, volume,
+permitted connection, reference mass \(\mu\in(0,1]\), and resolvent
+parameter in its stated range.
+\end{theorem}
+
+We develop the chamber block arguments of
+\cite[Sections~9 and~11]{QED3Manuscript}. The internal chamber graph
+has a positive gap on fields with zero cluster mean. Eliminating those
+components gives a four-component Schur symbol with the Dirac
+singularity at small momentum. Its Fourier bounds supply local
+regularity uniformly as the mesh tends to zero. Averaging penalties
+control the remaining block means. Local real gauges then reduce the
+connection to a small perturbation, and two local inverse identities
+give convergent right and left walk expansions.
+
+The walk supports also localize the coarse covariance and determinant.
+We first attach parameters to the entire support of each walk, so
+that setting parameters to zero separates components. Exact resolvent
+identities pass from the fine inverse to the coarse inverse.
+Weighted Berezin integration then gives the block formula in
+\cref{thm:fermion-block-integration}. A resolvent integral expresses
+its determinant as a sum of local analytic terms. For the additional
+small-field difference estimate, long polymers supply the gain by
+decay; on short polymers a real gauge gives an enlarged complex disk,
+and Cauchy's formula gives the gain. The necessary nonwrapping
+geometry is proved in \cref{app:polymer-geometry}.
+
+The separate free estimates below hold for arbitrary unitary period
+characters. The integration and transpose identities use the
+antiperiodic convention fixed here. Their spin matrices are
+\[
+ \mathsf C=i\gamma_2,\qquad
+ \varkappa=\gamma_5\mathsf C=\sigma_2\otimes\sigma_2,
+ \qquad
+ \mathsf C^T=\mathsf C^{-1}=-\mathsf C,\quad
+ \varkappa^T=\varkappa=\varkappa^{-1}.
+\]
+Both matrices are real. Their displayed forms give the transpose and
+complex-conjugation identities used in the determinant calculation.
+The connection is an input to these estimates. For a connection
+obtained from Maxwell reconstruction, the local gauge and fluctuation
+domain estimates are supplied separately by
+\cite[Theorems~A and~B]{MaxwellBlockManuscript}.
+\section{The free chamber inverse}\label{sec:propagators}
+
+The chamber estimates of \cite[Section~9]{QED3Manuscript} give bounds which
+are uniform in the mesh, the volume, and the running mass. There are two
+sources of coercivity. The internal chamber graph controls the part of a
+spinor whose mean over a cluster vanishes. The averaging penalty controls
+the remaining four components. The first of these bounds also identifies
+the singular part of the free propagator. This permits a local regularity
+estimate with constants independent of the mesh, which is needed when
+the inverses on small tori are combined into an inverse on the full torus.
+
+\subsection{The cluster decomposition}\label{subsec:cluster-decomposition}
+
+We first allow an arbitrary mesh $a>0$, using the chamber stencil of
+\cref{sec:introduction} with $\eta$ replaced by $a$. Put
+$\widehat d_i(c,g)=-gn_i$ and
+\[
+ M_i(c,g)=\frac{w_i}{2}(\rho-\gamma\cdot\widehat d_i(c,g)).
+\]
+
+The discussion applies on the covering lattice and on a torus of side
+$R\in a\N$, with any unitary character
+$f(c+Re_\mu,g)=-\exp(i\theta_\mu)f(c,g)$. Pairings on the torus are
+formed over a period cell. The notation $d(c,c')$ denotes the sup
+distance modulo $R\Z^3$, or the covering sup distance when $R=\infty$.
+They use the measure
+\[
+ \int\dd x\,v(x)=\frac{a^3}{48}\sum_c\sum_gv(c,g),
+ \qquad
+ \|f\|_2^2=\int\dd x\,|f(x)|_2^2.
+\]
+On four-component spinors depending only on $c$, the measure is
+$a^3\sum_c$. With the cluster maps $J,J^*$ of the introduction,
+set $P=JJ^*$ and $Q=1-P$. The decomposition $f=J\xi+h$, with
+$\xi=J^*f$ and $h=Qf$, is orthogonal. In particular,
+\begin{equation}\label{eq:cluster-orthogonal}
+ \|f\|_2^2=\|\xi\|_2^2+\|h\|_2^2.
+\end{equation}
+The normalization by $48$ makes $J$ an isometry. Kernels on the chamber
+lattice are taken with respect to $\dd x$, so the kernel of the identity
+is $48a^{-3}\mathbf1[x=x']1_4$.
+
+Let $A$ be a connection and write
+$u_A(c,c')=\exp(ie_a aA(c,c'))$ on a photon bond. The charge $e_a$ in
+this notation is the charge at the level under consideration. The
+phases on the internal bonds are one. Put
+\[
+ R_i(A)f(x)=U_A(x,x^{(i)})f(x^{(i)}),\qquad
+ \mathcal L_A=\sum_{i=0}^3w_i(1-R_i(A)).
+\]
+The massless chamber operator is
+\begin{equation}\label{eq:propagator-dirac}
+ D_Af(x)=-a^{-1}\sum_{i=0}^3M_i(x)
+       \big(U_A(x,x^{(i)})f(x^{(i)})-f(x)\big).
+\end{equation}
+At level $k$, $a=\eta_k$ and $e_a=e_k$. The reference mass is
+added separately as $D_A+\mu$.
+For real $A$, the involutions $R_i(A)$ are unitary and self-adjoint,
+and the bond expansion gives
+\begin{equation}\label{eq:dirac-realpart}
+ \operatorname{Re}(f,D_Af)=\frac{\rho}{2a}(f,\mathcal L_Af),
+ \qquad D_A^*=\gamma_5D_A\gamma_5,
+ \qquad \gamma_5=\begin{pmatrix}0&1_2\\1_2&0\end{pmatrix}.
+\end{equation}
+Here $\gamma_5$ is Hermitian, $\gamma_5^2=1$, and it anticommutes with
+each $\gamma_\mu$. Each unoriented bond contributes
+$a^3w_i|U_A(x,x^{(i)})f(x^{(i)})-f(x)|_2^2/48$ to the energy.
+
+On one cluster let
+\[
+ \mathcal L_{\mathrm{int}}=\sum_{i=0}^2w_i(1-R_i),
+ \qquad R_iv(g)=v(gs_i).
+\]
+Its kernel consists of the constants: the three reflections
+$s_0,s_1,s_2$ generate $O_{\mathrm{cub}}$. Denote its least positive
+eigenvalue by $\lambda_{\mathrm{int}}$ and set
+\[
+ g_{\mathrm h}=\frac{\rho\lambda_{\mathrm{int}}}{2},\qquad
+ c_* =\frac{\min(w_3,\lambda_{\mathrm{int}})}{18},\qquad
+ c_{\mathrm{lh}}=\sqrt3(1+\rho).
+\]
+No numerical evaluation of $\lambda_{\mathrm{int}}$ is needed.
+
+\begin{proposition}\label{prop:cluster-energy}
+For real $A$ and $\xi=J^*f$,
+\begin{equation}\label{eq:cluster-energy}
+ (f,\mathcal L_Af)\ge\lambda_{\mathrm{int}}\|Qf\|_2^2,
+ \qquad
+ a^{-2}(f,\mathcal L_Af)\ge c_*\|\nabla_A\xi\|_2^2,
+\end{equation}
+where
+$\nabla_{A,\mu}\xi(c)=a^{-1}(u_A(c,c+ae_\mu)\xi(c+ae_\mu)-\xi(c))$.
+The same inequalities hold on a finite set $E$ of photon sites, with the
+energy restricted to bonds whose endpoints lie over $E$ and the photon
+differences restricted to bonds in $E$. Moreover,
+\begin{equation}\label{eq:offdiagonal-bound}
+ \|QD_AJ\xi\|_2\le c_{\mathrm{lh}}\|\nabla_A\xi\|_2,
+ \qquad
+ |(\xi,J^*D_AQf)|\le
+ c_{\mathrm{lh}}\|\nabla_A\xi\|_2\|f\|_2.
+\end{equation}
+On $\operatorname{ran}Q$, for $t>-g_{\mathrm h}/a$,
+\begin{equation}\label{eq:heavy-inverse}
+ \|(QD_AQ+t)^{-1}\|_{2\to2}\le(t+g_{\mathrm h}/a)^{-1}.
+\end{equation}
+All constants are independent of $a,R$, the character, and the real
+connection.
+\end{proposition}
+
+\begin{proof}
+The internal bonds over $c$ give
+$a^3(f(c,\cdot),\mathcal L_{\mathrm{int}}f(c,\cdot))$ and hence at
+least $\lambda_{\mathrm{int}}a^3\|Qf(c,\cdot)\|^2$. Summing over
+$c\in E$ proves the first bound in \eqref{eq:cluster-energy}.
+
+For the second bound, consider a photon bond $c'=c+av$. The eight
+labels with $ge_1=v$ correspond to the eight chamber bonds crossing it.
+Write $\mathcal O_v(c)$ for this octet. Since their endpoints form
+$\mathcal O_{-v}(c')$, the difference of the cluster means is the sum
+of the mean of the eight bond differences and two means of $Qf$:
+\begin{align*}
+ u_A(c,c')\xi(c')-\xi(c)
+ ={}&\frac18\sum_{x\in\mathcal O_v(c)}
+       \big(U_A(x,x^{(3)})f(x^{(3)})-f(x)\big)\\
+ &-\frac{u_A(c,c')}8\sum_{x'\in\mathcal O_{-v}(c')}Qf(x')
+   +\frac18\sum_{x\in\mathcal O_v(c)}Qf(x).
+\end{align*}
+The square is bounded by $3/8$ times the sum of the squared terms in
+these three octets. Distinct photon bonds use distinct chamber bonds;
+each octet of cluster remainders occurs at most once. Consequently,
+with $\mathcal E_3$ and $\mathcal E_{\mathrm{int}}$ denoting the two
+parts of the energy,
+\[
+ a^2\|\nabla_A\xi\|_{2,E}^2
+ \le18\big(w_3^{-1}\mathcal E_3+\|Qf\|_{2,E}^2\big)
+ \le18\big(w_3^{-1}\mathcal E_3+
+                \lambda_{\mathrm{int}}^{-1}\mathcal E_{\mathrm{int}}\big).
+\]
+This proves the local bound and therefore the global one.
+
+The internal hops vanish on $J\xi$. Thus
+\[
+ (D_AJ\xi)(c,g)=-3(\rho-\gamma\cdot ge_1)
+                   \nabla_{A,ge_1}\xi(c).
+\]
+Each of the six directions occurs eight times. The norm of the matrix
+in this formula is $3(1+\rho)$, and the two directed differences on a
+photon bond have equal norms. It follows that
+$\|D_AJ\xi\|_2^2\le3(1+\rho)^2\|\nabla_A\xi\|_2^2$.
+Projection gives the first bound in \eqref{eq:offdiagonal-bound}; the
+second follows from \eqref{eq:dirac-realpart}, since $J$ and $Q$ commute
+with $\gamma_5$.
+
+For $Qf=f$, \eqref{eq:dirac-realpart} gives
+$\operatorname{Re}(f,(QD_AQ+t)f)\ge(t+g_{\mathrm h}/a)\|f\|_2^2$.
+The same lower bound holds for the adjoint. The operator has closed
+range and its adjoint has zero kernel, so it is onto, also on the
+infinite lattice. This proves \eqref{eq:heavy-inverse}.
+\end{proof}
+
+\subsection{The free symbol and its Schur complement}
+\label{subsec:schur-symbol}
+
+Use lattice units for the moment. Let $\mathcal D_m(p)$ be the symbol
+of $D_0+m$, $0\le m\le1$, on
+$V=\ell^2(O_{\mathrm{cub}};\C^4)$ with measure $48^{-1}\sum_g$:
+\[
+ (\mathcal D_m(p)v)(g)=m v(g)
+ +\sum_{i=0}^2M_i(g)(v(g)-v(gs_i))
+ +M_3(g)(v(g)-\exp(ip\cdot ge_1)v(gr_{e_1})).
+\]
+Let $D_{\mathrm{ll}},D_{\mathrm{lh}},D_{\mathrm{hl}},D_{\mathrm{hh}}$
+be its blocks in $V=\operatorname{ran}J\oplus\operatorname{ran}Q$.
+The mass is included in the diagonal blocks. Set
+\[
+ H_m(p)=D_{\mathrm{hh}}(p)^{-1},\qquad
+ B_m(p)=D_{\mathrm{ll}}(p)-D_{\mathrm{lh}}(p)H_m(p)D_{\mathrm{hl}}(p),
+ \qquad t(p)=\sum_\mu(1-\cos p_\mu).
+\]
+The compression of the full operator is the Wilson operator:
+\[
+ D_{\mathrm{ll}}(p)=m+i\gamma\cdot\sin p+\rho t(p).
+\]
+Its Schur complement also contains the contribution from the heavy
+part. In particular, adding a mass to the chamber operator changes
+$H_m$ as well as $D_{\mathrm{ll}}$.
+
+\begin{proposition}\label{prop:schur-symbol}
+There are positive constants $\theta_0,c_{\mathrm e},\kappa_{\mathrm{strip}}$, depending
+on $\rho$ only, such that $H_m$ and $B_m$ are holomorphic in a
+neighbourhood of $\{|\operatorname{Im}p_\mu|\le\theta_0\}$ and
+$2\pi\Z^3$-periodic. On the real cube $[-\pi,\pi]^3$,
+\begin{align}
+ \|H_m(p)\|&\le(g_{\mathrm h}+m)^{-1},\label{eq:symbol-heavy}\\
+ \|D_{\mathrm{lh}}(p)\|+\|D_{\mathrm{hl}}(p)\|
+   &\le2c_{\mathrm{lh}}(2t(p))^{1/2},\label{eq:symbol-cross}\\
+ B_m(p)&=m+i\gamma\cdot\sin p+E_m(p),\qquad
+ \|E_m(p)\|\le K_\rho t(p),\label{eq:schur-expansion}\\
+ \operatorname{Re}(v,B_m(p)v)&\ge(m+\rho c_*t(p))|v|_2^2,
+                 \label{eq:schur-realpart}\\
+ |B_m(p)v|_2&\ge c_{\mathrm e}(|p|_2^2+m^2)^{1/2}|v|_2,
+                 \label{eq:schur-ellipticity}
+\end{align}
+where $K_\rho=\rho+2c_{\mathrm{lh}}^2/g_{\mathrm h}$. For every
+multi-index $\nu$,
+\begin{equation}\label{eq:schur-inverse-derivatives}
+ \|\partial_p^\nu B_m(p)^{-1}\|
+       \le C_\nu(\rho)(|p|_2^2+m^2)^{-(1+|\nu|)/2}.
+\end{equation}
+If $m>0$, the inverse exists also on
+$|\operatorname{Im}p_\mu|\le\kappa_{\mathrm{strip}}m$, where the same bound holds
+with $\operatorname{Re}p$ on the right, for
+$\operatorname{Re}p\in[-\pi,\pi]^3$. At $m=0$ the real derivative
+bound is asserted away from $p=0$.
+\end{proposition}
+
+\begin{proof}
+Only the fourth hop depends on $p$. For $p=p'+ip''$,
+\[
+ \|\mathcal D_m(p)-\mathcal D_m(p')\|
+       \le3(1+\rho)(\exp(|p''|_\infty)-1).
+\]
+Choose $\theta_0$ so that the right side is $g_{\mathrm h}/2$ when
+$|p''|_\infty=\theta_0$. The heavy gap then gives
+$\operatorname{Re}D_{\mathrm{hh}}(p)\ge m+g_{\mathrm h}/2$ on this
+strip. Invertibility holds on a slightly larger strip, which proves
+holomorphy up to the closed strip. For real $p$, the off-diagonal bounds
+in \cref{prop:cluster-energy} give
+$\|D_{\mathrm{lh}}\|,\|D_{\mathrm{hl}}\|
+\le c_{\mathrm{lh}}(2t(p))^{1/2}$. This proves
+\eqref{eq:schur-expansion}.
+
+To retain the real-part bound after eliminating the heavy part, put
+$u=Jv-H_mD_{\mathrm{hl}}v$. Then
+$J^*u=v$, $Q\mathcal D_m u=0$, and
+$\mathcal D_m u=JB_mv$. Therefore
+\[
+ \operatorname{Re}(v,B_mv)
+   =\operatorname{Re}(u,\mathcal D_m u)
+   =m\|u\|^2+\frac\rho2(u,\mathcal L_0(p)u)
+   \ge(m+\rho c_*t(p))|v|_2^2.
+\]
+This proves \eqref{eq:schur-realpart}.
+
+The ellipticity estimate uses the Dirac part near zero and the real
+part away from zero. Put $t_0=(4K_\rho^2)^{-1}$. One has
+$K_\rho\ge48/\lambda_{\mathrm{int}}>1$, since
+$\lambda_{\mathrm{int}}\le12+24\sqrt2<48$.
+Hence $t_0\le1/4$. If $t(p)\le t_0$, then
+$|\sin p|_2^2\ge t(p)$ and
+$\|E_m(p)\|\le\tfrac12t(p)^{1/2}$. Since
+\[
+ |(m+i\gamma\cdot\sin p)v|_2^2=(m^2+|\sin p|_2^2)|v|_2^2,
+\]
+it follows that
+$|B_m(p)v|_2\ge\tfrac12(m^2+t(p))^{1/2}|v|_2$.
+On $[-\pi,\pi]^3$, $t(p)\ge2|p|_2^2/\pi^2$. This proves
+\eqref{eq:schur-ellipticity} in this region. If $t(p)\ge t_0$, then
+\eqref{eq:schur-realpart} gives
+$|B_m(p)v|_2\ge(m+\rho c_*t_0)|v|_2$.
+The inequality $(|p|_2^2+m^2)^{1/2}\le m+\pi\sqrt3$ closes the
+estimate with, for example,
+\[
+ c_{\mathrm e}=\min\left(0.22,\frac{\rho c_*t_0}{\pi\sqrt3}\right).
+\]
+
+The strip bounds give uniform bounds on the derivatives of $B_m$ by
+Cauchy's formula. Differentiating $B_mB_m^{-1}=1$ and inducting on
+$|\nu|$ proves \eqref{eq:schur-inverse-derivatives}. For the complex
+strip, let $K_s$ bound $B_m$ on the fixed strip. On half that strip,
+$\|\partial_\mu B_m\|\le2K_s/\theta_0$. Choose
+\[
+ \kappa_{\mathrm{strip}}=\min\left(\frac{\theta_0}{2},
+                \frac{c_{\mathrm e}\theta_0}{12K_s}\right).
+\]
+Integration along the segment from $p'$ to $p'+ip''$ shows that the
+change in $B_m$ is at most $c_{\mathrm e}m/2$. The lower bound is thus
+at least $c_{\mathrm e}(|p'|_2^2+m^2)^{1/2}/2$. Differentiating the
+inverse identity once more gives the asserted complex derivative bounds.
+\end{proof}
+
+\subsection{Free kernels and coercivity}\label{subsec:free-kernels}
+
+Solving the heavy equation gives the inverse symbol
+\begin{equation}\label{eq:inverse-symbol-blocks}
+ \mathcal D_m^{-1}=
+ \begin{pmatrix}
+ B_m^{-1}&-B_m^{-1}D_{\mathrm{lh}}H_m\\
+ -H_mD_{\mathrm{hl}}B_m^{-1}&
+ H_m+H_mD_{\mathrm{hl}}B_m^{-1}D_{\mathrm{lh}}H_m
+ \end{pmatrix}.
+\end{equation}
+The first term is independent of the cluster labels after insertion by
+$J$ and $J^*$. Every other term has a weaker singularity at $p=0$:
+$D_{\mathrm{lh}}$ and $D_{\mathrm{hl}}$ vanish there, whereas $H_m$
+and all its derivatives are uniformly bounded.
+
+\begin{proposition}\label{prop:free-chamber-kernel}
+On the unit covering lattice let
+\[
+ G_m(c,g;c',g')=\int_{[-\pi,\pi]^3}\frac{\dd p}{(2\pi)^3}
+       \exp(ip\cdot(c-c'))[\mathcal D_m(p)^{-1}](g,g').
+\]
+The bracket is the kernel on $V$ relative to the label measure
+$48^{-1}\sum_g$, consistently with the chamber kernel convention.
+It is well-defined also at $m=0$. It decomposes as
+$G_m(x,x')=G_m^{\mathrm l}(c-c')+G_m^{\mathrm h}(x,x')$, where
+\begin{align}
+ |G_m^{\mathrm l}(n)|_2&\le C_G(1+|n|_\infty)^{-2},\label{eq:free-light}\\
+ |G_m^{\mathrm l}(n+v)-G_m^{\mathrm l}(n)|_2
+       &\le C_G(1+|n|_\infty)^{-3},\quad v\in\{\pm e_\mu\},\\
+ |G_m^{\mathrm h}(x,x')|_2&\le C_G(1+|c-c'|_\infty)^{-3}.
+\end{align}
+Consequently $|G_m(x,x')|_2\le2C_G(1+|c-c'|_\infty)^{-2}$ and
+\begin{equation}\label{eq:free-bond-difference}
+ |G_m(x^{(i)},x')-G_m(x,x')|_2
+       \le20C_G(1+|c-c'|_\infty)^{-3}.
+\end{equation}
+For $m>0$ these bounds have the additional factor
+$\exp(-\kappa_{\mathrm{strip}}m|c-c'|_\infty)$. The constants are uniform for
+$0\le m\le1$.
+\end{proposition}
+
+\begin{proof}
+The Fourier estimate used here can be proved directly. If a periodic
+symbol $T$ satisfies
+$|\partial^\nu T(p)|\le A|p|_2^{-q-|\nu|}$, where $q<3$ and
+$|\nu|\le N>3-q$, then its Fourier coefficients are bounded by
+$C A(1+|n|_\infty)^{-(3-q)}$. For $n\ne0$, put
+$r=|n|_\infty^{-1}$ and split the integral using a cutoff equal to
+one for $|p|_2\le r$ and zero for $|p|_2\ge2r$. The inner integral
+is bounded by $CA r^{3-q}$. On the complement integrate $N$ times in
+a coordinate with $|n_\mu|=|n|_\infty$. The differentiated integrand
+has integral at most $CA r^{3-q-N}$; the prefactor is $r^N$.
+Derivatives of the cutoff are supported in $r\le|p|_2\le2r$ and have
+the same bound. Boundary terms cancel by periodicity.
+
+Apply this estimate with $(q,N)=(1,3)$ to $B_m^{-1}$. Multiplication
+by $\exp(ip\cdot v)-1$ lowers its singularity to order zero, for which
+$(q,N)=(0,4)$ applies. In \eqref{eq:inverse-symbol-blocks}, the two
+off-diagonal terms have order zero and the term with two off-diagonal
+factors has order $-1$. The latter can also be bounded by the
+order-zero estimate. The remaining term $H_m$ is holomorphic on the
+fixed strip, and its Fourier coefficients decay exponentially.
+The kernel normalization costs a factor $48$ for operator-valued
+symbols on $V$; this is absorbed in $C_G$.
+
+For $m>0$, shift one coordinate of the contour by
+$i\kappa_{\mathrm{strip}}m\operatorname{sgn}(n_\mu)$, where
+$|n_\mu|=|n|_\infty$. The complex derivative bounds of
+\cref{prop:schur-symbol} give the same Fourier estimates
+on the shifted contour. This supplies the exponential factor.
+The fixed-strip bound for $H_m$ is stronger than the required one.
+
+An internal hop leaves $c$ fixed, so its difference cancels
+$G_m^{\mathrm l}$. An external hop replaces $c$ by $c+ge_1$; use the
+light difference bound and the two heavy bounds at these points.
+The inequalities $1+|n+v|_\infty\ge(1+|n|_\infty)/2$ and
+$\exp(\kappa_{\mathrm{strip}}m)<\sqrt3$ give the factor $20$ in
+\eqref{eq:free-bond-difference}.
+\end{proof}
+
+The Green kernel at mesh $a$, for $0\le\mu a\le1$, is
+$a^{-2}G_{\mu a}(x/a,x'/a)$. Thus
+\begin{equation}\label{eq:mesh-free-kernel}
+ |G(x,x')|_2\le2C_G(a+|c-c'|_\infty)^{-2},\qquad
+ |G(x^{(i)},x')-G(x,x')|_2
+       \le20C_Ga(a+|c-c'|_\infty)^{-3}.
+\end{equation}
+Fourier multiplication gives both inverse identities on finitely
+supported functions. The factor $48$ in the identity kernel is
+consistent with the measure $\dd x$ above.
+
+For distinct sites put
+$d_X(x,\widetilde x)=\max(|c-\widetilde c|_\infty,a)$.
+The chamber graph has paths from $x$ to $\widetilde x$ of at most
+$39d_X(x,\widetilde x)/a$ bonds, with photon sites in the coordinate
+box spanned by $c,\widetilde c$. Indeed, the generators
+$s_0,s_1,s_2$ are the simple reflections of the signed permutation
+group, with nine positive roots. Their Coxeter length is at most nine
+\cite[Theorem~22.14]{EtingofLieNotes}, so any two labels in one
+cluster are joined by at most nine internal bonds. A monotone photon
+path has at most $3|c-\widetilde c|_\infty/a$ steps. Before each step
+move to a label with the required external direction, and after the
+last step move to the final label. This uses at most
+$10\cdot3|c-\widetilde c|_\infty/a+9\le39d_X/a$ bonds.
+If $d_X$ is less than half the distance to $c'$, sum
+\eqref{eq:mesh-free-kernel} along such a path. In the other case use
+the two size bounds. The resulting interpolation gives, for
+$0\le\alpha\le1$,
+\begin{equation}\label{eq:free-holder-kernel}
+ |G(x,x')-G(\widetilde x,x')|_2
+ \le6240C_G d_X(x,\widetilde x)^\alpha
+ \left((a+|c-c'|_\infty)^{-2-\alpha}
+       +(a+|\widetilde c-c'|_\infty)^{-2-\alpha}\right).
+\end{equation}
+
+The following coercivity estimate is separate from the real-part bound.
+It is needed to recover mesh-independent control of the block remainder.
+
+\begin{proposition}\label{prop:free-coercivity}
+There is $c_b=c_b(\rho)>0$ such that
+\begin{equation}\label{eq:free-coercivity}
+ \|D_0f\|_2^2\ge c_ba^{-2}(f,\mathcal L_0f).
+\end{equation}
+For a cube $E$ of side $\ell_E$, let $P_E$ be the mean over
+$E\times O_{\mathrm{cub}}$. Then
+\begin{equation}\label{eq:chamber-poincare}
+ \|f-P_Ef\|_{2,E}^2\le C_P\ell_E^2a^{-2}(f,\mathcal L_0f)_E,
+ \qquad C_P=\frac1{8c_*}+\frac1{\lambda_{\mathrm{int}}}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The Schur estimate at zero mass implies
+$|B_0(p)v|\ge c_{\mathrm l}t(p)^{1/2}|v|$, with
+$c_{\mathrm l}=\rho c_*/(2K_\rho)$: use the Dirac part for
+$t(p)\le t_0$ and the real part for $t(p)\ge t_0$.
+Write $u=Jv+h$ in a fibre and $f=\mathcal D_0(p)u$. The heavy equation
+and then the light equation give
+\[
+ h=H_0(f_{\mathrm h}-D_{\mathrm{hl}}v),\qquad
+ B_0v=f_{\mathrm l}-D_{\mathrm{lh}}H_0f_{\mathrm h}.
+\]
+Since $t(p)\le6$, these imply
+$(2t(p))^{1/2}|v|\le A_1\|f\|$ and $\|h\|\le A_2\|f\|$, where
+\[
+ A_1=\frac{\sqrt2}{c_{\mathrm l}}
+         \left(1+\frac{6(1+\rho)}{g_{\mathrm h}}\right),\qquad
+ A_2=g_{\mathrm h}^{-1}(1+c_{\mathrm{lh}}A_1).
+\]
+The bond decomposition also gives
+\[
+ (u,\mathcal L_0(p)u)\le6t(p)|v|^2+(30+24\sqrt2)\|h\|^2.
+\]
+For the internal bonds the light part cancels, leaving at most
+$2(w_0+w_1+w_2)\|h\|^2$. In an external bond difference, split off
+the photon difference of $v$ and the two heavy endpoint values, and
+bound the square by three times their squared norms. The octet count
+then gives $6t(p)|v|^2+3w_3\|h\|^2$. This proves the displayed
+upper bound.
+This yields \eqref{eq:free-coercivity} in each fibre with
+$c_b=(3A_1^2+(30+24\sqrt2)A_2^2)^{-1}$.
+Fourier decomposition gives the assertion for all characters on the
+torus and on the covering lattice, restoring the factor $a^{-2}$.
+
+For \eqref{eq:chamber-poincare}, first apply the scalar lattice
+Poincar\'e bound
+$\|\xi-P_E\xi\|_{2,E}^2\le\ell_E^2\|\nabla_0\xi\|_{2,E}^2/8$.
+In one dimension this follows by writing each difference as a sum of
+nearest-neighbour differences; the coefficient of a bond at position
+$j$ is $j(n-j)/2\le n^2/8$. In three dimensions use the three commuting
+line averages, whose successive remainders are orthogonal.
+Now $f-P_Ef=J(\xi-P_E\xi)+Qf$. Its two parts are orthogonal, and the
+local bounds \eqref{eq:cluster-energy} give
+\eqref{eq:chamber-poincare}. The heavy term uses $\ell_E\ge a$.
+\end{proof}
+
+\section{Local inverses and walk expansions}\label{sec:local-walks}
+
+\subsection{Averaging penalties and the inverse at zero field}
+\label{subsec:blocked-zero-inverse}
+
+Fix an odd $L\ge5$ and put $a=\eta_k=L^{-k}$. Write $e_k$ for the
+charge $e_a$ at this mesh. The level data $k,\mu,R,e_k$ are independent,
+with $0<e_k\le e_0$.
+Unit blocks have side
+one, and the next blocks have side $L$. In this and the following
+subsections a finite period $R$ is a positive integer multiple of $L$.
+For $z\in\Z^3$ the unit block is
+$\Delta_z=\{c\in a\Z^3:|c-z|_\infty<1/2\}$.
+For $z'\in L\Z^3$ the $L$-block is
+$E_{z'}=\{c\in a\Z^3:|c-z'|_\infty<L/2\}$.
+These partitions are taken modulo $R\Z^3$ on the torus. Since $L$
+is odd, no fine site lies on a block boundary. Their means, including
+the cluster mean, are denoted $\Pi_1$ and $\Pi_L$. At nonzero connection
+the means use the gauge phases of \cref{sec:introduction}.
+With the constants and coefficients defined there, the blocked operators
+at zero connection are
+\begin{equation}\label{eq:blocked-zero-operator}
+ F_y(0)=D_0+\mu+\alpha_y\Pi_1+\beta_y\Pi_L\quad(k\ge1),
+ \qquad
+ F_y(0)=D_0+\mu+b_L\Pi_L+i\gamma_5y\quad(k=0).
+\end{equation}
+Here $0\le\mu\le1$. In the first formula $y\in\R\cup\{\infty\}$;
+in the second $y\in\R$. We use $-\infty=\infty$ when an adjoint
+identity reverses this parameter. The notation $F_y$ denotes an operator in this
+section, not the curvature.
+
+The penalty bounds follow by diagonalizing $\gamma_5$. On its eigenspace
+of sign $\epsilon$, the two eigenvalues and their sum are
+\[
+ \frac{b_ki\epsilon y}{b_k+i\epsilon y},\quad
+ \frac{b_k^2b_L}{(b_k+b_L+i\epsilon y)(b_k+i\epsilon y)},\quad
+ \frac{b_k(b_L+i\epsilon y)}{b_k+b_L+i\epsilon y}.
+\]
+For the first eigenvalue $v_1$ and the sum $v_2$, direct calculation gives
+\[
+ |v_1|^2=b_k\operatorname{Re}v_1,\qquad
+ |v_2|^2\le b_k\operatorname{Re}v_2,\qquad
+ \operatorname{Re}v_2\ge\frac{b_kb_L}{b_k+b_L}\ge\frac{b_-}{L}.
+\]
+Also $|\alpha_y|\le b_k\le b$ and $|\beta_y|\le b_L$.
+On an $L$-block the decomposition
+$\operatorname{Pen}=\alpha_y(\Pi_1-\Pi_L)+(\alpha_y+\beta_y)\Pi_L$
+has orthogonal ranges. The scalar inequalities on the two spin
+eigenspaces therefore give
+\begin{equation}\label{eq:penalty-estimates}
+ \operatorname{Re}(f,\operatorname{Pen}f)_E
+      \ge\frac{b_-}{L}\|P_Ef\|_{2,E}^2,
+ \qquad
+ \|\operatorname{Pen}f\|_{2,E}^2
+      \le b\operatorname{Re}(f,\operatorname{Pen}f)_E.
+\end{equation}
+The kernel on $E$ is
+$\alpha_y\mathbf1[c,c'\text{ in the same unit block}]+\beta_yL^{-3}$,
+and its norm is at most $2b$.
+
+\begin{proposition}\label{prop:zero-blocked-inverse}
+There are $C_I,C_5,\gamma_5'>0$, depending on $L,\rho$ and a fixed
+$\alpha\in(0,1)$ only, such that $F_y(0)$ is invertible and
+\[
+ \|F_y(0)^{-1}\|_{2\to2}\le LC_I\qquad(k\ge1).
+\]
+If $f$ is supported over one unit block $\Delta_{z'}$ and
+$v=F_y(0)^{-1}f$, then for $x$ over $\Delta_z$ and
+$0<d_X(x,\widetilde x)\le1$,
+\begin{equation}\label{eq:zero-blocked-holder}
+ |v(x)|_2+d_X(x,\widetilde x)^{-\alpha}|v(x)-v(\widetilde x)|_2
+ \le C_5\exp(-\gamma_5'd(z,z'))\|f\|_\infty.
+\end{equation}
+This includes pairs in one cluster. The constants are uniform in
+$k,R$, the character, $\mu$, and $y$.
+\end{proposition}
+
+\begin{proof}
+First suppose $k\ge1$. Put $f=F_y(0)u$ and
+$X=\operatorname{Re}(u,f)$. The real-part identity
+and \eqref{eq:penalty-estimates} imply
+\[
+ \sum_E\|P_Eu\|_{2,E}^2\le\frac L{b_-}X,\qquad
+ \|\operatorname{Pen}u\|_2^2\le bX,\qquad
+ \|\mu u\|_2^2\le X.
+\]
+Therefore $\|D_0u\|_2\le\|f\|_2+(1+\sqrt b)X^{1/2}$.
+Use \eqref{eq:free-coercivity} for $D_0u$ and
+\eqref{eq:chamber-poincare} on each $L$-block. With
+$K_1=\sqrt L+\sqrt{Lb}$ this gives
+\[
+ \|u\|_2^2\le L\left(\frac1{b_-}+\frac{2C_PK_1^2}{c_b}\right)
+           \|u\|_2\|f\|_2
+       +\frac{2C_P}{c_b}L^2\|f\|_2^2.
+\]
+Hence $\|u\|_2\le LC_I\|f\|_2$, where
+$C_I=b_-^{-1}+2C_PK_1^2/c_b+(2C_P/c_b)^{1/2}$.
+The identity $F_y(0)^*=\gamma_5F_{-y}(0)\gamma_5$ gives the same
+lower bound for the adjoint. Thus $F_y(0)$ has closed, dense range
+and is onto, including on the infinite lattice.
+
+To obtain decay, let $\psi$ be a bounded real periodic function with
+$|\psi(c)-\psi(c')|\le a_0|c-c'|_1/L$. The mass commutes with this
+weight. The external hopping term gives
+$\|\exp(\psi)[D_0,\exp(-\psi)]\|_{2\to2}
+\le3(1+\rho)\exp(1)a_0/L$.
+The penalty kernel is supported in one $L$-block, has norm at most
+$2b$, and $|\psi(c)-\psi(c')|\le3a_0$ there. Its contribution is at
+most $6L^4b\exp(1)a_0/L$. Put
+\[
+ c_w=\exp(1)(3(1+\rho)+6L^4b),\qquad
+ a_0=\min(1/3,(2C_Ic_w)^{-1}).
+\]
+Applying the $L^2$ inverse bound and absorbing the commutator gives
+\begin{equation}\label{eq:weighted-block-inverse}
+ \|\exp(\psi)F_y(0)^{-1}f\|_2
+       \le2LC_I\|\exp(\psi)f\|_2.
+\end{equation}
+Take truncated multiples of the $\ell^1$ distance, divided by $L$,
+to the source $L$-block. Letting the truncation increase proves an
+exponentially weighted $L^2$ bound.
+
+The passage from $L^2$ to the sup norm uses the free kernel. On the
+covering lattice choose $c^\circ\in a\Z^3$ and $r\ge8a$, and put
+\[
+ B=\{|c-c^\circ|_\infty<r\},\quad
+ B^+=\{|c-c^\circ|_\infty<r+a\},\quad
+ B'=\{|c-c^\circ|_\infty\le r/4\}.
+\]
+Suppose $u$ is defined over $B^+$ and $(D_0+\mu)u=h$ over $B$,
+with $0\le\mu a\le1$. Both evaluation points below lie over $B'$,
+and $C$ depends on the fixed $\alpha\in(0,1)$ and $\rho$.
+Let $\chi$ equal one
+on the concentric half cube and zero outside the cube, with Lipschitz
+constant $2/r$. Then
+\[
+ \chi u=G(\chi h)+G([D_0,\chi]u).
+\]
+The commutator contains only the external hop. Its rows are supported
+where $|c-c^\circ|_\infty>r/2-a$. It satisfies
+$\|[D_0,\chi]u\|_1\le45r^{1/2}\|u\|_{2,B^+}$.
+For a point of the quarter cube, this support is at distance at least
+$r/4-a\ge r/8$. The bounds \eqref{eq:mesh-free-kernel} and
+\eqref{eq:free-holder-kernel} consequently give
+\begin{equation}\label{eq:interior-dirac-estimate}
+ \begin{split}
+ |u(x)|_2&\le C\big(r\|h\|_{\infty,B}+r^{-3/2}\|u\|_{2,B^+}\big),\\
+ |u(x)-u(\widetilde x)|_2&\le
+ C\left(\frac{d_X(x,\widetilde x)}r\right)^\alpha
+       \big(r\|h\|_{\infty,B}+r^{-3/2}\|u\|_{2,B^+}\big).
+ \end{split}
+\end{equation}
+For the first term, sum $(a+|c-c'|_\infty)^{-2}$ over the cube;
+the result is $O(r)$. For the difference, the analogous sum with
+exponent $2+\alpha$ is $O(r^{1-\alpha}/(1-\alpha))$.
+The cluster average in $\dd x'$ contributes one to both sums.
+For the commutator term, its support separation gives the size bound;
+summing bond differences along the chamber path gives the difference
+bound. These estimates explain why the constants do not grow when
+$a\downarrow0$.
+
+For $u=F_y(0)^{-1}f$, use
+$h=f-\operatorname{Pen}u$ in \eqref{eq:interior-dirac-estimate}, with
+$r=L/4$. The enlarged cube meets at most eight $L$-blocks. On each,
+the penalty kernel and Cauchy--Schwarz give
+$\|\operatorname{Pen}u\|_\infty\le2bL^{3/2}\|u\|_{2,E}$.
+The weighted bound \eqref{eq:weighted-block-inverse} therefore bounds
+both terms in \eqref{eq:interior-dirac-estimate} by
+$CL\exp(-a_0d_1(x,E'))\|f\|_\infty$, where
+$d_1(x,E')$ is the $\ell^1$ distance to the source $L$-block divided
+by $L$. This applies for $k\ge2$.
+For $k=1$, the pointwise $L^2$ bound costs only
+$\sqrt{48}L^{3/2}$; $L$ is fixed. Larger Hölder separations are
+controlled by the two sup bounds. Finally,
+$d_1(x,E')\ge d(z,z')/L-3$, and the source unit block lies in $E'$.
+This proves \eqref{eq:zero-blocked-holder} with
+$\gamma_5'=a_0/L$. The argument uses only periodic moduli and so
+applies to every unitary character.
+\end{proof}
+
+The first level has a different resolvent parameter. On an $L$-block
+the real-part bound and Poincar\'e inequality imply
+\[
+ \operatorname{Re}(u,F_y(0)u)\ge\frac{c_r}{L}\|u\|_2^2,
+ \qquad c_r=\min(b_-,\rho/(2C_PL)).
+\]
+The term $i\gamma_5y$ has zero real part. Conjugation by a weight with
+Lipschitz constant $a_z$ changes the hopping and penalty terms by at
+most $\exp(1)(6+3b)a_z$. Choose
+\[
+ a_z\le\min\bigl((3L)^{-1},c_r/(2\exp(1)L(6+3b))\bigr).
+\]
+The weighted inverse then has $L^2$ norm at most $2L/c_r$.
+On the other hand its part other than $i\gamma_5y$ has norm at most
+$60+b$. For $|y|\ge2(60+b)$, the inverse norm is at most $2/|y|$.
+Combining the two ranges and converting to a kernel, with its factor
+$48$, gives
+\begin{equation}\label{eq:level-zero-kernel}
+ |F_y(0)^{-1}(x,x')|_2\le C_{00}(1+|y|)^{-1}
+                         \exp(-a_zd(c,c')).
+\end{equation}
+This factor in $y$ is needed when the determinant is represented by an
+integral of resolvents.
+
+\subsection{Small connections and local inverses}\label{subsec:local-inverses}
+
+Use the covariant block means, short quotients, and row norms of
+\cref{sec:introduction}. Replacing $D_0$ by $D_A$ and $\Pi_1,\Pi_L$
+by their covariant versions in \eqref{eq:blocked-zero-operator}
+gives $F_y(A)$. For real
+$A$ these idempotents are orthogonal projections.
+Inserting the block partition between two factors and
+using the triangle inequality for $d$ proves
+$N_\gamma(TT')\le N_\gamma(T)N_\gamma(T')$.
+Enlarge $C_5,C_{00}$ to at least one, and choose
+\[
+ \gamma=\tfrac12\min(\gamma_5',a_z),\qquad
+ a'=\max(C_5,C_{00})\sum_{n\in\Z^3}\exp(-\gamma|n|_\infty).
+\]
+The preceding estimates imply
+\begin{equation}\label{eq:zero-row-bounds}
+ N_\gamma(F_y(0)^{-1})\le a'w_k(y),\qquad
+ N_\gamma(\delta_{\alpha,0}F_y(0)^{-1})\le a'.
+\end{equation}
+At $k=0$ the first bound holds also in $N_\gamma^{\mathrm{ker}}$.
+
+\begin{proposition}\label{prop:small-connection-inverse}
+Let $B$ be a complex connection with $e_k\|B\|_\infty\le\delta$, where
+$3L\delta\le1$ and $2C_Va'\delta\le1$, with
+$C_V=2\exp(1)(42+6b)$. Then $F_y(B)$ is invertible and
+\begin{equation}\label{eq:small-row-bounds}
+ N_\gamma(F_y(B)^{-1})\le2a'w_k(y),\qquad
+ N_\gamma(\delta_{\alpha,B}F_y(B)^{-1})\le18a'.
+\end{equation}
+At $k=0$ the first bound holds also in $N_\gamma^{\mathrm{ker}}$.
+\end{proposition}
+
+\begin{proof}
+Write $V=F_y(B)-F_y(0)$. The internal hops, the mass, and the
+resolvent term at level zero cancel. For the external hop,
+$|u_B-1|\le\eta_k\delta\exp(\eta_k\delta)$; its weighted row sum
+is at most $42\exp(\gamma)\exp(\delta)\delta$. The two averaging
+penalties contribute respectively
+$3b\delta\exp(3\delta)$ and
+$3b\delta\exp(\gamma(L-1))\exp(3L\delta)$. Indeed, the nested paths
+have total length at most $3/2$, and the path to an $L$-block centre
+has length at most $3L/2$. Summing their normalized block kernels
+removes the numbers of sites. The bounds $\gamma L\le\log2$ and
+$3L\delta\le1$ give $N_\gamma(V)\le C_V\delta$.
+
+Thus $N_\gamma(VF_y(0)^{-1})\le1/2$. The Neumann series gives
+\[
+ F_y(B)^{-1}=F_y(0)^{-1}
+                  \sum_{n\ge0}(-VF_y(0)^{-1})^n
+             =\sum_{n\ge0}(-F_y(0)^{-1}V)^nF_y(0)^{-1}.
+\]
+It proves the first bound in \eqref{eq:small-row-bounds}. The first
+form gives $N_\gamma(\delta_{\alpha,0}F_y(B)^{-1})\le2a'$.
+For distinct photon sites in a short pair,
+$d_X^{-\alpha}|U_B-1|\le3\delta\exp(3\delta)\le1/4$;
+for intracluster pairs the expression is zero. Evaluation at the
+second point of a short pair uses at most $27$ neighbouring blocks,
+and costs at most $27\exp(\gamma)$. Its contribution to the covariant
+quotient is at most $16a'$, proving the second bound. At level zero,
+the second form of the Neumann series keeps the kernel norm in the
+last factor, so the kernel estimate follows as well.
+\end{proof}
+
+Return to the side $\ell=R$ and the domain
+$\widetilde{\mathcal G}_k$ of \cref{sec:introduction}.
+On the concentric $3M$ enlargement $W_\square$ of an $M$-cube,
+\begin{equation}\label{eq:local-small-gauge}
+ A=B+d\lambda,\qquad e_k\|B\|_\infty<2e_k^\varepsilon,
+ \qquad e_k\|\operatorname{Im}A\|_\infty<e_k^\varepsilon.
+\end{equation}
+This follows by restricting $B_0+A_1$ and $\lambda$ to that cube.
+The domain is open: a sufficiently small complex perturbation can be
+added to $A_1$. It is invariant under real gauge transformations.
+
+For a lift $z_\square$ of the cube centre put
+$W_\square=\{|c-z_\square|_\infty<3M/2\}$ and
+$W_\square^-=\{|c-z_\square|_\infty<3M/2-\eta_k\}$.
+Embed $W_\square$ in the positive chamber of the periodic torus of
+side $6M$, whose lattice is translated by $\eta_k(1,1,1)/2$.
+Its level-$j$ block centres are
+$L^j\eta_k(1,1,1)/2+L^j\eta_k\Z^3$ for $0\le j\le k+1$.
+Translation by $L(1,1,1)/2$ identifies these blocks with the
+unshifted nested blocks, because $L^{k+1-j}$ is odd. The zero-field
+and small-connection estimates therefore apply on this torus with
+the same constants.
+Fold its photon coordinates across the planes at multiples of $3M$.
+Adjacent sites fold either to adjacent sites in $W_\square$ or to
+one site; in the latter case assign phase one. Pull back $A$ by this
+fold to obtain $A^W$. The fold preserves the supremum norm and
+commutes with $d$ on scalar functions. It also preserves the nested
+blocks, since $3M/(L^j\eta_k)$ is odd for $j\le k+1$.
+
+Let $\mathrm{ext}$ extend a function over $W_\square$ by zero in the
+seven other chambers, and let $\mathrm{res}$ restrict to its embedded
+copy. Labels are unchanged in these two maps. Define
+\[
+ S_\square(A)=\mathrm{res}\,F_y(A^W)^{-1}\mathrm{ext}.
+\]
+For $A=B+d\lambda$ as in \eqref{eq:local-small-gauge},
+$A^W=B^W+d\lambda^W$, with $\lambda^W$ real. Gauge conjugation by
+$\exp(ie_k\lambda^W)$ reduces the inverse to the small connection
+$B^W$. If $6Le_0^\varepsilon\le1$ and
+$4C_Va'e_0^\varepsilon\le1$, \cref{prop:small-connection-inverse}
+applies to every $0<e_k\le e_0$. Restriction, extension, and unitary
+gauge factors do not increase the localized norms. Thus
+\begin{equation}\label{eq:local-inverse-bounds}
+ N_\gamma(S_\square(A))\le2a'w_k(y),\qquad
+ N_\gamma(\delta_{\alpha,A}S_\square(A))\le18a'.
+\end{equation}
+The second operator here is formed on the local cube before extension
+to the original torus. It does not differentiate a discontinuous
+extension by zero.
+
+The local inverse has both identities needed for patching. If $f$ is
+defined over $W_\square$, then
+\begin{equation}\label{eq:local-right-identity}
+ F_y(A)S_\square(A)f=f\quad\text{over }W_\square^-.
+\end{equation}
+If $f$ is supported over $W_\square^-$, then $F_y(A)f$ is supported
+over $W_\square$ and
+\begin{equation}\label{eq:local-left-identity}
+ S_\square(A)F_y(A)f=f.
+\end{equation}
+For \eqref{eq:local-right-identity}, the rows at an interior site use
+only its internal neighbours, its external neighbour, and its
+$L$-block. These lie in $W_\square$, where the original and folded
+operators agree. For \eqref{eq:local-left-identity}, the support
+margin ensures that applying $F_y$ cannot leave $W_\square$.
+After embedding, applying the folded operator to the extension of
+$f$ agrees with extending $F_y(A)f$. Apply the inverse and restrict.
+For an antiperiodic spinor on the original torus, use one lift and
+then its signed translates; the enlarged cubes do not overlap their
+translates. These arguments also show that $S_\square$ reads $A$
+only in $W_\square$ and is analytic in those connection variables.
+
+\subsection{The parametrix and the walk expansion}\label{subsec:propagator-walks}
+
+Choose the product cutoff $h_\square$ with centre $z_\square$ and
+one-dimensional factor
+\[
+ h_0(t)=\begin{cases}
+ 1,&|t|\le1/4,\\
+ \cos(\pi(2|t|-1/2)/2),&1/4\le|t|\le3/4,\\
+ 0,&|t|\ge3/4.
+ \end{cases}
+\]
+On a lift of the cube set
+\[
+ h_\square(c)=\prod_{\mu=1}^3
+ h_0\bigl((c_\mu-z_{\square,\mu})/M\bigr),\qquad
+ h_\square(c,g)=h_\square(c).
+\]
+Extend this with period $R$ and set it to zero away from the periodic
+images of the lifted cube neighbourhood.
+The cutoffs satisfy $\sum_\square h_\square^2=1$,
+$\supp h_\square\subset\{|c-z_\square|_\infty<3M/4\}$, and
+$|h_\square(c)-h_\square(c')|\le\pi|c-c'|_1/M$.
+Put $C_\square=-[F_y(A),h_\square]$. Internal hops commute with
+$h_\square$, and the penalty has range at most $L$. The phase bounds
+and the same normalized sums used in the perturbation estimate give
+\begin{equation}\label{eq:cutoff-commutator-bound}
+ N_\gamma(C_\square)\le\pi C_V/M.
+\end{equation}
+The kernel is
+$(h_\square(c)-h_\square(c'))F_y(A)(x,x')$. Its two photon sites lie
+within $3M/4+L$ of $z_\square$. If $M>4L$, both lie in
+$W_\square^-$; multiplication by $h_{\square'}$ can give a nonzero
+operator only when $d(z_\square,z_{\square'})\le M$.
+
+Using \eqref{eq:local-right-identity} and
+\eqref{eq:local-left-identity} gives
+\begin{align}
+ F_yh_\square S_\square h_\square
+       &=h_\square^2-C_\square S_\square h_\square,
+                                   \label{eq:parametrix-right}\\
+ h_\square S_\square h_\square F_y
+       &=h_\square^2+h_\square S_\square C_\square.
+                                   \label{eq:parametrix-left}
+\end{align}
+Let $S^{\mathrm p}=\sum_\square h_\square S_\square h_\square$ and
+$R^{\mathrm p}=\sum_\square C_\square S_\square h_\square$.
+At most $27$ cubes contribute to one row of $R^{\mathrm p}$.
+Consequently,
+\[
+ N_\gamma(R^{\mathrm p})\le q_0:=\frac{54\pi C_Va'}M.
+\]
+Choose $M\ge108\pi C_Va'$. Equation~\eqref{eq:parametrix-right}
+now gives a right inverse by a convergent series:
+\begin{equation}\label{eq:global-parametrix-inverse}
+ S_y(A)=F_y(A)^{-1}=S^{\mathrm p}\sum_{n\ge0}(R^{\mathrm p})^n.
+\end{equation}
+The finite-dimensional operator $F_y(A)$ is therefore invertible.
+The left identity gives the second form with
+$R^{\mathrm p\prime}=-\sum_\square h_\square S_\square C_\square$.
+
+The terms in \eqref{eq:global-parametrix-inverse} have a local
+description. A walk of length $n$ is a sequence
+$\omega=(\square_0,\ldots,\square_n)$ with successive centres at
+distance at most $M$. Its term is
+\[
+ S_\omega=(h_0S_0h_0)(C_1S_1h_1)\cdots(C_nS_nh_n),
+\]
+where the subscript $i$ denotes the cube $\square_i$.
+Other sequences give zero because of the support of the commutator.
+Its connection variables lie in
+$\bigcup_{i=0}^nW_{\square_i}$.
+
+\begin{proposition}\label{prop:walk-propagator-bounds}
+For $p\ge1$ with $q(p)=54\pi C_Va'p/M\le1/2$,
+\begin{align}
+ \sup_z\sum_{z'}\exp(\gamma d(z,z'))
+       \sum_{|\omega|=n}p^{n+1}
+           \|\mathbf1_{\Delta_z}S_\omega\mathbf1_{\Delta_{z'}}\|
+       &\le16a'pw_k(y)q(p)^n,\label{eq:walk-row-bound}\\
+ \sup_z\sum_{z'}\exp(\gamma d(z,z'))
+       \sum_{|\omega|=n}p^{n+1}
+           \|\mathbf1_{\Delta_z}\delta_{\alpha,A}S_\omega
+                            \mathbf1_{\Delta_{z'}}\|
+       &\le152a'pq(p)^n.\label{eq:walk-holder-bound}
+\end{align}
+The norms are sup operator norms. At $k=0$ the first bound holds
+also with the supremum of the normalized kernel over the two clusters.
+In particular, $S_y(A)$ is analytic on $\widetilde{\mathcal G}_k$ and
+\begin{equation}\label{eq:global-propagator-bounds}
+ N_\gamma(S_y(A))\le32a'w_k(y),\qquad
+ N_\gamma(\delta_{\alpha,A}S_y(A))\le304a'.
+\end{equation}
+These constants are independent of the level, the side, the running
+mass in $[0,1]$, and the connection in the stated domain.
+\end{proposition}
+
+\begin{proof}
+The first factor in a walk has norm at most $2a'w_k(y)$.
+Every additional factor has norm at most $2\pi C_Va'/M$ by
+\eqref{eq:local-inverse-bounds} and \eqref{eq:cutoff-commutator-bound}.
+For a fixed output block, at most eight initial cutoffs contribute;
+there are at most $27$ choices at each further step. Apply
+submultiplicativity row by row and sum these $8\cdot27^n$ bounds.
+This proves \eqref{eq:walk-row-bound}.
+
+For the covariant quotient, only the factor at the left end of the
+product is differentiated. The product identity is
+\[
+ \delta_{\alpha,A}(h_\square v)(x,x')
+ =h_\square(c)\delta_{\alpha,A}v(x,x')
+   +d_X^{-\alpha}(h_\square(c')-h_\square(c))U_A(x,x')v(x').
+\]
+The first contribution has localized norm at most $18a'$.
+The second has coefficient at most $3\pi\exp(1)/M$, and evaluation
+at the second point costs at most $27\exp(\gamma)$. With the stated
+choice of $M$ this contribution is at most $a'$. Thus
+$N_\gamma(\delta_{\alpha,A}h_\square S_\square)\le19a'$.
+For intracluster pairs the second term vanishes, since $c=c'$.
+There are again at most eight possible initial cubes, including when
+the second point of a short pair enters the cutoff support. The count
+$8\cdot27^n$ now gives \eqref{eq:walk-holder-bound}.
+
+At level zero keep the kernel norm in the rightmost local inverse;
+the other factors are controlled in operator norm. The same
+submultiplicative row estimate proves the kernel assertion.
+Summing the geometric bounds with $p=1$ gives
+\eqref{eq:global-propagator-bounds}. For a fixed torus the sum of the
+operator norms over all walks is finite; its tail of lengths at least
+$j$ is bounded by $4a'(\ell/M)^3 2^{-j}$. Each walk term is analytic
+in the finitely many connection variables it reads. The uniform tail
+bound therefore proves analyticity of the sum. The local bounds in
+\eqref{eq:walk-row-bound} contain no factor depending on $\ell$.
+\end{proof}
+
+
+\begin{proof}[Proof of \Cref{thm:chamber-locality}]
+Choose $\gamma,a'$ as in \eqref{eq:zero-row-bounds}.
+The constants in the free estimates depend only on $\rho,L,\alpha$.
+The two charge conditions give \eqref{eq:local-inverse-bounds},
+and $q(1)\le1/2$ gives the convergent parametrix.
+\Cref{prop:walk-propagator-bounds} supplies the analytic inverse and
+both asserted row estimates, including the normalized kernel estimate
+at level zero.
+\end{proof}
+\section{Localized propagators and coarse covariances}\label{sec:fermion-primitives}
+
+We use the local integration construction of \cite[Section~11]{QED3Manuscript}. The walk expansion provides its localization. A parameter is attached to each $M$-cube traversed
+by a walk, together with its one-layer neighbourhood. Setting parameters
+to zero then separates the operator into components. The coarse
+covariance is obtained from this expansion by an exact resolvent
+identity. At parameter value one it agrees with the exact covariance;
+its local terms expand the determinant and the interaction.
+We work at mesh $\eta_k=L^{-k}$ on the torus of side $\ell$; this is
+the side denoted by $R$ in the local inverse construction.
+Throughout this section the mass satisfies $0<\mu\le1$,
+the range of the renormalization data.
+Transposition is with respect to the bilinear lattice pairings:
+for $O:E\to E'$, $\langle v,Ou\rangle_{E'}=
+\langle O^Tv,u\rangle_E$. These pairings use the counting,
+chamber, or coarse lattice measure of the respective space.
+No complex conjugation enters this operation.
+
+\subsection{Weakened walks and polymer propagators}\label{subsec:weakened-walks}
+
+The resolvent parameter ranges over $Y_0=\R$ at level zero and
+$Y_k=\R\cup\{\infty\}$ at $k\ge1$, with $-\infty=\infty$
+as in the preceding resolvent construction.
+
+Let $\pi_k$ be the partition into $M$-cubes. For integers $j\ge0$, write
+$\square^{\sim j}$ for the union of partition cubes whose centres
+are within periodic sup distance $jM$ of the centre of $\square$.
+When this enlargement does not wrap, it has side $(2j+1)M$.
+Let $\mathcal P_k$ be the set of
+nonempty unions of these cubes connected through faces. For $X\in\mathcal P_k$
+write $|X|_M$ for its number of cubes. With the net and length
+conventions of \cref{app:polymer-geometry}, set
+\[
+ M d_M(X)=\inf\{\operatorname{length}(\mathcal N):
+       \mathcal N\text{ is a net meeting every closed cube of }X\}.
+\]
+For a face-connected union of cubes, joining successive cube centres gives
+$d_M(X)\le |X|_M-1$.
+
+For a walk $\omega=(\square_0,\ldots,\square_n)$ from
+\cref{subsec:propagator-walks}, put
+\[
+ X_\omega=\bigcup_{i=0}^n\square_i^{\sim1},\qquad
+ s_\omega=\prod_{\square\subset X_\omega}s_\square,
+ \qquad |s_\square|\le M^{\alpha_0},\quad \alpha_0=1/54.
+\]
+The union $X_\omega$ is a polymer and
+\begin{equation}\label{eq:walk-polymer-size}
+ |X_\omega|_M\le27(n+1),\qquad d_M(X_\omega)\le27(n+1).
+\end{equation}
+Indeed, each one-layer neighbourhood contains $27$ cubes. Successive
+centres differ by at most $M$ in each coordinate, so their neighbourhoods
+are joined through faces. The preceding bound on $d_M$ applies.
+Every walk, including a walk of length zero, carries the parameters of
+all cubes in $X_\omega$.
+
+The left parametrix gives terms
+\[
+ S'_{y,\omega}=(h_nS_n)(-C_nh_{n-1}S_{n-1})\cdots
+                 (-C_1h_0S_0)h_0.
+\]
+Here, as for $S_{y,\omega}$, $S_i$ is the local inverse on
+$\square_i$ and $C_i=-[F_y,h_i]$. Define
+\begin{align}
+ S_y(s,A)&=\sum_\omega s_\omega S_{y,\omega}(A),&
+ S_y(X,A)&=\sum_{X_\omega=X}S_{y,\omega}(A),\label{eq:weakened-walk-definitions}\\
+ S'_y(s,A)&=\sum_\omega s_\omega S'_{y,\omega}(A),&
+ S'_y(X,A)&=\sum_{X_\omega=X}S'_{y,\omega}(A).\notag
+\end{align}
+Their averages are denoted by $S_y^{\mathrm{sy}}$. The superscript
+$\#$ below means any of these three choices. Put
+$\kappa'=\kappa_{\mathrm w}+\kappa_0$, where
+$\kappa_0>0$ and $\kappa_{\mathrm w}=\kappa+\kappa_0+3$, with $\kappa>0$, are fixed polymer decay rates.
+Choose $M$ large enough that
+\begin{equation}\label{eq:weakened-walk-contraction}
+ q(M^{27\alpha_0})\le\tfrac12,\qquad
+ q(e^{27\kappa'})\le\tfrac12,
+ \qquad q(p)=54\pi C_Va'p/M.
+\end{equation}
+
+\begin{proposition}\label{prop:weakened-polymer-propagators}
+For $A\in\widetilde{\mathcal G}_k$, $y\in Y_k$, and
+$s\in\prod_{\pi_k}\{|s_\square|\le M^{\alpha_0}\}$, the series
+\eqref{eq:weakened-walk-definitions} converge absolutely in $N_\gamma$,
+uniformly in $(s,A)$, and
+\begin{align}
+ N_\gamma(S_y^\#(s,A))&\le32a'M^{27\alpha_0}w_k(y),
+                                       \label{eq:weakened-propagator-bound}\\
+ N_\gamma(\delta_{\alpha,A}S_y^\#(s,A))&\le304a'M^{27\alpha_0},\notag\\
+ \|\mathbf1_{\Delta_z}S_y^\#(X,A)\mathbf1_{\Delta_{z'}}\|
+   &\le32a'e^{27\kappa'}w_k(y)
+       e^{-\gamma d(z,z')-\kappa'd_M(X)}.
+                                       \label{eq:polymer-propagator-bound}
+\end{align}
+The norm in the last line is the sup operator norm. At $k=0$ it can
+also be replaced by the supremum of the normalized kernel over the two
+clusters, with $w_0(y)=(1+|y|)^{-1}$.
+At parameter value one,
+\begin{equation}\label{eq:polymer-propagator-sum}
+ S_y^\#(1,A)=S_y(A)=\sum_{X\in\mathcal P_k}S_y^\#(X,A).
+\end{equation}
+The weakened operators are continuous on the closed parameter
+polydisk, jointly analytic in its interior and in $A$, and analytic in
+$A$ for each fixed parameter value, including boundary values.
+For finite real $y$ the families are continuous in $y$.
+
+The operator $S_y^\#(X,A)$ is supported on $X$ in both arguments and
+depends on $A$ only on bonds with endpoints in $X$. If parameters vanish
+off a union $Y$ of $M$-cubes, then each component of $Y$ is preserved by
+$S_y^\#(s,A)$. On such a component the operator depends only on its
+parameters and its connection. Its row at $x=(c,g)$ vanishes unless all
+$M$-cubes meeting $K_c=\{c':|c'-c|_\infty\le2L\}$ have active
+parameters; the corresponding assertion holds for columns.
+\end{proposition}
+
+\begin{proof}
+By \eqref{eq:walk-polymer-size}, $|s_\omega|\le p_s^{n+1}$ with
+$p_s=M^{27\alpha_0}$. Apply the walk row estimate with this weight.
+The length-$n$ contribution is bounded by
+$16a'p_sw_k(y)2^{-n}$; its H\"older row estimate is bounded by
+$152a'p_s2^{-n}$. Summing these bounds proves the first two estimates.
+For a fixed polymer use
+\[
+ \mathbf1[X_\omega=X]\le
+       e^{-\kappa'd_M(X)}p_X^{n+1},\qquad p_X=e^{27\kappa'}.
+\]
+The same row estimate with $p_X$ proves
+\eqref{eq:polymer-propagator-bound}. The left walk estimates follow
+from the left parametrix by the same weighted product estimate; taking
+the average preserves all bounds.
+
+On a fixed torus, summing the row bounds over its finitely many unit
+blocks also bounds the sum of the $N_\gamma$ norms of the individual
+terms. The tails decay geometrically, uniformly in $(s,A)$. The series
+may therefore be regrouped by $X_\omega$. At $s=1$ they are the right
+and left inverse expansions, so both equal $S_y(A)$. This proves
+\eqref{eq:polymer-propagator-sum}. Each finite sum is analytic in its
+connection variables and polynomial in $s$. The uniform tail estimates
+give the stated analyticity and continuity.
+The local inverse is continuous at every real resolvent parameter.
+Its walk terms inherit this property, and their tails are uniform in
+$y$ since $w_k(y)\le1$. The sums are therefore continuous in real $y$.
+
+A walk term is a product of local factors on the neighbourhoods
+$\square_i^{\sim1}$. Its row and column cutoffs, its commutators, and
+all connection variables consequently lie in $X_\omega$. If the first
+row is nonzero, its photon site satisfies
+$|c-z_{\square_0}|_\infty<3M/4$. Since $3M/4+2L<3M/2$, every
+$M$-cube meeting $K_c$ is in $\square_0^{\sim1}$, and its parameter
+occurs in $s_\omega$. The last cutoff gives the column assertion;
+the order is reversed for a left walk. Finally, a surviving walk has
+every cube of $X_\omega$ in $Y$. Since $X_\omega$ is face-connected,
+it lies in a single component of $Y$. Its local factors use only the
+connection in that component. This proves all the locality statements.
+\end{proof}
+The lattice symmetries used in this section have coordinate sign
+changes and translations in $M\Z^3$. Their spin lifts lie in the
+group generated by $\gamma_1,\gamma_2,\gamma_3,\gamma_5$; they act
+on $(c,g)$ by $(rc+a,rg)$, where
+$S\gamma_\mu S^{-1}=r_{\mu\mu}\gamma_\mu$ determines $r$.
+Write $\widetilde g=(S,a)$ for such a symmetry.
+The step group restricts $a$ to
+$LM\Z^3$. A lift commuting with $\gamma_5$ preserves $y$; a lift
+anticommuting with it sends $y$ to $-y$ at nonneutral values.
+Gauge covariance follows term by term: the conjugating phases of
+adjacent factors cancel. A lattice symmetry permutes cubes and walks,
+and hence acts on the parameters by
+$(\widetilde g s)_\square=s_{\widetilde g^{-1}\square}$.
+Transposition reverses the order of
+the local factors and interchanges the right and left expansions.
+More precisely, with $\mathsf C=i\gamma_2$ one has
+$F_y(A)^T=\mathsf C^{-1}F_{-y}(-A)\mathsf C$. Therefore
+\begin{equation}\label{eq:weakened-transpose}
+ S_y(s,A)^T=\mathsf C^{-1}S'_{-y}(s,-A)\mathsf C.
+\end{equation}
+Thus at the neutral values $y=0,\infty$ for $k\ge1$, and $y=0$
+for $k=0$, the symmetrized family has the same transpose covariance as
+the exact inverse. This is the reason for using it in the coarse
+covariance and determinant.
+
+\subsection{The fine and coarse resolvents}\label{subsec:fine-coarse-resolvent}
+
+For $k\ge1$ let
+\[
+ \mathcal Q_k=Q_k(A)J^*,\qquad
+ \mathcal Q_k^\sharp=JQ_k^T(-A),\qquad
+ P_L=Q^T(-A)Q(A).
+\]
+Here $Q_k$ averages the fine lattice onto the unit lattice, and $Q$
+averages the unit lattice onto the lattice of spacing $L$.
+The notation $\sharp$ denotes the displayed algebraic transpose with
+reversed connection; for complex $A$ it is not a Hermitian adjoint.
+Here $B(z')=E_{z'}$ is the $L$-block from the preceding section.
+To specify the phases, if $c\in\Delta_z$ and $z\in B(z')$, set
+\[
+ \varphi_A(z,c)=e^{ie_k\eta_k(\tau_kA)(z,c)},\qquad
+ U_A(z',z)=e^{ie_k\eta_k(\tau A)(z',z)}.
+\]
+The path average $\tau A$ is the arithmetic mean of the oriented bond
+sums in the six coordinate orders, and $\tau_kA$ is their sum along
+the nested block centres. Then
+\begin{align*}
+ (\mathcal Q_kf)(z)&=\eta_k^3\sum_{c\in\Delta_z}
+                \varphi_A(z,c)\frac1{48}\sum_gf(c,g),\\
+ (\mathcal Q_k^\sharp v)(c,g)&=\varphi_A(z,c)^{-1}v(z),\\
+ (P_Lv)(z)&=U_A(z',z)^{-1}L^{-3}
+                    \sum_{z''\in B(z')}U_A(z',z'')v(z'').
+\end{align*}
+The nesting of the odd blocks and cancellation of the phases give
+\begin{equation}\label{eq:block-algebra}
+ \mathcal Q_k\mathcal Q_k^\sharp=1,\quad P_L^2=P_L,\quad
+ \mathcal Q_k^\sharp\mathcal Q_k=\Pi_1(A),\quad
+ \mathcal Q_k^\sharp P_L\mathcal Q_k=\Pi_L(A).
+\end{equation}
+All these operators commute with constant spin matrices.
+
+Write $S_k=S_\infty(A)$ and define maps on the unit spinors by
+\begin{align}
+ H_k&=b_kS_k\mathcal Q_k^\sharp,&
+ \mathfrak H_k&=b_k\mathcal Q_kS_k,\notag\\
+ D_k&=b_k-b_k^2\mathcal Q_kS_k\mathcal Q_k^\sharp,&
+ M_k&=b_k-D_k.\label{eq:coarse-dirac-definition}
+\end{align}
+For real $y$ put
+\[
+ \mathcal B_{k,y}=(b_k+i\gamma_5y)^{-1}(1-P_L)
+                   +(b_k+b_L+i\gamma_5y)^{-1}P_L.
+\]
+These $4\times4$ inverses exist since
+$(t+i\gamma_5y)^{-1}=(t-i\gamma_5y)/(t^2+y^2)$ for $t>0$.
+The idempotent decomposition and \eqref{eq:block-algebra} give
+\begin{equation}\label{eq:fine-resolvent-perturbation}
+ \mathcal B_{k,y}^{-1}=b_k+b_LP_L+i\gamma_5y,\qquad
+ F_y=F_\infty-b_k^2\mathcal Q_k^\sharp
+                       \mathcal B_{k,y}\mathcal Q_k.
+\end{equation}
+
+\begin{proposition}\label{prop:fine-coarse-resolvents}
+For $k\ge1$, $A\in\widetilde{\mathcal G}_k$, and real $y$, the
+operator $D_k+b_LP_L+i\gamma_5y$ is invertible and its inverse is
+\begin{equation}\label{eq:coarse-resolvent-formula}
+ \Gamma_{k,y}=\mathcal B_{k,y}
+       +b_k^2\mathcal B_{k,y}\mathcal Q_kS_y
+                         \mathcal Q_k^\sharp\mathcal B_{k,y}.
+\end{equation}
+Moreover,
+\begin{equation}\label{eq:resolved-fine-covariance}
+ S_y=S_k+H_k\Gamma_{k,y}\mathfrak H_k.
+\end{equation}
+In particular, $\Gamma_k=\Gamma_{k,0}$ exists and
+$\delta Z_k(A)=\det(D_k+b_LP_L)\ne0$.
+\end{proposition}
+
+\begin{proof}
+Set $Z=b_k^2\mathcal Q_k^\sharp\mathcal B_{k,y}\mathcal Q_k$.
+The two fine inverses exist by the preceding section, and
+\eqref{eq:fine-resolvent-perturbation} gives both identities
+\[
+ S_y-S_k=S_kZS_y=S_yZS_k.
+\]
+Since $D_k+b_LP_L+i\gamma_5y
+=\mathcal B_{k,y}^{-1}-b_k^2\mathcal Q_kS_k\mathcal Q_k^\sharp$,
+multiplication by the right side of
+\eqref{eq:coarse-resolvent-formula} gives the identity: the additional
+term is
+$b_k^2\mathcal Q_k(S_y-S_k-S_kZS_y)
+\mathcal Q_k^\sharp\mathcal B_{k,y}=0$.
+The product in the other order uses $S_y-S_k-S_yZS_k=0$.
+This proves the inverse formula without assuming that the coarse
+operator is invertible. Substituting the formula in
+$H_k\Gamma_{k,y}\mathfrak H_k$ gives
+\[
+ S_kZS_k+S_kZS_yZS_k
+     =S_kZ(S_k+S_yZS_k)=S_kZS_y=S_y-S_k.
+\]
+At $y=0$ the coarse operator is an invertible map on the finite
+dimensional unit spinor space, so its determinant is nonzero.
+\end{proof}
+
+At level zero this algebra is replaced by a single chamber
+integration. The operators $b_0$, $S_\infty$, $\mathcal B_{0,y}$, and
+$M_0$ are not defined. Instead,
+\begin{equation}\label{eq:level-zero-covariance}
+ F_0=D_A+\mu+b_LJP_LJ^*,\qquad
+ \Gamma_0=F_0^{-1},\qquad \delta Z_0(A)=\det F_0\ne0.
+\end{equation}
+Here $\Gamma_0$ acts on $192$ components per photon site, whereas
+$\Gamma_k$ for $k\ge1$ acts on four components per unit site.
+
+\subsection{Localized coarse covariances}\label{subsec:localized-coarse-covariance}
+
+The weakened families for $k\ge1$ are
+\begin{align}
+ H_k(s,A)&=b_kS_\infty(s,A)\mathcal Q_k^\sharp,
+                                          \label{eq:local-coarse-families}\\
+ \Gamma_k(s,A)&=\mathcal B_{k,0}
+    +b_k^2\mathcal B_{k,0}\mathcal Q_kS_0^{\mathrm{sy}}(s,A)
+                 \mathcal Q_k^\sharp\mathcal B_{k,0},\notag\\
+ M_k(X,A)&=b_k^2\mathcal Q_kS_\infty^{\mathrm{sy}}(X,A)
+                  \mathcal Q_k^\sharp.\notag
+\end{align}
+The unprimed polymer propagators $S_{k,y}(X,A)=S_y(X,A)$ are used
+in the determinant integral. At level zero let
+$\operatorname{Cub}(c)$ be the $M$-cubes having a lattice site in
+common with $K_c$, and set
+\begin{equation}\label{eq:local-level-zero-families}
+ \begin{aligned}
+ (H_0(s,A)u)(c,g)&=
+       \left(\prod_{\square\in\operatorname{Cub}(c)}s_\square\right)u(c,g),\\
+ \Gamma_0(s,A)&=S_0^{\mathrm{sy}}(s,A),\qquad
+ S_{0,y}(X,A)=S_y(X,A).
+ \end{aligned}
+\end{equation}
+At $s=1$ these are the exact operators; also
+$\sum_XM_k(X,A)=M_k(A)$. The exponential formulas for the averaging
+phases and \cref{prop:weakened-polymer-propagators} give
+analyticity on the same domains.
+
+For use in the estimates, let
+$\mathfrak i(A)=e_k\|\operatorname{Im}A\|_\infty$.
+The small-connection domain and the charge bound give
+$\mathfrak i(A)\le1/(6L)$; reduce $\gamma$, if necessary, so that
+$\gamma L\le1/6$. The path lengths imply
+\begin{equation}\label{eq:coarse-phase-bounds}
+ |\varphi_A(z,c)^{\pm1}|\le e^{3\mathfrak i(A)/2},\qquad
+ \|\mathcal Q_k\|_{\infty\to\infty},
+ \|\mathcal Q_k^\sharp\|_{\infty\to\infty}
+       \le e^{3\mathfrak i(A)/2}.
+\end{equation}
+The sup norms here are formed with the Euclidean spinor norm.
+Each unit block has chamber measure one. In particular, for a fine
+operator $O$,
+\begin{equation}\label{eq:block-compression-bound}
+ |(\mathcal Q_kO\mathcal Q_k^\sharp)(z,z')|_2
+       \le \exp(1)\,\|\mathbf1_{\Delta_z}O\mathbf1_{\Delta_{z'}}\|.
+\end{equation}
+Indeed, apply the two averaging bounds to a unit spinor supported at
+$z'$; their product is $e^{3\mathfrak i(A)}\le \exp(1)$.
+
+\begin{proposition}\label{prop:coarse-local-family-bounds}
+The families \eqref{eq:local-coarse-families} satisfy
+\begin{align}
+ \|H_k(s,A)\|_{\infty\to\infty}
+       &\le32\exp(1)b_ka'M^{27\alpha_0},\label{eq:weakened-H-bound}\\
+ \|\delta_{\alpha,A}H_k(s,A)\|_{\infty\to\infty}
+       &\le304\exp(1)b_ka'M^{27\alpha_0},\notag\\
+ |\Gamma_k(s,A)(z,z')|_2
+       &\le C_\Gamma M^{27\alpha_0}e^{-\gamma d(z,z')},
+                                             \label{eq:weakened-Gamma-bound}\\
+ |M_k(X,A)(z,z')|_2
+       &\le32\exp(1)b_k^2a'e^{27\kappa'}
+                     e^{-\gamma d(z,z')-\kappa'd_M(X)},\notag
+\end{align}
+where
+\[
+ C_\Gamma=\frac{2(1+2\exp(1))}{b_-}+128\exp(1)(1+2\exp(1))^2a'.
+\]
+The H\"older estimate is on short pairs, including the distinct
+sites of one cluster. The families $H_k(s,A)$ and $\Gamma_k(s,A)$
+preserve every component of the active $M$-cubes and depend there only
+on its parameters and connection. The row of $H_k(s,A)$ at $(c,g)$
+vanishes unless all cubes meeting $K_c$ are active. The polymer
+$M_k(X,A)$ is supported on the unit sites of $X$ and depends only on
+the connection in $X$.
+
+At level zero the normalized kernel of $\Gamma_0(s,A)$ is bounded by
+$32a'M^{27\alpha_0}e^{-\gamma d(c,c')}$, and
+\eqref{eq:polymer-propagator-bound} bounds $S_{0,y}(X,A)$ with its
+factor $(1+|y|)^{-1}$. The multiplier $H_0(s,A)$ has sup norm
+at most $M^{8\alpha_0}$ and equals the identity at $s=1$.
+Its row at $(c,g)$ vanishes unless every cube meeting $K_c$
+is active. There are no short pairs of distance less than one
+at this level.
+\end{proposition}
+
+\begin{proof}
+The first two estimates follow by composing the weakened fine bounds
+with \eqref{eq:coarse-phase-bounds}. The third and fourth use
+\eqref{eq:block-compression-bound}. For the covariance it remains to
+control the two factors $\mathcal B_{k,0}$. Its kernel is
+\[
+ \mathcal B_{k,0}(z,z')=b_k^{-1}\mathbf1[z=z']1_4
+      -\frac{b_L}{b_k(b_k+b_L)}P_L(z,z').
+\]
+It vanishes unless $z,z'$ belong to one $L$-block. Since
+$|P_L(z,z')|_2\le\exp(1)L^{-3}$ on that block, its row and column sums
+are at most $(1+2\exp(1))/b_k$. In a nonzero term of
+$\mathcal B_{k,0}G\mathcal B_{k,0}$,
+where $G=\mathcal Q_kS_0^{\mathrm{sy}}(s,A)\mathcal Q_k^\sharp$,
+the two intermediate sites are within $L$ of the exterior sites.
+Therefore
+\[
+ e^{-\gamma d(z_1,z_2)}\le
+      e^{2\gamma L}e^{-\gamma d(z,z')}
+      \le4e^{-\gamma d(z,z')}.
+\]
+The fine bound and \eqref{eq:block-compression-bound} give
+$|G(z_1,z_2)|_2\le32\exp(1)a'M^{27\alpha_0}e^{-\gamma d(z_1,z_2)}$.
+Multiplying the row and column sums cancels the factor $b_k^2$ and
+gives $128\exp(1)(1+2\exp(1))^2a'M^{27\alpha_0}$.
+The local term $\mathcal B_{k,0}$ is bounded by
+$2(1+2\exp(1))b_-^{-1}e^{-\gamma d(z,z')}$, proving
+\eqref{eq:weakened-Gamma-bound}.
+
+The odd block partitions are nested, and every unit block and every
+$L$-block belongs to a single $M$-cube. Moreover, the paths entering
+$\varphi_A(z,c)$ lie in $\Delta_z$, and the paths entering
+$U_A(z',z)$ lie in the fine block of side $L$ centred at $z'$:
+each coordinate of a rectilinear path remains between those of its
+endpoints. Consequently the averaging maps and $\mathcal B_{k,0}$
+preserve every union of $M$-cubes and depend only on its connection.
+Composing them with the component-local fine families proves the
+locality assertions. This applies also to the parameter-independent
+term $\mathcal B_{k,0}$ in $\Gamma_k(s,A)$.
+For the row of $H_k$, the terminal average does not change the first
+row index of $S_\infty(s,A)$, so the stronger vanishing statement is
+preserved. At level zero the assertions for $\Gamma_0$ follow
+from the fine kernel bound and locality with $\eta_0=1$.
+
+For $H_0$, lift $c$ and $K_c$ to the lattice. In each coordinate
+$K_c$ is an interval of $4L+1$ sites. Since $M\ge L^2$ and $L\ge5$,
+this interval meets at most two consecutive $M$-blocks. The cubes
+meeting $K_c$ are the product of these three sets of blocks.
+They number at most eight, form a face-connected set, and include
+the cube of $c$. Thus the defining product is a monomial of degree
+at most eight, bounded by $M^{8\alpha_0}$. If one of its cubes is
+inactive, its factor is zero. If all are active, their connectedness
+puts them in the active component containing $c$; hence changing
+parameters outside that component has no effect on the row or
+column at $(c,g)$. The multiplier is scalar in spin and chamber
+labels and independent of the connection. These observations give
+its analyticity, gauge covariance, and component locality.
+\end{proof}
+
+These families have the gauge and lattice covariance of their exact
+counterparts. For $\Gamma_k$ and $M_k$, transposition follows from
+\eqref{eq:weakened-transpose} at a neutral value and the scalar
+averaging phases. The barred field map is
+$\bar H_k(s,A)=\mathsf C^{-1}H_k(s,-A)\mathsf C$.
+Its bounds follow from those for $H_k$ because $\mathsf C$ is unitary
+and $\mathsf C\gamma_\mu\mathsf C^{-1}=-\gamma_\mu^T$.
+When component sup norms are used in the Grassmann substitution,
+the Euclidean operator bounds above acquire at most the factor two
+from $|v|_c\le|v|_2\le2|v|_c$.
+
+\section{Weighted Grassmann block integration}\label{sec:weighted-integration}
+
+\subsection{Weighted Grassmann integration}\label{subsec:weighted-grassmann}
+
+Let $\phi_i(t)$, $1\le i\le p$, be independent Grassmann families
+on finite ordered index sets. If $\phi_i(I_i)$ is the ordered product
+over $I_i$, write
+\[
+ F=\sum_{I_1,\ldots,I_p}c_F(I_1,\ldots,I_p)
+                 \phi_1(I_1)\cdots\phi_p(I_p),\qquad
+ \|F\|_{\mathsf w}=\sum_I|c_F(I)|\prod_i\mathsf w_i^{|I_i|}.
+\]
+The positive measures $\nu_i(t)$ on the index sets enter the kernels,
+not this coefficient norm. Thus an antisymmetric kernel expansion
+\[
+ F=\sum_n\prod_i\frac1{n_i!}\int\dd t\,K_n(t)
+                       \prod_i\prod_{j=1}^{n_i}\phi_i(t_j^i)
+\]
+has norm
+\begin{equation}\label{eq:grassmann-kernel-norm}
+ \|F\|_{\mathsf w}
+     =\sum_n\prod_i\frac{\mathsf w_i^{n_i}}{n_i!}
+                      \int\dd t\,|K_n(t)|.
+\end{equation}
+For arbitrary kernels the right side is an upper bound. Products of
+ordered monomials vanish on repeated generators and otherwise multiply
+their weights, so
+\begin{equation}\label{eq:grassmann-product-bound}
+ \|FG\|_{\mathsf w}\le\|F\|_{\mathsf w}\|G\|_{\mathsf w},
+ \qquad \|e^F-1\|_{\mathsf w}\le e^{\|F\|_{\mathsf w}}-1
+       \quad(F\text{ even}).
+\end{equation}
+
+For an additional finite nonempty mode set $\mathcal I$ with positive weights
+$\nu(t)$, introduce $W(t),\bar W(t)$ and set
+\[
+ \langle\bar W,OW\rangle_\nu
+    =\sum_{t,t'}\nu(t)\nu(t')\bar W(t)O(t,t')W(t'),
+ \qquad \mathrm{Top}=\prod_{t\in\mathcal I}W(t)\bar W(t).
+\]
+The kernel represents $O$ with measure $\nu$; its matrix entry is
+$O(t,t')\nu(t')$. Define $\int\mathrm DW$ as extraction of the
+coefficient of $\mathrm{Top}$, multiplied by
+$\prod_t\nu(t)^{-1}$, and define
+\begin{align}
+ \int\dd\mu_I(W)F
+     &=\int\mathrm DW\,e^{-\langle\bar W,W\rangle_\nu}F,
+                                            \label{eq:weighted-Berezin}\\
+ \int\dd\mu_C(W)F
+     &=(\det C)\int\mathrm DW\,
+               e^{-\langle\bar W,C^{-1}W\rangle_\nu}F
+                    \quad(C\text{ invertible}).\notag
+\end{align}
+These are algebra-valued functionals when other Grassmann generators
+are present. The order of modes in $\mathrm{Top}$ is immaterial because
+its factors are even.
+
+\begin{proposition}\label{prop:weighted-Berezin-bounds}
+Put $w_W=\max_t\nu(t)^{-1/2}$. Then
+\begin{equation}\label{eq:weighted-integration-bound}
+ \left\|\int\dd\mu_I(W)F\right\|_{\mathsf w}
+                  \le\|F\|_{(\mathsf w,w_W)}.
+\end{equation}
+The integral factors for polynomials involving disjoint sets of modes.
+For an invertible covariance,
+\begin{align}
+ \int\dd\mu_C(W)F(\bar W,W)
+     &=\int\dd\mu_I(W)F(\bar W,CW),\label{eq:covariance-substitution}\\
+ \int\dd\mu_C(W)W(t)\bar W(t')&=C(t,t'),\notag\\
+ \int\mathrm DW\,e^{-\langle\bar W,OW\rangle_\nu}
+     &=\det O\quad\text{for every }O.\label{eq:weighted-determinant}
+\end{align}
+Finally, consider a linear substitution
+$\phi_i\mapsto\sum_jO_{ij}\theta_j$, and put
+\[
+ \|O_{ij}\|_{1,\infty}
+     =\sup_t\sum_s|O_{ij}(t,s)|\nu'_j(s).
+\]
+If $\sum_j\|O_{ij}\|_{1,\infty}\mathsf w'_j\le\mathsf w_i$ for
+each $i$, then its image $F'$ obeys
+$\|F'\|_{\mathsf w'}\le\|F\|_{\mathsf w}$.
+Only rows corresponding to generators occurring in $F$ need satisfy
+this bound.
+\end{proposition}
+
+\begin{proof}
+The identity density factors as
+\[
+ e^{-\langle\bar W,W\rangle_\nu}
+            =\prod_t(1+\nu(t)W(t)\bar W(t)).
+\]
+An ordered monomial $W(J)$ contributes to its integral only if $J$
+contains both generators of every mode it meets. In that case its
+integral is its reordering sign times
+$\prod_{(t,0)\in J}\nu(t)^{-1}$; otherwise it is zero. Its modulus
+is therefore at most $\prod_{u\in J}\nu(u)^{-1/2}\le w_W^{|J|}$.
+Apply this coefficientwise to obtain
+\eqref{eq:weighted-integration-bound}. For disjoint mode sets a
+nonzero integral requires each monomial separately to be paired.
+Their degrees in $W$ are then even, so the signs from exchanging
+external generators cancel. The paired-mode formula gives
+factorization. It also shows that modes absent from the integrand may
+be removed.
+
+A linear change $W\mapsto OW$ multiplies the coefficient of the top
+monomial by $\det O$, since the matrix of the change is
+$O(t,t')\nu(t')$. Applied to the identity density this proves
+\eqref{eq:weighted-determinant}, without an invertibility assumption.
+For invertible $C$, use $W\mapsto CW$, leaving $\bar W$ fixed, in
+the density with covariance $C$. This proves
+\eqref{eq:covariance-substitution} and normalization. Its two-point
+function is
+\[
+ \sum_s C(t,s)\nu(s)\int\dd\mu_I(W)W(s)\bar W(t')
+       =\sum_s C(t,s)\nu(s)\frac{\mathbf1[s=t']}{\nu(t')}
+       =C(t,t').
+\]
+Thus it is the kernel, rather than the matrix entry.
+
+Under the stated substitution, the norm of the image of
+$\phi_i(t)$ is at most
+\[
+ \sum_j\mathsf w'_j\sum_s|O_{ij}(t,s)|\nu'_j(s)\le\mathsf w_i
+\]
+by hypothesis. Submultiplicativity bounds
+the image of each monomial by its original weight; summing its
+coefficients proves the last assertion, with the same proof on the
+subalgebra generated by the rows that occur.
+\end{proof}
+
+For linear combinations $v_1,\ldots,v_{2r}$ of the $W,\bar W$,
+Wick's formula gives
+\begin{equation}\label{eq:weighted-wick}
+ \int\dd\mu_I(W)v_1\cdots v_{2r}
+      =\operatorname{Pf}\left(\int\dd\mu_I(W)v_iv_j\right)_{i,j}.
+\end{equation}
+Odd products integrate to zero. To fix the signs, let $\partial_u$
+be the left Grassmann derivative. It satisfies
+$\partial_u(vG)=(\partial_uv)G-v\partial_uG$, and its Berezin
+integral is zero. Differentiating the factored Gaussian density gives
+\begin{align*}
+ \int\dd\mu_I(W)W(t)G
+      &=\nu(t)^{-1}\int\dd\mu_I(W)\partial_{\bar W(t)}G,\\
+ \int\dd\mu_I(W)\bar W(t)G
+      &=-\nu(t)^{-1}\int\dd\mu_I(W)\partial_{W(t)}G.
+\end{align*}
+Consequently, if $I(v)=\int\dd\mu_I(W)v$,
+\[
+ I(v_1\cdots v_q)=\sum_{j=2}^q(-1)^jI(v_1v_j)
+                         I(v_2\cdots\widehat v_j\cdots v_q).
+\]
+This is the expansion of the Pfaffian along its first row and proves
+\eqref{eq:weighted-wick} by induction. Formula
+\eqref{eq:covariance-substitution} gives the corresponding Wick rule
+for $\mu_C$.
+
+In the renormalization step the modes have weight one for $k\ge1$.
+At $k=0$ they are $(c,g,\beta)$ with weight $1/48$. Thus the
+integration weight is
+\begin{equation}\label{eq:first-step-Grassmann-weight}
+ w_W=1\quad(k\ge1),\qquad w_W=\sqrt{48}\quad(k=0).
+\end{equation}
+In particular the first-step identity covariance has two-point
+function $48\mathbf1[(c,g,\beta)=(c',g',\beta')]$.
+The pair index used for a H\"older field has measure
+$(\eta_k^3/48)^2$. In a substitution involving
+$\delta_{\alpha,A}H_k$, its scalar component row sum is computed
+with the input measure, as in
+\cref{prop:weighted-Berezin-bounds}. Internal-cluster
+differences are therefore controlled by the H\"older bound with the
+same field weight as other pairs.
+
+\subsection{The Gaussian block identity}\label{subsec:Gaussian-block-identity}
+
+For this identity use a common notation for the integration space:
+at $k\ge1$ let $\mathcal D_k=D_k$ and
+$\mathcal A_k(A)=Q(A)$; at $k=0$ let
+$\mathcal D_0=D_A+\mu$ and $\mathcal A_0(A)=Q(A)J^*$.
+The integration measure is respectively counting measure or the
+chamber measure $1/48$. The target is the four-component spinor
+space on the lattice of spacing $L$, with measure $L^3$.
+Set
+\[
+ \mathcal A_k^\sharp(A)=\mathcal A_k(-A)^T,\qquad
+ K_k=\mathcal D_k+b_L\mathcal A_k^\sharp\mathcal A_k,
+ \qquad\Gamma_k=K_k^{-1}.
+\]
+Thus $K_k=D_k+b_LP_L$ for $k\ge1$ and $K_0=F_0$.
+Define the quadratic operator on the coarse lattice by
+\[
+ D_{k+1}^0=b_L-b_L^2\mathcal A_k\Gamma_k
+                                       \mathcal A_k^\sharp.
+\]
+Let $\Phi,\bar\Phi$ be external coarse Grassmann fields and put
+\[
+ \Psi^c=b_L\Gamma_k\mathcal A_k^\sharp\Phi,\qquad
+ \bar\Psi^c=b_L\Gamma_k^T\mathcal A_k(A)^T\bar\Phi.
+\]
+\begin{theorem}\label{thm:fermion-block-integration}
+Assume the hypotheses of \cref{thm:chamber-locality} and
+\eqref{eq:weakened-walk-contraction}, with
+$\kappa_{\mathrm w}=\kappa+\kappa_0+3$ and $\kappa,\kappa_0>0$.
+Let $A\in\widetilde{\mathcal G}_k$ and $0<\mu\le1$, with fermions
+antiperiodic in every coordinate. Then $K_k$ is invertible.
+For every Grassmann polynomial $F$ and external coarse fields
+$\Phi,\bar\Phi$, the weighted integral is
+\begin{multline}\label{eq:Gaussian-block-integration}
+ \int\mathrm D\Psi\,
+ e^{-\langle\bar\Psi,\mathcal D_k\Psi\rangle
+ -b_L\langle\bar\Phi-\mathcal A_k(-A)\bar\Psi,
+                  \Phi-\mathcal A_k(A)\Psi\rangle_L}
+ F(\bar\Psi,\Psi)\\
+ =(\det K_k)e^{-\langle\bar\Phi,D_{k+1}^0\Phi\rangle_L}
+ \int\dd\mu_I(W)
+ F(\bar\Psi^c+\bar W,\Psi^c+\Gamma_kW).
+\end{multline}
+The incoming measure is one per unit-site spin component for $k\ge1$,
+and $1/48$ per chamber spin component for $k=0$; the latter
+integration includes all $192$ components per photon site.
+The target pairing uses measure $L^3$. The identity-Gaussian
+integration weights are respectively $1$ and $\sqrt{48}$.
+
+There are analytic functions $E_k^d(X,A)$, depending only on bonds
+meeting the polymer $X$, such that
+\begin{equation}\label{eq:main-determinant-quotient}
+ \frac{\det K_k(A)}{\det K_k(0)}
+   =\exp\sum_{X\in\mathcal P_k}
+           \bigl(E_k^d(X,A)-E_k^d(X,0)\bigr),\qquad
+ |E_k^d(X,A)|\le C_dM^3e^{-(\kappa+1)d_M(X)}.
+\end{equation}
+They are invariant under real gauge transformations, even in $A$,
+and satisfy
+$\overline{E_k^d(X,\overline A)}=E_k^d(X,A)$.
+They are covariant under coordinate sign changes and translations
+in $LM\Z^3$. The constant $C_d$ depends on the fixed
+$\rho,L,\alpha,M,\kappa,\kappa_0$, and is independent of the level,
+volume, connection in the stated domain and $\mu\in(0,1]$.
+\end{theorem}
+
+The block identity follows by completing the quadratic form with the
+weighted transposes. Its determinant is then localized by the
+resolvent integral in \cref{subsec:determinant-integral}; the polymer
+estimates permit that integral to be taken term by term.
+
+For $\Psi=\Psi^c+W'$ and $\bar\Psi=\bar\Psi^c+\bar W'$,
+completion of the square is the exact identity
+\begin{multline}\label{eq:block-square-completion}
+ \langle\bar\Psi,\mathcal D_k\Psi\rangle
+   +b_L\langle\bar\Phi-\mathcal A_k(-A)\bar\Psi,
+                    \Phi-\mathcal A_k(A)\Psi\rangle_L\\
+   =\langle\bar\Phi,D_{k+1}^0\Phi\rangle_L
+                    +\langle\bar W',K_kW'\rangle.
+\end{multline}
+Indeed, write $s=b_L\mathcal A_k^\sharp\Phi$ and
+$\bar s=b_L\mathcal A_k(A)^T\bar\Phi$. The left side is
+\[
+ \langle\bar\Psi,K_k\Psi\rangle
+      -\langle\bar\Psi,s\rangle-\langle\bar s,\Psi\rangle
+      +b_L\langle\bar\Phi,\Phi\rangle_L.
+\]
+Substitute the means $\Gamma_ks,\Gamma_k^T\bar s$. Both cross
+terms cancel, and the remaining constant is
+$b_L\langle\bar\Phi,\Phi\rangle_L
+-\langle\bar s,\Gamma_ks\rangle
+=\langle\bar\Phi,D_{k+1}^0\Phi\rangle_L$.
+All factors remain in their displayed order; no conjugation of
+Grassmann fields is involved.
+
+Translation by external odd fields preserves the top coefficient
+in the integration variables. Applying this to
+\eqref{eq:block-square-completion} and then using
+\eqref{eq:covariance-substitution} proves
+\eqref{eq:Gaussian-block-integration}, with $\delta Z_k(A)=\det K_k(A)$.
+At the first step this is a single integration over all chamber
+components. The determinant and the integration weight are those of
+\eqref{eq:level-zero-covariance} and
+\eqref{eq:first-step-Grassmann-weight}; the heavy components are
+included in both.
+
+\section{The local determinant}\label{sec:local-determinant}
+
+\subsection{An integral for the determinant}\label{subsec:determinant-integral}
+
+The determinant in \eqref{eq:Gaussian-block-integration} has a local
+logarithm obtained by inserting the polymer propagators into a
+resolvent integral. We first derive the integral at real connections.
+Put $n_k=\ell^3$ and
+\[
+ c_k^d=4\bigl((1-L^{-3})\log b_k+L^{-3}\log(b_k+b_L)\bigr)
+       \quad(k\ge1),\qquad c_0^d=0.
+\]
+For real $A\in\widetilde{\mathcal G}_k$ and $0<\mu\le1$,
+\begin{align}
+ \delta Z_k(A)
+  &=\exp\left\{c_k^dn_k-ib_k^2\int_0^\infty\dd y\,
+       \operatorname{Tr}\bigl[\gamma_5\mathcal B_{k,y}
+          \mathcal Q_kS_y\mathcal Q_k^\sharp\mathcal B_{k,y}\bigr]
+                        \right\}\quad(k\ge1),
+                                    \label{eq:determinant-integral-positive-level}\\
+ \delta Z_0(A)
+  &=\exp\left\{\int_1^\infty\frac{\dd y}{y}
+                       \operatorname{Tr}[F_0S_y]
+             -i\int_0^1\dd y\,\operatorname{Tr}[\gamma_5S_y]
+                        \right\}.\label{eq:determinant-integral-level-zero}
+\end{align}
+The trace in the first line is on the unit spinor space. At level
+zero it is the normalized chamber trace
+$\operatorname{Tr}O=48^{-1}\sum_{c,g}\tr O((c,g),(c,g))$.
+
+To prove these identities, write $K=K_k$ as in the preceding
+subsection. At real $A$, the fine adjoint identity
+$D_A^*=\gamma_5D_A\gamma_5$, the reality of $\mu,b_k,b_L$, and
+the orthogonal averaging projections give
+$K^*=\gamma_5K\gamma_5$. Hence $K\gamma_5$ is Hermitian and
+invertible. Since $\det\gamma_5=1$ on each four-component spinor,
+its determinant is $\det K$. Let $\lambda_j$ be its real nonzero
+eigenvalues, counted with multiplicity. There are $4n_k$ at positive
+levels and $192n_0$ at level zero. Then
+\[
+ \operatorname{Tr}\bigl[\gamma_5(K+i\gamma_5y)^{-1}\bigr]
+        =\sum_j(\lambda_j+iy)^{-1},\qquad
+ \operatorname{Tr}\bigl[K(K+i\gamma_5y)^{-1}\bigr]
+        =\sum_j\lambda_j(\lambda_j+iy)^{-1}.
+\]
+For a real $\lambda\ne0$, choose along $y\ge0$ the logarithm
+with value $\log|\lambda|+i\pi\mathbf1[\lambda<0]$ at zero.
+Its derivative is $i/(\lambda+iy)$ and
+$\operatorname{Log}(\lambda+iy)-\log y\to i\pi/2$.
+Integration gives
+\begin{align*}
+ -i\int_0^Y\frac{\dd y}{\lambda+iy}
+        &=\operatorname{Log}\lambda-
+                          \operatorname{Log}(\lambda+iY),\\
+ \int_1^\infty\frac{\dd y}{y}\frac{\lambda}{\lambda+iy}
+       -i\int_0^1\frac{\dd y}{\lambda+iy}
+        &=\operatorname{Log}\lambda-i\pi/2.
+\end{align*}
+Summing the second identity proves
+\eqref{eq:determinant-integral-level-zero}: its constant phase is
+$-96\pi i n_0\in2\pi i\Z$.
+
+For $k\ge1$, the ranks of $P_L$ and $1-P_L$ are respectively
+$4L^{-3}n_k$ and $4(1-L^{-3})n_k$. The explicit formula for
+$\mathcal B_{k,y}$ therefore gives
+\[
+ -i\int_0^Y\dd y\,\operatorname{Tr}[\gamma_5\mathcal B_{k,y}]
+          =-4n_k\log Y+c_k^dn_k+o(1)
+                  \quad(Y\to\infty).
+\]
+Insert \eqref{eq:coarse-resolvent-formula} in the first scalar
+integral. The terms $4n_k\log Y$ cancel. The remaining phase is
+$2\pi i n_k$, which disappears on exponentiation, and this proves
+\eqref{eq:determinant-integral-positive-level}.
+The integral converges absolutely: block compression bounds
+$\mathcal Q_kS_y\mathcal Q_k^\sharp$ uniformly, while each row
+and column sum of $\mathcal B_{k,y}$ is at most
+$(1+2\exp(1))(b_k^2+y^2)^{-1/2}$. Its trace is bounded by
+\[
+ 128\exp(1)(1+2\exp(1))^2a'n_k(b_k^2+y^2)^{-1}.
+\]
+At level zero the spectral identities already give absolute
+convergence. The uniform kernel bounds below will give a bound
+independent of the eigenvalues.
+
+\subsection{Local determinant terms}\label{subsec:local-determinant-terms}
+
+Choose $\gamma_{\mathrm w}\le\gamma$ and
+$\kappa_{\mathrm w}=\kappa+\kappa_0+3$ with $\kappa,\kappa_0>0$.
+The propagator bounds above give a fixed constant $C_w$ such that,
+in component sup norms, for $y\ge0$,
+\begin{align*}
+ \|\mathbf1_{\Delta_z}S_{k,y}(X,A)\mathbf1_{\Delta_{z'}}\|
+       &\le C_we^{-\gamma_{\mathrm w}d(z,z')
+                                  -\kappa_{\mathrm w}d_M(X)}
+                                                    \quad(k\ge1),\\
+ |S_{0,y}(X,A)(x,x')|_c
+       &\le C_w(1+y)^{-1}e^{-\gamma_{\mathrm w}d(c,c')
+                                  -\kappa_{\mathrm w}d_M(X)}.
+\end{align*}
+Here $|\cdot|_c$ is the matrix norm induced by the component sup
+norm. We may use the same $C_w$ after reducing the rates from
+$\gamma,\kappa'$.
+For $X\in\mathcal P_k$ define
+\begin{align}
+ \widetilde E_k(X,A)
+    &=-ib_k^2\int_0^\infty\dd y\,
+       \operatorname{Tr}\bigl[\gamma_5\mathcal B_{k,y}\mathcal Q_k
+           S_{k,y}(X,A)\mathcal Q_k^\sharp\mathcal B_{k,y}\bigr]
+                   \quad(k\ge1),\label{eq:local-determinant-definition}\\
+ \widetilde E_0(X,A)
+    &=\int_1^\infty\frac{\dd y}{y}
+                     \operatorname{Tr}[F_0S_{0,y}(X,A)]
+       -i\int_0^1\dd y\,\operatorname{Tr}[\gamma_5S_{0,y}(X,A)],\notag\\
+ E_k^d(X,A)&=\tfrac14\bigl(\widetilde E_k(X,A)
+       +\widetilde E_k(X,-A)
+       +\overline{\widetilde E_k(X,\overline A)}
+       +\overline{\widetilde E_k(X,-\overline A)}\bigr),\notag\\
+ E_k^{\mathrm{det}}(X,A)&=E_k^d(X,A)-E_k^d(X,0).\notag
+\end{align}
+Set $c_X=54$ and
+\[
+ C_d=16c_XC_w\max\left\{\tfrac\pi2b\exp(1)(1+2\exp(1)),\,
+                                  2+58\exp(1)+b\exp(1)\right\}.
+\]
+
+\begin{proposition}\label{prop:local-determinant-expansion}
+The integrals \eqref{eq:local-determinant-definition} converge
+absolutely for $A\in\widetilde{\mathcal G}_k$. They define analytic
+functions, depending only on bonds meeting $X$, with
+\begin{equation}\label{eq:local-determinant-bound}
+ |\widetilde E_k(X,A)|, |E_k^d(X,A)|
+               \le C_dM^3e^{-(\kappa+1)d_M(X)}.
+\end{equation}
+They satisfy
+\begin{equation}\label{eq:local-determinant-quotient}
+ \delta Z_k(A)=e^{c_k^dn_k+\sum_X\widetilde E_k(X,A)},\qquad
+ \frac{\delta Z_k(A)}{\delta Z_k(0)}
+                         =e^{\sum_XE_k^{\mathrm{det}}(X,A)}.
+\end{equation}
+The functions $E_k^d$ are gauge invariant, even in $A$, and satisfy
+$\overline{E_k^d(X,\overline A)}=E_k^d(X,A)$. They are covariant
+under the lattice step group.
+\end{proposition}
+
+\begin{proof}
+For $k\ge1$ write
+$N_y(X)=\mathcal Q_kS_{k,y}(X,A)\mathcal Q_k^\sharp$.
+It is supported on the unit sites of $X$, and each entry is bounded
+by $\exp(1)C_we^{-\kappa_{\mathrm w}d_M(X)}$ by normalized block
+compression. To estimate the trace, cycle one factor
+$\mathcal B_{k,y}$ to the left and use
+\[
+ G_y=\mathcal B_{k,y}\gamma_5\mathcal B_{k,y}
+     =\gamma_5\bigl((b_k+i\gamma_5y)^{-2}(1-P_L)
+              +(b_k+b_L+i\gamma_5y)^{-2}P_L\bigr).
+\]
+Its column sum in Euclidean matrix norm is at most
+$(1+2\exp(1))/(b_k^2+y^2)$: the identity contributes one and the two
+projection coefficients contribute at most $2\exp(1)$. Since
+$|\tr(mm')|\le8|m|_2\max_{i,j}|m'_{ij}|$ for four-component
+matrices, the integrand is bounded by
+\begin{equation}\label{eq:polymer-determinant-trace-bound}
+ 8\exp(1)(1+2\exp(1))C_wM^3|X|_M
+           e^{-\kappa_{\mathrm w}d_M(X)}(b_k^2+y^2)^{-1}.
+\end{equation}
+Integrating and multiplying by $b_k^2$ leaves the factor
+$\pi b_k/2\le\pi b/2$.
+
+At $k=0$, the formula for $D_A$ and the averaging penalty give
+the scalar component row bound
+\begin{equation}\label{eq:first-step-Dirac-row-bound}
+ \sup_{x,\beta}\sum_{\beta'}\int\dd x'\,
+                    |F_0(A)(x,x')_{\beta\beta'}|
+                      \le R_F:=58\exp(1)+1+b\exp(1).
+\end{equation}
+The diagonal and three internal hops contribute
+at most $41+\mu$, the external hop at most
+$6e^{\mathfrak i(A)}$, and the block penalty at most $b\exp(1)$.
+The bound follows from $\mu\le1$ and
+$e^{\mathfrak i(A)}\le \exp(1)$. Point evaluation has normalized
+kernel $48\mathbf1[x=x']$; its factor $48$ cancels the chamber
+measure. The two traces in the level-zero integral are consequently
+bounded by
+\[
+ 4R_FC_wM^3|X|_M(1+y)^{-1}e^{-\kappa_{\mathrm w}d_M(X)},
+ \qquad
+ 4C_wM^3|X|_M(1+y)^{-1}e^{-\kappa_{\mathrm w}d_M(X)}.
+\]
+The second bound uses that $\gamma_5$ has four entries of modulus
+one. Their integrals contribute respectively
+$\int_1^\infty(y(1+y))^{-1}\dd y=\log2$ and
+$\int_0^1(1+y)^{-1}\dd y=\log2$.
+
+The geometric bound \eqref{eq:polymer-size-tree} gives
+$|X|_M\le c_X(d_M(X)+1)\le c_Xe^{d_M(X)}$.
+Applying this to the trace bounds,
+and using $\kappa_{\mathrm w}-1\ge\kappa+1$, proves
+\eqref{eq:local-determinant-bound} for $\widetilde E_k$ and hence
+for its four-term mean. The majorants are independent of $A$ and
+integrable in $y$. Each integrand is analytic in $A$; Cauchy's
+formula on a compact polydisk and the majorant permit its contour
+integrals to be exchanged with the $y$ integral. The result is
+analytic.
+
+Every phase in the compressed trace belongs to a unit block or an
+$L$-block meeting $X$, and that block is contained in $X$ by
+nesting. The fine propagator is supported on $X$ and uses only its
+connection. At level zero a nonzero external-hop trace uses a bond
+meeting $X$; the penalty uses the $L$-block of its row. This proves
+locality. Gauge transformations conjugate each product under the
+trace and hence leave it unchanged. A lattice transformation whose
+spin matrix commutes with $\gamma_5$ does the same. Every spatial
+action of the step group has such a lift: multiplication by
+$\gamma_1\gamma_2\gamma_3$ changes its commutation sign with
+$\gamma_5$ and leaves its spatial action fixed. This proves step
+covariance. The mean in \eqref{eq:local-determinant-definition}
+then makes $E_k^d$ even and real in the stated analytic sense.
+
+For real connections, sum the polymer propagators and use
+\eqref{eq:determinant-integral-positive-level} or
+\eqref{eq:determinant-integral-level-zero}. This proves the first
+identity of \eqref{eq:local-determinant-quotient} there. Both sides
+are analytic on $\widetilde{\mathcal G}_k$, which is open and
+star-shaped. They agree on a real neighbourhood of zero, so their
+Taylor series agree there and analytic continuation proves the
+identity throughout the domain.
+
+To justify the symmetrized quotient, put
+$\mathcal L(A)=\sum_X\widetilde E_k(X,A)$.
+The charge-conjugation transpose and the complex-conjugation
+identity give
+$\delta Z_k(-A)=\delta Z_k(A)
+=\overline{\delta Z_k(\overline A)}$.
+For the latter, the spin matrix $\varkappa=\gamma_5\mathsf C$
+conjugates $\overline{K_k(\overline A)}$ to $K_k(-A)$.
+Thus $\mathcal L(-A)-\mathcal L(A)$ and
+$\overline{\mathcal L(\overline A)}-\mathcal L(A)$ take values
+in $2\pi i\Z$. They are continuous on the connected domain,
+so they are constant. Subtracting their values at zero gives
+\[
+ \sum_X\bigl(E_k^d(X,A)-E_k^d(X,0)\bigr)
+                            =\mathcal L(A)-\mathcal L(0).
+\]
+This proves the second identity in
+\eqref{eq:local-determinant-quotient} without a choice of logarithm
+branch for the complex determinant.
+\end{proof}
+
+\subsection{The small-field gain for the determinant}\label{subsec:determinant-small-field-gain}
+
+For a photon connection write $A_\mu(c)=A(c,c+\eta_ke_\mu)$ and
+\[
+ \partial_\nu A_\mu(c)
+       =\eta_k^{-1}(A_\mu(c+\eta_ke_\nu)-A_\mu(c)),\qquad
+ \|\delta_\alpha\partial A\|_\infty
+       =\sup_{\mu,\nu}\sup_{0<d(c,c')\le1}
+          \frac{|\partial_\nu A_\mu(c')-\partial_\nu A_\mu(c)|}
+               {d(c,c')^\alpha}.
+\]
+Local versions use only differences and bonds inside the given set.
+In this section the curl is mesh normalized:
+$(dA)_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu$.
+Let $R_k$ be the complex bond functions whose three norms
+$\|A\|_\infty$, $\|\partial A\|_\infty$, and
+$\|\delta_\alpha\partial A\|_\infty$ are less than
+$e_k^{-3/4+\varepsilon}$, $e_k^{-3/4+2\varepsilon}$, and
+$e_k^{-3/4+3\varepsilon}$, respectively. Let $\widetilde R_k$
+consist of $A_0+A_1$, with $A_1\in R_k$ and $A_0$ real, such that
+on every $\square^\dagger=\square^{\sim L}$ one can write
+$A_0=A'+d\lambda$, where $\lambda,A'$ are real and the same
+three local bounds hold for $A'$. The external connection domain is
+\[
+ \mathfrak X_k=\{\mathscr C:\|\mathscr C\|_\infty
+                  <e_k^{-1+2\varepsilon},\quad
+             \|\partial\mathscr C\|_\infty<e_k^{-1+3\varepsilon}\}.
+\]
+If $e_k^{1/4}+e_k^\varepsilon<1$, both $\mathfrak X_k$ and
+$\widetilde R_k+\mathfrak X_k$ lie in
+$\widetilde{\mathcal G}_k$: on the local cubes the real part has
+a representative of size $e_k^{-3/4+\varepsilon}$, and the
+remaining part has size at most
+$(e_k^{1/4}+e_k^\varepsilon)e_k^{-1+\varepsilon}$.
+
+Put $v_k=-\log e_k$. Assume
+\begin{equation}\label{eq:determinant-gain-conditions}
+ v_k\ge9,\qquad e_k^\varepsilon\le\tfrac14,\qquad
+ 8M(v_k/4+4)e_k^\varepsilon\le1,\qquad
+ \ell\ge Mv_k^2.
+\end{equation}
+
+\begin{proposition}\label{prop:determinant-small-field-gain}
+For $\mathscr A\in\widetilde R_k$, $\mathscr C\in\mathfrak X_k$,
+and $X\in\mathcal P_k$, assume \eqref{eq:determinant-gain-conditions}
+and $e_k^{1/4}+e_k^\varepsilon<1$. Then
+\begin{equation}\label{eq:determinant-small-field-gain}
+ |E_k^d(X,\mathscr A+\mathscr C)-E_k^d(X,\mathscr C)|
+       \le8C_dM^3e_k^{1/4}e^{-\kappa d_M(X)}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+If $d_M(X)>v_k/4$, bound the two terms separately by
+\eqref{eq:local-determinant-bound} and use
+$e^{-d_M(X)}\le e_k^{1/4}$. Suppose therefore that
+$d_M(X)\le v_k/4$. The polymer lift and diameter estimates give
+a nonwrapping lattice box $W$ containing every bond meeting $X$,
+with each side of length at most
+$s_W=M(d_M(X)+3)$.
+Their applicability follows from
+$2M(d_M(X)+2)<\ell$ and $M(d_M(X)+4)<\ell$, which hold by
+\eqref{eq:determinant-gain-conditions}.
+
+Write $\mathscr A=A_0+A_1$ as in the domain definition.
+On each plaquette, the local real representative gives
+$\|dA_0\|_\infty<2e_k^{-3/4+2\varepsilon}$.
+Choose a fixed-order rectilinear path $\Gamma(o,c)$ from a site
+$o\in W$ and set $\lambda(c)=\eta_k A_0(\Gamma(o,c))$ on $W$.
+Then
+\[
+ \|A_0-d\lambda\|_{\infty,W}
+             \le2s_W\|dA_0\|_{\infty,W}
+             <4s_We_k^{-3/4+2\varepsilon}.
+\]
+To see the factor $2s_W$, append one bond to $\Gamma(o,c)$ and
+subtract $\Gamma(o,c')$. After cancelling common bonds, the
+resulting loop bounds at most two rectangles of width $\eta_k$.
+Together they contain at most $2s_W/\eta_k$ plaquettes, each
+contributing $\eta_k dA_0$. The paths and rectangles remain in
+$W$ because it is a product of intervals. Extend the real function
+$\lambda$ by zero outside the projected box. On every bond meeting
+$X$, the bound is unchanged. By
+\eqref{eq:determinant-gain-conditions} it is at most
+$\tfrac12e_k^{-3/4+\varepsilon}$.
+
+Let $B=A_0-d\lambda+A_1$ on bonds meeting $X$ and zero elsewhere.
+Then $\|B\|_\infty<\tfrac32e_k^{-3/4+\varepsilon}$.
+For $|t|\le\tfrac13e_k^{-1/4}$,
+\[
+ \|tB+\mathscr C\|_\infty
+       <(\tfrac12+e_k^\varepsilon)e_k^{-1+\varepsilon}
+       \le\tfrac34e_k^{-1+\varepsilon}.
+\]
+Thus this connection belongs to the complex connection ball
+$\mathcal G_k=\{A:\|A\|_\infty<e_k^{-1+\varepsilon}\}$,
+which is contained in $\widetilde{\mathcal G}_k$, and
+$f(t)=E_k^d(X,tB+\mathscr C)$ is analytic on this disk and
+bounded by the right side of \eqref{eq:local-determinant-bound}.
+Gauge invariance and locality identify the difference in
+\eqref{eq:determinant-small-field-gain} with $f(1)-f(0)$.
+On the circle of radius $r=\tfrac14e_k^{-1/4}>2$, Cauchy's
+formula yields
+\[
+ f(1)-f(0)=\frac1{2\pi i}\oint_{|t|=r}
+                         \frac{f(t)}{t(t-1)}\,\dd t,
+ \qquad |f(1)-f(0)|\le\frac{\sup|f|}{r-1}
+                          \le8e_k^{1/4}\sup|f|.
+\]
+This proves the claimed gain, retaining the stronger decay
+$e^{-(\kappa+1)d_M(X)}$ in this case.
+\end{proof}
+
+\begin{proof}[Proof of \Cref{thm:fermion-block-integration}]
+\Cref{prop:fine-coarse-resolvents} and
+\eqref{eq:level-zero-covariance} give invertibility on the two
+integration spaces. The weighted completion calculation gives
+\eqref{eq:Gaussian-block-integration}, with the first-step weight from
+\eqref{eq:first-step-Grassmann-weight}.
+\Cref{prop:local-determinant-expansion} gives the analytic determinant
+terms, their bound, symmetries and normalized quotient.
+\end{proof}
+
+
 \appendix
-\input{geometry}
+\section{Polymer geometry}\label{app:polymer-geometry}
+
+We use the geometric arguments of \cite[Appendix~A]{QED3Manuscript}.
+Let $L$ be odd, $M$ a power of $L$, and $\ell$ a multiple of $LM$
+with $\ell\ge13LM$. The $M$-cubes have centres in
+$M\Z^3/\ell\Z^3$. They partition the lattice sites; their closed
+continuum versions may meet along faces and edges. A polymer is a
+nonempty union of $M$-cubes connected through faces. Denote its number
+of cubes by $|X|_M$. A net in the continuum torus is a connected
+finite union of images of specified closed straight segments
+in $\R^3$, a point being allowed as a segment.
+Its length is the sum of the Euclidean lengths of those segments.
+Set
+\[
+ Md_M(X)=\inf\{\operatorname{length}(N):N
+             \text{ is a net meeting every closed cube of }X\},
+\]
+where the infimum also extends over the finite segment representations.
+The same definition is used for finite face-connected unions of
+$M$-cubes in $\R^3$, with nets in $\R^3$. Distances are sup distances.
+
+
+\subsection{Size and diameter}
+The following bounds hold on the torus and on the covering space:
+\begin{align}
+ d_M(X)&\le |X|_M-1,&
+ |X|_M&\le54(d_M(X)+1),\label{eq:polymer-size-tree}\\
+ d(p,q)&\le M(d_M(X)+2)
+       &&(p,q\text{ in the closed cubes of }X).
+                                  \label{eq:polymer-diameter}
+\end{align}
+
+To prove the first inequality of \eqref{eq:polymer-size-tree}, order
+the cubes along a spanning tree of their adjacency graph. A net
+meeting one cube can be extended to an adjacent cube by a segment of
+length at most $M$ perpendicular to their common face. Starting with
+one point and repeating this construction gives a net of length at
+most $M(|X|_M-1)$.
+
+For the reverse inequality, subdivide the segments of any net $N$ at
+their intersections and discard overlapping pieces. Its total length
+does not increase. Doubling the edges of the resulting connected
+graph gives a closed traversal of length at most
+$2\operatorname{length}(N)$. Cut it into at most
+$2\operatorname{length}(N)/M+1$ arcs of length at most $M$.
+Each arc lifts to a curve in $\R^3$ whose range in each coordinate
+has length at most $M$. Such an interval meets at most three closed
+cube intervals, so an arc meets at most $27$ closed $M$-cubes.
+Every cube of $X$ meets one of these arcs. Taking the infimum over
+$N$ gives
+\[
+ |X|_M\le27(2d_M(X)+1)\le c_X(d_M(X)+1).
+\]
+For \eqref{eq:polymer-diameter}, take a net of length less than
+$Md_M(X)+\delta$ and points $p',q'$ of the net in the respective
+cubes of $p,q$. The path in the net from $p'$ to $q'$ has length
+at most that of the net. Hence
+$d(p,q)\le M+(Md_M(X)+\delta)+M$; let $\delta\downarrow0$.
+The same argument holds in $\R^3$.
+
+\subsection{Nonwrapping lifts}\label{subsec:polymer-lifts}
+
+Let $\operatorname{pr}:\R^3\to\R^3/\ell\Z^3$ be the projection.
+\begin{proposition}\label{prop:nonwrapping-polymer-lift}
+If $X$ is a polymer and
+\begin{equation}\label{eq:nonwrapping-polymer-condition}
+ 2M(d_M(X)+2)<\ell,
+\end{equation}
+then $X=\operatorname{pr}(\widetilde X)$ for a finite face-connected
+union of $M$-cubes in $\R^3$. The projection is injective on
+$\widetilde X$, preserves adjacency of its cubes in both directions,
+and $d_M(\widetilde X)=d_M(X)$. The lift is unique up to a translation
+in $\ell\Z^3$.
+\end{proposition}
+
+\begin{proof}
+Put $D=M(d_M(X)+2)$, fix $p_0$ in a closed cube of $X$, and fix its
+lift $\widetilde p_0$. The projection is injective on the closed sup
+ball $\widetilde B=\{|p-\widetilde p_0|_\infty\le D\}$, since two
+points there differ in every coordinate by at most $2D<\ell$.
+It maps this ball onto the torus ball $B=\{p:d(p,p_0)\le D\}$.
+Its inverse $\varphi:B\to\widetilde B$ is continuous, and is locally
+isometric. The diameter estimate places every closed cube of $X$ in
+$B$. A segment or a closed $M$-cube lying in $B$ lifts under
+$\varphi$ to a segment of the same length or a closed $M$-cube:
+the translates $\widetilde B+\ell n$ are pairwise disjoint, and a
+connected lift lies in one of them. The same inverse maps shared
+faces to shared faces. Thus $\widetilde X=\varphi(X)$ has the
+asserted injectivity, adjacency, and connectedness.
+
+Any other face-connected injective lift can be translated so that it
+contains the chosen lift of the cube of $p_0$. There are no two
+different neighbours of one lifted cube with the same projection:
+their centres differ by at most $2M<\ell$. Propagate this observation
+along a chain of adjacent cubes. Every cube of the other lift equals
+the corresponding cube of $\widetilde X$, proving uniqueness.
+
+Projecting a net for $\widetilde X$ gives a net for $X$ with no greater
+length, so $d_M(X)\le d_M(\widetilde X)$. Conversely, let $N$ be a
+net for $X$ of length at most $Md_M(X)+M$, and choose its point $q_0$
+in the cube of $p_0$. Every point of $N$ is joined to $q_0$ by a
+curve of length at most that of $N$, and $d(q_0,p_0)\le M$.
+Therefore $N\subset B$. Its lift $\varphi(N)$ has the same length
+and meets every cube of $\widetilde X$. Taking an infimizing sequence
+of these nets proves the reverse inequality.
+\end{proof}
+
+For the determinant estimate, suppose in addition that
+$M(d_M(X)+4)<\ell$ and $M\ge2$. The closed cubes of $\widetilde X$
+have coordinate ranges of length at most $M(d_M(X)+2)$ by
+\eqref{eq:polymer-diameter}. Enlarge these intervals by one mesh
+$\eta_k\le1$ at each end and intersect with $\eta_k\Z^3$. The
+resulting box $W$ contains every bond meeting the lifted polymer and
+has each side of length at most $M(d_M(X)+3)$. This length, increased
+by one mesh, is less than $\ell$. Thus the projection is injective
+on $W$, and every torus bond meeting $X$ has exactly one lift in $W$.
+
 \printbibliography
 \end{document}

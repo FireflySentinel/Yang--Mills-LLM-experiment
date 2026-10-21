@@ -1,7 +1,14 @@
 % Document CEM1. Canonical proof manuscript; companion outline CEO1.
 \documentclass[11pt,letterpaper,reqno]{amsart}
 \usepackage[bibliography]{manuscript-style}
-\input{notation}
+\newcommand{\R}{\mathbb R}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+\newcommand{\E}{\mathbb E}
+\newcommand{\dd}{\mathrm d}
+
+
+\newcommand{\C}{\mathbb C}
 \title[Gaussian domination and continuum limits]
  {Gaussian domination and structural properties of continuum limits}
 \date{}
@@ -657,9 +664,654 @@ convergence. The continuous inclusion also regards the limit
 as a Borel law on the space of tempered distributions.
 \end{proof}
 
-\input{structure}
-\input{tensors}
-\input{qed-application}
+\section{The structural limit passages}\label{sec:stability}
+
+\subsection{Linear identities and approximate symmetries}
+Suppose \(P_j\Rightarrow P\) on \(H_{-t}\) and
+\begin{equation}\label{eq:quadratic}
+ \E_{P_j}|F(f)|^2\le C\|f\|_2^2
+ \qquad(f\in\mathcal S\text{ real})
+\end{equation}
+with one finite \(C\).
+Under \cref{hyp:identity}, exact annihilation of \(v_j(\xi)\) gives
+\begin{equation}\label{eq:identity-residual}
+ \E_{P_j}|F(D^*\xi)|^2
+ \le C\|D^*\xi-v_j(\xi)\|_2^2\longrightarrow0.
+\end{equation}
+For \(M>0\), the function
+\(\min\{|F(D^*\xi)|^2,M\}\) is bounded and continuous on \(H_{-t}\).
+Its limiting expectation is zero, so \(F(D^*\xi)=0\),
+\(P\)-almost surely. Choose a countable dense family of smooth tests
+on each member of a compact exhaustion of \(\R^d\), and intersect
+the corresponding full-measure events. Continuity of \(D^*\) and
+of each sample distribution extends the identity to every compact
+smooth test.
+
+For symmetries, put \(\chi_j(f)=\E_{P_j}e^{iF(f)}\).
+The inequality \(|e^{iu}-e^{iv}|\le|u-v|\) and
+\eqref{eq:quadratic} imply
+\begin{equation}\label{eq:character-continuity}
+ |\chi_j(f)-\chi_j(h)|\le\sqrt C\,\|f-h\|_2
+ \qquad(f,h\in\mathcal S\text{ real}).
+\end{equation}
+For a fixed \(g\) in \cref{hyp:symmetry}, this gives
+\[
+ |\chi_j(g\cdot f)-\chi_j(f)|
+ \le\sqrt C\,\|g\cdot f-T_{j,g}f\|_2\longrightarrow0.
+\]
+Weak convergence passes both fixed-test characteristic functions
+to the limit. Applying the equality to all real linear combinations
+of any finite family proves equality of its joint laws.
+These evaluations generate the sigma-algebra, so \(P\) is
+\(g\)-invariant.
+
+In particular, suppose \(P_j\) is invariant under translations in
+\(a_j\Z^d\), \(a_j\to0\). Given \(b\), choose \(b_j\in a_j\Z^d\)
+with \(b_j\to b\). The maps
+\(T_{j,\tau_b}f=\tau_{b_j}\cdot f\) meet the approximation
+hypothesis by continuity of translations on \(L^2\).
+Exact fixed symmetries use \(T_{j,g}f=g\cdot f\).
+
+\subsection{Reflection forms}
+For any law of tempered distributions, the linear span of
+\(e^{iF(f)}\), \(f\in C_c^\infty(O;V)\) real, is dense in
+\(L^2(\Sigma_O)\). To see this, let \(B\) be orthogonal to these
+characters and condition it on finitely many evaluations.
+Orthogonality to every real linear combination of their tests
+says that the Fourier transform of the resulting finite complex
+measure is zero. Fourier uniqueness makes that conditional
+expectation zero. A countable dense family of compact tests
+generates \(\Sigma_O\), since every sample is a continuous
+distribution. Conditional expectations on its increasing finite
+evaluation sigma-algebras converge in \(L^2\), proving the claim.
+
+Fix \(r\in\mathcal R\). For
+\(B(F)=\sum_bz_be^{iF(f_b)}\), the reflected form equals
+the left side of \eqref{eq:rp-approx}. Each summand is bounded
+and continuous on \(H_{-t}\), so weak convergence gives
+\[
+ \E_P[\overline{B(r\cdot F)}B(F)]\ge0.
+\]
+The preceding symmetry argument gives \(r\)-invariance of \(P\).
+Consequently
+\begin{equation}\label{eq:reflection-form-bound}
+ \big|\E_P[\overline{B(r\cdot F)}C(F)]\big|
+ \le\|B\|_{L^2(P)}\|C\|_{L^2(P)}.
+\end{equation}
+Density extends positivity to all
+\(B\in L^2(\Sigma_{H_r^+},P)\).
+If the plane of \(r\) is \(n\cdot x=0\), its translate at height
+\(c\) has reflection
+\[
+ r_c=\tau_vr\tau_{-v},\qquad v=c|n|^{-2}n.
+\]
+Translation invariance identifies the two forms and carries their
+positive-side sigma-algebras to one another. It also gives
+\(r_c\)-invariance.
+
+\begin{proof}[Proof of \cref{thm:structural-limit}]
+The exponential bound implies
+\(\E_{P_j}F(f)=0\) and
+\(\E_{P_j}|F(f)|^2\le\|f\|_2^2\);
+see \cref{prop:subgaussian}.
+The preceding arguments with \(C=1\) prove the identities,
+invariance and reflection positivity.
+The Gaussian bound for \(P\) and convergence of all finite-family
+moments and cumulants follow from
+\cref{thm:gaussian-convergence}, whose hypotheses are
+the weak convergence and \eqref{eq:common-gaussian}.
+\end{proof}
+
+\section{Tensor Schwinger functions}\label{sec:tensors}
+The following estimate is the argument of
+\cite[Section~5.3]{QED3Manuscript}. It applies to any
+Gaussian-dominated real two-form law in three Euclidean dimensions.
+For \(n\ge1\), set
+\[
+ \mathcal S_n=\mathcal S((\R^3)^n;(\Lambda^2\C^3)^{\otimes n}),\qquad
+ q_m(\Psi)=\max_{\substack{|\alpha|\le m\\\text{components}}}
+ \sup_y(1+|y|^2)^{m/2}|\partial^\alpha\Psi(y)|.
+\]
+\begin{proposition}\label{prop:tensor-growth}
+Let \(P\) be a law of real tempered two-forms with
+\(\E_Pe^{F(f)}\le e^{\|f\|_2^2/2}\) for all real Schwartz \(f\).
+For each \(n\ge1\) there is a continuous linear map
+\(\Psi\mapsto Q_\Psi\) from \(\mathcal S_n\) to \(L^2(P)\)
+which agrees with \(\prod_aF(f_a)\) on decomposable tests.
+The functional \(S_n(\Psi)=\E_PQ_\Psi\) is the unique continuous
+extension of the smeared moments to \(\mathcal S_n\), and
+\begin{equation}\label{eq:tensor-growth}
+ |S_n(\Psi)|\le2\,66^n\sqrt{n!}\,q_{6n}(\Psi).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Let \(h_\kappa=h_ke_{\ell m}\) be the real Hermite two-form basis.
+The eigenvalues of \(A=1+|x|^2-\Delta\) are
+\(\lambda_\kappa=2|k|_1+4\). Expand in Schwartz space
+\[
+ \Psi=\sum_{\boldsymbol\kappa}c_{\boldsymbol\kappa}(\Psi)
+ h_{\kappa_1}\otimes\cdots\otimes h_{\kappa_n}.
+\]
+Counting eigenvalues gives
+\[
+ Z_4:=\sum_\kappa\lambda_\kappa^{-4}
+ =\frac3{32}\sum_{m\ge0}\frac{m+1}{(m+2)^3}
+ \le\frac3{32}\left(\frac{\pi^2}{6}-1\right)<\frac1{16}.
+\]
+Weighted Cauchy--Schwarz and Parseval imply
+\[
+ \sum_{\boldsymbol\kappa}|c_{\boldsymbol\kappa}(\Psi)|
+ \le Z_4^{n/2}\|(A^2)^{\otimes n}\Psi\|_2.
+\]
+For \(M(x)=1+|x|^2\),
+\[
+ A^2=M^2-2M\Delta-4x\cdot\nabla-6+\Delta^2.
+\]
+The sum of the absolute differential coefficients is bounded by
+\(34M^2\). Applying this in each argument gives
+\[
+ |(A^2)^{\otimes n}\Psi(x)|
+ \le34^nq_{6n}(\Psi)\prod_{a=1}^n(1+|x_a|^2)^{-1}
+\]
+componentwise. Since
+\(\int_{\R^3}(1+|x|^2)^{-2}\,\dd x=\pi^2\) and there are
+\(3^n\) components,
+\begin{equation}\label{eq:Hermite-l1}
+ \sum_{\boldsymbol\kappa}|c_{\boldsymbol\kappa}(\Psi)|
+ \le4^{-n}(34\pi\sqrt3)^nq_{6n}(\Psi).
+\end{equation}
+
+For real tests the Gaussian moment estimate is
+\[
+ \E_P\prod_{a=1}^m|F(f_a)|
+ \le c_m\prod_a\|f_a\|_2,\qquad
+ c_m=2\,2^{m/2}\Gamma(1+m/2)
+ \le2\,2^{m/2}\sqrt{m!};
+\]
+see \cref{prop:subgaussian} and its proof.
+The last inequality is the midpoint log-convexity bound for the
+gamma function between \(1\) and \(m+1\).
+The \(2n\)-moment estimate on real basis elements shows that
+\begin{equation}\label{eq:tensor-random-evaluation}
+ Q_\Psi=\sum_{\boldsymbol\kappa}c_{\boldsymbol\kappa}(\Psi)
+             \prod_{a=1}^nF(h_{\kappa_a})
+\end{equation}
+converges absolutely in \(L^2(P)\), with norm at most
+\(\sqrt{c_{2n}}\sum|c_{\boldsymbol\kappa}(\Psi)|\).
+This proves continuity into \(L^2(P)\).
+Expanding each \(f_a\) in the Hermite basis and using the same
+product bound identifies the sum with \(\prod_aF(f_a)\) on
+decomposable tests. Density of finite Hermite tensors gives
+uniqueness of the continuous extension. Finally,
+\[
+ |S_n(\Psi)|\le c_n\sum_{\boldsymbol\kappa}|c_{\boldsymbol\kappa}(\Psi)|
+ \le2\sqrt{n!}\left(\frac{34\pi\sqrt6}{4}\right)^nq_{6n}(\Psi),
+\]
+which implies \eqref{eq:tensor-growth}.
+\end{proof}
+\section{Application to the QED3 curvature}\label{sec:qed}
+The lattice input is a probability law of real curvature.
+For the all-flux chamber model, the infinite-volume construction
+in \cite[Theorem~A(i) and Section~2]{ChamberLattice} gives such a
+law at each fixed spacing. Its finite model has antiperiodic
+spinors, the chamber fermion operator, and parameters
+\[
+ q>0,\qquad 0<\rho<1,\qquad w_0,w_1,w_2,w_3>0,\qquad M\in\R.
+\]
+The photon curvature is $u=dA+(2\pi/q)z$, with all closed
+integer fluxes $z$ included. The precise operator and photon
+measure are those of the cited section. The parameters may
+depend on the spacing but are fixed during each volume limit;
+the physical charge scaling is $q_a=e\sqrt a$ for fixed $e>0$.
+
+Every selected real-curvature limit $\nu_a$ from that construction
+satisfies
+\begin{equation}\label{eq:qed-gaussian-input}
+ \E_{\nu_a}\exp\left(\sum_{x,i<j}b_{ij}(x)u_{ij}(x)\right)
+ \le\exp\left(\frac12\sum_{x,i<j}|b_{ij}(x)|^2\right)
+\end{equation}
+for every finitely supported real $b$. The constant is one,
+independently of the spacing and the selected volume limit.
+For completeness, the passage from finite volume uses only a
+fixed finite support: it embeds injectively into sufficiently
+large tori, so its counting norm is unchanged. The finite Gaussian
+estimate \cite[Proposition~5.1]{ChamberLattice} applies there.
+Weak convergence passes the bounded continuous cylinder
+function $\min\{R,\exp(\sum b_{ij}u_{ij})\}$ to the limit,
+and monotone convergence as $R\to\infty$ gives
+\eqref{eq:qed-gaussian-input}.
+
+\subsection{Centered plaquettes and their continuum limits}\label{sec:plaquettes}
+An oriented lattice two-cochain has real components
+\(u_{\ell m}(x)\), \(x\in\Z^3\), \(\ell<m\), with the usual sign
+under reversal of orientation. Its coboundary is
+\[
+ (du)(x)=u_{23}(x+e_1)-u_{23}(x)
+        -u_{13}(x+e_2)+u_{13}(x)
+        +u_{12}(x+e_3)-u_{12}(x).
+\]
+For \(p=(x;\ell m)\) and \(a>0\), set
+\begin{equation}\label{eq:plaquette-cells}
+ Q_a(p)=a\bigl(x+(e_\ell+e_m)/2+[-1/2,1/2)^3\bigr),\qquad
+ f_{[a]}(p)=a^{-3/2}\int_{Q_a(p)}f_{\ell m}(y)\,\dd y.
+\end{equation}
+The \(\ell m\) component of the step field \(F_a\) equals
+\(a^{-3/2}u_{\ell m}(x)\) on \(Q_a(p)\).
+The geometric action is the exterior-square action on two-forms.
+
+
+\begin{corollary}\label{cor:qed-continuum}
+Let $a_n>0$ tend to zero. For each $n$, let $\nu_{a_n}$ be
+a Borel probability law on real arrays
+$(u_{ij}(x))_{x\in\Z^3,\,1\le i<j\le3}$ satisfying
+\eqref{eq:qed-gaussian-input}. Let \(F_{a_n}\) be their centered-plaquette step fields as in \eqref{eq:plaquette-cells}.
+There are a subsequence and a Borel probability law $\mu$ of
+real tempered two-forms on $\R^3$ such that the laws of these
+step fields converge weakly to $\mu$ in $H_{-4}$. Here
+\[
+ \|F\|_{-4}^2=\sum_{i<j}\sum_{k\in\N_0^3}
+       (2|k|_1+4)^{-8}|F(h_k\,\dd y_i\wedge\dd y_j)|^2.
+\]
+Each step-field law and every such limit $\mu$ satisfy
+\[
+ \E e^{F(f)}\le e^{\|f\|_2^2/2}
+ \qquad\bigl(f\in\mathcal S(\R^3;\Lambda^2)\text{ real}\bigr).
+\]
+Along the selected subsequence, all joint moments and cumulants
+of complex Schwartz pairings converge to those of $\mu$.
+Their finite-family generating functions and logarithms have
+the locally uniform convergence asserted in
+\cref{thm:gaussian-convergence}.
+In particular, this conclusion applies to any choices of the
+infinite-volume real-curvature laws of the chamber model just
+described.
+\end{corollary}
+
+\begin{proof}
+For a finitely supported $b$, let $Y=\sum b_{ij}(x)u_{ij}(x)$
+and $v^2=\sum|b_{ij}(x)|^2$. Substituting $tb$ in
+\eqref{eq:qed-gaussian-input} gives
+$\E e^{tY}\le e^{t^2v^2/2}$ for every real $t$.
+As in \cite[Proposition~5.1]{QED3Manuscript}, this implies
+\begin{equation}\label{eq:qed-second-input}
+ \E|Y|^2\le v^2.
+\end{equation}
+The one-variable calculation is the first paragraph of the
+proof of \cref{prop:subgaussian}.
+
+Apply \cref{prop:step-realization} to each law with $d=r=3$,
+$C=1$, the three components $12,13,23$, and their offsets
+$(e_i+e_j)/2$. Then apply \cref{prop:compactness} to the sequence
+of step fields with $s=3$ and $t=4$, as in the proof of
+\cref{thm:lattice-continuum}. This also permits different choices
+of law when a spacing occurs more than once.
+The resulting weak limit on $H_{-4}$ has exactly the
+two-form interpretation and norm stated above.
+
+It remains to retain the exponential estimate. For a real
+Schwartz two-form $f$, let $b_{a_n}^{(m)}$ be the finite
+cell-coefficient truncations used in
+\cref{prop:step-realization}. Their pairings converge almost
+surely to $F_{a_n}(f)$. Fatou's lemma and
+\eqref{eq:qed-gaussian-input} give
+\[
+ \E e^{F_{a_n}(f)}
+ \le\liminf_{m\to\infty}
+        \exp\bigl(\|b_{a_n}^{(m)}\|_{\ell^2}^2/2\bigr)
+ =\exp\bigl(\|b_{a_n}\|_{\ell^2}^2/2\bigr)
+ \le e^{\|f\|_2^2/2}.
+\]
+This is the infinite-lattice test extension of
+\cite[Section~6.1]{LatticeLimits}. Apply
+\cref{thm:gaussian-convergence} to the weakly convergent
+subsequence already chosen. It gives the Gaussian bound for
+$\mu$ and all the stated correlation and cumulant limits.
+\end{proof}
+
+
+The following consequence adds the lattice identities and reflection
+hypotheses. The preceding corollary supplies weakly convergent
+subsequences; the assertion below applies to every selected weak limit.
+
+\begin{corollary}\label{cor:plaquette-limit}
+Let \(a_j\downarrow0\) and let \(\nu_j\) be laws of real
+two-cochains on \(\Z^3\). Suppose that:
+\begin{enumerate}[label=(\roman*),leftmargin=*]
+\item \(du=0\) almost surely and
+\(\E_{\nu_j}e^{\langle h,u\rangle}\le e^{\|h\|_{\ell^2}^2/2}\)
+for every finitely supported real plaquette test \(h\).
+\item Each \(\nu_j\) is invariant under integer translations,
+the oriented cubic action and \(u\mapsto-u\).
+\item Each \(\nu_j\) is reflection positive for
+\(x_\ell=0\) and \(x_\ell\pm x_m=0\), \(\ell<m\),
+on character sums supported on plaquettes all of whose corners
+lie strictly on the chosen positive side.
+\item The laws of \(F_{a_j}\) are realized on \(H_{-4}\) and
+converge weakly there to \(P\).
+\end{enumerate}
+Then \(P\) is a translation-invariant law of closed real tempered
+two-forms, invariant under the cubic group and field-sign change.
+It satisfies \(\E_Pe^{F(f)}\le e^{\|f\|_2^2/2}\) and is invariant
+and reflection positive at every plane
+\(x_\ell=c\), \(x_\ell\pm x_m=c\), \(c\in\R\).
+All fixed finite-family moments and cumulants converge along
+the given sequence.
+\end{corollary}
+
+\subsection{Pairings and equivariance}
+\Cref{prop:step-realization} gives the measurable realization and
+\(F_a(f)=\langle f_{[a]},u\rangle\). The cell estimate
+\eqref{eq:cell-contraction} and the Fatou argument in
+\cref{cor:qed-continuum} give
+\begin{equation}\label{eq:step-gaussian}
+ \E e^{F_a(f)}\le e^{\|f\|_2^2/2}.
+\end{equation}
+If \(\gamma\) is an affine cubic symmetry of the unit lattice
+and \(\gamma_a\) its physical rescaling, define
+\((\gamma\cdot h)(p)=h(\gamma^{-1}p)\), where reversing the
+orientation of a plaquette reverses the coefficient's sign.
+A change of variables gives
+\begin{equation}\label{eq:limit-test-equivariance}
+ (\gamma_a\cdot f)_{[a]}=\gamma\cdot f_{[a]}.
+\end{equation}
+Signed coordinate permutations carry cell centers to the corresponding
+plaquette centers and carry cubes to cubes, up to null boundaries.
+The orientation sign is the exterior-square matrix in both actions.
+Integer translations give physical translations in \(a\Z^3\).
+These are the exact symmetries used in \cref{sec:stability}.
+
+\subsection{The discrete identity and the reflection support}
+Let \(\xi\in C_c^\infty(\R^3;\R)\) denote the three-form
+\(\xi\,\dd y_1\wedge\dd y_2\wedge\dd y_3\). Define
+\[
+ \partial_\ell^a\xi(y)
+ =a^{-1}\bigl(\xi(y+ae_\ell/2)-\xi(y-ae_\ell/2)\bigr),\qquad
+ (v^a_{23},v^a_{13},v^a_{12})
+ =(-\partial_1^a\xi,\partial_2^a\xi,-\partial_3^a\xi).
+\]
+Then
+\begin{equation}\label{eq:limit-Bianchi-error}
+ F_a(v^a)=0,\qquad
+ \|v^a-d^*\xi\|_2
+ \le\frac{a^2}{24}\sum_{\ell=1}^3\|\partial_\ell^3\xi\|_2.
+\end{equation}
+For the exact identity, assign to each unit cube the number
+\[
+ \xi_{[a]}(x)=a^{-5/2}\int_{a(x+[0,1)^3)}\xi(y)\,\dd y.
+\]
+The \(23,13,12\) coefficients of \(v^a_{[a]}\) are
+\[
+ -(\xi_{[a]}(x)-\xi_{[a]}(x-e_1)),\quad
+ \xi_{[a]}(x)-\xi_{[a]}(x-e_2),\quad
+ -(\xi_{[a]}(x)-\xi_{[a]}(x-e_3)).
+\]
+Their finite pairing with \(u\) regroups to
+\(\sum_x\xi_{[a]}(x)(du)(x)=0\).
+The Fourier multiplier of
+\(\partial_\ell^a-\partial_\ell\) is
+\(i(2a^{-1}\sin(ap_\ell/2)-p_\ell)\), whose modulus is at most
+\(a^2|p_\ell|^3/24\). Plancherel gives the second assertion.
+
+For a mirror with defining function
+\(\ell(y)=y_j\) or \(y_j\pm y_k\), take compact tests supported
+in \(\{\ell\ge\delta\}\), \(\delta>0\).
+A nonzero cell coefficient comes from a cell meeting this set.
+For every corner \(q\) of its physical plaquette and every \(y\)
+in that cell, \(|\ell(q)-\ell(y)|\le2a\):
+each coordinate displacement is at most \(a\), and the normal
+has at most two nonzero coordinates of modulus one.
+Thus \(2a<\delta\) puts all contributing plaquette corners
+strictly on the positive side. There are only finitely many such
+plaquettes. The lattice reflection inequality and
+\eqref{eq:limit-test-equivariance} give \eqref{eq:rp-approx}.
+
+\begin{proof}[Proof of \cref{cor:plaquette-limit}]
+Equation \eqref{eq:step-gaussian} gives the common Gaussian input.
+Equation \eqref{eq:limit-Bianchi-error} verifies the identity
+hypothesis with \(D^*=d^*\). Equivariance gives cubic symmetry and
+mesh translations converging to every continuum translation.
+The support check gives the eventual character inequalities at the
+nine origin mirrors. \Cref{thm:structural-limit} applies.
+Field-sign invariance passes directly through its
+characteristic-function identity.
+\end{proof}
+
+The real-curvature laws supplied by \cite[Theorem~A]{ChamberLattice}
+satisfy the additional hypotheses of \cref{cor:plaquette-limit}.
+Together with \cref{cor:qed-continuum}, this gives subsequential
+continuum laws with all the stated structural properties. The
+reflection passage is the origin-height argument of
+\cite[Proposition~6.1]{QED3Manuscript}; translations supply every
+height. The conditional corollary imposes no arithmetic restriction
+on the spacing sequence.
+
+\subsection{Recovery of a prescribed volume limit}
+\label{subsec:fixed-spacing-recovery}\label{sec:recovery}
+An infinite-lattice law gives a step-field law by
+\cref{prop:step-realization}. To treat a prescribed volume limit
+of the finite-torus fields, we also need the converse
+identification. We use the bump-function argument of
+\cite[Section~6.4]{QED3Manuscript}.
+
+Fix a spacing $a>0$. Let $\mathcal P_2$ be the positively oriented
+plaquettes of $\Z^3$, and put
+\[
+ \Omega=\{u\in\R^{\mathcal P_2}:du=0\},
+\]
+with its coordinate product topology. For each integer $n\ge4$,
+let $\lambda_{a,n}$ be a probability law of real closed
+two-cochains on $(\Z/n\Z)^3$ satisfying
+\begin{equation}\label{eq:recovery-finite-gaussian}
+ \E_{\lambda_{a,n}}e^{\langle\beta,u\rangle}
+ \le e^{\|\beta\|_{\ell^2((\Z/n\Z)^3)}^2/2}
+ \qquad(\beta\text{ a real torus two-cochain}).
+\end{equation}
+Both the pairing and the norm sum over positively oriented torus
+plaquettes. Denote the law of the periodic extension by
+$\nu_{a,n}$. Use the centered interpolation and coefficients
+$f_{[a]}$ of \eqref{eq:plaquette-cells}, and write $P_{a,n}$
+for its law on $H_{-4}$.
+For general Schwartz tests these finite-torus laws obey the
+periodized bound \eqref{eq:limit-cutoff-G} below, with physical
+period $R=an$. The following identification gives the sharp
+$L^2$ bound after the volume limit.
+
+\begin{proposition}\label{prop:fixed-spacing-recovery}
+Suppose $n_j\to\infty$ and $P_{a,n_j}\Longrightarrow\mu_a$
+weakly on $H_{-4}$. Then there is a probability law $\nu_a$
+on $\Omega$ such that
+\begin{equation}\label{eq:limit-volume-identification}
+ \nu_{a,n_j}\Longrightarrow\nu_a,\qquad
+ \mu_a=(\sharp_a)_*\nu_a,
+\end{equation}
+where $\sharp_a$ is the centered step map, defined as a Borel
+map into $H_{-4}$ on a set of full $\nu_a$ measure and set
+equal to zero elsewhere. The convergence of cochain laws is
+in the product topology and holds along the given sequence.
+For every finitely supported real cochain $\beta$,
+\begin{equation}\label{eq:limit-lattice-G}
+ \E_{\nu_a}e^{\langle\beta,u\rangle}
+ \le e^{\|\beta\|_{\ell^2(\mathcal P_2)}^2/2}.
+\end{equation}
+In particular, $\mu_a$ satisfies the Gaussian bound
+$\E_{\mu_a}e^{F(f)}\le e^{\|f\|_2^2/2}$ for real Schwartz
+two-forms $f$.
+\end{proposition}
+
+\begin{proof}
+Discard finitely many terms so that $an_j\ge1$.
+The finite-volume step maps take values in $H_{-3}$.
+Indeed, the periodization estimate below and the Hermite bound
+$p_1(h_ke_\alpha)\le31\lambda_k$ from
+\cite[Section~3]{QED3Integration} give
+$|F_a(h_ke_\alpha)|\le31\lambda_k\|u\|_{\ell^2}$.
+Summing with weight $\lambda_k^{-6}$ proves continuity of
+each finite-dimensional step map into $H_{-3}$, since
+$\sum_k\lambda_k^{-4}<\infty$.
+
+We use the realization already proved in
+\cref{prop:step-realization}. Let $\Omega_3$ be its weighted
+square-summability domain with exponent $p=3$, intersected with
+$\Omega$. For every $u\in\Omega_3$, the step distribution has the
+absolutely convergent pairings \eqref{eq:absolute-pairing}.
+Let $\Omega^{(a)}\subset\Omega_3$ be the set on which it has
+finite $H_{-3}$ norm, and set $\sharp_a=0$ off this set.
+The measurability argument in \cref{prop:compactness} makes
+$\Omega^{(a)}$ measurable and $\sharp_a$ a Borel map into $H_{-4}$.
+Every periodic cochain lies in $\Omega_3$ and, by the preceding
+finite-volume estimate, in $\Omega^{(a)}$.
+
+For each plaquette $\sigma$, choose a real smooth bump $b^\sigma$
+with only its corresponding two-form component nonzero, supported
+inside $Q_a(\sigma)$ and of integral $a^{3/2}$. Then
+$(b^\sigma)_{[a]}=\mathbf1_\sigma$. The map
+\begin{equation}\label{eq:limit-step-inverse}
+ \mathcal J_a:H_{-4}\longrightarrow\R^{\mathcal P_2},
+ \qquad \mathcal J_a(F)(\sigma)=F(b^\sigma),
+\end{equation}
+is continuous for the product topology, and
+$\mathcal J_a\sharp_a u=u$ on $\Omega^{(a)}$.
+At finite volume the identities are
+\[
+ P_{a,n_j}=(\sharp_a)_*\nu_{a,n_j},\qquad
+ \nu_{a,n_j}=(\mathcal J_a)_*P_{a,n_j}.
+\]
+The mapping theorem therefore gives
+$\nu_{a,n_j}\Longrightarrow\nu_a:=(\mathcal J_a)_*\mu_a$.
+The closed conditions $du=0$ pass to this product limit.
+
+Fix a finitely supported real $\beta$ on the covering lattice.
+For all sufficiently large $n_j$, its support embeds injectively
+in the torus. Its folded norm then equals its covering
+$\ell^2$ norm. Apply \eqref{eq:recovery-finite-gaussian}, pass
+the bounded continuous cylinder
+$\min\{R,e^{\langle\beta,u\rangle}\}$ to the limit, and let
+$R\to\infty$. This proves \eqref{eq:limit-lattice-G}.
+
+The Gaussian bound implies the finite-coefficient second-moment
+bound, so \cref{prop:step-realization} gives $\nu_a(\Omega_3)=1$.
+The step distribution on this domain satisfies the common
+$L^2$ test estimate. Applying \cref{prop:compactness} with $s=3$
+therefore gives $\nu_a(\Omega^{(a)})=1$.
+The finite-coefficient Fatou argument in
+\cref{cor:qed-continuum} now gives
+\[
+ \E_{\nu_a}e^{(\sharp_a u)(f)}
+ \le e^{\|f_{[a]}\|_{\ell^2}^2/2}
+ \le e^{\|f\|_2^2/2}.
+\]
+
+It remains to prove the reverse equality in
+\eqref{eq:limit-volume-identification}. Choose a countable
+Schwartz-dense family $\mathcal D_0$ of real compact smooth
+two-forms. For $f\in\mathcal D_0$, the test
+\[
+ f'=f-\sum_\sigma f_{[a]}(\sigma)b^\sigma
+\]
+is a finite sum and satisfies $f'_{[a]}=0$. Every finite-volume
+step field therefore annihilates $f'$. The hyperplane
+$\{F:F(f')=0\}$ is closed in $H_{-4}$ and has full $\mu_a$
+measure. Intersect these events for $f\in\mathcal D_0$ with
+the full-measure event
+$\mathcal J_a(F)\in\Omega^{(a)}$. On that single event,
+\[
+ F(f)=\sum_\sigma f_{[a]}(\sigma)F(b^\sigma)
+      =(\sharp_a\mathcal J_aF)(f)
+ \qquad(f\in\mathcal D_0).
+\]
+Both sides are tempered distributions, so density gives
+$F=\sharp_a\mathcal J_aF$ there. Taking laws proves the
+pushforward identity and the Gaussian assertion for $\mu_a$.
+\end{proof}
+
+\subsection{Finite-torus estimates and joint cutoff sequences}
+\label{subsec:joint-cutoff-sequences}
+The exact $L^2$ Gaussian bound in
+\cref{thm:gaussian-convergence} applies to the recovered
+infinite-volume laws. Before the volume limit, the Schwartz
+test is periodized. We recall the estimate from
+\cite[Sections~6.1--6.2]{QED3Manuscript} that controls this step.
+
+Put $R=an$ and $f^R(y)=\sum_{k\in\Z^3}f(y+Rk)$.
+The finite-torus coefficient is
+\begin{equation}\label{eq:folded-cell-coefficient}
+ b_{a,n}([\sigma])
+ =\sum_{k\in\Z^3}f_{[a]}(\sigma+nk)
+ =a^{-3/2}\int_{Q_a(\sigma)}f^R_{\ell m}(y)\,\dd y
+ \quad(\sigma=(x;\ell m)).
+\end{equation}
+The sum converges absolutely. It gives
+$F_a(f)=\langle b_{a,n},u\rangle$, and cell Cauchy--Schwarz
+gives $\|b_{a,n}\|_{\ell^2}\le
+\|f^R\|_{L^2(\R^3/R\Z^3)}$. With $Q_R=[-R/2,R/2)^3$, define
+\begin{equation}\label{eq:limit-periodic-seminorm}
+ p_R(f)=\|f\|_2+
+        26R^{-2}\||y|^2f\|_{L^2(\R^3\setminus Q_R)}.
+\end{equation}
+Then
+\begin{equation}\label{eq:limit-cutoff-G}
+ \E_{P_{a,n}}e^{F(f)}
+ \le e^{\|b_{a,n}\|_{\ell^2}^2/2}
+ \le e^{p_R(f)^2/2}
+ \qquad(f\text{ real}).
+\end{equation}
+To see the last estimate, put
+$c_k=\|f\|_{L^2(Q_R+Rk)}$. Minkowski gives
+$\|f^R\|_{L^2(\R^3/R\Z^3)}\le\sum_kc_k$. For $k\ne0$,
+$|y|\ge R|k|_\infty/2$ on $Q_R+Rk$, and weighted
+Cauchy--Schwarz gives
+\[
+ \sum_{k\ne0}c_k
+ \le4R^{-2}
+   \left(\sum_{k\ne0}|k|_\infty^{-4}\right)^{1/2}
+   \||y|^2f\|_{L^2(\R^3\setminus Q_R)}.
+\]
+The shell count $24j^2+2$ gives
+$\sum_{k\ne0}|k|_\infty^{-4}=4\pi^2+\pi^4/45$,
+whose square root times four is less than $26$.
+For $R\ge1$, one has $p_R(f)\le p_1(f)$, and
+$p_R(f)\to\|f\|_2$ as $R\to\infty$. The seminorm $p_1$
+is continuous on Schwartz space.
+
+\begin{corollary}\label{cor:prescribed-volume-first}
+At each spacing $a_i\downarrow0$, take the chamber torus laws
+with parameters fixed during that volume limit. Let $\mu_i$
+be any prescribed weak $H_{-4}$ volume limit of their
+centered step fields. Suppose $\mu_i\Longrightarrow\mu$ on
+$H_{-4}$. Then $\mu$ has the conclusions of
+\cref{cor:plaquette-limit}, including convergence of all
+finite-family moments and cumulants from $\mu_i$ to $\mu$.
+Its tensor Schwinger functions satisfy \cref{prop:tensor-growth}.
+There are torus sides $n_i\to\infty$ such that
+$a_in_i\to\infty$,
+\[
+ P_{a_i,n_i}\Longrightarrow\mu,
+\]
+so $\mu$ is also realized by a joint sequence of finite
+cutoff laws.
+\end{corollary}
+
+\begin{proof}
+Apply \cref{prop:fixed-spacing-recovery} at each $a_i$.
+It identifies the prescribed law $\mu_i$ with the step image
+of a weak cochain limit. The chamber theorem
+\cite[Theorem~A]{ChamberLattice} applies to every such limit
+with the parameters fixed: it gives closedness, Gaussian
+domination, the lattice symmetries, and reflection positivity
+at the nine mirror families. Thus these recovered laws meet
+all the hypotheses of \cref{cor:plaquette-limit}; that
+corollary and \cref{prop:tensor-growth} give the assertions
+about $\mu$ and the sequence $\mu_i$.
+
+Fix a metric for weak convergence of probability laws on
+$H_{-4}$. Along the defining volume sequence for $\mu_i$,
+choose $n_i$ so large that $a_in_i\ge i$ and the distance
+between $P_{a_i,n_i}$ and $\mu_i$ is less than $1/i$.
+Then $P_{a_i,n_i}\Longrightarrow\mu$ and
+$R_i:=a_in_i\to\infty$. This is the diagonal selection in
+\cite[proof of Proposition~6.1]{QED3Manuscript}.
+\end{proof}
 
 \printbibliography
 \end{document}

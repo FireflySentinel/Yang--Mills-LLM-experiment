@@ -1,7 +1,13 @@
 % VTM1: volume transfer and component cumulants.
 \documentclass[11pt,letterpaper,reqno]{amsart}
 \usepackage[bibliography]{manuscript-style}
-\input{notation}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\E}{\mathbb E}
+\newcommand{\dd}{\mathrm d}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\tr}{tr}
 \allowdisplaybreaks
 \title[Volume transfer and component cumulants]{Volume transfer and component cumulants for lattice QED in three dimensions}
 \date{}
@@ -22,13 +28,1591 @@ cumulant in almost every component at sufficiently small charge.
 \end{abstract}
 \maketitle
 \tableofcontents
-\input{introduction}
-\input{setup}
-\input{transfer}
-\input{defect}
-\input{wick}
-\input{bounds}
-\input{moments}
-\input{components}
+\section{Introduction}\label{sec:vtm-introduction}
+
+Let $\mathbb P_{n;q,\boldsymbol\mu}^{\rm af}$ be the all-flux
+chamber QED law on $C(n)=\Z^3/n\Z^3$, with charge $q>0$,
+real lattice mass $\boldsymbol\mu$, Wilson parameter $0<\rho<1$,
+weights $(6,6\sqrt2,6\sqrt2,6)$ and antiperiodic fermions.
+Its real curvature is $F^{\rm u}=dA+(2\pi/q)z$, where $z$ is
+a closed integer two-cochain. Write $Z_n$ for its unnormalized
+partition function and $F^\sharp$ for the physical step field:
+on the cube of side $\eta$ centered at a plaquette, its
+corresponding component is $\eta^{-3/2}F^{\rm u}$.
+The measure and its normalization are recalled in
+\cref{sec:vtm-data}.
+
+Fix an odd integer $L\ge13$, $M=L^k$ with integer $k\ge2$,
+$0<\varepsilon\le1/200$ and $0<\bar m\le1$. Set
+\begin{equation}\label{eq:cutoff-scales}
+ h=L^{\lfloor\log_L(1/\bar m)\rfloor},\qquad
+ \eta=L^{-N},\quad q=e\sqrt\eta,\qquad R=8hL^T,\quad n=R/\eta.
+\end{equation}
+At each $e,N$ let $\boldsymbol\mu_N$ be real and independent
+of the outer volume $T$. Every reference and outer law below
+uses this same mass. The cutoffs $N,T$ are nonnegative integers.
+For $e\sqrt h<1$, put
+\[
+ v_K=-\log(e\sqrt h),\qquad
+ r_K=\min\{L^i:i\in\Z_{\ge0},\ L^i\ge v_K^2\},
+ \qquad R^*=\frac{hMr_K}{L}=hL^{T^*}.
+\]
+The reference torus has side $n_*=R^*/\eta$ and
+$N_*=8L^3$ cells, each of physical width $\ell_c=R^*/(2L)$.
+
+Fix real nonzero $\beta\in C_c^\infty(\R^3;\Lambda^2)$ and
+$f=dd^*\beta$. Let $D_\beta$ be the side of a least coordinate
+cube containing $\supp\beta$ and let $Q_\beta$, of side
+$D_\beta^{\rm buf}=D_\beta+4$ and center $z_\beta$, be that
+cube enlarged by two in each direction. Denote cube averaging
+by $J_\eta$ and centered differences by
+\[
+ \delta_{\eta,\mu}g=
+ \frac{g(\,\cdot+\eta e_\mu/2)-g(\,\cdot-\eta e_\mu/2)}{\eta}.
+\]
+Define
+\begin{equation}\label{eq:cells-smooth-test}
+ a'_{\eta,\nu}=-\sum_{\mu\ne\nu}\delta_{\eta,\mu}\beta_{\mu\nu},
+ \qquad
+ f^\eta_{\mu\nu}=\delta_{\eta,\mu}a'_{\eta,\nu}
+                     -\delta_{\eta,\nu}a'_{\eta,\mu}.
+\end{equation}
+The covering bond source is
+$\widehat a^o_\nu(x)=\eta^{1/2}(J_\eta a'_{\eta,\nu})(\eta x+\eta e_\nu/2)$.
+Put $v_\eta=\|d\widehat a^o\|_{\ell^2}^2$.
+A centered placement $v\in\eta\Z^3$ satisfies
+$|v+z_\beta-(\ell_c/2)(1,1,1)|_\infty\le\eta/2$.
+Translate the probe by $v$, reflect its source into the
+$N_*$ cells, and periodize to obtain $\widehat a_c$.
+The reflected copies use the two-form orientation signs.
+
+Let $D^{\rm ch}[B]$ be the chamber Dirac operator with bond
+phase $B$. Define the free one-cell ratio and its ordinary
+derivatives by
+\begin{equation}\label{eq:response-coefficient-relations}
+ N_0(t)=\frac{\det(D^{\rm ch}[q(t/e)\widehat a_0]+\bar m\eta)}
+                    {\det(D^{\rm ch}[0]+\bar m\eta)},\qquad
+ c_m=N_0^{(m)}(0),\quad m=2,4.
+\end{equation}
+The free mass is positive even when $\boldsymbol\mu_N$ is signed.
+Write $\mathbb E^{(0)}_{n_*}$ for the same-mass reference law
+conditioned on zero flux, and set
+\begin{equation}\label{eq:vtm-Wick}
+ H_2(x;v)=x^2-v,\qquad H_4(x;v)=x^4-6vx^2+3v^2,\qquad
+ W_m(x;v,c)=e^{-m}H_m(x;v)-c.
+\end{equation}
+Here and below $e$ is the charge, so $e^{-m}$ is its inverse
+power. With $X_c=\langle d\widehat a_c,F^{\rm u}\rangle$, put
+\begin{equation}\label{eq:vtm-reference-root}
+ \Theta_m^{(0)}
+ =\left|\mathbb E_{n_*}^{(0)}
+       \prod_{c\in\{0,\ldots,2L-1\}^3}W_m(X_c;v_\eta,c_m)
+   \right|^{1/N_*}.
+\end{equation}
+Let $z_{r,n}$ be the positive zero-flux matter factor in
+\eqref{eq:external-matter-factor}. At continuum mass $\bar m$ define
+\[
+ b(f)=-6\tr\left[
+    \bigl((\bar m+\gamma\cdot\partial)^{-1}i\gamma\cdot d^*\beta
+                 \bigr)^4\right],
+\]
+where $\gamma_\nu=\operatorname{diag}(\sigma_\nu,-\sigma_\nu)$.
+The displayed fourth power is trace class and its trace is real
+by \cite[Theorem~A]{PositiveProbe}.
+
+\begin{theorem}[Volume transfer and component cumulants]\label{thm:vtm-main}
+Fix the data above and a charge interval $0<e\le e_*\le1/3$.
+For each charge let $N_{\rm ref}(e)$ be a finite nonnegative integer.
+Assume the following conditions for every charge in this interval
+and every $N\ge N_{\rm ref}(e)$.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item The scale and placement conditions are
+\[
+ v_K\ge8,\qquad e\sqrt h\log h\le1,\qquad
+ 6N_*Mv_K^2\exp(-v_K)
+          \bigl(v_K\exp(-v_K)+\tfrac12\bigr)\le\pi^2,
+\]
+and
+\begin{equation}\label{eq:cells-fit}
+ D_\beta^{\rm buf}+3\eta\le\ell_c,\qquad
+ v+Q_\beta\subset[\ell_c/8,7\ell_c/8]^3
+\end{equation}
+for each centered placement used.
+\item There are finite nonnegative constants $C_{\rm mat}$ and
+$C_{\rm ref}$, independent of charge, mesh and placement, such that,
+at the same $q,\boldsymbol\mu_N$ on the two reference tori,
+\begin{align}
+ L^3\log z_{r,n_*}-\log z_{r,Ln_*}&\le C_{\rm mat},\notag\\
+ \Theta_4^{(0)}&\le C_{\rm ref}e^{\mathfrak e},\qquad
+ (1+|c_2|)\Theta_2^{(0)}\le C_{\rm ref}e^{\mathfrak e},
+ \label{eq:vtm-reference-hypotheses}\\
+ |c_2|+|c_4|^{1/2}&\le C_{\rm ref},\qquad
+ |c_4-3c_2^2-b(f)|\le C_{\rm ref}(e+\eta^{1/4}),\notag
+\end{align}
+where
+\[
+ \mathfrak e=\tfrac12(1/4-9\varepsilon)-12\varepsilon,\qquad
+ a_L=\frac{L^3-1}{(L-1)^3},\qquad
+ \sigma=\mathfrak e-\frac{2a_L}{N_*}>0.
+\]
+\end{enumerate}
+There is $C_U<\infty$, depending only on these fixed data and
+constants, such that the following assertions hold uniformly
+in the stated charge interval.
+
+For each $N\ge N_{\rm ref}(e)$ there are $u_2,u_4\ge0$,
+independent of the outer cutoff $T$, with
+\begin{equation}\label{eq:vtm-main-errors}
+ u_4\le C_Ue^\sigma,\qquad
+ (1+|c_2|)u_2\le C_Ue^\sigma,\qquad
+ |c_4-3c_2^2-b(f)|\le C_U(e^\sigma+\eta^{1/4}).
+\end{equation}
+For every $T\ge T^*(e)+1$ and every finite
+$Y\subset(R^*/L)\Z^3$ whose points are incongruent modulo $R\Z^3$,
+\begin{equation}\label{eq:vtm-main-products}
+ \left|\E_{N,T}\prod_{y\in Y}
+ W_m(F^\sharp(\tau_yf^\eta);v_\eta,c_m)\right|
+              \le u_m^{|Y|},\qquad m=2,4.
+\end{equation}
+Here $\tau_yf(x)=f(x-y)$ and $\E_{N,T}$ is expectation under
+$\mathbb P_{n;q,\boldsymbol\mu_N}^{\rm af}$. Its smooth-test
+fourth cumulant satisfies
+\begin{equation}\label{eq:vtm-main-finite-cumulant}
+ |\kappa_4(F^\sharp(f))-e^4b(f)|
+ \le(8C_U+3C_U^2)e^{4+\sigma}
+                  +C_U(\eta^2+e^4\eta^{1/4}).
+\end{equation}
+
+Fix one charge. Let $\mu$ be any prescribed volume-first limit:
+for $N_i\to\infty$, choose fixed-spacing weak volume limits
+$\mu_i$ of these laws, with $\mu_i\Rightarrow\mu$.
+All weak convergence here is on the negative Hermite space
+$H_{-4}$ specified in \cref{sec:continuum-limits}.
+Assume that $\mu$ is translation invariant and that almost every
+component in its translation-ergodic decomposition
+$\mu=\int\mu_\xi\,\dd\nu(\xi)$ satisfies
+\begin{equation}\label{eq:vtm-component-G}
+ \E_{\mu_\xi}\exp(F(g))\le\exp(\|g\|_2^2/2)
+ \quad\text{for all real }g\in\mathcal S(\R^3;\Lambda^2).
+\end{equation}
+Then, on one $\nu$-full set,
+\begin{equation}\label{eq:vtm-main-component}
+ |\kappa_4^{\mu_\xi}(f)-e^4b(f)|
+                    \le C_fe^{4+\sigma},\qquad C_f=8C_U+3C_U^2.
+\end{equation}
+If $b(f)>0$ and $C_fe^\sigma\le b(f)/2$, every component
+in this set has $\kappa_4^{\mu_\xi}(f)\ge e^4b(f)/2>0$.
+The full-measure set is for this fixed charge, probe and parent law.
+\end{theorem}
+
+For the tuned chamber construction, the same mass assignment
+is selected on the top torus by \cite[Theorem~A]{CommonTuning}.
+The reference-response estimate is \cite[Theorem~A]{ReferenceResponse},
+and the two-torus matter comparison is \cite[Theorem~A]{TerminalPressure}.
+The free coefficients and a probe with $b(f)>0$ are supplied by
+\cite[Theorems~A--B]{PositiveProbe}. The volume-first laws are
+constructed in \cite{ContinuumExistence}; the component Gaussian
+bound is the last clause of \cite[Theorem~A]{ContinuumComponents}.
+The simultaneous admission of the construction parameters is
+separate from the implication proved here.
+
+The proof is the volume-transfer and component argument of
+\cite[\S25--26]{QED3Master}, with its finite-periodic moment
+passage from \cite[\S6.1--6.2]{QED3Master}.
+Its first difficulty is normalization. Folding bounds the
+unnormalized observable by its value on the small reference torus,
+but the denominator belongs to the larger torus. Sidewise
+convexity of the partition function controls this denominator
+using the two reference volumes. The exact photon determinant
+then shows that the normalization costs only the power
+$e^{-2a_L/N_*}$; the response estimate retains the positive
+exponent $\sigma$.
+
+The reference response is in flux zero. We split the full
+reference expectation by flux and bound its nonzero-flux part
+with the Gaussian tail and high moments. This gives bounds on
+every finite product of distinct translated Wick polynomials,
+uniformly in the outer volume. Their passage to a prescribed
+parent uses the periodic seminorm at finite volume and the sharp
+$L^2$ norm only after the supports fit in a period cube.
+Finally, spatial averages and a count of repeated indices bound
+the invariant conditional expectations of both Wick polynomials.
+These two conditional bounds determine the fourth cumulant in
+each component.
+
+The charge restriction for positivity is imposed after $C_U$:
+\begin{equation}\label{eq:constants-probe-charge}
+ 0<e_\beta\le
+       \min\{e_*,[b(f)/(2C_f)]^{1/\sigma}\}.
+\end{equation}
+It is positive when $b(f)>0$ and $C_f>0$.
+The conclusions concern subsequential limits of the stated
+cutoff family; no uniqueness of the continuum law is required.
+
+\section{The chamber law and the reference data}\label{sec:vtm-data}
+
+\subsection{Normalization, flux and Gaussian domination}
+
+The chamber operator is the finite-range operator of
+\cite[\S2]{ChamberLattice}; its bond argument is a phase.
+It acts on four spin components and $48$ chamber labels per
+site. The fermions are antiperiodic in each coordinate.
+For a rectangular coordinate torus with $V$ sites and every
+side at least four, put $r_q=2\pi/q$. The unnormalized integral
+of a curvature observable $O$ is
+\begin{equation}\label{eq:vtm-law}
+ Z[O]=\sum_{\substack{z\in C^2(\Z)\\dz=0}}
+  \int_{[0,r_q)^{3V}}
+ O(dA+r_qz)\exp\bigl(-\tfrac12\|dA+r_qz\|^2\bigr)
+ \det(D^{\rm ch}[qA]+\boldsymbol\mu)\,\dd A.
+\end{equation}
+Cochains and the integer sum are on this torus; norms and
+pairings count positively oriented cells. The identification
+$(A,z)\sim(A+r_qk,z-dk)$ makes the integral independent
+of the chosen fundamental domain. The law is $Z[O]/Z[1]$.
+The partition function is finite and positive for every real
+$\boldsymbol\mu$, and the determinant gives nonnegative weights;
+see \cite[\S2--3]{ChamberLattice}. Flux is the three integer
+periods of $z$, ordered as $(23,13,12)$.
+We retain every flux sector in \eqref{eq:vtm-law}.
+
+The coordinate-torus Gaussian bound
+\cite[Proposition~5.1]{ChamberLattice} is
+\begin{equation}\label{eq:slab-gaussian-domination}
+ \E^{\rm af}\exp\langle g,F^{\rm u}\rangle
+       \le\exp(\|g\|^2/2)
+\end{equation}
+for every real torus two-cochain $g$.
+It holds for both odd and even coordinate sides.
+The law is invariant under lattice translations and
+$F^{\rm u}\mapsto-F^{\rm u}$. In particular all odd
+moments of a real linear observable vanish.
+
+On $C(n)$, let $\gamma_n$ be the standard Gaussian measure
+on the exact real two-cochains, and let $A(u)$ be the
+mean-zero coclosed potential of $u$.
+For $\theta\in[-\pi,\pi]^3$ put
+$H_{\theta,\nu}=\theta_\nu/(qn)$. The matter factor is
+\begin{equation}\label{eq:external-matter-factor}
+ z_{r,n}=\int_{[-\pi,\pi]^3}\frac{\dd\theta}{(2\pi)^3}
+     \int\det(D^{\rm ch}[q(A(u)+H_\theta)]
+                     +\boldsymbol\mu)\,\dd\gamma_n(u)>0.
+\end{equation}
+The subscript $r$ denotes the regulator. The exact zero-flux
+factorization of \cite[\S3.4]{ReferenceResponse} gives
+\begin{align}
+ Z_n^{(0)}[1]&=Z_n^{\rm ph}z_{r,n},
+                     \label{eq:external-zero-factorization}\\
+ Z_n^{\rm ph}&=r_q^{\,n^3+2}(2\pi)^{n^3-1}
+                         \exp(-\mathcal L(n)/2).
+                     \label{eq:external-photon-factor}
+\end{align}
+where $\mathcal L(n)$ is the scalar-Laplacian logarithmic
+determinant in \cref{sec:vtm-defect}.
+Thus the normalized zero-flux curvature law is the Gaussian
+law weighted by the twist-averaged determinant in
+\eqref{eq:external-matter-factor}. The factorization retains
+the gauge and harmonic volume factors; they will contribute
+to the partition defect.
+
+\subsection{The source and cell contract}\label{sec:reference-cells}
+
+The source identities and estimates in this subsection are
+proved in \cite[\S2]{ReferenceResponse}. We state the needed
+contract with its support and normalization.
+
+Write $p_{\rm cell}=n_*/L$ and $w=p_{\rm cell}/2$.
+The reference side $n_*$ and $p_{\rm cell}$ are odd,
+so $w$ is half-integral. The number $2L$ of cells per
+side is even. In unit-lattice coordinates the open cells
+are $Q_c^\circ=w(c+(0,1)^3)$.
+
+For a two-form $g$ let
+\[
+ g_{[\eta]}(\sigma)=\eta^{-3/2}
+        \int_{Q_\eta(\sigma)}g_{\mu\nu}(y)\,\dd y,\qquad
+ Q_\eta(\sigma)=\eta\bigl(x+(e_\mu+e_\nu)/2+[-1/2,1/2)^3\bigr),
+\]
+when $\sigma=(x;\mu\nu)$. The source of the introduction obeys
+$d\widehat a^o=(f^\eta)_{[\eta]}$.
+After periodizing, this gives
+\[
+ \langle d\widehat a,F^{\rm u}\rangle=F^\sharp(f^\eta).
+\]
+All $f^\eta$ are supported in $Q_\beta$ for $\eta\le1$, and
+\begin{equation}\label{eq:cells-test-error}
+ \|f^\eta-f\|_{H^s}\le\eta^2\|\beta\|_{H^{s+4}}
+                       \quad(s\in\R).
+\end{equation}
+The variance converges with the quantitative estimate
+\begin{equation}\label{eq:cells-variance-limit}
+ \left|\sqrt{v_\eta}-\|f\|_2\right|
+ \le21\eta|\beta|_{C^3}(D_\beta^{\rm buf})^{3/2}
+                       +\eta^2\|\beta\|_{H^4}.
+\end{equation}
+Here $|\beta|_{C^3}$ is the maximum component derivative norm
+through order three. These estimates follow from the centered
+difference symbols and the cell-average approximation.
+
+For the placed probe, the coordinate map $g_c$ carrying the
+base cell to cell $c$ is, in coordinate $\mu$,
+$x_\mu\mapsto x_\mu+2iw$ if $c_\mu=2i$, and
+$x_\mu\mapsto(2i+2)w-x_\mu$ if $c_\mu=2i+1$.
+Transport oriented cochains by this map before periodizing.
+Denote the placed and reflected covering source by
+$\widehat a_c^o$; its periodization is $\widehat a_c$.
+On every carrying torus with $p_{\rm cell}\mid n$ and $n\ge n_*$,
+\begin{equation}\label{eq:cells-orthogonality}
+ \langle d\widehat a_c,d\widehat a_{c'}\rangle_n
+                         =v_\eta\mathbf1_{\{c=c'\}}.
+\end{equation}
+The placement condition \eqref{eq:cells-fit} ensures that their
+support boxes are strictly inside the open cells and that the
+boxes enlarged by one embed in the torus.
+Each polynomial $P(X_c)$ is consequently read by the same
+local scalar integrand on every such torus.
+
+Here is the scalar observable class used in the transfer,
+with the conventions of \cite[\S4.1, (46)--(50)]{ChamberLattice}.
+For a coordinate box $B$, let $B^{(j)}$ be its contained
+oriented lattice $j$-cells. A scalar local integrand is a Borel
+gauge-invariant function $G$ of the real bonds in $B^{(1)}$
+such that, for some $C<\infty$ and $\epsilon_B>0$,
+\[
+ |G(\widehat A)|\le C\exp\left[
+   (\tfrac12-\epsilon_B)
+          \sum_{\sigma\in B^{(2)}}|d\widehat A(\sigma)|^2\right].
+\]
+Gauge invariance means $G(\widehat A-d\lambda)=G(\widehat A)$.
+A local lift of $(A,z)$ is a real bond cochain $\widehat A$
+on $B$ with $d\widehat A=F^{\rm u}$ and
+$\exp(iq\widehat A(b))=\exp(iqA(b))$.
+The cited construction proves existence and independence of
+the lift for these evaluations.
+
+For an open set $U$, let $\mathcal A(U)$ be the linear span
+of products $\Phi(d\widehat A)\prod_jG_j(\widehat A|_{B_j})$,
+where the boxes $B_j\subset U$ are pairwise disjoint and
+$\Phi$ is a bounded Borel function of finitely many curvature
+values in $U$. On a quotient with periods $\Gamma$ the boxes
+must embed: each family $B_j+[-1,1]^3+\gamma$ is disjoint,
+and all $B_j+\gamma$ for distinct $(j,\gamma)$ are disjoint.
+
+For the present probe take a supporting coordinate box
+$B_0\Subset Q_0^\circ$ as in \cite[\S2.2]{ReferenceResponse}
+and $B_c=g_cB_0$. The local expression for $P(X_c)$ is
+$P(\sum_{\sigma\subset B_c}d\widehat a_c^o(\sigma)
+                                      d\widehat A(\sigma))$.
+Cauchy--Schwarz bounds its argument by
+$\sqrt{v_\eta}(\sum_{\sigma\subset B_c}|d\widehat A(\sigma)|^2)^{1/2}$,
+so it has a bound
+$C_P\exp(\frac14\sum_{\sigma\subset B_c}|d\widehat A(\sigma)|^2)$.
+Thus it belongs to $\mathcal A(Q_c^\circ)$.
+The reflection is antilinear on coefficients; it fixes the
+coefficients of these real Wick polynomials.
+
+Even cell indices give the precise translation formula
+\begin{equation}\label{eq:cells-translation-observable}
+ c(y)=\frac{2y}{p_{\rm cell}\eta}\in2\Z^3,\qquad
+ X_{c(y)}=F^\sharp(\tau_{v+y}f^\eta),
+ \quad y\in(R^*/L)\Z^3.
+\end{equation}
+Two such cells coincide on the torus exactly when the
+translations agree modulo its physical periods. Lattice
+translation invariance removes the common placement $v$
+from their product expectation.
+
+\subsection{The normalized source identity}
+
+On the reference torus define $a(t)=e^{-1}\sum_ct_c\widehat a_c$ and
+\begin{equation}\label{eq:external-reference-partition}
+ \mathring\Phi(t)=z_{r,n_*}^{-1}
+ \int\frac{\dd\theta}{(2\pi)^3}\int
+ \det(D^{\rm ch}[q(A(u)+H_\theta+a(t))]
+                         +\boldsymbol\mu_N)\,\dd\gamma_{n_*}(u).
+\end{equation}
+The $\theta$ integral is over $[-\pi,\pi]^3$.
+The source-shift identity of
+\cite[\S3.6, Proposition~3.2 and (53)]{ReferenceResponse},
+valid for arbitrary real lattice mass, is
+\begin{equation}\label{eq:external-Wick-product}
+ \E^{(0)}_{n_*}\prod_c W_m(X_c;v_\eta,c_m)
+       =\left[\prod_c(\partial_{t_c}^m-c_m)\right]\mathring\Phi(0),
+       \qquad m=2,4.
+\end{equation}
+Thus \eqref{eq:vtm-reference-root} is exactly the response norm
+controlled there. Its reference law is normalized, and its
+coefficients are the ordinary free derivatives
+\eqref{eq:response-coefficient-relations}. The vacuum parameter
+of a common tuned trajectory cancels in this ratio. In a
+two-volume logarithmic defect its extensive vacuum contributions
+cancel as well.
+
+\section{Transfer from the reference volumes}\label{sec:uniform-transfer}
+
+The renormalization estimates are obtained on two reference tori.
+To use them for volume-first limits, we need bounds on products
+of local observables in arbitrarily large cutoff tori. The
+chessboard estimate reduces each such product to a folded
+one-cell observable. A separate convexity estimate controls
+the normalization by the partition functions of the two
+reference volumes.
+
+\subsection{Folded observables and the partition defect}
+
+Use unit-lattice lengths in this subsection. Fix the charge $q>0$
+and a real lattice mass. Choose coordinate cells of width
+$w\in\tfrac12\Z_{>0}$ and offsets $o_\mu\in\tfrac12\Z$:
+\[
+ Q_c^\circ=\{y:o_\mu+wc_\mu<y_\mu<o_\mu+w(c_\mu+1),\
+                           \mu=1,2,3\}.
+\]
+The walls are admissible coordinate mirrors. For even positive
+integers $s_\mu$ with $ws_\mu\ge4$, let $C(ws)$ be the rectangular
+torus with these side lengths and antiperiodic fermions.
+It has $s_1s_2s_3$ cells. The wall-reflection group acts simply
+transitively on the covering cells. Write $O^{[c]}$ for the
+reflected copy of $O\in\mathcal A(Q_0^\circ)$ in $Q_c^\circ$,
+and
+\[
+ O^\sharp_{ws}=\prod_{c\bmod s}O^{[c]},\qquad
+ \mathcal Z_s(O)=Z_{C(ws)}[O^\sharp_{ws}].
+\]
+The copies use the antilinear reflection action, including
+conjugation of scalar coefficients.
+
+These arrays satisfy the rectangular chessboard estimate
+\cite[(69)]{ChamberLattice}. The cell theorem is stated there for integer width.
+For the coordinate cells used here, its fold proof also applies
+at half-integer width: all walls remain admissible, paired
+reflections translate by the integer $2w$, and the even cell
+counts give integer torus sides at least four.
+For a support box $B=y+[-r,r]^3\subset Q_c^\circ$ one has
+$2r<w$. A nonzero period has sup norm at least $2w>4r$
+and at least four. Thus its enlarged boxes $B+[-1,1]^3$
+are disjoint, by the same embedding estimate used in the
+proof of \cite[Proposition~4.3]{ChamberLattice}.
+The products therefore belong to the required slab classes.
+
+Hold two entries of $s$ fixed and vary $s_\mu$.
+The product of the copies in the layer $c_\mu=0$ gives
+a Hilbert--Schmidt slab operator $Y$ independent of $s_\mu$.
+Its reflected layer pairs fill the entire folded array.
+The slab-fold identity \cite[Proposition~4.2, (66)]{ChamberLattice} gives
+\begin{equation}\label{eq:transfer-fold-trace}
+ \mathcal Z_s(O)=\operatorname{Tr}(Y^*Y)^{s_\mu/2}.
+\end{equation}
+In particular $\mathcal Z_s(O)\ge0$, and
+$s_\mu\mapsto\mathcal Z_s(O)^{1/s_\mu}$ is nonincreasing.
+If $Y\ne0$, the logarithm of this folded partition function
+is convex in $s_\mu$. The first assertion is the monotonicity
+of Schatten norms, and the second follows from H\"older's
+inequality for the trace of positive powers.
+The normalization of $Y$ here is that of the slab operators
+in \cite[\S4.3]{ChamberLattice}.
+
+Choose an even reference cell count $s_0\ge2$ with
+$n_r=ws_0\ge4$, and an integer $j\ge2$. Put
+\begin{equation}\label{eq:transfer-reference-data}
+ N_r=s_0^3,\qquad
+ D_j=j^3\log Z_{C(n_r)}[1]-\log Z_{C(jn_r)}[1],
+ \qquad \delta_j=\frac{D_j}{(j-1)^3N_r}.
+\end{equation}
+For an observable in the base cell its normalized reference
+seminorm is
+\begin{equation}\label{eq:transfer-reference-seminorm}
+ \|O\|_*=
+ \left(\frac{\mathcal Z_{(s_0,s_0,s_0)}(O)}
+                    {Z_{C(n_r)}[1]}\right)^{1/N_r}.
+\end{equation}
+The partition function is positive, and the numerator is
+nonnegative, so this is well-defined also when it vanishes.
+
+\begin{proposition}\label{prop:transfer-general}
+One has $D_j\ge0$. Let $s$ be even, with either $s=s_0$
+or $s\ge js_0$, and put $r=s/s_0$, $n=ws$.
+For every set $\mathcal C$ of distinct cells of $C(n)$ and
+$O_c\in\mathcal A(Q_0^\circ)$,
+\begin{equation}\label{eq:transfer-general}
+ \left|\E_{C(n)}\prod_{c\in\mathcal C}O_c^{[c]}\right|
+                    \le\prod_{c\in\mathcal C}\exp(\delta_j)\|O_c\|_*.
+\end{equation}
+The right side uses only the two reference partition functions
+and the one-cell observables folded on $C(n_r)$.
+\end{proposition}
+
+\begin{proof}
+Successively decreasing the three side counts in
+\eqref{eq:transfer-fold-trace} gives, for $s\ge s_0$,
+\begin{equation}\label{eq:transfer-fold-upper}
+ \mathcal Z_{(s,s,s)}(O)
+            \le\mathcal Z_{(s_0,s_0,s_0)}(O)^{r^3}.
+\end{equation}
+Taking $O=1$ and $r=j$ proves $D_j\ge0$.
+
+We next obtain the lower bound for the normalizing partition
+function. Define
+$p(r_1,r_2,r_3)=\log Z_{C(r_1n_r,r_2n_r,r_3n_r)}[1]$
+on ratios with integer side lengths at least four.
+The pressure trace \cite[(75)]{ChamberLattice} shows that
+$p$ is convex in each argument and that $p/r_\mu$ is
+nonincreasing in that argument. For $r\ge j$ put
+$a=(r-1)/(j-1)$. Convexity gives
+$p(r,\cdot,\cdot)\ge a p(j,\cdot,\cdot)
+-(a-1)p(1,\cdot,\cdot)$.
+Apply this in each argument, retaining the positive coefficient
+$a$ at the next step. Bound the three subtracted terms by the
+side monotonicity. The result is
+\begin{align*}
+ p(r,r,r)\ge{}&
+ a^3p(j,j,j)\\
+ &-(a-1)(a^2j^2+ajr+r^2)p(1,1,1)\\
+ ={}&r^3p(1,1,1)-a^3D_j.
+\end{align*}
+The last equality uses $aj-(a-1)=r$ three times.
+The negative coefficients are why upper bounds are used on
+the three subtracted terms; no sign condition on $p$ is needed.
+Thus, including the equality case $r=1$,
+\begin{equation}\label{eq:transfer-partition-lower}
+ \log Z_{C(n)}[1]\ge
+ r^3\left(\log Z_{C(n_r)}[1]-\frac{D_j}{(j-1)^3}\right).
+\end{equation}
+
+Fill the cells outside $\mathcal C$ with the constant integrand.
+The normalized rectangular chessboard estimate then gives
+\[
+ \left|\E_{C(n)}\prod_{c\in\mathcal C}O_c^{[c]}\right|
+ \le\prod_{c\in\mathcal C}
+       \left(\frac{\mathcal Z_{(s,s,s)}(O_c)}
+                         {Z_{C(n)}[1]}\right)^{1/(r^3N_r)}.
+\]
+Use \eqref{eq:transfer-fold-upper} in the numerator and
+\eqref{eq:transfer-partition-lower} in the denominator.
+Each factor is at most $\exp(\delta_j)\|O_c\|_*$, proving
+\eqref{eq:transfer-general}.
+\end{proof}
+
+\section{The photon, matter and flux defect}\label{sec:vtm-defect}
+
+\subsection{The scalar-Laplacian determinant}
+
+The zero-flux Gaussian factor involves the determinant of the
+unit-lattice scalar Laplacian with its constant mode removed.
+Write its logarithm as
+\[
+ \mathcal L(n_1,n_2,n_3)
+  =\sum_{\substack{k\in\prod_\mu\Z/n_\mu\Z\\k\ne0}}
+      \log\left(\sum_{\mu=1}^3
+                       \left(2-2\cos\frac{2\pi k_\mu}{n_\mu}\right)\right),
+ \qquad \mathcal L(n)=\mathcal L(n,n,n).
+\]
+For $j\ge2$ put
+\[
+ G_j=\left(1+\frac j{3.2}\right)\frac{2j^2}{2.56},\qquad
+ K_j=(1+j+j^2)(\log j+jG_j).
+\]
+The estimate used for the two reference volumes is
+\begin{equation}\label{eq:transfer-photon-logdet}
+ \frac12\bigl(\mathcal L(jn)-j^3\mathcal L(n)\bigr)
+              \le-(j^3-1)\log n+K_j
+                   \qquad(n,j\in\Z,\ n,j\ge2).
+\end{equation}
+Its logarithmic term cancels the corresponding scale dependence
+of the Gaussian normalization. We retain the finite-volume
+calculation since a bulk determinant bound would lose this term.
+
+Sum first in the first coordinate. For a nonzero transverse
+momentum $k'=(k_2,k_3)$ define $\omega(k')>0$ by
+\[
+ 2\cosh\omega(k')
+     =2+\sum_{\mu=2,3}
+                 \left(2-2\cos\frac{2\pi k_\mu}{n_\mu}\right).
+\]
+Factoring over the $n_1$-th roots of unity gives
+\[
+ \prod_{k_1\in\Z/n_1\Z}
+       \left(2\cosh\omega-2\cos\frac{2\pi k_1}{n_1}\right)
+                       =4\sinh^2(n_1\omega/2).
+\]
+For $k'=0$, omit $k_1=0$; the corresponding product is $n_1^2$.
+Therefore
+\begin{equation}\label{eq:transfer-photon-one-direction}
+ \mathcal L(n_1,n_2,n_3)
+   =2\log n_1+
+       2\sum_{k'\ne0}\log\bigl(2\sinh(n_1\omega(k')/2)\bigr).
+\end{equation}
+For $z>0$ let $g(z)=-\log(1-\exp(-2z))$.
+The identity $2\sinh z=\exp(z)(1-\exp(-2z))$ shows that
+\[
+ \log(2\sinh(jz))-j\log(2\sinh z)\le jg(z).
+\]
+Consequently
+\begin{multline}\label{eq:transfer-photon-side-difference}
+ \mathcal L(jn_1,n_2,n_3)-j\mathcal L(n_1,n_2,n_3)\\
+ \le2\log(jn_1)-2j\log n_1
+                       +2j\sum_{k'\ne0}g(n_1\omega(k')/2).
+\end{multline}
+
+In the three applications below, $n_1=n$ and
+$n_2,n_3\in\{n,jn\}$. Represent each transverse momentum by
+$|k_\mu|\le n_\mu/2$ and put $p_\mu=2\pi k_\mu/n_\mu$.
+For
+$M(p)=\sum_{\mu=2,3}(2-2\cos p_\mu)$,
+\[
+ \frac4{\pi^2}|p|^2\le M(p)\le8,\qquad
+ \omega=2\operatorname{arcsinh}(\sqrt M/2)\ge0.51|p|.
+\]
+The last inequality follows from concavity of
+$\operatorname{arcsinh}$ on $[0,\sqrt2]$ and
+$\operatorname{arcsinh}\sqrt2>0.81\sqrt2$.
+Thus $n\omega(k')/2\ge c_j|k'|$, where $c_j=1.6/j$.
+Since
+$g(z)\le\exp(-2z)(1+(2z)^{-1})$, and
+$|k'|\ge(|k_2|+|k_3|)/\sqrt2$, one obtains
+\begin{align*}
+ \sum_{k'\ne0}g(n\omega(k')/2)
+ &\le\left(1+\frac1{2c_j}\right)
+   \left[
+     \left(\sum_{i\in\Z}\exp(-\sqrt2c_j|i|)\right)^2-1
+   \right]\\
+ &=\left(1+\frac1{2c_j}\right)
+                  \sinh(c_j/\sqrt2)^{-2}
+ \le\left(1+\frac1{2c_j}\right)\frac2{c_j^2}
+ =G_j.
+\end{align*}
+Enlargement to all of $\Z^2\setminus\{0\}$ is valid because
+the chosen representatives are distinct.
+
+Finally telescope the enlargement of the three sides:
+\begin{align*}
+ \mathcal L(jn,jn,jn)-j^3\mathcal L(n,n,n)
+ ={}&\bigl[\mathcal L(jn,jn,jn)-j\mathcal L(n,jn,jn)\bigr]\\
+ &+j\bigl[\mathcal L(jn,n,jn)-j\mathcal L(n,n,jn)\bigr]\\
+ &+j^2\bigl[\mathcal L(jn,n,n)-j\mathcal L(n,n,n)\bigr].
+\end{align*}
+Symmetry of $\mathcal L$ supplies this identity.
+Each bracket is bounded by
+$2\log j+2(1-j)\log n+2jG_j$ by
+\eqref{eq:transfer-photon-side-difference}.
+Multiplication by $1,j,j^2$ and summation prove
+\eqref{eq:transfer-photon-logdet}.
+
+\subsection{The photon, matter and flux contributions}
+
+Fix $q>0$ and a real lattice mass. On a cubic torus with
+$n\ge4$ sites per side, let $Z_n^{(w)}[1]$ be the
+partition function in flux sector $w\in\Z^3$, and put
+$P_n(w)=Z_n^{(w)}[1]/Z_n[1]$. The flux order is
+$(23,13,12)$. Define
+\begin{equation}\label{eq:transfer-flux-tail}
+ \varsigma_n=\sum_{w\ne0}
+              \exp\left(-\frac{2\pi^2|w|_2^2}{q^2n}\right).
+\end{equation}
+The notation $z_{r,n}$ below is the positive matter factor
+of \eqref{eq:external-matter-factor}.
+
+\begin{proposition}\label{prop:transfer-flux-defect}
+For $n\ge4$ and an integer $j\ge2$,
+\begin{align}
+ Z_n[1]&=\frac{Z_n^{\mathrm{ph}}z_{r,n}}{P_n(0)},
+                  \qquad 0<P_n(0)\le1,\label{eq:transfer-zero-factor}\\
+ P_n(w)&\le\exp\left(-\frac{2\pi^2|w|_2^2}{q^2n}\right),
+ \qquad P_n(0)\ge1-\varsigma_n. \label{eq:transfer-flux-weight}
+\end{align}
+If $q^2n\le1$, then
+\begin{equation}\label{eq:transfer-flux-small}
+ \varsigma_n\le7\exp\left(-\frac{2\pi^2}{q^2n}\right)<\frac18.
+\end{equation}
+The defect $D_j$ of \eqref{eq:transfer-reference-data}
+decomposes as
+\begin{align}
+ D_j&=D_j^{\mathrm{ph}}+D_j^{\mathrm{mat}}+D_j^{\mathrm{fl}},
+                                      \label{eq:transfer-defect-split}\\
+ D_j^{\mathrm{mat}}&=j^3\log z_{r,n}-\log z_{r,jn},
+ \qquad
+ D_j^{\mathrm{fl}}=-j^3\log P_n(0)+\log P_{jn}(0),\notag\\
+ D_j^{\mathrm{ph}}
+   &=(j^3-1)\log\frac{2\pi}{q^2}
+                +\tfrac12[\mathcal L(jn)-j^3\mathcal L(n)]\notag\\
+   &\le(j^3-1)\log\frac{2\pi}{q^2n}+K_j.
+                                      \label{eq:transfer-photon-defect}
+\end{align}
+If $\varsigma_n<1$, then
+\begin{equation}\label{eq:transfer-flux-defect}
+ D_j^{\mathrm{fl}}\le-j^3\log(1-\varsigma_n).
+\end{equation}
+All identities use the same charge and lattice mass at
+the two sides; the mass can have either sign.
+\end{proposition}
+
+\begin{proof}
+The zero-flux factorization \eqref{eq:external-zero-factorization}
+gives $Z_n^{(0)}[1]=Z_n^{\mathrm{ph}}z_{r,n}>0$.
+All sectors have nonnegative weights, and their absolutely
+convergent sum is $Z_n[1]$. Hence
+$0<P_n(0)\le1$ and \eqref{eq:transfer-zero-factor}.
+
+For a configuration of flux $w$, let $h_w$ be the
+constant two-cochain with value
+$r_qw_{\mu\nu}/n^2$ on plaquettes of orientation $\mu\nu$.
+The Fourier Hodge decomposition writes
+$r_qz=dB+h$ with $h$ constant.
+Summing over a coordinate two-torus annihilates $dB$
+and gives $n^2h_{\mu\nu}=r_qw_{\mu\nu}$.
+Thus $F-h_w$ is exact. A constant cochain is orthogonal
+to every exact cochain, by periodic summation by parts.
+In particular $\langle h,F\rangle=\langle h,h_w\rangle$
+on sector $w$ whenever $h$ is constant.
+
+Apply Gaussian domination \eqref{eq:slab-gaussian-domination}
+with $h=h_{w'}$ and split the expectation into its sectors:
+\[
+ 1\ge\sum_w
+ \exp\bigl(\langle h_{w'},h_w\rangle-\|h_{w'}\|^2/2\bigr)P_n(w)
+ \ge \exp(\|h_{w'}\|^2/2)P_n(w').
+\]
+Since $\|h_w\|^2=r_q^2|w|_2^2/n$, this proves the
+first bound in \eqref{eq:transfer-flux-weight}.
+The identity $\sum_wP_n(w)=1$ proves the second.
+
+Set $x=\exp(-2\pi^2/(q^2n))$. Positivity permits the
+factorization
+\[
+ \varsigma_n=\left(\sum_{i\in\Z}x^{i^2}\right)^3-1
+ \le\left(1+\frac{2x}{1-x}\right)^3-1.
+\]
+For $q^2n\le1$, one has $x<2^{-18}$.
+The bound $(1-x)^{-1}\le1+2x$ gives
+$2x/(1-x)\le2.001x<10^{-5}$. Therefore
+$\varsigma_n\le2.001x(3+3\cdot10^{-5}+10^{-10})
+\le7x<1/8$. This also proves convergence of
+\eqref{eq:transfer-flux-tail}.
+
+Taking logarithms in \eqref{eq:transfer-zero-factor}
+at $n$ and $jn$ gives \eqref{eq:transfer-defect-split}.
+By \eqref{eq:external-photon-factor},
+\[
+ \log Z_n^{\mathrm{ph}}
+   =(n^3+2)\log r_q+(n^3-1)\log(2\pi)-\mathcal L(n)/2.
+\]
+Its bulk terms cancel in the defect. The remaining
+constant is $(j^3-1)\log(2\pi/q^2)$.
+Equation \eqref{eq:transfer-photon-logdet} proves
+\eqref{eq:transfer-photon-defect}. Finally
+$\log P_{jn}(0)\le0$, and
+$P_n(0)\ge1-\varsigma_n>0$ gives
+\eqref{eq:transfer-flux-defect}.
+\end{proof}
+
+\section{Wick products on larger cutoff tori}\label{sec:vtm-wick}
+
+Use the cell sources of Section~\ref{sec:reference-cells}
+and write
+\[
+ N_*=8L^3,\qquad
+ a_L=\frac{L^3-1}{(L-1)^3},\qquad
+ D^{\mathrm{mat}}=L^3\log z_{r,n_*}-\log z_{r,Ln_*},
+ \qquad
+ \delta=\frac{D_L}{(L-1)^3N_*}.
+\]
+Fix $0<e\le1/3$, with $q=e\sqrt\eta$ and
+$q^2n_*=e^2R^*$, and assume
+\begin{equation}\label{eq:transfer-W3}
+ 6N_*e^2R^*\log(1/e)\le\pi^2.
+\end{equation}
+The choice of scales ensuring this condition is given
+below. Let $\mathcal C_*=\{0,\ldots,2L-1\}^3$
+and use the probe variance $v_\eta$ of
+\eqref{eq:cells-orthogonality}. For real $c_2,c_4$ put
+\begin{align}
+ O_m^{[c]}&=W_m(X_c;v_\eta,c_m),\qquad m=2,4,
+                                      \label{eq:transfer-Wick-observable}\\
+ \Theta_m^{(0)}
+  &=\left|
+      \left[\prod_{c\in\mathcal C_*}
+            (\partial_{t_c}^m-c_m)\right]\mathring\Phi(0)
+    \right|^{1/N_*}.                  \label{eq:transfer-Theta}\\
+ M_4&=600N_*^2v_\eta^2e^{-4}+|c_4|,\qquad
+ M_2=12N_*v_\eta e^{-2}+|c_2|,\notag\\
+ T_m&=\Theta_m^{(0)}+2e^6M_m,\qquad
+ u_m=\exp(\delta)T_m.                 \label{eq:transfer-Wick-data}
+\end{align}
+Here $\mathring\Phi$ is the normalized external partition
+function \eqref{eq:external-reference-partition}.
+The notation $e^{-m}$ denotes an inverse power of the
+charge.
+
+\begin{proposition}\label{prop:transfer-Wick}
+Assume the probe placement condition \eqref{eq:cells-fit}.
+For $n=n_*$, or $n\in p_{\rm cell}\Z$ with $n\ge Ln_*$,
+the all-flux law with the fixed real lattice mass obeys
+\begin{align}
+ 0\le\delta
+ &\le\frac{a_L}{N_*}\log\frac{2\pi}{e^2R^*}
+       +\frac{K_L+D^{\mathrm{mat}}+1}{(L-1)^3N_*},
+                                           \label{eq:transfer-delta}\\
+ \left|\E_n^{\mathrm{af}}\prod_{c\in\mathcal C}
+                        O_m^{[c]}\right|
+ &\le u_m^{|\mathcal C|}              \label{eq:transfer-Wick-product}
+\end{align}
+for every set $\mathcal C$ of distinct cells and $m=2,4$.
+In particular, if $\kappa_j$ denotes the cumulant of
+$X_0$ on that torus, then
+\begin{align}
+ \left|e^{-2}(\kappa_2-v_\eta)-c_2\right|&\le u_2,
+                                      \label{eq:transfer-second-cumulant}\\
+ \left|e^{-4}\kappa_4-(c_4-3c_2^2)\right|
+   &\le u_4+3u_2(2|c_2|+u_2).        \label{eq:transfer-fourth-cumulant}
+\end{align}
+The bounds are uniform in $n$.
+Their right sides are formed on the two reference tori;
+$\Theta_m^{(0)}$, and therefore $u_m$, may depend on
+the placement.
+\end{proposition}
+
+\begin{proof}
+Condition \eqref{eq:transfer-W3} implies $e^2R^*<1$,
+since $N_*\ge1000$ and $\log(1/e)\ge\log3>1$.
+Put $x=\exp(-2\pi^2/(e^2R^*))$. The same condition gives
+\[
+ x\le e^{12N_*},\qquad x^{1/(2N_*)}\le e^6.
+\]
+Apply Proposition~\ref{prop:transfer-flux-defect} at
+$n_*$ and $j=L$. Since $\varsigma_{n_*}\le7x<1/8$,
+\[
+ D_L^{\mathrm{fl}}\le-L^3\log(1-\varsigma_{n_*})
+              \le8L^3x=N_*x
+              \le N_*3^{-12N_*}\le1.
+\]
+The photon estimate and the defect decomposition
+now prove the upper bound in \eqref{eq:transfer-delta};
+its lower bound is Proposition~\ref{prop:transfer-general}.
+
+All the polynomials in \eqref{eq:transfer-Wick-observable}
+are the same local integrands on every carrying torus,
+by Section~\ref{sec:reference-cells}. They are real
+elements of the cell observable class. Write
+$O_m^\sharp=\prod_{c\in\mathcal C_*}O_m^{[c]}$ on
+$C(n_*)$. Its all-flux expectation is nonnegative,
+by the fold trace \eqref{eq:transfer-fold-trace}.
+We estimate it by splitting flux zero from the
+other sectors.
+
+First, Gaussian domination and the moment bound
+give, for every positive integer $i$,
+\[
+ \E_{n_*}^{\mathrm{af}}X_c^{2i}
+                              \le(2i\exp(1)v_\eta)^i.
+\]
+Minkowski's inequality at exponent $2N_*$ yields
+\begin{align*}
+ \|H_4(X_c;v_\eta)\|_{2N_*}
+   &\le[64\exp(2)N_*^2+24\exp(1)N_*+3]v_\eta^2
+       \le600N_*^2v_\eta^2,\\
+ \|H_2(X_c;v_\eta)\|_{2N_*}
+   &\le[4\exp(1)N_*+1]v_\eta
+       \le12N_*v_\eta.
+\end{align*}
+Thus $\|O_m^{[c]}\|_{2N_*}\le M_m$.
+The finite moments justify all uses of H\"older
+and Cauchy--Schwarz below, also when $v_\eta=0$.
+
+On the zero-flux sector,
+\eqref{eq:external-Wick-product} gives
+\[
+ \left|\E_{n_*}^{\mathrm{af}}
+               [O_m^\sharp\mathbf1_{\{\mathrm{flux}=0\}}]\right|
+   =P_{n_*}(0)\left|\E_{n_*}^{(0)}O_m^\sharp\right|
+   \le(\Theta_m^{(0)})^{N_*}.
+\]
+On the remaining sectors, Cauchy--Schwarz followed
+by H\"older with $N_*$ factors gives
+\begin{align*}
+ \left|\E_{n_*}^{\mathrm{af}}
+               [O_m^\sharp\mathbf1_{\{\mathrm{flux}\ne0\}}]\right|
+ &\le\varsigma_{n_*}^{1/2}
+                \bigl(\E_{n_*}^{\mathrm{af}}|O_m^\sharp|^2\bigr)^{1/2}\\
+ &\le\varsigma_{n_*}^{1/2}
+                \prod_{c\in\mathcal C_*}\|O_m^{[c]}\|_{2N_*}\\
+ &\le\bigl(\varsigma_{n_*}^{1/(2N_*)}M_m\bigr)^{N_*}.
+\end{align*}
+Since $\varsigma_{n_*}^{1/(2N_*)}\le2e^6$,
+the nonnegative $N_*$-th root satisfies
+\[
+ \|O_m\|_*=
+       \bigl(\E_{n_*}^{\mathrm{af}}O_m^\sharp\bigr)^{1/N_*}
+             \le\Theta_m^{(0)}+2e^6M_m=T_m.
+\]
+For nonnegative $a,b$ we used
+$(a^{N_*}+b^{N_*})^{1/N_*}\le a+b$.
+Proposition~\ref{prop:transfer-general}, with
+$s_0=2L$ and $j=L$, proves
+\eqref{eq:transfer-Wick-product}.
+
+For one cell the same estimate gives
+$|e^{-m}\E H_m(X_0;v_\eta)-c_m|\le u_m$.
+Charge conjugation makes the odd moments zero.
+Writing $y=e^{-2}\E H_2(X_0;v_\eta)$, one has
+\[
+ e^{-4}\kappa_4=e^{-4}\E H_4(X_0;v_\eta)-3y^2.
+\]
+The second-order conclusion follows at once.
+For the fourth, use $|y-c_2|\le u_2$ and
+$|y+c_2|\le2|c_2|+u_2$ to obtain
+\eqref{eq:transfer-fourth-cumulant}.
+\end{proof}
+
+\section{Reference scales and the loss of charge exponent}\label{sec:vtm-bounds}
+
+The reference side is chosen from the logarithmic charge
+scale. Use $L,M,h$ from the introduction and the localization
+power two. Thus
+\begin{equation}\label{eq:transfer-scale-choice}
+ e_K=e\sqrt h,\qquad v_K=-\log e_K,\qquad
+ r_K=\min\{L^i:L^i\ge v_K^2,\ i\in\Z_{\ge0}\},
+ \qquad R^*=\frac{hMr_K}{L}.
+\end{equation}
+Assume $v_K\ge8$, $e\le1/3$, $e_K\log h\le1$, and
+\begin{equation}\label{eq:transfer-tail-condition}
+ 6N_*Mv_K^2 \exp(-v_K)
+                 \left(v_K\exp(-v_K)+\tfrac12\right)\le\pi^2.
+\end{equation}
+These are finite charge conditions after $h,L,M$ are fixed.
+They hold on a sufficiently small charge interval:
+$v_K\to\infty$ as $e\to0$, and the polynomial times
+exponential in \eqref{eq:transfer-tail-condition}
+tends to zero.
+
+Minimality gives $v_K^2\le r_K<Lv_K^2$.
+Consequently $T^*=\log_L(Mr_K)-1$ is an integer at
+least one, $R^*=hL^{T^*}$, and
+$\ell_c=R^*/(2L)\to\infty$ as $e\to0$.
+Moreover $1/L<\bar mh\le1$, so
+\begin{equation}\label{eq:transfer-volume-error}
+ \bar mR^*>\frac{Mr_K}{L^2}\ge r_K\ge v_K,
+ \qquad \exp(-\bar mR^*)\le e\sqrt h.
+\end{equation}
+The same upper bound on $r_K$ gives
+\begin{align*}
+ e^2R^*\log(1/e)
+ &<Mv_K^2 \exp(-2v_K)
+                          (v_K+\tfrac12\log h)\\
+ &\le Mv_K^2 \exp(-v_K)
+                          (v_K\exp(-v_K)+\tfrac12).
+\end{align*}
+Thus \eqref{eq:transfer-tail-condition} implies
+\eqref{eq:transfer-W3}.
+The probe fits every sufficiently small charge and
+sufficiently fine mesh, since $D_\beta^{\mathrm{buf}}$
+is fixed and $\ell_c\to\infty$.
+
+We now isolate the two reference estimates used in the
+passage to arbitrary volumes. Their dependence on the
+charge matters: a bounded partition defect still loses
+a small power of $e$ through its photon contribution.
+Let $C_{\mathrm{mat}}$ and $C_{\mathrm{ref}}$ be finite constants
+independent of the charge, mesh and placement. Assume
+that for $N\ge N_{\mathrm{ref}}(e)$ the mass assignment and reference
+response satisfy
+\begin{align}
+ D^{\mathrm{mat}}&\le C_{\mathrm{mat}},\notag\\
+ \Theta_4^{(0)}&\le C_{\mathrm{ref}} e^{\mathfrak e},\qquad
+ (1+|c_2|)\Theta_2^{(0)}
+                          \le C_{\mathrm{ref}} e^{\mathfrak e},
+                                   \label{eq:transfer-terminal-input}
+\end{align}
+where
+\begin{equation}\label{eq:transfer-charge-exponents}
+ \mathfrak e=\tfrac12(1/4-9\varepsilon)-12\varepsilon,\qquad
+ \sigma=\mathfrak e-\frac{2a_L}{N_*}>0,\qquad
+ 0<\varepsilon\le1/200.
+\end{equation}
+Here $N_{\mathrm{ref}}(e)$ is a fixed finite mesh threshold.
+These are the reference hypotheses of \cref{thm:vtm-main}.
+For the common tuned mass, the matter estimate is
+\cite[Theorem~A, (5)]{TerminalPressure}, and the response
+estimate is \cite[Theorem~A]{ReferenceResponse}.
+Their joint charge interval and cutoff threshold are part
+of the construction data assumed here.
+
+On the reference torus take the free coefficients
+$c_m=N_0^{(m)}(0)$ from
+\eqref{eq:response-coefficient-relations}, using the
+source associated with the same placed probe.
+\cite[Proposition~5.2]{PositiveProbe}
+and the support fit give a constant, enlarged into
+$C_{\mathrm{ref}}$ if necessary, such that
+\begin{equation}\label{eq:transfer-free-input}
+ |c_2|+|c_4|^{1/2}\le C_{\mathrm{ref}},\qquad
+ |c_4-3c_2^2-b(f)|
+              \le C_{\mathrm{ref}}(e+\eta^{1/4}).
+\end{equation}
+Indeed $R^*\ge D_\beta+1$, and
+\eqref{eq:transfer-volume-error} bounds the finite-volume
+error in \cite[Theorem~B]{PositiveProbe}.
+The coefficients are real and independent of placement.
+
+\begin{proposition}\label{prop:transfer-UV-inputs}
+Fix the probe and the scale data above, and assume
+\eqref{eq:cells-fit}, \eqref{eq:transfer-terminal-input} and \eqref{eq:transfer-free-input}.
+There is a finite
+constant $C_U$, independent of $e,N,T$ and placement,
+such that for all the stated reference charges and
+$N\ge N_{\mathrm{ref}}(e)$,
+\begin{equation}\label{eq:transfer-small-Wick}
+ u_4\le C_Ue^\sigma,\qquad
+ (1+|c_2|)u_2\le C_Ue^\sigma,\qquad
+ |c_4-3c_2^2-b(f)|\le C_U(e^\sigma+\eta^{1/4}).
+\end{equation}
+On every cutoff torus with $T\ge T^*+1$, every finite
+set $Y\subset(R^*/L)\Z^3$ of points incongruent
+modulo $R\Z^3$ satisfies
+\begin{equation}\label{eq:transfer-translated-Wick}
+ \left|\E_{N,T}\prod_{y\in Y}
+       W_m(F^\sharp(\tau_yf^\eta);v_\eta,c_m)\right|
+                          \le u_m^{|Y|},\qquad m=2,4,
+\end{equation}
+Here $W_m$ is the polynomial in \eqref{eq:vtm-Wick}.
+The fourth cumulant of the fixed smooth test obeys
+\begin{equation}\label{eq:transfer-smooth-cumulant}
+ |\kappa_4(F^\sharp(f))-e^4b(f)|
+ \le(8C_U+3C_U^2)e^{4+\sigma}
+                  +C_U(\eta^2+e^4\eta^{1/4}).
+\end{equation}
+The tests $f^\eta$ have one fixed compact support,
+$f^\eta\to f$ in $L^2$, and $v_\eta\to\|f\|_2^2$.
+Thus \eqref{eq:transfer-small-Wick} and
+\eqref{eq:transfer-translated-Wick} give exactly the
+cutoff hypotheses of Proposition~\ref{prop:UV-component-cumulant}.
+\end{proposition}
+
+\begin{proof}
+Write
+\[
+ s_\beta=\|f\|_2+\|\beta\|_{H^4},\qquad
+ C_\Gamma^{\mathrm{tr}}=(2\pi)^{a_L/N_*}
+         \exp\left(\frac{K_L+C_{\mathrm{mat}}+1}
+                                  {(L-1)^3N_*}\right).
+\]
+Since $R^*\ge1$, \eqref{eq:transfer-delta} gives
+\begin{equation}\label{eq:transfer-Gamma-loss}
+ \exp(\delta)\le C_\Gamma^{\mathrm{tr}} e^{-2a_L/N_*}.
+\end{equation}
+The inverse power here is a power of the charge.
+The source-curvature identity and Jensen's inequality
+for the disjoint averaging cubes give
+$v_\eta^{1/2}\le\|f^\eta\|_2\le s_\beta$.
+Use this and \eqref{eq:transfer-free-input} in
+\eqref{eq:transfer-Wick-data}:
+\begin{align*}
+ T_4
+ &\le C_{\mathrm{ref}} e^{\mathfrak e}
+           +1200N_*^2s_\beta^4e^2+2C_{\mathrm{ref}}^2e^6\\
+ &\le(C_{\mathrm{ref}}+1200N_*^2s_\beta^4+2C_{\mathrm{ref}}^2)e^{\mathfrak e},\\
+ (1+|c_2|)T_2
+ &\le C_{\mathrm{ref}} e^{\mathfrak e}
+      +2e^6(12N_*s_\beta^2e^{-2}+C_{\mathrm{ref}})(1+C_{\mathrm{ref}})\\
+ &\le[C_{\mathrm{ref}}+2(12N_*s_\beta^2+C_{\mathrm{ref}})(1+C_{\mathrm{ref}})]
+                                                    e^{\mathfrak e}.
+\end{align*}
+Here $0<\mathfrak e<1/4$, from
+\eqref{eq:transfer-charge-exponents}.
+One possible constant is
+\begin{equation}\label{eq:transfer-CU}
+ \begin{split}
+ C_U=\max\{&
+ C_\Gamma^{\mathrm{tr}}(C_{\mathrm{ref}}+1200N_*^2s_\beta^4+2C_{\mathrm{ref}}^2),\\
+ &C_\Gamma^{\mathrm{tr}}[C_{\mathrm{ref}}+2(12N_*s_\beta^2+C_{\mathrm{ref}})(1+C_{\mathrm{ref}})],
+              \ C_{\mathrm{ref}},\ 60s_\beta^4\}.
+ \end{split}
+\end{equation}
+Multiplication by \eqref{eq:transfer-Gamma-loss}
+proves the first two bounds in
+\eqref{eq:transfer-small-Wick}. The last follows from
+\eqref{eq:transfer-free-input}, since $e\le e^\sigma$.
+
+For a cutoff side $n=8hL^{T+N}$ with $T\ge T^*+1$,
+one has $n=8L^{T-T^*}n_*$, a multiple of $p_{\rm cell}$ with
+$n\ge Ln_*$. For $y\in(R^*/L)\Z^3$ use the even
+cell index $c(y)$ of
+\eqref{eq:cells-translation-observable}.
+Incongruent points give distinct cells.
+Proposition~\ref{prop:transfer-Wick} applies to their
+product, and lattice translation invariance removes
+the common placement. This proves
+\eqref{eq:transfer-translated-Wick}.
+For a fixed finite set of distinct points it applies
+as soon as $R>2\max_{y\in Y}|y|_\infty$.
+
+It remains to replace the discrete smooth test
+$f^\eta$ by $f$ in the cumulant. We give the
+quantitative multilinear estimate used for this purpose.
+For a real two-cochain $g$, charge conjugation and
+Gaussian domination give
+\[
+ \E\cosh(t\langle g,F^{\mathrm u}\rangle)
+                          \le\exp(t^2\|g\|^2/2).
+\]
+Extract its nonnegative term of degree $2i$ and choose
+$t^2=2i/\|g\|^2$. This gives
+\[
+ \E\langle g,F^{\mathrm u}\rangle^{2i}
+    \le(2i)!\left(\frac{\|g\|^2}{2i}\right)^i \exp(i).
+\]
+For $i=2$ the bound is $(3/2)\exp(2)\|g\|^4$.
+H\"older bounds the four-field moment by
+\[
+ \tfrac32\exp(2)\prod_a\|g_a\|.
+\]
+The variance bound bounds each of its three pair subtractions
+by $\prod_a\|g_a\|$. Since $(3/2)\exp(2)+3<15$,
+the symmetric multilinear forms $K_2,K_4$ obey
+\begin{equation}\label{eq:transfer-multilinear-cumulants}
+ |K_2(g_1,g_2)|\le\|g_1\|\|g_2\|,\qquad
+ |K_4(g_1,g_2,g_3,g_4)|\le15\prod_a\|g_a\|.
+\end{equation}
+For $g=0$ the corresponding moment is zero.
+
+Let $g$ and $g'$ be the periodizations of the normalized
+covering cochains $f_{[\eta]}$ and $(f^\eta)_{[\eta]}$
+from \cref{sec:reference-cells} onto the cutoff torus.
+The common support cube has side less than $R$.
+The averaging bound and \eqref{eq:cells-test-error} give
+\[
+ \|g\|,\|g'\|\le s_\beta,\qquad
+ \|g-g'\|\le\eta^2\|\beta\|_{H^4}.
+\]
+The observables paired with these cochains are
+$F^\sharp(f)$ and $F^\sharp(f^\eta)$.
+Telescope the four slots of $K_4$ and the two slots
+of $K_2$ in \eqref{eq:transfer-multilinear-cumulants}.
+This proves
+\begin{align}
+ |\kappa_4(F^\sharp(f))-\kappa_4(F^\sharp(f^\eta))|
+                              &\le60s_\beta^4\eta^2,\notag\\
+ |\kappa_2(F^\sharp(f))-\kappa_2(F^\sharp(f^\eta))|
+                              &\le2s_\beta^2\eta^2.
+                                   \label{eq:transfer-test-replacement}
+\end{align}
+One-cell transfer and \eqref{eq:transfer-small-Wick}
+bound the fourth cumulant of $F^\sharp(f^\eta)$ by
+\[
+ |\kappa_4(F^\sharp(f^\eta))-e^4(c_4-3c_2^2)|
+                     \le(7C_U+3C_U^2)e^{4+\sigma}.
+\]
+Adding the free-coefficient error and the first bound
+in \eqref{eq:transfer-test-replacement} proves
+\eqref{eq:transfer-smooth-cumulant}.
+Finally the compact support, $L^2$ convergence and
+variance convergence are respectively
+\eqref{eq:cells-smooth-test}, \eqref{eq:cells-test-error}
+and \eqref{eq:cells-variance-limit}.
+\end{proof}
+
+
+\section{Periodic fields and a prescribed continuum law}
+\label{sec:continuum-limits}
+
+A finite periodic step field does not satisfy the sharp global
+$L^2(\R^3)$ Gaussian bound for arbitrary Schwartz tests.
+The periodized norm must be retained until the volume tends
+to infinity. We give the moment argument of
+\cite[\S6.1--6.2]{QED3Master}; it is the step needed to use the
+finite-volume product estimates for a prescribed parent.
+
+Let $\mathsf A=1+|y|^2-\Delta$ on $\R^3$, with real
+$L^2$-orthonormal Hermite two-forms $h_\kappa$ and eigenvalues
+$\lambda_\kappa$. Each scalar Hermite function occurs once
+for each of the three components. We use the Hilbert space
+\[
+ H_{-4}=\left\{F:\sum_\kappa\lambda_\kappa^{-8}
+                                  |F(h_\kappa)|^2<\infty\right\}.
+\]
+It is continuously embedded in tempered two-form distributions,
+and each Schwartz evaluation is continuous there.
+The step-field realization, tightness and fixed-spacing limits
+in this space are proved in \cite{ContinuumExistence}.
+
+\subsection{The periodic seminorm}
+
+For $R=n\eta$ and a Schwartz two-form $g$, set
+$g^R(y)=\sum_{k\in\Z^3}g(y+Rk)$ and
+\[
+ g_\eta([\sigma])=\eta^{-3}
+                \int_{Q_\eta(\sigma)}g^R_{\mu\nu}(y)\,\dd y,
+ \qquad |g_\eta|_\eta^2=\eta^3\sum_{[\sigma]}|g_\eta([\sigma])|^2.
+\]
+Unfolding the absolutely convergent sum gives
+\begin{equation}\label{eq:limit-step-pairing}
+ F^\sharp(g)=\eta^{3/2}\sum_{[\sigma]}
+                         g_\eta([\sigma])F^{\rm u}(\sigma).
+\end{equation}
+Cell Cauchy--Schwarz and Minkowski give
+\begin{equation}\label{eq:limit-torus-norm}
+ |g_\eta|_\eta\le\|g^R\|_{L^2(\R^3/R\Z^3)}\le p_R(g),
+ \qquad
+ p_R(g)=\|g\|_2+
+      26R^{-2}\||y|^2g\|_{L^2(\R^3\setminus Q_R)},
+\end{equation}
+where $Q_R=[-R/2,R/2)^3$.
+For completeness, put $a_k=\|g\|_{L^2(Q_R+Rk)}$.
+The periodized norm is at most $\sum_ka_k$. On a cube with
+$k\ne0$, $|y|\ge R|k|_\infty/2$, so
+\[
+ \sum_{k\ne0}a_k
+ \le4R^{-2}\left(\sum_{k\ne0}|k|_\infty^{-4}\right)^{1/2}
+                 \||y|^2g\|_{L^2(\R^3\setminus Q_R)}.
+\]
+The shell count $24j^2+2$ gives a sum
+$4\pi^2+\pi^4/45<41.65$; its square root times four is
+less than $26$. This proves \eqref{eq:limit-torus-norm}.
+For $R\ge1$,
+\[
+ p_R(g)\le p_1(g),\qquad p_R(g)\longrightarrow\|g\|_2
+                      \quad(R\longrightarrow\infty).
+\]
+The seminorm $p_1$ is continuous on Schwartz space.
+If the support of $g$ lies in a translate of an open
+$R$-cube, its distinct period translates are disjoint and
+$|g_\eta|_\eta\le\|g\|_2$.
+
+By \eqref{eq:slab-gaussian-domination},
+\begin{equation}\label{eq:limit-cutoff-G}
+ \E_{N,T}\exp(F^\sharp(g))
+       \le\exp(|g_\eta|_\eta^2/2)\le\exp(p_R(g)^2/2)
+                          \qquad(g\text{ real}).
+\end{equation}
+
+\begin{proposition}\label{prop:vtm-periodic-moments}
+Suppose $N_i,T_i\to\infty$ and the laws $P_{N_i,T_i}$ of
+$F^\sharp$ converge weakly on $H_{-4}$ to $\mu$.
+Then $\E_\mu\exp(F(g))\le\exp(\|g\|_2^2/2)$ for every real
+Schwartz two-form $g$. Every joint moment of a fixed finite
+family of Schwartz tests converges along the same sequence.
+\end{proposition}
+
+\begin{proof}
+Truncate $\exp(F(g))$ above, pass this bounded continuous
+function to the limit, and remove the truncation.
+Since $R_i\to\infty$, \eqref{eq:limit-torus-norm} proves the
+Gaussian bound.
+
+For fixed complex tests $g_1,\ldots,g_s$ put
+\[
+ Z_i(z)=\E_{N_i,T_i}\exp\left(\sum_a z_aF^\sharp(g_a)\right),
+ \qquad
+ Z(z)=\E_\mu\exp\left(\sum_a z_aF(g_a)\right).
+\]
+The evaluations are continuous on $H_{-4}$, and
+\[
+ \E_{N_i,T_i}
+ \left|\exp\left(\sum_a z_aF^\sharp(g_a)\right)\right|^2
+ \le\exp\left(2p_1\left(\operatorname{Re}\sum_a z_ag_a\right)^2\right).
+\]
+This is uniform in $i$ and on compact $z$-sets.
+Uniform integrability and weak convergence give pointwise
+convergence of $Z_i$ to $Z$. The exponential bounds make
+these functions entire and locally uniformly bounded.
+Cauchy's estimates give equicontinuity on compact sets;
+pointwise convergence is therefore locally uniform.
+Cauchy's formula passes every derivative at zero to the limit,
+which proves joint moment convergence.
+\end{proof}
+
+We also record the varying-test estimate used below.
+If $g_1,\ldots,g_J$ are real and their supports lie in one
+open period cube, the Gaussian moment bounds and H\"older
+give
+\[
+ \E\prod_{a=1}^J|F^\sharp(g_a)|
+                     \le c_J\prod_{a=1}^J\|g_a\|_2
+\]
+for a constant $c_J$ depending only on $J$.
+The same estimate holds for $\mu$.
+Thus replacing each factor from a bounded family of tests
+by another test, with $L^2$ difference at most $\delta$,
+changes the expectation of a degree-$J$ monomial by at most
+$Jc_JB^{J-1}\delta$, where $B$ bounds their $L^2$ norms.
+This follows by telescoping the $J$ slots. For any fixed
+finite family of compactly supported translates, the
+support condition holds once $R_i$ is sufficiently large.
+
+\subsection{Realizing the chosen parent by finite tori}
+
+Let $\mu_i$ and $\mu$ be the prescribed laws in
+\cref{thm:vtm-main}. Fix a metric $d_{\rm w}$ for weak
+convergence of probability measures on the separable Hilbert
+space $H_{-4}$. At spacing $\eta_i=L^{-N_i}$, take the
+defining volume sequence for $\mu_i$. Choose an element
+$T_i$ of that sequence so large that
+\[
+ d_{\rm w}(P_{N_i,T_i},\mu_i)<1/i,\qquad
+ T_i\ge i+T^*(e)+1.
+\]
+Then
+\[
+ d_{\rm w}(P_{N_i,T_i},\mu)
+ \le1/i+d_{\rm w}(\mu_i,\mu)\longrightarrow0.
+\]
+Both cutoffs diverge. This is the prescribed-parent
+diagonal of \cite[Corollary~7.4]{ContinuumExistence},
+with the finite-periodic moment conclusion supplied by
+\cref{prop:vtm-periodic-moments}. Discard finitely many terms
+so that $N_i\ge N_{\rm ref}(e)$.
+At this fixed charge the translation spacing
+$\lambda=R^*(e)/L$ is independent of $i$.
+
+The four reference quantities
+$c_{2,i},c_{4,i},u_{2,i},u_{4,i}$ are bounded by the estimates
+of \cref{prop:transfer-UV-inputs}. A subsequence on which
+they converge still has weak limit $\mu$.
+For every fixed finite $Y\subset\lambda\Z^3$, the points
+are eventually incongruent modulo the torus and all the
+translated supports fit in a single open period cube.
+The next section passes the Wick products along this
+same coefficient subsequence. The threshold for support
+containment may depend on $Y$; the coefficients and parent
+law do not.
+
+\section{Fourth cumulants of the limiting components}
+\label{sec:ultraviolet-limits}
+
+The fourth-cumulant estimate for a mixed limiting law does not by
+itself control each ergodic component. We use the stronger estimate
+on products of translated Wick polynomials. It bounds their
+translation-invariant conditional expectations, and hence the
+second and fourth moments of almost every component.
+
+\subsection{From distinct-point products to the invariant part}
+
+Let $U(y)$,
+$y\in\Z^d$, be the operators of a measure-preserving action on
+a probability space, where $d\ge1$, with $U(y)G=G\circ T_{-y}$. Let
+$P_{\mathrm{lat}}$ be the orthogonal projection in $L^2$ onto
+the vectors invariant under this action.
+
+\begin{lemma}\label{lem:UV-invariant-product-bound}
+Suppose that $G$ is real and belongs to every $L^p$, $p<\infty$.
+If $u\ge0$ and
+\begin{equation}\label{eq:UV-distinct-product-bound}
+ \left|\E\prod_{a=1}^J U(y_a)G\right|\le u^J
+\end{equation}
+for every finite family of pairwise distinct points of $\Z^d$,
+then $|P_{\mathrm{lat}}G|\le u$ almost surely.
+\end{lemma}
+
+\begin{proof}
+For $B_n=\{0,\ldots,n-1\}^d$ put
+$A_n=n^{-d}\sum_{y\in B_n}U(y)$. These contractions converge
+strongly in $L^2$ to $P_{\mathrm{lat}}$.
+Indeed, the orthogonal complement of the invariant space is the
+closed span of $(U(y)-1)H$. On such a vector, cancellation of
+the common terms in $B_n$ and $y+B_n$ gives
+\[
+ \|A_n(U(y)-1)H\|_2\le2|y|_1n^{-1}\|H\|_2.
+\]
+On invariant vectors the averages are the identity, proving
+the asserted convergence by the orthogonal decomposition.
+
+For an even integer $J\ge2$, expand $\E(A_nG)^J$.
+The distinct-index terms obey \eqref{eq:UV-distinct-product-bound}.
+There are at most $\binom J2 n^{d(J-1)}$ remaining tuples:
+each has a repeated pair of indices. H\"older's inequality
+bounds their individual expectations in modulus by
+$\|G\|_J^J$. Therefore
+\[
+ \E|A_nG|^J
+       \le u^J+\binom J2 n^{-d}\|G\|_J^J.
+\]
+Along a subsequence the $L^2$ convergence is almost sure.
+Fatou's lemma gives $\E|P_{\mathrm{lat}}G|^J\le u^J$
+for every even $J$. For $t>u$, Markov's inequality now gives
+$\Pr(|P_{\mathrm{lat}}G|>t)\le(u/t)^J$.
+Let $J\to\infty$ and then $t\downarrow u$ through a countable
+sequence.
+\end{proof}
+
+Let a translation-invariant law $\mu$ on tempered fields have
+the decomposition $\mu=\int\mu_\xi\,\dd\nu(\xi)$.
+Write $I$ for its translation-invariant sigma algebra and
+$P=\E_\mu[\,\cdot\mid I]$. Apply the lemma to translations
+on $\lambda\Z^3$, with $\lambda>0$ fixed. The range of $P$
+is contained in that of $P_{\mathrm{lat}}$, so
+$P=PP_{\mathrm{lat}}$. Positivity of conditional expectation
+therefore gives
+\begin{equation}\label{eq:UV-component-product-bound}
+ |PG|\le P|P_{\mathrm{lat}}G|\le u,\qquad
+ |\mu_\xi(G)|\le u\quad\text{for }\nu\text{-almost every }\xi.
+\end{equation}
+The second assertion uses the conditional-law representation of
+the decomposition. Integrability under the conditional laws and
+the representation for this integrable $G$ follow by truncating
+its positive and negative parts.
+
+\subsection{Passing the Wick-product estimate to a limit law}
+
+Fix the charge $e>0$ and a real compactly supported test $f$.
+Use the Wick polynomials $W_m$ in \eqref{eq:vtm-Wick},
+with variance argument $v\ge0$ and $m=2,4$.
+
+Take a joint cutoff sequence defining a limit law $\mu$.
+Suppose that the lattice estimates give compactly
+supported real tests $f_i$, all supported in one fixed cube,
+and real numbers
+\[
+ v_i,\ c_{2,i},\ c_{4,i},\ u_{2,i},\ u_{4,i},
+\]
+with
+$v_i\ge0$, such that
+\begin{equation}\label{eq:UV-test-convergence}
+ \|f_i-f\|_2\to0,\qquad
+ v_i\to\|f\|_2^2,\qquad
+ \sup_i(|c_{2,i}|+|c_{4,i}|)<\infty.
+\end{equation}
+For a fixed $\lambda>0$, assume that
+\begin{equation}\label{eq:UV-cutoff-product-bound}
+ \left|\E_i\prod_{y\in Y}
+       W_m(F^\sharp(\tau_y f_i);v_i,c_{m,i})\right|
+                     \le u_{m,i}^{|Y|},\qquad m=2,4,
+\end{equation}
+for every finite $Y\subset\lambda\Z^3$ and all sufficiently
+large $i$ depending on $Y$. This is the translated-cell form
+of the transfer estimate; the volume condition makes the
+points of $Y$ incongruent modulo the torus.
+The reference estimates also give
+\begin{equation}\label{eq:UV-reference-bounds}
+ \begin{split}
+ 0\le u_{4,i}&\le Ce^\sigma,\qquad
+ 0\le(1+|c_{2,i}|)u_{2,i}\le Ce^\sigma,\\
+ |c_{4,i}-3c_{2,i}^2-b(f)|
+                  &\le C(e^\sigma+\eta_i^{1/4}),
+ \end{split}
+\end{equation}
+with $C$ independent of the cutoff, $\sigma>0$ and $0<e\le1$.
+For the chamber laws, Proposition~\ref{prop:transfer-UV-inputs}
+supplies these hypotheses throughout the charge interval
+\eqref{eq:constants-probe-charge}.
+
+Pass to a subsequence on which the four bounded sequences
+$c_{2,i},c_{4,i},u_{2,i},u_{4,i}$ converge, with limits
+$c_2,c_4,u_2,u_4$. The weak limit remains $\mu$.
+Equation \eqref{eq:UV-reference-bounds} gives
+\begin{equation}\label{eq:UV-reference-limit}
+ u_4\le Ce^\sigma,\quad
+ (1+|c_2|)u_2\le Ce^\sigma,\quad
+ |c_4-3c_2^2-b(f)|\le Ce^\sigma.
+\end{equation}
+Set $G_m=W_m(F(f);\|f\|_2^2,c_m)$.
+Then \eqref{eq:UV-cutoff-product-bound} passes to
+\begin{equation}\label{eq:UV-law-product-bound}
+ \left|\E_\mu\prod_{y\in Y}U(y)G_m\right|\le u_m^{|Y|}
+                   \qquad(Y\subset\lambda\Z^3\text{ finite}).
+\end{equation}
+
+To justify this passage for the varying tests, expand the finite
+product of Wick polynomials into monomials. For a monomial
+of positive total degree $J$, telescope the replacement of each
+$F^\sharp(\tau_y f_i)$ by $F^\sharp(\tau_y f)$.
+All these tests have support in one open $R_i$-cube once $i$
+is large. The test-map variance and product-moment bounds
+then give an error at most
+\[
+ Jc_J B^{J-1}\|f_i-f\|_2,
+ \qquad B=\sup_i\max(\|f_i\|_2,\|f\|_2).
+\]
+This tends to zero. The moments of the fixed tests converge
+by Section~\ref{sec:continuum-limits}. The polynomial coefficients
+converge by the selected coefficient subsequence and the
+variance convergence in \eqref{eq:UV-test-convergence}.
+There are only finitely many monomials for each fixed $Y$.
+This proves \eqref{eq:UV-law-product-bound}.
+
+\subsection{The cumulant in an ergodic component}
+
+\begin{proposition}\label{prop:UV-component-cumulant}
+Under \eqref{eq:UV-test-convergence}--\eqref{eq:UV-reference-bounds},
+suppose that almost every translation-ergodic component of $\mu$
+satisfies Gaussian domination. Then
+\begin{equation}\label{eq:UV-component-cumulant}
+ \left|\kappa_4^{\mu_\xi}(f)-e^4b(f)\right|
+                 \le(8C+3C^2)e^{4+\sigma}
+\end{equation}
+for almost every component. In particular, if $b(f)>0$ and
+$(8C+3C^2)e^\sigma\le b(f)/2$, its fourth cumulant is positive.
+\end{proposition}
+
+\begin{proof}
+Gaussian domination of $\mu$ makes the real polynomials $G_2,G_4$
+belong to every $L^p(\mu)$. Apply
+Lemma~\ref{lem:UV-invariant-product-bound} to
+\eqref{eq:UV-law-product-bound}, and then use
+\eqref{eq:UV-component-product-bound}. On one set of full
+component measure,
+\[
+ |d_m|\le u_m,\qquad d_m=\E_{\mu_\xi}G_m,\qquad m=2,4.
+\]
+Intersect with the full-measure set of components having Gaussian
+domination. For a component in this intersection, put $X=F(f)$
+and $v=\|f\|_2^2$. Gaussian domination gives $\E_{\mu_\xi}X=0$
+and all moments finite. Thus
+\[
+ \kappa_4^{\mu_\xi}(f)
+  =\E_{\mu_\xi}H_4(X;v)
+          -3\bigl(\E_{\mu_\xi}H_2(X;v)\bigr)^2.
+\]
+The definition of $G_m$ gives the exact identity
+\begin{equation}\label{eq:UV-cumulant-identity}
+ e^{-4}\kappa_4^{\mu_\xi}(f)
+                =c_4+d_4-3(c_2+d_2)^2.
+\end{equation}
+Consequently \eqref{eq:UV-reference-limit} implies
+\begin{align*}
+ |e^{-4}\kappa_4^{\mu_\xi}(f)-b(f)|
+ &\le |c_4-3c_2^2-b(f)|+u_4+6|c_2|u_2+3u_2^2\\
+ &\le8Ce^\sigma+3C^2e^{2\sigma}
+ \le(8C+3C^2)e^\sigma.
+\end{align*}
+This proves the assertion uniformly over the full-measure set
+of components. A centered normal variable has zero fourth
+cumulant, so positivity also proves that these laws are
+non-Gaussian.
+\end{proof}
+
+
+
+
+\subsection{Completion for the prescribed volume-first law}
+
+\begin{proof}[Proof of \Cref{thm:vtm-main}]
+The scale calculation in \cref{sec:vtm-bounds} gives
+\eqref{eq:transfer-W3} and the reference volume error.
+The reference and free-coefficient hypotheses are exactly
+\eqref{eq:transfer-terminal-input} and \eqref{eq:transfer-free-input}.
+Thus \cref{prop:transfer-UV-inputs}, with the uniform constant
+\eqref{eq:transfer-CU}, proves
+\eqref{eq:vtm-main-errors}--\eqref{eq:vtm-main-finite-cumulant}.
+
+For the prescribed parent, use the finite-torus diagonal
+in \cref{sec:continuum-limits}. Set
+$f_i=f^{\eta_i}$ and $v_i=v_{\eta_i}$.
+The compact support, test convergence and variance convergence
+are \eqref{eq:cells-smooth-test},
+\eqref{eq:cells-test-error} and \eqref{eq:cells-variance-limit}.
+At this fixed charge, $\lambda=R^*/L$ is fixed.
+Each finite $Y\subset\lambda\Z^3$ eventually consists of
+distinct torus translates. The four reference sequences have
+a convergent subsequence, whose weak limit is still the
+prescribed $\mu$. The product passage proved above therefore
+applies to this same law, with $C=C_U$.
+Its components have Gaussian domination by the explicit
+hypothesis \eqref{eq:vtm-component-G}.
+Apply \cref{prop:UV-component-cumulant} and impose
+\eqref{eq:constants-probe-charge} when $b(f)>0$.
+
+If a separate argument gives other properties on a full set
+of components of this parent, intersect that set with the
+one obtained here. The component laws themselves have not
+been replaced.
+\end{proof}
 \printbibliography
 \end{document}

@@ -3,7 +3,20 @@
 \usepackage[bibliography]{manuscript-style}
 \usepackage{mathrsfs}
 \allowdisplaybreaks
-\input{notation}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+\newcommand{\E}{\mathbb E}
+\newcommand{\Sspace}{\mathcal S}
+\newcommand{\cS}{\mathcal S}
+\newcommand{\dd}{\mathrm d}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\diag}{diag}
+
+\newcommand{\extref}[2]{#1 of~\cite{#2}}
+\newcommand{\exteq}[2]{(#1) of~\cite{#2}}
 \title[The continuum field-strength construction for QED3]{The continuum field-strength construction for QED in three dimensions}
 \date{}
 \hypersetup{pdftitle={The continuum field-strength construction for QED in three dimensions},pdfauthor={}}
@@ -13,13 +26,2999 @@ We construct non-Gaussian laws of closed two-form fields from noncompact lattice
 \end{abstract}
 \maketitle
 \tableofcontents
-\input{introduction}
-\input{model}
-\input{limits}
-\input{parameters}
-\input{transfer}
-\input{tensor}
-\input{completion}
-\input{rotations}
+\section{Introduction}
+
+The observable in this paper is the field strength. We regard it as a real
+tempered two-form on $\R^3$, and write $F(f)$ for its pairing with a test
+two-form $f$. The regularization uses a noncompact gauge field and
+four-component chamber fermions, with all flux sectors included.
+The order of limits is part of the construction: the volume tends to
+infinity at a fixed lattice spacing, and the spacing then tends to zero.
+
+For a lattice curvature $u$, the physical field $F^\sharp$ is the
+centered plaquette step interpolation of $\eta^{-3/2}u$ at spacing
+$\eta$; see \cref{sec:regularization,sec:continuum-limits} for the
+finite law and interpolation. A volume-first limit is a weak limit
+of fixed-spacing infinite-volume laws as $\eta\to0$. We take these
+weak limits on the Hilbert space $H_{-4}$ of tempered two-forms
+defined in \cref{sec:probability}. In the following statement
+$\gamma_j=\operatorname{diag}(\sigma_j,-\sigma_j)$, where $\sigma_j$
+are the Pauli matrices, and $d^*$ is the Euclidean adjoint of $d$.
+
+\begin{theorem}[Field-strength OS theorem]\label{thm:main}
+Fix $0<\rho<1$ and $0<\bar m\le1$, the chamber Wilson parameter and
+reference mass parameter in physical units. Use the standard chamber weights
+$(6,6\sqrt2,6\sqrt2,6)$. There are an odd scale factor $L\ge5$,
+numbers $e_{\mathrm{phys}},\sigma>0$, and real volume-independent bare mass shifts
+$m_{0,N}(e)$ for $N\in\Z_{\ge0}$ and $0<e\le e_{\mathrm{phys}}$, with
+$|m_{0,N}(e)|<1/8$, with the following property.
+
+Fix a real $\beta\in C_c^\infty(\R^3;\Lambda^2)$ such that
+$f=dd^*\beta$ has
+\begin{equation}\label{eq:positive-coefficient}
+ b(f):=-6\tr\bigl[(S_{\bar m}\,i\gamma\cdot d^*\beta)^4\bigr]>0,
+ \qquad S_{\bar m}=(\bar m+\gamma\cdot\partial)^{-1}.
+\end{equation}
+Such probes exist. There is $e_\beta\in(0,e_{\mathrm{phys}}]$ such that, for $0<e\le e_\beta$,
+the all-flux chamber laws on the coordinate cubic tori of unit
+side $n=R/\eta$, with periodic gauge fields and fermions
+antiperiodic in all three coordinate directions, and with
+\begin{equation}\label{eq:cutoff-scales}
+ \eta=L^{-N},\quad R=8hL^T,\quad
+ h=L^{\lfloor\log_L\bar m^{-1}\rfloor},\quad
+ q=e\eta^{1/2},\quad \boldsymbol\mu_N=\bar m\eta+m_{0,N}(e)
+\end{equation}
+with $N,T\in\Z_{\ge0}$ have volume-first limit points.
+Every such limit point is carried by closed tempered two-forms,
+satisfies Gaussian domination with constant one, and has tensor
+Schwinger functions satisfying \textup{(E0$'$)}--\textup{(E3)} below.
+Let $\mu$ be any such limit point and
+$\mu=\int\mu_\xi\,\dd\nu(\xi)$ its decomposition into
+translation-ergodic laws. For $\nu$-almost every $\xi$, $\mu_\xi$ is
+carried by closed tempered two-forms and satisfies
+\begin{equation}\label{eq:main-domination}
+ \int e^{F(g)}\,\dd\mu_\xi(F)\le e^{\|g\|_{L^2}^2/2}
+ \qquad(g\in\Sspace(\R^3;\Lambda^2)\text{ real}).
+\end{equation}
+Its Schwinger functions
+$S_n^\xi(g_1\otimes\cdots\otimes g_n)
+=\int\prod_{a=1}^nF(g_a)\,\dd\mu_\xi(F)$
+extend to the complex tensor Schwartz spaces
+$\Sspace_n=\Sspace(\R^{3n};(\Lambda^2\C^3)^{\otimes n})$
+and obey the following conditions, with $S_0^\xi=1$.
+\begin{enumerate}
+\item[\textup{(E0$'$)}] For $n\ge1$ and $\Psi\in\Sspace_n$,
+\begin{equation}\label{eq:main-growth}
+ |S_n^\xi(\Psi)|\le2\,66^n\sqrt{n!}\,q_{6n}(\Psi),\qquad
+ q_m(\Psi)=\max_{|\alpha|\le m}\sup_y
+ (1+|y|^2)^{m/2}|\partial^\alpha\Psi(y)|,
+\end{equation}
+where the maximum is also over tensor components.
+\item[\textup{(E1)}] For every Euclidean motion $g(x)=Qx+a$,
+$Q\in O(3)$, $S_n^\xi(g\cdot\Psi)=S_n^\xi(\Psi)$, where
+\[
+ (g\cdot\Psi)(x_1,\ldots,x_n)
+ =(\Lambda^2Q)^{\otimes n}\Psi(g^{-1}x_1,\ldots,g^{-1}x_n).
+\]
+\item[\textup{(E2)}] Let $r$ be reflection in a plane through the origin
+and $H$ either closed half-space bounded by that plane.
+If $\Psi_0\in\C$ and $\Psi_k\in\Sspace_k$, $1\le k\le M$,
+have $\supp\Psi_k\subset H^k$, then
+\begin{equation}\label{eq:main-rp}
+ \sum_{k,l=0}^M S_{k+l}^\xi
+ \bigl(\Theta_k\Psi_k\otimes\Psi_l\bigr)\ge0,
+ \qquad \Theta_k\Psi_k=\overline{r\cdot\Psi_k},\quad
+ \Theta_0c=\overline c.
+\end{equation}
+\item[\textup{(E3)}] $S_n^\xi$ is unchanged by simultaneous permutation
+of the arguments and their tensor indices.
+\item[\textup{(E4)}] For $\Psi\in\Sspace_k$ and $\Phi\in\Sspace_l$,
+\begin{equation}\label{eq:main-cluster}
+ S_{k+l}^\xi(\Psi\otimes\tau_a^{\otimes l}\Phi)
+ \longrightarrow S_k^\xi(\Psi)S_l^\xi(\Phi)
+ \quad\text{as }|a|\longrightarrow\infty,
+\end{equation}
+where
+\[
+ (\tau_a^{\otimes l}\Phi)(x_1,\ldots,x_l)
+ =\Phi(x_1-a,\ldots,x_l-a).
+\]
+\end{enumerate}
+Moreover, for a constant $C_f$ depending only on the fixed
+construction, reference mass and probe, and independent of
+$0<e\le e_\beta$, the limit point and $\xi$,
+\begin{equation}\label{eq:main-cumulant}
+ \bigl|\kappa_4^{\mu_\xi}(f)-e^4b(f)\bigr|
+ \le C_f e^{4+\sigma},\qquad
+ \kappa_4^{\mu_\xi}(f)\ge\tfrac12e^4b(f)>0.
+\end{equation}
+In particular, $\mu_\xi$ is non-Gaussian.
+The full-measure component set is asserted for each fixed parent
+law, charge and probe.
+\end{theorem}
+
+Here $\kappa_4^\lambda(f)$ is the fourth cumulant of $F(f)$ under a
+law $\lambda$. For the Gaussian-dominated laws considered here,
+$F(f)$ has mean zero, so
+$\kappa_4^\lambda(f)=S_4^\lambda(f^{\otimes4})
+-3S_2^\lambda(f^{\otimes2})^2$.
+The charge threshold may depend on the fixed probe.
+The factorization in \textup{(E4)} is a conclusion for the
+translation-ergodic components.
+
+The tensor action in \textup{(E1)} is essential to
+\textup{(E2)}. For reflection in $x_1=0$, the components $F_{12}$ and
+$F_{13}$ change sign, while $F_{23}$ does not. Replacing this action
+by scalar reflection changes the positivity assertion.
+The growth condition is stated on all tensor tests, including tests
+meeting the diagonals; bounds on products of separately smeared fields
+alone do not state \textup{(E0$'$)}.
+
+
+\subsection{The proof and its relation to earlier work}
+
+\Cref{thm:main} states the tensor form of the axioms of
+Osterwalder and Schrader \cite{OS1973,OS1975}. Uniform Gaussian
+estimates give tightness of the cutoff laws and convergence of their
+moments along weakly convergent sequences. The lattice reflection
+argument supplies positivity at the
+three coordinate and six diagonal mirror directions; the comparison
+with mirror-adapted tori requires taking the volume limit first.
+These properties pass to every prescribed volume-first limit by
+\cite{ChamberLattice,ContinuumLimits}. Reflection-positive lattice
+gauge theories and their transfer matrices were developed by
+Osterwalder and Seiler \cite{OsterwalderSeiler1978}; the chamber
+crossings and the comparison of the two torus geometries are the
+construction-specific inputs used here.
+
+The nine mirror directions give the spectral inequalities
+$H_j\ge|\mathsf P_i|$ for $i\ne j$. Together with Gaussian
+domination, they bound the angular frequencies of the Schwinger
+functions. Closedness gives the required tensor weight at two
+points; reflection positivity and the regular-polygon argument then
+give that weight at every order. The proof in \cref{sec:rotations}
+also treats coincidences and excludes contact terms. We apply it
+to almost every ergodic component, after obtaining the Gaussian
+bound and the nine reflection-positive forms on a common component
+set from \cite{ErgodicComponents}. The same spectral inequalities,
+together with the local correlation estimate, give clustering in
+each component. The supported-tensor argument
+in \cref{sec:tensor-axioms} extends these conclusions to the tests
+in \textup{(E0$'$)}--\textup{(E4)}, including closed-half-space
+supports in reflection positivity.
+
+The renormalization estimates select the volume-independent mass
+and control the fourth-order response. Dimock \cite{DimockUVS2022}
+proves ultraviolet stability at weak coupling in a fixed finite
+volume using Ba{\l}aban's renormalization group. The block analysis
+used here adapts this framework to chamber fermions and two
+reference tori. Decay estimates for the local inverses control the
+polymer activities; extraction of the vacuum and mass terms leaves
+a normalized interaction that contracts under block averaging.
+The nonlinear step and the common tuning theorem give controlled
+trajectories for one mass and vacuum assignment on both reference
+tori \cite{NormalizedContraction,NonlinearStep,CoverTuning}.
+Terminal pressure estimates then enter the quantitative response
+bound \cite{TerminalPressure,ReferenceResponse}. This control of
+the interacting flow supplies the non-Gaussianity estimate, while
+the Gaussian bounds supply the compactness and moment bounds used
+in the limit passage.
+
+The transfer from the reference tori uses chessboard estimates,
+whose general framework is due to Fr\"ohlich, Israel, Lieb, and
+Simon \cite{FILS1978}. The volume-transfer theorem of
+\cite{VolumeTransfer} controls products of translated Wick
+powers as well as the fourth cumulant. For a prescribed parent law,
+these product bounds control invariant conditional expectations
+and yield the cumulant estimate in almost every ergodic component
+of that same law. The free fourth coefficient converges to $b(f)$,
+and the continuum calculation in \cite{PositiveProbe} provides a
+compact probe with $b(f)>0$. Intersecting the resulting full-measure
+component set with the structural one, and reducing the
+probe-dependent charge interval, gives \eqref{eq:main-cumulant}
+along with all five tensor axioms.
+The proof of \cref{thm:main} is completed in
+\cref{sec:main-theorem-closure}.
+\section{The finite laws and their continuum observables}\label{sec:regularization}
+
+We use the all-flux chamber model of \cite[Section~2]{ChamberLattice}.
+The following definitions fix its normalization and its relation to the
+physical scales in \eqref{eq:cutoff-scales}. All cochain norms and
+pairings sum over positively oriented cells. Reversing the orientation
+changes the sign of a cochain.
+
+\subsection{The chamber matrix and the flux sum}
+Let $O_{\rm cub}$ be the signed permutation matrices in three dimensions.
+A chamber label is $(c,g)$, where $c\in\Z^3$ and $g\in O_{\rm cub}$.
+There are $48$ labels at each photon site. Let $s_0$ reverse coordinate
+three, let $s_1,s_2$ exchange coordinates $(2,3)$ and $(1,2)$, and let
+$r_{e_1}$ reverse coordinate one. With the Pauli matrices $\sigma_j$, put
+$\gamma_j=\operatorname{diag}(\sigma_j,-\sigma_j)$ and
+\[
+ \begin{gathered}
+ (w_0,w_1,w_2,w_3)=(6,6\sqrt2,6\sqrt2,6),\\
+ (\mathbf n_0,\mathbf n_1,\mathbf n_2,\mathbf n_3)
+ =(e_3,(e_2-e_3)/\sqrt2,(e_1-e_2)/\sqrt2,-e_1),\qquad
+ M_i(g)=\tfrac12w_i(\rho+\gamma\cdot g\mathbf n_i).
+ \end{gathered}
+\]
+For a bond phase $B$, the unit-mesh massless matrix is
+\begin{equation}\label{eq:reg-dirac}
+ \begin{split}
+ (D^{\rm ch}[B]\psi)(c,g)={}&
+ \sum_{i=0}^2M_i(g)[\psi(c,g)-\psi(c,gs_i)]\\
+ &+M_3(g)[\psi(c,g)-e^{iB(c,c+ge_1)}
+                         \psi(c+ge_1,gr_{e_1})].
+ \end{split}
+\end{equation}
+On $C(n)=\Z^3/n\Z^3$ the bond fields are periodic and spinors
+satisfy $\psi(c+ne_j,g)=-\psi(c,g)$. The massive matrix
+$D^{\rm ch}[B]+\boldsymbol\mu$ is the matrix in
+\cite[Section~2]{ChamberLattice} at diagonal parameter
+$\boldsymbol\mu+\frac\rho2\sum_iw_i$, where $\boldsymbol\mu$ is
+the total lattice mass. The chamber inner product has weight $1/48$;
+this constant weight does not change a finite-dimensional determinant.
+
+For $q>0$, put $r_q=2\pi/q$. A photon configuration is a pair
+$(A,z)$ with $A$ a real one-cochain and $z$ a closed integer
+two-cochain, modulo
+\[
+ (A,z)\sim(A+r_q k,z-dk),\qquad k\text{ an integer one-cochain}.
+\]
+Its curvature is $u=dA+r_qz$. With the representative
+$A(b)\in[0,r_q)$, define
+\begin{equation}\label{eq:reg-functional}
+ Z_{C(n)}[G]=
+ \sum_{\substack{z\in C^2(C(n);\Z)\\dz=0}}
+ \int_{[0,r_q)^{3n^3}}
+ G(A,z)e^{-\|u\|^2/2}
+ \det(D^{\rm ch}[qA]+\boldsymbol\mu)\,\dd A.
+\end{equation}
+The determinant is nonnegative and $0<Z_{C(n)}[1]<\infty$ for
+every real $\boldsymbol\mu$, by
+\cite[Propositions~2.2--2.3]{ChamberLattice}.
+We write $\E_n^{\rm af}=Z_{C(n)}[\,\cdot\,]/Z_{C(n)}[1]$.
+Rectangular tori carry the same periodic photon and antiperiodic
+fermion conventions. No flux class is excluded from this law.
+
+At the physical cutoff, $q=e\sqrt\eta$ and
+$\boldsymbol\mu=\boldsymbol\mu_N=\bar m\eta+m_{0,N}(e)$.
+The physical field $F^\sharp$ is the centered step interpolation
+of $\eta^{-3/2}u$, defined precisely in \cref{sec:continuum-limits}.
+For a fixed mass sequence, $P_{N,T}$ denotes its law on $H_{-4}$.
+Let $\mathcal V_N$ be the set of its weak limits as $T\to\infty$.
+A volume-first limit is a weak limit of
+$\mu_i\in\mathcal V_{N_i}$ with $N_i\to\infty$.
+
+\subsection{Gaussian bounds and reflection quotients}\label{sec:probability}
+For real Schwartz two-forms, Gaussian domination means
+$\E_\lambda e^{F(f)}\le e^{\|f\|_2^2/2}$.
+The estimates of \cite[Proposition~2.1]{ContinuumLimits} give
+\[
+ \E_\lambda F(f)=0,\qquad
+ \E_\lambda|F(f)|^p\le c_p\|f\|_2^p,\qquad
+ c_p=2\,2^{p/2}\Gamma(1+p/2).
+\]
+For complex tests the product bound has the additional factor
+$2^{n/2}$ at degree $n$. Applied to differences, these estimates
+extend $F$ from Schwartz tests to $L^2$, consistently in every
+$L^p(\lambda)$, $p\ge1$. Expanding one factor at a time likewise
+extends each joint moment as a bounded multilinear form on complex
+$L^2$. These completions will be used for the plate insertions.
+The same proposition gives entire finite-dimensional generating
+functions, so their moments determine the finite-dimensional laws.
+
+Write $h_\kappa=h_k e_{ij}$ for the real Hermite two-forms,
+$k\in\Z_{\ge0}^3$, $i<j$, with eigenvalues
+$\lambda_\kappa=2|k|_1+4$ for $1+|y|^2-\Delta$. Set
+\[
+ \|F\|_{-s}^2=\sum_\kappa\lambda_\kappa^{-2s}|F(h_\kappa)|^2,
+ \qquad H_{-s}=\{F\in\mathcal S':\|F\|_{-s}<\infty\}.
+\]
+All weak convergence of laws on $H_{-4}$ uses its norm topology.
+The Hermite compactness argument of \cite[Section~4]{ContinuumLimits}
+shows that a closed bounded $H_{-3}$ ball is compact in $H_{-4}$.
+The tensor estimate \cite[Proposition~6.1]{ContinuumLimits} gives a
+continuous map $Q_\Psi\in L^2(\lambda)$ for $\Psi\in\mathcal S_n$,
+equal to $\prod_aF(f_a)$ on elementary tensors, and the bound
+\eqref{eq:main-growth} for its expectation.
+
+For open $O$, let $\Sigma_O$ be generated by $F(f)$ with real
+$f\in C_c^\infty(O;\Lambda^2)$. For a Euclidean motion $g$,
+write $\widehat g A(F)=A(g^{-1}\cdot F)$ and $U(a)=\widehat{\tau_a}$.
+Let $r_j$ reflect in $x_j=0$ and put
+$\mathcal R_j=\widehat r_j$, $\Theta_j A=\overline{\mathcal R_jA}$.
+For a translation-invariant law that is invariant and reflection
+positive at this plane, the positive form
+\[
+ b_j(A,B)=\E_\lambda[(\Theta_jA)B],\qquad
+ A,B\in L^2(\Sigma_{\{x_j>0\}},\lambda),
+\]
+has quotient completion $\mathcal H_j$, quotient map $[A]_j$,
+and vector $\Omega_j=[1]_j$. The reconstruction and spectral cone
+are \cite[Propositions~2.1 and~3.1]{ErgodicComponents}:
+\[
+ e^{-tH_j}V_j(y)[A]_j=[U(te_j+y)A]_j,\qquad
+ t\ge0,\quad y\perp e_j,\qquad H_j\ge|\mathsf P_i|\quad(i\ne j).
+\]
+The cone conclusion uses invariance and reflection positivity at
+$x_j+x_i=0$. These are the precise reconstruction inputs used in
+\cref{sec:rotations}.
+
+\subsection{Block scales and the selected pair}\label{subsec:integration-block-data}
+The block construction uses an odd $L$, an integer power $M$ of $L$,
+and the primitive and activity conventions of
+\cite{MaxwellBlock,FermionBlock,NormalizedContraction,NonlinearStep,CoverTuning}.
+Their constants will be chosen in \cref{sec:ordered-constants}.
+For the reference mass in \cref{thm:main}, write
+\[
+ K=N+\log_Lh,\qquad a_j=L^{j-N},\quad e_j=e\sqrt{a_j},
+ \quad\mu_j=\bar m a_j,\quad v_j=-\log e_j.
+\]
+Let $r_j$ be the least nonnegative integer power of $L$ at least
+$v_j^2$. Put
+\[
+ R_{\rm top}=hMr_K,\qquad R^*=R_{\rm top}/L,\qquad
+ \mathcal T(e)=\{hL^t:t\in\Z_{\ge0},\ hL^t\le R_{\rm top}\}.
+\]
+For $R\in\mathcal T(e)$, the stop is the first level
+$k_*(R)$ with $\ell_j=Mr_j$, where $\ell_j=R/a_j$.
+The finite threshold $N_{\min}(R,e)$ and the existence and
+properties of the stop are given in \cite[Proposition~6.1]{CoverTuning}.
+A star on a running quantity means evaluation at this stop.
+Write $N_{\rm ref}(e)=N_{\min}(R^*,e)$ and $n_*=R^*/\eta$.
+
+Under the numerical conditions verified in \cref{prop:ordered-constants}, the common-pair theorem
+of \cite[Theorem~A]{CoverTuning} selects
+$P_N(e)=(m_{0,N}(e),\varepsilon^v_{0,N}(e))$ on the top torus,
+with zero terminal mass shift and vacuum term there. The same pair
+is used on the smaller reference tori, for every twist and source.
+Its scalar bounds and controlled trajectories are conclusions of
+that theorem. Below the top definition threshold, only
+$m_{0,N}(e)$ is set to zero. No trajectory is used at those cutoffs.
+The construction of this pair requires no choice of the probe.
+
+The early zero-flux source identities in
+\cite[Section~3]{ReferenceResponse} define the matter normalization
+used by \cite{TerminalPressure}. The terminal measure and pressure
+estimates of the latter then enter the quantitative response theorem
+of \cite{ReferenceResponse}. In \cref{sec:ordered-constants} we
+first verify the construction and terminal scalar conditions.
+We then apply the response theorem and the volume-transfer estimates
+to choose the probe-dependent interval.
+\section{Volume and continuum limits}\label{sec:continuum-limits}
+
+Gaussian domination gives compactness of the curvature laws at all
+cutoffs. Diagonal reflection positivity uses a further identification:
+at a fixed spacing, a volume limit is the step-field image of an
+infinite lattice law. This permits the nine-mirror theorem to be
+applied before the spacing is removed.
+
+\subsection{The test map and its bounds}
+
+Write $\eta=L^{-N}$, $R=8hL^T$, and $n=R/\eta$, as in
+\eqref{eq:cutoff-scales}. A plaquette of the unit covering lattice is
+$\sigma=(x;\mu\nu)$, with $\mu<\nu$ and centre
+$y_\sigma=x+(e_\mu+e_\nu)/2$. Its averaging cube is
+\[
+ Q_\eta(\sigma)=\eta\bigl(y_\sigma+[-1/2,1/2)^3\bigr).
+\]
+For each fixed orientation these cubes partition $\R^3$.
+If $u$ is a real lattice curvature, its physical step field is
+$\eta^{-3/2}u(\sigma)$ on $Q_\eta(\sigma)$ in component $\mu\nu$.
+For a Schwartz two-form $f$, define
+\begin{align}
+ f_{[\eta]}(\sigma)
+   &=\eta^{-3/2}\int_{Q_\eta(\sigma)}f_{\mu\nu}(y)\,\dd y,
+                                                   \label{eq:limit-test-cover}\\
+ f^R(y)&=\sum_{k\in\Z^3}f(y+Rk),\notag\\
+ f_\eta([\sigma])
+   &=\eta^{-3}\int_{Q_\eta(\sigma)}f^R_{\mu\nu}(y)\,\dd y.
+                                                   \label{eq:limit-test-torus}
+\end{align}
+Here $[\sigma]$ is the plaquette class modulo $n\Z^3$.
+The torus cochain norm is $|v|_\eta^2=\eta^3\sum_{[\sigma]}|v([\sigma])|^2$.
+The covering cochain norm $\|\cdot\|$ is the unweighted $\ell^2$ norm.
+For the periodic extension $\widetilde u$ of $u$,
+\begin{equation}\label{eq:limit-step-pairing}
+ F^\sharp(f)=\eta^{3/2}\sum_{[\sigma]}f_\eta([\sigma])u(\sigma)
+            =\sum_\sigma f_{[\eta]}(\sigma)\widetilde u(\sigma).
+\end{equation}
+The normalization in the first equality combines the cell volume
+$\eta^3$ with the physical field factor $\eta^{-3/2}$.
+
+The estimates needed below are
+\begin{align}
+ \|f_{[\eta]}\|&\le\|f\|_2, \label{eq:limit-cover-norm}\\
+ \sum_\sigma|f_{[\eta]}(\sigma)|(1+|x(\sigma)|_\infty)
+ &\le\eta^{-3/2}\int_{\R^3}\sum_{\mu<\nu}|f_{\mu\nu}(y)|
+                         (2+|y|_\infty/\eta)\,\dd y, \label{eq:limit-cover-sum}\\
+ |f_\eta|_\eta&\le\|f^R\|_{L^2(\R^3/R\Z^3)}\le p_R(f),\label{eq:limit-torus-norm}
+\end{align}
+where, with $Q_R=[-R/2,R/2)^3$,
+\begin{equation}\label{eq:limit-periodic-seminorm}
+ p_R(f)=\|f\|_2+
+        26R^{-2}\||y|^2f\|_{L^2(\R^3\setminus Q_R)}.
+\end{equation}
+One also has $|f_\eta|_\eta\le\|f\|_2$ if the support of $f$ lies
+in a translate of an open cube of side $R$. For $R\ge1$,
+$p_R(f)\le p_1(f)$, and $p_R(f)\to\|f\|_2$ as $R\to\infty$.
+The seminorm $p_1$ is continuous on Schwartz space.
+
+The first bound follows from Cauchy--Schwarz on each averaging
+cube. On that cube $1+|x(\sigma)|_\infty\le2+|y|_\infty/\eta$,
+which gives the second. Absolute convergence permits unfolding:
+\[
+ \eta^{3/2}f_\eta([\sigma])
+       =\sum_{k\in\Z^3}f_{[\eta]}(\sigma+nk).
+\]
+This proves \eqref{eq:limit-step-pairing}. Applying the cube
+Cauchy--Schwarz inequality to $f^R$ gives the first inequality in
+\eqref{eq:limit-torus-norm}. If the support lies in one open
+$R$-cube, its distinct $R\Z^3$ translates are disjoint, so
+$\|f^R\|_{L^2(\R^3/R\Z^3)}=\|f\|_2$.
+
+For the remaining estimate put $a_k=\|f\|_{L^2(Q_R+Rk)}$.
+Minkowski's inequality bounds the periodized norm by $\sum_k a_k$.
+On $Q_R+Rk$, $k\ne0$, one has $|y|\ge R|k|_\infty/2$; hence
+\[
+ \sum_{k\ne0}a_k
+ \le4R^{-2}\left(\sum_{k\ne0}|k|_\infty^{-4}\right)^{1/2}
+                   \||y|^2f\|_{L^2(\R^3\setminus Q_R)}.
+\]
+The number of points with $|k|_\infty=j$ is $24j^2+2$, so
+the sum in parentheses is $4\pi^2+\pi^4/45<41.65$ and its
+square root times four is less than $26$.
+This proves \eqref{eq:limit-torus-norm} and
+\eqref{eq:limit-periodic-seminorm}. The comparison with $p_1$
+and the limit of $p_R$ follow by inclusion of the cubes and
+integrability of $|y|^4|f(y)|^2$.
+
+For the Hermite two-forms of \cref{sec:probability},
+\begin{equation}\label{eq:limit-Hermite-norm}
+ p_1(h_\kappa)\le31\lambda_\kappa.
+\end{equation}
+Here is the weighted estimate behind this bound. Let
+$\mathsf M=1+|y|^2$, $P_j=-i\partial_j$, and
+$\mathsf A=\mathsf M-\Delta$. Since
+$[P_j,[P_j,\mathsf M]]=-2$,
+\[
+ \|\mathsf A v\|_2^2
+ =\|\mathsf Mv\|_2^2+\|\Delta v\|_2^2
+      +2\sum_j\langle P_jv,\mathsf MP_jv\rangle-6\|v\|_2^2
+ \ge\|\mathsf Mv\|_2^2-6\|v\|_2^2.
+\]
+The Hermite eigenvalues satisfy $\lambda_\kappa\ge4$, and therefore
+$\|\mathsf Mv\|_2^2\le(11/8)\|\mathsf Av\|_2^2$.
+Taking $v=h_\kappa$ gives
+$p_1(h_\kappa)\le1+26\sqrt{11/8}\lambda_\kappa
+\le31\lambda_\kappa$.
+
+The test map respects the affine cubic symmetries. For a signed
+permutation and lattice translation $g$ of the unit lattice, let
+$\mathfrak g(y)=\eta g(y/\eta)$. With the exterior-square action
+on two-forms and the cochain pull-back,
+\begin{equation}\label{eq:limit-test-equivariance}
+ (\mathfrak g\cdot f)_{[\eta]}=(g^{-1})^*f_{[\eta]},
+ \qquad
+ (\mathfrak g\cdot f)_\eta=(g^{-1})^*f_\eta.
+\end{equation}
+Indeed, $g$ sends centres to centres and the averaging cubes to
+averaging cubes up to null boundaries. Its orientation sign is
+the sign of $\wedge^2\vec g$ on the corresponding plaquette.
+Changing variables gives the first formula; periodization and
+the bijection $k\mapsto\vec gk$ give the second.
+
+\subsection{Compactness and convergence of moments}
+
+Let $P_{N,T}$ be the law of $F^\sharp$ for the all-flux chamber
+measure. The mass assignment may be any real sequence independent of
+$T$. Proposition~\extref{5.1}{ChamberLattice} and
+\eqref{eq:limit-step-pairing} give
+\begin{equation}\label{eq:limit-cutoff-G}
+ \E_{N,T}e^{F^\sharp(f)}
+       \le e^{|f_\eta|_\eta^2/2}\le e^{p_R(f)^2/2}
+       \qquad(f\text{ real}).
+\end{equation}
+The random-linear-form proof of Proposition~\extref{2.1}{ContinuumLimits}
+applies here with the Hilbert seminorm $f\mapsto|f_\eta|_\eta$.
+In particular its variance bound and \eqref{eq:limit-Hermite-norm}
+give
+\begin{equation}\label{eq:limit-uniform-tightness}
+ \E_{N,T}\|F^\sharp\|_{-3}^2
+ \le\sum_\kappa\lambda_\kappa^{-6}p_1(h_\kappa)^2
+ \le961\sum_\kappa\lambda_\kappa^{-4}<61.
+\end{equation}
+Tonelli's theorem justifies the first sum. Every finite lattice
+cochain has a step field in $H_{-3}$: Cauchy--Schwarz in
+\eqref{eq:limit-step-pairing} bounds its $\kappa$-th Hermite
+coordinate by $31\lambda_\kappa\|u\|_{\ell^2(C(n)^{(2)})}$,
+with the unweighted norm on the unit-lattice torus plaquettes.
+The step map from this finite-dimensional cochain space to $H_{-3}$
+is consequently continuous.
+
+The compact embedding recalled in \cref{sec:probability}
+now applies. The laws $P_{N,T}$ are uniformly tight on $H_{-4}$,
+and their fixed-spacing volume limits are uniformly tight there.
+Thus the sets $\mathcal V_N$ and the set of volume-first limits
+are nonempty.
+
+For a joint sequence $N_k,T_k\to\infty$ suppose
+$P_{N_k,T_k}\to\mu$ weakly on $H_{-4}$. Truncating $e^{F(f)}$
+above by a constant, passing to the weak limit, and then removing
+the truncation gives
+\begin{equation}\label{eq:limit-continuum-G}
+ \E_\mu e^{F(f)}\le e^{\|f\|_2^2/2}.
+\end{equation}
+The limiting constant follows from $p_{R_k}(f)\to\|f\|_2$.
+For a fixed finite family of complex tests $f_1,\ldots,f_s$, define
+\[
+ Z_k(z)=\E_{N_k,T_k}\exp\left(\sum_a z_aF^\sharp(f_a)\right),
+ \qquad
+ Z(z)=\E_\mu\exp\left(\sum_a z_aF(f_a)\right).
+\]
+The evaluations $F\mapsto(F(f_a))_a$ are continuous on $H_{-4}$.
+Moreover,
+\[
+ \E_{N_k,T_k}\left|\exp\left(\sum_a z_aF^\sharp(f_a)\right)\right|^2
+ \le\exp\left(2p_1\left(\operatorname{Re}\sum_a z_af_a\right)^2\right).
+\]
+This bound is uniform in $k$ and on compact sets of $z$.
+Uniform integrability therefore gives pointwise convergence
+$Z_k\to Z$. The same exponential bounds give local uniform
+bounds on the entire functions $Z_k$. Cauchy's estimates make them
+equi-Lipschitz on compact sets, so their convergence is locally
+uniform. Cauchy's formula then passes every derivative to the limit.
+In particular all joint moments converge.
+
+On each compact subset of
+$\{\sum_a|z_a|\|f_a\|_2<2/5\}$, the test-map bounds give
+$\sum_a|z_a||(f_a)_{\eta_k}|_{\eta_k}<2/5$ for all large $k$.
+The zero-free estimate \exteq{17}{ContinuumLimits}, with this
+seminorm, bounds $|Z_k-1|$ by $1/2$. The principal logarithms
+therefore converge locally uniformly near zero, and their
+derivatives give convergence of every joint cumulant.
+
+\subsection{The prescribed parent and its components}
+
+The finite-periodic moment passage just proved applies to a
+diagonal realization of any prescribed volume-first limit.
+The fixed-spacing recovery in \cite[Proposition~7.3]{ContinuumLimits}
+identifies each intermediate volume law with the interpolation
+of an infinite-lattice law. Its nine reflection forms then pass
+to the continuum limit by \cite[Corollary~7.4]{ContinuumLimits}.
+We record the resulting input to the construction.
+
+\begin{proposition}\label{prop:limit-nine-mirrors}
+Let $\mu$ be any volume-first limit for a real, volume-independent
+mass assignment. Then $\mu$ is carried by closed tempered two-forms,
+is translation invariant and cubic invariant, and satisfies
+\eqref{eq:limit-continuum-G}. It is invariant and reflection
+positive at each plane in the nine families
+\[
+ x_j=c\quad(1\le j\le3),\qquad
+ x_j\pm x_k=c\quad(1\le j<k\le3),\qquad c\in\R.
+\]
+There is a sequence of finite laws $P_{N_i,T_i}\to\mu$ with
+$N_i,T_i\to\infty$ along which every fixed finite-family moment
+and cumulant converges. In the translation-ergodic decomposition
+of $\mu$, a single full-measure set of components has the same
+closedness, Gaussian bound, cubic symmetries and nine reflection
+forms. Its component laws have clustering for all $L^2$ observables
+in all directions.
+\end{proposition}
+
+\begin{proof}
+The parent-law conclusions and the weak finite-law diagonal are
+\cite[Corollary~7.4]{ContinuumLimits}; its hypotheses hold by
+the all-flux lattice theorem of \cite[Theorem~A]{ChamberLattice}
+and \eqref{eq:limit-cutoff-G}. The preceding moment passage
+applies to that diagonal. The component conclusions are
+\cite[Theorem~A]{ErgodicComponents}, with closedness taken as the
+specified event of full parent measure. That theorem gives all
+real Schwartz Gaussian bounds simultaneously and the full
+translation action on the same component set.
+\end{proof}
+
+\section{Choice of the construction constants}\label{sec:ordered-constants}
+
+The estimates impose conditions on fixed constants and on the
+running charge. The constants are chosen before the charge, mesh,
+volume and twist. We first choose the polymer decay and the two
+geometric scales; the charge bounds are then imposed for every
+smaller charge. The local inverse constants are fixed before $M$,
+whereas the weakened kernel constants may depend on $M$.
+Neither group depends on the running charge. We verify this order
+before imposing the small-charge conditions. The final subsection
+uses the resulting construction to make the additional probe-dependent
+restriction needed for the fourth cumulant.
+
+\begin{proposition}\label{prop:ordered-constants}
+Fix $0<\rho<1$ and the standard chamber weights.
+The constants of the photon and fermion primitives,
+small-field step, cover comparison and tuned flow can
+be chosen in the order described below, with positive
+charge ceilings $\bar e_0,\bar e_1$ independent of the mesh,
+volume, twist and reference mass.
+For every $0<\bar m\le1$, the physical ceiling $e_G$
+in \eqref{eq:constants-physical-charge} is positive.
+The terminal conditions \exteq{43}{TerminalPressure}
+hold on the top and reference tori throughout
+$0<e\le e_G$.
+\end{proposition}
+
+\subsection{The geometric scales and the positive exponent}
+
+\begin{proof} Set $\bar\varepsilon=1/200$, $c_X=54$,
+$\kappa_0=54\log72$, $K_0=72^{54}/36$,
+$c_{\mathrm{rb}}=54K_0$ and $c_{\mathrm{fl}}=61c_XK_0$.
+Choose
+\[
+ 1-\bar\varepsilon<\alpha<1,\qquad
+ \kappa\ge7\kappa_0+7.
+\]
+An odd integer $L\ge5$ is required to satisfy
+\begin{align}
+ L^{1/8-3\bar\varepsilon/2}&\ge2400,\qquad
+ c_{\mathrm{fl}}L^{-3/8+6\bar\varepsilon}\le1/16,\notag\\
+ L(\kappa-6\kappa_0-4)-1&\ge\kappa,\notag\\
+ c_{\mathrm{rb}}L^3
+       \exp\bigl(-L(\kappa-\kappa_0-1)+\kappa\bigr)
+                                                   &\le1/2.
+                                      \label{eq:constants-L}
+\end{align}
+These are simultaneous lower-bound conditions on $L$.
+The powers $1/8-3\bar\varepsilon/2$ and
+$3/8-6\bar\varepsilon$ are positive, as are
+$\kappa-6\kappa_0-4$ and $\kappa-\kappa_0-1$.
+The last expression tends to zero as $L\to\infty$.
+Thus every sufficiently large odd $L$ satisfies
+\eqref{eq:constants-L}.
+
+After $L$ is fixed, the primitive construction fixes
+$a'$, $C_V$, $\gamma_w$ and $\gamma_P$, with $a',C_V>0$
+and $\gamma_w,\gamma_P>0$. Put
+$N_c=(2L+1)^3$ and
+$\widehat\kappa=N_c\kappa+\log(6c_X)>0$.
+The photon and fermion
+constants have no dependence on $M$ at this stage.
+Put $\kappa_w=\kappa+\kappa_0+3$, $\alpha_0=1/54$ and $\kappa'=\kappa_w+\kappa_0$ and
+\[
+ M_F=\max\{4L+1,\ (108\pi C_Va')^2,\
+                         108\pi C_Va'\exp(27\kappa')\}.
+\]
+Choose $M$ to be a power of $L$ satisfying
+\begin{equation}\label{eq:constants-M}
+ \begin{split}
+ M&\ge L^2,\qquad M>4L,\qquad \gamma_wM\ge16,\\
+ M^{\alpha_0}&\ge1+\exp(\widehat\kappa),\qquad
+ M\ge M_F,\qquad 804\alpha_0\log M\le\gamma_PM.
+ \end{split}
+\end{equation}
+All these conditions hold for every sufficiently large
+power of $L$. For the last one, $\log x\le\sqrt x$
+on $x\ge1$ gives the sufficient lower bound
+$M\ge(804\alpha_0/\gamma_P)^2$.
+The definition of $M_F$ gives the two fermion
+conditions in \exteq{46}{FermionBlock},
+because $27\alpha_0=1/2$.
+The last inequality gives \exteq{38}{MaxwellBlock}.
+The first four give the geometric separation, decay
+and parameter-radius conditions used in localization.
+
+The exponents can be fixed independently of the charge.
+Take $r=2$, $p_0=9$, $p=19$ and
+$1-\alpha<\varepsilon\le\bar\varepsilon$, and take $s=1/2$.
+Then $p_0>3r+2$ and $p>2p_0$, while
+\[
+ \mathfrak e=s(1/4-9\varepsilon)-12\varepsilon
+                      \ge17/400.
+\]
+For $N_*=8L^3$ and $a_L=(L^3-1)/(L-1)^3$,
+\[
+ \frac{2a_L}{N_*}
+     <\frac1{4(L-1)^3}\le\frac1{256}<\frac{17}{400}.
+\]
+It follows that $\sigma=\mathfrak e-2a_L/N_*>0$.
+In particular the positive exponent is fixed before
+the charge is chosen.
+
+\subsection{Calibration of the primitive and terminal bounds}
+
+The chamber coercivity, heavy-sector gap and local inverse
+construction fix $a'$ and $\gamma^F>0$ before $M$ is chosen;
+see \exteq{34}{FermionBlock} and
+\exteq{43}{FermionBlock}. The photon construction
+likewise fixes $C_P^{\mathrm{ph}}$ and $\gamma_P>0$ before $M$;
+its weakened families are considered only after
+\exteq{38}{MaxwellBlock} holds.
+The sums $c(\gamma)=\sum_{z\in\Z^3}
+\exp(-\gamma|z|_\infty)$ are finite for $\gamma>0$.
+Thus the constants used to choose $M$ in
+\eqref{eq:constants-M} have already been fixed.
+
+Keep $b=1$, $b_-=1-L^{-1}$ and $b_+=1$ from the inverse
+construction; these are already fixed before $M$.
+The coarse resolvent and its auxiliary block matrix give
+\[
+ C_{\mathrm{By}}=(1+2\exp(1))\sqrt2\max(1,b_-^{-1}),
+ \qquad
+ C_\Gamma=\frac{2(1+2\exp(1))}{b_-}
+                  +128\exp(1)(1+2\exp(1))^2a'.
+\]
+The latter is the constant in
+\exteq{62}{FermionBlock}. Define
+\begin{equation}\label{eq:constants-fermion-calibration}
+ \begin{split}
+ C_1=\max\{&
+ 304\exp(1)\max(1,b)a'M^{27\alpha_0},
+ C_\Gamma M^{27\alpha_0},\\
+ &32\exp(1)\max(1,b^2)a'\exp(27\kappa')\},\\
+ C^F=2\max\{&
+ C_1,C_{\mathrm{By}},304\exp(1)\max(1,b)a',
+ C_\Gamma,\exp(1)b^2(32a')^2\}.
+ \end{split}
+\end{equation}
+The factor two converts Euclidean spinor bounds to
+component bounds. The walk and coarse-family estimates
+\exteq{47}{FermionBlock}--\exteq{48}{FermionBlock}
+and \exteq{61}{FermionBlock}--\exteq{62}{FermionBlock}
+are bounded by $C^F$ in this convention. The last entry
+also bounds the compressed quadratic kernel.
+At level zero the normalized kernel has the same bound,
+and $M^{8\alpha_0}\le M^{27\alpha_0}$ bounds its diagonal
+field multiplier.
+The unweakened all-pair field bound
+\exteq{60}{TerminalPressure} is at most
+$608\exp(1)\max(1,b)a'\le C^F$; at zero its constant is
+at most four, also below $C^F$.
+
+Take the common primitive constants
+\[
+ C^P=116C_P^{\mathrm{ph}}M^{402\alpha_0},\qquad
+ C_w^{(1)}=\max\{C^F,C^P,4\exp(2\gamma_w)M^{27\alpha_0}\},
+ \qquad C_w=64K_0C_w^{(1)}.
+\]
+These are precisely \exteq{23}{CoverTuning}.
+The top systems and their projections therefore satisfy
+the same bounds at every required level and side.
+The determinant, photon-domain and localization constants
+are given in Sections~\extref{6.2}{FermionBlock},
+\extref{6}{MaxwellBlock} and
+\extref{5.1}{NonlinearStep}. In particular,
+\[
+ \begin{aligned}
+ c_C&=3L^{9/2},\qquad C_W=28C_w^2c_\gamma,\\
+ C_d=16c_XC_w
+       &\max\{\tfrac\pi2b\exp(1)(1+2\exp(1)),
+                                      2+58\exp(1)+b\exp(1)\}.
+ \end{aligned}
+\]
+The kernel-sum constant $c_\gamma$ is bounded by
+$2L^3\exp((2L+1)\gamma_w)c(\gamma_w)$;
+the local-gauge constant $C_B$ depends only on
+$C_P^{\mathrm{ph}},\gamma_P,L,M$.
+All these constants are finite after $M$ is fixed.
+
+For the terminal norms fix
+\begin{equation}\label{eq:constants-terminal-calibration}
+ C_0=\max\{C_P^{\mathrm{ph}}c_{\mathrm{bd}}(\gamma_P),
+                 C^F,4b_++16C^Fc(\gamma^F)\},
+ \qquad c_{\mathrm{bd}}(\gamma)=3\exp(3\gamma)c(\gamma).
+\end{equation}
+The photon row sums, both field-map row norms and the
+terminal Dirac form in
+Section~\extref{6.2}{TerminalPressure} are then
+bounded by this $C_0$. In particular $C_0\ge1$.
+The polymer sum has $1\le c_\kappa\le K_0$.
+The free Bloch construction fixes the twist constants
+$C_\Sigma<\infty$ and $\gamma_\Sigma>0$ independently of
+the running charge, mass in its prescribed range, mesh
+and side; see \exteq{37}{TerminalPressure}.
+
+The differentiated-response constants are now fixed by
+the terminal inverse and field-map estimates:
+$\mathcal S=C^F(24/\gamma^F)^3$,
+$C_K=226\mathcal S^2$, $C_K'=1328\mathcal S^2$ and
+$C_H=203M(C^F)^2$. The real covariance coefficients
+$g,h_G,g_1,\alpha_G$ and its rate $\vartheta_0$ are
+defined with \exteq{74}{TerminalPressure}.
+The insertion and mixed-logarithm coefficients are
+$C_V^{\mathrm{ins}}=10^3C_H^2(24/\gamma^F)^{12}K_0$ and
+$C_W^{\mathrm{mix}}$ in \exteq{109}{ReferenceResponse}.
+Their inverse-decay rates are positive and their
+coefficients finite because $b_->0$,
+$\mu_-=L^{-3}>0$ and $\gamma^F>0$.
+They depend on $L,M$ and the fixed chamber data;
+they have no dependence on the later charge or probe.
+The probe-dependent constants will be chosen last.
+
+\subsection{Uniform running-charge bounds}
+
+All coefficients of the small-charge conditions are
+fixed after the preceding choices. The fluctuation substitution
+constant from \cite[Section~1]{NonlinearStep} is
+\[
+ C_T=2\exp(3/2)
+       [1+b_-^{-1}(54L\exp(6)+12\exp(1)+1)].
+\]
+We write $\bar e_0,\bar e_1$ for the fixed charge ceilings,
+to distinguish them from the level-zero running charge $e_0$.
+They are the ceilings denoted $e_0,e_1$ in the terminal and
+response estimates, and agree with the barred convention in
+\cite{CoverTuning}. The elementary
+estimate used to meet them simultaneously is as follows.
+For finitely many $A_i,d_i,\lambda_i$ with
+$A_i,d_i\ge0$ and $\lambda_i>0$, and for $b>0$, put
+\begin{equation}\label{eq:constants-tail-threshold}
+ V(A,d,\lambda;b)
+   =\max_i\frac2{\lambda_i}
+       \log^+\left[
+         \frac{nA_i}{b}
+         \left(\frac{2d_i}{\lambda_i\exp(1)}\right)^{d_i}
+       \right].
+\end{equation}
+Here $n$ is the number of terms, $\log^+0=0$
+and a factor with $d_i=0$ is interpreted as one.
+For all $v\ge V(A,d,\lambda;b)$ with $v>0$,
+\begin{equation}\label{eq:constants-tail-bound}
+ \sum_i A_iv^{d_i}\exp(-\lambda_iv)\le b.
+\end{equation}
+Indeed $v^d\exp(-\lambda v/2)$ has maximum
+$(2d/(\lambda\exp(1)))^d$ for $d>0$.
+For $d=0$ use $\exp(-\lambda v)\le\exp(-\lambda v/2)$.
+The threshold makes each resulting term at most $b/n$.
+
+The primitive domains, determinant, adjustment and nonlinear
+step require \exteq{43}{MaxwellBlock},
+\exteq{8}{NormalizedContraction},
+\exteq{21}{NormalizedContraction},
+\exteq{1}{NormalizedContraction},
+\exteq{81}{FermionBlock} and
+\exteq{3}{NonlinearStep}.
+Their charge conditions are obtained from the following
+finite families for $v=-\log e_k$.
+Write $T(A,d,\lambda)=Av^d\exp(-\lambda v)$.
+The polynomial-exponential conditions are
+\begin{align}
+ T(1,p_0,\varepsilon/4)&\le1,&
+ T(1,0,5\varepsilon/2)&\le\tfrac12,\notag\\
+ T(c_{\mathrm{fl}},0,\varepsilon)&\le1,&
+ T(3M,0,\varepsilon)&\le1,\notag\\
+ T(2C_w^2c_\gamma^2c_C,0,\varepsilon/4)&\le1,&
+ T(16c_Xc_\gamma C_wC_T^2M^3,0,\varepsilon/2)&\le1,\notag\\
+ T(96M^3,0,1/4)&\le1,&
+ T(32C_wC_T,0,3\varepsilon/2)&\le1,\notag\\
+ T(88M^3,0,1/4-6\varepsilon)&\le1,&
+ T(112C_w^2c_\gamma,0,2\varepsilon)&\le3,\notag\\
+ T(c_S,0,1/4-5\varepsilon)&\le1,&
+ T(c_SL^3,0,\varepsilon)&\le1,\notag\\
+ T(36c_X^2K_0^2,0,1/4-5\varepsilon)&\le1,&
+ T(1,0,\varepsilon)&\le\tfrac14,\notag\\
+ T(3M,0,1/4+\varepsilon)+T(3M,0,2\varepsilon)&\le1,\notag\\
+ T(1,0,1/4)+T(1,0,\varepsilon)&\le1,\notag\\
+ T(160L^{1+3\varepsilon/2}M,0,\varepsilon)&\le1,&
+ T(90c_XLM,0,\varepsilon)&\le1,\notag\\
+ T(9ML^\varepsilon,0,2\varepsilon)&\le1,\notag\\
+ T(2M,1,\varepsilon)+T(32M,0,\varepsilon)&\le1,\notag\\
+ T(8C_B,p,3/4-3\varepsilon)&\le1,&
+ T(8,0,3/4-7\varepsilon/2)&\le1,\notag\\
+ T(6L,0,\varepsilon)&\le1,&
+ T(4C_Va',0,\varepsilon)&\le1,\notag\\
+ T(4,0,1/4+2\varepsilon)+T(2,0,3\varepsilon)&\le1,\notag\\
+ T(8c_{\mathrm{rb}}L^3C_dM^3,0,2\varepsilon)&\le1.
+                                      \label{eq:constants-running-inventory}
+\end{align}
+Here $c_S=10^5c_X^5K_0^5\exp(6\kappa)$.
+The inequality with $96M^3$ controls the first step;
+the one with $C_T^2M^3$ controls the positive-level
+fluctuation substitution. The conditions with $c_S$
+and $36c_X^2K_0^2$ control the connected logarithm and its scaling.
+The domain conditions occur with target $1/4$,
+with rates $(1/4,\varepsilon)$, with coefficients
+$8C_B,8$, and with coefficients $4,2$.
+The remaining displayed charge hypotheses above are
+individual inequalities of this inventory;
+\exteq{83}{NonlinearStep} follows from the
+condition containing $c_S$.
+
+Every decay rate in the inventory is positive for
+$0<\varepsilon\le1/200$. The only additional
+running-charge restrictions in this group are
+\[
+ v^{2p_0}/2-7v\ge\log12,\qquad v^2\ge10L,\qquad v\ge9.
+\]
+They hold respectively for $v\ge15$,
+$v\ge\sqrt{10L}$ and $v\ge9$.
+Taking the maximum of these thresholds and the finitely
+many values in \eqref{eq:constants-tail-threshold}
+gives a finite $V_0$. Choose a running-charge ceiling
+$0<\bar e_0<\exp(-V_0)$ so that every such condition
+holds for every $v\ge-\log \bar e_0$, equivalently for
+every running charge in $(0,\bar e_0]$.
+The set of permitted ceilings is downward closed.
+
+The terminal-scale conditions require a second ceiling
+$\bar e_1\le\min(\bar e_0,1/3)$. Write $\ell(v)=LMv^r$.
+They follow from
+\begin{align}
+ (c_{\mathrm{fl}}+2)\exp(-\varepsilon v)
+                      &\le\tfrac1{16}(1-L^{-\varepsilon/2}),\notag\\
+ 8C_0^2\ell(v)^6(b_-^{-1}+L\ell(v))
+                      &\le\exp(\varepsilon v/2),\notag\\
+ 4(2C_0+c_\kappa+5c_{\mathrm{fl}}+6)\ell(v)^3
+                      &\le\exp(\varepsilon v),\notag\\
+ \exp(-(1/4-9\varepsilon)v)&\le\tfrac18,\notag\\
+ 4C_0\ell(v)^2v^p&<\exp(\varepsilon v),\notag\\
+ 12\ell(v)^3\left(\exp(-v^{p_0}/2)
+                    +\exp(-v^{2p}/(2C_0^2))\right)
+                      &\le\exp(-v),\notag\\
+ C_\Sigma\exp(-\gamma_\Sigma Mv^r)&\le\exp(-v),\notag\\
+ L^2\exp(-2v)\ell(v)&\le1,\notag\\
+ 6N_*Mv^r\exp(-v)(v\exp(-v)+\tfrac12)&\le\pi^2.
+                                      \label{eq:constants-terminal-inventory}
+\end{align}
+These are the scalar hypotheses of
+\exteq{48}{CoverTuning},
+\exteq{43}{TerminalPressure} and
+\eqref{eq:transfer-tail-condition}, after substituting
+\exteq{51}{CoverTuning}.
+Every polynomial-exponential rate here is positive for
+$0<\varepsilon\le1/200$. The reference flux condition expands as
+\[
+          6N_*Mv^{r+1}\exp(-2v)+3N_*Mv^r\exp(-v)\le\pi^2.
+\]
+The superlinear tails reduce to these bounds:
+for $v\ge\max(4,4C_0^2)$,
+\[
+ v-\tfrac12v^{p_0}\le-v,\qquad
+ v-\frac{v^{2p}}{2C_0^2}\le-v.
+\]
+Hence
+\[
+ 12\ell(v)^3
+ \left[\exp\left(v-\tfrac12v^{p_0}\right)
+       +\exp\left(v-\frac{v^{2p}}{2C_0^2}\right)\right]
+                \le24(LM)^3v^{3r}\exp(-v).
+\]
+For the twist tail, if
+$v\ge\max(1,2/(\gamma_\Sigma M),\log^+C_\Sigma)$,
+then $C_\Sigma\exp(v-\gamma_\Sigma Mv^r)\le1$.
+Put $\mathrm{lg}=\tfrac12\log L$.
+The scale-ratio condition follows for $v\ge2r$:
+\begin{equation}\label{eq:constants-scale-ratio}
+ \left(1+\frac{3\mathrm{lg}}{v}\right)^r
+        \le\exp\left(\frac{3r\mathrm{lg}}{v}\right)
+        \le L^{3/4}<L.
+\end{equation}
+Together with $v\ge8$, $v\ge31L+17$ and
+$p_0v^{p_0-1}\ge28$, these bounds give a finite
+threshold $V_1$. Its maximum includes $2r$.
+Let $\mathcal E_1$ consist of the numbers
+$e'\in(0,\min(\bar e_0,1/3)]$ for which the geometric
+conditions and \eqref{eq:constants-terminal-inventory}
+hold for every $v\ge-\log e'$. It contains
+$\min(\bar e_0,1/3,\exp(-V_1))>0$ and is downward closed.
+Fix
+\[
+ \bar e_1=\tfrac12\sup\mathcal E_1>0.
+\]
+There is an element of $\mathcal E_1$ larger than $\bar e_1$;
+downward closure therefore gives $\bar e_1\in\mathcal E_1$.
+Thus all terminal-scale conditions hold for every
+$v\ge-\log \bar e_1$.
+
+\subsection{The physical charge interval}
+
+Fix the reference mass and hence $h\ge1$. Set
+\begin{equation}\label{eq:constants-physical-charge}
+ e_G=
+ \begin{cases}
+ \bar e_1,&h=1,\\
+ \min\{\bar e_1/\sqrt h,\,1/(\sqrt h\log h)\},&h>1.
+ \end{cases}
+\end{equation}
+This is positive. For $0<e\le e_G$, every running charge
+up to level $K$ is at most $\bar e_1$, and
+$e\sqrt h\log h\le1$.
+The scale proposition therefore applies on the top and
+reference tori. The terminal inventory gives
+\exteq{43}{TerminalPressure} at their respective stops,
+and \eqref{eq:transfer-W3} holds on the reference torus.
+The common pair of Theorem~\extref{D}{CoverTuning}
+is defined for $N\ge N_{\min}(R_{\mathrm{top}},e)$.
+At lower cutoffs only its mass shift is assigned zero.
+For $N\ge N_{\mathrm{ref}}(e)$ the same pair is
+controlled on the reference torus. Its mass shift is real,
+independent of the cutoff volume, and has absolute value
+less than $1/8$.
+\end{proof}
+
+\subsection{The probe-dependent charge interval}
+
+\begin{proposition}\label{prop:ordered-probe-constants}
+Fix the constants of \cref{prop:ordered-constants} and a compact
+real probe $\beta$ with $b(dd^*\beta)>0$. Let $C_U$ be the constant
+in \exteq{59}{VolumeTransfer}, depending only on the fixed construction,
+reference mass and probe, and set $C_f=8C_U+3C_U^2$.
+There is a positive $e_\beta\le e_G$ such that, for every
+$0<e\le e_\beta$ and $N\ge N_{\rm ref}(e)$,
+\eqref{eq:transfer-small-Wick} holds with $\sigma>0$ and
+$C_fe^\sigma\le b(dd^*\beta)/2$.
+\end{proposition}
+
+\begin{proof} Fix a compact real probe $\beta$. Its buffered support
+diameter, energy and uniform rescaled norms are finite by
+\exteq{59}{ReferenceResponse}.
+The differentiated inverse and interaction constants have
+already been fixed; these probe constants are chosen last.
+Proposition~\extref{11.1}{ReferenceResponse}
+gives $e_\sharp(\beta)>0$ for which all its factor,
+one-cell, tree, jet and placement conditions hold for
+every $0<e\le e_\sharp(\beta)$, uniformly in
+$N\ge N_{\mathrm{ref}}(e)$ and in the allowed placements.
+Its proof uses $a_*\in\{h/L,h/L^2\}$ and
+$v_*=v_K+O(1)$: polynomial factors have fixed degrees,
+the separated-cell errors decay exponentially in $v_*^r$,
+and the complement decays faster than the Cauchy-radius
+loss. This gives one interval of charges for all cutoffs.
+
+For $0<e\le\min(e_G,e_\sharp(\beta))$,
+\exteq{5}{TerminalPressure} and
+\exteq{119}{ReferenceResponse} supply the
+two inputs in \eqref{eq:transfer-terminal-input}.
+The probe placement inequalities imply
+\exteq{12}{ReferenceResponse} for $\eta\le1$.
+The bounds for the free coefficients and $C_U$ in
+\exteq{59}{VolumeTransfer} are finite and independent of
+$e,N,T$ and placement. They depend only on the fixed
+construction and probe.
+
+Suppose now that $b(dd^*\beta)>0$ and put
+$C_f=8C_U+3C_U^2$.
+Choose
+\begin{equation}\label{eq:constants-probe-charge}
+ 0<e_\beta\le
+ \min\{e_G,e_\sharp(\beta),1,
+                         (b(dd^*\beta)/(2C_f))^{1/\sigma}\}.
+\end{equation}
+The minimum is positive, since $\sigma>0$ and $C_f>0$.
+\Cref{prop:transfer-UV-inputs} holds throughout
+$(0,e_\beta]$ and gives the finite-cutoff hypotheses of
+Theorem~\extref{A}{VolumeTransfer}. Its component clause will be
+applied after the component Gaussian bound has been established.
+In particular $C_fe^\sigma\le b(dd^*\beta)/2$.
+The construction constants were chosen before $h$ and
+the probe; the physical charge interval precedes the
+probe-dependent restriction.
+\end{proof}
+
+
+\section{Transfer from the reference volumes}\label{sec:uniform-transfer}
+
+The volume-transfer theorem of \cite[Theorem~A]{VolumeTransfer}
+controls products of translated Wick polynomials on the cutoff
+tori. We verify its hypotheses for the construction chosen in
+\cref{sec:ordered-constants}. The partition comparison, the
+nonzero-flux estimate and the conditional-moment argument are
+proved in that companion.
+
+The selected constants have $r=2$, $s=1/2$, $M=L^k$ with
+$k\ge2$, and $0<\varepsilon\le1/200$. The first inequality
+of \eqref{eq:constants-L} implies $L\ge13$.
+With $h$ as in \eqref{eq:cutoff-scales}, put
+\begin{equation}\label{eq:transfer-scale-choice}
+ e_K=e\sqrt h,\qquad v_K=-\log e_K,\qquad
+ r_K=\min\{L^i:i\in\Z_{\ge0},\ L^i\ge v_K^2\},
+ \qquad R^*=hMr_K/L=hL^{T^*}.
+\end{equation}
+Write $n_*=R^*/\eta$, $N_*=8L^3$ and
+$a_L=(L^3-1)/(L-1)^3$. The positive exponent is
+\begin{equation}\label{eq:transfer-charge-exponents}
+ \mathfrak e=\tfrac12(1/4-9\varepsilon)-12\varepsilon,
+ \qquad \sigma=\mathfrak e-2a_L/N_*>0.
+\end{equation}
+The terminal inventory in \cref{sec:ordered-constants} gives,
+for every $0<e\le e_G$, $e\le1/3$, $v_K\ge8$,
+$e_K\log h\le1$, and
+\begin{equation}\label{eq:transfer-tail-condition}
+ 6N_*Mv_K^2\exp(-v_K)
+             \bigl(v_K\exp(-v_K)+\tfrac12\bigr)\le\pi^2.
+\end{equation}
+These are the scale hypotheses of the cited theorem. In particular,
+\cite[(41), (49)--(51)]{VolumeTransfer} gives
+\begin{equation}\label{eq:transfer-W3}
+ 6N_*e^2R^*\log(1/e)\le\pi^2,
+\end{equation}
+and
+\begin{equation}\label{eq:transfer-volume-error}
+ \bar mR^*>Mr_K/L^2\ge r_K\ge v_K,
+ \qquad \exp(-\bar mR^*)\le e\sqrt h.
+\end{equation}
+
+Fix the compact real probe $\beta$ and $f=dd^*\beta$.
+Let $\delta_{\eta,\mu}$ be the centered difference of step
+$\eta$ and $J_\eta$ the cube average. Define
+\[
+ a'_{\eta,\nu}=-\sum_{\mu\ne\nu}\delta_{\eta,\mu}\beta_{\mu\nu},
+ \qquad
+ f^\eta_{\mu\nu}=\delta_{\eta,\mu}a'_{\eta,\nu}
+                       -\delta_{\eta,\nu}a'_{\eta,\mu}.
+\]
+The covering source is
+$\widehat a^o_\nu(x)=\eta^{1/2}(J_\eta a'_{\eta,\nu})(\eta x+\eta e_\nu/2)$.
+It satisfies $d\widehat a^o=(f^\eta)_{[\eta]}$, with the
+test normalization in \eqref{eq:limit-test-cover}.
+Its reflected, periodized copies $\widehat a_c$ and the
+variance $v_\eta=\|d\widehat a^o\|^2$ are those of
+\cite[Section~2]{ReferenceResponse}.
+Let $D_\beta$ be the side of a least coordinate cube containing
+$\supp\beta$, and let $Q_\beta$, centered at $z_\beta$, be
+that cube enlarged by two in each direction. Its side is
+$D_\beta^{\rm buf}=D_\beta+4$. A centered placement is
+$v\in\eta\Z^3$ with
+$|v+z_\beta-(\ell_c/2)(1,1,1)|_\infty\le\eta/2$,
+where $\ell_c=R^*/(2L)$. These are the conventions of
+\cite[Section~2]{ReferenceResponse}. Translate $\widehat a^o$
+by $v$ before reflecting and periodizing it to form the cochains
+$\widehat a_c$. For such a placement,
+Proposition~\extref{11.1}{ReferenceResponse} gives, throughout
+$0<e\le e_\sharp(\beta)$,
+\[
+ D_\beta^{\rm buf}+3\eta\le\ell_c,
+ \qquad v+Q_\beta\subset[\ell_c/8,7\ell_c/8]^3,
+ \qquad \ell_c=R^*/(2L).
+\]
+Indeed its placement conditions \exteq{121}{ReferenceResponse}
+give both inequalities for $\eta\le1$ and a centered placement.
+Thus the full support hypothesis \exteq{6}{VolumeTransfer} holds.
+
+For the same placed probe define the ordinary free derivatives by
+\[
+ N_0(t)=\frac{\det(D^{\rm ch}[q(t/e)\widehat a_0]+\bar m\eta)}
+                   {\det(D^{\rm ch}[0]+\bar m\eta)},
+ \qquad c_m=N_0^{(m)}(0),\quad m=2,4.
+\]
+Write
+\[
+ H_2(x;v)=x^2-v,\qquad H_4(x;v)=x^4-6vx^2+3v^2,
+ \qquad W_m(x;v,c)=e^{-m}H_m(x;v)-c.
+\]
+The reference response uses the interacting mass
+$\boldsymbol\mu_N=\bar m\eta+m_{0,N}(e)$, which can have
+either sign; this free ratio uses the positive mass $\bar m\eta$.
+Let $\E_{n_*}^{(0)}$ be the all-flux law conditioned on zero
+flux, at this same interacting mass, and put
+\[
+ \Theta_m^{(0)}=
+ \left|\E_{n_*}^{(0)}\prod_{c\in\{0,\ldots,2L-1\}^3}
+ W_m(\langle d\widehat a_c,u\rangle;v_\eta,c_m)\right|^{1/N_*}.
+\]
+The exact identity \exteq{53}{ReferenceResponse} identifies
+this expression with its normalized differentiated response.
+The zero-flux law here and the all-flux cutoff law therefore
+have exactly the conventions of \cite{VolumeTransfer}.
+
+Let $z_{r,n}$ denote the twist-averaged zero-flux matter factor
+\exteq{1}{TerminalPressure}, with mass $\boldsymbol\mu_N$.
+For $N\ge N_{\rm ref}(e)$ and
+$0<e\le\min\{e_G,e_\sharp(\beta)\}$, the common-pressure
+comparison \exteq{5}{TerminalPressure} and the response
+bound \exteq{119}{ReferenceResponse} give fixed constants
+$C_{\rm mat},C_{\rm ref}<\infty$ such that
+\begin{align}
+ L^3\log z_{r,n_*}-\log z_{r,Ln_*}&\le C_{\rm mat},\notag\\
+ \Theta_4^{(0)}&\le C_{\rm ref}e^{\mathfrak e},\qquad
+ (1+|c_2|)\Theta_2^{(0)}\le C_{\rm ref}e^{\mathfrak e}.
+                                      \label{eq:transfer-terminal-input}
+\end{align}
+Both reference tori use the pair selected on $LR^*$;
+their common bulk pressure cancels in this difference.
+Theorem~\extref{B}{PositiveProbe} and
+Proposition~\extref{5.2}{PositiveProbe}, together with
+\eqref{eq:transfer-volume-error}, allow $C_{\rm ref}$ to be
+enlarged once so that
+\begin{equation}\label{eq:transfer-free-input}
+ |c_2|+|c_4|^{1/2}\le C_{\rm ref},\qquad
+ |c_4-3c_2^2-b(f)|\le C_{\rm ref}(e+\eta^{1/4}).
+\end{equation}
+Here the support fit gives $R^*\ge D_\beta+1$.
+All constants are independent of charge, mesh and placement.
+Choose $C_U$ to be the explicit constant
+\exteq{59}{VolumeTransfer}, with these reference constants.
+
+\begin{proposition}\label{prop:transfer-UV-inputs}
+For the construction and probe above, throughout
+$0<e\le\min\{e_G,e_\sharp(\beta)\}$ and
+$N\ge N_{\rm ref}(e)$, there are $u_2,u_4\ge0$, independent
+of the outer cutoff $T$, such that
+\begin{equation}\label{eq:transfer-small-Wick}
+ u_4\le C_Ue^\sigma,\qquad
+ (1+|c_2|)u_2\le C_Ue^\sigma,\qquad
+ |c_4-3c_2^2-b(f)|\le C_U(e^\sigma+\eta^{1/4}).
+\end{equation}
+For every $T\ge T^*+1$ and finite
+$Y\subset(R^*/L)\Z^3$ of points incongruent modulo $R\Z^3$,
+\begin{equation}\label{eq:transfer-translated-Wick}
+ \left|\E_{N,T}\prod_{y\in Y}
+ W_m(F^\sharp(\tau_yf^\eta);v_\eta,c_m)\right|
+                      \le u_m^{|Y|},\qquad m=2,4.
+\end{equation}
+The fixed smooth test satisfies
+\begin{equation}\label{eq:transfer-smooth-cumulant}
+ |\kappa_4(F^\sharp(f))-e^4b(f)|
+ \le(8C_U+3C_U^2)e^{4+\sigma}
+                   +C_U(\eta^2+e^4\eta^{1/4}).
+\end{equation}
+The tests $f^\eta$ have a common compact support,
+$f^\eta\to f$ in $L^2$, and $v_\eta\to\|f\|_2^2$.
+\end{proposition}
+
+\begin{proof}
+The hypotheses of Theorem~\extref{A}{VolumeTransfer}
+have just been checked. Its equations (8)--(10), or
+Proposition~\extref{6.1}{VolumeTransfer}, give the assertions.
+The carrying-torus condition is satisfied because
+$n=8L^{T-T^*}n_*$ is a multiple of $p_{\rm cell}=n_*/L$
+and is at least $Ln_*$ when $T\ge T^*+1$.
+Although $n_*$ is odd, the reference array has $2L$ cells
+per side; its half-integer cell widths are precisely those
+used in the cited theorem. Its source identity, test-error
+bound and variance convergence are \cite[Section~2.2, (19)--(20)]{VolumeTransfer}.
+\end{proof}
+
+The translated-product estimate is the input needed for
+components: a bound on the parent's fourth cumulant alone
+does not bound the fourth cumulants of its components.
+Lemma~\extref{8.1}{VolumeTransfer} bounds the invariant
+conditional expectations from these products.
+Proposition~\extref{8.2}{VolumeTransfer} then gives the
+component cumulant estimate. Theorem~\extref{A}{VolumeTransfer}
+performs both steps for any prescribed volume-first parent
+whose components satisfy the stated Gaussian bound.
+We apply this conclusion to the parent and component set
+in the proof of \cref{thm:main}.
+\section{Tensor Schwinger functions}\label{sec:tensor-axioms}
+
+The Gaussian estimate of \cite[Proposition~6.1]{ContinuumLimits} defines a continuous map
+$\Psi\mapsto Q_\Psi$ from $\Sspace_n$ to $L^2(\lambda)$.
+To use law-level reflection positivity for arbitrary tensor tests,
+we must show that support in a half-space makes this random polynomial
+measurable with respect to the corresponding half-space sigma algebra. The Hermite
+expansion used for the growth bound does not preserve supports.
+We therefore use a compact Fourier expansion for this step.
+
+\subsection{Products and supported tensor tests}
+
+For $\Psi\in\Sspace_k$ and $\Phi\in\Sspace_l$, the tensor evaluation
+obeys
+\begin{equation}\label{eq:tensor-product-rule}
+ Q_\Psi Q_\Phi=Q_{\Psi\otimes\Phi}\quad\text{in }L^1(\lambda).
+\end{equation}
+Both sides are separately continuous bilinear maps to $L^1$:
+for the left side use the $L^2$ bounds and Cauchy--Schwarz, and for
+the right side use continuity of the tensor product in Schwartz
+seminorms. They agree for elementary tensors. Their linear span
+is dense, so approximation in each variable proves
+\eqref{eq:tensor-product-rule}. The same argument gives
+\begin{equation}\label{eq:tensor-equivariance}
+ Q_{\overline\Psi}=\overline{Q_\Psi},\qquad
+ Q_{g\cdot\Psi}=\widehat g Q_\Psi
+ \quad\text{if }g_*\lambda=\lambda.
+\end{equation}
+Here the second identity uses the exterior-square action, including
+the tensor indices.
+
+We recall the needed supported expansion. Let $O\subset\R^3$ be open
+and $\Psi\in C_c^\infty(O^n)$. Its support projects into compact
+sets $K_a\subset O$. Choose $\chi_a\in C_c^\infty(O)$ equal to one
+on $K_a$, and a cube of side $s$ containing all these supports in
+its interior. Extend $\Psi$ periodically from this cube in all its
+variables. Its Fourier coefficients $c_{\mathbf k}$ obey, for
+every integer $p$,
+\[
+ |c_{\mathbf k}|\le C_{p,s,\Psi}(1+|\mathbf k|^2)^{-p},
+ \qquad \mathbf k=(k_1,\ldots,k_n)\in(\Z^3)^n.
+\]
+This follows by applying $(1-\Delta)^p$ and integrating by parts;
+there are no boundary terms. Multiplication of the Fourier series by
+$\prod_a\chi_a(y_a)$ gives the identity on all space
+\begin{equation}\label{eq:supported-tensor-expansion}
+ \Psi=\sum_{\mathbf k}c_{\mathbf k}
+       \bigotimes_{a=1}^n
+       \left(\chi_a(y_a)e^{2\pi i k_a\cdot y_a/s}\right).
+\end{equation}
+The seminorm $q_m$ of each tensor factor product grows at most as
+$(1+|\mathbf k|^2)^{m/2}$. Taking $p=m+3n$ makes the series
+absolutely convergent in that seminorm. The same argument applies
+componentwise to two-form tensor tests. It also proves the density
+of elementary tensors used above; arbitrary Schwartz tests are
+approximated by growing compact cutoffs.
+
+Each elementary tensor in \eqref{eq:supported-tensor-expansion}
+has factors supported in $O$, so its random evaluation is
+$\Sigma_O$-measurable and belongs to $L^2(\lambda)$ by the moment
+bound. Continuity of $Q$ and closedness of $L^2(\Sigma_O,\lambda)$
+give
+\begin{equation}\label{eq:tensor-local-measurability}
+ Q_\Psi\in L^2(\Sigma_O,\lambda)
+       \qquad(\Psi\in C_c^\infty(O^n)).
+\end{equation}
+
+This extends to tests supported in the closed half-space
+$H=\{x:v\cdot x\ge c\}$, with $|v|=1$. Choose a fixed compact
+cutoff $\chi$ equal to one near zero and put
+\[
+ \Psi_j(y)=\prod_{a=1}^n\chi(y_a/j)\,
+           \Psi(y_1-v/j,\ldots,y_n-v/j).
+\]
+Each $\Psi_j$ has compact support in
+$O^n$, $O=\{x:v\cdot x>c\}$. Translation is continuous in Schwartz
+space, and the growing cutoff tends to one in its action on each
+Schwartz function. More explicitly, Leibniz' rule gives
+\[
+ q_m(\Psi_j-\Psi)\le C_{m,n,\chi}j^{-1}q_{m+1}(\Psi).
+\]
+Consequently $Q_{\Psi_j}\to Q_\Psi$ in $L^2(\lambda)$, and
+\begin{equation}\label{eq:tensor-closed-halfspace}
+ Q_\Psi\in L^2(\Sigma_O,\lambda)\qquad
+                   (\supp\Psi\subset H^n).
+\end{equation}
+Thus tests meeting the boundary plane belong to the same
+positive-side $L^2$ space.
+
+\subsection{The five conditions}
+
+\begin{proposition}\label{prop:tensor-OS}
+Let $\lambda$ be a Gaussian-dominated law of real tempered two-forms.
+Suppose it is invariant under Euclidean motions and reflection
+positive at every plane through the origin. Then its tensor
+Schwinger functions satisfy \textup{(E0$'$)}--\textup{(E3)} of
+\cref{thm:main}. If, for every $A,B\in L^2(\lambda)$,
+\[
+ \E_\lambda[\overline A\,U(a)B]\longrightarrow
+       \overline{\E_\lambda A}\,\E_\lambda B
+       \quad\text{as }|a|\longrightarrow\infty,
+\]
+they also satisfy \textup{(E4)}.
+\end{proposition}
+
+\begin{proof}
+The Hermite estimate of \cite[Proposition~6.1]{ContinuumLimits} proves \textup{(E0$'$)}. Covariance follows from
+\eqref{eq:tensor-equivariance} and invariance of expectation.
+Permutation symmetry holds on elementary tensors because the random
+field evaluations commute; continuity gives \textup{(E3)} on all
+tensor tests.
+
+For \textup{(E2)}, let $r$ be the stated reflection and $H$ the
+chosen closed half-space. By \eqref{eq:tensor-closed-halfspace},
+$A=\sum_{k=0}^MQ_{\Psi_k}$ lies in its positive-side $L^2$ space,
+where $Q_{\Psi_0}=\Psi_0$. Reflection positivity extends from
+bounded characters to this whole space by their density and the
+boundedness of the reflection form. Equations
+\eqref{eq:tensor-product-rule}--\eqref{eq:tensor-equivariance} give
+\[
+ \overline{\mathcal R_rQ_{\Psi_k}}
+       =Q_{\Theta_k\Psi_k},\qquad
+ Q_{\Theta_k\Psi_k}Q_{\Psi_l}
+       =Q_{\Theta_k\Psi_k\otimes\Psi_l}\quad\text{in }L^1.
+\]
+Therefore
+\[
+ 0\le\E_\lambda[(\overline{\mathcal R_rA})A]
+   =\sum_{k,l=0}^MS_{k+l}(\Theta_k\Psi_k\otimes\Psi_l).
+\]
+This is the tensor reflection form with the conjugation and signs
+in \cref{thm:main}.
+
+Finally, \eqref{eq:tensor-product-rule} and translation covariance
+identify the expression in \textup{(E4)} with
+$\E_\lambda[Q_\Psi U(a)Q_\Phi]$. Both random polynomials are in
+$L^2(\lambda)$. Apply the stated clustering with
+$A=\overline{Q_\Psi}$ and $B=Q_\Phi$ to obtain
+$\E_\lambda Q_\Psi\,\E_\lambda Q_\Phi$.
+\end{proof}
+
+For the components in \cref{prop:limit-nine-mirrors}, the clustering
+hypothesis holds. The covariance theorem in \cref{sec:rotations}
+will supply their Euclidean invariance and reflection positivity
+at every plane.
+
+
+\section{Completion of the field-strength construction}
+\label{sec:main-theorem-closure}
+
+\begin{proof}[Proof of \cref{thm:main}]
+Choose the construction constants by \cref{prop:ordered-constants},
+in the stated order.
+In particular $\sigma>0$ in
+\eqref{eq:transfer-charge-exponents}.
+Take the positive physical ceiling $e_G$ in
+\eqref{eq:constants-physical-charge}. Theorem~\extref{D}{CoverTuning} supplies real bare mass shifts
+$m_{0,N}(e)$, independent of the volume and twist,
+for $0<e\le e_G$; below its defining mesh threshold they
+are set to zero. Their bound
+\exteq{65}{CoverTuning} gives
+$|m_{0,N}(e)|<1/8$ for every $N$.
+The all-flux laws at \eqref{eq:cutoff-scales} are therefore
+defined at every cutoff, even when the total lattice mass
+has either sign.
+The physical ceiling in \cref{thm:main} is
+$e_{\mathrm{phys}}=e_G$.
+Theorem~\extref{A}{PositiveProbe} proves the existence
+of the probes in \eqref{eq:positive-coefficient}.
+Fix any such probe and $0<e\le e_\beta$, with
+$e_\beta$ supplied by \cref{prop:ordered-probe-constants}.
+
+For this probe,
+Proposition~\extref{11.1}{ReferenceResponse}
+provides $e_\sharp(\beta)>0$.
+The terminal partition bound
+\exteq{5}{TerminalPressure} and the response estimate
+\exteq{119}{ReferenceResponse} supply
+both parts of \eqref{eq:transfer-terminal-input}.
+The free-coefficient bound
+\eqref{eq:transfer-free-input} supplies its remaining
+reference input. Thus \cref{prop:transfer-UV-inputs}
+applies throughout this interval, with one $C_U$
+independent of the cutoff, volume, placement and limit law.
+Its estimates hold whenever
+$N\ge N_{\rm ref}(e)$ and $T\ge T^*(e)+1$.
+These are finite thresholds for each fixed $e$.
+
+\emph{Volume-first laws and their Euclidean components.}
+The tightness estimate \eqref{eq:limit-uniform-tightness}
+shows that every fixed-spacing volume-limit set
+$\mathcal V_N$ is nonempty and that the collection of
+these limits is tight on $H_{-4}$.
+Consequently volume-first limit points exist.
+Let $\mu$ be any one of them, and write
+$\mu^{(N_i)}\to\mu$, where $N_i\to\infty$ and
+$\mu^{(N_i)}\in\mathcal V_{N_i}$.
+For each $i$, choose a volume index $T_i$ along a
+defining subsequence for $\mu^{(N_i)}$ such that
+\[
+ T_i\ge i,\qquad
+ d_{\rm w}(P_{N_i,T_i},\mu^{(N_i)})\le1/i,
+\]
+where $d_{\rm w}$ metrizes weak convergence on $H_{-4}$.
+Then
+$d_{\rm w}(P_{N_i,T_i},\mu)
+\le1/i+d_{\rm w}(\mu^{(N_i)},\mu)\to0$.
+This is the joint sequence in
+\cref{prop:limit-nine-mirrors};
+both indices diverge, and all fixed finite-family
+moments converge along it.
+
+\Cref{prop:limit-nine-mirrors} gives closedness,
+translation invariance, Gaussian domination with constant
+one, and invariance and reflection positivity at all
+planes in the nine mirror families.
+Sections~\extref{5--6}{ErgodicComponents} transfer
+these properties to a measurable set of full measure
+in the translation-ergodic decomposition.
+The Gaussian bound holds there for all real Schwartz
+tests at once, by the countable-density and Fatou
+argument in \exteq{20}{ErgodicComponents}.
+Section~\extref{5}{ErgodicComponents} transfers each additional mirror
+by transporting the conditional laws and using
+uniqueness of the decomposition. Intersecting the
+nine full-measure sets gives all mirror forms in
+each component; these reflections also generate
+the cubic group.
+
+\Cref{thm:rotation-covariance} now applies
+separately to $\mu$ and to every component in this
+full-measure set. It proves their invariance under
+the full Euclidean group and reflection positivity
+at every plane.
+For an ergodic component, the sharp cone and
+\exteq{15}{ErgodicComponents} identify the
+translation-invariant projection with the constant
+projection. Proposition~\extref{4.1}{ErgodicComponents}
+therefore gives clustering for all $L^2$ observables
+as $|a|\to\infty$.
+\Cref{prop:tensor-OS} gives
+\textup{(E0$'$)}--\textup{(E3)} for the parent law and
+\textup{(E0$'$)}--\textup{(E4)} for these components,
+with exactly the tensor action and growth bound of
+\cref{thm:main}.
+In particular, supported tensor evaluations belong
+to the positive-side $L^2$ space even when their
+supports meet the reflection plane, by
+\eqref{eq:tensor-closed-halfspace}.
+For clustering the relevant identity is
+\[
+ S_{k+l}^\xi(\Psi\otimes\tau_a^{\otimes l}\Phi)
+   =\E_{\mu_\xi}[Q_\Psi\,U(a)Q_\Phi],
+                 \qquad Q_\Psi,Q_\Phi\in L^2(\mu_\xi).
+\]
+It gives \eqref{eq:main-cluster} on all tensor Schwartz
+tests, using \(A=\overline{Q_\Psi}\) in the
+$L^2$ clustering formula.
+
+\emph{Fourth cumulants in the same components.}
+The prescribed parent $\mu$ is the volume-first limit of the
+same all-flux laws, at the same volume-independent mass assignment,
+used in \cref{prop:transfer-UV-inputs}. Their physical interpolation
+and weak topology are those of Theorem~\extref{A}{VolumeTransfer}.
+The preceding argument gives translation invariance of $\mu$
+and Gaussian domination with constant one on a full set of
+its translation-ergodic components. Thus the component hypothesis
+\exteq{11}{VolumeTransfer} holds for this parent.
+
+The reference, placement and charge hypotheses of that theorem
+were verified in \cref{sec:uniform-transfer}. Its conclusion
+\exteq{12}{VolumeTransfer} gives a full-measure component set on which
+\[
+ |\kappa_4^{\mu_\xi}(f)-e^4b(f)|\le C_fe^{4+\sigma},
+ \qquad C_f=8C_U+3C_U^2.
+\]
+The prescribed-parent clause keeps the law $\mu$ fixed;
+the coefficient subsequence used in its proof does not select
+a different parent. Intersect this set with the full-measure
+set already used for the tensor OS conditions.
+The charge choice \eqref{eq:constants-probe-charge} gives
+$C_fe^\sigma\le b(f)/2$, hence
+$\kappa_4^{\mu_\xi}(f)\ge e^4b(f)/2>0$ on this intersection.
+The constant is independent of the parent and component.
+This proves \eqref{eq:main-cumulant}; the full-measure set
+is asserted for the fixed charge, probe and parent law.
+A centered Gaussian variable has zero fourth cumulant, so
+these component laws are non-Gaussian.
+\end{proof}
+\section{Rotational covariance}\label{sec:rotations}
+
+The rotation argument starts with a field insertion separated from
+the two observables in a reflection form. Gaussian domination bounds
+the insertion in the reconstructed Hilbert space, independently of
+the number of factors in either observable. The spectral cone then
+allows complex translations. Together these bounds give bounded
+operators for insertions concentrated at a point of the
+$(x_1,x_2)$-plane. Closedness removes the extra angular frequencies
+at two points. At higher orders, reflection positivity gives a positive
+kernel for the highest angular coefficient. Polygon divisibility and a
+convexity estimate then reduce every order to the two-point result.
+
+
+We use the Gaussian moment bounds, reconstruction and spectral cone
+recalled in \cref{sec:probability}. The parent law and its components
+have these properties by \cref{prop:limit-nine-mirrors}. Their
+closedness enters the two-point frequency calculation and the
+removal of contact terms.
+Let $\mu$ be a translation-invariant, Gaussian-dominated law,
+invariant and reflection positive at $x_1=0$.
+We first work with this reconstruction, writing
+$\mathcal H=\mathcal H_1$, $H=H_1$, and
+$U_t=U(te_1)$.
+Let $\mathcal A_+$ denote the positive-side measurable functions
+belonging to every $L^p(\mu)$, $p<\infty$. It is an algebra.
+Their classes are dense in $\mathcal H$, since $\mathcal A_+$
+contains the bounded positive-side functions.
+
+Use the Hodge isometry
+$*f=(f_{23},-f_{13},f_{12})$ to write
+$\mathbb B(b)=F(*^{-1}b)$, complex linearly. The completion recalled
+in \cref{sec:probability} extends this map to vector-valued $L^2$ tests.
+The action on these tests is
+\[
+ (g\cdot b)(x)=\det(g)\,g\,b(g^{-1}x)
+ \quad(g\in O(3)),\qquad
+ (\tau_a b)(x)=b(x-a).
+\]
+In particular
+$\Theta_1\mathbb B(b)=\mathbb B(\overline{r_1\cdot b})$
+and $\Theta_1U_t=U_{-t}\Theta_1$.
+Write $L^2_{[a,b]}$ for the vector tests vanishing almost everywhere
+outside $a\le x_1\le b$.
+
+\subsection{The insertion estimate}\label{subsec:rotation-insertion}
+
+For $\ell>0$ and $h\in L^2_{[0,\ell]}$, consider
+$M_\ell(h)\Phi=e^{\mathbb B(h)}U_\ell\Phi$ for bounded
+positive-side $\Phi$. This function lies in $\mathcal A_+$.
+We first prove
+\begin{equation}\label{eq:rotation-source-bound}
+ \|[M_\ell(h)\Phi]_1\|
+       \le e^{\|\Re h\|_2^2/2}\|[\Phi]_1\|.
+\end{equation}
+
+Set $h^\#=\tau_{\ell e_1}(\overline{r_1\cdot h}+h)$.
+Reflection and translation invariance give
+\begin{equation}\label{eq:rotation-source-doubling}
+ \|[M_\ell(h)\Phi]_1\|^2
+   =\langle[\Phi]_1,[M_{2\ell}(h^\#)\Phi]_1\rangle.
+\end{equation}
+The two summands in $h^\#$ have disjoint slab interiors, and
+$\tau_{2\ell e_1}\overline{r_1\cdot h^\#}=h^\#$.
+
+For a source $h'$ on $[0,\ell']$ with
+$\tau_{\ell'e_1}\overline{r_1\cdot h'}=h'$, let
+$h'^{(n)}=\sum_{j=0}^{n-1}\tau_{j\ell'e_1}h'$.
+Doubling $h'^{(n)}$ gives $h'^{(2n)}$. Thus, with
+$m_a=\|[M_{2^a\ell'}(h'^{(2^a)})\Phi]_1\|$,
+\[
+ m_a^2\le\|[\Phi]_1\|m_{a+1},\qquad
+ m_0\le\|[\Phi]_1\|^{1-2^{-a}}m_a^{2^{-a}}.
+\]
+On the other hand, the integrand in the doubling identity is bounded
+in modulus by
+\[
+ \|\Phi\|_\infty^2e^{\mathbb B(\Re h'^{(2^{a+1})})}.
+\]
+The real translates have disjoint interiors, so Gaussian domination
+gives
+\[
+ m_a^2\le\|\Phi\|_\infty^2
+       e^{\,2^a\|\Re h'\|_2^2}.
+\]
+Taking the indicated powers and sending $a\to\infty$ proves
+\eqref{eq:rotation-source-bound} for symmetric sources, including
+$\|[\Phi]_1\|=0$. Apply this to $h^\#$, whose real part has squared
+norm $2\|\Re h\|_2^2$, in
+\eqref{eq:rotation-source-doubling}. Cauchy--Schwarz proves the
+bound for arbitrary $h$.
+
+\begin{proposition}\label{prop:rotation-insertion}
+For $\ell>0$ and $f\in L^2_{[0,\ell]}$ there is a unique bounded
+operator $\mathcal B_\ell(f)$ on $\mathcal H$ satisfying
+\[
+ \mathcal B_\ell(f)[\Phi]_1
+       =[\mathbb B(f)U_\ell\Phi]_1\quad(\Phi\in\mathcal A_+).
+\]
+It is complex linear in $f$, and
+\begin{equation}\label{eq:rotation-insertion-bound}
+ \|\mathcal B_\ell(f)\|\le k_1\|f\|_2,\qquad
+ k_1=\sqrt{2\exp(1)}.
+\end{equation}
+For real $f$, the constant is $\exp(1/2)$.
+If $f\in L^2_{[c,c']}$ with $0\le c<c'\le\ell$, then
+\begin{equation}\label{eq:rotation-insertion-local}
+ \mathcal B_\ell(f)=e^{-cH}
+       \mathcal B_{c'-c}(\tau_{-ce_1}f)e^{-(\ell-c')H}.
+\end{equation}
+For $f\in L^2_{[-d,d]}$, set
+$\mathcal B_d^{\mathrm c}(f)=\mathcal B_{2d}(\tau_{de_1}f)$.
+Its matrix elements and adjoint are
+\begin{align}
+ \langle[\Phi']_1,\mathcal B_d^{\mathrm c}(f)[\Phi]_1\rangle
+   &=\E_\mu[(\Theta_1U_d\Phi')\mathbb B(f)U_d\Phi],
+                         \label{eq:rotation-insertion-centered}\\
+ \mathcal B_d^{\mathrm c}(f)^*
+   &=\mathcal B_d^{\mathrm c}(\overline{r_1\cdot f}).\notag
+\end{align}
+For $r\ge|t|$ and $a\in\R$, one also has
+\begin{multline}\label{eq:rotation-insertion-shift}
+ e^{-(r+t)H+ia\mathsf P_2}\mathcal B_d^{\mathrm c}(f)
+           e^{-(r-t)H-ia\mathsf P_2}\\
+       =\mathcal B_{d+r}^{\mathrm c}(\tau_{te_1+ae_2}f).
+\end{multline}
+\end{proposition}
+
+\begin{proof}
+For real $f$ and bounded $\Phi$, the map
+$z\mapsto[e^{z\mathbb B(f)}U_\ell\Phi]_1$ is entire.
+Indeed its exponential series converges locally uniformly in
+$L^2(\mu)$, dominated on $|z|\le R$ by
+$\|\Phi\|_\infty e^{R|\mathbb B(f)|}$.
+The quotient map is a contraction. On $|z|=\|f\|_2^{-1}$,
+\eqref{eq:rotation-source-bound} bounds its norm by
+$\exp(1/2)\|[\Phi]_1\|$. Cauchy's coefficient estimate gives the
+real insertion bound. Applying it to $\Re f$ and $\Im f$, and using
+$\|\Re f\|_2+\|\Im f\|_2\le\sqrt2\|f\|_2$, gives
+\eqref{eq:rotation-insertion-bound}.
+The estimate sends null classes to null classes, so it defines the
+operator on the dense classes of bounded functions and extends it
+uniquely to $\mathcal H$.
+
+For $\Phi\in\mathcal A_+$, its bounded truncations converge in $L^4$.
+Since $\mathbb B(f)\in L^4$, their products with the inserted field
+converge in $L^2$ by H\"older's inequality. This proves the asserted
+formula on $\mathcal A_+$ and complex linearity in $f$.
+
+Equation \eqref{eq:rotation-insertion-local} follows by applying
+$U_c$ to
+$\mathbb B(\tau_{-ce_1}f)U_{\ell-c}\Phi$ and using
+\exteq{6}{ErgodicComponents}. Translation by $-de_1$ in the reflection
+form gives \eqref{eq:rotation-insertion-centered}. Applying reflection
+and conjugation to that integrand gives the adjoint formula.
+For \eqref{eq:rotation-insertion-shift}, apply the two exterior
+semigroups to a class $[\Phi]_1$. The resulting function is
+\[
+ \mathbb B(\tau_{(d+r)e_1+te_1+ae_2}f)\,
+       U_{2(d+r)}\Phi.
+\]
+The test $\tau_{te_1+ae_2}f$ is supported in $[-d-r,d+r]$,
+since $|t|\le r$. The displayed function therefore defines its centered
+insertion at $d+r$, which is the right side. Equality on these dense
+classes proves the operator identity.
+\end{proof}
+
+In particular, for $\Phi_1,\Phi_2\in\mathcal A_+$ measurable on
+$x_1>d$,
+\begin{equation}\label{eq:rotation-separated-insertion}
+ |\E_\mu[(\Theta_1\Phi_1)\mathbb B(f)\Phi_2]|
+ \le k_1\|f\|_2\,\|[U_{-d}\Phi_1]_1\|
+                         \|[U_{-d}\Phi_2]_1\|.
+\end{equation}
+This is \eqref{eq:rotation-insertion-centered} applied to the two
+translated observables. The constant does not depend on their degrees.
+
+\subsection{Complex translations and point plates}
+\label{subsec:rotation-point-plates}
+
+From now on assume also the sharp cone
+$\mathsf E_1\{(E,p_\perp):E<|p_2|\}=0$.
+For the laws under construction, Proposition~\extref{3.1}{ErgodicComponents} supplies this from the diagonal mirror.
+
+For $\xi=(\xi^0,\xi^1)\in\C^2$, put
+\[
+ d_{\mathcal W}(\xi)=\Re\xi^0-|\Im\xi^1|,\qquad
+ \mathcal W=\{d_{\mathcal W}>0\},\qquad
+ \xi^*=(\overline{\xi^0},-\overline{\xi^1}),\quad n_0=(1,0).
+\]
+The cone \exteq{8}{ErgodicComponents} gives contractions
+\[
+ T(\xi)=\int e^{-\xi^0E+i\xi^1p_2}\,\dd\mathsf E_1(E,p_\perp)
+                  \quad(\xi\in\overline{\mathcal W}).
+\]
+They obey $T(\xi)T(\xi')=T(\xi+\xi')$,
+$T(\xi)^*=T(\xi^*)$, and $T(\xi)\Omega_1=\Omega_1$.
+They are strongly continuous on the closed tube by spectral
+dominated convergence. In its interior they are holomorphic in
+operator norm: on $d_{\mathcal W}\ge\epsilon>0$ the first and
+second derivatives of the multiplier are bounded by constants
+times $E e^{-\epsilon E}$ and $E^2e^{-\epsilon E}$.
+Taylor's formula therefore gives a uniform quadratic remainder.
+For real $y=(y^0,y^1)$ with $y^0\ge0$,
+$T(y)[\Phi]_1=[U(y^0e_1+y^1e_2)\Phi]_1$.
+
+Write $x=(y,x_3)$ with $y=(x_1,x_2)$. Set
+\begin{gather*}
+ e^+=e_1+ie_2,\quad e^-=e_1-ie_2,\quad e^3=e_3,\\
+ w(+)=1,\quad w(-)=-1,\quad w(3)=0,\\
+ s(+)=s(-)=1,\quad s(3)=-1.
+\end{gather*}
+A label $\lambda=(\sigma,\chi)$ has
+$\sigma\in\{+,-,3\}$ and real $\chi\in L^2(\R)$.
+For $\alpha\in L^2(\R^2;\C)$ its plate is
+$(\alpha\otimes\lambda)(x)=\alpha(y)\chi(x_3)e^\sigma$.
+Thus $\|\alpha\otimes\lambda\|_2\le\sqrt2\|\alpha\|_2\|\chi\|_2$.
+For rotations $R_t$ in the $(x_1,x_2)$-plane and the coordinate
+reflection $r_1$, direct multiplication gives
+\begin{align}
+ R_t\cdot(\alpha\otimes\lambda)
+   &=e^{-iw(\sigma)t}(\alpha\circ R_{-t})\otimes\lambda,
+                              \label{eq:rotation-plate-actions}\\
+ \overline{r_1\cdot(\alpha\otimes\lambda)}
+   &=s(\sigma)(\overline\alpha\circ r_1)\otimes\lambda.\notag
+\end{align}
+
+\begin{proposition}\label{prop:rotation-point-plates}
+For each label $\lambda$ there are bounded operators
+$\mathcal B_\lambda(\xi,\xi')$, $\xi,\xi'\in\mathcal W$,
+holomorphic in operator norm and real linear in $\chi$, such that
+\begin{equation}\label{eq:rotation-point-bound}
+ \|\mathcal B_\lambda(\xi,\xi')\|
+ \le\frac{k_2\|\chi\|_2}
+          {\min(d_{\mathcal W}(\xi),d_{\mathcal W}(\xi'))},
+ \qquad k_2=\frac8\pi\exp(1/2).
+\end{equation}
+For $\kappa,\kappa'\in\overline{\mathcal W}$,
+\begin{align}
+ T(\kappa)\mathcal B_\lambda(\xi,\xi')T(\kappa')
+   &=\mathcal B_\lambda(\kappa+\xi,\xi'+\kappa'),
+                                   \label{eq:rotation-point-shift}\\
+ \mathcal B_\lambda(\xi,\xi')^*
+   &=s(\sigma)\mathcal B_\lambda(\xi'^*,\xi^*).\notag
+\end{align}
+If $\alpha\in L^2(\R^2)$ is compactly supported in $|y^0|<d$, then
+\begin{equation}\label{eq:rotation-point-integral}
+ \mathcal B_d^{\mathrm c}(\alpha\otimes\lambda)
+   =\int\alpha(y)\mathcal B_\lambda(dn_0+y,dn_0-y)\,\dd y.
+\end{equation}
+The integral is a Bochner integral in operator norm.
+When $\supp\alpha\subset\{|y^0|\le d'\}$, $d'<d$, its norm is at
+most $k_2\|\chi\|_2\|\alpha\|_1/(d-d')$.
+\end{proposition}
+
+\begin{proof}
+Let $j_\delta=(\pi\delta^2)^{-1}\mathbf1_{\{|y|<\delta\}}$.
+Set $A_\delta=\mathcal B_\delta^{\mathrm c}(j_\delta\otimes\lambda)$
+and, when both tube distances exceed $\delta$, set
+\[
+ \mathcal B_\lambda^\delta(\xi,\xi')
+   =T(\xi-\delta n_0)A_\delta T(\xi'-\delta n_0).
+\]
+These operators obey the shift and adjoint identities in
+\eqref{eq:rotation-point-shift}. Here $j_\delta$ is real and
+reflection invariant, so $A_\delta^*=s(\sigma)A_\delta$.
+The real translation identity \eqref{eq:rotation-insertion-shift}
+also gives, for $r\ge|y^0|$,
+\begin{equation}\label{eq:rotation-point-regularized-translation}
+ \mathcal B_\lambda^\delta((r+\delta)n_0+y,(r+\delta)n_0-y)
+    =\mathcal B_{\delta+r}^{\mathrm c}((\tau_yj_\delta)\otimes\lambda).
+\end{equation}
+
+We prove a bound uniform as $\delta\downarrow0$.
+Fix $\xi,\xi'$ and set
+$d_0=\min(d_{\mathcal W}(\xi),d_{\mathcal W}(\xi'))$,
+$r=(d_0-\delta)/2>0$. For unit vectors $\psi,\psi'$,
+\[
+ h(z)=\langle\psi,\mathcal B_\lambda^\delta(\xi+z,\xi'-z)\psi'\rangle
+\]
+is holomorphic on $|\Re z^0|<r$, $|\Im z^1|<r$.
+Write $z=y+i(t,t')$. Factoring the exterior translations gives
+\[
+ h(y+i(t,t'))=
+ \langle\psi_1,\mathcal B_{\delta+r}^{\mathrm c}
+             ((\tau_yj_\delta)\otimes\lambda)\psi'_1\rangle,
+\]
+where
+$\psi_1=T(\xi-(\delta+r)n_0+i(t,t'))^*\psi$ and
+$\psi'_1=T(\xi'-(\delta+r)n_0-i(t,t'))\psi'$.
+For $|t'|<r$ these are contractions of the original vectors;
+they are independent of $y$.
+For $\eta\in L^2((-r,r)^2)$, extended by zero, the integral of
+$\eta(y)\tau_yj_\delta$ is $\eta*j_\delta$ in $L^2$.
+Its support lies in $|y^0|\le r+\delta$.
+The insertion bound and Young's inequality therefore give
+\[
+ \left|\int\eta(y)h(y+i(t,t'))\,\dd y\right|
+   \le2\exp(1/2)\|\eta\|_2\|\chi\|_2.
+\]
+Hence
+$\int_{(-r,r)^2}|h(y+i(t,t'))|^2\,\dd y
+\le4\exp(1)\|\chi\|_2^2$.
+Apply the mean-value inequality on a polydisc of radius $r'<r$
+and bound its integral by that over the four-dimensional box.
+This yields
+\[
+ |h(0)|^2\le(\pi r'^2)^{-2}(2r)^2\,4\exp(1)\|\chi\|_2^2.
+\]
+Letting $r'\uparrow r$ and taking arbitrary unit vectors proves
+\begin{equation}\label{eq:rotation-regularized-point-bound}
+ \|\mathcal B_\lambda^\delta(\xi,\xi')\|
+       \le\frac{k_2\|\chi\|_2}{d_0-\delta}.
+\end{equation}
+
+To identify the limit, put $r_0=d_0/4$.
+For $\delta<r_0$ the functions
+$h_\delta(z)=\langle\psi,\mathcal B_\lambda^\delta
+(\xi+z,\xi'-z)\psi'\rangle$ form a bounded normal family on
+$|z^0|,|z^1|<r_0$ by
+\eqref{eq:rotation-regularized-point-bound}.
+For $\eta\in L^2((-r_0,r_0)^2)$, the real translation identity
+and an additional equal time translation on both sides give
+\begin{multline}\label{eq:rotation-point-limit-test}
+ \int\eta(y)h_\delta(y)\,\dd y\\
+ =\langle\psi,T(\xi-2r_0n_0)
+       \mathcal B_{2r_0}^{\mathrm c}((\eta*j_\delta)\otimes\lambda)
+       T(\xi'-2r_0n_0)\psi'\rangle.
+\end{multline}
+Since $\eta*j_\delta\to\eta$ in $L^2$, this has a unique limit.
+Any two holomorphic subsequential limits thus have the same
+integrals on the real square; continuity identifies them there,
+and the identity theorem identifies them on the polydisc.
+Consequently every matrix element at $z=0$ converges.
+The bound \eqref{eq:rotation-regularized-point-bound} defines a
+bounded limiting sesquilinear form, represented by
+$\mathcal B_\lambda(\xi,\xi')$ with
+\eqref{eq:rotation-point-bound}. This is weak operator convergence.
+The shift, adjoint, and real linearity identities pass to these
+limits.
+
+For holomorphy, fix $(\xi_0,\xi'_0)$ and a positive $\epsilon$
+smaller than both tube distances. Near this pair the shift identity
+factors the operator as
+\[
+ T(\xi-\xi_0+\epsilon n_0)\,
+ \mathcal B_\lambda(\xi_0-\epsilon n_0,\xi'_0-\epsilon n_0)\,
+ T(\xi'-\xi'_0+\epsilon n_0).
+\]
+The two exterior factors are holomorphic in operator norm.
+
+Finally choose $d'<d$ containing the time support of $\alpha$.
+Integrating
+\eqref{eq:rotation-point-regularized-translation} with $r=d-\delta$
+gives
+\[
+ \int\alpha(y)\mathcal B_\lambda^\delta(dn_0+y,dn_0-y)\,\dd y
+       =\mathcal B_d^{\mathrm c}((\alpha*j_\delta)\otimes\lambda).
+\]
+The right side converges in norm to the left side of
+\eqref{eq:rotation-point-integral}. For matrix elements on the
+left, \eqref{eq:rotation-regularized-point-bound} gives the
+integrable majorant
+$2k_2\|\chi\|_2|\alpha(y)|/(d-d')$ for sufficiently small $\delta$.
+Dominated convergence identifies the limiting matrix elements.
+Holomorphy makes the limiting integrand norm continuous on the
+support, and \eqref{eq:rotation-point-bound} bounds its norm.
+It is therefore Bochner integrable, proving the formula and its
+stated norm bound.
+\end{proof}
+
+\subsection{Ordered field kernels}\label{subsec:rotation-ordered-kernels}
+
+The intermediate arguments of a product of point plates matter
+only through their sum. Indeed, for $\kappa_1,\kappa_2\in\mathcal W$
+and sufficiently small $\epsilon>0$, the shift identity gives
+\[
+ \mathcal B_\lambda(\xi,\kappa_1)
+       \mathcal B_{\lambda'}(\kappa_2,\xi')
+ =\mathcal B_\lambda(\xi,\epsilon n_0)
+       T(\kappa_1+\kappa_2-2\epsilon n_0)
+       \mathcal B_{\lambda'}(\epsilon n_0,\xi').
+\]
+The same expression results from any other decomposition of
+$\kappa_1+\kappa_2$ into two points of $\mathcal W$.
+An exterior argument adjacent to the vacuum can likewise be
+changed arbitrarily in $\mathcal W$, since $T(\kappa)\Omega_1=
+T(\kappa)^*\Omega_1=\Omega_1$.
+
+For $N\ge2$ and $\xi_1,\ldots,\xi_{N-1}\in\mathcal W$, define
+\begin{multline}\label{eq:rotation-ordered-kernel}
+ G_N(\xi;\lambda)=
+ \langle\Omega_1,\mathcal B_{\lambda_1}(\kappa,\xi_1/2)
+       \left(\prod_{a=2}^{N-1}
+          \mathcal B_{\lambda_a}(\xi_{a-1}/2,\xi_a/2)\right)\\
+       \mathcal B_{\lambda_N}(\xi_{N-1}/2,\kappa)\Omega_1\rangle,
+       \qquad\kappa\in\mathcal W.
+\end{multline}
+Set $G_1(\lambda)=\langle\Omega_1,
+\mathcal B_\lambda(\kappa,\kappa)\Omega_1\rangle$.
+Both definitions are independent of $\kappa$.
+For $x_1,x_{a+1}-x_a\in\mathcal W$, define the vector
+\begin{multline}\label{eq:rotation-ordered-vector}
+ \Psi(x;\lambda)=
+ \mathcal B_{\lambda_1}(x_1,(x_2-x_1)/2)
+       \left(\prod_{a=2}^{n-1}
+          \mathcal B_{\lambda_a}((x_a-x_{a-1})/2,(x_{a+1}-x_a)/2)\right)\\
+       \mathcal B_{\lambda_n}((x_n-x_{n-1})/2,\kappa)\Omega_1.
+\end{multline}
+Products here and below are ordered with increasing index from
+left to right; an empty product is the identity.
+For $n=1$ this means
+$\mathcal B_{\lambda_1}(x_1,\kappa)\Omega_1$; for $n=0$ it means
+$\Omega_1$. It too is independent of $\kappa$.
+Put $s(\lambda)=\prod_a s(\sigma_a)$, $w(\lambda)=\sum_a w(\sigma_a)$,
+and let $\bar\lambda$ exchange the $+$ and $-$ labels.
+
+\begin{proposition}\label{prop:rotation-ordered-kernels}
+The kernels and vectors are holomorphic on their stated domains.
+For $N\ge2$,
+\begin{equation}\label{eq:rotation-ordered-kernel-bound}
+ |G_N(\xi;\lambda)|
+ \le\prod_{a=1}^N(2k_2\|\chi_a\|_2)
+       \left(\min_a d_{\mathcal W}(\xi_a)\right)^{-N}.
+\end{equation}
+Let $\alpha_1,\ldots,\alpha_N\in L^2(\R^2)$ have compact
+time-ordered supports:
+$\sup_{\supp\alpha_a}y^0<\inf_{\supp\alpha_{a+1}}y^0$.
+Then
+\begin{equation}\label{eq:rotation-ordered-density}
+ \E_\mu\prod_a\mathbb B(\alpha_a\otimes\lambda_a)
+ =\int\prod_a\alpha_a(y_a)\,
+       G_N(y_2-y_1,\ldots,y_N-y_{N-1};\lambda)\,\dd Y.
+\end{equation}
+If the supports are also in $y^0>0$, their product class is
+the Bochner integral of $\prod_a\alpha_a(y_a)\Psi(Y;\lambda)$.
+One has $G_1=0$,
+$\overline{G_N(\xi;\lambda)}=G_N(\bar\xi;\bar\lambda)$, and
+\begin{multline}\label{eq:rotation-ordered-Gram}
+ \langle\Psi(x;\lambda),\Psi(z;\lambda')\rangle
+ =s(\lambda)G_{n+n'}((x_n-x_{n-1})^*,\ldots,(x_2-x_1)^*,\\
+       x_1^*+z_1,z_2-z_1,\ldots,z_{n'}-z_{n'-1};
+       \lambda_n,\ldots,\lambda_1,\lambda'_1,\ldots,\lambda'_{n'})
+\end{multline}
+when $n,n'\ge1$. With a vacuum in the first slot the inner
+product is $G_{n'}$ on the successive differences of $z$;
+with a vacuum in the second slot it is $s(\lambda)G_n$
+on the reversed starred differences and reversed labels.
+Furthermore
+$T(\kappa')\Psi(x;\lambda)=\Psi(x+\kappa';\lambda)$ for
+$\kappa'\in\overline{\mathcal W}$, where every point is translated.
+\end{proposition}
+
+\begin{proof}
+Holomorphy follows from that of the factors. In the definition of
+$G_N$, choose $\kappa=tn_0$ with
+$t\ge\frac12\min_a d_{\mathcal W}(\xi_a)$ and apply
+\eqref{eq:rotation-point-bound} to every factor. This proves
+\eqref{eq:rotation-ordered-kernel-bound}.
+
+To prove the density formula, first put the supports in $y^0>0$.
+Choose disjoint time slabs $[a_j,b_j]$, in order, with each support
+strictly inside its slab, $a_1\ge0$, and $b_j\le a_{j+1}$.
+Let $f_j=\alpha_j\otimes\lambda_j$,
+$c_j=(a_j+b_j)/2$, $d_j=(b_j-a_j)/2$, and
+$I_j=\mathcal B_{d_j}^{\mathrm c}(\tau_{-c_je_1}f_j)$.
+The insertion identity and its localization give
+\begin{equation}\label{eq:rotation-ordered-product-class}
+ \left[\prod_j\mathbb B(f_j)\right]_1
+ =T(a_1n_0)I_1T((a_2-b_1)n_0)I_2\cdots I_N\Omega_1.
+\end{equation}
+For precision, the backward induction uses
+$\Phi'=\prod_{j>j_0}\mathbb B(\tau_{-b_{j_0}e_1}f_j)$,
+which belongs to $\mathcal A_+$.
+The tail product is $U_{b_{j_0}}\Phi'$, so insertion of $f_{j_0}$
+is $\mathcal B_{b_{j_0}}(f_{j_0})[\Phi']_1$.
+Localization supplies $T(a_{j_0}n_0)I_{j_0}$; the induction
+on the translated tail supplies the next nonnegative gap
+$a_{j_0+1}-b_{j_0}$ and the remaining factors.
+
+Use \eqref{eq:rotation-point-integral} to write
+\[
+ I_j=\int\alpha_j(y_j)
+       \mathcal B_{\lambda_j}(y_j-a_jn_0,b_jn_0-y_j)\,\dd y_j.
+\]
+On the compact supports all these operators are norm bounded;
+the $\alpha_j$ are integrable. The product in
+\eqref{eq:rotation-ordered-product-class} is therefore one Bochner
+integral. Absorb each gap semigroup into a neighbouring point plate.
+The inner arguments between plates $j$ and $j+1$ then add to
+$y_{j+1}-y_j$. Replace them by equal halves using the product
+identity above. The initial argument becomes $y_1$, and the
+terminal argument is removed against the vacuum. The integral is
+exactly the stated vector formula. Pairing with $\Omega_1$ proves
+\eqref{eq:rotation-ordered-density}.
+A common real time translation puts any time-ordered supports in
+the positive half-plane, without changing their differences or
+their moment, proving the general formula.
+For $N=1$, this formula and the vanishing mean field give $G_1=0$.
+
+For the Gram identity, take the adjoint of the product defining
+$\Psi(x;\lambda)$. It reverses the order, stars the arguments,
+and multiplies by $s(\lambda)$. In the middle of the two products
+the arguments $x_1^*$ and $z_1$ add to $x_1^*+z_1$; replace them
+by equal halves. This gives
+\eqref{eq:rotation-ordered-Gram}, including the stated vacuum cases.
+The translation identity follows by shifting the first argument.
+
+Conjugating \eqref{eq:rotation-ordered-density} replaces the plates
+by $\bar\alpha_a\otimes\bar\lambda_a$. Testing in small ordered
+product neighbourhoods identifies
+$\overline{G_N(\xi;\lambda)}=G_N(\xi;\bar\lambda)$ on real
+$\xi\in\mathcal W^{N-1}$. Both sides, with $\xi$ conjugated on
+the first, are holomorphic, and this domain is connected.
+The identity theorem proves the claimed conjugation formula.
+\end{proof}
+
+\subsection{The two-point angular estimate}
+\label{subsec:rotation-two-point-estimate}
+
+The operator bound for $N$ point plates gives angular growth of
+order $N$. At two points a positive spectral measure gives the
+precise growth order two. Closedness will remove the unwanted
+endpoint frequencies.
+
+Fix a coordinate reconstruction $j$. For scalar
+$u\in L^1\cap L^2(\R^3)$ supported in $x_j\ge0$, put
+\[
+ \widetilde u(E,p_\perp)=
+       \int u(x)e^{-x_jE+ip_\perp\cdot x_\perp}\,\dd x.
+\]
+There are complex Radon measures $\varrho^{(j)}_{ab}$,
+$a,b\in\{1,2,3\}$, with
+\begin{equation}\label{eq:rotation-one-field-spectrum}
+ \langle[\mathbb B_a(u)]_j,[\mathbb B_b(u')]_j\rangle
+       =\int\overline{\widetilde u}\,\widetilde u'\,
+                                    \dd\varrho^{(j)}_{ab}.
+\end{equation}
+They have a common positive Radon measure $\varrho_0$ such that
+$\varrho^{(j)}_{ab}=r_{ab}\varrho_0$ and the matrix $r$ is
+positive semidefinite and Hermitian almost everywhere.
+In particular, for vector coefficients $c,c'$,
+the measures $\varrho_{cc'}=\sum_{a,b}\bar c_ac'_b\varrho_{ab}$
+satisfy
+\begin{equation}\label{eq:rotation-spectral-CS}
+ \int|G_1G_2|\,\dd|\varrho_{cc'}|
+ \le\left(\int|G_1|^2\,\dd\varrho_{cc}\right)^{1/2}
+       \left(\int|G_2|^2\,\dd\varrho_{c'c'}\right)^{1/2}.
+\end{equation}
+All these measures are carried by the joint spectral cone.
+
+Here is the construction, including the fact that the measures
+need only be locally finite. Convolution and
+\exteq{6}{ErgodicComponents} give
+\[
+ [\mathbb B_a(u*\alpha)]_j
+       =\widetilde u(H_j,\mathsf P)[\mathbb B_a(\alpha)]_j
+\]
+for $\alpha\in L^2$ supported in $x_j\ge0$.
+This follows by applying the bounded field and quotient maps to
+the $L^2$ Bochner integral
+$u*\alpha=\int u(x)\tau_x\alpha\,\dd x$;
+Fubini applies to its scalar spectral matrix elements since
+$u\in L^1$.
+Let $P_1(v)=(\pi(1+v^2))^{-1}$, whose Fourier transform with
+either sign is $e^{-|p|}$, and choose
+\[
+ \alpha_0(x)=\mathbf1_{(0,1)}(x_j)\prod_{i\ne j}P_1(x_i),
+ \qquad
+ a_0(E,p_\perp)=\widetilde\alpha_0
+       =\frac{1-e^{-E}}{E}e^{-|p_\perp|_1}>0.
+\]
+The quotient at $E=0$ is one. With
+$\psi_a=[\mathbb B_a(\alpha_0)]_j$ and
+$m_{ab}=\langle\psi_a,\mathsf E_j(\cdot)\psi_b\rangle$,
+commutativity of convolution gives
+\begin{equation}\label{eq:rotation-spectral-reference}
+ a_0(H_j,\mathsf P)[\mathbb B_a(u)]_j
+       =\widetilde u(H_j,\mathsf P)\psi_a.
+\end{equation}
+The finite matrix measure $m$ is positive. If $m_0=\sum_a m_{aa}$,
+spectral Cauchy--Schwarz shows $m_{ab}\ll m_0$.
+Its density matrix is positive Hermitian on one common full-measure
+set: test its quadratic form on the countable rational complex
+vectors and then use continuity. Define
+$\varrho_{ab}=a_0^{-2}m_{ab}$ and $\varrho_0=a_0^{-2}m_0$.
+The strictly positive continuous $a_0$ has a positive lower bound
+on bounded sets, so these measures are Radon.
+Pointwise matrix Cauchy--Schwarz followed by its integral version
+gives \eqref{eq:rotation-spectral-CS}.
+
+On $A_n=\{a_0>1/n\}$, which is bounded, one may divide
+\eqref{eq:rotation-spectral-reference} by $a_0$ using bounded
+spectral calculus. This proves \eqref{eq:rotation-one-field-spectrum}
+with the measures restricted to $A_n$.
+As $A_n$ increase to the whole spectral space,
+the diagonal identity follows by monotone convergence; its integral
+is $\|[\mathbb B_a(u)]_j\|^2\le\|u\|_2^2$.
+Equation \eqref{eq:rotation-spectral-CS} then makes the mixed
+integral absolutely convergent and gives the unrestricted identity
+by dominated convergence. Cone support follows from that of
+$\mathsf E_j$.
+
+Now use $j=1$, and take real profiles
+$\chi,\chi'\in C_c^\infty(\R)$. Their transverse transforms in this
+spectral convention are
+$\widehat\chi_+(p_3)=\int\chi(x_3)e^{ip_3x_3}\,\dd x_3$.
+For labels $\lambda=(\sigma,\chi)$ and
+$\lambda'=(\sigma',\chi')$, set
+\[
+ \varrho_{\lambda\lambda'}=
+ \sum_{a,b}\overline{e^\sigma_a}e^{\sigma'}_b
+       \overline{\widehat\chi_+}\widehat{\chi'}_+\,\varrho^{(1)}_{ab}.
+\]
+In this formula $\widehat{\chi'}_+$ means the same positive-sign
+transform of $\chi'$. These are Radon measures on $(E,p_2,p_3)$,
+and $\varrho_{\lambda\lambda}\ge0$.
+For $\alpha,\alpha'\in L^1\cap L^2(\R^2;\C)$ vanishing almost
+everywhere on $y^0<0$, put
+$\alpha^L(E,p_2)=\int\alpha(y)e^{-y^0E+iy^1p_2}\,\dd y$.
+Equation \eqref{eq:rotation-one-field-spectrum} gives
+\begin{equation}\label{eq:rotation-plate-spectrum}
+ \langle[\mathbb B(\alpha\otimes\lambda)]_1,
+          [\mathbb B(\alpha'\otimes\lambda')]_1\rangle
+ =\int\overline{\alpha^L}(\alpha')^L\,
+                                     \dd\varrho_{\lambda\lambda'}.
+\end{equation}
+
+The crucial estimate is
+\begin{equation}\label{eq:rotation-plate-Laplace-bound}
+ I_\lambda(t):=\int e^{-tE}\,\dd\varrho_{\lambda\lambda}
+       \le\frac{36\|\chi\|_2^2}{\pi t^2}\quad(t>0).
+\end{equation}
+Indeed, for $c>0$ take
+$\alpha_c(y)=c^{-2}\mathbf1_{(c,2c)}(y^0)P_1(y^1/c)$.
+On $E\ge|p_2|$ its transform is bounded below by
+$e^{-2cE-c|p_2|}\ge e^{-3cE}$.
+Since $\|\alpha_c\|_2^2=(2\pi c^2)^{-1}$, the variance bound and
+the quotient contraction in \eqref{eq:rotation-plate-spectrum} give
+$I_\lambda(6c)\le\|\chi\|_2^2/(\pi c^2)$.
+Choosing $c=t/6$ proves the estimate. Its mixed version is
+\begin{equation}\label{eq:rotation-plate-mixed-Laplace}
+ \int e^{-tE}\,\dd|\varrho_{\lambda\lambda'}|
+       \le\sqrt{I_\lambda(t)I_{\lambda'}(t)}.
+\end{equation}
+
+Define, for $y^0>0$,
+\[
+ G^{[1]}_{\lambda\lambda'}(y)
+       =s(\sigma)\int e^{-y^0E+iy^1p_2}\,
+                                   \dd\varrho_{\lambda\lambda'}.
+\]
+It is smooth, since on $y^0\ge t>0$ every derivative of order $q$
+is bounded in modulus by
+$E^qe^{-tE}\le q!(2/t)^qe^{-tE/2}$ on the cone.
+It computes the two-point function on time-ordered compact plane
+supports. To see this, translate the supports to opposite sides
+of $y^0=0$ and put $\alpha^\theta=\bar\alpha\circ r_1$.
+Then
+\[
+ \E_\mu[\mathbb B(\alpha\otimes\lambda)
+                 \mathbb B(\alpha'\otimes\lambda')]
+ =s(\sigma)\int\overline{(\alpha^\theta)^L}(\alpha')^L\,
+                                    \dd\varrho_{\lambda\lambda'}.
+\]
+Expanding the transforms gives the integral against
+$G^{[1]}_{\lambda\lambda'}(y'-y)$. Fubini is justified by
+\[
+ \|\alpha\|_1\|\alpha'\|_1e^{-\delta E},
+\]
+where $\delta>0$ is the time gap, and
+\eqref{eq:rotation-plate-mixed-Laplace}.
+Thus this kernel agrees with $G_2$ on real positive-time differences.
+
+For $r>0$ and $n_\zeta=(\cos\zeta,\sin\zeta)$, it has the
+holomorphic continuation
+\[
+ h^{[1]}_{\lambda\lambda'}(\zeta)
+   =s(\sigma)\int
+       e^{-rE\cos\zeta+irp_2\sin\zeta}\,
+                                \dd\varrho_{\lambda\lambda'}
+       \quad(|\Re\zeta|<\pi/2).
+\]
+If $\zeta=t+i\beta$, the real part of the exponent is
+$-r\cos t(E\cosh\beta+p_2\sinh\beta)$.
+The cone bounds this above by
+$-r\cos t\,e^{-|\beta|}E$.
+On every compact substrip this gives an integrable exponential
+majorant; dominated convergence and Morera's theorem give
+holomorphy. Equations
+\eqref{eq:rotation-plate-Laplace-bound}--\eqref{eq:rotation-plate-mixed-Laplace}
+give
+\begin{equation}\label{eq:rotation-two-point-strip}
+ |h^{[1]}_{\lambda\lambda'}(t+i\beta)|
+ \le\frac{36\|\chi\|_2\|\chi'\|_2}
+          {\pi(r\cos t)^2}\,e^{2|\beta|}.
+\end{equation}
+
+\subsection{Closedness removes the unwanted two-point frequencies}
+\label{subsec:rotation-two-point-frequencies}
+
+Assume in addition that $\mu$ is closed and cubically invariant.
+In particular, its two-point form is invariant under
+$R_{\pi/2}$. We use only this quarter-turn consequence here.
+
+For $\upsilon\in(\pi/2)\Z$ and $n_\upsilon\cdot y>0$, define
+\[
+ G^{(\upsilon)}_{\lambda\lambda'}(y)
+   =e^{iw\upsilon}
+       G^{[1]}_{\lambda\lambda'}(R_{-\upsilon}y),
+       \qquad w=w(\sigma)+w(\sigma').
+\]
+By quarter-turn invariance and
+\eqref{eq:rotation-plate-actions}, this is the two-point density
+for supports ordered along $n_\upsilon$.
+Two such densities agree on overlaps: test them on small product
+neighbourhoods ordered in both directions and use continuity.
+The four half-planes cover $\R^2\setminus\{0\}$, so they define
+one smooth kernel $G_{\lambda\lambda'}$ there.
+It computes the two-point function for any two disjoint compact
+plane supports. Indeed, partition them into sufficiently small
+half-open squares. Each pair of squares is ordered along one of
+the four coordinate directions, and there are only finitely many
+pairs. Sum the ordered density identities.
+
+For fixed $r>0$, the functions
+\[
+ h^{(\upsilon)}(\zeta)=e^{iw\upsilon}
+       h^{[1]}_{\lambda\lambda'}(\zeta-\upsilon)
+       \quad(|\Re\zeta-\upsilon|<\pi/2)
+\]
+agree on adjacent strips, by the identity theorem applied on
+their real overlap. They give an entire function $h$ with
+\begin{equation}\label{eq:rotation-two-point-entire-angle}
+ h(\vartheta)=G_{\lambda\lambda'}(rn_\vartheta),\qquad
+ h(\zeta+\pi/2)=i^w h(\zeta),\qquad
+ |h(t+i\beta)|\le C_{\chi,\chi'}r^{-2}e^{2|\beta|},
+\end{equation}
+where $C_{\chi,\chi'}=72\|\chi\|_2\|\chi'\|_2/\pi$.
+For the bound, choose a strip centre within $\pi/4$ of $t$ and
+apply \eqref{eq:rotation-two-point-strip}.
+
+The entire function $e^{-iw\zeta}h(\zeta)$ has period $\pi/2$,
+so it is $H(e^{4i\zeta})$ for a holomorphic $H$ on
+$\C\setminus\{0\}$. The Laurent series of $H$ gives
+frequencies $k=w+4m$, $m\in\Z$. Cauchy's formula on the circle
+parametrized by $e^{4i(t+i\beta)}$, $0\le t\le\pi/2$,
+bounds the coefficient $a^k(r)$ by
+$C_{\chi,\chi'}r^{-2}e^{2|\beta|+k\beta}$.
+Sending $\beta$ to the appropriate infinity kills $|k|>2$.
+Consequently
+\begin{equation}\label{eq:rotation-two-point-window}
+ G_{\lambda\lambda'}(rn_\vartheta)
+   =\sum_{\substack{|k|\le2\\k-w\in4\Z}}a^k(r)e^{ik\vartheta},
+ \qquad |a^k(r)|\le C_{\chi,\chi'}r^{-2}.
+\end{equation}
+These coefficients are smooth in $r$ and real bilinear in the
+profiles, by their Fourier integral formula.
+
+Every pair of labels has only its expected frequency $k=w$,
+except for the pairs $(+,+)$ and $(-,-)$, whose windows contain
+both $2$ and $-2$. To eliminate the opposite frequency, use
+closedness in its vector form $\mathbb B(\nabla u)=0$.
+Take $\eta\in C_c^\infty(\R^2;\C)$ and
+$\chi_0\in C_c^\infty(\R;\R)$. With $z=y^0+iy^1$ and
+$\partial_z=(\partial_{y^0}-i\partial_{y^1})/2$,
+\[
+ \nabla(\eta(y)\chi_0(x_3))
+   =(\partial_z\eta)\otimes(+,\chi_0)
+       +(\partial_{\bar z}\eta)\otimes(-,\chi_0)
+       +\eta\otimes(3,\chi'_0).
+\]
+Pair this gradient with a second plate whose plane support is
+disjoint. Apply the density identities and integrate by parts.
+Testing on small disjoint product neighbourhoods gives
+\begin{equation}\label{eq:rotation-two-point-Bianchi}
+ \partial_zG_{(+,\chi_0)\lambda'}
+       +\partial_{\bar z}G_{(-,\chi_0)\lambda'}
+       +G_{(3,\chi'_0)\lambda'}=0
+                       \quad\text{on }\R^2\setminus\{0\}.
+\end{equation}
+There is no diagonal contribution in this equation.
+In polar coordinates,
+\begin{align*}
+ \partial_z(f(r)e^{ik\vartheta})
+       &=\tfrac12e^{i(k-1)\vartheta}(f'(r)+kf(r)/r),\\
+ \partial_{\bar z}(f(r)e^{ik\vartheta})
+       &=\tfrac12e^{i(k+1)\vartheta}(f'(r)-kf(r)/r).
+\end{align*}
+For $\lambda'=(+,\chi')$, the frequency $-3$ in
+\eqref{eq:rotation-two-point-Bianchi} occurs only in the derivative
+of $a^{-2}_{(+,\chi_0)(+,\chi')}$.
+It obeys $f'=2f/r$.
+For $\lambda'=(-,\chi')$, the frequency $3$ likewise gives
+$f'=2f/r$ for $a^2_{(-,\chi_0)(-,\chi')}$.
+Each solution is $f(r)=f(1)r^2$. The bound
+$|f(r)|\le C_{\chi_0,\chi'}r^{-2}$ for all $r>0$ forces
+$f(1)=0$ by sending $r\to\infty$. Thus
+\begin{equation}\label{eq:rotation-two-point-phase}
+ G_{\lambda\lambda'}(R_ty)
+       =e^{i(w(\sigma)+w(\sigma'))t}G_{\lambda\lambda'}(y).
+\end{equation}
+The plate action cancels this phase in the two-point density
+formula, proving rotational covariance for disjoint compact
+plane supports.
+
+\subsection{Extending identities across coincident plane supports}
+\label{subsec:rotation-contact}
+
+The preceding density argument does not yet address coincident
+plane supports. We use the following $L^2$ argument,
+which will also be applied at every higher order.
+
+\begin{proposition}\label{prop:rotation-no-contact}
+Let $U\subset\R^2$ be open, and write $L^2_U$ for the vector
+fields supported in $U\times\R$. Let $D:(L^2_U)^N\to\C$ be a
+bounded multilinear form. Suppose it vanishes when the entries
+are supported over pairwise disjoint compact subsets of $U$,
+and whenever one entry is $\nabla u$ with
+$u\in C_c^\infty(U\times\R)$. Then $D=0$.
+\end{proposition}
+
+\begin{proof}
+We argue simultaneously for all open $U$ by induction on $N$.
+At $N=1$, fields with compact plane support are dense, so the
+first assumption suffices.
+
+At $N=2$, represent the bilinear form as
+$D(f_1,f_2)=\int f_1(x)\cdot(Tf_2)(x)\,\dd x$ for a bounded
+operator $T$ on $L^2_U$. The pairing here is bilinear.
+For disjoint compact $K,K'\subset U$ the first assumption gives
+$\mathbf1_KT\mathbf1_{K'}=0$.
+Inner regularity and strong convergence of the corresponding
+multiplication projections extend this to disjoint Borel sets.
+Using $A$ and $U\setminus A$ on both sides gives
+$T\mathbf1_A=\mathbf1_AT$ for every Borel $A$.
+Uniform approximation by simple functions then gives $Th=hT$
+for every bounded plane multiplier $h$. Hence
+\[
+ D(h\nabla u,f_2)=D(\nabla u,hf_2)=0.
+\]
+
+Fix a compact $A\subset U$, choose $u_0\in C_c^\infty(U)$ equal
+to one near $A$, and let $\chi_0\in C_c^\infty(\R)$.
+On $A\times\R$, the gradients of
+$u_0\chi_0$, $u_0y^0\chi_0$, and $u_0y^1\chi_0$ are respectively
+\[
+ \chi_0'e_3,\qquad
+ \chi_0e_1+y^0\chi_0'e_3,\qquad
+ \chi_0e_2+y^1\chi_0'e_3.
+\]
+The preceding identity with multiplier $h\mathbf1_A$ first
+annihilates $h\mathbf1_A\chi'_0e_3$.
+Applying it with $hy^0\mathbf1_A$ and $hy^1\mathbf1_A$ then
+annihilates $h\mathbf1_A\chi_0e_1$ and
+$h\mathbf1_A\chi_0e_2$. These multipliers are bounded since $A$
+is compact. Such plane-transverse products span a dense subspace.
+For the transverse derivative family, its orthogonal complement
+in $L^2(\R)$ has distributional derivative zero, hence is a
+constant and therefore zero. Thus these three vector families
+are total in $L^2_U$, and $D=0$.
+
+Suppose $N\ge3$ and the assertion is proved at every smaller order.
+Two consequences of the induction hypothesis separate unequal
+plane cells. First, if one entry is supported over a compact
+$K\subset U$ and the others over $U\setminus K$, fix that entry.
+The form on the remaining $N-1$ slots satisfies both assumptions
+on the open set $U\setminus K$ and is zero.
+Second, if the slots divide into nonempty groups $I,J$, with
+the $J$ entries supported over a compact $K_J$ and the $I$
+entries over its complement, fix the $J$ entries.
+The form on the $I$ slots inherits the gradient assumption.
+When those slots have pairwise disjoint compact supports, the
+first consequence, applied to any one of them, gives zero.
+The induction hypothesis on $U\setminus K_J$ therefore makes
+this form zero as well.
+
+By density put all entries over one compact $K_0\subset U$.
+Partition the plane into half-open squares $Q$ of side $d$ and
+expand $D$ by multilinearity. A tuple of squares which are not
+all equal has zero contribution. To justify compact separation,
+replace each square by its concentric closed square of side
+$d-2\epsilon$. Separate the slots whose square equals the first
+from the remaining slots, use the second consequence with
+$K_J=K_0$ intersected with the union of their closed squares,
+and send $\epsilon\downarrow0$ in $L^2$.
+Only the equal-square terms remain, and Cauchy--Schwarz gives
+\[
+ |D(f_1,\ldots,f_N)|
+ \le\|D\|\max_Q\|\mathbf1_Qf_3\|_2
+       \|f_1\|_2\|f_2\|_2\prod_{i=4}^N\|f_i\|_2.
+\]
+Indeed, sum the first two square norms by Cauchy--Schwarz and
+bound the others by their whole norms. The maximum tends to
+zero as $d\downarrow0$: its square is the integral over an
+area-$d^2$ cell of the fixed integrable function
+$y\mapsto\int|f_3(y,x_3)|^2\,\dd x_3$.
+Absolute continuity of the integral proves the assertion.
+\end{proof}
+
+Apply this proposition with $N=2$ to
+\[
+ D(b,b')=\E_\mu[\mathbb B(R_tb)\mathbb B(R_tb')]
+              -\E_\mu[\mathbb B(b)\mathbb B(b')],
+\]
+where $R_tb$ means $R_t\cdot b$. Gaussian domination makes it a
+bounded bilinear form. Finite sums of plates with smooth real
+transverse profiles are dense in the fields over any fixed
+compact plane set: simple plane-transverse tensors are dense
+in $L^2$, and $e^+,e^-,e^3$ span $\C^3$.
+Thus \eqref{eq:rotation-two-point-phase} supplies the disjoint-support
+assumption for general fields. Closedness supplies the gradient
+assumption, since rotations carry gradients to gradients.
+Consequently the two-point function is invariant under every
+$R_t$, on all $L^2$ tests.
+
+\subsection{The angular expansion at every order}
+\label{subsec:rotation-angular-expansion}
+
+Fix $N\ge2$ and a tuple of labels $\lambda$, with total weight
+$w=w(\lambda)$. Put $\mathcal W_\upsilon=R_\upsilon\mathcal W$
+for $\upsilon\in(\pi/2)\Z$. For a permutation $\mathfrak s$,
+let
+\[
+ \mathcal Z(\mathfrak s,\upsilon)=
+ \{Z=(z_1,\ldots,z_N):
+       z_{\mathfrak s(a+1)}-z_{\mathfrak s(a)}
+                    \in\mathcal W_\upsilon,\ 1\le a<N\}.
+\]
+On this open convex set define
+\[
+ G_\upsilon^{\mathfrak s}(Z;\lambda)=e^{iw\upsilon}
+ G_N\left(
+       (R_{-\upsilon}(z_{\mathfrak s(a+1)}-z_{\mathfrak s(a)}))_{a=1}^{N-1};
+       \mathfrak s\lambda\right).
+\]
+Here $(\mathfrak s\lambda)_a=\lambda_{\mathfrak s(a)}$.
+Moment symmetry, quarter-turn invariance, and
+\eqref{eq:rotation-ordered-density} identify this as the moment
+density on compact product supports in its real part.
+Two such holomorphic functions agree on their intersection.
+Indeed, the intersection is convex and is preserved by taking
+real parts, so a nonempty intersection contains an open set of
+real configurations. Testing both densities there identifies
+them by continuity, and the holomorphic identity theorem
+identifies them on the full intersection.
+They therefore define one holomorphic function
+$\mathcal G_N(Z;\lambda)$ on
+$\mathcal Z_N=\bigcup_{\mathfrak s,\upsilon}\mathcal Z(\mathfrak s,\upsilon)$.
+
+The real set $\mathcal O_N=\mathcal Z_N\cap(\R^2)^N$ consists
+of configurations whose first coordinates are all distinct
+or whose second coordinates are all distinct.
+Its complement is the finite union of the codimension-two
+subspaces
+$\{y_a^0=y_b^0,\ y_k^1=y_l^1\}$.
+Thus $\mathcal O_N$ is open, dense, and connected.
+The functions $\mathcal G_N$ are symmetric under simultaneous
+permutation of points and labels, invariant under common
+translations, and satisfy
+\[
+ \mathcal G_N(R_{\pi/2}Z;\lambda)=i^w\mathcal G_N(Z;\lambda),
+ \qquad
+ \overline{\mathcal G_N(Z;\lambda)}
+       =\mathcal G_N(\bar Z;\bar\lambda).
+\]
+These identities follow from the defining densities and
+the corresponding identities for $G_N$.
+
+For $\beta\in\R$ write $\Lambda_\beta=R_{i\beta}$.
+In the coordinates $\xi^\pm=\xi^0\pm i\xi^1$,
+$\mathcal W=\{\Re\xi^+>0,\Re\xi^->0\}$ and
+$\Lambda_\beta\xi^\pm=e^{\mp\beta}\xi^\pm$.
+Thus every tube $\mathcal Z(\mathfrak s,\upsilon)$ is preserved
+by $\Lambda_\beta$. Moreover
+$d_{\mathcal W}(\Lambda_\beta\xi)\ge
+e^{-|\beta|}d_{\mathcal W}(\xi)$ on the closed tube.
+
+\begin{proposition}\label{prop:rotation-finite-angular-expansion}
+There are holomorphic coefficients $c_m(Z;\lambda)$ on
+$\mathcal Z_N$, vanishing unless $|w+4m|\le N$, such that
+\begin{equation}\label{eq:rotation-finite-angular-expansion}
+ \mathcal G_N(\Lambda_\beta Z;\lambda)
+       =\sum_m c_m(Z;\lambda)e^{-(w+4m)\beta}
+                         \quad(\beta\in\R).
+\end{equation}
+They are unique, symmetric under simultaneous permutation,
+and invariant under common translations. They satisfy
+\begin{align}
+ c_m(\Lambda_\beta Z;\lambda)
+       &=e^{-(w+4m)\beta}c_m(Z;\lambda),
+                           \label{eq:rotation-angular-coefficient-identities}\\
+ c_m(R_{\pi/2}Z;\lambda)&=i^wc_m(Z;\lambda),\qquad
+ \sum_m c_m(Z;\lambda)=\mathcal G_N(Z;\lambda),\notag\\
+ \overline{c_m(X;\lambda)}&=c_{-m}(X;\bar\lambda)
+                           \quad(X\in\mathcal O_N).\notag
+\end{align}
+\end{proposition}
+
+\begin{proof}
+Fix $0<\vartheta_0<\pi/4$ and first consider real configurations
+whose consecutive differences have positive lengths and angles
+$|\vartheta_a|<\vartheta_0$ from $n_0$.
+For $\zeta=t+i\beta$,
+\[
+ \Re(R_{\zeta-\upsilon}\xi_a)^\pm
+       =|\xi_a|e^{\mp\beta}\cos(\vartheta_a+t-\upsilon).
+\]
+The strips $|t-\upsilon|<\pi/2-\vartheta_0$ cover the complex
+$\zeta$-plane. Thus $h_X(\zeta)=\mathcal G_N(R_\zeta X;\lambda)$
+is entire. Choosing $\upsilon$ within $\pi/4$ of $t$ bounds every
+gap distance below by
+$r_Xe^{-|\beta|}\cos(\vartheta_0+\pi/4)$, where
+$r_X=\min_a|\xi_a|$.
+Equation \eqref{eq:rotation-ordered-kernel-bound} gives
+$|h_X(t+i\beta)|\le C_{X,\lambda}e^{N|\beta|}$.
+Its quarter-period is $h_X(\zeta+\pi/2)=i^wh_X(\zeta)$.
+The Laurent coefficient argument used at two points, with
+growth exponent $N$, gives the finite frequencies
+$k=w+4m$, $|k|\le N$.
+
+To extend this statement to a whole tube, let
+$\mathcal M=\{m:|w+4m|\le N\}$ and
+$P(u)=\prod_{m\in\mathcal M}(u+w+4m)$.
+The functions
+$Z\mapsto P(\partial_\beta)G_\upsilon^{\mathfrak s}
+(\Lambda_\beta Z;\lambda)$ are holomorphic for each real $\beta$.
+They vanish on the nonempty open real subset obtained by rotating
+and permuting the configurations just used.
+The identity theorem gives zero on the entire convex tube.
+The resulting constant-coefficient ordinary differential equation
+has distinct characteristic roots $-(w+4m)$.
+Its coefficients in the exponential expansion are fixed linear
+combinations of its derivatives at $\beta=0$, and hence are
+holomorphic in $Z$.
+On overlapping tubes the exponentials are linearly independent,
+so the coefficients agree and define $c_m$ on $\mathcal Z_N$.
+This also proves uniqueness. Comparing coefficients after a
+permutation, common translation, or addition of the parameter
+$\beta$ gives the stated identities. For the conjugation identity
+use $\overline{\Lambda_\beta X}=\Lambda_{-\beta}X$ and
+$w(\bar\lambda)=-w$.
+\end{proof}
+
+The coefficients have exact real rotation phases whenever both
+configurations are in $\mathcal O_N$:
+\begin{equation}\label{eq:rotation-angular-coefficient-phase}
+ c_m(R_tX;\lambda)=e^{i(w+4m)t}c_m(X;\lambda).
+\end{equation}
+Locally in one tube, the allowed angles form an interval:
+each ordered difference has a positive projection precisely
+when $\cos(\vartheta_a+t)>0$.
+The identity theorem in $t+i\beta$ extends
+\eqref{eq:rotation-finite-angular-expansion} from the imaginary
+axis to that interval. Comparing the exponential coefficients
+gives \eqref{eq:rotation-angular-coefficient-phase} locally.
+
+To pass through changes of ordering, first take distinct points
+with no two distinct chords perpendicular. Such configurations
+are a dense open set, the complement of finitely many nonzero
+polynomial zero sets. Every rotation of one of them belongs to
+$\mathcal O_N$: simultaneous coincidences of first and second
+coordinates would give perpendicular chords, or identical points.
+The local phase identity therefore continues along its whole
+rotation orbit. Approximation proves it whenever $X,R_tX$
+are in $\mathcal O_N$.
+
+For an arbitrary configuration $X$ of distinct plane points,
+choose $t$ so that all first coordinates of $R_tX$ are distinct.
+Only finitely many angles modulo $\pi$ are excluded.
+Define
+\[
+ \widetilde c_m(X;\lambda)
+       =e^{-i(w+4m)t}c_m(R_tX;\lambda).
+\]
+The phase identity makes this independent of the choice.
+Locally one may keep $t$ fixed, so it is real analytic on the
+connected space $(\R^2)^N_{\ne}$ of distinct configurations.
+It inherits permutation symmetry, translation invariance, and
+\[
+ \widetilde c_m(R_tX;\lambda)
+       =e^{i(w+4m)t}\widetilde c_m(X;\lambda).
+\]
+Put $\widetilde G_N=\sum_m\widetilde c_m$.
+It is real analytic and agrees with $\mathcal G_N$ on $\mathcal O_N$.
+
+Define $\mathfrak a(0)=\mathfrak a(1)=0$, and, for $N\ge2$,
+let $\mathfrak a(N)$ be the largest $|m|$ for which $c_m$ is
+not identically zero for some tuple of $N$ labels; set it to zero
+if all coefficients vanish. Since $|w|\le N$ and $|w+4m|\le N$,
+\begin{equation}\label{eq:rotation-angular-linear-bound}
+ \mathfrak a(N)\le N/2.
+\end{equation}
+A nonzero coefficient can be detected on a strictly time-ordered
+real configuration after a quarter turn and permutation:
+the identity theorem on each tube and the coefficient identities
+above give this reduction. Conjugation then shows that if
+$\mathfrak a(N)>0$, both indices
+$\mathfrak a(N)$ and $-\mathfrak a(N)$ occur.
+
+\subsection{Reflection bounds for the angular coefficients}
+\label{subsec:rotation-angular-reflections}
+
+We next prove the convexity estimate
+\begin{equation}\label{eq:rotation-angular-convexity}
+ 2\mathfrak a(a+b)\le\mathfrak a(2a)+\mathfrak a(2b)
+                          \quad(a,b\ge0).
+\end{equation}
+Let $N=a+b$ and $M=\mathfrak a(N)>0$.
+Choose a strictly time-ordered $X=(y_1,\ldots,y_N)$ and labels
+with $c_{-M}(X;\lambda)\ne0$. Translate its time cut so that the
+first $a$ points have negative times and the remaining $b$
+have positive times. Reflect the first group and reverse its
+order to obtain $x$, with reversed labels $\lambda^x$;
+call the second group $z$, with labels $\lambda^z$.
+Their weights satisfy $w=w_x+w_z$.
+The Gram identity gives
+\[
+ \langle\Psi(\Lambda_\beta x;\lambda^x),
+             \Psi(\Lambda_\beta z;\lambda^z)\rangle
+       =s(\lambda^x)\mathcal G_N(\Lambda_\beta X;\lambda).
+\]
+An empty group gives the vacuum.
+The squared norm of the first vector is, up to the sign
+$s(\lambda^x)$, the kernel of its reflected double:
+the configuration $(r_1x_a,\ldots,r_1x_1,x_1,\ldots,x_a)$
+with the same labels in reverse then forward order.
+Its weight is $2w_x$. The other squared norm has weight $2w_z$.
+These are direct instances of
+\eqref{eq:rotation-ordered-Gram}; the reflection-conjugation
+keeps the labels.
+
+Apply Cauchy--Schwarz to this matrix element and expand the
+three kernels by \eqref{eq:rotation-finite-angular-expansion}.
+Multiplication by $e^{2w\beta}$ cancels their weights and gives
+\[
+ \left|\sum_m c_m(X;\lambda)e^{-4m\beta}\right|^2
+ \le
+ \left|\sum_{|m|\le\mathfrak a(2a)}d_me^{-4m\beta}\right|
+ \left|\sum_{|m|\le\mathfrak a(2b)}d'_me^{-4m\beta}\right|.
+\]
+The coefficients $d_m,d'_m$ belong to the two specified doubles.
+A vacuum factor is one. As $\beta\to+\infty$, the left side
+has a nonzero leading term of rate $8M$, and the right side is
+bounded by a constant times
+$e^{4(\mathfrak a(2a)+\mathfrak a(2b))\beta}$.
+This proves \eqref{eq:rotation-angular-convexity}.
+The cases $M=0$ or $N\le1$ already satisfy it.
+
+There is also a positive kernel for the highest coefficient.
+For $a\ge1$, set $M=\mathfrak a(2a)$. On labelled configurations
+of $a$ distinct points in $y^0>0$, define
+\begin{equation}\label{eq:rotation-top-coefficient-kernel}
+ K_a((x;\lambda),(z;\lambda'))=
+       s(\lambda)\widetilde c_{-M}^{(2a)}
+                        (r_1x,z;\lambda,\lambda').
+\end{equation}
+The superscript indicates the number of points.
+This kernel is Hermitian and positive semidefinite.
+First suppose the times in each configuration are distinct and
+order them increasingly. By the Gram formula,
+\[
+ \langle\Psi(\Lambda_\beta x;\lambda),
+                 \Psi(\Lambda_\beta z;\lambda')\rangle
+ =s(\lambda)\sum_{|m|\le M}
+       \widetilde c_m^{(2a)}(r_1x,z;\lambda,\lambda')
+       e^{-(w(\lambda)+w(\lambda')+4m)\beta}.
+\]
+Reversing the reflected points is harmless by labelled symmetry.
+Multiply this Gram kernel by the positive factors
+$e^{w(\lambda)\beta}e^{w(\lambda')\beta}e^{-4M\beta}$.
+Its pointwise limit as $\beta\to+\infty$ is $K_a$.
+Positive semidefiniteness passes to this limit on every finite
+matrix. Approximating configurations with tied times by ones
+with distinct times proves the same assertion for all the
+stated configurations.
+
+The exact phase of $\widetilde c_{-M}$ transports this consequence
+to any line $L$ in the plane. If $x,z$ lie on one open side of
+$L$ and $r_L$ is its reflection, translation to a point of $L$
+and rotation of its normal to $n_0$ express
+$\widetilde c_{-M}(r_Lx,z)$ as $K_a$ times a unit-modulus factor.
+Taking absolute values of the positive-kernel
+Cauchy--Schwarz inequality gives
+\begin{multline}\label{eq:rotation-top-coefficient-CS}
+ |\widetilde c_{-M}^{(2a)}(r_Lx,z;\lambda,\lambda')|^2\\
+ \le
+ |\widetilde c_{-M}^{(2a)}(r_Lx,x;\lambda,\lambda)|
+ |\widetilde c_{-M}^{(2a)}(r_Lz,z;\lambda',\lambda')|.
+\end{multline}
+In particular a zero reflected diagonal forces every such
+off-diagonal coefficient to vanish.
+
+\subsection{Regular polygons and the reduction to two points}
+\label{subsec:rotation-polygons}
+
+We prove the arithmetic restriction
+\begin{equation}\label{eq:rotation-polygon-divisibility}
+ a\mid 2\mathfrak a(2a)\quad(a\ge1).
+\end{equation}
+Fix $a$ and put $M=\mathfrak a(2a)$,
+$c_*=\widetilde c_{-M}^{(2a)}$.
+The coefficients depend only on the labelled set of points.
+If a rotation through $t$ permutes such a set without changing
+its labels, its exact phase gives
+$(1-e^{i(w-4M)t})c_*=0$.
+For a regular $2a$-gon with the same label $(\sigma,\chi)$ at
+each vertex, use $t=\pi/a$ and $w=2aw(\sigma)$.
+The label weight cancels, leaving $e^{-4\pi iM/a}$.
+Thus $c_*$ vanishes on this polygon whenever $a$ fails to divide $2M$.
+
+That selection rule concerns a special configuration. The
+positive kernel propagates its zero to arbitrary configurations
+by the following halving argument. For a labelled set $S$ of
+at most $2a$ distinct points, let $\mathcal N(S)$ mean that
+$c_*$ vanishes on every $2a$-point labelled configuration
+containing $S$.
+Let $S'$ have $j'\le a$ points on one open side $L_+$ of a line
+$L$, and suppose $S\subset r_LS'\cup S'$.
+Then
+\begin{equation}\label{eq:rotation-halving}
+ \mathcal N(S)\ \Longrightarrow\
+       \mathcal N(S')\ \text{and}\ \mathcal N(r_LS').
+\end{equation}
+To see this, add $a-j'$ arbitrary points $R$ in $L_+$ to $S'$,
+forming $x=S'\cup R$. The reflected double $r_Lx\cup x$
+contains $S$, so its diagonal coefficient is zero.
+Equation \eqref{eq:rotation-top-coefficient-CS} implies
+$c_*(r_Lx\cup z)=0$ for every $a$-point labelled set $z$ in $L_+$.
+Thus, with $r_LS'$ fixed, the remaining $a-j'$ points on
+$L_-$ and $a$ points on $L_+$ may vary in an open set.
+
+For each choice of their labels, the space of their distinct
+positions, avoiding the fixed points, is the complement of
+finitely many codimension-two affine subspaces and is connected.
+The coefficient is real analytic there. Its zero on the
+nonempty open set just obtained extends to all positions.
+Every $2a$-point configuration containing $r_LS'$ is obtained
+this way. This proves $\mathcal N(r_LS')$.
+Interchange the sides of $L$ and repeat the argument to obtain
+$\mathcal N(S')$.
+
+Suppose now $a\nmid2M$. Then $M>0$ and $a\ge3$.
+Fix an arbitrary label and any regular $2a$-gon with vertices
+$P_k$, $k\in\Z/(2a)\Z$, in cyclic order.
+Let $\mathcal N_j$ assert $\mathcal N(S)$ for every arc of $j$
+consecutive vertices, with this label, in every such polygon.
+Selection gives $\mathcal N_{2a}$.
+For $j\ge2$, put $j'=\lceil j/2\rceil\le a$ and take an arc
+$S'=\{P_{k_0+1},\ldots,P_{k_0+j'}\}$.
+Reflect in the perpendicular bisector of
+$[P_{k_0},P_{k_0+1}]$.
+The $a$ vertices $P_{k_0+1},\ldots,P_{k_0+a}$ lie on one
+open side: their angles from the edge-midpoint radius are
+$(2k-1)\pi/(2a)\in(0,\pi)$.
+Their images satisfy $r_LP_{k_0+k}=P_{k_0+1-k}$.
+Consequently $r_LS'\cup S'$ is an arc of $2j'$ consecutive
+vertices and contains a $j$-vertex arc.
+Equation \eqref{eq:rotation-halving} gives
+$\mathcal N_j\Rightarrow\mathcal N_{j'}$.
+
+Iteration reaches $j=1$. Any plane point is a vertex of some
+regular $2a$-gon, so the coefficient vanishes whenever a
+configuration has even one point with the fixed label.
+Since the label was arbitrary, $c_*$ vanishes identically for
+all label tuples. This contradicts the occurrence of the
+index $-M$, proving \eqref{eq:rotation-polygon-divisibility}.
+
+Now set $\nu(a)=\mathfrak a(2a)$. It is a nonnegative integer
+sequence, with $\nu(0)=0$, $\nu(a)\le a$, and
+$2\nu(a)\le\nu(a-1)+\nu(a+1)$ by
+\eqref{eq:rotation-angular-convexity}.
+Its increments $d_a=\nu(a)-\nu(a-1)$ are nondecreasing integers.
+The linear bound keeps them bounded above, so they are eventually
+constant, say $d$. Thus $\nu(a)=da-c$ for large $a$, where
+$c=\sum_k(d-d_k)\ge0$ is an integer.
+Divisibility \eqref{eq:rotation-polygon-divisibility} makes every
+large $a$ divide $2c$, forcing $c=0$.
+All increments equal $d=\nu(1)$, and
+\[
+ \mathfrak a(2a)=a\mathfrak a(2),\qquad
+ 2\mathfrak a(N)\le N\mathfrak a(2).
+\]
+For the second inequality split $N=\lfloor N/2\rfloor+
+\lceil N/2\rceil$ in \eqref{eq:rotation-angular-convexity}.
+
+The two-point result gives $\mathfrak a(2)=0$.
+For smooth transverse profiles this follows from
+\eqref{eq:rotation-two-point-phase} and the ordered density formula:
+near any strictly ordered two-point configuration, only the
+frequency $w$ occurs. Linear independence of the finite angular
+exponentials makes $c_m=0$ there for $m\ne0$, and the identity
+theorem on each tube gives zero throughout.
+For arbitrary $L^2$ profiles, the all-$L^2$ two-point covariance
+proved above gives the same local density identity.
+Hence
+\begin{equation}\label{eq:rotation-no-extra-angular-coefficients}
+ \mathfrak a(N)=0\quad\text{for every }N,\qquad
+ \widetilde G_N(R_tX;\lambda)=e^{iw(\lambda)t}
+                                  \widetilde G_N(X;\lambda).
+\end{equation}
+
+\subsection{Moment densities on all distinct configurations}
+\label{subsec:rotation-all-distinct-density}
+
+The analytic continuation $\widetilde G_N$ must still be
+identified as the moment density at distinct configurations
+outside $\mathcal O_N$. This is a separate step; continuation
+of a density does not by itself exclude an additional singular
+part on that smaller set.
+
+We first record the analytic displacement used for this step.
+If polynomial field observables $\Phi'$ and $\Phi''$ have test
+supports in $x_1<c-\delta$ and $x_1>c+\delta$, respectively,
+then
+\[
+ s\longmapsto\E_\mu[\Phi'U(se_2)\Phi'']
+\]
+extends holomorphically to $|\Im s|<2\delta$.
+Translate $c$ to zero and put
+$\psi'=[U_{-\delta}\Theta_1\Phi']_1$,
+$\psi''=[U_{-\delta}\Phi'']_1$.
+The quotient and semigroup identities express the real
+correlation as
+$\langle\psi',T((2\delta,s))\psi''\rangle$.
+This is holomorphic on the stated strip by the cone.
+
+For compact, pairwise disjoint plane supports we claim
+\begin{equation}\label{eq:rotation-distinct-density}
+ \E_\mu\prod_a\mathbb B(\alpha_a\otimes\lambda_a)
+ =\int\prod_a\alpha_a(y_a)\widetilde G_N(Y;\lambda)\,\dd Y.
+\end{equation}
+The integral is absolutely convergent: the product support
+is a compact subset of $(\R^2)^N_{\ne}$, the kernel is bounded
+there, and each $\alpha_a\in L^2$ is integrable on its compact
+support.
+Call the difference of the two sides $D(\alpha_1,\ldots,\alpha_N)$
+on these tuples.
+
+We show local vanishing near each distinct configuration $X$
+by induction on the number of equal-second-coordinate pairs.
+When there are none, $X\in\mathcal O_N$ and the ordered tube
+density gives the identity in small product discs.
+Otherwise take a pair with equal second coordinates and
+different times. Choose a time cut between them, different
+from all point times, and split the points into groups $I,J$
+below and above the cut.
+Move the $J$ group by $se_2$. The points remain distinct for
+every real $s$, since the groups are separated in time.
+A sufficiently small positive $s_0$ removes every
+second-coordinate coincidence across the cut and creates none:
+take it smaller than every nonzero initial difference of
+second coordinates.
+There are fewer coincident pairs at $X(s_0)$.
+
+The induction hypothesis gives a radius $2r$ near $X(s_0)$
+on which $D$ vanishes. Reduce $r$ so that the original discs
+of radius $r$ are disjoint and preserve the time gap.
+Fix tests in these original discs, and translate those in
+group $J$. The resulting difference $F(s)$ is real analytic
+on $\R$.
+For its moment term this follows from the separated-cluster
+strip argument above. For its density term, change variables
+to integrate
+$\widetilde G_N(Y+sv_J;\lambda)$ against the fixed product
+of tests, where $(v_J)_a=e_2$ for $a\in J$ and zero otherwise.
+Over any bounded real $s$-interval these configurations form
+a compact set of distinct points. Finite local holomorphic
+extensions of the real analytic kernel give a common radius
+$\epsilon>0$ and a bound $C$ there. Cauchy's estimates bound
+the integrated derivative of order $q$ by
+$Cq!\epsilon^{-q}\prod_a\|\alpha_a\|_1$.
+Taylor's formula therefore gives real analyticity of this
+integral.
+
+For $|s-s_0|<r$ the translated tests remain in the discs of
+radius $2r$ at $X(s_0)$, so $F(s)=0$.
+The real analytic identity theorem gives $F(0)=0$.
+This proves local vanishing near $X$ and completes the induction.
+For general disjoint compact supports, finitely many of these
+product-disc neighbourhoods cover their product.
+Partition each support into sufficiently small half-open
+squares. Every product of nonzero pieces lies in one of the
+larger vanishing neighbourhoods: choose a point of the
+product support in it and make each square diameter smaller
+than the available half-radius.
+Multilinearity and finite summation prove
+\eqref{eq:rotation-distinct-density}.
+
+\subsection{Euclidean covariance and all reflection planes}
+\label{subsec:rotation-conclusion}
+
+\begin{theorem}\label{thm:rotation-covariance}
+Let $\mu$ be a Gaussian-dominated law of closed tempered two-forms.
+Suppose it is invariant under translations and the cubic group,
+and reflection positive at the nine planes
+$x_j=0$ and $x_j\pm x_i=0$, $i<j$.
+Then it is invariant under all Euclidean motions and reflection
+positive at every plane, on the full $L^2$ space of either open side.
+\end{theorem}
+
+\begin{proof}
+Proposition~\extref{3.1}{ErgodicComponents} supplies the sharp coordinate
+cones. For the plane $(1,2)$, fix $t$ and define the bounded
+$N$-linear form
+\[
+ D(b_1,\ldots,b_N)=
+ \E_\mu\prod_a\mathbb B(R_t\cdot b_a)
+       -\E_\mu\prod_a\mathbb B(b_a).
+\]
+Its boundedness follows from Proposition~\extref{2.1}{ContinuumLimits}.
+For plates over pairwise disjoint compact plane supports,
+\eqref{eq:rotation-distinct-density} and
+\eqref{eq:rotation-no-extra-angular-coefficients} prove $D=0$:
+the factor $e^{-iw(\lambda)t}$ from the plate action cancels
+the factor $e^{iw(\lambda)t}$ from the kernel.
+Density of finite sums of plates gives the same assertion for
+arbitrary $L^2$ fields over those compact sets.
+The form also vanishes on gradients, by closedness and the
+fact that rotations carry gradients to gradients.
+\Cref{prop:rotation-no-contact} therefore gives $D=0$
+on all $L^2$ entries, for every $N$.
+
+The entire generating function of each finite real Schwartz
+test family is determined by these moments. Thus its
+characteristic function is unchanged by $R_t$, and Fourier
+uniqueness on the evaluation sigma algebra gives
+$(R_t)_*\mu=\mu$.
+Permuting coordinates applies the same argument in the other
+coordinate planes: the nine mirrors give their cones, and
+cubic invariance gives their quarter turns.
+These plane rotations generate $SO(3)$.
+A coordinate reflection already preserves $\mu$, so the full
+$O(3)$ acts invariantly. Translation invariance gives the
+Euclidean group.
+
+Let $g$ carry $x_1=0$ to any chosen plane and its positive side
+to the chosen open side. The composition operator of $g$ is
+unitary on $L^2(\mu)$, maps these side spaces onto each other,
+and conjugates the axis reflection to the chosen reflection.
+Transporting its nonnegative reflection form proves the final
+assertion.
+\end{proof}
+
+\Cref{thm:rotation-covariance} applies separately to the
+component laws of Sections~\extref{5--6}{ErgodicComponents}.
+They retain Gaussian domination, closedness, the cubic group,
+and the nine mirror forms. Together with their all-direction
+clustering, it supplies the hypotheses for the tensor OS
+verification.
+
+
+
 \printbibliography
 \end{document}

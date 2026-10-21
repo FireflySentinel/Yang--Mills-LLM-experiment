@@ -2,7 +2,17 @@
 \documentclass[11pt,letterpaper,reqno]{amsart}
 \usepackage[bibliography]{manuscript-style}
 \usepackage{mathrsfs}
-\input{notation}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Sspace}{\mathcal S}
+\newcommand{\dd}{\mathrm d}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\diag}{diag}
+\newcommand{\extref}[2]{#1 of~\cite{#2}}
+\newcommand{\exteq}[2]{(#1) of~\cite{#2}}
 \allowdisplaybreaks
 \title[The exact nonlinear renormalization step]
 {The exact nonlinear renormalization step\\for lattice QED in three dimensions}
@@ -23,14 +33,3346 @@ measure.
 \end{abstract}
 \maketitle
 \tableofcontents
-\input{introduction}
-\input{activities}
-\input{density}
-\input{first-step}
-\input{localization}
-\input{logarithm}
-\input{symmetries}
-\input{scaling}
-\input{completion}
+\section{Introduction}\label{sec:introduction}
+
+We consider one block transformation of noncompact lattice QED with
+four-component chamber fermions. The photon field is periodic on
+$\eta\Z^3/\ell\Z^3$, and spinors are antiperiodic in every coordinate.
+Each photon site carries $48$ chamber labels. The chamber measure is
+$\eta^3/48$; barred and unbarred Grassmann generators are independent.
+The Dirac stencil, block averages and weighted transposes are those of
+\cite[\S1]{FermionBlockManuscript}.
+
+Fix \(0<\rho<1\), odd \(L\ge4^8\), an integer power \(M\) of \(L\) with \(M\ge L^2\) and \(M>4L\),
+and \(k\in\Z_{\ge0}\). Put \(\eta=L^{-k}\), \(e=e_k\in(0,1)\),
+\(e_{k+1}=\sqrt L e_k\), and \(0<\mu\le1/L\); the scaled reference
+mass is \(L\mu\). Both charges are at most the common ceiling $e_{\mathrm{prim}}$ of the
+photon and fermion estimates specified in the theorem below. Require
+\(\ell/(LM)\) and \(\ell/(L^2M)\) to be odd integers at least \(13\).
+Fix an integer \(r\ge2\). For \(v=-\log e\), put
+\[
+ r_k=\min\{L^i:i\ge0\text{ an integer},\ L^i\ge v^r\},
+ \qquad \ell\ge Mr_k .
+\]
+
+
+
+An activity in $K_k^{x,\C}$ is a balanced family of Grassmann
+polynomials in ordinary and ordered-pair generators, holomorphic on
+$\widetilde R_k\times\mathfrak X_k$, local in its polymer and its
+connection bonds, and covariant under the lattice, independent local
+real-gauge and charge-conjugation actions. The real space $K_k^x$
+also satisfies the antilinear reality identity. We use exactly the
+domains, pair support and actions of \cite[\S2]{NormalizedContraction},
+recalled in \cref{sec:activities}. In particular, $\widetilde R_k$
+permits independent local real gauges; it imposes no bound on a real
+harmonic part. With $d_M(X)$ the connected-net length divided by $M$,
+the weights and norm are
+\[
+ h_k=(e_k^{-1/4},e_k^{-1/4+\varepsilon}),\qquad
+ \|\mathscr E\|_k^x=\sup_X\exp(\kappa d_M(X))
+       \sup_{\widetilde R_k\times\mathfrak X_k}\|\mathscr E(X)\|_{h_k}.
+\]
+The coefficient norm is the sum of absolute ordered coefficients
+times their generator weights. Set
+\begin{equation}\label{eq:rg-windows}
+ w_k^{\mathrm m}=e_k^{3/4-8\varepsilon},\quad
+ w_k^{\mathrm E}=e_k^{1/4-7\varepsilon},\quad
+ \operatorname{Ball}_k^x(c)=
+ \{(m,\mathscr E):|m|\le cw_k^{\mathrm m},\
+                 \|\mathscr E\|_k^x\le cw_k^{\mathrm E}\}.
+\end{equation}
+At $k=0$ the activity is required to be zero. The interaction mass
+$m$ is distinct from the positive reference mass $\mu$. Put
+$n_k=\ell^3$, $n_{k+1}=(\ell/L)^3$, and $q=e_k$ at $k=0$.
+The real photon domain is
+$\mathrm{Dom}_j=\{A:H_j^{\mathrm{ph}}A\in\frac14\widetilde R_j\}$.
+The density $\mathscr F_j^x$ and normalized block operator $\mathbf T_k^x$
+are defined by \eqref{eq:rg-step-input-density} and
+\eqref{eq:rg-step-block-transformation}; the latter integrates over
+$\mathrm{Box}_k=\{\sup_\Upsilon|\zeta(\Upsilon)|\le p_{0,k}\}$.
+
+The quantitative constants are
+\[
+ \begin{gathered}
+ \bar\varepsilon=1/200,\qquad
+ 0<\varepsilon\le\bar\varepsilon,\qquad 1-\varepsilon<\alpha<1,\\
+ c_X=54,\quad \kappa_0=54\log72,\quad K_0=\exp(\kappa_0)/36,\quad
+ c_{\rm rb}=c_XK_0,\quad c_{\rm fl}=61c_{\rm rb},\\
+ c_C=3L^{9/2},\quad b=1,\quad b_L=b/L,\quad b_-=1-L^{-1},\\
+ C_T=2\exp(3/2)
+       [1+b_-^{-1}(54L\exp(6)+12\exp(1)+1)],\\
+ c_S=10^5c_X^5K_0^5\exp(6\kappa),\qquad
+ \kappa_w=\kappa+\kappa_0+3 .
+ \end{gathered}
+\]
+The primitive constants \(C_w,\gamma_w,\alpha_0>0\), the photon
+local-gauge constant \(C_B\), and the two exponential-sum bounds
+\(c_\gamma\) are those of the photon and fermion families in hypothesis~(i) below; \(C_w,c_\gamma\ge1\).
+
+
+\begin{theorem}[The exact nonlinear step]\label{thm:rgnl-current-step}
+In the setting above, assume the following simultaneous hypotheses.
+\begin{enumerate}[label=\textup{(\roman*)},leftmargin=*]
+\item Use a single system of photon and fermion primitives on this
+torus. Assume the full hypotheses and conclusions of
+\cite[Theorems~A--B and Proposition~5.1]{MaxwellBlockManuscript}
+and
+\cite[Theorem~A, Propositions~4.1,
+4.2,
+4.3,
+6.1 and
+6.2]{FermionBlockManuscript}.
+Use common constants $(\alpha_0,\gamma_w,\kappa_w;C_w)$ for their
+analytic kernel and short H\"older bounds on
+$|s_a|\le M^{\alpha_0}$. This assumption includes component
+restriction, row vanishing, local read bonds, the exact operators at
+$s=1$, and their lattice, gauge, transpose and reality identities.
+At $k=0$ retain the stated diagonal families and chamber covariance.
+Use the weighted integration conventions of
+\cite[Theorem~B and Proposition~5.1]{FermionBlockManuscript}
+and the extraction, reconstruction and geometry of
+\cite[Theorems~A--B and Appendix~B]{NormalizedContraction}.
+The fine inverses required for reconstruction exist at both signs
+of every total connection in $\widetilde G_k$ by the fermion hypothesis.
+
+\item The extraction and scaling parameters satisfy
+\begin{equation}\label{eq:nlm-normalization-hypotheses}
+ \begin{gathered}
+ L^{1/8-3\bar\varepsilon/2}\ge2400,\qquad e^\varepsilon\le\tfrac14,\qquad
+ 160L^{1+3\varepsilon/2}Me^\varepsilon\le1,\\
+ 9ML^\varepsilon e^{2\varepsilon}\le1,\qquad
+ 90c_XLMe^\varepsilon\le1,\\
+ \kappa\ge7\kappa_0+7,\qquad
+ L(\kappa-6\kappa_0-4)-1\ge\kappa .
+ \end{gathered}
+\end{equation}
+\item The weakening radius and constants satisfy
+\[
+ C_w\ge4\exp(2\gamma_w)M^{27\alpha_0},\qquad
+ M^{\alpha_0}-1\ge\exp\big((2L+1)^3\kappa+\log(6c_X)\big).
+\]
+For the localizations, connected expansion, scaling and determinant
+reblocking, assume
+\begin{align}
+ &p_{0,k}\le e^{-\varepsilon/4},\qquad
+       12\exp(-p_{0,k}^2/2)\le e^7,\qquad
+       2e^{5\varepsilon/2}\le1,\qquad
+       c_{\mathrm{fl}}e^\varepsilon\le1,\qquad3Me^\varepsilon\le1,
+                                                        \notag\\
+ &2c_CC_w^2c_\gamma^2e^{\varepsilon/4}\le1,\qquad
+       16c_Xc_\gamma C_wC_T^2M^3e^{\varepsilon/2}\le1,\qquad
+       96M^3e^{1/4}\le1,                                \notag\\
+ &32C_wC_Te^{3\varepsilon/2}\le1,\qquad
+       88M^3e^{1/4-6\varepsilon}\le1,\qquad
+       112C_w^2c_\gamma e^{2\varepsilon}\le3,             \notag\\
+ &c_Se^{1/4-5\varepsilon}\le1,\qquad
+       c_SL^3e^\varepsilon\le1,\qquad e^\varepsilon\le\tfrac14,\qquad
+       8c_{\mathrm{rb}}L^3C_dM^3e^{2\varepsilon}\le1.
+                                      \label{eq:rgnl-fixed-smallness}
+\end{align}
+Here $C_d$ is the local determinant constant in hypothesis~(i).
+\item For fixed positive exponents \(p_0,p\), put
+\(p_{0,k}=v^{p_0}\), \(p_k=v^p\). The photon box and domain bounds
+and the determinant gain require
+\[
+ \begin{gathered}
+ p_{0,k}\le e^{-\varepsilon/4},\qquad
+ 12\exp(-p_{0,k}^2/2)\le e^7,\qquad
+ 8C_Bp_k\le e^{-3/4+3\varepsilon},\\
+ 8e^{3/4-7\varepsilon/2}\le1,\qquad L^{3/4}\ge8/3,\qquad
+ v\ge9,\qquad 8M(v/4+4)e^\varepsilon\le1,\\
+ e^{1/4}+e^\varepsilon<1,\qquad
+ 4e^{1/4+2\varepsilon}+2e^{3\varepsilon}\le1 .
+ \end{gathered}
+\]
+
+\end{enumerate}
+
+There is a local connected logarithm $E_k^\#(m,\mathscr E)$ on
+$\widetilde R_k^-\times\mathfrak X_k$ for every complex datum in
+$\operatorname{Ball}_k^x(4)$. It has the lattice symmetry with
+$LM$ translations, independent local real-gauge covariance and
+charge conjugation. Each monomial is balanced; real data give the
+reality identity. Its scaled sum
+\[
+ E_k^*(m,\mathscr E)(Y;A,C)
+   =\sum_{\bar X^L=LY}S_LE_k^\#(m,\mathscr E)(X;A_L,C_L)
+\]
+belongs to $K_{k+1}^{x,\C}$ and has norm at most
+$e_k^{1/4-6\varepsilon}$. Here $A_L(b)=L^{-1/2}A(b/L)$;
+$S_L$ scales ordinary legs by $L^{-1}$ and pair legs by
+$L^{-1-\alpha}$, and $\bar X^L$ is the union of $LM$-cubes
+containing $X$. The correction is norm continuous on each affine
+complex line's closed allowed set and norm analytic in its interior.
+For two data in $\operatorname{Ball}_k^x(1)$,
+\[
+ \|E_k^*(m_1,\mathscr E_1)-E_k^*(m_2,\mathscr E_2)\|_{k+1}^x
+ \le e_k^{1/4-6\varepsilon}
+ \left(\frac{|m_1-m_2|}{w_k^{\mathrm m}}+
+       \frac{\|\mathscr E_1-\mathscr E_2\|_k^x}{w_k^{\mathrm E}}\right).
+\]
+The second quotient is omitted at $k=0$.
+
+For the local determinant terms of
+Proposition~\extref{6.1}{FermionBlockManuscript}, put
+\[
+ \delta E_k^{\mathrm{det}}(X;\mathscr A,\mathscr C)
+       =E_k^d(X,\mathscr A+\mathscr C)-E_k^d(X,\mathscr C),
+ \qquad
+ E_k^{\mathrm{det}}(X,\mathscr C)
+       =E_k^d(X,\mathscr C)-E_k^d(X,0).
+\]
+These are scalar activities. We use reblocking
+$\mathcal L$ from \exteq{34}{NormalizedContraction}.
+The maps $R$, $(\cdot)^{\mathrm{nat}}$, $m(\cdot)$ and
+$\varepsilon_{\mathrm v}(\cdot)$ are the subtraction, adjustment and
+extraction maps of \cite[Theorem~A]{NormalizedContraction}.
+The outgoing maps are
+\begin{align}
+ \mathscr E^+&=\mathcal L(R\mathscr E)^{\mathrm{nat}}
+                        +\mathcal L\delta E_k^{\mathrm{det}}
+                        +E_k^*(m,\mathscr E), \label{eq:rgnl-full-step}\\
+ m^+&=L(m+m(\mathscr E)),\\
+ \varepsilon^{\mathrm v,+}
+       &=L^3(\varepsilon^{\mathrm v}
+                  +\varepsilon_{\mathrm v}(\mathscr E)
+                                      +\delta\varepsilon_k^0),\\
+ \mathfrak P_{k+1}(Y,\mathscr C')
+       &=\sum_{\bar X^L=LY}
+           \big(\mathfrak P_k(X,\mathscr C'_L)
+                          +E_k^{\mathrm{det}}(X,\mathscr C'_L)\big).
+                                      \label{eq:rgnl-external-scalar-map}
+\end{align}
+Here $\mathfrak P_k$ is any given family of scalar
+functions of the external slot.
+
+
+Let $\varepsilon^{\mathrm v},m$ be real,
+$\mathscr E\in K_k^x$, and
+$(m,\mathscr E)\in\operatorname{Ball}_k^x(1)$, with
+$\mathscr E=0$ at $k=0$. For $A'\in\mathrm{Dom}_{k+1}$
+with arbitrary harmonic part and
+$\mathscr C'\in\mathfrak X_{k+1}$, the exact density satisfies
+\begin{equation}\label{eq:rgnl-exact-step}
+ \mathbf T_k^x\mathscr F_k^x[\varepsilon^{\mathrm v},m,\mathscr E]
+   =\mathscr F_{k+1}^x
+            [\varepsilon^{\mathrm v,+},m^+,\mathscr E^+],
+\end{equation}
+with external scalar families $\mathfrak P_k$ and
+$\mathfrak P_{k+1}$ on the respective sides.
+Its integral satisfies
+\begin{equation}\label{eq:rgnl-integrated-step}
+ y_{k+1}^x(A';\mathscr C')
+  =\int_{\mathrm{Box}_k}\dd\mu_I(\zeta)\,
+        y_k^x(A_k^{\min}(A')+\mathrm{Sq}_k\zeta;\mathscr C'_L),
+\end{equation}
+where $y_j^x=\int\mathrm D\Psi\,\mathscr F_j^x$ with the
+data and scalar family of that level. The photon integral uses the
+unnormalized Gaussian restriction to the box.
+Moreover $\mathscr E^+\in K_{k+1}^x$ and
+\begin{align}
+ \|\mathscr E^+\|_{k+1}^x
+ &\le c_{\mathrm{fl}}L^{-1/4+2\varepsilon}\|\mathscr E\|_k^x
+           +e_{k+1}^{1/4-2\varepsilon}+e_k^{1/4-6\varepsilon},
+                                      \label{eq:rgnl-activity-step-bound}\\
+ |m^+-Lm|
+ &\le Lc_{\mathrm{fl}}e_k^{1/2}\|\mathscr E\|_k^x,
+                                      \label{eq:rgnl-mass-step-bound}\\
+ |\varepsilon^{\mathrm v,+}-L^3\varepsilon^{\mathrm v}|
+ &\le L^3(c_{\mathrm{fl}}\|\mathscr E\|_k^x+e_k^7).
+                                      \label{eq:rgnl-vacuum-step-bound}
+\end{align}
+At level zero this formula integrates all $192n_0$
+incoming pairs of generators, with chamber measure $1/48$,
+and leaves $4n_1$ outgoing pairs. Its data are
+\[
+ \mathscr E^+=\mathcal L\delta E_0^{\mathrm{det}}+E_0^*(m,0),
+ \quad m^+=Lm,\quad
+ \varepsilon^{\mathrm v,+}
+                         =L^3(\varepsilon^{\mathrm v}+\delta\varepsilon_0^0).
+\]
+In particular
+$0\le\varepsilon^{\mathrm v,+}-L^3\varepsilon^{\mathrm v}
+\le L^3q^7$.
+All maps commute with setting the external connection to zero.
+The estimates are independent of the side and harmonic part, for
+one primitive system satisfying the stated hypotheses. The theorem
+asserts one step on the two admitted sides; it makes no assertion
+that the outgoing datum lies in the next unit ball.
+\end{theorem}
+
+
+
+The proof develops the exact density and nonlinear arguments of
+\cite[\S\S13--14]{QED3Master}. The quadratic integration in \cref{sec:rg-step,subsec:rg-step-first-vertex} first
+separates a new fermion density, a determinant quotient and a finite
+fluctuation integral. The main difficulty is to express that last
+factor by activities with local coefficients. Two finite
+localizations in \cref{sec:rg-nonlinear-step} do this: the first resolves the change of connection
+and reconstructs the mean field; the second resolves the fermion
+fluctuations. Component restriction makes disconnected interpolation
+terms vanish before any infinite expansion is taken.
+
+The resulting activity satisfies
+\[
+ \|F(Y)\|_{(h_k/4;\mathsf w_W)}
+ \le36c_X^2K_0^2e_k^{1/4-5\varepsilon}
+                 \exp[-(\kappa-2\kappa_0-2)d_M(Y)].
+\]
+The connected-polymer expansion in \cref{subsec:rgnl-cluster-logarithm}
+converges absolutely, with a
+geometric tail in the number of polymers. Its exponential equals
+the original finite integral by absolute regrouping. For charge
+conjugation, the unbarred fluctuation contains $\Gamma_k$ whereas
+the barred one does not. Equality of their transformed Wick
+covariances, followed by inversion of a finite subset sum, gives
+the symmetry of each local logarithm. Scaling and Cauchy's formula
+give the correction and coupling bounds. \Cref{subsec:rgnl-current-step}
+evaluates the two finite localization sums and recovers the density
+identity with its determinant and photon-box factors.
+
+The extraction and reconstruction arguments are proved separately in
+\cite{NormalizedContraction}; their exact hypotheses are retained
+above. The elementary labelled-tree degree formula used in the
+connected sum is the Pr\"ufer formula in
+\cite[Proposition~4]{PostnikovLin2019}. All later sections use the
+hypotheses of \cref{thm:rgnl-current-step}. No limiting trajectory is
+part of the present theorem.
+\section{Activities, connections and coefficient norms}
+\label{sec:activities}
+
+We specify the local activity space used in \cref{thm:rgnl-current-step}.
+These are the conventions of \cite[\S2]{NormalizedContraction}.
+
+\subsection{Chamber sites, pairs and connection domains}
+
+Write \(O_{\mathrm{cub}}\) for the signed permutation matrices on
+\(\R^3\). A chamber site is \(x=(c,g)\), with photon projection
+\(\pi x=c\) and \(g\in O_{\mathrm{cub}}\). Integration over chamber
+sites uses \(\dd x=(\eta_k^3/48)\sum_{c,g}\). We take
+\(M\)-cubes centered at \(M\Z^3/\ell\Z^3\); their lattice sites
+form a partition. Blocks of every odd side used below are centered
+in the same way.
+
+For the three internal neighbors let \(s_0\) change the sign of
+the third coordinate, let \(s_1\) exchange the second and third
+coordinates, and let \(s_2\) exchange the first and second.
+Let \(r_{e_1}\) change the sign of the first coordinate. Set
+\[
+ x^{(i)}=(c,gs_i)\quad(0\le i\le2),\qquad
+ x^{(3)}=(c+\eta_kge_1,gr_{e_1}).
+\]
+Each neighbor map is an involution. An oriented bond field
+\(B\) is antisymmetric under reversal and periodic on the photon
+lattice. Write \(B_\mu(c)=B(c,c+\eta_ke_\mu)\), and use the
+forward differences
+\[
+ \partial_\nu B_\mu(c)=
+       \eta_k^{-1}\bigl(B_\mu(c+\eta_ke_\nu)-B_\mu(c)\bigr),
+ \qquad
+ (d\lambda)_\mu(c)=
+       \eta_k^{-1}\bigl(\lambda(c+\eta_ke_\mu)-\lambda(c)\bigr).
+\]
+Thus \((dB)_{\nu\mu}=\partial_\nu B_\mu-\partial_\mu B_\nu\).
+Distances between photon sites are sup distances, using the
+shortest lift when a distance bound is imposed. For \(0<\alpha<1\)
+the three norms are
+\[
+ \|B\|_1=\|B\|_\infty,\qquad
+ \|B\|_2=\|\partial B\|_\infty,\qquad
+ \|B\|_3=\|\delta_\alpha\partial B\|_\infty
+ =\sup_{\substack{\mu,\nu,c,c'\\0<d(c,c')\le1}}
+ \frac{|\partial_\nu B_\mu(c')-\partial_\nu B_\mu(c)|}
+      {d(c,c')^\alpha}.
+\]
+Local versions use only the indicated cells in the given region.
+Let \(\square^\dagger\) be the concentric enlargement of an
+\(M\)-cube to side \((2L+1)M\). Put
+\(\theta_i=e_k^{-3/4+i\varepsilon}\).
+The connection domains are
+\begin{equation}\label{eq:connection-domains}
+\begin{split}
+ R_k&=\{B:\|B\|_i<\theta_i,\ 1\le i\le3\},\\
+ \widetilde R_k&=\{B_0+B_1:B_1\in R_k,\ B_0\text{ real, and on each }
+          \square^\dagger,\\
+ &\hspace{25mm} B_0=B_\square^{\mathrm b}+d\lambda_\square
+   \text{ with }B_\square^{\mathrm b},\lambda_\square\text{ real and }
+          \|B_\square^{\mathrm b}\|_i<\theta_i\},\\
+ \mathfrak X_k&=\{C:\|C\|_\infty<e_k^{-1+2\varepsilon},\
+                       \|\partial C\|_\infty<e_k^{-1+3\varepsilon}\}.
+\end{split}
+\end{equation}
+Only existence of these representatives is required.
+For \(0<c\le1\), the notation \(c\widetilde R_k\) multiplies
+all three bounds for both summands by \(c\).
+For \(\widetilde R_k^-\) the local real bounds remain
+\(\theta_i\), while the global summand has bounds
+\((1-e_k^\varepsilon)\theta_i\).
+
+For a short ordered pair \(x=(c,g),x'=(c',g')\), let
+\(\tau B(c,c')\) be the arithmetic mean of the sums of \(B\)
+along the six coordinate-order paths from \(c\) to \(c'\).
+The bond values in this sum are unscaled; define
+\[
+ U_B(x,x')=\exp\{ie_k\eta_k\tau B(c,c')\},\qquad
+ (\delta_{\alpha,B}\psi)(x,x')
+       =\frac{U_B(x,x')\psi(x')-\psi(x)}
+                    {\max(|c-c'|_\infty,\eta_k)^\alpha}.
+\]
+For pairs within one cluster the transport is one. Barred fields
+use \(U_B^{-1}\). These formulas specify evaluation; the pair
+generators in the algebra remain independent.
+
+We use Pauli matrices and
+\[
+ \gamma_\mu=\sigma_3\otimes\sigma_\mu,\quad
+ \gamma_5=\sigma_1\otimes1_2,\quad \Sigma_3=\sigma_3\otimes1_2,
+ \qquad
+ \mathsf C=i\gamma_2,\quad
+ \varkappa=\gamma_5\mathsf C=\sigma_2\otimes\sigma_2 .
+\]
+Here \(\mathsf C\) is real with
+\(\mathsf C^T=\mathsf C^{-1}=-\mathsf C\), while
+\(\varkappa\) is a real symmetric involution. The spin group below
+is the group generated by \(\gamma_1,\gamma_2,\gamma_3,\gamma_5\).
+Its diagonal coordinate action \(r(S)\) is determined by
+\(S\gamma_\mu S^{-1}=r(S)_{\mu\mu}\gamma_\mu\).
+Connections transform by pullback on oriented bonds.
+
+\subsection{The local Grassmann algebra}
+\label{subsec:rg-activity-spaces}
+
+Fix a level $k$, mesh $\eta_k=L^{-k}$ and an admissible side
+$\ell$, with $\ell/(LM)$ odd and at least $13$.
+Let $\mathcal P_k$ be the collection of face-connected polymers
+of $M$-cubes on this torus. A polymer is small when
+$d_M(X)\le L$. A small polymer has an injective lift, unique up
+to a period translation, by the diameter and lifting estimates
+of Appendix~\extref{B}{NormalizedContraction}.
+Write $\operatorname{Vol}(X)=M^3|X|_M$.
+
+The independent Grassmann generators are $\psi$, $\bar\psi$ on
+the chamber sites $x=(c,g)$ and $\chi$, $\bar\chi$ on ordered
+pairs. For distinct chamber sites on the covering lattice, put
+$d_X(x,x')=\max(|c-c'|_\infty,\eta_k)$ and restrict pairs to
+$d_X\le M$. Pairs on the torus are simultaneous period classes;
+their shortest lifts are unique since $2M<\ell$. A pair is
+admissible for $X$ when its photon sites and all six rectilinear
+paths between them lie in $X$, or when it is $(x,x^{(3)})$ and
+one of its photon sites belongs to $X$.
+Thus a pair may leave $X$ only along a bond of type $3$.
+Pairs inside a cluster have $d_X=\eta_k$ and are admissible when
+their common photon site belongs to $X$.
+Ordinary generators acquire the sign $(-1)^{n_1+n_2+n_3}$
+under translation by $\ell n$. Pair generators acquire the same
+sign when both endpoints are translated by $\ell n$.
+The kernels are antiperiodic in each ordinary argument and in
+each simultaneous pair argument with these conventions.
+
+Let $\xi=(x,\beta,\omega)$ index an ordinary leg and
+$\zeta=(x,x',\beta,\omega)$ a H\"older leg, where
+$\omega=0$ is unbarred and $\omega=1$ is barred.
+We use the index measures
+\[
+ \nu(\xi)=\eta_k^3/48,\qquad
+ \nu(\zeta)=(\eta_k^3/48)^2.
+\]
+Integrals sum the spin and bar indices as well. An activity
+has a unique expansion with separately antisymmetric kernels,
+\begin{equation}\label{eq:rg-activity-kernels}
+ \mathscr E(X;\mathscr A,\mathscr C)
+ =\sum_{n,m}\frac1{n!m!}\int\dd\xi\,\dd\zeta\,
+      \mathscr E_{nm}(X;\mathscr A,\mathscr C;\xi;\zeta)
+                       \psi(\xi_1)\cdots\psi(\xi_n)
+                       \chi(\zeta_1)\cdots\chi(\zeta_m).
+\end{equation}
+Barred generators are included in this notation.
+The generator weights, as distinct from the index measures, are
+\[
+ h_{k,1}=e_k^{-1/4},\qquad h_{k,2}=e_k^{-1/4+\varepsilon}.
+\]
+For an element $F$ the weighted coefficient norm is
+\begin{equation}\label{eq:rg-activity-coefficient-norm}
+ \|F\|_{h_k}
+       =\sum_{n,m}\frac{h_{k,1}^nh_{k,2}^m}{n!m!}
+                                   \int\dd\xi\,\dd\zeta\,|F_{nm}|.
+\end{equation}
+In particular a generator has norm $h_{k,i}$;
+the weight $\nu$ enters only when coefficients are written as
+integral kernels.
+
+An activity family in $K_k^{x,\C}$ is balanced: every monomial
+has as many barred as unbarred legs. Its kernels are holomorphic
+on $\widetilde R_k\times\mathfrak X_k$, vanish unless all ordinary
+legs lie over $X$ and all pairs are admissible for $X$, and read
+the two connections only on bonds meeting $X$. The norm is
+\begin{equation}\label{eq:rg-activity-norm}
+ \|\mathscr E\|_k^x
+  =\sup_{X\in\mathcal P_k}\exp(\kappa d_M(X))
+    \sup_{(\mathscr A,\mathscr C)\in\widetilde R_k\times\mathfrak X_k}
+                          \|\mathscr E(X;\mathscr A,\mathscr C)\|_{h_k}.
+\end{equation}
+We require $\kappa\ge\kappa_0$ and finite norm.
+
+The required symmetries act on both the connections and the
+generators. For $\tilde g=(S,a)$ with the coordinate sign action
+$r(S)$ and $a\in M\Z^3$, put
+\[
+ \tilde g(c,g)=(r(S)c+a,r(S)g),\qquad
+ a_{\tilde g}\psi(x)=S\psi(\tilde g^{-1}x),\qquad
+ a_{\tilde g}\bar\psi(x)=(S^{-1})^T\bar\psi(\tilde g^{-1}x).
+\]
+The same spin matrices act on pair generators after transforming
+both endpoints. Local gauge transformations multiply an unbarred
+ordinary or pair leg by $\exp(ie_k\Lambda(c))$, using the photon
+site of its first point, and a barred leg by the inverse phase.
+Write this automorphism as $G_\Lambda$.
+Charge conjugation and the antilinear reality map act by
+\[
+ \mathrm{Cg}\,\psi=\mathsf C\bar\psi,\qquad
+ \mathrm{Cg}\,\bar\psi=-\mathsf C\psi,\qquad
+ \mathbf K\psi=\varkappa\psi,\qquad
+ \mathbf K\bar\psi=\varkappa\bar\psi,
+\]
+and by the same rules on the H\"older generators.
+
+The covariance requirements on a family are
+\begin{equation}\label{eq:rg-activity-symmetries}
+ \begin{split}
+ a_{\tilde g}\mathscr E(\tilde gX;\tilde g\mathscr A,
+                                      \tilde g\mathscr C)
+                                  &=\mathscr E(X;\mathscr A,\mathscr C),\\
+ \mathrm{Cg}\,\mathscr E(X;-\mathscr A,-\mathscr C)
+                                  &=\mathscr E(X;\mathscr A,\mathscr C).
+ \end{split}
+\end{equation}
+For real scalars $\lambda,\lambda'$ and two pairs in the domain
+which satisfy $\mathscr A^1=\mathscr A-d\lambda$ and
+$\mathscr C^1=\mathscr C-d\lambda'$ on bonds at distance at
+most one from $X$, the local gauge requirement is
+\[
+ G_{\lambda+\lambda'}\mathscr E(X;\mathscr A^1,\mathscr C^1)
+                               =\mathscr E(X;\mathscr A,\mathscr C).
+\]
+The real subspace $K_k^x$ has in addition
+\[
+ \mathbf K\mathscr E(X;-\overline{\mathscr A},-\overline{\mathscr C})
+                               =\mathscr E(X;\mathscr A,\mathscr C).
+\]
+All requirements refer to the generators before evaluating fields.
+They are essential to the form of the counterterms.
+
+The spaces $K_k^\C,K_k$ without the second connection argument
+have the same definitions on $\widetilde R_k$. Restriction
+$\mathscr E|_0(X;\mathscr A)=\mathscr E(X;\mathscr A,0)$ maps
+$K_k^{x,\C}$ into $K_k^\C$ and has norm at most one. The real
+subspaces also restrict. Analyticity, locality and the symmetries
+follow by setting the second argument and its gauge function to
+zero; the norm bound follows from the smaller supremum.
+
+\subsection{Total connections}
+\label{subsec:rg-total-connection-domain}
+
+The comparison domain $\widetilde G_k$ consists of fields $B_0+B_1$
+with $B_0$ real and $\|B_1\|_\infty<e_k^{-1+\varepsilon}$,
+where on each $\square^{\sim5}$ the field $B_0$ has a real-gauge
+representative of supremum norm below $e_k^{-1+\varepsilon}$.
+Here $\square^{\sim5}$ has the same center and side $11M$.
+The real-gauge representatives in the domains defined above may
+be chosen independently on each enlarged cube.
+
+Assume $L\ge5$, $0<\varepsilon\le1/200$ and
+\begin{equation}\label{eq:rg-domain-charge-conditions}
+ e_k^\varepsilon\le\tfrac14,\qquad
+ e_k^{1/4}+e_k^\varepsilon\le1,\qquad
+ 4e_k^{1/4+2\varepsilon}+2e_k^{3\varepsilon}\le1.
+\end{equation}
+Then
+\begin{equation}\label{eq:rg-total-domain-inclusion}
+ \widetilde R_k+\mathfrak X_k\subset\widetilde G_k.
+\end{equation}
+Indeed, write $\mathscr A=A_0+A_1$ with $A_1\in R_k$ and
+$A_0$ locally real-gauge equivalent on $\square^\dagger$ to
+$A_\square^b$ with the three threshold bounds. Restrict the
+representative to $\square^{\sim5}\subset\square^\dagger$.
+Its supremum norm is below
+$e_k^{-3/4+\varepsilon}\le e_k^{-1+\varepsilon}$, and
+\[
+ \|A_1+\mathscr C\|_\infty
+ <e_k^{-3/4+\varepsilon}+e_k^{-1+2\varepsilon}
+ =(e_k^{1/4}+e_k^\varepsilon)e_k^{-1+\varepsilon}
+ \le e_k^{-1+\varepsilon}.
+\]
+This is the required decomposition of the total connection.
+Real gauge transformations can absorb any real constant part,
+locally on the nonwrapping cubes.
+
+Put $\mathfrak i(B)=e_k\|\operatorname{Im}B\|_\infty$ and
+$q_d(B)=e_k\|dB\|_\infty$. The same decomposition gives
+\begin{equation}\label{eq:rg-total-imaginary-curvature-bounds}
+ \mathfrak i(\mathscr A+\mathscr C)
+       \le e_k^{1/4+\varepsilon}+e_k^{2\varepsilon}\le1,
+ \qquad
+ q_d(\mathscr A+\mathscr C)
+       \le4e_k^{1/4+2\varepsilon}+2e_k^{3\varepsilon}\le1.
+\end{equation}
+For the curvature, every plaquette lies in an enlarged cube,
+and $dA_0=dA_\square^b$ there. This costs at most
+$2\|\partial A_\square^b\|_\infty$; the global small field
+costs another $2\|\partial A_1\|_\infty$, and the external
+field costs $2\|\partial\mathscr C\|_\infty$.
+The imaginary bound uses only that $A_0$ is real.
+
+The domains are open: the strict inequalities define open
+sets for the global summand, which can absorb a sufficiently
+small complex perturbation while the local real representative
+is kept fixed. The norm-defined sets are invariant under sign
+and conjugation; the local real-gauge definitions are also
+invariant under real gauges and real constant additions.
+Coordinate sign changes and $M$ translations preserve them.
+Their derivative and H\"older norms are preserved, with a
+possible reversal of a bond and translation of its base point.
+Thus \eqref{eq:rg-total-domain-inclusion} applies also at the
+signs, conjugates and real gauges used below.
+
+
+
+\subsection{The operator and photon data}
+
+The injection and cluster mean are
+$(Jv)(c,g)=v(c)$ and $(J^*f)(c)=48^{-1}\sum_gf(c,g)$.
+The normalized average $\mathcal Q_k=Q_kJ^*$, its reverse
+$\mathcal Q_k^\sharp=\mathcal Q_k(-B)^T$, the one-step average
+$Q$, and the chamber operator $D_B$ are given in
+\cite[\S1]{FermionBlockManuscript}. Put $b_k=(1-L^{-1})/(1-L^{-k})$ for $k\ge1$. At these levels set
+\[
+ S_k(B)=(D_B+\mu+b_k\mathcal Q_k^\sharp\mathcal Q_k)^{-1},\quad
+ H_k(B)=b_kS_k(B)\mathcal Q_k^\sharp(B),\quad
+ D_k(B)=b_k-b_k^2\mathcal Q_k(B)S_k(B)\mathcal Q_k^\sharp(B).
+\]
+The one-step projection is $P_L(B)=Q^T(-B)Q(B)$. The barred map is $\bar H_k(B)=\mathsf C^{-1}H_k(-B)\mathsf C$.
+At $k=0$, $H_0=\bar H_0=1$ and $D_0(B)=D_B+\mu$.
+The symbol $\Sspace(a,\ell)$ denotes the four-component spinor
+space on the $a$-spaced torus, with measure $a^3$; the superscript
+$\mathrm{ch}$ adds chamber labels and divides the measure by $48$.
+All spaces have the antiperiodic convention stated above.
+For later use, the hopping notation of \cite[\S2.1]{FermionBlockManuscript} is
+\[
+ R_i(B)f(x)=U_B(x,x^{(i)})f(x^{(i)}),\qquad
+ \mathcal L_B=\sum_{i=0}^3w_i(1-R_i(B)),\qquad
+ M_i(c,g)=\tfrac{w_i}{2}(\rho+\gamma\cdot g\mathbf n_i),
+\]
+where $(w_0,w_1,w_2,w_3)=(6,6\sqrt2,6\sqrt2,6)$ and
+$(\mathbf n_0,\mathbf n_1,\mathbf n_2,\mathbf n_3)=(e_3,(e_2-e_3)/\sqrt2,(e_1-e_2)/\sqrt2,-e_1)$.
+Thus $\widehat d_i(c,g)=-g\mathbf n_i$. On a nearest-neighbor photon bond
+write $u_B(c,c')=\exp(ie_k\eta_kB(c,c'))$; this is the transport
+$U_B(x,x^{(3)})$ when $c,c'$ are its endpoints.
+
+For photon fields use the Landau reconstruction $H_k^{\mathrm{ph}}$,
+the constrained minimum $A_k^{\min}$ and the real coordinate map
+$C:V_k\to\mathcal Z$ of
+\cite[Theorem~A]{MaxwellBlockManuscript}. Write
+$C_k^{1/2}=\widetilde\Delta_k^{-1/2}$ and
+$\mathrm{Sq}_k=CC_k^{1/2}$. The coordinate basis $\{\Upsilon\}$ is
+orthonormal and has the specified block or face-bond supports.
+The law $\mu_I$ is the product standard Gaussian in these coordinates.
+Its restriction to $\mathrm{Box}_k$ has probability
+$\exp(-\ell^3\delta\varepsilon_k^0)$, with
+$0\le\delta\varepsilon_k^0\le12\exp(-p_{0,k}^2/2)$.
+The symbols $C$ and $\mathscr C$ always denote, respectively,
+this real coordinate map and the external connection.
+
+The common constant $c_\gamma$ bounds both
+\[
+ \sup_\Upsilon\sum_{\Upsilon'}\exp[-\gamma_wd(\Upsilon,\Upsilon')],
+ \qquad \sup_b\sum_{b'}\exp[-\gamma_wd(b,b')],
+\]
+where the second sum is over unit bonds. The constants $C_w$ and
+$\gamma_w$ dominate the photon bounds and the corresponding
+fermion bounds as stipulated in hypothesis~(i).
+\section{The exact block density}\label{sec:rg-step}
+
+The block transformation has three factors: a new quadratic
+fermion density, a determinant quotient, and a finite integral
+over photon and fermion fluctuations. We derive this identity
+before expanding its last factor. The integration at level
+zero includes every chamber component and uses the chamber
+Berezin measure. The algebraic identities in this section follow
+\cite[\S13.1--13.3]{QED3Master}.
+
+\subsection{Integration spaces and real backgrounds}
+\label{subsec:rg-step-real-background}
+
+Fix $k\in\Z_{\ge0}$, $\eta_k=L^{-k}$, odd $L\ge5$, and an
+integer power $M$ of $L$ with $M\ge L^2$, with $\ell/(LM)$ odd and at least $13$.
+The regulator parameter satisfies $0<\rho<1$.
+Keep $b=1$ as a letter, and write
+$b_L=b/L$ and
+$b_k=b(1-L^{-1})/(1-L^{-k})$ for $k\ge1$.
+Write $\mathscr V_k=\Sspace(1,\ell)$ for $k\ge1$, with
+four spin components and counting measure, and
+$\mathscr V_0=\Sspace^{\mathrm{ch}}(1,\ell)$, with
+$192$ components per photon site and measure $1/48$.
+The one-step averaging operator into $\Sspace(L,\ell)$ is
+\[
+ \mathcal A_k(B)=
+ \begin{cases}
+ Q(B),&k\ge1,\\
+ Q(B)J^*,&k=0,
+ \end{cases}
+ \qquad
+ \mathcal A_k^\sharp(B)=\mathcal A_k(-B)^T.
+\]
+The target measure is $L^3$. On these spaces set
+\begin{equation}\label{eq:rg-step-quadratic-operators}
+ \mathcal D_k(B)=
+ \begin{cases}D_k(B),&k\ge1,\\D_B+\mu,&k=0,\end{cases}
+ \qquad
+ K_k(B)=\mathcal D_k(B)+b_L\mathcal A_k^\sharp(B)\mathcal A_k(B).
+\end{equation}
+Thus $K_k=D_k+b_LP_L$ for $k\ge1$ and
+$K_0=F_0=D_B+\mu+b_LJP_LJ^*$.
+We write $D_0(B)=D_B+\mu$, so that
+$\mathcal D_k(B)=D_k(B)$ at every level.
+When it exists, $\Gamma_k=K_k^{-1}$, and
+$\delta Z_k(B)=\det K_k(B)$.
+The transpose refers to the displayed bilinear measures.
+For a real $B$, the phases have modulus one and
+$\mathcal A_k^\sharp=\mathcal A_k^*$.
+
+The normalized averages give
+$Q(B)Q^T(-B)=1$. On a coarse block $B(z')$ the product
+is
+$L^{-3}\sum_{z\in B(z')}U_B(z',z)U_B(z',z)^{-1}=1$.
+At level zero the additional cluster mean contributes
+$48/48=1$. Similarly
+$\mathcal Q_k\mathcal Q_k^\sharp=1$ for $k\ge1$.
+In a unit block the photon count gives
+$\eta_k^3\eta_k^{-3}=1$ and the cluster count again
+gives $48/48=1$.
+For real $B$ the inverse phases in the embeddings are
+the complex conjugates of the averaging phases.
+The products $\Pi_1=\mathcal Q_k^\sharp\mathcal Q_k$
+and $\Pi_L=\mathcal Q_k^\sharp P_L\mathcal Q_k$ are
+therefore orthogonal projections; so are $P_L$ and,
+at level zero, $JP_LJ^*$. Their scalar spin kernels
+commute with every constant spin matrix.
+
+The fine resolvents used below are those of
+\cite[\S4.2]{FermionBlockManuscript}. Explicitly, for $k\ge1$ put
+\[
+ F_\infty(B)=D_B+\mu+b_k\mathcal Q_k^\sharp\mathcal Q_k,
+ \quad
+ \mathcal B_{k,y}=(b_k+i\gamma_5y)^{-1}(1-P_L)
+                  +(b_k+b_L+i\gamma_5y)^{-1}P_L,
+\]
+and define
+\[
+ F_y=F_\infty-b_k^2\mathcal Q_k^\sharp\mathcal B_{k,y}\mathcal Q_k,
+ \qquad S_{k,y}=F_y^{-1}
+\]
+where the inverse exists. In particular $S_k=F_\infty^{-1}$.
+The reconstruction maps are
+$T_k(B)=\mathcal Q_k(B)(b_k^{-1}D_B+1+\mu/b_k)$ and
+$\bar T_k(B)=\mathsf C^{-1}T_k(-B)\mathsf C$;
+their recovery identities are \cite[Theorem~B(iv)]{NormalizedContraction}.
+At zero these reconstruction maps are identities on chamber fields.
+
+\begin{proposition}\label{prop:rg-step-real-inverses}
+Let $B$ be real and $\mu>0$. The operators
+$D_B+\mu$, $\mathcal D_k(B)$ and $K_k(B)$ are
+invertible at every level at which they are defined.
+For $k\ge1$,
+\begin{equation}\label{eq:rg-step-real-coarse-inverse}
+ D_k(B)^{-1}=b_k^{-1}
+           +\mathcal Q_k(B)(D_B+\mu)^{-1}\mathcal Q_k^\sharp(B),
+ \qquad \operatorname{Re}D_k(B)^{-1}\ge b_k^{-1}.
+\end{equation}
+Moreover $\operatorname{Re}D_k>0$ and
+$\operatorname{Re}K_k>0$ as quadratic forms for
+$k\ge1$, whereas $\operatorname{Re}K_0\ge\mu$.
+Each $K_k$ satisfies
+$K_k^*=\gamma_5K_k\gamma_5$.
+For every real $y$, $K_k+i\gamma_5y$ is invertible,
+and for $y\ne0$,
+\begin{equation}\label{eq:rg-step-real-resolvent}
+ \|(K_k+i\gamma_5y)^{-1}\|_{2\to2}\le |y|^{-1}.
+\end{equation}
+For $k\ge1$ the fine inverse $S_{k,y}$ also
+exists for every real $y$.
+In particular $\det D_k(0)$ and $\delta Z_k(0)$
+are nonzero, including the determinants on
+$\mathscr V_0$.
+\end{proposition}
+
+\begin{proof}
+At a real connection the chamber hops are self-adjoint
+unitary involutions. In the proof of
+\exteq{6}{FermionBlockManuscript}, reindexing $x$ by $x^{(i)}$
+uses
+$U_B(x^{(i)},x)=\overline{U_B(x,x^{(i)})}$.
+It gives
+\[
+ (f,\mathcal L_Bf)=\frac12\sum_iw_i
+                  \int\dd x\,|R_i(B)f(x)-f(x)|_2^2\ge0.
+\]
+The direction vector changes sign under the same
+involution; hence
+$\sum_iw_i(\gamma\cdot\widehat d_i)R_i(B)$
+is anti-self-adjoint. The cancellation
+$\sum_iw_i\widehat d_i=0$ yields
+$D_B^*=\gamma_5D_B\gamma_5$ and
+$\operatorname{Re}D_B=(\rho/(2\eta_k))\mathcal L_B\ge0$.
+Thus $\operatorname{Re}(D_B+\mu)\ge\mu$.
+For $k\ge1$ adding the positive penalty
+$b_k\Pi_1$ gives $\operatorname{Re}F_\infty\ge\mu$.
+These inequalities imply injectivity and then
+invertibility in the finite-dimensional spaces.
+
+Put $G=D_B+\mu$ and $S_k=(G+b_k\mathcal Q_k^\sharp
+\mathcal Q_k)^{-1}$. Multiplication of
+$b_k^{-1}+\mathcal Q_kG^{-1}\mathcal Q_k^\sharp$
+by $D_k=b_k-b_k^2\mathcal Q_kS_k\mathcal Q_k^\sharp$
+gives
+\[
+ 1+b_k\mathcal Q_kG^{-1}
+      [1-(G+b_k\mathcal Q_k^\sharp\mathcal Q_k)S_k]
+                                               \mathcal Q_k^\sharp=1.
+\]
+This proves \eqref{eq:rg-step-real-coarse-inverse}.
+For an invertible operator $O$,
+$\operatorname{Re}(u,Ou)=
+\operatorname{Re}(Ou,O^{-1}Ou)$.
+In particular $\operatorname{Re}O\ge0$ implies
+$\operatorname{Re}O^{-1}\ge0$.
+As $\mathcal Q_k^\sharp=\mathcal Q_k^*$ here,
+the second term of $D_k^{-1}$ has nonnegative real
+part. For a nonzero $v$, consequently,
+\[
+ \operatorname{Re}(v,D_kv)
+       =\operatorname{Re}(D_kv,D_k^{-1}D_kv)
+                           \ge b_k^{-1}\|D_kv\|_2^2>0.
+\]
+Adding $b_LP_L$ preserves strict positivity.
+At $k=0$ the same conclusion follows directly by
+adding $b_LJP_LJ^*$ to $D_B+\mu$.
+
+The projections commute with $\gamma_5$.
+It follows first that
+$F_\infty^*=\gamma_5F_\infty\gamma_5$ and
+$S_k^*=\gamma_5S_k\gamma_5$.
+Taking the adjoint in the formula for $D_k$ and using
+$\mathcal Q_k^\sharp=\mathcal Q_k^*$ gives
+$D_k^*=\gamma_5D_k\gamma_5$. The penalty has the
+same symmetry, proving it for $K_k$.
+For $k=0$ this is already the symmetry of its three
+terms. Hence
+\[
+ (K_k+i\gamma_5y)^*(K_k+i\gamma_5y)
+                                      =K_k^*K_k+y^2,
+ \qquad
+ \|(K_k+i\gamma_5y)f\|_2^2
+                         =\|K_kf\|_2^2+y^2\|f\|_2^2.
+\]
+For $y\ne0$ this proves injectivity and the inverse
+bound; $y=0$ is covered by strict positivity.
+For the fine inverse at $k\ge1$, use the block
+matrix with diagonal blocks
+$b_k+b_LP_L+i\gamma_5y$ and $F_\infty$,
+and off-diagonal blocks
+$-b_k\mathcal Q_k$ and $-b_k\mathcal Q_k^\sharp$.
+The first diagonal block is invertible by its
+idempotent decomposition
+\exteq{53}{FermionBlockManuscript}.
+Its two Schur complements are $F_y$ and
+$K_k+i\gamma_5y$. The latter is invertible,
+so the block matrix and then $F_y$ are invertible.
+This proves existence of $S_{k,y}$.
+The asserted normalizing determinants are therefore
+nonzero at the real zero connection.
+\end{proof}
+
+\subsection{The next quadratic density}
+\label{subsec:rg-step-scale-identification}
+
+Assume now that $\ell/L$ is also admissible, and let
+$B=B'_L$. At the outgoing level the mass is $L\mu$ and
+the charge is $e_{k+1}=L^{1/2}e_k$.
+The following identities hold whenever $S_k(B)$ and
+$\Gamma_k(B)$ exist for $k\ge1$, or $\Gamma_0(B)$
+exists for $k=0$. This invertibility domain is open
+and invariant under $B\mapsto-B$: all elementary
+entries are entire functions of the bond values,
+and the transpose identities are
+\begin{equation}\label{eq:rg-step-transpose}
+ \mathcal D_k(B)^T=\mathsf C^{-1}\mathcal D_k(-B)\mathsf C,\qquad
+ K_k(B)^T=\mathsf C^{-1}K_k(-B)\mathsf C,\qquad
+ \Gamma_k(B)^T=\mathsf C^{-1}\Gamma_k(-B)\mathsf C.
+\end{equation}
+For the first identity reindex each hopping term by
+$x^{(i)}$, using
+$M_i(x^{(i)})^T=\mathsf C^{-1}M_i(x)\mathsf C$
+and the reverse phase at $-B$. Transposition of the
+averages reverses their connection in the product
+$P_L$, and the scalar kernels commute with
+$\mathsf C$. The remaining identities follow by
+products and inversion. Invertible matrices have
+analytic inverses on their open determinant domains.
+
+Define the fine-to-$L$ average and its embedding by
+\[
+ \mathcal Q_k^+(B)=
+ \begin{cases}Q(B)\mathcal Q_k(B),&k\ge1,\\Q(B)J^*,&k=0,\end{cases}
+ \qquad
+ \mathcal Q_k^{+,\sharp}(B)=\mathcal Q_k^+(-B)^T.
+\]
+They obey
+$\mathcal Q_k^+\mathcal Q_k^{+,\sharp}=1$.
+Set $\bar b_k=b_{k+1}/L$ and
+\begin{equation}\label{eq:rg-step-fine-plus}
+ F_k^+(B)=D_B+\mu+\bar b_k\mathcal Q_k^{+,\sharp}\mathcal Q_k^+,
+ \qquad \Sigma_k^+(B)=F_k^+(B)^{-1}.
+\end{equation}
+For $k=0$ this is $F_0$ and its inverse $\Gamma_0$.
+For $k\ge1$ it is the fine resolvent operator at
+$y=0$, since
+$\bar b_k=b_kb_L/(b_k+b_L)$.
+
+To verify existence and the identities needed below,
+write $\mathcal B_k=(b_k+b_LP_L)^{-1}$ for $k\ge1$
+and consider
+\[
+ \begin{pmatrix}
+ b_k+b_LP_L&-b_k\mathcal Q_k\\
+ -b_k\mathcal Q_k^\sharp&F_\infty
+ \end{pmatrix}.
+\]
+Its lower-right Schur complement is $K_k$.
+Since $P_L$ is idempotent and scalar in spin,
+$\mathcal B_k=b_k^{-1}(1-P_L)+(b_k+b_L)^{-1}P_L$.
+The other Schur complement is
+\[
+ F_\infty-b_k^2\mathcal Q_k^\sharp\mathcal B_k\mathcal Q_k
+    =D_B+\mu+\frac{b_kb_L}{b_k+b_L}
+                                  \mathcal Q_k^\sharp P_L\mathcal Q_k
+    =F_k^+.
+\]
+The two assumed inverses make the block matrix
+invertible, and hence $F_k^+$ is invertible.
+Equating the upper-left and lower-left blocks of
+its inverse gives
+\begin{equation}\label{eq:rg-step-block-inverse-identities}
+ \Gamma_k=\mathcal B_k+
+       b_k^2\mathcal B_k\mathcal Q_k\Sigma_k^+
+                                     \mathcal Q_k^\sharp\mathcal B_k,
+ \qquad
+ H_k\Gamma_k=b_k\Sigma_k^+\mathcal Q_k^\sharp\mathcal B_k.
+\end{equation}
+This is the same Schur calculation as
+Proposition~\extref{4.2}{FermionBlockManuscript}, retaining
+the off-diagonal block for the mean field.
+
+Let
+\begin{equation}\label{eq:rg-step-unscaled-coarse}
+ D_{k+1}^0(B)=b_L-
+                       b_L^2\mathcal A_k(B)\Gamma_k(B)\mathcal A_k^\sharp(B).
+\end{equation}
+For $k\ge1$, $QP_L=Q$ and $P_LQ^T(-B)=Q^T(-B)$
+give
+$Q\mathcal B_k=(b_k+b_L)^{-1}Q$ and
+$\mathcal B_kQ^T(-B)=(b_k+b_L)^{-1}Q^T(-B)$.
+Insert these in \eqref{eq:rg-step-block-inverse-identities}
+to obtain
+\begin{equation}\label{eq:rg-step-compressed-identities}
+ \begin{split}
+ D_{k+1}^0(B)
+       &=\bar b_k-\bar b_k^2
+                            \mathcal Q_k^+\Sigma_k^+\mathcal Q_k^{+,\sharp},\\
+ b_LH_k(B)\Gamma_k(B)\mathcal A_k^\sharp(B)
+       &=\bar b_k\Sigma_k^+\mathcal Q_k^{+,\sharp}.
+ \end{split}
+\end{equation}
+For $k=0$ both formulas follow directly from
+$\bar b_0=b_L$, $H_0=1$,
+$\Sigma_0^+=\Gamma_0$, and
+$\mathcal Q_0^+=\mathcal A_0$.
+
+Let $\mathsf R_L$ denote the scaling
+$f_L(c,g)=L^{-1}f(c/L,g)$ on chamber spinors and
+$v_L(z')=L^{-1}v(z'/L)$ on unit spinors.
+These are bijections between the corresponding
+incoming and outgoing spaces. Scaling preserves
+the label and the nested block centers, and
+$e_k\eta_kL^{-1/2}=e_{k+1}\eta_{k+1}$ preserves
+each transport phase. Consequently
+\[
+ (D_B+\mu)\mathsf R_L
+       =L^{-1}\mathsf R_L(D_{B'}+L\mu),\qquad
+ \mathcal Q_k^+(B)\mathsf R_L
+       =\mathsf R_L\mathcal Q_{k+1}(B'),
+\]
+and the corresponding embedding identity holds.
+For the average, its $L^{-3}$ factor cancels the
+$L^3$ change of the chamber index measure.
+Thus
+\begin{equation}\label{eq:rg-step-fine-scaling}
+ F_k^+(B)\mathsf R_L
+                   =L^{-1}\mathsf R_LF_\infty(B'),\qquad
+ \Sigma_k^+(B)\mathsf R_L
+                         =L\mathsf R_LS_{k+1}(B').
+\end{equation}
+In particular the outgoing inverse exists.
+Equations \eqref{eq:rg-step-compressed-identities} and
+\eqref{eq:rg-step-fine-scaling} now imply
+\begin{equation}\label{eq:rg-step-coarse-scaling}
+ D_{k+1}^0(B)\mathsf R_L
+                       =L^{-1}\mathsf R_LD_{k+1}(B'),\qquad
+ b_LH_k(B)\Gamma_k(B)\mathcal A_k^\sharp(B)\mathsf R_L
+                       =\mathsf R_LH_{k+1}(B').
+\end{equation}
+All expressions in the second identity act on the
+outgoing four-component field.
+
+For independent outgoing Grassmann fields define
+\begin{equation}\label{eq:rg-step-mean-fields}
+ \Psi^c=b_L\Gamma_k(B)\mathcal A_k^\sharp(B)\Psi'_L,\qquad
+ \bar\Psi^c=b_L\Gamma_k(B)^T\mathcal A_k(B)^T\bar\Psi'_L.
+\end{equation}
+Then, with $\psi'=H_{k+1}(B')\Psi'$ and
+$\bar\psi'=\bar H_{k+1}(B')\bar\Psi'$,
+\begin{equation}\label{eq:rg-step-induced-fields}
+ H_k(B)\Psi^c=\psi'_L,\qquad
+ \bar H_k(B)\bar\Psi^c=\bar\psi'_L.
+\end{equation}
+The first relation is \eqref{eq:rg-step-coarse-scaling}.
+For the second use \eqref{eq:rg-step-transpose}
+and apply the first relation at $-B$ to
+$\mathsf C\bar\Psi'$; the constant matrix
+$\mathsf C$ commutes with scaling and the averages.
+The covariant H\"older quotients of these induced
+fields are also the scaled outgoing quotients:
+the transports agree and $d_X$ is divided by $L$,
+so the quotient carries the factor $L^{-1-\alpha}$.
+This holds for every pair, including a pair inside
+one cluster.
+Applying $T_kH_k=1$ and its barred version shows
+that the means in \eqref{eq:rg-step-mean-fields}
+are also $T_k(B)\psi'_L$ and $\bar T_k(B)\bar\psi'_L$.
+At level zero these maps are identities on
+the chamber field.
+
+The quadratic term in the Gaussian block formula is
+therefore exactly
+\[
+ \langle\bar\Psi'_L,D_{k+1}^0(B)\Psi'_L\rangle_L
+                         =\langle\bar\Psi',D_{k+1}(B')\Psi'\rangle_1,
+\]
+since the pairings of scaled fields multiply by $L$.
+Together with \exteq{73}{FermionBlockManuscript},
+this identifies the entire outgoing quadratic density.
+
+\begin{proposition}\label{prop:rg-step-determinant-normalization}
+On the invertibility domain just specified,
+\begin{equation}\label{eq:rg-step-determinant-normalization}
+ \det D_{k+1}(B')=
+           b^{4n_{k+1}}\frac{\det\mathcal D_k(B)}{\delta Z_k(B)},
+ \qquad n_k=\ell^3,\quad n_{k+1}=(\ell/L)^3.
+\end{equation}
+In particular, with $c_k=b^{-4n_{k+1}}$,
+\begin{equation}\label{eq:rg-step-zero-normalization}
+ \frac{c_k}{\det D_k(0)}
+              =\frac{1}{\det D_{k+1}(0)\delta Z_k(0)}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Apply Sylvester's determinant identity to
+$b_L\mathcal A_k\Gamma_k$ and $\mathcal A_k^\sharp$
+on the two different spaces. It gives
+\[
+ b_L^{-4n_{k+1}}\det D_{k+1}^0(B)
+       =\det(1-b_L\mathcal A_k^\sharp\mathcal A_k\Gamma_k)
+       =\det(\mathcal D_k\Gamma_k)
+       =\frac{\det\mathcal D_k(B)}{\delta Z_k(B)}.
+\]
+The incoming determinant at $k=0$ has size $192n_0$;
+the exponent of $b_L$ is the outgoing dimension
+$4n_1$, as in every other step.
+Equation \eqref{eq:rg-step-coarse-scaling} gives
+$\det D_{k+1}^0(B)=L^{-4n_{k+1}}\det D_{k+1}(B')$.
+Using $Lb_L=b$ proves
+\eqref{eq:rg-step-determinant-normalization}.
+At the zero connection all denominators are nonzero
+by \cref{prop:rg-step-real-inverses}, so
+\eqref{eq:rg-step-zero-normalization} follows.
+\end{proof}
+
+\subsection{The density with an external connection}
+\label{subsec:rg-step-density}
+
+For this subsection assume $0<\mu\le1/L$ and
+$e_{k+1}=L^{1/2}e_k\le e_{\mathrm{prim}}$, with the hypotheses
+of Propositions~\extref{3.3}{FermionBlockManuscript},
+\extref{4.2}{FermionBlockManuscript} and Theorem
+\extref{B}{MaxwellBlockManuscript}. We also impose
+\exteq{43}{MaxwellBlockManuscript} and
+\eqref{eq:rg-domain-charge-conditions}.
+The inverse domain $\widetilde G_k$ is the domain
+$\widetilde{\mathcal G}_k$ of the propagator estimates.
+Let $A'\in\mathrm{Dom}_{k+1}$ be a real block field,
+with arbitrary harmonic part, and let
+$\mathscr C'\in\mathfrak X_{k+1}$.
+Put
+\[
+ \mathscr A'=H_{k+1}^{\mathrm{ph}}A',\qquad
+ \mathscr A=\mathscr A'_L,\qquad
+ \mathscr C=\mathscr C'_L,\qquad
+ \mathscr T'=\mathscr A'+\mathscr C',\qquad
+ \mathscr T=\mathscr T'_L.
+\]
+The photon block objects are
+\begin{equation}\label{eq:rg-step-photon-fields}
+ \begin{split}
+ A_k(\zeta)&=A_k^{\min}(A')+\mathrm{Sq}_k\zeta,\\
+ \mathscr Z(\zeta)&=H_k^{\mathrm{ph}}\mathrm{Sq}_k\zeta,\qquad
+ \mathscr B_k=H_k^{\mathrm{ph}}A_k^{\min}(A')
+                                      =\mathscr A-d\omega_k.
+ \end{split}
+\end{equation}
+Here $\omega_k$ is real and periodic, as in
+\exteq{30}{MaxwellBlockManuscript}.
+The truncated photon measure has the normalization
+\begin{equation}\label{eq:rg-step-box-normalization}
+ \mu_I(\mathrm{Box}_k)=\exp(-n_k\delta\varepsilon_k^0),\qquad
+ \widehat\mu_k=
+              \frac{\mathbf1_{\mathrm{Box}_k}}{\mu_I(\mathrm{Box}_k)}\mu_I,
+\end{equation}
+proved in \exteq{24}{MaxwellBlockManuscript}.
+Its denominator is positive: $e_k<1$ makes
+$p_{0,k}=(-\log e_k)^{p_0}>0$, and the box has
+nonempty interior in the photon coordinate space.
+
+All connections read by the step have their required
+domains. Indeed, scaling gives
+$\mathscr A\in\frac14L^{-3/4}\widetilde R_k
+\subset\widetilde R_k^-$ and
+$\mathscr C\in\mathfrak X_k$.
+Theorem~\extref{B}{MaxwellBlockManuscript}
+gives $A_k(\zeta)\in\mathrm{Dom}_k$ for every
+$\zeta\in\mathrm{Box}_k$.
+The real-gauge identity in
+\eqref{eq:rg-step-photon-fields} yields
+\[
+ H_k^{\mathrm{ph}}A_k(\zeta)
+                 =\mathscr A+\mathscr Z(\zeta)-d\omega_k.
+\]
+Since $\frac14\widetilde R_k$ is invariant under
+real gauges, $\mathscr A+\mathscr Z(\zeta)$ also
+lies in this domain. Thus both connection pairs
+$(\mathscr A,\mathscr C)$ and
+$(\mathscr A+\mathscr Z,\mathscr C)$ lie in
+$\widetilde R_k\times\mathfrak X_k$.
+By \eqref{eq:rg-total-domain-inclusion},
+$\mathscr T$, $\mathscr T+\mathscr Z$ and
+$\mathscr T+\mathscr Z-d\omega_k$, and their negatives,
+belong to $\widetilde G_k$.
+The fine and coarse inverse estimates consequently
+apply to them. The outgoing operators at
+$\mathscr T'$ then exist by
+\eqref{eq:rg-step-fine-scaling}.
+
+For a total connection $B$ let $\operatorname{ev}_B$
+insert
+\[
+ \psi=H_k(B)\Psi,\qquad
+ \bar\psi=\bar H_k(B)\bar\Psi,\qquad
+ \chi=\delta_{\alpha,B}H_k(B)\Psi,\qquad
+ \bar\chi=\delta_{\alpha,-B}\bar H_k(B)\bar\Psi.
+\]
+At $k=0$ the two field maps are identities.
+For complex $m,\varepsilon^{\mathrm v}$ and
+$\mathscr E\in K_k^{x,\C}$, with $\mathscr E=0$
+at $k=0$, define
+\begin{equation}\label{eq:rg-step-interaction-action}
+ \begin{split}
+ I_k^x[m,\mathscr E](A,C;\Psi)
+     &=\operatorname{ev}_{A+C}
+         \left(-m\langle\bar\psi,\psi\rangle
+                               +\sum_X\mathscr E(X;A,C)\right),\\
+ \mathrm{Act}_k^x[m,\mathscr E](A,C;\Psi)
+     &=-\langle\bar\Psi,D_k(A+C)\Psi\rangle
+                                  +I_k^x[m,\mathscr E](A,C;\Psi).
+ \end{split}
+\end{equation}
+The mass pairing is always the chamber pairing
+$\eta_k^3\,48^{-1}\sum_{c,g,\beta}\bar\psi_\beta(c,g)\psi_\beta(c,g)$.
+The kinetic pairing uses the measure of $\mathscr V_k$.
+For an arbitrary finite family of scalar functions
+$\mathfrak P_k(X,C)$ on $\mathfrak X_k$, set
+\begin{equation}\label{eq:rg-step-input-density}
+ \begin{split}
+ \mathscr F_k^x[\varepsilon^{\mathrm v},m,\mathscr E](A,C;\Psi)
+   =\det D_k(0)^{-1}\exp\left\{
+         \mathrm{Act}_k^x[m,\mathscr E](H_k^{\mathrm{ph}}A,C;\Psi)
+                   -\varepsilon^{\mathrm v}n_k
+                              +\sum_X\mathfrak P_k(X,C)\right\}.
+ \end{split}
+\end{equation}
+The arguments here are $A\in\mathrm{Dom}_k$ and
+$C\in\mathfrak X_k$. The fields $\Psi$ and $\bar\Psi$
+are independent Grassmann variables.
+
+Define the block transformation on an even density
+$F$ whose coefficients are integrable along
+$A_k(\zeta)$ by
+\begin{equation}\label{eq:rg-step-block-transformation}
+ \begin{split}
+ (\mathbf T_k^xF)(A',\mathscr C';\Psi')
+  &=c_k\int_{\mathrm{Box}_k}\dd\mu_I(\zeta)
+                       \int\mathrm D\Psi\,e^{\mathcal Q_{\mathrm{bl}}}
+                                         F(A_k(\zeta),\mathscr C;\Psi),\\
+ \mathcal Q_{\mathrm{bl}}
+  &=-b_L\big\langle
+       e^{-ie_k\omega_k}\bar\Psi'_L
+                    -\mathcal A_k(-\mathscr B_k-\mathscr C)\bar\Psi,\,
+       e^{ie_k\omega_k}\Psi'_L
+                    -\mathcal A_k(\mathscr B_k+\mathscr C)\Psi
+                                                \big\rangle_L.
+ \end{split}
+\end{equation}
+The gauge function in the two outgoing phases is
+evaluated at the $L$-spaced sites.
+The Berezin functional is the weighted functional
+of \exteq{65}{FermionBlockManuscript}; its incoming mode
+measure is $1$ for $k\ge1$ and $1/48$ for $k=0$.
+
+Its normalization is
+\begin{equation}\label{eq:rg-step-block-marginal}
+ \int\mathrm D\Psi'\,(\mathbf T_k^xF)(A',\mathscr C';\Psi')
+       =\int_{\mathrm{Box}_k}\dd\mu_I(\zeta)
+                       \int\mathrm D\Psi\,F(A_k(\zeta),\mathscr C;\Psi).
+\end{equation}
+To prove this, integrate the outgoing family first.
+Reciprocal multiplication of its barred and unbarred
+generators removes the two phases and leaves the top
+coefficient unchanged. Translation by the two averaged
+incoming fields likewise leaves it unchanged: every
+translated term that contains an external odd field
+has lower degree in the outgoing family.
+The remaining outgoing Gaussian exponent is
+$-b_L\langle\bar\Psi'_L,\Psi'_L\rangle_L
+=-b\langle\bar\Psi',\Psi'\rangle_1$.
+Its integral is $b^{4n_{k+1}}=c_k^{-1}$ by
+\exteq{68}{FermionBlockManuscript}.
+The two Berezin integrations commute, since both
+extract an even top-degree coefficient; integration
+of the finite-dimensional coefficient functions in
+$\zeta$ also commutes with them. This proves
+\eqref{eq:rg-step-block-marginal}.
+
+For the density \eqref{eq:rg-step-input-density}
+the coefficient integrability follows from the domain
+statements above. The bond entries of all inverse
+operators are analytic on their invertibility domains,
+and the activity kernels are holomorphic. Composing
+them with the affine map $\zeta\mapsto
+H_k^{\mathrm{ph}}A_k(\zeta)$ gives continuous
+coefficients on the compact photon box. Their even
+Grassmann exponentials are also continuous there.
+
+\begin{proposition}\label{prop:rg-step-density-identity}
+Let the data and domains be as above. Put
+\[
+ m'=m+m(\mathscr E),\qquad \mathscr E^r=R\mathscr E,\qquad
+ m^+=Lm',\qquad
+ \varepsilon^{\mathrm v,+}
+       =L^3\big(\varepsilon^{\mathrm v}
+              +\varepsilon_{\mathrm v}(\mathscr E)+\delta\varepsilon_k^0\big).
+\]
+At $k=0$ the activity and its extracted terms vanish.
+Define the outgoing inserted fields
+$\psi'=H_{k+1}(\mathscr T')\Psi'$,
+$\bar\psi'=\bar H_{k+1}(\mathscr T')\bar\Psi'$ and
+their covariant H\"older quotients, and let
+$\psi^{0,\#}$ denote their scaled fine fields,
+including the barred ones.
+Let the means $\Psi^c,\bar\Psi^c$ be those of
+\eqref{eq:rg-step-mean-fields} at $B=\mathscr T$,
+and put
+\[
+ \Psi^f=\Psi^c+\Gamma_k(\mathscr T)W,\qquad
+ \bar\Psi^f=\bar\Psi^c+\bar W.
+\]
+With $\mathscr Z=H_k^{\mathrm{ph}}\mathrm{Sq}_k\zeta$,
+set
+\begin{equation}\label{eq:rg-step-fluctuation-exponent}
+ \begin{split}
+ V_k^x={}&
+       \mathrm{Act}_k^x[m',\mathscr E^r]
+                    (\mathscr A+\mathscr Z,\mathscr C;\Psi^f)
+       -\mathrm{Act}_k^x[m',\mathscr E^r]
+                    (\mathscr A,\mathscr C;\Psi^f)\\
+       &+I_k^x[m',\mathscr E^r](\mathscr A,\mathscr C;\Psi^f)
+       -I_k^x[m',\mathscr E^r](\mathscr A,\mathscr C;\Psi^c),\\
+ \Xi_k^x={}&\int\dd\mu_I(W)\,\dd\widehat\mu_k(\zeta)\,e^{V_k^x}.
+ \end{split}
+\end{equation}
+Then the exact identity is
+\begin{equation}\label{eq:rg-step-density-identity}
+ \begin{split}
+ &(\mathbf T_k^x\mathscr F_k^x
+                [\varepsilon^{\mathrm v},m,\mathscr E])
+                                      (A',\mathscr C';\Psi')\\
+ &\quad=\det D_{k+1}(0)^{-1}
+       \exp\Big\{-\langle\bar\Psi',D_{k+1}(\mathscr T')\Psi'\rangle_1
+                  -m^+\langle\bar\psi',\psi'\rangle
+                  -\varepsilon^{\mathrm v,+}n_{k+1}\\
+ &\hspace{48mm}
+          +\sum_X\mathscr E^r(X;\mathscr A,\mathscr C;\psi^{0,\#})
+          +\sum_X\mathfrak P_k(X,\mathscr C)\Big\}
+                     \frac{\delta Z_k(\mathscr T)}{\delta Z_k(0)}\Xi_k^x.
+ \end{split}
+\end{equation}
+All integrals in this formula are finite coefficient
+integrals. Its right side depends on $A'$ through
+$H_{k+1}^{\mathrm{ph}}A'$.
+\end{proposition}
+
+\begin{proof}
+Extraction gives
+\[
+ I_k^x[m,\mathscr E](A,C;\Psi)
+      =-\varepsilon_{\mathrm v}(\mathscr E)n_k
+                                      +I_k^x[m',\mathscr E^r](A,C;\Psi).
+\]
+This is the image of
+\exteq{18}{NormalizedContraction} under the
+field evaluation homomorphism. At $k=0$ it holds
+with zero activity and $m'=m$.
+
+For a fixed $\zeta$, change the integrated variables
+by $\Psi\mapsto e^{ie_k\omega_k}\Psi$ and
+$\bar\Psi\mapsto e^{-ie_k\omega_k}\bar\Psi$.
+This leaves the weighted Berezin functional unchanged,
+since each mode's factors cancel in its top monomial,
+also for the $192n_0$ modes of weight $1/48$.
+The transport identity
+\[
+ U_{B-d\omega_k}(c,c')e^{ie_k\omega_k(c')}
+                       =e^{ie_k\omega_k(c)}U_B(c,c')
+\]
+intertwines the Dirac operator and every average.
+Products and inverses preserve this intertwining,
+so it also holds for $H_k$ and $D_k$.
+Its covariant difference identity uses the phase
+at the first photon site, including for a pair
+inside one cluster. The barred identity has the
+inverse phase. Gauge covariance of the activity
+and invariance of the mass pairing consequently
+turn its first connection argument
+$\mathscr A+\mathscr Z-d\omega_k$ into
+$\mathscr A+\mathscr Z$.
+The same change removes the gauge from the block
+Gaussian factor. The integral in
+\eqref{eq:rg-step-block-transformation} is now
+\[
+ \int\mathrm D\Psi\,
+       \exp\left\{-b_L
+          \langle\bar\Psi'_L-\mathcal A_k(-\mathscr T)\bar\Psi,\,
+                  \Psi'_L-\mathcal A_k(\mathscr T)\Psi\rangle_L
+            +\mathrm{Act}_k^x[m',\mathscr E^r]
+                    (\mathscr A+\mathscr Z,\mathscr C;\Psi)\right\},
+\]
+multiplied by
+$\det D_k(0)^{-1}
+\exp\{-(\varepsilon^{\mathrm v}+
+\varepsilon_{\mathrm v}(\mathscr E))n_k+
+\sum_X\mathfrak P_k(X,\mathscr C)\}$.
+
+Separate the background quadratic term by writing
+\[
+ \begin{split}
+ \mathcal R(\Psi)={}&I_k^x[m',\mathscr E^r](\mathscr A,\mathscr C;\Psi)\\
+  &+\mathrm{Act}_k^x[m',\mathscr E^r]
+                    (\mathscr A+\mathscr Z,\mathscr C;\Psi)
+   -\mathrm{Act}_k^x[m',\mathscr E^r]
+                    (\mathscr A,\mathscr C;\Psi).
+ \end{split}
+\]
+The last exponent above is then the background
+Gaussian exponent plus $\mathcal R(\Psi)$.
+Translation by the means \eqref{eq:rg-step-mean-fields}
+and the block formula \exteq{71}{FermionBlockManuscript}
+give
+\[
+ \delta Z_k(\mathscr T)
+   e^{-\langle\bar\Psi',D_{k+1}(\mathscr T')\Psi'\rangle_1}
+          \int\dd\mu_I(W)\,e^{\mathcal R(\Psi^f)}.
+\]
+The change of variables in this formula uses the
+same mode measure for $\Psi$ and $W$.
+At $k=0$ it is the identity
+\[
+ \int\mathrm D\Psi\,e^{-\langle\bar\Psi,F_0(\mathscr T)\Psi\rangle^{\mathrm{ch}}}
+       G(\bar\Psi,\Psi)
+   =\det F_0(\mathscr T)
+          \int\dd\mu_I(W)\,
+                    G(\bar W,\Gamma_0(\mathscr T)W),
+\]
+on the entire $192n_0$-mode space.
+The Gaussian measure is
+$e^{-\langle\bar W,W\rangle^{\mathrm{ch}}}\mathrm DW$,
+with the weight $\sqrt{48}$ in its coefficient bound.
+
+By definition of $V_k^x$,
+$\mathcal R(\Psi^f)=
+I_k^x[m',\mathscr E^r](\mathscr A,\mathscr C;\Psi^c)+V_k^x$.
+Its first summand is independent of $W$ and $\zeta$,
+so its even exponential factors out.
+The induced-field identity
+\eqref{eq:rg-step-induced-fields} gives
+\[
+ I_k^x[m',\mathscr E^r](\mathscr A,\mathscr C;\Psi^c)
+      =-m'\langle\bar\psi'_L,\psi'_L\rangle
+                 +\sum_X\mathscr E^r(X;\mathscr A,\mathscr C;\psi^{0,\#}).
+\]
+The chamber measure changes by $L^3$ and each field
+by $L^{-1}$. Hence
+$\langle\bar\psi'_L,\psi'_L\rangle
+=L\langle\bar\psi',\psi'\rangle$, giving $m^+=Lm'$.
+Normalizing the photon-box restriction in
+\eqref{eq:rg-step-box-normalization} adds
+$-\delta\varepsilon_k^0 n_k$ to the vacuum term.
+Since $n_k=L^3n_{k+1}$, this term has exactly
+the stated outgoing vacuum coefficient.
+Finally \eqref{eq:rg-step-zero-normalization}
+turns the remaining constant factor into
+$\det D_{k+1}(0)^{-1}\delta Z_k(0)^{-1}$,
+proving \eqref{eq:rg-step-density-identity}.
+
+The fluctuation exponent is even and continuous
+on the photon box, by the same coefficient argument
+as for the input density. Thus its integral is defined,
+and its two finite integrations commute.
+Every background in the final expression is formed
+from $\mathscr A'$ and $\mathscr C'$; the remaining
+photon maps and measure are independent of $A'$.
+The minimum and the real gauge have disappeared
+from that expression, proving the last assertion.
+\end{proof}
+
+\subsection{Local substitution of the mean field}
+\label{subsec:rg-step-local-substitution}
+
+We recall the result of \cite[Theorem~B(iii)--(iv)]{NormalizedContraction}
+that is used between the two localizations. For $k\ge1$ and unit
+generators over $Y$, the substitution fixes the old ordinary and
+pair generators and sets
+\begin{equation}\label{eq:rg-step-local-substitution}
+ \operatorname{sub}_{Y,B}\Psi=T_Y^{(1)}(B)\psi+T_Y^{(2)}(B)\chi,
+ \qquad
+ \operatorname{sub}_{Y,B}\bar\Psi=
+              \bar T_Y^{(1)}(B)\bar\psi+\bar T_Y^{(2)}(B)\bar\chi.
+\end{equation}
+The row measures are $\eta_k^3/48$ for ordinary columns and
+$(\eta_k^3/48)^2$ for pair columns. The rows add only ordinary
+legs over $Y$ and boundary pairs $(x,x^{(3)})$ admissible for $Y$;
+they read only bonds meeting $Y$. The substitution preserves
+balance, parity and the lattice, local gauge, charge and reality
+identities of the old generators. In particular,
+\begin{equation}\label{eq:rg-step-substitution-covariances}
+ \begin{split}
+ a_g\operatorname{sub}_{gY,gB}
+                        &=\operatorname{sub}_{Y,B}a_g,\\
+ G_\lambda\operatorname{sub}_{Y,B^1}
+                        &=\operatorname{sub}_{Y,B}G_\lambda,
+                 \qquad B^1=B-d\lambda\text{ on bonds meeting }Y,\\
+ \mathrm{Cg}\operatorname{sub}_{Y,-B}
+                        &=\operatorname{sub}_{Y,B}\mathrm{Cg},\\
+ \mathbf K\operatorname{sub}_{Y,-\overline B}
+                        &=\operatorname{sub}_{Y,B}\mathbf K.
+ \end{split}
+\end{equation}
+The local gauge equality need hold only on the bonds meeting $Y$.
+For $B\in\widetilde R_k+\mathfrak X_k$, the row bound gives
+\begin{equation}\label{eq:rg-step-substitution-bound}
+ \|\operatorname{sub}_{Y,B}F\|_{w_1,w_2}
+       \le\|F\|_{w_1,w_2;w_3}
+       \quad\text{if }C_T(w_1+w_2)\le w_3.
+\end{equation}
+The bounds on imaginary part and curvature in
+\eqref{eq:rg-total-imaginary-curvature-bounds} verify the hypotheses
+of that result. The primitive inverse domain at $B$ and $-B$
+also verifies its additional recovery hypothesis. Therefore, on
+evaluation at $\psi=H_k(B)\Phi$, $\chi=\delta_{\alpha,B}\psi$ and
+the barred fields, the substitution sends $\Psi,\bar\Psi$ to
+$\Phi,\bar\Phi$. At zero no such substitution is needed.
+
+\section{The first chamber step}\label{subsec:rg-step-first-vertex}
+
+At $k=0$ write the charge as $q$.
+There is no input activity, and $H_0(B)=\bar H_0(B)=1$.
+Consequently the exponent in
+\eqref{eq:rg-step-fluctuation-exponent} is
+\begin{equation}\label{eq:rg-step-first-exponent}
+ V_0^x=
+  -\langle\bar\Psi^f,(D_{\mathscr T+\mathscr Z}
+                                    -D_{\mathscr T})\Psi^f\rangle^{\mathrm{ch}}
+  -m\left(\langle\bar\Psi^f,\Psi^f\rangle^{\mathrm{ch}}
+                   -\langle\bar\Psi^c,\Psi^c\rangle^{\mathrm{ch}}\right).
+\end{equation}
+The terms with $\mu$ and $m$ cancel in the connection
+difference of the actions; the second difference
+of interactions gives the displayed mass term.
+Here $\Psi^c=\psi'_L$, $\bar\Psi^c=\bar\psi'_L$,
+$\Gamma_0(\mathscr T)=F_0(\mathscr T)^{-1}$,
+and $\Psi^f=\Psi^c+\Gamma_0(\mathscr T)W$.
+All these are fields in $\mathscr V_0=\Sspace^{\mathrm{ch}}(1,\ell)$.
+The identity measure in $W$ has mode measure $1/48$,
+and its two-point kernel is $48$ times the identity
+matrix of the modes.
+
+For a bond fluctuation $Z$ and an $M$-cube $\square$,
+define its local vertex by
+\begin{equation}\label{eq:rg-step-first-vertex}
+ \begin{split}
+ \mathcal V_0(Z,\square)=\frac12\int_\square\dd x\,
+   \Big\{&
+    \bar\psi(x)^TM_3(x)(e^{iqZ(c,c_3)}-1)
+                                  [\psi(x)+\chi(x,x^{(3)})]\\
+    &+[\bar\psi(x)+\bar\chi(x,x^{(3)})]^T
+               M_3(x^{(3)})(e^{-iqZ(c,c_3)}-1)\psi(x)\Big\},
+ \end{split}
+\end{equation}
+where $x=(c,g)$, $c_3=c+ge_1$ and
+$\int_\square\dd x=48^{-1}\sum_{c\in\square}\sum_g$.
+The pair $(x,x^{(3)})$ has $d_X=1$ and is admissible
+for $\square$ of the second kind. Thus the vertex
+has ordinary legs over the cube and precisely the
+boundary pair legs allowed in the activity algebra.
+Its coefficients are entire functions of $Z$ on
+the bonds meeting the cube.
+
+\begin{proposition}\label{prop:rg-step-first-vertex}
+Evaluate $\chi=\delta_{\alpha,\mathscr T}f$,
+$\bar\chi=\delta_{\alpha,-\mathscr T}\bar f$,
+$\psi=f$ and $\bar\psi=\bar f$ at any pair of
+antiperiodic odd chamber fields. Then
+\begin{equation}\label{eq:rg-step-first-vertex-evaluation}
+ \operatorname{ev}\sum_\square\mathcal V_0(Z,\square)
+          =-\langle\bar f,(D_{\mathscr T+Z}-D_{\mathscr T})
+                                                    f\rangle^{\mathrm{ch}}.
+\end{equation}
+The two halves have equal images after summing
+over cubes. The vertex has the lattice, real-gauge,
+charge-conjugation and reality symmetries
+\begin{equation}\label{eq:rg-step-first-vertex-symmetries}
+ \begin{split}
+ a_g\mathcal V_0(gZ,g\square)&=\mathcal V_0(Z,\square),\\
+ G_\lambda\mathcal V_0(Z,\square)&=\mathcal V_0(Z,\square),\\
+ \mathrm{Cg}\mathcal V_0(-Z,\square)&=\mathcal V_0(Z,\square),\\
+ \mathbf K\mathcal V_0(-\overline Z,\square)&=\mathcal V_0(Z,\square).
+ \end{split}
+\end{equation}
+For any generator weights $(w_1,w_2)$,
+\begin{equation}\label{eq:rg-step-first-vertex-bound}
+ \|\mathcal V_0(Z,\square)\|_{w_1,w_2}
+       \le12(1+\rho)M^3w_1(w_1+w_2)
+       \sup_{b\text{ oriented and meeting }\square}
+                                                      |e^{iqZ(b)}-1|.
+\end{equation}
+If $q\le1$ and
+$q|Z(b)|\le\frac12q^{1-\varepsilon/2}$ on these bonds,
+then
+\begin{equation}\label{eq:rg-step-first-vertex-small-bound}
+ \|\mathcal V_0(Z,\square)\|_{h_0/2}
+                 \le6(1+\rho)M^3q^{1/2-\varepsilon/2}
+                 \le12M^3q^{1/2-\varepsilon/2}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+At a nearest-neighbor pair the six paths reduce to
+the bond, so the quotient relations read
+\[
+ f(x)+\chi(x,x^{(3)})=u_{\mathscr T}(c,c_3)f(x^{(3)}),
+ \qquad
+ \bar f(x)+\bar\chi(x,x^{(3)})
+                         =u_{\mathscr T}(c,c_3)^{-1}\bar f(x^{(3)}).
+\]
+The first half of the summed vertex is therefore
+one half of the integral of
+\[
+ \bar f(x)^TM_3(x)(e^{iqZ(c,c_3)}-1)
+                                  u_{\mathscr T}(c,c_3)f(x^{(3)}).
+\]
+Reindexing the second half by the measure-preserving
+involution $x\mapsto x^{(3)}$ gives the same
+integrand: both $Z$ and $\mathscr T$ change sign
+on the reversed bond. Only the type-$3$ hop
+depends on the connection, and
+$u_{\mathscr T+Z}=e^{iqZ}u_{\mathscr T}$.
+The difference of the two Dirac operators is
+thus the negative of this hopping coefficient,
+proving \eqref{eq:rg-step-first-vertex-evaluation}.
+Every product contains two antiperiodic fields,
+so the reindexing is legitimate on the torus.
+
+For lattice symmetry use
+$g^{-1}(x^{(3)})=(g^{-1}x)^{(3)}$ and
+$S^{-1}M_3(x)S=M_3(g^{-1}x)$ for the spin
+lift $S$. Each half transforms separately, and
+reindexing maps $g\square\times O_{\mathrm{cub}}$
+onto $\square\times O_{\mathrm{cub}}$ with the
+same measure. For a real gauge, the two generators
+in each term have the same first photon site and
+opposite bar indices, so their phases cancel.
+Charge conjugation interchanges the two halves.
+Its algebraic rule on the first half gives
+\[
+ \mathrm{Cg}[\bar\psi(x)^Tm(\psi(x)+\chi(x,x^{(3)}))]
+       =(\bar\psi(x)+\bar\chi(x,x^{(3)}))^T
+                              (\mathsf C^{-1}m^T\mathsf C)\psi(x).
+\]
+The sign from exchanging the odd factors cancels
+the minus sign in the image of $\bar\psi$.
+As
+\[
+ \mathsf C^{-1}M_3(x)^T\mathsf C=M_3(x^{(3)}),
+\]
+the first half at $-Z$ becomes the second at $Z$;
+the reverse relation gives the other half.
+Finally
+\[
+ \varkappa^T\overline{M_3(x)}\varkappa=M_3(x),\qquad
+ \overline{e^{\pm iq(-\overline Z)}-1}=e^{\pm iqZ}-1.
+\]
+The antilinear map consequently preserves each
+half in its reality identity. This proves
+\eqref{eq:rg-step-first-vertex-symmetries}.
+
+Put $\delta_x=e^{iqZ(c,c_3)}-1$ and
+$\delta'_x=e^{-iqZ(c,c_3)}-1$. Collecting the
+ordinary bilinear in \eqref{eq:rg-step-first-vertex},
+its coefficient is
+$[M_3(x)\delta_x+M_3(x^{(3)})\delta'_x]/96$.
+The other two products have coefficients
+$M_3(x)\delta_x/96$ and
+$M_3(x^{(3)})\delta'_x/96$, and weights
+$w_1w_2$.
+The ordinary product has weight $w_1^2$.
+The chamber sites in the cube and the ordered
+pairs with these first sites are distinct, so
+these are exactly the coefficients, up to
+ordering signs. Each endpoint matrix satisfies
+$\sum_{\beta,\beta'}|M_3(\cdot)_{\beta\beta'}|
+\le12(1+\rho)$, since
+$M_3=3(\rho\mp\gamma_\mu)$ and $\gamma_\mu$
+has four entries of modulus one.
+There are $48M^3$ chamber sites in the cube.
+The triangle inequality for the collected
+bilinear therefore gives
+\eqref{eq:rg-step-first-vertex-bound}.
+
+Under the smallness condition,
+$|e^{iqZ(b)}-1|\le2q|Z(b)|\le q^{1-\varepsilon/2}$.
+For $w=h_0/2$,
+$w_1(w_1+w_2)=\frac14q^{-1/2}(1+q^\varepsilon)
+\le\frac12q^{-1/2}$. Inserting these bounds proves
+\eqref{eq:rg-step-first-vertex-small-bound}.
+\end{proof}
+
+For $Z=\mathscr Z$ and the evaluation at
+$\Psi^f,\bar\Psi^f$, the first term of
+\eqref{eq:rg-step-first-exponent} is the image of
+the summed vertex. Under the additional charge
+condition $96M^3q^{1/4}\le1$, its bound becomes
+$\|\mathcal V_0(\mathscr Z,\square)\|_{h_0/2}
+\le q^{1/4-5\varepsilon}$ whenever the displayed
+bond smallness condition holds. These statements
+apply before any expansion of the finite integral.
+
+The first-step density identity retains every
+vacuum and determinant factor:
+\begin{equation}\label{eq:rg-step-first-density}
+ \begin{split}
+ (\mathbf T_0^x\mathscr F_0^x[\varepsilon^{\mathrm v},m,0])
+                                    (A',\mathscr C';\Psi')\\
+  ={}&\det D_1(0)^{-1}
+       \exp\Big\{-\langle\bar\Psi',D_1(\mathscr T')\Psi'\rangle_1
+                   -Lm\langle\bar\psi',\psi'\rangle\\
+      &\hspace{14mm}
+                   -L^3(\varepsilon^{\mathrm v}
+                        +\delta\varepsilon_0^0)n_1
+                   +\sum_X\mathfrak P_0(X,\mathscr C)\Big\}\\
+       &\times
+              \frac{\det F_0(\mathscr T)}{\det F_0(0)}
+        \int\dd\mu_I(W)\,\dd\widehat\mu_0(\zeta)\,e^{V_0^x}.
+ \end{split}
+\end{equation}
+The two determinants of $F_0$ have size $192n_0$.
+The original level-zero density, integrated before
+the block transformation, is
+\begin{equation}\label{eq:rg-step-initial-integrated-density}
+ \int\mathrm D\Psi\,\mathscr F_0^x
+                     [\varepsilon^{\mathrm v},m,0](A,C;\Psi)
+     =e^{-\varepsilon^{\mathrm v}n_0+\sum_X\mathfrak P_0(X,C)}
+               \frac{\det(D_{A+C}+\mu+m)}{\det D_0(0)}.
+\end{equation}
+This follows directly from the weighted determinant
+identity. The numerator need not be invertible;
+the nonzero denominator uses $\mu>0$.
+
+
+\section{Localizing the fluctuation activity}\label{sec:rg-nonlinear-step}
+
+The finite fluctuation integral in
+\eqref{eq:rg-step-fluctuation-exponent} has a logarithm which is a
+sum of local activities. Its construction has two localizations.
+The first resolves the change of background and reconstructs
+the coarse mean; the second resolves the fermion fluctuations.
+After these finite operations, a connected-polymer expansion
+gives the logarithm. The estimates below apply also to the first
+step, where the fluctuation generators have chamber measure
+$1/48$.
+
+\subsection{Contour domains and localization}
+\label{subsec:rgnl-domains}
+
+Keep the admissible sides, mass and charge of
+\cref{sec:rg-step}, and assume in addition
+$\ell\ge Mr_k$. Put $e=e_k$, $h=(h_{k,1},h_{k,2})$.
+The weakened photon and fermion primitives are taken on the
+polydisk
+\[
+ \mathrm{Pd}_k=\{s=(s',s''):|s_{\mathrm{pc}}|\le M^{\alpha_0}\}.
+\]
+Here $s'=(s'_M,s'_{LM})$ contains the photon reconstruction
+and square-root parameters, of kinds $\pi_M,\pi_{LM}$ in
+\exteq{37}{MaxwellBlockManuscript}; $s''$ contains the
+fermion $M$-cube parameters $\pi_k$ of
+Section~\extref{4.1}{FermionBlockManuscript}.
+We assume their analytic kernel and H\"older estimates,
+component restriction, row vanishing and coefficient support
+with common constants $(\alpha_0,\gamma_w,\kappa_w;C_w)$,
+where $\kappa_w=\kappa+\kappa_0+3$.
+The photon hypotheses are those of
+Proposition~\extref{5.1}{MaxwellBlockManuscript},
+\exteq{42}{MaxwellBlockManuscript} and the component
+restriction following them. The fermion hypotheses are those of
+Propositions~\extref{4.1}{FermionBlockManuscript} and
+\extref{4.3}{FermionBlockManuscript}, including
+\exteq{57}{FermionBlockManuscript},
+\exteq{58}{FermionBlockManuscript}, and their covariance
+identities. At parameter value one all families equal the
+exact operators. Their gauge, lattice, transpose and reality
+actions are the actions of those exact operators with the
+parameters transformed accordingly. At level zero we retain
+the stated diagonal families and the chamber covariance
+with measure $1/48$.
+
+The quantitative assumptions are those of \cref{thm:rgnl-current-step}.
+
+For $\zeta\in\mathrm{Box}_k$, write
+\begin{equation}\label{eq:rgnl-weakened-photon}
+ Z(s')=H_k^{\mathrm{ph}}(s')C C_k^{1/2}(s')\zeta .
+\end{equation}
+In this formula $C$ is the real photon coordinate map of
+\exteq{21}{MaxwellBlockManuscript}. The diagonal photon
+family is used at $k=0$. For a bond field $Z$ set
+\[
+ |Z|_*=\max\{\|Z\|_\infty,\|\partial Z\|_\infty,
+                              \|\delta_\alpha\partial Z\|_\infty\}.
+\]
+The three thresholds defining $R_k$ are
+$\theta_i=e^{-3/4+i\varepsilon}$, $i=1,2,3$.
+Thus $\widetilde R_k^-$ consists of the permitted real-gauge
+part plus a field satisfying the three strict bounds
+$(1-e^\varepsilon)\theta_i$.
+Introduce the radii
+\begin{equation}\label{eq:rgnl-contour-radii}
+ r_1=\tfrac12e^{-3/4+9\varepsilon/2},\qquad
+ r_2=e^{-3/4+7\varepsilon},\qquad
+ r_4=e^{-1/4+3\varepsilon}.
+\end{equation}
+
+\begin{proposition}\label{prop:rgnl-contour-domains}
+For every $s\in\mathrm{Pd}_k$ and
+$\zeta\in\mathrm{Box}_k$,
+\[
+ |Z(s')|_*\le\tfrac12e^{-\varepsilon/2}.
+\]
+The radii satisfy $2\le r_2,r_4\le r_1$ and
+$(r_i-1)^{-1}\le2/r_i$, $i=2,4$.
+If $A\in\widetilde R_k^-$, $\mathscr C\in\mathfrak X_k$,
+and $|Z|_*\le\tfrac12e^{-\varepsilon/2}$, then
+\[
+ A+tZ\in\widetilde R_k,\qquad
+ A+\mathscr C+tZ\in\widetilde{\mathcal G}_k
+                  \quad (|t|\le r_1).
+\]
+\end{proposition}
+
+\begin{proof}
+The square-root kernel is bounded by
+$C_w\exp(-\gamma_w d(\Upsilon,\Upsilon'))$.
+The summability constant $c_\gamma$ and
+the coordinate bound $|\zeta(\Upsilon')|\le p_{0,k}
+\le e^{-\varepsilon/4}$ give
+\[
+ \sup_\Upsilon|(C_k^{1/2}(s')\zeta)(\Upsilon)|
+                                      \le C_wc_\gamma e^{-\varepsilon/4}.
+\]
+The coordinate map is real. Its bound
+$\|Cv\|_\infty\le c_C\sup_\Upsilon|v(\Upsilon)|$
+also gives the absolute row bound
+$\sum_\Upsilon|C(b,\Upsilon)|\le c_C$:
+apply the real bound to the signs of the entries of a fixed
+row. Therefore
+\[
+ \|CC_k^{1/2}(s')\zeta\|_\infty
+                                  \le c_CC_wc_\gamma e^{-\varepsilon/4}.
+\]
+Each of the reconstruction, derivative and H\"older derivative
+kernels has the same summable exponential bound. Consequently
+\[
+ |Z(s')|_*\le c_CC_w^2c_\gamma^2 e^{-\varepsilon/4}
+                                          \le\tfrac12 e^{-\varepsilon/2},
+\]
+where the last inequality is
+$2c_CC_w^2c_\gamma^2e^{\varepsilon/4}\le1$.
+At level zero the polynomial diagonal family has the same
+row bounds: its constant is
+$4\exp(2\gamma_w)M^{27\alpha_0}\le C_w$.
+
+Since $\varepsilon\le1/200$,
+\[
+ \frac{r_2}{r_1}=2e^{5\varepsilon/2}\le1,\qquad
+ \frac{r_4}{r_1}=2e^{1/2-3\varepsilon/2}
+                                      \le2e^{5\varepsilon/2}\le1.
+\]
+The small-charge condition
+$88M^3e^{1/4-6\varepsilon}\le1$ gives
+$r_4^{-1}=e^{1/4-3\varepsilon}\le1/88$ and
+$r_2^{-1}\le r_4^{-1}$.
+In particular both radii are at least $2$, and their stated
+inverse bounds follow.
+
+For $|t|\le r_1$ the three norms of $tZ$ are at most
+$\frac14e^{-3/4+4\varepsilon}$, strictly less than
+$e^\varepsilon\theta_3$. Adding this field fills less than the
+margin in each of the three defining bounds of
+$\widetilde R_k^-$. The permitted gauge part is unchanged.
+Hence $A+tZ\in\widetilde R_k$.
+Finally $\widetilde R_k+\mathfrak X_k
+\subset\widetilde{\mathcal G}_k$ gives the second inclusion.
+\end{proof}
+The first-step vertex estimate
+\eqref{eq:rg-step-first-vertex-small-bound} now applies to
+$Z(s')$ for every weakening parameter. In particular,
+$96M^3e^{1/4}\le1$ gives its bound
+$e^{1/4-5\varepsilon}$ in the $h/2$ norm.
+
+Let $B=A+\mathscr C$.
+The arguments of $H_k^\#$ are independent pairs
+$(\Phi,\bar\Phi)$; in $H_k^\#\Phi$ the single symbol denotes
+this pair. Write
+$\psi^\#=(\psi,\chi;\bar\psi,\bar\chi)$ for the ordinary,
+pair, barred ordinary and barred pair generators, respectively.
+Then
+\[
+ \begin{aligned}
+ H_k^\#(s'',B)\Phi
+   ={}&(H_k(s'',B)\Phi,\delta_{\alpha,B}H_k(s'',B)\Phi;\\
+       &
+       \bar H_k(s'',B)\bar\Phi,
+                       \delta_{\alpha,-B}\bar H_k(s'',B)\bar\Phi),\\
+ \bar H_k(s'',B)&=\mathsf C^{-1}H_k(s'',-B)\mathsf C.
+ \end{aligned}
+\]
+Define
+$J_k^\#(s'',B,Z)=H_k^\#(s'',B+Z)-H_k^\#(s'',B)$ and
+\[
+ \widetilde\Gamma_k(s'',B)(W,\bar W)
+                         =(\Gamma_k(s'',B)W,\bar W),\qquad
+ W_k^\#(s'',B)=H_k^\#(s'',B)
+                         \big(\Gamma_k(s'',B)W,\bar W\big).
+\]
+The notation $J_k,\bar J_k$ denotes the components without
+H\"older quotient; $\mathrm{Wc},\overline{\mathrm{Wc}}$ denotes
+the corresponding components of $W_k^\#$.
+The auxiliary generators $W$ have weight
+$\mathsf w_W=1$ for $k\ge1$ and $\sqrt{48}$ for $k=0$.
+
+These fields are continuous in all closed polydisk and box
+variables and analytic in the open parameter polydisk and the
+connection variables. For the H\"older rows this follows
+directly from
+\[
+ (\delta_{\alpha,B}H_k)((x,x'),u)
+   =d_X(x,x')^{-\alpha}
+       \big(U_B(x,x')H_k(x',u)-H_k(x,u)\big).
+\]
+The transport is entire in $B$. \Cref{prop:rgnl-contour-domains}
+places every connection on the closed contours inside the
+open domain of the primitives. Thus compositions at
+$B+tZ(s')$ have the stated regularity also when the contour
+variable is on its circle.
+
+In the following localization, cubes and polymers are sets
+of photon sites. Containment refers to all their lattice sites,
+and two cubes meet when they share a lattice site.
+Let $P_0(X)$ be the parameter cubes contained in $X$.
+For a set $P$ of parameter cubes disjoint from $P_0(X)$, let $Y'(X,P)$ be the union of
+the $M$-cubes meeting $X$ or a cube of $P_0(X)\cup P$.
+For a continuous analytic family $G(s,X)$ define
+\begin{align}
+ \mathcal T_PG(X)
+  &=\int_{[0,1]^P}\dd s_P\,
+       \partial_PG(s,X)
+       \big|_{s=1\text{ on }P_0(X),\,
+                    s=0\text{ outside }P_0(X)\cup P},
+                          \label{eq:rgnl-interpolation}\\
+ \operatorname{Loc}G(Y)
+  &=\sum_{(X,P):Y'(X,P)=Y}\mathcal T_PG(X).
+                          \label{eq:rgnl-localization}
+\end{align}
+Repeated one-variable integration gives the useful identity
+\begin{equation}\label{eq:rgnl-finite-difference}
+ \mathcal T_PG(X)=
+    \sum_{Q\subseteq P}(-1)^{|P|-|Q|}
+                                 G(\mathbf1_{P_0(X)\cup Q},X).
+\end{equation}
+In particular, coefficient locality can be checked at
+indicator families; no statement about the convergence of
+the later logarithm is used here.
+
+\begin{lemma}\label{lem:rgnl-resummation}
+Suppose
+$\|G(s,X)\|\le B_0\exp(-\kappa'd_M(X))$ on the parameter
+polydisk, where $\kappa_0\le\kappa'\le\kappa$.
+Assume $\mathcal T_PG(X)=0$ whenever $Y'(X,P)$ is
+disconnected. Then
+\begin{gather}
+ \sum_Y\operatorname{Loc}G(Y)=\sum_XG(1,X),
+                         \label{eq:rgnl-localization-sum}\\
+ \|\operatorname{Loc}G(Y)\|
+   \le4c_XK_0B_0
+             \exp\big(-(\kappa'-\kappa_0-1)d_M(Y)\big).
+                         \label{eq:rgnl-resummation-bound}
+\end{gather}
+\end{lemma}
+
+\begin{proof}
+Applying $f(1)=f(0)+\int_0^1f'(t)\dd t$ in each parameter
+outside $P_0(X)$ gives $G(1,X)=\sum_P\mathcal T_PG(X)$.
+The sums are finite. After removing the vanishing disconnected
+terms, each term belongs to exactly one polymer $Y'(X,P)$.
+This proves \eqref{eq:rgnl-localization-sum}.
+
+Put $R=M^{\alpha_0}$. Cauchy's estimate on a polydisk of
+radius less than $R-1$ about each integration point, followed
+by the limit of these radii to $R-1$, gives
+\[
+ \|\mathcal T_PG(X)\|
+       \le B_0\exp(-\kappa'd_M(X))(R-1)^{-|P|}.
+\]
+If $Y'(X,P)=Y$, then $X\subseteq Y$ and
+$|Y\setminus X|_M\le N_c|P|$, since every added $M$-cube
+meets a parameter cube and each parameter cube meets at
+most $N_c=(2L+1)^3$ such cubes.
+To compare their tree lengths, order the cubes of $Y\setminus X$
+by graph distance from $X$. Each added cube is adjacent
+to a preceding one. Extend a net by a segment from
+a point of that preceding closed cube to their common
+face, of length at most $M$. Starting from an
+arbitrarily near-minimal net for $X$ gives
+$d_M(Y)\le d_M(X)+|Y\setminus X|_M$.
+Conversely every net for $Y$ is a net for $X$.
+Thus $0\le d_M(Y)-d_M(X)\le N_c|P|$.
+Writing $a_X=\log(6c_X)$, the condition
+$R-1\ge\exp(N_c\kappa+a_X)$ implies
+\[
+ \|\mathcal T_PG(X)\|
+ \le B_0\exp(-(\kappa'-\kappa_0)d_M(Y))
+             \exp(-\kappa_0d_M(X))\exp(-a_X|P|).
+\]
+At most $3|Y|_M$ parameter cubes are contained in $Y$.
+Hence
+\[
+ \sum_P\exp(-a_X|P|)
+       \le(1+(6c_X)^{-1})^{3|Y|_M}
+       \le \exp((d_M(Y)+1)/2).
+\]
+The polymer counting and size estimates give
+\[
+ \sum_{X\subseteq Y}\exp(-\kappa_0d_M(X))
+   \le K_0|Y|_M
+   \le2c_XK_0\exp(d_M(Y)/2).
+\]
+The product of the last two bounds is at most
+$4c_XK_0\exp(d_M(Y))$. Summing the estimate for
+$\mathcal T_PG(X)$ proves
+\eqref{eq:rgnl-resummation-bound}.
+\end{proof}
+
+\subsection{The two finite localizations}
+\label{subsec:rgnl-finite-localizations}
+
+For a function analytic near the closed disk $|t|\le r$, $r>1$,
+write
+\[
+ \mathcal C_rf=\frac1{2\pi i}\int_{|t|=r}
+                                      \frac{f(t)}{t(t-1)}\,\dd t .
+\]
+This is $f(1)-f(0)$ and satisfies
+$\|\mathcal C_rf\|\le(r-1)^{-1}\sup_{|t|=r}\|f(t)\|$.
+Let $(m,\mathscr E)\in\operatorname{Ball}_k^x(4)$ and set
+$m'=m+m(\mathscr E)$, $\mathscr E^r=R\mathscr E$.
+For $k\ge1$ define
+\begin{align}
+ G_1(s,X)&=\mathcal C_{r_1}
+                \langle\bar\Psi,M_k(X,B+tZ(s'))\Psi\rangle_1,
+                                      \label{eq:rgnl-G1}\\
+ G_2(s,X)&=\mathcal C_{r_2}\,
+       \mathscr E^r(X;A+tZ(s'),\mathscr C,
+                    \psi^\#+tJ_k^\#(s'',B,Z(s'))\Psi),
+                                      \label{eq:rgnl-G2}\\
+ G_3(s,\square)&=\mathcal C_{r_2}(-m')
+       \langle\bar\psi+t\bar J_k(s'',B,Z(s'))\bar\Psi,
+                         \psi+tJ_k(s'',B,Z(s'))\Psi\rangle_\square .
+                                      \label{eq:rgnl-G3}
+\end{align}
+The symbols $M_k(X,\cdot)$ denote the local Dirac primitives.
+A function defined for one cube is zero on the other polymers.
+Put
+\[
+ E_i^*(Y)=\operatorname{Loc}G_i(Y),\qquad
+ E_i(Y)=\operatorname{sub}_{Y,B}E_i^*(Y),\qquad
+ E_{\le3}=\sum_{i=1}^3E_i.
+\]
+The substitution is \eqref{eq:rg-step-local-substitution}.
+At $k=0$ there is no $\Psi$ and no substitution:
+$G_1(s,\square)=\mathcal V_0(Z(s'),\square)$,
+$G_2=G_3=0$, and $E_{\le3}=\operatorname{Loc}G_1$.
+All parameter kinds occur in this first localization.
+
+For the second localization, which uses only $\pi_k$, let
+$v=W_k^\#(s'',B)$ and define
+\begin{align}
+ G_{\le3}^{\,W}(s'',X)&=E_{\le3}(X;A,\mathscr C,\zeta,
+                                                      \psi^\#+v),
+                                      \label{eq:rgnl-GW}\\
+ G_4(s'',X)&=\mathcal C_{r_4}
+                  \mathscr E^r(X;A,\mathscr C,\psi^\#+tv),\\
+ G_5(s'',\square)&=\mathcal C_{r_4}(-m')
+                 \langle\bar\psi+t\overline{\mathrm{Wc}},
+                                   \psi+t\mathrm{Wc}\rangle_\square,\\
+ F(Y)&=\operatorname{Loc}(G_{\le3}^{\,W}+G_4+G_5)(Y).
+                                      \label{eq:rgnl-finite-activity}
+\end{align}
+At $k=0$ the term $G_4$ is zero and $m'=m$.
+
+\begin{proposition}\label{prop:rgnl-finite-locality}
+All finite expressions just defined exist on
+$\widetilde R_k^-\times\mathfrak X_k\times\mathrm{Box}_k$.
+The element $F(Y)$ is even, has ordinary legs over $Y$ and
+pair legs admissible for $Y$, and has fluctuation generators
+only at unit indices in $Y$. Its coefficients read $A,\mathscr C$
+only on bonds meeting $Y$ and read $\zeta$ only through the
+coordinates $\zeta(\Upsilon)$ with $\supp\Upsilon\subset Y$.
+They are continuous in these arguments and analytic in the
+connection variables. The same assertions hold for $E_{\le3}(Y)$,
+which has no fluctuation generators.
+
+The disconnected terms in both localizations vanish, and
+\begin{equation}\label{eq:rgnl-two-localization-sums}
+ \sum_YE_i^*(Y)=\sum_XG_i(1,X),\qquad
+ \sum_YF(Y)=\sum_X(G_{\le3}^{\,W}+G_4+G_5)(1,X).
+\end{equation}
+The finite expressions on $Y$ depend on the datum only through
+$m'$ and the $\mathscr E^r(X)$ with $X\subseteq Y$.
+\end{proposition}
+
+\begin{proof}
+We give the component argument which is responsible for
+locality. Let $\mathrm{Ps}=P_0(X)\cup P$, let
+$Y'=Y'(X,P)$ and let $Y'_1$ be its component containing $X$.
+Set the weakening parameters to zero outside $\mathrm{Ps}$.
+For each of the three parameter kinds, any link-component
+$\mathrm{Lnk}$ of $\mathrm{Ps}$ is contained in the polymer
+formed by the $M$-cubes meeting it. This polymer lies in one
+component of $Y'$. If a site of $Y'_1$ lies in $\mathrm{Lnk}$,
+or in the enlarged parameter cube of a photon kind, that
+polymer has a cube in common with $Y'_1$, and hence lies
+entirely in $Y'_1$.
+
+The row-vanishing property of the weakened photon families
+and their component restriction give, on any fine bond $b$
+meeting $Y'_1$,
+\begin{equation}\label{eq:rgnl-restricted-photon}
+ Z(s')(b)=
+  \sum_{\substack{b',\Upsilon,\Upsilon'\subset Y'_1}}
+   H_k^{\mathrm{ph}}(s')(b,b')C(b',\Upsilon)
+          C_k^{1/2}(s')(\Upsilon,\Upsilon')\zeta(\Upsilon').
+\end{equation}
+Indeed, the reconstruction row is zero unless $b$ lies in
+one link-component; its columns lie in that component.
+The coordinate map has columns supported in the $L$-blocks
+of the ends of $b'$, and each block lies in the $M$-cube of
+the corresponding end. The square-root row then has columns
+in its own link-component. Each component involved is
+attached to $Y'_1$ by the preceding argument.
+These rows are unchanged if the parameters outside $Y'_1$
+are changed while their common zero set outside $\mathrm{Ps}$
+is kept.
+
+For a chamber site $x=(c,g)$ at distance at most $1$ from
+$Y'_1$, put $K_c=\{c':|c'-c|_\infty\le2L\}$, as in
+\cite[Proposition~4.1]{FermionBlockManuscript}.
+The fermion row is zero unless every parameter cube
+meeting $K_c$ is present. These cubes form one
+link-component. When the row is nonzero, that component
+contains $c$ and a site of $Y'_1$, so it lies in $Y'_1$.
+The row of $H_k(s'',B)$, and its barred counterpart,
+then has columns in that component and reads $B$ only on
+bonds meeting it. At a column of this row, the corresponding
+row of $\Gamma_k(s'',B)$ has columns in the same component.
+These conclusions also hold at level zero: the diagonal
+factor is
+\[
+ \prod_{\mathrm{pc}\in\pi_0:\mathrm{pc}\cap K_c\ne\varnothing}
+                                                       s''_{\mathrm{pc}},
+\]
+and the kernel of that multiplication operator is
+$48\mathbf1_{x=x'}$ times this factor. Its composition with
+$\Gamma_0$ uses the measure $1/48$.
+
+An endpoint of a pair admissible for $X$ is at distance
+at most $\eta_k\le1$ from $X$. Its transport reads only
+bonds contained in $X$, or the one type-$3$ bond meeting $X$.
+Thus the preceding row argument applies to every row
+used in $J_k^\#$ and $W_k^\#$.
+The H\"older row has only the two columns $x,x'$ and
+the entire transport coefficient displayed above.
+Finite compositions preserve this dependence: the columns
+of $O_2O_1$ are the union of the columns of $O_1$ at the
+finitely many columns of $O_2$, and its read bonds are the
+union of their read bonds. Entries of the transport and
+reconstruction rows are entire in the connections, and finite
+compositions of these algebraic rows retain this property.
+Compositions involving weakened primitives are holomorphic
+on their stated primitive domains. These are the finite-row
+properties used here; the weakened operators themselves
+are not asserted to have finite range.
+
+For $G_1$ at $k\ge1$, the local primitive $M_k(X,\cdot)$
+has both indices in $X$ and reads only bonds meeting $X$.
+For $G_2,G_3$, the incoming activity or mass form has ordinary
+legs in $X$ and admissible pair legs; the substitution by
+$J_k^\#\Psi$ introduces $\Psi$ only in $Y'_1$.
+At $k=0$ the vertex has precisely these ordinary and
+type-$3$ pair legs and reads $Z$ only on bonds meeting
+its cube. Equation~\eqref{eq:rgnl-restricted-photon}
+therefore proves the same component dependence for every
+first-localization function.
+
+If $Y'$ is disconnected, choose an $M$-cube outside $Y'_1$.
+It cannot meet $X$ or a parameter cube contained in $X$,
+so it meets a cube of $P$ outside $Y'_1$. The integrand is
+independent of that parameter. Pairing the subsets in
+\eqref{eq:rgnl-finite-difference} according to whether they
+contain this cube proves that the term is zero.
+For a term assigned to a connected $Y$, all parameter cubes
+in $P_0(X)\cup P$ and $X$ lie in $Y$.
+Equation~\eqref{eq:rgnl-finite-difference} now gives the
+claimed locality of $E_i^*$.
+
+The reconstruction substitution adds only ordinary legs
+over $Y$ and boundary pairs $(x,x^{(3)})$ admissible for
+$Y$. Its finite rows at a unit site $y$ read bonds contained
+in $\Delta_y$ or type-$3$ bonds from this block. These bonds
+meet $Y$ since $\Delta_y\subset Y$. The barred rows have
+the same support. Thus it preserves the claimed coefficient
+locality and removes $\Psi$.
+For the second localization, the row argument for
+$H_k^\#\widetilde\Gamma_kW$ gives fluctuation generators
+only in $Y'_1$. It applies to each of the three functions
+in \eqref{eq:rgnl-finite-activity}. The same disconnected
+parameter cancellation proves the second assertion.
+\Cref{lem:rgnl-resummation} gives both sum identities.
+
+Regularity follows from the established contour domains,
+the primitive regularity, and finite sums and substitutions.
+Contour integrals preserve analyticity: their Riemann sums
+converge uniformly on compact sets. The same argument
+applies to finite parameter integrals. The incoming
+activities and mass forms are even, and each substitution
+sends generators to odd linear combinations, so every
+expression remains even.
+Finally $G_1$ is independent of the datum; $G_2,G_4$
+use $\mathscr E^r(X)$ and $G_3,G_5$ use $m'$.
+Tracing the two localizations shows that no incoming
+polymer outside $Y$ enters the result.
+\end{proof}
+
+The proof identifies the primitive entries determining a
+finite expression on $Y$. With parameters zero outside $Y$,
+the photon field reads only
+$H_k^{\mathrm{ph}}(s')(b,b')$ for $b$ meeting $Y$,
+$b'\subset Y$, and
+$C_k^{1/2}(s')(\Upsilon,\Upsilon')$ with both supports
+in $Y$. Its remaining factor is the fixed coordinate map.
+The fermion fields use $H_k,\bar H_k$ at chamber sites
+over $Y$, with unit columns in $Y$, at $B+Z(s')$ and
+$B$, and $\Gamma_k(s'',B)$ with both unit indices in $Y$.
+At zero, the kernel sums have measure $1/48$ and the
+diagonal rows have the factor $48$ already recorded.
+The Dirac primitive has both indices in $X\subseteq Y$
+and connection $B+tZ(s')$ on $|t|=r_1$.
+H\"older transports read only bonds meeting $Y$.
+The reconstruction substitution contains only the fixed
+finite $T_k^{(i)},\bar T_k^{(i)}$ rows at unit sites of its
+own subpolymer.
+
+Consequently two systems with the stated hypotheses on this torus give the
+same finite expressions on $Y$ if these entries agree
+for every parameter family zero outside $Y$, at the
+connections formed with their respective photon fields.
+The restricted photon sum first gives equality of the
+fields on bonds meeting $Y$; the transports and incoming
+activities there then agree by their locality.
+The listed fermion and Dirac entries give equal first
+functions, their localizations and reconstruction
+substitutions. They give equal second functions and
+localizations in turn, and then equal activities $K(Y)$ and
+$H(Y)$ in \eqref{eq:rgnl-Mayer-activity} and
+\eqref{eq:rgnl-integrated-activity}, and each term of the
+connected series \eqref{eq:rgnl-log-activity}.
+Agreement of the photon
+entries and agreement of the fermion entries as functions
+on the full operator domain is sufficient: if the two
+composed connections differ outside $Y$, local row
+dependence removes that difference first.
+The same comparison passes to the convergent logarithm
+once its convergence has been established.
+
+\subsection{Bounds before fluctuation integration}
+\label{subsec:rgnl-finite-bounds}
+
+Set
+\[
+ \begin{gathered}
+ \kappa_w=\kappa+\kappa_0+3,\qquad
+ a_1=\kappa-\kappa_0-1,\qquad a_2=\kappa-2\kappa_0-2,\\
+ C_W=28C_w^2c_\gamma,
+ \qquad H_{\mathrm{cl}}=36c_X^2K_0^2e^{1/4-5\varepsilon}.
+ \end{gathered}
+\]
+The notation $H_{\mathrm{cl}}$ is a scalar cluster bound. For a
+scalar-component kernel $O(a,b)$ with column measure $\nu(b)$, write
+$|O|_{1,\infty}=\sup_a\sum_b\nu(b)|O(a,b)|$, including spin indices.
+This is the row norm of \cite[Theorem~B]{NormalizedContraction}.
+The finite primitive bounds imply
+\begin{align}
+ \|\langle\bar\Psi,M_k(X,B)\Psi\rangle_1\|_{w_3}
+ &\le4c_Xc_\gamma C_wM^3w_3^2
+                   \exp(-(\kappa_w-1)d_M(X)),\quad k\ge1,
+                                      \label{eq:rgnl-M-bound}\\
+ |H_k^\#(s'',B)|_{1,\infty}&\le4C_w,\\
+ |J_k^\#(s'',B,Z)|_{1,\infty}
+                  &\le16C_we^{3/4-9\varepsilon/2},\\
+ \mathsf w_W|H_k^\#(s'',B)\widetilde\Gamma_k(s'',B)|_{1,\infty}
+                  &\le C_W.           \label{eq:rgnl-W-bound}
+\end{align}
+Here $B=A+\mathscr C$ and $|Z|_*\le\frac12e^{-\varepsilon/2}$.
+To see the first bound, count $4M^3|X|_M$ rows and sum
+the exponential kernel in its second index, giving
+$c_\gamma C_w \exp(-\kappa_wd_M(X))$ per row.
+Then $|X|_M\le c_X\exp(d_M(X))$ gives
+\eqref{eq:rgnl-M-bound}.
+For $H_k^\#$ the primitive bound controls the ordinary
+and short-pair rows by $C_w$. A long pair, $d_X\ge1$,
+has its H\"older quotient bounded by four times the
+ordinary sup norm. At level zero every pair is long.
+The monomial matrices $\mathsf C^{\pm1}$ preserve row norms,
+so the barred rows have the same bounds.
+Apply $\mathcal C_{r_1}$ to
+$H_k^\#(s'',B+tZ)$ to obtain the bound for $J_k^\#$.
+Finally $|\Gamma_k|_{1,\infty}\le C_wc_\gamma$ by kernel
+summation, using $1/48$ at level zero. Submultiplicativity
+and $\mathsf w_W\le7$ give \eqref{eq:rgnl-W-bound}.
+
+\begin{proposition}\label{prop:rgnl-finite-bounds}
+For the data of \cref{prop:rgnl-finite-locality},
+\begin{align}
+ \|E_{\le3}(Y)\|_{h/2}
+       &\le8c_XK_0e^{1/4-5\varepsilon}\exp(-a_1d_M(Y)),
+                                      \label{eq:rgnl-E3-bound}\\
+ \|F(Y)\|_{(h/4;\mathsf w_W)}
+       &\le H_{\mathrm{cl}}\exp(-a_2d_M(Y)).
+                                      \label{eq:rgnl-F-bound}
+\end{align}
+The element $F(Y)$ is the sum of a term independent of
+$(m,\mathscr E)$ and a term complex linear in these data.
+\end{proposition}
+
+\begin{proof}
+Extraction gives
+\[
+ \|\mathscr E^r(X)\|_h\le2\|\mathscr E\|_k^x\exp(-\kappa d_M(X))
+                   \le12e^{1/4-7\varepsilon}\exp(-\kappa d_M(X)),
+ \qquad |m'|\le8e^{3/4-8\varepsilon}.
+\]
+The mass bound uses
+$c_{\mathrm{fl}}e^\varepsilon\le1$.
+With chamber measure $\eta_k^3/48$, direct counting gives
+\[
+ \|\langle\bar\psi,\psi\rangle_\square\|_{(w_1,w_2)}
+                                                    =4M^3w_1^2.
+\]
+The number of monomials is
+$4\cdot48\eta_k^{-3}M^3$ and their common coefficient
+is $\eta_k^3/48$.
+
+In the first localization give $\Psi$ the weight
+$w_3=C_Th_{k,1}$ and the old generators the weights $h/2$.
+The contour bound and \eqref{eq:rgnl-M-bound} give
+\[
+ \|G_1(s,X)\|\le
+ 16c_Xc_\gamma C_wC_T^2M^3e^{1/4-9\varepsilon/2}
+                 \exp(-(\kappa_w-1)d_M(X))
+ \le e^{1/4-5\varepsilon}\exp(-\kappa d_M(X)).
+\]
+The last step uses
+\[
+ 16c_Xc_\gamma C_wC_T^2M^3e^{\varepsilon/2}\le1.
+\]
+At $k=0$ the weighted vertex instead gives
+$12M^3e^{1/2-\varepsilon/2}\le e^{1/4-5\varepsilon}$.
+Moreover,
+\[
+ r_2|J_k^\#|_{1,\infty}w_3
+     \le16C_wC_Te^{3\varepsilon/2}h_{k,2}
+     \le\tfrac12h_{k,2}.
+\]
+The substitution bound therefore takes the integrand norm
+of $G_2$ to the $h$ norm of $\mathscr E^r$, and that of
+$G_3$ to the $h$ norm of the mass form. It gives
+\[
+ \|G_2(s,X)\|\le24e^{1-14\varepsilon}\exp(-\kappa d_M(X)),
+ \qquad \|G_3(s,\square)\|\le64M^3e^{1-15\varepsilon}.
+\]
+The condition $88M^3e^{1/4-6\varepsilon}\le1$ implies
+\[
+ 24e^{3/4-9\varepsilon}
+                   +64M^3e^{3/4-10\varepsilon}\le1.
+\]
+Thus $\sum_{i\le3}G_i$ is bounded by
+$2e^{1/4-5\varepsilon}\exp(-\kappa d_M(X))$.
+Apply \cref{lem:rgnl-resummation}, using the disconnected
+cancellation in \cref{prop:rgnl-finite-locality}.
+The reconstruction substitution costs no norm, since
+$C_T(h_{k,1}+h_{k,2})/2\le w_3$.
+This proves \eqref{eq:rgnl-E3-bound}.
+
+For the second localization, the condition
+$112C_w^2c_\gamma e^{2\varepsilon}\le3$ gives
+\[
+ r_4C_W\le\tfrac34h_{k,2},\qquad C_W\le\tfrac14h_{k,2}.
+\]
+Consequently addition of $W_k^\#$ maps the $h/4$ norm
+to the $h/2$ norm at $t=1$ and to the $h$ norm on
+the contour $|t|=r_4$. The three input bounds are
+\begin{align*}
+ \|G_{\le3}^{\,W}(s'',X)\|
+       &\le8c_XK_0e^{1/4-5\varepsilon}\exp(-a_1d_M(X)),\\
+ \|G_4(s'',X)\|&\le24e^{1/2-10\varepsilon}\exp(-\kappa d_M(X)),\\
+ \|G_5(s'',\square)\|&\le64M^3e^{1/2-11\varepsilon}.
+\end{align*}
+Their sum is at most
+$9c_XK_0e^{1/4-5\varepsilon}\exp(-a_1d_M(X))$,
+again by $88M^3e^{1/4-6\varepsilon}\le1$.
+Since $\kappa_0\le a_1\le\kappa$, resummation gives
+\eqref{eq:rgnl-F-bound}.
+At level zero $G_4=0$; all the other inequalities include
+the factor $\mathsf w_W$ already, so they apply unchanged.
+Linearity follows from the definitions: $G_1$ is fixed,
+$G_2,G_4$ are linear in $R\mathscr E$, $G_3,G_5$ in $m'$,
+and localization, the reconstruction substitution and the
+contour functionals are linear.
+\end{proof}
+
+\section{The connected logarithm}
+\label{subsec:rgnl-cluster-logarithm}
+
+Two polymers are incompatible when their union is connected
+through faces. In particular a polymer is incompatible with
+itself. For an ordered tuple $(X_1,\ldots,X_n)$ define
+$u^T(X_1)=1$ and
+\[
+ u^T(X_1,\ldots,X_n)=\sum_{G\text{ connected}}
+                                      (-1)^{|G|},\quad n\ge2,
+\]
+where $G$ ranges over spanning subgraphs of the incompatibility
+graph of the tuple. The coefficient is zero when that graph
+is disconnected.
+
+We will use the formal connected-graph identity
+\begin{equation}\label{eq:rgnl-connected-graph-identity}
+ \sum_{\{X_i\}\text{ compatible}}\prod_i z_{X_i}
+ =\exp\left\{\sum_{n\ge1}\frac1{n!}
+       \sum_{(X_1,\ldots,X_n)}u^T(X_1,\ldots,X_n)
+                                           \prod_i z_{X_i}\right\}
+\end{equation}
+and the tree bound
+\begin{equation}\label{eq:rgnl-tree-domination}
+ |u^T(X_1,\ldots,X_n)|
+       \le\#\{\text{spanning trees of the incompatibility graph}\}.
+\end{equation}
+Here the identity is one of formal series in commuting
+variables, before substitution into a normed algebra.
+For its proof, express the left side as an ordered sum with
+factor $1/n!$ and multiply by
+$\prod_{i<j}(1-\mathbf1_{\{X_i,X_j\}\text{ incompatible}})$.
+Expanding this product sums over all graphs. A graph is
+uniquely the union of its connected components. Grouping by
+their vertex sets gives the exponential on the right:
+an ordered list of component sizes $n_1,\ldots,n_r$ has
+$n!/(n_1!\cdots n_r!)$ vertex assignments, and division
+by $r!$ removes the order of its components.
+Only finitely many terms contribute to a fixed degree.
+
+For \eqref{eq:rgnl-tree-domination}, let $\mathbf G$ be
+the incompatibility graph and suppose it is connected.
+For a connected spanning subgraph $G$, root at $1$ and,
+for $i\ne1$, choose as its parent the least labelled
+neighbor at distance $d_G(i)-1$ from the root.
+These edges form a tree $T(G)$ with the same root distances
+as $G$. Given a spanning tree $\tau$, let $R(\tau)$ contain
+its edges, all edges of $\mathbf G$ within one distance
+level, and all edges from $i$ to the preceding level whose
+other endpoint exceeds the parent of $i$ in $\tau$.
+Then
+\[
+ T(G)=\tau\quad\Longleftrightarrow\quad
+                                      \tau\subseteq G\subseteq R(\tau).
+\]
+In one direction the distances and least parents force
+every edge of $G$ to belong to $R(\tau)$.
+Conversely, along any edge of $R(\tau)$ the tree distance
+changes by at most one. Thus a graph between $\tau$ and
+$R(\tau)$ has the tree's distances, and the least neighbor
+in the preceding level is its tree parent.
+The connected subgraphs are therefore partitioned into
+these intervals, and their signed sum is
+\[
+ \sum_\tau(-1)^{n-1}
+           \sum_{A\subseteq R(\tau)\setminus\tau}(-1)^{|A|}
+ =(-1)^{n-1}\#\{\tau:R(\tau)=\tau\}.
+\]
+This proves the tree bound, including the cases
+of a disconnected graph and $n=1$.
+
+For this section and the symmetry proof, write $\widehat\mu=\widehat\mu_k$ for the normalized product box law in \eqref{eq:rg-step-box-normalization}.
+
+\begin{proposition}\label{prop:rgnl-cluster-logarithm}
+Let $V(X)$ be even elements in the old and fluctuation
+generators, continuous on $\mathrm{Box}_k$, with
+\[
+ \|V(X)\|_{(w;\mathsf w_W)}
+                       \le H_{\mathrm{cl}}\exp(-a_2d_M(X)).
+\]
+Assume that $V(X)$ has fluctuation indices only in $X$ and
+depends on $\zeta$ only through coordinates supported in $X$.
+For any union $Y$ of $M$-cubes put
+\begin{align}
+ K(Y)&=\sum_{\substack{\{X_i\}\text{ distinct}\\\bigcup_iX_i=Y}}
+                    \prod_i(\exp V(X_i)-1),\qquad K(\varnothing)=1,
+                                      \label{eq:rgnl-Mayer-activity}\\
+ H(Y)&=\int\dd\mu_I(W)\,\dd\widehat\mu(\zeta)\,K(Y).
+                                      \label{eq:rgnl-integrated-activity}
+\end{align}
+For a connected $Y$ define
+\begin{equation}\label{eq:rgnl-log-activity}
+ E^\#(Y)=\sum_{n\ge1}\frac1{n!}
+   \sum_{\bigcup_iY_i=Y}u^T(Y_1,\ldots,Y_n)\prod_iH(Y_i).
+\end{equation}
+The last series converges absolutely in the $w$ norm and
+\begin{align}
+ \int\dd\mu_I(W)\,\dd\widehat\mu(\zeta)
+                         \exp\left\{\sum_XV(X)\right\}
+       &=\exp\left\{\sum_YE^\#(Y)\right\},
+                                      \label{eq:rgnl-log-identity}\\
+ \|E^\#(Y)\|_w
+       &\le c_S'H_{\mathrm{cl}}\exp(-a_3d_M(Y)),
+                                      \label{eq:rgnl-log-bound}
+\end{align}
+Here $a_3=\kappa-5\kappa_0-4$ and
+$c_S'=14c_X^2K_0^2\exp(3\kappa)$.
+The sum of the norms of the terms with $n>N$ in
+\eqref{eq:rgnl-log-activity} is at most $2^{-N}$ times the
+right side of \eqref{eq:rgnl-log-bound}.
+\end{proposition}
+
+\begin{proof}
+Set
+\[
+ \begin{gathered}
+ a_4=\kappa-3\kappa_0-3,\quad
+ a_5=\kappa-3\kappa_0-2,\quad
+ a_6=\kappa-5\kappa_0-3,\\
+ H_1=7c_XK_0\exp(3a_5)H_{\mathrm{cl}},\qquad
+ z_S=28H_1\exp(\kappa_0)K_0\exp(3a_6).
+ \end{gathered}
+\]
+The fixed small-charge choice
+\[
+ c_S e^{1/4-5\varepsilon}\le1,\qquad
+ c_S=10^5c_X^5K_0^5\exp(6\kappa)
+\]
+implies
+\begin{equation}\label{eq:rgnl-cluster-smallness}
+ H_{\mathrm{cl}}\le1,\qquad
+ 4H_{\mathrm{cl}}K_0c_X\exp(3a_5)\le1,\qquad
+                                      z_S\le\tfrac12.
+\end{equation}
+Indeed the second left side is
+$144c_X^3K_0^3\exp(3a_5)e^{1/4-5\varepsilon}$.
+For the third,
+$2z_S=14112c_X^3K_0^4
+\exp(3a_5+3a_6+\kappa_0)e^{1/4-5\varepsilon}$, and
+$3a_5+3a_6+\kappa_0\le6\kappa$.
+
+Even elements commute, so expanding their exponential
+gives $\exp(\sum_XV(X))=\sum_YK(Y)$.
+Moreover $K(Y)$ factors over the connected components
+of $Y$: every polymer in its defining set belongs to
+exactly one component.
+If distinct polymers $X_1,\ldots,X_n$ have connected
+union $Y$, their incompatibility graph is connected.
+Otherwise two nonempty groups would partition their
+union; connectedness of $Y$ would give coincident or
+adjacent cubes in different groups and hence an edge
+between them.
+For each incompatibility-tree edge, choose coincident or
+face-adjacent cubes in the two polymers and points
+where their nets meet these cubes. The two points
+lie in a box of side lengths $M,M,2M$, so they
+can be joined by a segment of length at most
+$\sqrt6M<3M$. Joining near-minimal nets along
+the tree proves
+\[
+ d_M(Y)\le\sum_i d_M(X_i)+3(n-1).
+\]
+Using $\|\exp V-1\|\le2\|V\|$ and $a_2=a_5+\kappa_0$
+therefore bounds the product by
+\[
+ \exp(-a_5d_M(Y))
+       \big(2H_{\mathrm{cl}}\exp(3a_5)\big)^n
+                                  \prod_i \exp(-\kappa_0d_M(X_i)).
+\]
+Replace distinct sets by ordered tuples with factor $1/n!$,
+and use the counting bound for subpolymers of $Y$. The result is
+\[
+ \|K(Y)\|\le \exp(-a_5d_M(Y))x_Y\exp(x_Y),\qquad
+ x_Y=2H_{\mathrm{cl}}K_0\exp(3a_5)|Y|_M.
+\]
+By \eqref{eq:rgnl-cluster-smallness},
+\[
+ \begin{gathered}
+ x_Y\le(d_M(Y)+1)/2,\\
+ x_Y\le4H_{\mathrm{cl}}K_0c_X\exp(3a_5)\exp(d_M(Y)/2).
+ \end{gathered}
+\]
+Since $4\exp(1/2)\le7$ and $a_5-1=a_4$, we obtain
+\begin{equation}\label{eq:rgnl-Mayer-bound}
+ \|K(Y)\|_{(w;\mathsf w_W)}
+                         \le H_1\exp(-a_4d_M(Y))=:\mu(Y).
+\end{equation}
+
+Weighted Berezin integration costs no norm here:
+each paired moment at level zero is
+$\pm48^{|J|/2}$, which is exactly covered by the
+weight $(\sqrt{48})^{|J|}$ of its generators.
+The corresponding moment is $\pm1$ at positive levels.
+The photon measure is a probability measure on its compact
+box. Hence $\|H(Y)\|_w\le\mu(Y)$.
+These integrals produce even elements, since a nonzero
+Berezin moment uses an even number of generators.
+For compatible polymers the fluctuation modes and
+supported photon coordinates are disjoint. The two
+product measures therefore factor, with the external
+old generators left as coefficients. It follows that
+\begin{equation}\label{eq:rgnl-compatible-partition}
+ \int\dd\mu_I(W)\,\dd\widehat\mu(\zeta)e^{\sum_XV(X)}
+             =\sum_{\{Y_i\}\text{ compatible}}\prod_iH(Y_i).
+\end{equation}
+
+We now bound the infinite connected series. Let
+\[
+ S_n(Y)=\sum_{\bigcup_iY_i=Y}
+                   |u^T(Y_1,\ldots,Y_n)|\prod_i\mu(Y_i).
+\]
+For $n\ge2$, apply \eqref{eq:rgnl-tree-domination}.
+For every contributing tree the union estimate and
+$a_4=a_6+2\kappa_0$ give
+\[
+ \prod_i \exp(-a_4d_M(Y_i))
+ \le \exp(-a_6d_M(Y))\exp(3a_6(n-1))
+                                  \prod_i \exp(-2\kappa_0d_M(Y_i)).
+\]
+Drop the prescribed union, retaining $Y_i\subseteq Y$,
+and root the tree at $1$. Write $q_j$ for the number
+of children at $j$. A polymer incompatible with $Y'$
+contains one of at most $7|Y'|_M$ cubes consisting of
+its cubes and their face neighbors. Since
+$|Z|_M\le c_X(d_M(Z)+1)\le\kappa_0(d_M(Z)+1)$ and
+$a^q\le q!\exp(a)$, the counting estimate gives
+\begin{align*}
+ \sum_{Z\text{ incompatible with }Y'}
+      \exp(-2\kappa_0d_M(Z))|Z|_M^{q}
+            &\le7q!\exp(\kappa_0)K_0|Y'|_M,\\
+ \sum_{Z\subseteq Y}\exp(-2\kappa_0d_M(Z))|Z|_M^q
+            &\le q!\exp(\kappa_0)K_0|Y|_M.
+\end{align*}
+Summing from leaves to root thus costs at most
+$(7\exp(\kappa_0)K_0)^n|Y|_M\prod_jq_j!$.
+For prescribed children counts, Cayley's degree formula
+\cite[Proposition~4]{PostnikovLin2019}
+counts
+$(n-2)!/((q_1-1)!\prod_{j\ge2}q_j!)$ trees, where
+$q_1\ge1$ and $\sum_jq_j=n-1$.
+Consequently
+\[
+ \sum_{\text{trees}}\prod_jq_j!
+   =(n-2)!\sum_{(q_j)}q_1
+   \le(n-1)!\binom{2n-2}{n-1}
+   \le(n-1)!4^{n-1}.
+\]
+Collecting the factors, also for $n=1$, gives
+\begin{equation}\label{eq:rgnl-connected-n-bound}
+ \frac{S_n(Y)}{n!}
+ \le7H_1\exp(\kappa_0)K_0|Y|_M
+                                      \exp(-a_6d_M(Y))z_S^{n-1}.
+\end{equation}
+Since $z_S\le1/2$, sum the geometric series and use
+$|Y|_M\le c_X\exp(d_M(Y))$ and $a_6-1=a_3$.
+The bound becomes
+\[
+ 98c_X^2K_0^2\exp(\kappa_0+3a_5)
+                                 H_{\mathrm{cl}}\exp(-a_3d_M(Y))
+ \le c_S'H_{\mathrm{cl}}\exp(-a_3d_M(Y)),
+\]
+because $\kappa_0+3a_5=3\kappa-8\kappa_0-6$.
+Summing only $n>N$ gives the additional factor $2^{-N}$.
+This proves absolute convergence and the claimed estimates.
+
+It remains to justify the logarithm identity after
+substitution in \eqref{eq:rgnl-connected-graph-identity}.
+The even subalgebra with the coefficient norm is a
+commutative Banach algebra, and the polymer set is finite.
+The total norm sum of the connected terms is finite by
+\eqref{eq:rgnl-connected-n-bound}.
+In the exponential of their sum, the norm sum of all
+products of connected terms is bounded by the exponential
+of that total norm sum. Regrouping is therefore permitted.
+Regroup by monomials in the formal variables $z_Y$.
+The coefficients are those of
+\eqref{eq:rgnl-connected-graph-identity}, namely one
+for compatible sets and zero for all other monomials.
+Its substitution $z_Y=H(Y)$ gives
+\eqref{eq:rgnl-compatible-partition}. Grouping the
+connected terms by their union gives
+$\sum_YE^\#(Y)$ and proves \eqref{eq:rgnl-log-identity}.
+\end{proof}
+
+\subsection{Polynomial approximation at fixed volume}\label{subsec:rgnl-polynomial-approximation}
+
+There are also polynomial approximants to this logarithm
+which converge uniformly for all families satisfying the
+preceding bound, at fixed side. Replace $\exp V-1$ by
+$p_N(V)=\sum_{1\le j\le N}V^j/j!$ in $K,H$, and stop
+the connected series at $n=N$; denote the result $E_N^\#$.
+It is a polynomial in integrals of products of $V(X_i)$,
+$X_i\subseteq Y$, and has the same bound
+\eqref{eq:rgnl-log-bound}. To verify uniform convergence,
+write $D=|\mathcal P_k|$. Since $\|V(X)\|\le1$,
+\[
+ \|\exp V(X)-1-p_N(V(X))\|
+                                  \le\frac{\exp(1)}{(N+1)!}.
+\]
+Telescoping each finite product in $K$ gives
+\[
+ \|H(Y)-H_N(Y)\|\le
+                             \frac{4^DD\exp(1)}{(N+1)!}.
+\]
+Thus this difference is at most $\delta_N\mu(Y)$, where
+\[
+ \delta_N=\frac{4^DD\exp(1)}
+                      {(N+1)!\min_{Y\in\mathcal P_k}\mu(Y)}
+                                                   \longrightarrow0.
+\]
+Replacing the $n$ factors in a connected term costs at
+most $n\delta_N\prod_i\mu(Y_i)$. Summing
+\eqref{eq:rgnl-connected-n-bound} with this factor, using
+$\sum_{n\ge1}n2^{-(n-1)}=4$, and adding the tail yields
+\[
+ \sup_Y\|E^\#(Y)-E_N^\#(Y)\|
+ \le28\delta_NH_1\exp(\kappa_0)K_0(\ell/M)^3
+                                  +2^{-N}c_S'H_{\mathrm{cl}}.
+\]
+This convergence is uniform in the connections and the
+allowed data. The displayed error depends on the side;
+no volume-independent approximation is claimed.
+
+\section{Symmetries of the local logarithm}
+\label{subsec:rgnl-symmetries}
+
+Apply \cref{prop:rgnl-cluster-logarithm} with
+$V=F$, $w=h/4$ and denote its output by
+$E_k^\#(m,\mathscr E)$. Each connected term assigned to
+$Y$ is a product of integrated activities on subpolymers
+of $Y$. Thus ordinary and admissible pair support, local
+connection dependence, and dependence only on $m'$ and
+$\mathscr E^r(X)$, $X\subseteq Y$, pass to the sum.
+The uniform bound and the polynomial approximants prove
+analyticity of its coefficients in $(A,\mathscr C)$.
+
+Let $\mathbb G_k^L$ denote the chamber symmetry group with
+translations in $LM\Z^3$, so that it preserves every
+parameter partition. Its actions and the gauge,
+charge-conjugation and reality actions are those of
+\cref{subsec:rg-activity-spaces}.
+
+\begin{proposition}\label{prop:rgnl-symmetries}
+The local logarithm satisfies
+\begin{align}
+ a_{\tilde g}E_k^\#(\tilde gY;\tilde gA,\tilde g\mathscr C)
+          &=E_k^\#(Y;A,\mathscr C),\qquad \tilde g\in\mathbb G_k^L,
+                                      \label{eq:rgnl-lattice-symmetry}\\
+ G_{\lambda+\lambda'}E_k^\#(Y;A^1,\mathscr C^1)
+          &=E_k^\#(Y;A,\mathscr C),    \label{eq:rgnl-gauge-symmetry}\\
+ \mathrm{Cg}\,E_k^\#(Y;-A,-\mathscr C)
+          &=E_k^\#(Y;A,\mathscr C).    \label{eq:rgnl-charge-symmetry}
+\end{align}
+In the gauge identity both pairs belong to the domain and
+ $A^1=A-d\lambda$, $\mathscr C^1=\mathscr C-d\lambda'$
+on all bonds at distance at most $1$ from $Y$, with
+real $\lambda,\lambda'$. Here $d\lambda$ denotes the
+lattice gradient, as in the preceding gauge conventions.
+For real $m$ and $\mathscr E\in K_k^x$ one also has
+\begin{equation}\label{eq:rgnl-reality-symmetry}
+ \mathbf K E_k^\#(Y;-\overline A,-\overline{\mathscr C})
+                                        =E_k^\#(Y;A,\mathscr C).
+\end{equation}
+Every monomial is balanced.
+\end{proposition}
+
+\begin{proof}
+We first record how transformations pass through the
+finite operations. Each of the four algebra maps is a
+continuous ring automorphism, linear for the first three
+and antilinear for $\mathbf K$. If an odd field transforms
+like the generators it replaces, the two compositions of
+the field substitution with the automorphism agree on
+each generator; hence they agree on the algebra.
+The same observation applies to adding a field.
+Real-coefficient finite differences
+\eqref{eq:rgnl-finite-difference} then commute with these
+actions. A lattice symmetry also permutes the parameter
+cubes and localization summands. It preserves face
+connectedness, incidence relations and the Ursell coefficient.
+
+The contour functional commutes with the linear actions.
+For the antilinear action, parametrize $t=r\exp(i\theta)$:
+\[
+ \mathcal C_rf=\frac1{2\pi}\int_0^{2\pi}
+             \frac{f(r\exp(i\theta))}{r\exp(i\theta)-1}\,\dd\theta.
+\]
+Conjugation of coefficients, together with
+$t\mapsto\bar t$ and $\theta\mapsto-\theta$, gives the
+same integral at the transformed other arguments.
+The integration over $W$ commutes with every linear or
+antilinear action which sends
+$W\mapsto UW$, $\bar W\mapsto(U^{-1})^T\bar W$.
+Indeed Wick's rule preserves every paired moment under
+this change, and all these moments are real.
+This applies to the lattice and gauge actions, to
+$\mathbf K$ with $U=\varkappa$, and to charge conjugation
+extended by the identity on $W$.
+The last extension will require a separate covariance
+argument below.
+
+For a lattice symmetry the primitive covariance gives
+\[
+ Z(\tilde gs')[\tilde g\zeta]=\tilde gZ(s')[\zeta],\qquad
+ H_k(\tilde gs'',\tilde gB)\tilde g=\tilde gH_k(s'',B),
+ \qquad
+ \Gamma_k(\tilde gs'',\tilde gB)\tilde g=\tilde g\Gamma_k(s'',B).
+\]
+The barred action is $(S^{-1})^T$ on spinors;
+$(S^{-1})^T=\pm\mathsf C^{-1}S\mathsf C$ gives the
+same covariance for $\bar H_k$.
+H\"older quotients commute with the simultaneous
+transformation of their endpoints and connection.
+Thus $J_k^\#\Psi$ and $W_k^\#$ transform like their
+ordinary and pair generators.
+The quadratic primitive satisfies
+$M_k(\tilde gX,\tilde gB)=\tilde gM_k(X,B)\tilde g^{-1}$,
+so its bilinear form is invariant.
+The mass form is invariant by the change of chamber
+site and spin indices, and $R\mathscr E$ has the
+incoming lattice symmetry. The reconstruction substitution
+commutes with the action by
+\eqref{eq:rg-step-substitution-covariances}.
+The box measure is invariant under $\zeta\mapsto\tilde g\zeta$.
+Apply these identities to $G_1,G_2,G_3$, the first
+localization and substitution, then to the second
+localization, $K,H$, and the convergent connected sum.
+They prove \eqref{eq:rgnl-lattice-symmetry}.
+
+For the gauge identity set $\Lambda=\lambda+\lambda'$.
+In a summand assigned to $Y$, all parameters outside $Y$
+vanish. The local row result proves that $B^1$ may be
+replaced by $B-d\Lambda$ in every row used in that
+summand. The latter field is still in the operator domain,
+since real gauge shifts preserve it.
+Telescoping the gradient along each path gives
+\[
+ U_{B-d\Lambda}(x,x')
+       =U_B(x,x')\exp\big(-ie(\Lambda(c')-\Lambda(c))\big).
+\]
+The ordinary primitive row obeys
+\[
+ H_k(s'',B^1)(x,\cdot)
+       =\exp(ie\Lambda(c))H_k(s'',B)(x,\cdot)
+                                                 \exp(-ie\Lambda^u),
+\]
+when it is nonzero, where $\Lambda^u$ is the function
+on the unit indices. The barred row has the inverse
+phases. In the H\"older row the phase at its second
+point cancels that from the transport, leaving exactly
+$\exp(ie\Lambda(c))$, the phase of the first point.
+The row of $\Gamma_k$ has the corresponding two-sided
+gauge covariance. Its composition with $H_k^\#$ thus
+gives the same covariance for $W_k^\#$, including the
+rows which vanish outside $Y$.
+The primitive bilinear and the local mass form are
+gauge invariant, and so is $R\mathscr E$ under the
+separate shifts of its two slots. The reconstruction
+substitution also commutes with this local gauge action.
+The photon fields and photon measure are unchanged.
+The finite operations and integration therefore prove
+\eqref{eq:rgnl-gauge-symmetry}.
+
+For reality, the photon primitives are real on real
+parameter families. Their analytic dependence extends
+this identity to
+$\overline{O(\bar s')}=O(s')$ on the full polydisk.
+Since $C$ is real,
+\[
+ Z(\bar s')[-\zeta]=-\overline{Z(s')[\zeta]}.
+\]
+Transform $s\mapsto\bar s$, $t\mapsto\bar t$,
+$\zeta\mapsto-\zeta$ and
+$(A,\mathscr C)\mapsto(-\bar A,-\overline{\mathscr C})$.
+The fermion identities are
+\[
+ \overline{H_k(\bar s'',-\bar B)}
+                         =\varkappa^{-1}H_k(s'',B)\varkappa,\qquad
+ \overline{\Gamma_k(\bar s'',-\bar B)}
+                         =\varkappa^{-1}\Gamma_k(s'',B)\varkappa.
+\]
+For the barred field use
+$\varkappa\mathsf C=-\mathsf C\varkappa$.
+The transport relation
+$\overline{U_{-\bar B}(x,x')}=U_B(x,x')$
+then gives the same identities for the H\"older rows.
+The local quadratic primitive obeys the corresponding
+identity, and $\varkappa^T\varkappa=1$ preserves the
+mass form. The number $m'$ is real for the present data,
+and $R\mathscr E$ and the reconstruction substitution
+have the reality symmetry. The contour argument just
+given, invariance of the box under sign reversal, and
+weighted integration prove
+\eqref{eq:rgnl-reality-symmetry}.
+
+Charge conjugation gives the first-localization symmetry
+by
+\[
+ \begin{gathered}
+ H_k(s'',-B)\mathsf C=\mathsf C\bar H_k(s'',B),\qquad
+ \bar H_k(s'',-B)\mathsf C=\mathsf C H_k(s'',B),\\
+ M_k(X,-B)^T=\mathsf C^{-1}M_k(X,B)\mathsf C .
+ \end{gathered}
+\]
+Anticommuting the two transformed legs verifies the
+bilinear and mass-form identities. The first-step
+vertex has this symmetry by its explicit two-half formula.
+It follows that
+\[
+ \mathrm{Cg}\,E_{\le3}(X;-A,-\mathscr C,-\zeta)
+                                        =E_{\le3}(X;A,\mathscr C,\zeta).
+\]
+Direct covariance of the second substitution is not
+available, since its unbarred and barred fluctuations
+use different factors. We instead compare their Wick
+covariances.
+
+Introduce independent generators $\phi^\#$ indexed like
+$\psi^\#$, with their own charge-conjugation action,
+and let $\operatorname{ad}$ add them to the old generators.
+Put
+\begin{align*}
+ \mathcal V(X)
+   ={}&\operatorname{ad}E_{\le3}(X)
+      +\operatorname{ad}\mathscr E^r(X)-\mathscr E^r(X)\\
+     &-\mathbf1_{X=\square}m'
+          \big(\operatorname{ad}
+                         \langle\bar\psi,\psi\rangle_\square
+                                -\langle\bar\psi,\psi\rangle_\square\big).
+\end{align*}
+It has charge-conjugation symmetry under
+$(A,\mathscr C,\zeta)\mapsto(-A,-\mathscr C,-\zeta)$.
+Let $I_{s'',B}$ fix the old generators and replace
+$\phi^\#$ by $W_k^\#(s'',B)$. The second-localization
+input is exactly $I_{s'',B}\mathcal V(X)$, since
+the polynomial contours in $G_4,G_5$ give their value
+at $1$ minus their value at $0$.
+For any union $U$, interpolation restricted to cubes
+of $U$, with the disconnected terms removed, gives
+\begin{equation}\label{eq:rgnl-subvolume-substitution}
+ \sum_{Y\subseteq U}F(Y)=
+                        I_{\mathbf1_U,B}\sum_{X\subseteq U}\mathcal V(X).
+\end{equation}
+
+At $s''=\mathbf1_U$ define
+\[
+ \phi_\pm=H_k(\mathbf1_U,\pm B)\Gamma_k(\mathbf1_U,\pm B)W,
+ \qquad
+ \bar\phi_\pm=\bar H_k(\mathbf1_U,\pm B)\bar W,
+ \qquad
+ \phi'=\mathsf C\bar\phi_-,\quad
+ \bar\phi'=\mathsf C^{-1}\phi_-.
+\]
+The substitution by $(\phi',\bar\phi')$ and their
+H\"older quotients, denoted $I'$, satisfies
+$\mathrm{Cg}\,I_{\mathbf1_U,-B}=I'\mathrm{Cg}$
+on every generator, when $\mathrm{Cg}$ fixes $W$.
+The only nonzero ordinary pair expectations for the
+positive substitution are the kernel of
+\[
+ \mathcal G_U(B)
+        =H_k(\mathbf1_U,B)\Gamma_k(\mathbf1_U,B)
+                                            \bar H_k(\mathbf1_U,B)^T.
+\]
+The identity moment has kernel
+$\mathbf1_{u=u'}/\nu(u)$, with $\nu=1/48$ at zero.
+This precisely cancels one of the two measures in
+the kernel composition, so the same formula holds
+at every level. The primitive transpose relation gives
+\[
+ \mathcal G_U(-B)^T
+                      =-\mathsf C^{-1}\mathcal G_U(B)\mathsf C^{-1}.
+\]
+Anticommuting $\bar\phi_-$ and $\phi_-$ therefore gives
+\[
+ \int\dd\mu_I(W)\,\phi'(x)\bar\phi'(x')^T
+     =\mathsf C[-\mathcal G_U(-B)^T(x,x')]\mathsf C
+     =\mathcal G_U(B)(x,x').
+\]
+Same-bar pair expectations vanish in both substitutions.
+The pair generators are obtained by the identical
+linear H\"older maps at $B,-B$, so their pair expectations
+also agree. Wick's theorem now proves
+$\int\dd\mu_I(W)I'Q=\int\dd\mu_I(W)I_{\mathbf1_U,B}Q$
+for every polynomial $Q$ in the old and $\phi^\#$
+generators: each monomial integral is the Pfaffian of
+its pair expectations, with old generators as coefficients.
+
+Apply this equality to the exponential of
+$\sum_{X\subseteq U}\mathcal V(X)$ and use
+$\zeta\mapsto-\zeta$. By
+\eqref{eq:rgnl-subvolume-substitution}, the integrated
+subvolume expression
+$\Xi_U=\int\dd\mu_I(W)\dd\widehat\mu(\zeta)
+\exp(\sum_{Y\subseteq U}F(Y))$
+has charge-conjugation symmetry.
+But $\Xi_U=\sum_{Z\subseteq U}H(Z)$, by the finite
+Mayer expansion. Inverting this finite subset sum gives
+\[
+ H(Z)=\sum_{U\subseteq Z}(-1)^{|Z\setminus U|_M}\Xi_U.
+\]
+Thus each $H(Z)$ has the symmetry, and the real
+coefficients and absolute convergence of the connected
+series prove \eqref{eq:rgnl-charge-symmetry}.
+
+Finally take a constant $\lambda$ and $\lambda'=0$
+in \eqref{eq:rgnl-gauge-symmetry}. A monomial with
+$n_u$ unbarred and $n_b$ barred legs acquires the factor
+$\exp(ie\lambda(n_u-n_b))$. Invariance for every real
+$\lambda$ and independence of the basis monomials force
+its coefficient to vanish unless $n_u=n_b$.
+\end{proof}
+
+\section{Scaling and coupling estimates}
+\label{subsec:rgnl-scaled-correction}
+
+Let $S_L$ be the field scaling of
+\exteq{30}{NormalizedContraction}. The nonlinear correction is
+\begin{equation}\label{eq:rgnl-scaled-correction}
+ E_k^*(m,\mathscr E)(Y;\mathscr A,\mathscr C)
+  =\sum_{\bar X^L=LY}S_L
+        E_k^\#(m,\mathscr E)(X;\mathscr A_L,\mathscr C_L).
+\end{equation}
+This formula uses field scaling and summation over fine
+polymers. Quadratic adjustment enters the incoming
+activity term in the full step below.
+The domain inclusions
+\exteq{29}{NormalizedContraction} ensure
+$(\mathscr A_L,\mathscr C_L)
+\in\widetilde R_k^-\times\mathfrak X_k$.
+
+\begin{proposition}\label{prop:rgnl-scaled-correction}
+For $(m,\mathscr E)\in\operatorname{Ball}_k^x(4)$,
+\[
+ E_k^*(m,\mathscr E)\in K_{k+1}^{x,\C},\qquad
+                  \|E_k^*(m,\mathscr E)\|_{k+1}^x
+                                      \le e^{1/4-6\varepsilon}.
+\]
+For real data its value belongs to $K_{k+1}^x$.
+On any affine complex line in the data space its value
+is norm continuous on the part in the closed ball and
+norm analytic in its interior.
+For two data in $\operatorname{Ball}_k^x(1)$,
+\begin{equation}\label{eq:rgnl-coupling-Lipschitz}
+ \|E_k^*(m_1,\mathscr E_1)-E_k^*(m_2,\mathscr E_2)\|_{k+1}^x
+ \le e^{1/4-6\varepsilon}
+       \left(\frac{|m_1-m_2|}{w_k^{\mathrm m}}
+              +\frac{\|\mathscr E_1-\mathscr E_2\|_k^x}
+                                                    {w_k^{\mathrm E}}\right).
+\end{equation}
+The second quotient is absent at $k=0$.
+Restriction to $\mathscr C=0$ gives the correction formed
+without an external slot from $(m,\mathscr E|_0)$.
+\end{proposition}
+
+\begin{proof}
+The scaling identity gives
+\[
+ \|S_LQ\|_{h_{k+1}}
+   =\|Q\|_{(L^{-1}h_{k+1,1},L^{-1-\alpha}h_{k+1,2})}
+   \le\|Q\|_{h_k/4},
+\]
+since $h_{k+1,1}=L^{-1/8}h_{k,1}$,
+$h_{k+1,2}=L^{-1/8+\varepsilon/2}h_{k,2}$ and $L\ge4$.
+The polymer sum in \eqref{eq:rgnl-scaled-correction}
+uses $Ld_M(Y)\le d_M(X)$ and $X\subseteq LY$.
+Splitting $a_3=(a_3-\kappa_0)+\kappa_0$ therefore yields
+\begin{align*}
+ \sum_{\bar X^L=LY}\exp(-a_3d_M(X))
+  &\le \exp(-L(a_3-\kappa_0)d_M(Y))
+                         \sum_{X\subseteq LY}\exp(-\kappa_0d_M(X))\\
+  &\le c_XK_0L^3
+                  \exp(-[L(\kappa-6\kappa_0-4)-1]d_M(Y))
+   \le c_XK_0L^3\exp(-\kappa d_M(Y)).
+\end{align*}
+Together with \eqref{eq:rgnl-log-bound} this gives
+\[
+ \|E_k^*\|_{k+1}^x
+  \le c_XK_0L^3c_S'H_{\mathrm{cl}}
+  =504c_X^5K_0^5\exp(3\kappa)L^3e^{1/4-5\varepsilon}
+  \le e^{1/4-6\varepsilon},
+\]
+using $c_SL^3e^\varepsilon\le1$.
+
+All generators of a summand lie over $X$ or at a pair
+admissible for $X$. Scaling maps the ordinary sites
+into $Y$; it maps each of the six paths into the
+corresponding scaled path and maps
+$(x,x^{(3)})$ to $(x/L,(x/L)^{(3)})$.
+These pairs are admissible for $Y$, including
+intracluster pairs. A bond meeting $X$ scales to
+one meeting $Y$, giving local connection dependence.
+The scaled-domain inclusion and coefficient analyticity
+give analytic kernels.
+The map $(S,a)\mapsto(S,a/L)$ identifies
+$\mathbb G_k^L$ with $\mathbb G_{k+1}$ and intertwines
+its generator actions with $S_L$. For gauge transformations
+use $\Lambda_L(c)=L^{1/2}\Lambda(c/L)$ and
+$(d\Lambda)_L=d(\Lambda_L)$.
+A gauge relation on the unit neighborhood of $Y$
+then holds on the unit neighborhood of every
+$X\subseteq LY$. Charge conjugation and reality also
+commute with the real scaling factors.
+\Cref{prop:rgnl-symmetries} thus gives all the
+defining symmetries of $K_{k+1}^{x,\C}$, and the real
+space assertion follows from its reality clause.
+
+For norm analyticity, take data
+$(m_a+t m_b,\mathscr E_a+t\mathscr E_b)$ in the closed
+ball and denote their parameter set by $T$.
+It is closed and convex. The finite activity $F_t(X)$
+is affine in $t$ by \cref{prop:rgnl-finite-bounds}.
+The polynomial approximants to $E_k^\#$ are therefore
+polynomials in $t$. Reblock them by
+\eqref{eq:rgnl-scaled-correction}; the resulting polynomials
+$f_N(t)$ converge uniformly on $T$ in the full activity
+norm, since both finite polymer sets are fixed and the
+error bound in \cref{subsec:rgnl-polynomial-approximation} is uniform.
+Their values have bounded full norm.
+If $T$ has more than one point, it contains infinitely
+many points. The coefficients of each polynomial are
+finite numerical linear combinations of its values at
+distinct points of $T$, by polynomial interpolation.
+Hence these coefficients have finite full norm, and the
+uniform limit is norm continuous on $T$.
+If $T$ is empty or a singleton there is no continuity
+or interior analyticity assertion to check.
+
+For a closed disk $|t-t_0|\le r$ in $T$, take its
+coefficientwise Cauchy integrals
+\[
+ f_j=\frac1{2\pi i}\int_{|t-t_0|=r}
+                             f(t)(t-t_0)^{-j-1}\,\dd t.
+\]
+They have analytic connection kernels, and the support,
+symmetry and balance conditions pass through this
+complex linear integral. Moreover
+$\|f_j\|_{k+1}^x\le e^{1/4-6\varepsilon}r^{-j}$.
+Coefficientwise Cauchy's formula, with this summable
+norm bound, gives
+$f(t)=\sum_{j\ge0}f_j(t-t_0)^j$ in activity norm for
+$|t-t_0|<r$. This proves the stated analyticity.
+
+To obtain \eqref{eq:rgnl-coupling-Lipschitz}, vary first
+the mass, keeping $\mathscr E_1$ fixed. With
+$\Delta m=m_1-m_2\ne0$, the line
+$(m_2+t\Delta m,\mathscr E_1)$ remains in the large
+ball for $|t|\le r=3w_k^{\mathrm m}/|\Delta m|$.
+Here $r\ge3/2$. The contour formula on any circle
+$1<r'<r$ gives
+\[
+ \|f(1)-f(0)\|_{k+1}^x
+        \le\frac{e^{1/4-6\varepsilon}}{r'-1}.
+\]
+Let $r'\uparrow r$ and use $r-1\ge r/3$.
+The bound is the first quotient on the right of
+\eqref{eq:rgnl-coupling-Lipschitz}.
+Vary the activity with mass $m_2$ fixed and radius
+$3w_k^{\mathrm E}/\|\mathscr E_1-\mathscr E_2\|_k^x$
+to obtain the second quotient.
+The zero differences require no contour.
+
+Finally restriction commutes with extraction:
+$m(\mathscr E)=m(\mathscr E|_0)$ and
+$(R\mathscr E)|_0=R(\mathscr E|_0)$.
+Every fermion operator uses the sum of its first
+connection and $\mathscr C$; photon operations and
+measures do not use $\mathscr C$.
+At $\mathscr C=0$ the two constructions therefore have
+identical finite expressions, connected series and
+scaled corrections. Analyticity without a slot is
+understood in the first connection alone.
+\end{proof}
+
+The possible H\"older legs can also be read directly.
+In $G_2,G_4$ an existing pair generator is changed by
+addition of a fluctuation field; this creates no new
+pair index. The mass contours contain no pair
+generators. The reconstruction substitution and the
+first-step vertex introduce only pairs $(x,x^{(3)})$.
+Every later sum, product and integral preserves this
+set of available indices. Thus the correction has
+only scaled incoming pair indices and these scaled
+type-$3$ indices. At $k=0$ it has only the latter,
+of length $\eta_1$, since the incoming activity is zero.
+
+\section{Identification with the exact density}
+\label{subsec:rgnl-current-step}
+
+The three terms in \eqref{eq:rgnl-full-step} have different origins:
+the normalized incoming activity, the local determinant difference,
+and the fluctuation logarithm. We first bound the determinant term,
+then identify their evaluated sum with the exact block density.
+
+The reblocked determinant term belongs to $K_{k+1}^x$.
+Indeed the scaled arguments lie in its inverse domain,
+and each summand is analytic and reads only fine
+bonds meeting $X$. These scale to bonds meeting $Y$.
+There are no legs. The lattice symmetry permutes the
+reblocking summands; local gauge shifts of the two
+slots become the corresponding real shifts on these
+fine read bonds, where determinant locality and gauge
+invariance apply. Evenness of $E_k^d$ gives charge
+conjugation, and its conjugation identity gives reality.
+The pointwise bound
+\exteq{82}{FermionBlockManuscript} and
+\exteq{83}{NormalizedContraction} show
+\begin{align}
+ \|\mathcal L\delta E_k^{\mathrm{det}}\|_{k+1}^x
+    &\le8c_{\mathrm{rb}}L^3C_dM^3e_k^{1/4}
+      \le e_k^{1/4-2\varepsilon}
+      \le e_{k+1}^{1/4-2\varepsilon}.
+                                      \label{eq:rgnl-reblocked-determinant}
+\end{align}
+Here $L(\kappa-\kappa_0-1)\ge\kappa$ controls the
+remaining exponential weight, and the fixed charge
+condition is
+$8c_{\mathrm{rb}}L^3C_dM^3e_k^{2\varepsilon}\le1$.
+Restriction to $\mathscr C=0$ gives the same result
+for $\mathcal LE_k^{\mathrm{det}}$.
+
+\begin{proof}[Proof of \cref{thm:rgnl-current-step}]
+Use the notation of \cref{prop:rg-step-density-identity},
+with $A=\mathscr A'_L$, $B=A+\mathscr C$ and
+$Z=Z(1)$ the full-strength photon fluctuation.
+The primitive families satisfy their exact identities
+at full strength:
+$H_k(1,B)=H_k(B)$, $\Gamma_k(1,B)=\Gamma_k(B)$, and
+$\sum_XM_k(X,B)=b_k-D_k(B)$ for $k\ge1$.
+The induced fields obey
+\[
+ \psi^{0,\#}=H_k^\#(B)\Psi^c,\qquad
+ H_k^\#(B)\Psi^f=\psi^{0,\#}+W_k^\#(1,B).
+\]
+Define three evaluation homomorphisms. Let $\operatorname{ev}$
+send old generators to $\psi^{0,\#}$ and fix $W$;
+let $\operatorname{ev}_1$ send them to $H_k^\#(B)\Psi^f$;
+for $k\ge1$, let $\operatorname{ev}_f$ additionally send
+$\Psi,\bar\Psi$ to $\Psi^f,\bar\Psi^f$.
+At zero take $\operatorname{ev}_f=\operatorname{ev}_1$.
+These maps exist since their images are odd and have
+the required antiperiodicity. They commute with the
+finite coefficient integrals; $\operatorname{ev}$ also
+commutes with Berezin integration, since it fixes $W$.
+
+On the first contours $\mathcal C_rf=f(1)-f(0)$.
+For $G_1$, summing the local primitives gives the
+Dirac difference
+$-\langle\bar\Psi,(D_k(B+Z)-D_k(B))\Psi\rangle_1$.
+For $G_2,G_3$, evaluating
+$\psi^\#+J_k^\#(1,B,Z)\Psi$ gives
+$H_k^\#(B+Z)\Psi^f$.
+The evaluations of their contour differences therefore give
+\begin{equation}\label{eq:rgnl-first-contour-evaluation}
+ \operatorname{ev}_f\sum_X\sum_{i\le3}G_i(1,X)
+  =\mathrm{Act}_k^x[m',\mathscr E^r](A+Z,\mathscr C;\Psi^f)
+       -\mathrm{Act}_k^x[m',\mathscr E^r](A,\mathscr C;\Psi^f).
+\end{equation}
+At zero the explicit first vertex gives this same
+identity with the chamber pairing: $D_0(B)=D_B+\mu$
+and the mass form has no connection dependence.
+
+The reconstruction left inverse gives, on every local
+first expression,
+$\operatorname{ev}_1\operatorname{sub}_{Y,B}
+=\operatorname{ev}_f$.
+This follows on the $\Psi$ generators from $T_k(B)H_k(B)=1$
+and on the old generators from their definition.
+Adding $W_k^\#(1,B)$ to $\psi^\#$ in a polynomial and then
+applying $\operatorname{ev}$ gives
+$\operatorname{ev}_1$ applied to that polynomial.
+Apply these identities to
+\eqref{eq:rgnl-two-localization-sums}.
+The evaluated $G_{\le3}^{\,W}$ sum is
+\eqref{eq:rgnl-first-contour-evaluation}.
+The evaluated polynomial contours $G_4,G_5$ give
+\[
+ I_k^x[m',\mathscr E^r](A,\mathscr C;\Psi^f)
+                      -I_k^x[m',\mathscr E^r](A,\mathscr C;\Psi^c).
+\]
+Consequently
+\[
+ \operatorname{ev}\sum_YF(Y)=V_k^x,\qquad
+ \Xi_k^x
+     =\exp\left\{\sum_X
+                  \operatorname{ev}E_k^\#(m,\mathscr E)(X;A,\mathscr C)\right\}.
+\]
+The second equality is
+\eqref{eq:rgnl-log-identity} evaluated by
+$\operatorname{ev}$; its evaluation commutes with the
+integrals as just noted.
+
+The other remaining factor is the determinant quotient.
+Equation~\exteq{78}{FermionBlockManuscript} gives
+\[
+ \frac{\delta Z_k(B)}{\delta Z_k(0)}
+      =\exp\left\{\sum_X\delta E_k^{\mathrm{det}}(X;A,\mathscr C)
+                               +\sum_XE_k^{\mathrm{det}}(X,\mathscr C)\right\}.
+\]
+On inserted fields adjustment changes no value:
+$\operatorname{ev}R\mathscr E(X)
+=\operatorname{ev}(R\mathscr E)^{\mathrm{nat}}(X)$.
+The equality is the telescoping reconstruction identity
+for a small polymer and the definition for a large one.
+Finally $\operatorname{ev}=\operatorname{ev}'S_L$,
+where $\operatorname{ev}'$ inserts the outgoing fields.
+Each fine polymer has exactly one outgoing reblocking
+polymer. Thus the three activity sums combine into the
+outgoing $\mathscr E^+$, and the two scalar external sums
+combine into \eqref{eq:rgnl-external-scalar-map}.
+Insert these identities in
+\eqref{eq:rg-step-density-identity}. All exponents are
+even and commute, so their sums give
+\eqref{eq:rgnl-exact-step}, with exactly its previously
+derived mass, vacuum and determinant normalization.
+
+Integrate over the outgoing generators and apply the exact
+marginal \eqref{eq:rg-step-block-marginal}. This gives
+\eqref{eq:rgnl-integrated-step}.
+The integrand is admissible throughout the photon box:
+Theorem~\extref{B}{MaxwellBlockManuscript} places
+$A_k^{\min}(A')+\mathrm{Sq}_k\zeta$ in
+$\mathrm{Dom}_k$, and its reconstructed connection is
+an affine, continuous function of $\zeta$.
+The density coefficients are analytic in this connection
+on its operator and activity domains, hence continuous
+and integrable on the compact box.
+The external scalar factor is fixed during this integral.
+No condition on the harmonic part of $A'$ enters.
+
+The three terms of \eqref{eq:rgnl-full-step} belong to
+$K_{k+1}^x$ by Proposition~\extref{6.1}{NormalizedContraction},
+\eqref{eq:rgnl-reblocked-determinant}, and
+\cref{prop:rgnl-scaled-correction}.
+Their respective norms are bounded by the three terms
+in \eqref{eq:rgnl-activity-step-bound}.
+Equation~\exteq{46}{NormalizedContraction} bounds the
+first term with the stronger exponent $3\varepsilon/2$.
+The mass and vacuum extraction bounds give
+\eqref{eq:rgnl-mass-step-bound} and
+\eqref{eq:rgnl-vacuum-step-bound}, since
+\[
+ 0\le\delta\varepsilon_k^0
+        \le12\exp(-p_{0,k}^2/2)\le e_k^7.
+\]
+At zero all incoming extracted terms vanish.
+The exact algebra uses all $192n_0$ pairs with the
+weight $1/48$ and integrates to the $4n_1$-pair
+outgoing density. There is no removed multiplicity
+or additional vacuum normalization. The displayed
+zero-level formulas and bounds follow.
+\end{proof}
+
+The restriction to zero external connection commutes
+with all three terms of \eqref{eq:rgnl-full-step}.
+The determinant difference there becomes
+$E_k^d(X,\mathscr A)-E_k^d(X,0)$, and the external scalar
+map preserves $\mathfrak P_k(\cdot,0)=0$.
+Thus \eqref{eq:rgnl-exact-step} and
+\eqref{eq:rgnl-integrated-step} also give the step without
+a slot, with incoming activity $\mathscr E|_0$.
+
+The displayed norm estimates depend on the running charge
+and the fixed constants, and on no side or harmonic part.
+They were proved for any primitive system with the stated hypotheses on
+the present torus. Identifying the outputs from different
+systems or different volumes requires the separate
+comparison arguments; it does not follow from these bounds.
+
+
 \printbibliography
 \end{document}

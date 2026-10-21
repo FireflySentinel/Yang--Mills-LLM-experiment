@@ -1,10 +1,13 @@
-These are the TeX sources of the AI-written manuscript CVM1.
+TeX source of the AI-written manuscript CVM1.
 
-Run these commands from this directory using a TeX distribution with the required packages:
+This package contains one complete manuscript TeX file and its required supporting files.
+Copy the package into a temporary directory outside the repository. Run the commands there.
+Keep the resulting PDF and generated bibliography, then remove the temporary directory.
 
-pdflatex -interaction=nonstopmode -halt-on-error CVM1.tex
+pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error CVM1.tex
 biber CVM1
-pdflatex -interaction=nonstopmode -halt-on-error CVM1.tex
-pdflatex -interaction=nonstopmode -halt-on-error CVM1.tex
+pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error CVM1.tex
+pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error CVM1.tex
+pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error CVM1.tex
 
 The published PDF is in the parent directory.

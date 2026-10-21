@@ -2,7 +2,13 @@
 \documentclass[11pt,letterpaper,reqno]{amsart}
 \usepackage[bibliography]{manuscript-style}
 \usepackage{mathrsfs}
-\input{notation}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\E}{\mathbb E}
+\newcommand{\dd}{\mathrm d}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\tr}{tr}
 \allowdisplaybreaks
 \title[Source identities and reference response]{Exact source identities and normalized reference response for lattice QED in three dimensions}
 \date{}
@@ -22,16 +28,3635 @@ the ultraviolet cutoff, on a nonempty interval of charges.
 \end{abstract}
 \maketitle
 \tableofcontents
-\input{introduction}
-\input{probes}
-\input{external}
-\input{scales}
-\input{inputs}
-\input{factor}
-\input{one-cell}
-\input{marked}
-\input{complement}
-\input{jets}
-\input{threshold}
+\section{Introduction}\label{sec:rrm-introduction}
+
+We use the chamber regulator with weights $(6,6\sqrt2,6\sqrt2,6)$
+and Wilson parameter $0<\rho<1$. The operator $D^{\rm ch}[B]$
+acts on four-component spinors with $48$ chamber labels per site,
+antiperiodic in every coordinate; its argument $B$ is the bond phase.
+The stencil is recalled in \cref{subsec:rrm-regulator}.
+
+Fix the block construction of \cite[Proposition~4.1 and \S4.1--4.4]{QED3Integration},
+with its positive charge ceilings $e_1\le e_0<1$ and the
+common-pair theorem \cite[Theorem~D]{CoverTuning}.
+Thus $L\ge13$ is odd, $M=L^m$ with $m\in\Z_{\ge2}$,
+$0<\alpha<1$, $1-\alpha<\varepsilon\le1/200$, and the localization and cutoff
+powers are $r_{\rm loc}=2$, $p_0=9$, $p=19$.
+The fixed ceilings denoted by $e_0,e_1$ here are the
+$\bar e_0,\bar e_1$ of \cite{QED3Integration};
+they are distinct from the running charge $e_j$ at $j=0$.
+These fixed constants include the photon and fermion inverse bounds,
+the exact block step and the terminal conditions. The parameter input is Proposition~4.1 of \cite{QED3Integration},
+which supplies the construction and charge ceilings before any
+probe-dependent restriction. The response estimates are proved here.
+
+For $0<\bar m\le1$ put
+\[
+ h=L^{\lfloor\log_L\bar m^{-1}\rfloor},\qquad
+ \eta=L^{-N},\qquad q=e\sqrt\eta,\qquad K=N+\log_Lh.
+\]
+Let $r_K$ be the least nonnegative integer power of $L$ at least
+$[-\log(e\sqrt h)]^2$, and set
+\[
+ R_{\rm top}=hMr_K,\qquad R^*=R_{\rm top}/L,\qquad
+ n_*=R^*/\eta,\qquad \ell_c=R^*/(2L),\qquad N_*=8L^3.
+\]
+The finite threshold $N_{\rm ref}(e)$ and stopping level on $R^*$
+are those of \cite[Proposition~6.1 and (53)]{CoverTuning}.
+For $N\ge N_{\rm ref}(e)$ use the real pair
+$P_N(e)=(m_{0,N},\varepsilon_{0,N}^{\rm v})$ selected on
+$R_{\rm top}$ by \cite[Theorem~D]{CoverTuning}, and write
+$\boldsymbol\mu_N=\bar m\eta+m_{0,N}$.
+This same pair is used for every source and every twist.
+Its vacuum factor cancels from the normalized response below.
+
+Fix a real nonzero $\beta\in C_c^\infty(\R^3;\Lambda^2)$,
+put $f=dd^*\beta$, and let $D_\beta$ be the side of a least
+coordinate cube containing $\supp\beta$. Enlarge that cube by two
+in each direction to obtain $Q_\beta$ of side
+$D_\beta^{\rm buf}=D_\beta+4$ and center $z_\beta$.
+With $J_\eta$ denoting cube averaging and $\delta_{\eta,\mu}$
+the centered difference, define the covering bond cochain
+\begin{equation}\label{eq:rrm-probe-definition}
+ \widehat a^o_\nu(x)=
+ -\eta^{1/2}\sum_{\mu\ne\nu}
+ (\delta_{\eta,\mu}J_\eta\beta_{\mu\nu})
+                         (\eta x+\eta e_\nu/2).
+\end{equation}
+A placement $v\in\eta\Z^3$ is admitted when
+$v+Q_\beta\subset[\ell_c/8,7\ell_c/8]^3$.
+Translate the probe by $v$, reflect it into the cells indexed by
+$\mathcal C_*=(\Z/2L\Z)^3$, and periodize on $C(n_*)$.
+The resulting cochains are $\widehat a_c$; the reflection maps
+and their orientation action are specified in \cref{sec:reference-cells}.
+They have mutually orthogonal curvatures, all of squared norm
+$v_\eta=\|d\widehat a^o\|_{\ell^2}^2$.
+
+Write $C(n_*)=\Z^3/n_*\Z^3$ with its oriented cubical cells.
+Let $\gamma_{n_*}$ be the standard Gaussian on its exact real
+two-cochains, with counting inner product. For such a
+curvature $u$, let $A(u)$ be its mean-zero transverse potential.
+Set $H_{\theta,\nu}=\theta_\nu/(qn_*)$ and
+$a(t)=e^{-1}\sum_ct_c\widehat a_c$. Define
+\begin{equation}\label{eq:rrm-normalized-response}
+ \mathring\Phi(t)=
+ \frac{\displaystyle\int_{[-\pi,\pi]^3}\frac{\dd\theta}{(2\pi)^3}
+       \int\det\bigl(D^{\rm ch}[q(A(u)+H_\theta+a(t))]
+                         +\boldsymbol\mu_N\bigr)\,\dd\gamma_{n_*}(u)}
+      {\displaystyle\int_{[-\pi,\pi]^3}\frac{\dd\theta}{(2\pi)^3}
+       \int\det\bigl(D^{\rm ch}[q(A(u)+H_\theta)]
+                         +\boldsymbol\mu_N\bigr)\,\dd\gamma_{n_*}(u)}.
+\end{equation}
+The denominator is positive, including when the tuned total mass
+has either sign. The free one-cell ratio uses the positive reference mass:
+\begin{equation}\label{eq:response-free-ratio}
+ N_0(t)=\frac{\det\bigl(D^{\rm ch}[q(t/e)\widehat a_0]
+                                      +\bar m\eta\bigr)}
+                   {\det\bigl(D^{\rm ch}[0]+\bar m\eta\bigr)},
+ \qquad c_m=N_0^{(m)}(0),\quad m=2,4.
+\end{equation}
+These are ordinary derivatives of the ratio. Put
+\[
+ \Theta_m^{(0)}=
+ \left|\left[\prod_{c\in\mathcal C_*}
+           (\partial_{t_c}^m-c_m)\right]\mathring\Phi(0)
+                                      \right|^{1/N_*},\qquad
+ \mathfrak e=\tfrac12(1/4-9\varepsilon)-12\varepsilon>0.
+\]
+
+\begin{theorem}[Normalized reference response]\label{thm:rrm-main}
+For the fixed construction, mass $0<\bar m\le1$, and probe $\beta$
+above, there is $e_{\rm RR}>0$ such that for every
+$0<e\le e_{\rm RR}$ and every integer $N\ge N_{\rm ref}(e)$,
+the function \eqref{eq:rrm-normalized-response} is entire and
+\begin{equation}\label{eq:rrm-main-bound}
+ \Theta_4^{(0)}\le C e^{\mathfrak e},\qquad
+ (1+|c_2|)\Theta_2^{(0)}\le C e^{\mathfrak e}.
+\end{equation}
+The constants are independent of $N$ and of the admitted placement.
+Every centered placement,
+$|v+z_\beta-(\ell_c/2)(1,1,1)|_\infty\le\eta/2$, is admitted
+in this range. One may take
+$C=3\cdot10^5(1+\sqrt h\,C_\beta)^4h^{1/8}$,
+where the finite, charge-independent $C_\beta$ is defined in
+\eqref{eq:interacting-uniform-probe-constants}.
+
+Let $\mathbb E^{(0)}$ denote the normalized zero-flux curvature law
+on this same reference torus and at the same tuned mass.
+Equivalently it is the probability law of $F^{\rm u}=u$ obtained
+by weighting $\gamma_{n_*}$ with the zero-source twist-averaged
+determinant in \eqref{eq:rrm-normalized-response}.
+For $X_c=\langle d\widehat a_c,F^{\rm u}\rangle$ and
+$H_2(y)=y^2-v_\eta$, $H_4(y)=y^4-6v_\eta y^2+3v_\eta^2$,
+\begin{equation}\label{eq:rrm-main-wick}
+ \mathbb E^{(0)}\prod_{c\in\mathcal C_*}
+             (e^{-m}H_m(X_c)-c_m)
+       =\left[\prod_{c\in\mathcal C_*}
+           (\partial_{t_c}^m-c_m)\right]\mathring\Phi(0),
+ \qquad m=2,4.
+\end{equation}
+All expectations are finite. The response estimate concerns the full
+fixed family of $N_*=8L^3$ cells and the harmonic-averaged zero-flux law.
+\end{theorem}
+
+The proof has two distinct parts. The exact identities require no
+renormalization estimates. Integer cochain unfolding retains the gauge
+and harmonic Jacobians; a real source shift, followed by analytic
+continuation, then gives \eqref{eq:rrm-main-wick}.
+For the quantitative bound, the terminal density retains the external
+connection throughout the common trajectory. Its logarithm is separated
+into the free one-cell logarithms, their errors, and terms involving
+several cells. A tree expansion preserves the distance between marked
+cells and bounds the latter terms exponentially in their separation.
+
+The restricted terminal density defines a positive measure of mass at
+most one. The omitted configurations have small probability under the
+zero-flux Gaussian bound. A two-constants estimate transfers this
+smallness to the complex coefficient norm needed for differentiation.
+In the ring retaining degree at most four in each source, every error
+family which misses a cell is annihilated by that cell's free factor.
+The surviving families therefore carry a power of the error for every
+cell. This proves the estimate after taking the $N_*$th root.
+The final section verifies all additional response inequalities on one
+positive charge interval, including at jumps of the rounded scales.
+
+These are the source and response arguments of
+\cite[\S19--20, \S21.1, \S23]{QED3Master}.
+The terminal operator estimates and exact Borel density used below are
+proved in \cite[Theorem~B, \S6 and Appendix~A]{TerminalPressure}.
+The free ratio has the convention of
+\cite[Theorem~B]{PositiveProbe}; its coefficient estimates at the
+analytic radius required here are proved in \cref{subsec:interacting-one-cell}.
+No sign condition on the continuum fourth coefficient is needed.
+Transfer to larger tori and other flux sectors is a subsequent result.
+
+\subsection{Regulator and elementary conventions}\label{subsec:rrm-regulator}
+Let $\sigma_\mu$ be the Pauli matrices and
+$\gamma_\mu=\sigma_3\otimes\sigma_\mu$.
+The labels $g\in O_{\rm cub}=O(3)\cap\mathrm{GL}(3,\Z)$ are
+the signed permutation matrices. Let $s_0$ reverse coordinate three,
+$s_1,s_2$ exchange $(2,3)$ and $(1,2)$, and let $r_{e_1}$ reverse
+coordinate one. Put
+\[
+ n_0=e_3,\quad n_1=(e_2-e_3)/\sqrt2,\quad
+ n_2=(e_1-e_2)/\sqrt2,\quad n_3=-e_1,\qquad
+ M_i(g)=\tfrac12w_i(\rho+\gamma\cdot gn_i).
+\]
+On a unit torus the chamber operator is
+\begin{equation}\label{eq:rrm-regulator}
+ \begin{split}
+ (D^{\rm ch}[B]\psi)(c,g)={}&
+ \sum_{i=0}^2M_i(g)\bigl(\psi(c,g)-\psi(c,gs_i)\bigr)\\
+ &+M_3(g)\bigl(\psi(c,g)
+       -\mathrm e^{iB(c,c+ge_1)}\psi(c+ge_1,gr_{e_1})\bigr).
+ \end{split}
+\end{equation}
+Reversed bonds carry the negative cochain value.
+We write $D_A=D^{\rm ch}[qA]$ in the unit-lattice source identities.
+At mesh $\eta_j$, the external hop and the bond phase have the
+corresponding factors $\eta_j^{-1}$ and $e_j\eta_j$.
+The spinor pairing has weight $1/48$ per chamber label; its constant
+weight does not change a finite-dimensional determinant.
+
+For smooth functions,
+\[
+ J_\eta v(y)=\eta^{-3}\int_{[-\eta/2,\eta/2]^3}v(y+z)\,\dd z,
+ \qquad
+ \delta_{\eta,\mu}v(y)=
+ \frac{v(y+\eta e_\mu/2)-v(y-\eta e_\mu/2)}{\eta}.
+\]
+We use $\tau_vf(x)=f(x-v)$ and the seminorm
+$|\beta|_{C^j}=\max_{\mu<\nu,|\alpha|\le j}
+\|\partial^\alpha\beta_{\mu\nu}\|_\infty$.
+Counting cochain pairings are bilinear after complexification.
+Distances are periodic sup distances. The symbol $e$ is the physical
+charge; numerical exponentials are written $\exp(\cdot)$ or $\mathrm e$.
+\section{Probes on the reference cells}\label{sec:reference-cells}
+
+The sampling and placement arguments are those of
+\cite[\S19]{QED3Master}. The external-source identity uses a finitely supported bond cochain.
+The continuum cumulant uses the test $f=dd^*\beta$. We identify the
+discrete source with a nearby smooth test and place it strictly inside
+one reference cell. Copies in distinct cells then have orthogonal
+curvatures, which makes the normal-ordering factor separate over cells.
+
+\subsection{The discrete source and the smooth test}
+
+Fix a real nonzero $\beta\in C_c^\infty(\R^3;\Lambda^2)$.
+Use the unbuffered support-cube side $D_\beta$ from the introduction,
+and write
+$D_\beta^{\mathrm{buf}}=D_\beta+4$. Choose a cube
+$Q_\beta=z_\beta+[-D_\beta^{\mathrm{buf}}/2,
+D_\beta^{\mathrm{buf}}/2]^3$ containing
+$\supp\beta+[-2,2]^3$. Use the centered differences
+$\delta_{\eta,\mu}$ and cube average $J_\eta$ defined in the introduction.
+Put
+\begin{align}
+ a'_{\eta,\nu}&=-\sum_{\mu\ne\nu}
+                          \delta_{\eta,\mu}\beta_{\mu\nu},\notag\\
+ f^\eta_{\mu\nu}&=\delta_{\eta,\mu}a'_{\eta,\nu}
+                         -\delta_{\eta,\nu}a'_{\eta,\mu}.
+                                      \label{eq:cells-smooth-test}
+\end{align}
+All these functions are smooth and real. Since each centred
+difference enlarges support by at most $\eta/2$ in its direction,
+\[
+ \supp f^\eta,\ \supp J_\eta a'_\eta
+                   \subset\supp\beta+[-\eta,\eta]^3.
+\]
+In particular their supports lie in $Q_\beta$ for $0<\eta\le1$.
+
+On the physical lattice $\eta\Z^3$ set
+\[
+ b_{\eta,\mu\nu}(c)
+       =(J_\eta\beta_{\mu\nu})
+                       (c+\eta(e_\mu+e_\nu)/2),\qquad
+ a_\eta^o=d_\eta^*b_\eta.
+\]
+Here $d_\eta$ is the mesh-normalized forward cochain differential
+and $d_\eta^*$ its adjoint for the pairing $\eta^3\sum$.
+The adjoint formula gives
+\begin{equation}\label{eq:cells-midpoint-source}
+ a_{\eta,\nu}^o(c)=(J_\eta a'_{\eta,\nu})(c+\eta e_\nu/2).
+\end{equation}
+Transport to the unit lattice and define
+\[
+ \hat{\mathfrak a}_\eta^o(x,x+e_\nu)
+                    =\eta^{1/2}a_{\eta,\nu}^o(\eta x).
+\]
+Its coboundary uses unscaled unit-lattice differences. The
+midpoint identities yield
+\begin{equation}\label{eq:cells-source-curvature}
+ d\hat{\mathfrak a}_\eta^o(\sigma)
+                        =f^\eta_{[\eta]}(\sigma).
+\end{equation}
+Indeed, the bond values in the curl are evaluated at the two
+points displaced by $\pm\eta e_\mu/2$ from the plaquette centre.
+Their difference is $\eta\delta_{\eta,\mu}J_\eta a'_{\eta,\nu}$.
+Commutation of the average and differences then gives
+$\eta^{3/2}J_\eta f^\eta$ at that centre, which is the right
+side of \eqref{eq:cells-source-curvature}.
+
+For a compactly supported smooth two-form $g$, let $g_{[\eta]}$
+be the covering plaquette cochain with value $\eta^{3/2}J_\eta g$
+at the plaquette center. On a torus $C(n)$ of physical side
+$R=n\eta$, periodize this cochain by summing its translates by
+$n\Z^3$. Write $F^\sharp$ for the periodic componentwise step
+field whose value on the physical cube centered at a plaquette
+is $\eta^{-3/2}F^{\rm u}$. Then $F^\sharp(g)$ is the finite-torus
+pairing of the periodized $g_{[\eta]}$ with $F^{\rm u}$.
+Periodizing the source likewise gives the exact observable identity
+\begin{equation}\label{eq:cells-observable}
+ \langle d\hat{\mathfrak a}_\eta,F^{\mathrm u}\rangle
+                            =F^\sharp(f^\eta).
+\end{equation}
+The source is transverse: $a_\eta^o=d_\eta^*b_\eta$ is
+orthogonal to every closed bond cochain, by summation by
+parts. This applies to both the covering cochain and its
+periodization.
+
+The continuum approximation has the uniform bound
+\begin{equation}\label{eq:cells-test-error}
+ \|f^\eta-f\|_{H^s}\le\eta^2\|\beta\|_{H^{s+4}}
+                         \qquad(s\in\R,\ 0<\eta\le1).
+\end{equation}
+To see this, the difference symbol is
+$is_\mu(p)$ with $s_\mu(p)=2\eta^{-1}\sin(\eta p_\mu/2)$.
+One has $|s_\mu|\le|p_\mu|$ and
+$|s_\mu-p_\mu|\le\eta^2|p_\mu|^3/24$, so
+\[
+ |s_\mu s_\nu-p_\mu p_\nu|
+                               \le\eta^2|p|^4/12.
+\]
+Each component of $f^\eta-f$ contains four such terms.
+Cauchy--Schwarz on these terms, followed by summation over
+the three two-form components, gives
+$|\widehat{f^\eta-f}|^2\le(\eta^2/3)^2|p|^8|\hat\beta|^2$.
+Plancherel's theorem proves \eqref{eq:cells-test-error}.
+
+\subsection{Reference geometry and placement}
+
+Let $T^*\ge1$ be the reference exponent furnished by the
+construction, and put
+\[
+ R^*=hL^{T^*},\qquad n_*=R^*/\eta,\qquad
+ p_{\rm cell}=n_*/L,\qquad w=p_{\rm cell}/2,\qquad \ell_c=\eta w=R^*/(2L).
+\]
+Since $h$ and $\eta^{-1}$ are powers of the odd integer $L$,
+$p_{\rm cell}$ is an odd integer, $w\in\Z+1/2$, and the open unit-lattice
+reference cells are $Q_c^\circ=w(c+(0,1)^3)$.
+The reference torus $C(n_*)$ has $2L$ cells per side and
+$N_*=8L^3$ in all.
+
+The probe fits the reference cells if
+\begin{equation}\label{eq:cells-fit}
+ D_\beta^{\mathrm{buf}}+3\eta\le\ell_c.
+\end{equation}
+A placement is a vector $v\in\eta\Z^3$ satisfying
+\[
+ |v+z_\beta-(\ell_c/2)(1,1,1)|_\infty\le\eta/2.
+\]
+Such a vector always exists by coordinatewise rounding.
+It translates $Q_\beta$ into $[\eta,\ell_c-\eta]^3$:
+the displacement of its centre is at most $\eta/2$, and
+the half-side is at most $(\ell_c-3\eta)/2$.
+Hence
+\begin{equation}\label{eq:cells-probe-margin}
+ \supp(\tau_v\beta)
+                     \subset[2+\eta,\ell_c-2-\eta]^3.
+\end{equation}
+Form the source $\hat{\mathfrak a}^o$ with this translated
+probe.
+
+Every endpoint of a bond in the source support is within
+$3\eta/2$ in sup distance of $\supp(\tau_v\beta)$.
+By \eqref{eq:cells-probe-margin}, its lattice coordinates
+therefore lie in
+$[2/\eta-1/2,w-2/\eta+1/2]$.
+If a plaquette has nonzero $d\hat{\mathfrak a}^o$, at least
+one of its boundary bonds belongs to that support. Its
+other two corners are one unit away. Thus the whole
+plaquette lies in the box
+\begin{equation}\label{eq:cells-support-box}
+ B_0=(w/2)(1,1,1)+[-r_0,r_0]^3,\qquad
+ r_0=w/2-2/\eta+3/2.
+\end{equation}
+Condition \eqref{eq:cells-fit} gives $r_0\ge3$.
+The distance of this box from each bounding wall is
+$2/\eta-3/2\ge1/2$, so $B_0\subset Q_0^\circ$.
+Its reflected copies lie strictly inside the corresponding
+cells. This is the support margin needed by the local
+source identity.
+
+\subsection{Orthogonal sources and translated observables}
+
+For a cell index $c$, define the wall map $g_c$ coordinatewise:
+if $c_\mu=2i$, it sends $x_\mu$ to $x_\mu+2iw$; if
+$c_\mu=2i+1$, it sends $x_\mu$ to $(2i+2)w-x_\mu$.
+It carries $Q_0^\circ$ to $Q_c^\circ$ and acts on cochains by
+transporting oriented bonds, with a sign upon orientation reversal. Put
+$\hat{\mathfrak a}_c^o=(g_c)_*\hat{\mathfrak a}^o$ on the
+covering lattice and periodize it on $C(n)$, where $p_{\rm cell}$ divides
+$n$ and $n\ge n_*$, to obtain $\hat{\mathfrak a}_c$.
+The period lattice identifies cell indices modulo
+$(2n/p_{\rm cell})\Z^3$. The coboundary commutes with these actions
+and periodization, and its support lies in $B_c=g_cB_0$.
+For cell representatives on this torus,
+\begin{equation}\label{eq:cells-orthogonality}
+ \langle d\hat{\mathfrak a}_c,d\hat{\mathfrak a}_{c'}\rangle_n
+             =v_\eta\,\mathbf1_{\{c=c'\}},\qquad
+ v_\eta=\|d\hat{\mathfrak a}^o\|^2.
+\end{equation}
+The covering norm is the unweighted $\ell^2$ norm, and the
+torus pairing is the counting pairing.
+
+To prove the identity, unfold one factor:
+\[
+ \langle d\hat{\mathfrak a}_c,d\hat{\mathfrak a}_{c'}\rangle_n
+  =\sum_{\sigma}\sum_{z\in\Z^3}
+       d\hat{\mathfrak a}_c^o(\sigma)
+       d\hat{\mathfrak a}_{c'}^o(\sigma+nz).
+\]
+A nonzero summand has $\sigma\subset Q_c^\circ$ and
+$\sigma+nz\subset Q_{c'}^\circ$. The open cells are disjoint,
+so necessarily $c'=c+(2n/p_{\rm cell})z$. For distinct torus cells
+there is no such $z$. For the same cell exactly one translate
+can contribute; its summands are the squares of
+$d\hat{\mathfrak a}_c^o$. The wall action preserves the
+counting norm, which proves \eqref{eq:cells-orthogonality}.
+Changing the placement by a vector in $\eta\Z^3$ translates
+the covering source by an integer vector. Thus $v_\eta$
+depends only on $\beta$ and $\eta$, and is independent of
+the torus and the placement.
+
+For a closed cochain $u$ define
+$X_c(u)=\langle d\hat{\mathfrak a}_c,u\rangle_n$.
+Every polynomial in this observable is read by one and the
+same local integrand on all these tori. On the cover its
+local expression is
+\[
+ \widehat A\longmapsto
+ P\left(\sum_{\sigma\subset B_c}
+             d\hat{\mathfrak a}_c^o(\sigma)(d\widehat A)(\sigma)\right).
+\]
+This is a scalar gauge-invariant polynomial. Cauchy--Schwarz
+bounds its argument by
+\[
+ \sqrt{v_\eta}\left(\sum_{\sigma\subset B_c}
+                      |d\widehat A(\sigma)|^2\right)^{1/2}.
+\]
+The polynomial is therefore bounded by
+\[
+ C_{\mathrm{pol}}\exp\left(\frac14\sum_{\sigma\subset B_c}
+                                      |d\widehat A(\sigma)|^2\right)
+\]
+for a finite constant $C_{\mathrm{pol}}$ depending on the polynomial
+and the covering source. This is the local Gaussian-growth condition used for the
+observable class $\mathcal A(Q_c^\circ)$ in \cite[\S4.1, (46)]{ChamberLattice}.
+
+The local boxes embed in the torus. Indeed, writing
+$p_{\rm cell}=2m_{\rm cell}+1$, condition \eqref{eq:cells-fit} gives $m_{\rm cell}\ge7$,
+and
+\[
+ 2r_0+2=w-4/\eta+5\le w+1<p_{\rm cell}\le n.
+\]
+For each $c$, the translates of $B_c+[-1,1]^3$ by
+$nz$, $z\in\Z^3$, are consequently disjoint.
+On a local lift, $d\widehat A=F^{\mathrm u}$; unfolding
+the finite cochain sum reads the polynomial as $P(X_c)$.
+For a real polynomial its reflected copy from the base
+cell is exactly $P(X_c)$, since conjugation fixes its
+coefficients. This applies to the centered Wick polynomials.
+
+The variance in \eqref{eq:cells-orthogonality} approaches
+the continuum normal-ordering variance:
+\begin{equation}\label{eq:cells-variance-limit}
+ \left|\sqrt{v_\eta}-\|f\|_2\right|
+ \le21\eta|\beta|_{C^3}(D_\beta^{\mathrm{buf}})^{3/2}
+                      +\eta^2\|\beta\|_{H^4}.
+\end{equation}
+Let $\Pi_\eta f^\eta$ be the componentwise cell-average step
+function on a period cube. By \eqref{eq:cells-source-curvature},
+its $L^2$ norm is $\sqrt{v_\eta}$.
+Each first derivative of $f^\eta_{\mu\nu}$ is bounded
+by $4|\beta|_{C^3}$, from the four centred-difference
+terms in \eqref{eq:cells-smooth-test} and the identity
+$\delta_{\eta,\mu}g=\int_{-1/2}^{1/2}
+(\partial_\mu g)(\,\cdot+t\eta e_\mu)\,\dd t$.
+The pointwise error of the cell average is at most
+$12\eta|\beta|_{C^3}$. It vanishes outside the periodic
+images of the buffered cube, whose measure in one period
+is $(D_\beta^{\mathrm{buf}})^3$.
+Summing the three component squares bounds the $L^2$
+error by $21\eta|\beta|_{C^3}(D_\beta^{\mathrm{buf}})^{3/2}$.
+The norm triangle inequality and
+\eqref{eq:cells-test-error} prove
+\eqref{eq:cells-variance-limit}.
+
+Finally the even cell indices give pure translations.
+For $y\in(R^*/L)\Z^3=p_{\rm cell}\eta\Z^3$ set
+$c(y)=2y/(p_{\rm cell}\eta)\in2\Z^3$. Then $g_{c(y)}$ is the unit-lattice
+translation by $y/\eta$, and
+\begin{equation}\label{eq:cells-translation-observable}
+ X_{c(y)}=F^\sharp(\tau_{v+y}f^\eta).
+\end{equation}
+Two such cells agree on $C(n)$ exactly when their physical
+translations agree modulo $R\Z^3$. Any fixed finite set
+of distinct translations therefore occupies distinct
+cells once the volume is sufficiently large.
+Lattice translation invariance removes the common placement
+$v$ from the expectation of any polynomial in these
+observables. Its integrability follows from Gaussian
+domination. These identities enter the subsequent volume transfer of
+\cite[Theorem~A]{VolumeTransfer}, which supplies the larger-volume estimates
+for the translates $\tau_yf^\eta$ and their passage to component cumulants.
+
+
+\section{Exact external-response identities}\label{sec:external-response}
+
+We prove the exact finite-volume identities of
+\cite[\S20]{QED3Master}. We express the generating function of a curvature observable as a
+determinant in an external connection. The identity is first proved
+in each integer flux sector. In the zero-flux sector an unfolding
+of the integer cochains replaces the compact photon integral by a
+Gaussian integral over transverse cochains and an average over the
+three twists. We compute its normalization before applying the
+source shift.
+
+\subsection{The determinant at complex connections}
+\label{subsec:external-complex-determinant}
+
+Use lattice units and fix $q>0$, $r_q=2\pi/q$ and a real lattice
+mass $\mu_{\mathrm{lat}}$. Put
+$M_{\mathrm{ch}}=\mu_{\mathrm{lat}}+\frac{\rho}{2}\sum_iw_i$.
+For the law in \cref{thm:rrm-main},
+$\mu_{\mathrm{lat}}=\boldsymbol\mu_N$.
+The weights are the standard chamber weights, and $0<\rho<1$.
+For an integer triple $n=(n_1,n_2,n_3)$ let
+\[
+ V=|n|=n_1n_2n_3,\qquad
+ B_n=\prod_{\mu=1}^3\{0,\ldots,n_\mu-1\},\qquad
+ \mathcal L_n=B_n\times\{1,2,3\}.
+\]
+In this subsection each $n_\mu$ may be as small as one.
+Cochains are periodic functions on the oriented covering cells,
+so the $3V$ link orbits remain distinct even at those small sides.
+The chamber spinors are antiperiodic in each direction and have
+dimension $192V$. Write $D_B$ for the massless chamber operator
+with phases $\exp(iqB)$, and $\det_n$ for its finite-dimensional
+determinant. In the phase convention of
+\cref{subsec:rrm-regulator}, $D_B=D^{\mathrm{ch}}[qB]$.
+The weight $1/48$ in the spinor pairing does not rescale this
+determinant.
+
+The determinant is a polynomial in the $6V$ variables
+$\exp(iqB(b))$ and $\exp(-iqB(b))$, of degree at most $32$
+in each. In particular it is entire in the complex link values.
+To see the degree bound, choose the site basis on
+$B_n\times O_{\mathrm{cub}}$ and include the antiperiodic sign
+whenever a neighbor is reduced into $B_n$. Each of the four
+rows at a site $(c,g)$ has constant entries except for the
+one external-hop block. If $ge_1=e_\mu$, this block contains
+$\exp(iqB_\mu(c))$; if $ge_1=-e_\mu$, it contains
+$\exp(-iqB_\mu(c-e_\mu))$. For a fixed oriented photon link
+there are eight labels at each end. Thus each phase variable
+occurs in exactly $8\cdot4=32$ rows. The Leibniz determinant
+chooses one entry in each row, proving the bound. The five
+site labels of the diagonal and the four hops are distinct,
+even if a side is one, so no other phase is hidden in one
+of these blocks.
+
+The two invariances needed below hold for complex cochains:
+\begin{equation}\label{eq:external-determinant-invariances}
+ \det_n(D_{B+r_qk}+\mu_{\mathrm{lat}})
+       =\det_n(D_B+\mu_{\mathrm{lat}}),\qquad
+ \det_n(D_{B+d\lambda}+\mu_{\mathrm{lat}})
+       =\det_n(D_B+\mu_{\mathrm{lat}}),
+\end{equation}
+where $k$ is integer valued and $\lambda$ is a periodic complex
+zero-cochain. The first identity follows directly from the phases.
+For the second, multiplication by $\exp(iq\lambda(c))$ preserves
+antiperiodicity and has inverse multiplication by
+$\exp(-iq\lambda(c))$. On an external hop the factor
+\[
+ \mathrm e^{iq(B-d\lambda)(c,c')}\mathrm e^{iq\lambda(c')}
+                                  =\mathrm e^{iq\lambda(c)}\mathrm e^{iqB(c,c')}
+\]
+gives $D_{B-d\lambda}=\mathrm e^{iq\lambda}D_B\mathrm e^{-iq\lambda}$.
+Internal hops lie over one photon site and give the same
+conjugation. This proves the determinant identity.
+
+For $s\ge0$ define
+\begin{align}
+ K_n(s)&=
+ \left(|M_{\mathrm{ch}}|+\frac{1+\rho}{2}
+           \left(\sum_iw_i-6+6\mathrm e^{qs}\right)\right)^{192V},
+           \notag\\
+ |\det_n(D_B+\mu_{\mathrm{lat}})|
+                   &\le K_n(\|\operatorname{Im}B\|_\infty).
+                   \label{eq:external-determinant-strip}
+\end{align}
+Indeed each chamber bond involution permutes the site representatives.
+For an internal hop its phase has modulus one; for an external
+hop the modulus is at most $\mathrm e^{q\|\operatorname{Im}B\|_\infty}$.
+The hopping matrix has norm $w_i(1+\rho)/2$. The operator norm
+is therefore bounded by the base of the power in
+\eqref{eq:external-determinant-strip}, and a determinant in dimension
+$192V$ is bounded by that norm to the same power.
+This estimate is uniform in the real part of the connection.
+
+The twist connection is
+\begin{equation}\label{eq:external-twist}
+ H_\theta=\sum_\mu\frac{\theta_\mu}{qn_\mu}\mathbf1_\mu,
+ \qquad
+ \mathbf1_\mu=\sum_{c\in B_n}\mathbf1_{(c,\mu)}.
+\end{equation}
+Its determinant has period $2\pi$ in each complex twist variable.
+For later use we need the cochain implementing this period. Set
+\[
+ k^{(\mu)}_\nu(c)=\delta_{\mu\nu}1_{\{c_\mu=n_\mu-1\}},
+ \qquad
+ \lambda^{(\mu)}(c)=-\frac{r_q}{n_\mu}c_\mu,\qquad c\in B_n,
+\]
+with periodic extension. On links not crossing the $\mu$ seam,
+$d\lambda^{(\mu)}=-r_q/n_\mu$ in direction $\mu$ and zero
+in the other directions. On a seam link its value is
+$r_q-r_q/n_\mu$. Thus
+\begin{equation}\label{eq:external-twist-period}
+ H_{2\pi e_\mu}=r_qk^{(\mu)}-d\lambda^{(\mu)}.
+\end{equation}
+The two invariances in
+\eqref{eq:external-determinant-invariances} prove the asserted
+twist period. For $n_\mu=1$, $\lambda^{(\mu)}=0$ and
+$k^{(\mu)}=\mathbf1_\mu$, so the same formula holds.
+
+\subsection{Real and integer cochains on the torus}
+\label{subsec:external-cochains}
+
+From now on $n_\mu\ge4$. The counting pairings on cochains
+are extended bilinearly when their arguments are complex.
+Use
+\[
+ V_{\mathrm g}=dC^0(n),\qquad
+ V_{\mathrm h}=\operatorname{span}_{\R}\{\mathbf1_1,\mathbf1_2,\mathbf1_3\},
+ \qquad
+ V_{\mathrm t}=(V_{\mathrm g}+V_{\mathrm h})^\perp.
+\]
+We recall the cochain arguments needed for the unfolding and
+for its Jacobian. In particular the integer condition in the
+flux sum requires an integer primitive, not merely a real one.
+
+Let
+\[
+ \mathcal P_n^{\mathrm{per}}=
+   \left\{p:p_\mu=2\pi j_\mu/n_\mu,\ 0\le j_\mu<n_\mu\right\},
+ \qquad e_p(c)=V^{-1/2}\mathrm e^{ip\cdot c},\qquad
+ \xi_\mu(p)=\mathrm e^{ip_\mu}-1.
+\]
+The characters $e_p$ are orthonormal. At each momentum $p$ the
+coboundary on exterior-valued cochains is exterior multiplication
+by $\xi(p)$. If $\iota_{\bar\xi}$ denotes contraction by $\bar\xi$,
+then
+\[
+ \iota_{\bar\xi}(\xi\wedge u)+
+                  \xi\wedge\iota_{\bar\xi}u=|\xi|^2u.
+\]
+For $p\ne0$ a closed coefficient $u$ is consequently
+$\xi\wedge(|\xi|^{-2}\iota_{\bar\xi}u)$, and is exact.
+At zero momentum the cochains are constant and the
+coboundary vanishes. Nonzero and zero modes are orthogonal,
+and taking real parts of a complex primitive gives a real
+primitive for a real cochain. Therefore
+\begin{equation}\label{eq:external-Hodge}
+ \ker(d:C^1\to C^2)=V_{\mathrm g}\oplus V_{\mathrm h},
+ \qquad C^1=V_{\mathrm g}\oplus V_{\mathrm h}\oplus V_{\mathrm t},
+ \qquad
+ \ker(d:C^2\to C^3)=dC^1\oplus\operatorname{Harm}^2.
+\end{equation}
+Here $\operatorname{Harm}^2$ is the space of constant two-cochains.
+The same Fourier formula gives $d^2=0$.
+
+For a closed integer two-cochain $z$, define
+$w_{\mu\nu}(z)$ as its sum over one coordinate $(\mu,\nu)$
+two-torus. The sum is independent of the transverse coordinate:
+sum $dz=0$ over the layer of cubes between two consecutive
+planes. Differences in the two tangential directions cancel
+by periodicity; the remaining difference is that of the two
+plane sums. The fluxes give
+\begin{equation}\label{eq:external-integer-two-exactness}
+ z\in dC^1(n;\Z)\quad\Longleftrightarrow\quad
+                         w_{\mu\nu}(z)=0\ \text{for all }\mu<\nu.
+\end{equation}
+The integer coefficients follow from the
+cellular cohomology of the product of the three subdivided
+circles. Its cochain complex is precisely the integer complex
+used here. The three coordinate two-tori give a basis of
+$H_2(T^3;\Z)$, and $H_1(T^3;\Z)$ is free. The universal
+coefficient theorem identifies $H^2(T^3;\Z)$ with
+$\operatorname{Hom}(H_2(T^3;\Z),\Z)$ by evaluation.
+The class of $z$ evaluates to $w_{\mu\nu}(z)$ on each basis
+two-torus, so it vanishes exactly when these sums vanish.
+Vanishing of this cellular class is membership in
+$dC^1(n;\Z)$.
+\cite[Theorems~3.2, 3.5 and~3B.6]{Hatcher2002}
+
+We next describe the closed integer one-cochains. If $d\lambda$
+is integer valued, its sum along a path from $0$ to $c$ shows
+that $\lambda(c)-\lambda(0)$ is integer valued. If $d\lambda=0$,
+the same path argument shows that $\lambda$ is constant.
+It follows that
+\[
+ C^1(n;\Z)\cap V_{\mathrm g}=dC^0(n;\Z).
+\]
+Each seam cochain $k^{(\mu)}$ in
+\eqref{eq:external-twist-period} is closed, because its
+multiple by $r_q$ lies in $V_{\mathrm g}+V_{\mathrm h}$.
+For an arbitrary closed integer one-cochain $k$,
+\eqref{eq:external-Hodge} gives
+$k=d\lambda+\sum_\mu t_\mu\mathbf1_\mu$.
+Its sum along a periodic $\mu$ loop is $n_\mu t_\mu$,
+an integer $j_\mu$. Subtracting
+$\sum_\mu j_\mu k^{(\mu)}$ leaves an integer exact cochain,
+so
+\begin{equation}\label{eq:external-closed-integer-one}
+ k=d\lambda'+\sum_\mu j_\mu k^{(\mu)},\qquad
+ \lambda'\in C^0(n;\Z),\quad j\in\Z^3.
+\end{equation}
+The harmonic projection of $k$ determines $j$, and then
+determines $d\lambda'$. Moreover
+\begin{equation}\label{eq:external-integer-Hodge}
+ r_qk=
+   \left(r_qd\lambda'+\sum_\mu j_\mu d\lambda^{(\mu)}\right)
+                         +H_{2\pi j}.
+\end{equation}
+The first term is exact and the second is harmonic. Their
+coupling through $j$ will matter when choosing a fundamental
+domain.
+
+The scalar Laplacian $\Delta_0=d^*d$ has eigenvalues
+$|\xi(p)|^2=\sum_\mu(2-2\cos p_\mu)$ and a one-dimensional
+kernel. Write
+\begin{equation}\label{eq:external-scalar-determinant}
+ \det{}'\Delta_0=\prod_{p\in\mathcal P_n^{\mathrm{per}}\setminus\{0\}}
+                       |\xi(p)|^2,\qquad
+ \mathcal L(n)=\log\det{}'\Delta_0.
+\end{equation}
+At each nonzero momentum the transverse one-cochains
+are the two-dimensional space $\xi(p)^\perp$.
+For $v\in\C^3$,
+\[
+ \sum_{\mu<\nu}|\xi_\mu v_\nu-\xi_\nu v_\mu|^2
+           =|\xi|^2|v|^2-|\bar\xi\cdot v|^2.
+\]
+Thus $d^*d$ acts on that transverse space as multiplication
+by $|\xi(p)|^2$, and
+\begin{equation}\label{eq:external-transverse-determinant}
+ \dim V_{\mathrm t}=2V-2,\qquad
+ \det(d^*d|_{V_{\mathrm t}})=(\det{}'\Delta_0)^2.
+\end{equation}
+Diagonalizing this positive real form gives its Gaussian integral
+\begin{equation}\label{eq:external-transverse-Gaussian}
+ \mathcal G_n:=\int_{V_{\mathrm t}}\mathrm e^{-\|dA\|^2/2}\,\dd\sigma(A)
+                    =\frac{(2\pi)^{V-1}}{\det{}'\Delta_0}.
+\end{equation}
+The measure $\sigma$ is Euclidean Lebesgue measure for the
+counting pairing, not a coordinate measure chosen along a
+nonorthogonal basis.
+
+There is one more determinant needed for the exact directions.
+The cochains $d\mathbf1_c$, $c\in B_n\setminus\{0\}$,
+form both a real basis of $V_{\mathrm g}$ and an integer
+basis of $dC^0(n;\Z)$. Indeed one subtracts the value at
+zero from a zero-cochain; independence follows because
+the resulting zero-cochain has value zero there and
+cannot be a nonzero constant. Their Gram determinant is
+\begin{equation}\label{eq:external-exact-Gram}
+ \det\big(\langle d\mathbf1_c,d\mathbf1_{c'}\rangle\big)_{c,c'\ne0}
+                           =\frac{\det{}'\Delta_0}{V}.
+\end{equation}
+To prove this formula, let $S$ be the scalar Laplacian matrix
+in the site basis. The coefficient of $t$ in $\det(t+S)$
+is $\det{}'\Delta_0$, by its eigenvalues. Multilinearity
+of the determinant in columns identifies that coefficient
+with the sum of the $V$ principal minors obtained by
+deleting one row and column. All these minors have the same
+determinant, since site translations conjugate $S$ by
+permutations. The minor at zero is the Gram matrix above.
+
+\subsection{Unfolding the zero-flux sector}
+\label{subsec:external-zero-flux}
+
+Let $\Phi$ be a Borel function on $C^2(n)$ with
+$|\Phi(u)|\le C_\Phi \mathrm e^{C_\Phi\|u\|}$.
+Let $W$ be a bounded continuous complex function on
+$C^1(n)$, invariant under addition of real exact cochains
+and of $r_q$ times integer one-cochains. Then
+\begin{align}
+ &\sum_{\substack{z\in C^2(n;\Z),\,dz=0\\w(z)=0}}
+       \int_{[0,r_q)^{\mathcal L_n}}
+            \Phi(dA+r_qz)\mathrm e^{-\|dA+r_qz\|^2/2}W(A)\,\dd A
+       \notag\\
+ &\quad=\mathcal N_n
+       \int_{[-\pi,\pi]^3}\frac{\dd\theta}{(2\pi)^3}
+       \int_{V_{\mathrm t}}
+              \Phi(dA)\mathrm e^{-\|dA\|^2/2}W(A+H_\theta)\,\dd\sigma(A),
+                                     \label{eq:external-zero-unfolding}\\
+ &\mathcal N_n=r_q^{V+2}(\det{}'\Delta_0)^{1/2}.
+                                     \label{eq:external-zero-normalization}
+\end{align}
+Both sides converge absolutely. The coefficient comes from
+the lattice of exact gauge transformations and the three
+periods of the harmonic directions; we give the unfolding
+with both contributions.
+
+First, set
+\[
+ C_q(\epsilon)=\sup_{y\in\R}\sum_{j\in\Z}
+                  \mathrm e^{-\epsilon(y+r_qj)^2}
+       \le2+r_q^{-1}\sqrt{\pi/\epsilon}\qquad(\epsilon>0).
+\]
+The bound follows by keeping the two nearest terms and comparing
+the remaining terms with Gaussian integrals over adjacent intervals,
+as in \cite[(5)]{ChamberLattice}. Summing each integer coordinate gives
+\[
+ \sum_{z\in C^2(n;\Z)}\int_{[0,r_q)^{\mathcal L_n}}
+              \mathrm e^{-\epsilon\|dA+r_qz\|^2}\,\dd A
+                     \le(r_qC_q(\epsilon))^{3V}.
+\]
+Here the integer closedness and flux restrictions have
+been dropped. Completing the scalar square bounds
+$|\Phi(u)|\mathrm e^{-\|u\|^2/2}$ by
+$C_\Phi \mathrm e^{C_\Phi^2}\mathrm e^{-\|u\|^2/4}$.
+Together with boundedness of $W$, this proves absolute
+convergence of the left side.
+
+Let $\mathcal Z^1_{\Z}=\ker d\cap C^1(n;\Z)$ and
+choose representatives $\mathcal R$ of
+$C^1(n;\Z)/\mathcal Z^1_{\Z}$. By
+\eqref{eq:external-integer-two-exactness}, $k\mapsto dk$
+is a bijection from $\mathcal R$ onto the closed
+zero-flux integer two-cochains. Put
+\[
+ P(A)=\Phi(dA)\mathrm e^{-\|dA\|^2/2}W(A),\qquad
+ \mathcal D_1=\bigcup_{k\in\mathcal R}
+                     ([0,r_q)^{\mathcal L_n}+r_qk).
+\]
+The two invariances of $W$ turn the left side of
+\eqref{eq:external-zero-unfolding} into
+$\int_{\mathcal D_1}P(A)\,\dd A$.
+The boxes are disjoint. Every $A$ has a unique decomposition
+into its coordinatewise remainder in $[0,r_q)$ and
+$r_q$ times an integer cochain. Decomposing that cochain
+into its chosen representative and a closed one shows
+that $\mathcal D_1$ is a Borel fundamental domain for
+$r_q\mathcal Z^1_{\Z}$. The function $P$ is invariant
+under that group.
+
+We replace this domain by
+\[
+ \mathcal F_{\mathrm g}
+ =\left\{r_q\sum_{c\ne0}t_c\,d\mathbf1_c:0\le t_c<1\right\},
+ \qquad
+ \mathcal F_{\mathrm h}=\{H_\theta:\theta\in[-\pi,\pi)^3\},
+ \qquad
+ \mathcal D_2=\mathcal F_{\mathrm g}+\mathcal F_{\mathrm h}
+                                      +V_{\mathrm t}.
+\]
+To check that it is a fundamental domain for the same
+group, write $A=A_{\mathrm g}+A_{\mathrm h}+A_{\mathrm t}$.
+Formula \eqref{eq:external-integer-Hodge} shows that
+subtracting $r_qk$ changes the harmonic part by
+$H_{2\pi j}$ and the exact part by
+$\sum_\mu j_\mu d\lambda^{(\mu)}+r_qd\lambda'$.
+There is exactly one $j$ placing the harmonic part
+in $\mathcal F_{\mathrm h}$. For this $j$ there is
+exactly one $d\lambda'$ placing the exact part
+in $\mathcal F_{\mathrm g}$, by the integer basis
+used in \eqref{eq:external-exact-Gram}. The transverse
+part is unchanged. Uniqueness in
+\eqref{eq:external-closed-integer-one} gives uniqueness
+of $k$. The orthogonal decomposition identifies
+$\mathcal D_2$ with a product of Borel sets, so it
+is Borel.
+
+For an integrable periodic Borel function, the integral
+over two such fundamental domains is the same.
+Indeed partition $\mathcal D_1$ into its intersections
+with $\mathcal D_2+h$, $h\in r_q\mathcal Z^1_{\Z}$,
+and translate each intersection by $-h$. They partition
+$\mathcal D_2$, and invariance of both the measure and
+the function gives equality. Tonelli proves it first
+for nonnegative functions; applying it to the modulus
+then justifies the complex case by absolute integrability.
+Thus $\int_{\mathcal D_1}P=\int_{\mathcal D_2}P$.
+
+The two finite-dimensional volumes are
+\begin{align}
+ \operatorname{vol}(\mathcal F_{\mathrm g})
+    &=r_q^{V-1}(\det{}'\Delta_0/V)^{1/2},
+                                     \label{eq:external-gauge-volume}\\
+ \dd A_{\mathrm h}
+    &=V^{1/2}q^{-3}\,\dd\theta
+      =r_q^3V^{1/2}\frac{\dd\theta}{(2\pi)^3}.
+                                     \label{eq:external-twist-Jacobian}
+\end{align}
+The first follows from the square root of the Gram
+determinant. For the second, the constant cochains
+$V^{-1/2}\mathbf1_\mu$ are orthonormal, and the
+matrix of $\theta\mapsto H_\theta$ in this basis
+has diagonal entries $V^{1/2}/(qn_\mu)$.
+Their product is $V^{1/2}q^{-3}$.
+Their combined factor is precisely $\mathcal N_n$.
+Since $P(A_{\mathrm g}+A_{\mathrm h}+A_{\mathrm t})
+=\Phi(dA_{\mathrm t})\mathrm e^{-\|dA_{\mathrm t}\|^2/2}
+W(A_{\mathrm t}+A_{\mathrm h})$, it is independent
+of $A_{\mathrm g}$. Fubini over the orthogonal
+decomposition and the two displayed volume formulas
+prove \eqref{eq:external-zero-unfolding}, including
+absolute convergence of its right side.
+
+Apply this identity to
+$W(A)=\det_n(D_A+\mu_{\mathrm{lat}})$. Its hypotheses
+follow from \eqref{eq:external-determinant-invariances}
+and \eqref{eq:external-determinant-strip}. If
+$Z_n^{(0)}[\Phi]$ is the zero-flux part of the
+configuration integral, we have proved
+\begin{equation}\label{eq:external-zero-sector}
+ Z_n^{(0)}[\Phi]=\mathcal N_n
+       \int\frac{\dd\theta}{(2\pi)^3}
+       \int_{V_{\mathrm t}}\Phi(dA)\mathrm e^{-\|dA\|^2/2}
+          \det_n(D_{A+H_\theta}+\mu_{\mathrm{lat}})\,\dd\sigma(A).
+\end{equation}
+The twist integral always runs over $[-\pi,\pi]^3$.
+For real $A$ and $\theta$ the determinant is
+nonnegative. Also $Z_n^{(0)}[1]>0$ at every real
+$\mu_{\mathrm{lat}}$: the lower bound in
+\cite[Proposition~2.3]{ChamberLattice} was obtained
+from the single term $z=0$, which belongs to this
+sector. Dividing \eqref{eq:external-zero-sector}
+by its value at $\Phi=1$ identifies the zero-flux
+curvature law with the law of $dA$ under the
+harmonic-averaged transverse measure.
+
+\subsection{The Gaussian normalization and matter density}
+\label{subsec:external-Gaussian-law}
+
+Let $F_n=dC^1(n)=dV_{\mathrm t}$ and let $\gamma_n$
+be the standard Gaussian probability measure on this
+Euclidean space. The map $d_{\mathrm t}=d|_{V_{\mathrm t}}$
+is a linear bijection onto $F_n$, by
+\eqref{eq:external-Hodge}; write $A(u)=d_{\mathrm t}^{-1}u$.
+Changing variables along this map gives
+\begin{equation}\label{eq:external-Gaussian-change}
+ \int_{V_{\mathrm t}}G(dA)\mathrm e^{-\|dA\|^2/2}\,\dd\sigma(A)
+                     =\mathcal G_n\int G(u)\,\dd\gamma_n(u).
+\end{equation}
+Indeed the Jacobian is $|\det d_{\mathrm t}|^{-1}$,
+and $\dim F_n=2V-2$. The Gaussian density contributes
+$(2\pi)^{V-1}$; setting $G=1$ identifies the constant
+with \eqref{eq:external-transverse-Gaussian}.
+The formula holds for nonnegative Borel functions,
+and for the exponentially bounded complex functions
+used above by their Gaussian integrability.
+
+Define the photon factor and normalized matter factor by
+\begin{align}
+ Z_n^{\mathrm{ph}}&=\mathcal N_n\mathcal G_n
+       =r_q^{V+2}(2\pi)^{V-1}
+                            \mathrm e^{-\mathcal L(n)/2},
+                                  \label{eq:external-photon-factor}\\
+ z_{r,n}(q,\mu_{\mathrm{lat}})
+   &=\int\frac{\dd\theta}{(2\pi)^3}
+       \int\det_n(D_{A(u)+H_\theta}+\mu_{\mathrm{lat}})
+                                             \,\dd\gamma_n(u).
+                                  \label{eq:external-matter-factor}
+\end{align}
+Then \eqref{eq:external-zero-sector} and
+\eqref{eq:external-Gaussian-change} imply
+\begin{equation}\label{eq:external-zero-factorization}
+ Z_n^{(0)}[1]=Z_n^{\mathrm{ph}}z_{r,n},\qquad
+                         0<z_{r,n}\le K_n(0).
+\end{equation}
+Positivity follows from that of $Z_n^{(0)}[1]$;
+the upper bound follows because both integration
+measures in \eqref{eq:external-matter-factor} are
+probability measures.
+
+On a cubic torus $V=n^3$, fix a positive reference mass
+$\bar m$, mesh $\eta$ and a real pair
+$(m_{\mathrm{in}},\varepsilon_{\mathrm{in}}^{\mathrm v})$,
+with $\mu_{\mathrm{lat}}=\bar m\eta+m_{\mathrm{in}}$.
+The density with external cochain $a$ is
+\begin{equation}\label{eq:external-matter-density}
+ \mathrm{dens}^{\theta,a}(u)=
+ \mathrm e^{-\varepsilon_{\mathrm{in}}^{\mathrm v}n^3}
+ \frac{\det_n(D_{A(u)+H_\theta+a}+\mu_{\mathrm{lat}})}
+                       {\det_n(D^{\mathrm{ch}}[0]+\bar m\eta)}.
+\end{equation}
+The denominator is positive, since the real part
+of $D^{\mathrm{ch}}[0]+\bar m\eta$ is at least $\bar m\eta>0$.
+At $a=0$ this is a nonnegative bounded continuous
+density. Let $\nu^{\theta,0}$ be its measure against
+$\gamma_n$ and let $\bar\nu$ be the twist average.
+Equations \eqref{eq:external-zero-sector} and
+\eqref{eq:external-Gaussian-change} give
+\begin{align}
+ \bar\nu(\Phi)
+   &=\frac{\mathrm e^{-\varepsilon_{\mathrm{in}}^{\mathrm v}n^3}}
+        {\det_n(D^{\mathrm{ch}}[0]+\bar m\eta)Z_n^{\mathrm{ph}}}
+                                      Z_n^{(0)}[\Phi],
+                                  \label{eq:external-density-zero-sector}\\
+ \bar\nu(1)
+   &=\frac{\mathrm e^{-\varepsilon_{\mathrm{in}}^{\mathrm v}n^3}
+                                   z_{r,n}}
+                       {\det_n(D^{\mathrm{ch}}[0]+\bar m\eta)}
+                                  \in(0,\infty).
+                                  \label{eq:external-density-normalization}
+\end{align}
+Thus $\bar\nu/\bar\nu(1)$ is exactly the zero-flux
+curvature law. The vacuum normalization cancels in
+this quotient. The quantities $Z_n^{\mathrm{ph}}$
+and $z_{r,n}$ depend only on $(n,q,\mu_{\mathrm{lat}})$
+and the fixed chamber parameters; the auxiliary
+split $\mu_{\mathrm{lat}}=\bar m\eta+m_{\mathrm{in}}$
+does not change them.
+
+\subsection{Holomorphic external partition functions}
+\label{subsec:external-holomorphy}
+
+Write $\mathfrak F(n)$ for the exponentially bounded
+Borel functions $\Phi$ used above. For $w\in\Z^3$ let
+$\mathcal M_w$ be the closed integer two-cochains of
+flux $w$. For a complex one-cochain $a$ define
+\begin{align}
+ Z_n^{\mathrm{x},(w)}(a;\Phi)
+  &=\sum_{z\in\mathcal M_w}\int_{[0,r_q)^{\mathcal L_n}}
+       \Phi(F)\mathrm e^{-\|F\|^2/2}
+                \det_n(D_{A+a}+\mu_{\mathrm{lat}})\,\dd A,
+       \qquad F=dA+r_qz,\label{eq:external-sector-source}\\
+ \mathbf Z_n^{\mathrm{x}}(a;\Phi)
+  &=\int\frac{\dd\theta}{(2\pi)^3}
+       \int_{V_{\mathrm t}}\Phi(dA)\mathrm e^{-\|dA\|^2/2}
+       \det_n(D_{A+H_\theta+a}+\mu_{\mathrm{lat}})\,\dd\sigma(A).
+                                  \label{eq:external-averaged-source}
+\end{align}
+When $\Phi=1$ we omit it from the notation. These are
+partition functions in an external connection; the
+curvature $F$ in their photon weight is not shifted.
+
+\begin{proposition}\label{prop:external-entire}
+For every $\Phi\in\mathfrak F(n)$ both expressions
+converge absolutely, locally uniformly in $a$, and are
+entire in its $3V$ complex link values. The sum over
+all sectors converges absolutely, locally uniformly
+as well. Moreover
+\begin{equation}\label{eq:external-source-zero-sector}
+ Z_n^{\mathrm{x},(0)}(a;\Phi)
+             =\mathcal N_n\mathbf Z_n^{\mathrm{x}}(a;\Phi),
+ \qquad
+ Z_n^{\mathrm{x},(w)}(0;\Phi)=Z_n^{(w)}[\Phi].
+\end{equation}
+In particular $\mathbf Z_n^{\mathrm{x}}(0)>0$.
+\end{proposition}
+
+\begin{proof}
+For real $A,\theta$ the imaginary parts of $A+a$ and
+$A+H_\theta+a$ are both $\operatorname{Im}a$. On a
+polydisc $\max_b|a(b)|\le s$ the determinant is
+bounded by $K_n(s)$. If
+$|\Phi(u)|\le C_\Phi \mathrm e^{C_\Phi\|u\|}$, the absolute
+value of each integrand is consequently bounded by
+\[
+ K_n(s)C_\Phi \mathrm e^{C_\Phi^2}\mathrm e^{-\|F\|^2/4}
+ \quad\text{or}\quad
+ K_n(s)C_\Phi \mathrm e^{C_\Phi^2}\mathrm e^{-\|dA\|^2/4}.
+\]
+The first majorant can be summed over every integer
+two-cochain and integrated over the compact box,
+giving
+$K_n(s)C_\Phi \mathrm e^{C_\Phi^2}(r_qC_q(1/4))^{3V}$.
+The second is integrable by
+\eqref{eq:external-transverse-Gaussian}: rescaling
+$A$ by $\sqrt2$ gives
+\[
+ \int_{V_{\mathrm t}}\mathrm e^{-\|dA\|^2/4}\,\dd\sigma(A)
+                          =2^{V-1}\mathcal G_n.
+\]
+These bounds also show local uniform absolute
+convergence of the sector sum.
+
+We recall the parameter-integral argument to justify
+entireness and all later differentiations. Let
+$(Y,\nu)$ be a $\sigma$-finite measure space. Suppose
+$v(y,a)$ is measurable in $(y,a)$, entire in
+$a\in\C^d$ for each $y$, and bounded on each
+polydisc by a $\nu$-integrable $M_s(y)$. If $v_\alpha(y)$
+are its Taylor coefficients at zero, integration
+over the product of circles of radius $s$ gives
+\[
+ v_\alpha(y)=s^{-|\alpha|}
+       \int_{[0,2\pi]^d}
+       v(y,s\mathrm e^{i\theta})\mathrm e^{-i\alpha\cdot\theta}
+                         \frac{\dd\theta}{(2\pi)^d},
+ \qquad |v_\alpha(y)|\le s^{-|\alpha|}M_s(y).
+\]
+The integral formula makes the coefficients measurable.
+For $\max_j|a_j|\le s$, applying the bound at radius
+$2s$ yields
+\[
+ \sum_\alpha\int|v_\alpha(y)a^\alpha|\,\dd\nu(y)
+       \le\sum_\alpha2^{-|\alpha|}\int M_{2s}(y)\,\dd\nu(y)
+       =2^d\int M_{2s}(y)\,\dd\nu(y)<\infty.
+\]
+Thus the Taylor series may be integrated term by term,
+and its integral is an entire function with coefficients
+$\int v_\alpha$. This also proves differentiation under
+the integral at zero. Translating the parameter to an
+arbitrary $a^0$ proves it there, using the majorant
+$M_{s+\|a^0\|_\infty}$. This argument applies to a
+counting measure times Lebesgue measure as well as to
+the transverse integral.
+
+Apply this argument to the two displayed majorants.
+The dependence on $a$ in each integrand is a finite
+sum of exponentials of linear forms, by the determinant
+polynomial. The other factors are Borel and independent
+of $a$, so the hypotheses hold also when $\Phi$ is
+merely Borel. This proves the asserted holomorphy.
+For fixed complex $a$, the function
+$W_a(A)=\det_n(D_{A+a}+\mu_{\mathrm{lat}})$ on real
+cochains is bounded by $K_n(\|\operatorname{Im}a\|_\infty)$,
+continuous, and has the two invariances required in
+\eqref{eq:external-zero-unfolding}. That formula gives
+\eqref{eq:external-source-zero-sector}; the value at zero
+follows from the definitions. Its positive zero value
+follows from $Z_n^{(0)}[1]>0$ and $\mathcal N_n>0$.
+\end{proof}
+
+The complex densities in
+\eqref{eq:external-matter-density} define finite complex
+measures $\nu^{\theta,a}$ and their twist average
+$\bar\nu^a$ against $\gamma_n$. Their absolute values
+are bounded by
+\begin{equation}\label{eq:external-complex-density-bound}
+ |\mathrm{dens}^{\theta,a}(u)|
+ \le
+ \frac{\mathrm e^{-\varepsilon_{\mathrm{in}}^{\mathrm v}n^3}
+                   K_n(\|\operatorname{Im}a\|_\infty)}
+                   {\det_n(D^{\mathrm{ch}}[0]+\bar m\eta)}.
+\end{equation}
+This bound is independent of $(\theta,u)$.
+Fubini therefore writes the averaged measure as a
+bounded Borel density against $\gamma_n$. Applying
+\eqref{eq:external-Gaussian-change} at each twist,
+and then \eqref{eq:external-source-zero-sector}, gives
+\begin{equation}\label{eq:external-complex-measure}
+ \bar\nu^a(\Phi)=
+ \frac{\mathrm e^{-\varepsilon_{\mathrm{in}}^{\mathrm v}n^3}}
+      {\det_n(D^{\mathrm{ch}}[0]+\bar m\eta)\mathcal G_n}
+                     \mathbf Z_n^{\mathrm{x}}(a;\Phi)
+ =
+ \frac{\mathrm e^{-\varepsilon_{\mathrm{in}}^{\mathrm v}n^3}}
+      {\det_n(D^{\mathrm{ch}}[0]+\bar m\eta)Z_n^{\mathrm{ph}}}
+                     Z_n^{\mathrm{x},(0)}(a;\Phi).
+\end{equation}
+The exponential majorants in the proof above justify
+both changes of integration for $\Phi\in\mathfrak F(n)$.
+In particular, for every Borel set $E\subset F_n$,
+$a\mapsto\bar\nu^a(E)$ is entire and
+\[
+ |\bar\nu^a(E)|\le
+ \frac{\mathrm e^{-\varepsilon_{\mathrm{in}}^{\mathrm v}n^3}
+                   K_n(\|\operatorname{Im}a\|_\infty)}
+                   {\det_n(D^{\mathrm{ch}}[0]+\bar m\eta)}.
+\]
+Indeed $F_n$ is a closed linear subspace, so its
+Borel set indicator extends to a bounded Borel
+function on $C^2(n)$. Composition with any linear
+parameter map $t\mapsto a(t)$ remains entire.
+These statements concern the unnormalized complex
+measures; the positive normalization at $a=0$ is
+\eqref{eq:external-density-normalization}.
+
+\subsection{The source shift and Wick derivatives}
+\label{subsec:external-source-shift}
+
+\begin{proposition}\label{prop:external-shift}
+For every flux $w$ and complex one-cochain $a$,
+\begin{equation}\label{eq:external-shift-sector}
+ Z_n^{(w)}[\mathrm e^{\langle da,F\rangle}]
+      =\mathrm e^{\langle da,da\rangle/2}Z_n^{\mathrm{x},(w)}(a).
+\end{equation}
+Both sides, and their sums over $w$, converge
+absolutely. Consequently
+\begin{equation}\label{eq:external-shift-all-flux}
+ Z_n[\mathrm e^{\langle da,F\rangle}]
+      =\mathrm e^{\langle da,da\rangle/2}
+                    \sum_w Z_n^{\mathrm{x},(w)}(a).
+\end{equation}
+The quadratic form in the prefactor is bilinear;
+there is no complex conjugation of $da$.
+\end{proposition}
+
+\begin{proof}
+First let $a$ be real. On real cochains define
+\[
+ P_a(A)=\sum_{z\in\mathcal M_w}
+  \mathrm e^{-\|dA+r_qz\|^2/2+\langle da,dA+r_qz\rangle}
+                            \det_n(D_A+\mu_{\mathrm{lat}}).
+\]
+This is a nonnegative Borel function. Adding
+$r_q\mathbf1_b$ to $A$ adds $d\mathbf1_b$ to the
+integer two-cochain in its curvature. This map
+permutes $\mathcal M_w$: its image is closed
+and has the same flux, since each exact plaquette
+cochain has zero plane sums. The determinant
+is unchanged. Hence $P_a$ is invariant under
+$r_qC^1(n;\Z)$. Both the compact box and its
+translate by $a$ are fundamental domains for
+this group. The domain argument in
+\cref{subsec:external-zero-flux} gives
+\[
+ \int_{[0,r_q)^{\mathcal L_n}}P_a(A)\,\dd A
+        =\int_{[0,r_q)^{\mathcal L_n}}P_a(A+a)\,\dd A.
+\]
+On the right the exponent completes to
+\[
+ -\tfrac12\|F+da\|^2+\langle da,F+da\rangle
+                  =-\tfrac12\|F\|^2+\tfrac12\|da\|^2.
+\]
+Tonelli now identifies the two sides with
+\eqref{eq:external-shift-sector} for real $a$.
+Their finiteness also follows from the Gaussian
+majorant used below.
+
+For complex $a$, the right side of
+\eqref{eq:external-shift-sector} is entire by
+\Cref{prop:external-entire}.
+The left side is entire by the same
+parameter-integral argument. In fact, on
+$\max_b|a(b)|\le s$,
+\[
+ \|d\operatorname{Re}a\|\le4s\sqrt{3V}=:c_s,
+ \qquad
+ \left|\mathrm e^{-\|F\|^2/2+\langle da,F\rangle}
+                            \det_n(D_A+\mu_{\mathrm{lat}})\right|
+                  \le K_n(0)\mathrm e^{c_s^2}\mathrm e^{-\|F\|^2/4}.
+\]
+This can be summed and integrated over all integer
+two-cochains, so it supplies an integrable polydisc
+majorant. Both sides agree on the real cochain
+space. An entire function vanishing there has
+all complex partial derivatives zero there:
+at a real point these derivatives can be taken
+along real increments. Repeating this for all
+derivatives shows that every Taylor coefficient
+at zero vanishes. Thus the two entire functions
+agree for all complex $a$.
+Finally the same Gaussian majorant permits
+summation over sectors; the sector sum on the
+right converges absolutely by
+\Cref{prop:external-entire}.
+\end{proof}
+
+Let $a^{(1)},\ldots,a^{(r)}$ be real cochains and
+$X_j=\langle da^{(j)},F\rangle$. Dividing
+\eqref{eq:external-shift-sector} at $w=0$ by its
+positive zero-source value yields the normalized
+generating identity
+\begin{equation}\label{eq:external-generating-general}
+ \E_n^{\mathrm{av}}\exp\left(
+       \sum_jz_jX_j-\tfrac12\sum_{i,j}
+                  z_iz_j\langle da^{(i)},da^{(j)}\rangle\right)
+ =
+ \frac{\mathbf Z_n^{\mathrm{x}}(\sum_jz_ja^{(j)})}
+                         {\mathbf Z_n^{\mathrm{x}}(0)},
+                                                   \qquad z\in\C^r.
+\end{equation}
+The expectation $\E_n^{\mathrm{av}}$ is the zero-flux
+law identified in \eqref{eq:external-zero-sector}.
+The Gaussian factor on the left is determined by
+the counting pairing of the curvatures of the
+source cochains.
+
+Use the reference cells of \Cref{sec:reference-cells}
+on the torus $n_*$. Their index set is
+$\mathcal C_*=\{0,\ldots,2L-1\}^3$, and
+$\widehat a_c$ is the periodization of
+$\hat{\mathfrak a}_c^o$. These are real periodic cochains.
+Equation \eqref{eq:cells-orthogonality} gives
+\begin{equation}\label{eq:external-cell-pairing}
+ \langle d\widehat a_c,d\widehat a_{c'}\rangle
+                         =v_\eta\,1_{\{c=c'\}}.
+\end{equation}
+The variance $v_\eta=\|d\hat{\mathfrak a}_\eta^o\|^2$
+is independent of the cell and the placement.
+This is the cell-geometry input needed here:
+the external-response proof uses neither the
+cell width nor its offsets otherwise. Put
+\[
+ a(t)=e^{-1}\sum_{c\in\mathcal C_*}t_c\widehat a_c,\qquad
+ \bar Z^{\mathrm{ext}}(t)=
+     \int\frac{\dd\theta}{(2\pi)^3}
+        \int\det_{n_*}(D_{A(u)+H_\theta+a(t)}
+                              +\mu_{\mathrm{lat}})\,\dd\gamma_{n_*}(u).
+\]
+The reference torus has $n_*\ge4$, and $e>0$ is
+the physical charge in this convention.
+Equation \eqref{eq:external-Gaussian-change} gives
+\begin{equation}\label{eq:external-reference-partition}
+ \bar Z^{\mathrm{ext}}(t)=
+          \mathcal G_{n_*}^{-1}\mathbf Z_{n_*}^{\mathrm{x}}(a(t)),
+ \qquad
+ \mathring\Phi(t):=\frac{\bar Z^{\mathrm{ext}}(t)}
+                           {\bar Z^{\mathrm{ext}}(0)}
+        =\frac{\mathbf Z_{n_*}^{\mathrm{x}}(a(t))}
+                           {\mathbf Z_{n_*}^{\mathrm{x}}(0)}.
+\end{equation}
+Its zero value in the denominator is positive,
+and $\mathring\Phi$ is entire. With
+$X_c=\langle d\widehat a_c,F\rangle$,
+\eqref{eq:external-generating-general} becomes
+\begin{equation}\label{eq:external-generating-cells}
+ \E_{n_*}^{\mathrm{av}}
+      \exp\sum_c(z_cX_c-\tfrac12v_\eta z_c^2)
+                                      =\mathring\Phi(ez).
+\end{equation}
+
+Define the Hermite polynomials with this variance by
+$H_j(y)=\partial_z^j \mathrm e^{zy-v_\eta z^2/2}|_{z=0}$.
+In particular
+\[
+ H_2(y)=y^2-v_\eta,\qquad
+ H_4(y)=y^4-6v_\eta y^2+3v_\eta^2.
+\]
+To differentiate \eqref{eq:external-generating-cells}
+under the expectation, on a polydisc
+$\max_c|z_c|\le s$ use
+\[
+ \left|\exp\sum_c(z_cX_c-\tfrac12v_\eta z_c^2)\right|
+ \le
+ \exp\left(s|\mathcal C_*|\sqrt{v_\eta}\|F\|
+                       +\tfrac12|\mathcal C_*|s^2v_\eta\right).
+\]
+This is exponentially bounded in the real curvature
+and is integrable under the zero-flux law, by the
+Gaussian majorant. The parameter-integral argument
+therefore applies to this probability measure.
+The resulting products of $H_2$ or $H_4$ are also
+integrable: $|X_c|\le\sqrt{v_\eta}\|F\|$ bounds them by a
+finite polynomial in $\|F\|$, which is bounded by
+a constant times $\mathrm e^{\|F\|}$.
+
+For $m=2$ or $4$ and a subset $S\subset\mathcal C_*$,
+differentiate in precisely those variables. The
+factor $ez$ on the right supplies $e^{m|S|}$, giving
+\[
+ \E_{n_*}^{\mathrm{av}}\prod_{c\in S}e^{-m}H_m(X_c)
+         =\left(\prod_{c\in S}\partial_{t_c}^m
+                                      \mathring\Phi\right)(0).
+\]
+Expanding the product over subsets proves, for
+every real $c_m$,
+\begin{equation}\label{eq:external-Wick-product}
+ \E_{n_*}^{\mathrm{av}}
+        \prod_{c\in\mathcal C_*}(e^{-m}H_m(X_c)-c_m)
+     =\left(\prod_{c\in\mathcal C_*}
+                (\partial_{t_c}^m-c_m)\mathring\Phi\right)(0).
+\end{equation}
+The derivative operators commute because
+$\mathring\Phi$ is entire. This identity is the
+finite-volume quantity to which the terminal
+interacting estimates will be applied; all its
+normalization factors have already been included
+in \eqref{eq:external-reference-partition}.
+
+
+\section{Reference scales and rescaled probes}
+\label{subsec:interacting-stop-probe}
+
+We use the reference torus of the tuned flow and prove the
+uniform probe estimates from \cite[\S21.1]{QED3Master}.
+Fix $\bar m\in(0,1]$, put
+$h=L^{\lfloor\log_L(1/\bar m)\rfloor}$, and assume
+$0<e\sqrt h\le e_1$ and $N\ge N_{\rm ref}(e)$.
+By \cite[(47)]{CoverTuning} and
+\cite[(53)]{CoverTuning},
+\begin{equation}\label{eq:interacting-physical-scales}
+ \begin{aligned}
+ \eta=L^{-N},\qquad K=N+\log_Lh,\qquad
+ &a_j=L^{j-N},\\
+ e_j=e\sqrt{a_j},\qquad
+ &\eta_j=L^{-j}=\eta/a_j,\qquad \ell_j=R^*/a_j .
+ \end{aligned}
+\end{equation}
+Thus a point with level-$j$ coordinates $c$
+has physical coordinates $a_jc$, and
+$T_j=\eta_j\Z^3/\ell_j\Z^3$.
+At $j=0$ the charge is $q=e\sqrt\eta$.
+The symbols $e_0,e_1$ without a running
+index retain their meanings as charge ceilings.
+Set $v_j=-\log e_j$, $p_{0,j}=v_j^{p_0}$ and $p_j=v_j^p$;
+$r_j$ is the least nonnegative integer power of $L$ at least
+$v_j^{r_{\rm loc}}$.
+For a bond cochain $a$ on the fine unit torus,
+its rescaling is
+\begin{equation}\label{eq:interacting-connection-rescaling}
+                    a^{[j]}(b)=L^{j/2}a(L^jb).
+\end{equation}
+The physical scale $a_j$ is a number, while
+$a$ denotes a connection.
+On the reference torus,
+\cite[(54)]{CoverTuning} and
+\cite[(50)]{CoverTuning} give
+\[
+ k_*\in\{K-1,K-2\},\qquad
+ a_*\in\{h/L,h/L^2\},\qquad
+ \ell_*=Mr_*,\qquad r_*>31L+16.
+\]
+These stop-scale quantities are independent
+of $N\ge N_{\rm ref}(e)$.
+Write $r_{\rm loc}$ for the localization
+power in \cite[\S6.1]{CoverTuning}.
+
+Let $\beta\in C_c^\infty(\R^3;\Lambda^2)$ be real
+and nonzero. Use the cube
+$Q_\beta=z_\beta+[-D_\beta^{\rm buf}/2,D_\beta^{\rm buf}/2]^3$
+of \Cref{sec:reference-cells},
+where $D_\beta^{\rm buf}=D_\beta+4$.
+In this section a placement $v\in\eta\Z^3$
+is admitted if, in physical coordinates,
+\begin{equation}\label{eq:interacting-admitted-placement}
+              v+Q_\beta\subset[\ell_c/8,7\ell_c/8]^3,
+              \qquad \ell_c=R^*/(2L).
+\end{equation}
+A centered placement has
+$|v+z_\beta-(\ell_c/2)(1,1,1)|_\infty\le\eta/2$.
+It is admitted when
+$D_\beta^{\rm buf}/2+\eta/2\le3\ell_c/8$.
+This follows by adding the displacement
+of the cube center to its half-side.
+
+Form $\widehat{\mathfrak a}$ with $\tau_v\beta$
+as in \eqref{eq:cells-midpoint-source}, and
+periodize it on $C(n_*)$, $n_*=R^*/\eta$.
+For $c\in\mathcal C_*=\{0,\ldots,2L-1\}^3$,
+write $\widehat{\mathfrak a}_c$ for its
+cell copy; thus $\widehat{\mathfrak a}_c=\widehat a_c$ in the
+introduction. In physical coordinates the
+wall map carrying the first cell to cell $c$
+acts in coordinate $\mu$ by translation through
+$2i\ell_c$ if $c_\mu=2i$, and by reflection
+$y_\mu\mapsto(2i+2)\ell_c-y_\mu$ if $c_\mu=2i+1$.
+Define the marked connections by
+\begin{equation}\label{eq:interacting-marked-connections}
+ a(t)=e^{-1}\sum_ct_c\widehat{\mathfrak a}_c,\qquad
+ \widehat c_c=e^{-1}\widehat{\mathfrak a}_c^{[k_*]},\qquad
+ \mathscr C(t)=a(t)^{[k_*]}=\sum_ct_c\widehat c_c .
+\end{equation}
+For a level-$j$ bond function $A$, $\partial A$
+uses forward differences divided by $\eta_j$,
+and
+\[
+ |\delta_\alpha\partial A|_\infty
+  =\sup_{\mu,\nu}\sup_{0<d(x,x')\le1}
+     \frac{|\partial_\nu A_\mu(x')-\partial_\nu A_\mu(x)|}
+          {d(x,x')^\alpha}.
+\]
+The external norm of a fine connection is
+$|a|_{\rm ext}=|a^{[k_*]}|_\infty+
+|\partial a^{[k_*]}|_\infty+
+|\delta_\alpha\partial a^{[k_*]}|_\infty$.
+
+We define the uniform probe constants over both
+possible stop scales. For $\eta'=L^{-N'}$ put
+\[
+ g_\nu^{\eta'}[\beta']
+      =-\sum_{\mu\ne\nu}\delta_{\eta',\mu}J_{\eta'}\beta'_{\mu\nu}.
+\]
+This is the smooth vector field
+$J_{\eta'}a'_{\eta'}$ in the midpoint formula.
+Let $\mathcal I_\beta$ consist of triples
+$(N',a_{\rm s},r')$ with
+$N'\ge0$, $a_{\rm s}\in\{h/L,h/L^2\}$,
+$N'+\log_La_{\rm s}\ge1$, and
+$r'\in\{\pm1\}^3$.
+$r'$ is identified with its diagonal orthogonal
+matrix, and $U_{r'}\beta(x)=(\wedge^2r')\beta(r'^{-1}x)$.
+At such a triple set $\eta''=\eta'/a_{\rm s}$,
+$g^0=g^{\eta'}[U_{r'}\beta]$, and
+\[
+ G_\nu(c)=\sqrt{a_{\rm s}}\,
+                  g_\nu^0(a_{\rm s}c+\eta'e_\nu/2)
+                       \quad(c\in\eta''\Z^3),\qquad
+ W_\nu(x)=\sqrt{\eta'}\,g_\nu^0(\eta'x+\eta'e_\nu/2)
+                       \quad(x\in\Z^3).
+\]
+The three norms of $G$ are taken at mesh $\eta''$.
+Set
+\begin{equation}\label{eq:interacting-uniform-probe-constants}
+ C_\beta=\sup_{\mathcal I_\beta}
+              (|G|_\infty+|\partial G|_\infty+
+                                    |\delta_\alpha\partial G|_\infty),
+ \qquad
+ \mathbf D=\sup_{\mathcal I_\beta}\|dW\|_{\ell^2(\text{plaquettes})}^2.
+\end{equation}
+These suprema depend on $\bar m,L,\alpha,\beta$,
+and contain no charge, torus, or placement.
+They have the finite bounds
+\begin{equation}\label{eq:interacting-uniform-probe-finite}
+ C_\beta\le2\sqrt h(1+h+3h^2)|\beta|_{C^3},
+ \qquad
+ \mathbf D\le48|\beta|_{C^2}^2(D_\beta^{\rm buf}+3)^3 .
+\end{equation}
+
+Indeed the centered difference is the average
+of the corresponding derivative along its
+segment, and $J_{\eta'}$ has norm one on
+each derivative sup norm. Each component
+of $g^0$ has two summands, hence
+$|D^ig_\nu^0|_\infty\le2|\beta|_{C^{i+1}}$ for
+$i=0,1,2$. This gives
+$|G|_\infty\le2a_{\rm s}^{1/2}|\beta|_{C^1}$.
+A first lattice difference of $G$ is
+$a_{\rm s}^{3/2}$ times an average of
+$\partial_\mu g_\nu^0$, so
+$|\partial G|_\infty\le2a_{\rm s}^{3/2}|\beta|_{C^2}$.
+The difference of these averages at $c,c'$
+is bounded by
+$6a_{\rm s}|c-c'|\,|\beta|_{C^3}$.
+Since $|c-c'|\le1$ and $\alpha<1$,
+the third norm is at most
+$6a_{\rm s}^{5/2}|\beta|_{C^3}$.
+Sum these bounds and use $a_{\rm s}\le h$.
+
+For the energy, each curl component of $W$
+is a difference of two first differences,
+and has modulus at most
+$4(\eta')^{3/2}|\beta|_{C^2}$.
+A supporting plaquette has a supporting
+bond, whose endpoints in physical coordinates
+lie in $r'Q_\beta$.
+Its basepoint is therefore in that cube
+enlarged by $\eta'$ in each negative
+coordinate direction. There are at most
+$(D_\beta^{\rm buf}/\eta'+2)^3$ basepoints
+and three plaquette directions. Squaring
+the pointwise curl bound gives
+$48|\beta|_{C^2}^2(D_\beta^{\rm buf}+2\eta')^3$,
+which implies \eqref{eq:interacting-uniform-probe-finite}.
+
+At the reference stop, $(N,a_*,1)\in\mathcal I_\beta$.
+The midpoint formula and
+\eqref{eq:interacting-connection-rescaling} give
+\[
+ \widehat{\mathfrak a}^{[k_*]}_\nu(c)
+       =\sum_{z\in\Z^3}G_\nu(c-v/a_*+\ell_*z).
+\]
+Supporting bond endpoints lie in
+$a_*^{-1}(v+Q_\beta)$.
+Distinct periodic copies of that cube have
+distance at least
+$\ell_*-3\ell_*/(8L)>\ell_*/2>1+2\eta_*$.
+Each functional defining one of the three
+norms reads only bonds with endpoint distances
+at most $1+2\eta_*$. It therefore reads
+at most one periodic copy. Taking its
+supremum identifies each torus norm with
+the corresponding norm of $G$.
+Translations and coordinate reflections
+preserve these norms, including the one-bond
+shift that reverses an oriented component.
+The same argument applies to the cell copies.
+
+The image of $v+Q_\beta$ under each wall map
+lies in
+$\prod_\mu[c_\mu\ell_c+\ell_c/8,(c_\mu+1)\ell_c-\ell_c/8]$.
+For distinct cells, a separating coordinate
+on the periodic circle gives distance
+at least $\ell_c/4$: any joining arc
+contains the two margins of size $\ell_c/8$.
+Thus supporting endpoints of distinct
+$\widehat c_c$ have stop-coordinate distance
+at least $\ell_*/(8L)$, which is larger
+than $1+2\eta_*$. Again each external-norm
+functional reads at most one copy, so
+\begin{equation}\label{eq:interacting-external-probe-bound}
+ |a(t)|_{\rm ext}\le C_\beta|t|_\infty/e,\qquad
+                 v_\eta=\|d\widehat{\mathfrak a}\|^2\le\mathbf D.
+\end{equation}
+For the second bound, the covering curvature
+$dW$ is supported in the cube of side
+$D_\beta^{\rm buf}/\eta+2<n_*$
+obtained by enlarging $\eta^{-1}(v+Q_\beta)$.
+Its periodic translates do not overlap,
+so periodization preserves its counting
+norm. Distinct cell curvatures also have
+disjoint plaquette supports: a common
+plaquette would have vertices in both
+endpoint sets at physical distance at
+most $\eta\le1$, whereas $\ell_c/4>1$.
+This gives \eqref{eq:cells-orthogonality}
+for every admitted placement.
+
+Let $P_c$ be the unit-block centers whose
+blocks contain an endpoint of a supporting
+bond of $\widehat c_c$, and let $P_c^+$
+be their $(M+1)$-neighborhood.
+For $y\in P_c$, $y'\in P_{c'}$ choose the
+corresponding endpoints in $\Delta_y,\Delta_{y'}$.
+Each endpoint is at distance less than $1/2$
+from its center. Consequently
+\begin{align}
+ d_{\rm sep}:=\min_{c\ne c'}d(P_c,P_{c'})
+    &\ge\ell_*/(8L)-1=Mr_*/(8L)-1,
+                              \label{eq:interacting-probe-separation}\\
+ |P_c^+|&\le p_\beta:=
+                  (D_\beta^{\rm buf}/a_*+2M+4)^3 .
+                              \label{eq:interacting-support-number}
+\end{align}
+For the count, the endpoints have a lift in
+a cube of side $D_\beta^{\rm buf}/a_*$.
+A center adds less than $1/2$ to each
+coordinate bound, and its neighborhood adds
+$M+1$. The resulting open interval has
+length $D_\beta^{\rm buf}/a_*+2M+3$
+and contains fewer than one plus that
+many integers. Multiply the three counts.
+If the lattice probe vanishes, all these
+sets are empty and $d_{\rm sep}=\infty$.
+
+\section{The terminal inputs}\label{sec:rrm-terminal-inputs}
+
+We recall the terminal estimates used in the response proof, with the
+normalizations of \cite[\S6 and Appendix~A]{TerminalPressure}.
+They apply to the common trajectory fixed in the introduction.
+The marked activity estimates, logarithm and complement argument
+are proved in the following sections.
+
+\subsection{Operators, norms and constants}
+At the reference stop $T_* =\eta_*\Z^3/\ell_*\Z^3$,
+coarse spinors live at $T_*^0=\Z^3/\ell_*\Z^3$ with weight one;
+fine chamber indices have weight $\eta_*^3/48$.
+The block average $Q_*$ and cluster injection $J$ are those of
+\cite[\S2.1 and \S4.2]{FermionBlock}. The fine resolvent and blocked operator are
+\begin{equation}\label{eq:interacting-terminal-operators}
+ \begin{split}
+ F_*(A)&=D_A+\mu_*+b_*JP_*(A)J^*,\qquad S_*(A)=F_*(A)^{-1},\\
+ H_*(A)&=b_*S_*(A)JQ_*^T(-A),\qquad
+ D_*(A)=b_*-b_*Q_*(A)J^*H_*(A).
+ \end{split}
+\end{equation}
+Here $P_*=Q_*^T(-A)Q_*(A)$ on the cluster-averaged space,
+and $H_*^\#$ includes ordinary and covariant H\"older-pair rows.
+The barred rows are their charge-conjugate partners.
+The parameter ranges are
+\[
+ b_-=1-L^{-1}\le b_*\le1,\qquad
+ \mu_-=L^{-3}<\mu_*\le L^{-1},\qquad
+ \gamma^FM\ge16,\qquad \ell_*>2M+2.
+\]
+The positive mass $\mu_*=\bar m a_*$ is distinct from the running
+mass shift $m_*$ and from the possibly signed total fine mass.
+
+The domains $\widetilde R_j$, $\mathfrak X_j$ and
+$\widetilde G_j$ are the background, external and total-connection
+domains of \cite[\S6]{MaxwellBlock} and \cite[\S2.3]{NormalizedContraction}.
+In particular
+\[
+ \mathfrak X_j=\{C:|C|_\infty<e_j^{-1+2\varepsilon},\
+                   |\partial C|_\infty<e_j^{-1+3\varepsilon}\},
+ \qquad \widetilde R_j+\mathfrak X_j\subset\widetilde G_j.
+\]
+The local real-gauge definition of $\widetilde R_j$ makes it invariant
+under real constants. At the stop put
+\[
+ \mathcal W=\{A_r+C:A_r\in\widetilde R_*\text{ real},\
+                  C\in\mathfrak X_*\}.
+\]
+On this domain the inverse and field maps are analytic. Their
+localized majorants, including short-pair H\"older rows, are bounded
+by $C^F E(y,y')$, where $E(y,y')=\mathrm e^{-\gamma^Fd(y,y')}$.
+For long pairs the distance is the minimum of the distances from
+the two endpoint blocks. All global scalar component row sums of
+$H_*^\#$ and its barred partner are at most $C^F$.
+
+Localize a fine index in its unit block and a pair at its first
+point. For an operator $O$ define
+\begin{align*}
+ |O|(y,y')=\sup_{\|v\|_\infty\le1}
+                       \|\mathbf1_yO\mathbf1_{y'}v\|_\infty,\qquad&\\
+ \|O\|_\gamma=\max\left\{
+ \sup_y\sum_{y'}|O|(y,y')\mathrm e^{\gamma d(y,y')},\
+ \sup_{y'}\sum_y|O|(y,y')\mathrm e^{\gamma d(y,y')}\right\}.&
+\end{align*}
+The spinor norm here is the maximum component modulus.
+For coarse operators, $\|O\|_2\le2\|O\|_0$ and
+$\|O\|_1\le4\sum_{y,y'}|O|(y,y')$, where the subscripts
+$2$ and $1$ denote operator and trace norm, respectively.
+
+For a direction $B$, let $P_B$ be the unit blocks containing
+an endpoint of a bond in its support, put
+$P_B^+=\{y:d(y,P_B)\le M+1\}$ and
+$\epsilon_B=e_*|B|_\infty$.
+The first coarse derivative has majorant
+$226(C^F)^2\epsilon_B\sum_{z\in P_B}E(y,z)E(z,y')$.
+The first field-leg derivative has the analogous two-edge chain
+through $P_B^+$, with coefficient $C_H\epsilon_B$ and a sum
+over at most two endpoint blocks. For directions separated by
+$M+2$, both mixed derivatives have the sum of the two ordered
+three-edge chains through $P_B,P_{B'}$, or their enlarged sets
+for the legs, with coefficient $C_H^2\epsilon_B\epsilon_{B'}$.
+These precise pointwise estimates are
+\cite[Proposition~A.1]{TerminalPressure}; the response proof uses
+their support factors as well as their row sums.
+
+We retain their constants:
+\begin{align*}
+ \mathcal S&=C^F(24/\gamma^F)^3,&
+ h_{\rm L}&=6\mathcal S,& C_H&=203M(C^F)^2,\\
+ C_K&=226\mathcal S^2,& C_K'&=1328\mathcal S^2,&
+ c_\tau&=\min\{1/8,\mu_-/48,(292\mathcal S)^{-1}\},\\
+ g&=(b_-^{-1}+\mu_-^{-1})^{1/2},&h_G&=1+g,&g_1&=b_-^{-1}+4/\mu_-.
+\end{align*}
+Set $\theta_{\rm CT}=\mu_-/(12\mathrm e)$ and
+\[
+ \vartheta_0=\min\{\theta_{\rm CT}/2,\gamma^F/8,1/M\},\qquad
+ \alpha_G=2b_-^{-1}
+           +4\mathrm e\mu_-^{-1}(24/\theta_{\rm CT})^3.
+\]
+The real covariance $G=D_*(A_r)^{-1}$, for every real $A_r$,
+satisfies $\|G\|_2\le g^2$ and has weighted component row and
+column sums at most $\alpha_G$, with weight
+$\mathrm e^{\vartheta_0d(u,u')}$.
+On $\mathcal W^+=\{A+A_1:A\in\mathcal W,\ e_*|A_1|_\infty\le c_\tau\}$,
+the first derivative bound holds with $C_K'$.
+If $A=A_r+A_1$, $A_r$ is real, $e_*|A_1|_\infty\le\mu_*/24$
+and $F_*(A)$ is invertible, then $D_*(A)$ is invertible and
+$\|D_*(A)^{-1}\|_2\le g_1$.
+These are \cite[(72)--(75)]{TerminalPressure}.
+
+The activity space, independent ordinary and pair generators, and
+their coefficient norm are those of \cite[\S2.2]{NormalizedContraction}.
+An activity supported on an $M$-polymer $X$ has coefficients
+$E_{nm}$, integrated with the fine-index weights above and pair
+weights $(\eta_*^3/48)^2$, and norm
+$\sum_{n,m}h_1^nh_2^m\|E_{nm}\|/(n!m!)$.
+The family norm adds the factor $\mathrm e^{\kappa d_M(X)}$ and takes
+the supremum over polymers and the declared connection domain.
+Here $Md_M(X)$ is the infimum of the lengths of connected finite
+nets meeting every closed $M$-cube of $X$. A net is a finite union
+of images of closed straight segments in the continuum torus;
+its length is the sum of their Euclidean lengths, with the infimum
+also taken over segment representations. A point is allowed as a
+segment. We use the construction constants
+$\kappa_0=54\log72$, $K_0=72^{54}/36$,
+$c_{\rm rb}=54K_0$ and $\kappa\ge7\kappa_0+7$.
+The anchored polymer sum is bounded by $K_0$, and its reblocking
+bound has constant $c_{\rm rb}$, as proved in
+\cite[Appendix~B, (79)--(83)]{NormalizedContraction}.
+The fixed constant $C_0\ge C^F$ bounds the photon kernel rows and
+the field substitution; in particular at
+$a_2=C_0^{-1}e_*^{-1/4+\varepsilon}$,
+\[
+ |E(H_*^\#\Psi)|_{a_2}\le\|E\|_{h_*},\qquad
+ |\langle\bar\psi,\psi\rangle|_{a_2}
+          \le4e_*^{-1/2+2\varepsilon}\ell_*^3,
+ \quad h_*=(e_*^{-1/4},e_*^{-1/4+\varepsilon}).
+\]
+The scalar constant $C_d$ is the local determinant-activity bound
+in \eqref{eq:interacting-determinant-input}.
+All constants in this subsection are fixed before the physical charge
+and are independent of the fine cutoff, twist and placement.
+
+\subsection{The measure identity and Gaussian domination}
+We use the exact terminal density of
+\cite[Theorem~B]{TerminalPressure}, including its external slot.
+Its original measure is $\nu^{\theta,a}$ from
+\eqref{eq:external-matter-density}; write $\bar\nu$ for its
+zero-source twist average and $\bar\mu=\bar\nu/\bar\nu(1)$.
+The full photon-coordinate map sends an exact fine curvature
+$F\in F_N=dC^1(C(n_*);\R)$ to $(A_*;\zeta_j)_{j<k_*}$.
+Its Gaussian marginal at the stop is denoted $\mathsf m_*$.
+Every scalar fluctuation coordinate is an orthonormal linear
+functional of $F$; every coarse plaquette has row norm at most one.
+The numbers of coordinates are at most
+$2\ell_*^3L^{3(k_*-j)}$ at level $j$ and $3\ell_*^3$ at the stop.
+The stop Gaussian is nondegenerate on the mean-zero coclosed space.
+
+Set $\chi_*(A)=\mathbf1_{\{|dA|_\infty\le p_*\}}$ and
+\[
+ \mathfrak G=\{|\zeta_j(\Upsilon)|\le p_{0,j}\ (j<k_*),\
+                                  |dA_*|_\infty\le p_*\}.
+\]
+For every bounded Borel function $\Phi$ of $A_*$,
+\begin{equation}\label{eq:rrm-terminal-Borel}
+ \nu^{\theta,a}(\mathbf1_{\mathfrak G}\Phi(A_*))
+ =\int\Phi(A)\chi_*(A)
+             Y_*^x(A+c_\theta;\mathscr C)\,\dd\mathsf m_*(A),
+ \qquad \mathscr C=a^{[k_*]},\quad
+ c_{\theta,\mu}=\theta_\mu/(e_*\ell_*).
+\end{equation}
+The density is jointly continuous on the indicated support and is
+invariant under admissible real gauge changes. Its explicit fermion
+formula is recalled in \cref{subsec:interacting-determinant-ratio}.
+The source-free normalized measure satisfies
+\begin{equation}\label{eq:rrm-zero-Gaussian}
+ \bar\mu(\mathrm e^{\langle f,F\rangle})\le \mathrm e^{\|f\|^2/2}
+                 \qquad(f\text{ a real two-cochain}).
+\end{equation}
+This is the zero-sector result
+\cite[Proposition~2.1]{TerminalPressure}.
+The tower and Borel identity are
+\cite[Proposition~3.1, Theorem~B]{TerminalPressure}; they precede
+the response argument and do not require its conclusion.
+\section{The terminal determinant ratio}
+\label{sec:interacting-response}
+
+The argument in this and the following sections is the terminal
+response proof of \cite[\S23]{QED3Master}.
+The free coefficients do not by themselves control the
+reference Wick products. We must compare the normalized
+interacting generating function with its one-cell free
+factors, including mixed derivatives in different cells.
+The quantity to be estimated is
+\begin{equation}\label{eq:interacting-reference-error}
+ \Theta_m^{(0)}=
+ \left|\left(\prod_{c\in\mathcal C_*}
+       (\partial_{t_c}^m-c_m)\mathring\Phi\right)(0)\right|^{1/N_*},
+ \qquad m=2,4,\qquad N_*=|\mathcal C_*|=8L^3,
+\end{equation}
+where $c_m=N_0^{(m)}(0)$. The exact relation to Wick
+products is \eqref{eq:external-Wick-product}.
+The proof uses decay between separate insertions,
+an analytic logarithm for the terminal fermion integral,
+and a separate estimate of the complement of the
+small-field set.
+
+\subsection{Analyticity and normalization}
+\label{subsec:interacting-determinant-ratio}
+
+For the marked connections of
+\eqref{eq:interacting-marked-connections}, set
+\begin{equation}\label{eq:interacting-mark-radii}
+ C_b=1+\sqrt h\,C_\beta,\qquad
+ t_x=\frac{e_*^{3\varepsilon}}{C_b},\qquad
+ t_x^+=\frac{e_*^{3\varepsilon}}{\sqrt h\,C_\beta},
+ \qquad r=t_x/4.
+\end{equation}
+If $C_\beta=0$, interpret $t_x^+=\infty$.
+For $t$ in the polydisc
+$\mathbb D(t_x^+)=\{|t_c|<t_x^+\text{ for every }c\}$,
+all the rescaled connections $a(t)^{[j]}$
+belong to $\mathfrak X_j$ and
+$e_*|\mathscr C(t)|_\infty<e_*^{3\varepsilon}$.
+Indeed, \eqref{eq:interacting-external-probe-bound}
+and $e_*\le e\sqrt h$ give
+$|a(t)|_{\rm ext}<e_*^{-1+3\varepsilon}$.
+This bounds the stop sup and first-difference
+norms by the defining thresholds of $\mathfrak X_*$.
+For $i=k_*-j$ the rescaling multiplies
+the sup norm by $L^{-i/2}$ and the first
+differences by $L^{-3i/2}$, while
+$e_j=L^{-i/2}e_*$. Since
+$\varepsilon<1/3$, the rescaled bounds are
+strictly below $e_j^{-1+2\varepsilon}$ and
+$e_j^{-1+3\varepsilon}$, respectively.
+
+We first control the determinant activities accumulated
+along the flow. Recall the local determinant
+function $E_j^d(X,A)$ of
+\cite[Proposition~6.1]{FermionBlock} and set
+$E_j^{\rm det}(X,A)=E_j^d(X,A)-E_j^d(X,0)$.
+Its analyticity, locality, real gauge invariance,
+and evenness will all be used below; the relevant
+bound is
+\begin{equation}\label{eq:interacting-determinant-input}
+ |E_j^d(X,A)|\le C_dM^3\mathrm e^{-(\kappa+1)d_M(X)}
+                       \qquad(A\in\widetilde G_j).
+\end{equation}
+For a level-$(j+1)$ bond cochain $C$, write
+$C_L(b)=L^{-1/2}C(b/L)$ for its one-step rescaling.
+Let $\mathfrak P_0=0$ and
+\begin{equation}\label{eq:interacting-P-recursion}
+ \mathfrak P_{j+1}(Y,C)=
+ \sum_{\overline X^{\,L}=LY}
+       \bigl(\mathfrak P_j(X,C_L)+E_j^{\rm det}(X,C_L)\bigr).
+\end{equation}
+Then $\mathfrak P_j(X,\cdot)$ is analytic on
+$\mathfrak X_j$, vanishes at zero, and depends only
+on bonds meeting $X$. To see locality under
+reblocking, a bond meeting $X$ has, after division
+by $L$, an endpoint in $Y$ whenever
+$\overline X^{\,L}=LY$. Analyticity follows from
+$C_L\in\mathfrak X_j$.
+
+For $d_M(Y)\ge1$, the reblocking estimate gives
+\[
+ \sum_{\overline X^{\,L}=LY}\mathrm e^{-\kappa d_M(X)}
+ \le c_{\rm rb}L^3\mathrm e^{-L(\kappa-\kappa_0-1)d_M(Y)}.
+\]
+With
+$L(\kappa-\kappa_0-1)\ge\kappa$ and
+$c_{\rm rb}L^3\mathrm e^{-[L(\kappa-\kappa_0-1)-\kappa]}\le1/2$,
+the weighted supremum $q_j$ of $\mathfrak P_j$
+over $d_M(X)\ge1$ satisfies
+$q_{j+1}\le(q_j+2C_dM^3)/2$. Since $q_0=0$,
+\begin{equation}\label{eq:interacting-P-bound}
+ |\mathfrak P_j(X,C)|\le2C_dM^3\mathrm e^{-\kappa d_M(X)}
+                           \qquad(d_M(X)\ge1).
+\end{equation}
+At $j=0$ the determinant activity includes all
+$192$ chamber components. The primitive bound and
+reblocking estimate have the same constants at
+that first step.
+
+The determinant identity
+\cite[(33)]{NonlinearStep} gives
+\begin{align}
+ \frac{\det(D^{\rm ch}[qa]+\bar m\eta)}{\det(D^{\rm ch}[0]+\bar m\eta)}
+ &=\exp\left(\sum_X\mathfrak P_*(X,a^{[k_*]})\right)
+                    \frac{\det D_*(a^{[k_*]})}{\det D_*(0)},
+                           \label{eq:interacting-determinant-telescope}\\
+ \sum_X\mathfrak P_*(X,a^{[k_*]})
+ &=\sum_{j<k_*}\sum_XE_j^{\rm det}(X,a^{[j]}).
+                           \label{eq:interacting-P-telescope}
+\end{align}
+Here $a^{[j]}\in\mathfrak X_j$ for every $j$.
+The fine determinant uses the phase-argument convention
+of \eqref{eq:response-free-ratio}: its connection argument
+is $qa(t)=\sqrt\eta\sum_ct_c\widehat{\mathfrak a}_c$.
+For a single cell this is precisely the phase connection
+$q(t/e)\widehat a_c$ in \eqref{eq:response-free-ratio}.
+Write $n_j=\ell_j^3$ for the number of unit sites at level $j$;
+the spinor dimension is $4n_j$ for $j\ge1$, and $192n_0$
+at the incoming chamber level. The one-step identity reads
+\[
+ \det D_{j+1}(a^{[j+1]})
+       =b^{4n_{j+1}}\det D_j(a^{[j]})/\delta Z_j(a^{[j]}).
+\]
+Divide it by its zero-field version and use
+\cite[(78)]{FermionBlock}. The resulting
+ratio acquires the factor
+\[
+ \exp\left(-\sum_XE_j^{\rm det}(X,a^{[j]})\right)
+\]
+at each
+step, which proves the first identity by iteration.
+Summing \eqref{eq:interacting-P-recursion} over $Y$
+proves the second: each fine polymer has exactly
+one reblocked image. The zero-field determinants
+are nonzero by the real covariance formula.
+At $j=0$ the incoming determinant has dimension
+$192n_0$, the outgoing one dimension $4n_1$;
+the factor $b^{4n_1}$ cancels in the ratio.
+
+Fix a coarse real photon field $A$ with
+$\chi_*(A)=1$, and a real twist $\theta$.
+The real gauge construction in
+\cite[(32)]{MaxwellBlock}--%
+\cite[(33)]{MaxwellBlock}
+gives a representative $A^g$ with
+$|A^g|_\infty\le2\ell_*^2p_*$.
+The curvature bound and
+\cite[Theorem~B]{MaxwellBlock}
+put both $A+c_\theta$ and $A^g+c_\theta$
+in $\mathrm{Dom}_{k_*}$.
+Write
+\[
+ \mathscr A^0=H_*^{\rm ph}A^g,\qquad
+ c_{\theta,\mu}=\frac{\theta_\mu}{e_*\ell_*},
+ \qquad \mathscr A=\mathscr A^0+c_\theta.
+\]
+Summing the three photon kernel estimates in
+\cite[(14)]{MaxwellBlock} bounds each
+field norm of $\mathscr A^0$ by
+$2C_0\ell_*^2p_*<e_*^{-\varepsilon}/2$;
+the strict inequality is the corresponding
+condition in \cite[(43)]{TerminalPressure}.
+The local photon domains and their invariance
+under real constants then give
+$s\mathscr A^0+c_\theta\in\frac14\widetilde R_*$
+for $0\le s\le1$. In particular all
+connections needed below belong to $\mathcal W$.
+
+The flow bound \cite[(66)]{CoverTuning}
+gives an activity with even Grassmann kernels,
+with equal barred and unbarred degrees, and
+\begin{equation}\label{eq:interacting-activity-input}
+ \|\mathscr E_*\|_*^x
+       \le4e_*^{1/4-6\varepsilon},\qquad
+ |m_*|\le e_*^{3/4-8\varepsilon}/8.
+\end{equation}
+The coefficient norm includes the weights
+$\eta_*^3/48$ for a fine spinor index and
+$(\eta_*^3/48)^2$ for a pair index, with all
+admissible pairs, including pairs inside a cluster.
+Its polymer factor is $\mathrm e^{\kappa d_M(X)}$.
+For $(A,C)\in\widetilde R_*\times\mathfrak X_*$ define
+\begin{equation}\label{eq:interacting-two-field-integral}
+ Z_{\rm in}(A,C)=\int D\Psi\,
+ \exp\left\{-\langle\bar\Psi,D_*(A+C)\Psi\rangle
+       -m_*\langle\bar\psi,\psi\rangle
+       +\sum_X\mathscr E_*(X;A,C,\psi,\chi)\right\},
+\end{equation}
+where $\psi,\bar\psi$ are substituted using
+$H_*^\#(A+C)\Psi$ and their barred partners,
+and $\chi,\bar\chi$ using the corresponding
+covariant Hölder quotients.
+The inclusion
+$\widetilde R_*+\mathfrak X_*\subset\widetilde G_*$
+makes all these maps analytic; the activity
+kernels are analytic in $(A,C)$.
+Berezin integration is coefficient extraction,
+and the exponential is its scalar exponential
+times a finite polynomial in the positive-degree
+coefficients. Thus $Z_{\rm in}$ is analytic
+on this two-field domain.
+Set
+\begin{align}
+ Z_{\rm tm}(t)&=Z_{\rm in}(\mathscr A,\mathscr C(t)),
+                               \label{eq:interacting-terminal-integral}\\
+ f_{\rm int}(t)&=
+   \frac{Z_{\rm tm}(t)}{\det D_*(c_\theta+\mathscr C(t))}.
+                               \label{eq:interacting-factor-definition}
+\end{align}
+The Berezin measure has one pair for each
+of the $4\ell_*^3$ coarse spinor coordinates.
+The two-field analyticity gives analyticity of
+$Z_{\rm tm}$ on
+$\mathbb D(t_x^+)$.
+
+\begin{proposition}\label{prop:interacting-factor}
+Suppose
+\begin{gather}
+ 4C_0\ell_*^3g_1\le e_*^{-1/4+\varepsilon},\qquad
+ 4\ell_*^3(2C_K+K_0+4)\le e_*^{-2\varepsilon},\qquad
+ e_*^{1/4-9\varepsilon}\le1/8,
+                                      \label{eq:interacting-factor-conditions}\\
+ 48e_*^{2\varepsilon}\le\mu_- .
+                                      \label{eq:interacting-small-complex-mass}
+\end{gather}
+Then $f_{\rm int}$ is analytic and
+\begin{equation}\label{eq:interacting-factor-bound}
+ |f_{\rm int}(t)-1|\le\frac12e_*^{1/4-9\varepsilon}
+                              \le\frac1{16}.
+\end{equation}
+In particular $Z_{\rm tm}$ has no zero on the
+polydisc. The normalized terminal ratio
+\begin{equation}\label{eq:interacting-terminal-ratio}
+ R_{\rm tm}(t;\theta,A)=
+ \frac{Y_*^{\rm x}(A+c_\theta;\mathscr C(t))}
+      {Y_*^{\rm x}(A+c_\theta;0)}
+ =\exp\left(\sum_X\mathfrak P_*(X,\mathscr C(t))\right)
+       \frac{Z_{\rm tm}(t)}{Z_{\rm tm}(0)}
+\end{equation}
+is nonzero, continuous in $(t,\theta,A)$ on
+$\mathbb D(t_x^+)\times\R^3\times\{\chi_*=1\}$,
+and analytic in $t$. It has a unique continuous
+logarithm $\mathcal G(t;\theta,A)$ that vanishes
+at zero, and this logarithm is analytic in $t$.
+\end{proposition}
+
+\begin{proof}
+Use the covariance
+\[
+ C_t=D_*(c_\theta+\mathscr C(t))^{-1}.
+\]
+The inverse exists by
+\cite[(75)]{TerminalPressure}, because
+$e_*|\mathscr C(t)|_\infty<e_*^{3\varepsilon}
+<\mu_*/24$. Each covariance row has sum at
+most $4\ell_*^3g_1$. Put
+$a_w=C_0^{-1}e_*^{-1/4+\varepsilon}$.
+The first condition in
+\eqref{eq:interacting-factor-conditions} gives
+$a_w\ge4\ell_*^3g_1\ge1$.
+
+Separate the quadratic form with covariance $C_t$
+from the remaining even interaction $V_t$.
+Normalized Gaussian Grassmann integration gives
+\begin{equation}\label{eq:interacting-crude-Gaussian}
+ |f_{\rm int}(t)-1|\le \mathrm e^{|V_t|_{a_w}}-1.
+\end{equation}
+To justify this particular norm bound, replace
+the unbarred generators by $C_t\Psi$ and leave
+the barred generators fixed. Their row sums
+are at most $a_w$, so this substitution maps
+the $a_w$ coefficient norm into the unit
+coefficient norm. Integration against the identity
+covariance has norm one in that latter norm.
+Apply this to $\mathrm e^{V_t}-1$, and use the
+submultiplicativity of the coefficient norm.
+
+There are three terms in $V_t$. The difference
+between the two coarse quadratic forms has
+entry sum at most
+$C_Ke_*^{1-\varepsilon}\ell_*^3/2$, by
+\cite[(66)]{TerminalPressure} integrated along
+$c_\theta+\mathscr C(t)+s\mathscr A^0$.
+A quadratic Grassmann form has coefficient norm
+at most $4a_w^2$ times this block sum, so
+its contribution is bounded by
+$2C_K\ell_*^3e_*^{1/2+\varepsilon}$.
+The terminal mass estimate and
+\eqref{eq:interacting-activity-input} give respectively
+\[
+ \frac12\ell_*^3e_*^{1/4-6\varepsilon},
+ \qquad K_0\ell_*^3e_*^{1/4-7\varepsilon}.
+\]
+For the activity sum, substitute the terminal
+field maps in the coefficient norm, then sum
+$\mathrm e^{-\kappa d_M(X)}$ by assigning each polymer
+one of its $M$-cubes and using the polymer
+sum bound $K_0$. We have used
+$4e_*^\varepsilon\le1$.
+Consequently
+\[
+ |V_t|_{a_w}\le
+ \ell_*^3(2C_K+K_0+4)e_*^{1/4-7\varepsilon}
+ \le\frac14e_*^{1/4-9\varepsilon}.
+\]
+The inequality $\mathrm e^x-1\le2x$ proves
+\eqref{eq:interacting-factor-bound}.
+The denominator in \eqref{eq:interacting-factor-definition}
+is analytic and nonzero, so $f_{\rm int}$ is analytic.
+
+By \cite[(16)]{TerminalPressure} the terminal density has the form
+\[
+ Y_*^{\rm x}(A';C)=
+ (\det D_*(0))^{-1}
+ \exp\left(-\varepsilon_*^{\rm v}\ell_*^3+
+                         \sum_X\mathfrak P_*(X,C)\right)
+ Z_{\rm in}(H_*^{\rm ph}A',C).
+\]
+Its gauge invariance in \cite[Theorem~B]{TerminalPressure}
+permits replacing $A$ by
+$A^g$. The photon minimizer preserves real
+constants. Dividing the density at $C=\mathscr C(t)$
+by its value at zero proves
+\eqref{eq:interacting-terminal-ratio}; the quotient
+also shows that the result is independent of
+the chosen gauge representative. For continuity,
+use the ungauged linear map
+$A+c_\theta\mapsto H_*^{\rm ph}(A+c_\theta)$
+in the displayed formula. The terminal Grassmann
+integral is analytic in its two field arguments,
+and its zero-mark denominator is nonzero.
+
+The required logarithm is
+\begin{equation}\label{eq:interacting-logarithm}
+ \mathcal G(t;\theta,A)=
+ \int_0^1\sum_ct_c
+       \frac{\partial_{t_c}R_{\rm tm}(st;\theta,A)}
+            {R_{\rm tm}(st;\theta,A)}\,\dd s .
+\end{equation}
+Local Cauchy formulas show that the derivatives
+in this integrand are jointly continuous;
+integration over $[0,1]$ preserves continuity
+and analyticity. Along a ray the integrand is
+the logarithmic derivative of $R_{\rm tm}(st)$.
+Differentiating the product of this ratio with
+the exponential of minus the integrated
+logarithmic derivative gives zero, and its
+value at $s=0$ is one. Hence
+$\mathrm e^{\mathcal G}=R_{\rm tm}$.
+Any two continuous logarithms differ by
+$2\pi i$ times an integer-valued continuous
+function on the connected polydisc. Their
+common value at zero proves uniqueness.
+\end{proof}
+
+\section{The one-cell logarithm and harmonic twists}
+\label{subsec:interacting-one-cell}
+
+For a fixed cell $c$ and real twist $\theta$, let
+\begin{equation}\label{eq:interacting-free-coarse-log}
+ g_D^\theta(t)=\tr\log\left(1+D_*(c_\theta)^{-1}
+                   [D_*(c_\theta+t\widehat c_c)-D_*(c_\theta)]\right).
+\end{equation}
+The logarithm here is the matrix power series.
+Set
+\begin{align}
+ C_{\rm fr}&=2592C_dK_0C_\beta^2
+       \left(M^2(D_\beta^{\rm buf})^3L^4h^{-2}+8M^5h\right),
+                                                   \notag\\
+ B_{\rm wr}&=16\exp(6)C_dM^3K_0p_\beta \mathrm e^{-r_*},
+ \qquad B_1=16g_1C_K'p_\beta e_*^{2\varepsilon},       \notag\\
+ B_0&=C_{\rm fr}e_*^{4\varepsilon}+B_{\rm wr}+B_1 .
+                                \label{eq:interacting-free-log-constants}
+\end{align}
+
+\begin{proposition}\label{prop:interacting-one-cell}
+Suppose \eqref{eq:interacting-factor-conditions}--%
+\eqref{eq:interacting-small-complex-mass} hold,
+$r_*>31L+16$, and
+\begin{equation}\label{eq:interacting-one-cell-conditions}
+ 2g_1C_K'e_*^{2\varepsilon}\le1/2,\quad
+ B_0\le1/4,\quad
+ \tau_s:=c_\tau\ell_*\ge1,\quad
+ 52B_1\mathrm e^{-\tau_s}\le e_*^{1/4-9\varepsilon}.
+\end{equation}
+The free ratio $N_0$ has the logarithm
+\begin{equation}\label{eq:interacting-one-cell-free-log}
+ \ell_0(t)=\sum_X\mathfrak P_*(X,t\widehat c_c)+g_D^0(t),
+ \qquad N_0(t)=\mathrm e^{\ell_0(t)} ,
+\end{equation}
+analytic on $|t|<t_x^+$. It is independent of
+$c$ and of the admitted placement, is even
+and real on the real axis, and satisfies
+\begin{align}
+ \left|\sum_X\mathfrak P_*(X,t\widehat c_c)\right|
+        &\le C_{\rm fr}e_*^{-2\varepsilon}|t|^2+B_{\rm wr},
+                                  \label{eq:interacting-P-probe-gain}\\
+ |\ell_0(t)|&\le B_0\qquad(|t|\le t_x).
+                                  \label{eq:interacting-free-log-bound}
+\end{align}
+The one-cell interacting error
+$w_c(t)=\mathcal G(te_c;\theta,A)-\ell_0(t)$
+is analytic, vanishes at zero, and obeys
+\begin{equation}\label{eq:interacting-one-cell-error}
+ |w_c(t)|\le3e_*^{1/4-9\varepsilon}
+                         \qquad(|t|<t_x^+).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+Write $K=D_*(c_\theta+t\widehat c_c)-D_*(c_\theta)$.
+The real covariance and the integrated insertion
+bounds give
+\[
+ \|D_*(c_\theta)^{-1}K\|_2\le
+           2g_1C_Ke_*^{2\varepsilon}\le1/2,\qquad
+ \|D_*(c_\theta)^{-1}K\|_1
+           \le4g_1C_Kp_\beta e_*^{2\varepsilon}.
+\]
+Thus the series in \eqref{eq:interacting-free-coarse-log}
+converges, is analytic, vanishes at zero, and
+has modulus at most $B_1$. Triangularizing
+the matrix identifies its exponential with
+$\det D_*(c_\theta+t\widehat c_c)/\det D_*(c_\theta)$.
+Combine this with
+\eqref{eq:interacting-determinant-telescope}.
+The lattice symmetries carrying one cell
+probe to another preserve the fine determinant,
+so the resulting fine ratio is $N_0$.
+
+The bound \eqref{eq:interacting-P-probe-gain}
+requires a cancellation before summing the levels.
+Put $i=k_*-j$ and $B_j=e^{-1}\widehat{\mathfrak a}_c^{[j]}$.
+Rescaling gives
+\begin{equation}\label{eq:interacting-probe-derivative}
+ e_j|\partial B_j|_\infty\le
+                         a_j^2a_*^{-3/2}C_\beta .
+\end{equation}
+Let $\mathcal Q_j$ be the $M$-cubes containing
+endpoints of the supporting bonds of $B_j$.
+The buffered support cube yields
+\begin{equation}\label{eq:interacting-probe-cube-count}
+ |\mathcal Q_j|\le
+ 4\left((D_\beta^{\rm buf})^3M^{-3}a_j^{-3}+8\right),
+ \qquad |\mathcal Q_j|\le L^{3i}p_\beta .
+\end{equation}
+By locality only polymers containing a cube
+of $\mathcal Q_j$ contribute to
+\eqref{eq:interacting-P-telescope}.
+
+For such a polymer $X$, put $d=d_M(X)$ and
+$s_X=M(d+3)$. Suppose first that $2s_X<\ell_j$.
+All bonds meeting $X$ lie in a coordinate
+cube of radius $M(d+2)+1$ around a chosen
+site $\tilde c$ of $X$. The strict inequality
+$2[M(d+2)+1]+\eta_j<2s_X<\ell_j$
+makes this cube a lift to the lattice.
+Define a real function there by
+$\lambda(c)=\sum_\nu B_{j,\nu}(\tilde c)(c-\tilde c)_\nu$,
+and extend it by zero outside. On bonds meeting
+$X$, its gradient is the constant value
+$B_j(\tilde c)$. If $[\,\cdot\,]_X$ restricts
+a connection to those bonds, then
+\[
+ B_X=[B_j-d\lambda]_X,\qquad
+ |B_X|_\infty\le3s_X|\partial B_j|_\infty.
+\]
+The last inequality follows by integrating
+the first differences along coordinate paths
+inside the lifted cube.
+
+Real gauge invariance must be used before
+continuing to the complex gauge parameter.
+On the convex open set where
+$|[tB_j-zd\lambda]_X|_\infty<e_j^{-1+\varepsilon}$,
+the analytic function
+$z\mapsto E_j^d(X,[tB_j-zd\lambda]_X)$
+equals $E_j^d(X,tB_j)$ for real $z$ near zero:
+the unrestricted connection is related to
+$tB_j$ by a real gauge transformation, and
+locality permits the restriction. The identity
+theorem gives this equality throughout that
+set. In particular it holds at $z=t$
+whenever $|t|<\rho_X$, where
+$\rho_X=e_j^{-1+\varepsilon}/(3s_X|\partial B_j|_\infty)$.
+
+The function
+$z\mapsto E_j^d(X,zB_X)-E_j^d(X,0)$ is even,
+bounded by $2C_dM^3\mathrm e^{-(\kappa+1)d}$ on
+$|z|<\rho_X$, and has a double zero at zero.
+Apply the maximum principle after dividing
+by $z^2$. For $|t|\ge\rho_X$ the original
+primitive bound gives the same inequality
+with the factor $(|t|/\rho_X)^2\ge1$.
+Thus, in both cases,
+\begin{equation}\label{eq:interacting-local-constant-removal}
+ |E_j^{\rm det}(X,tB_j)|\le
+ 18C_dM^5C_\beta^2(d+3)^2\mathrm e^{-(\kappa+1)d}
+          |t|^2e_j^{-2\varepsilon}a_j^4a_*^{-3}.
+\end{equation}
+When $\partial B_j=0$, $B_X=0$ and this contribution
+vanishes. This proves the cancellation also
+at the chamber first step.
+
+Since $(d+3)^2\mathrm e^{-(\kappa+1)d}\le9\mathrm e^{-\kappa_0d}$,
+summing \eqref{eq:interacting-local-constant-removal}
+over cubes and polymers gives at level $j$
+the bound
+\[
+ 648C_dK_0C_\beta^2|t|^2e_j^{-2\varepsilon}a_*^{-3}
+           \left(M^2(D_\beta^{\rm buf})^3a_j+8M^5a_j^4\right).
+\]
+For the remaining polymers $2s_X\ge\ell_j$,
+$d\ge r_*L^i/2-3$. The extra exponential in
+the primitive bound then gives at level $j$
+\[
+ 2\exp(6)C_dM^3K_0p_\beta L^{3i}\mathrm e^{-r_*L^i}.
+\]
+Sum over $i\ge1$, using $a_j=L^{-i}a_*$,
+$e_j^{-2\varepsilon}=e_*^{-2\varepsilon}L^{i\varepsilon}$,
+$\sum_iL^{-i(1-\varepsilon)}\le1$, and
+$a_*^{-2}\le L^4h^{-2}$, $a_*\le h$.
+For $r_*>31L+16$, the second sum is bounded
+by a constant times $\mathrm e^{-r_*}$.
+The stated definitions of $C_{\rm fr}$ and
+$B_{\rm wr}$ give \eqref{eq:interacting-P-probe-gain}.
+Together with $|g_D^0|\le B_1$ this proves
+\eqref{eq:interacting-free-log-bound}.
+
+Evenness and reality follow from the corresponding
+fine determinant symmetries. Both $\ell_0(t)$
+and $\ell_0(-t)$ vanish at zero and have
+exponential $N_0(t)$, so they coincide.
+For real $t$, the nonzero real ratio $N_0(t)$
+is positive by continuity from one at zero;
+the normalized logarithm is therefore real.
+Cell and placement independence follows in
+the same way from the determinant translation
+and reflection symmetries.
+
+It remains to control the twist. For
+$|\operatorname{Im}\theta_\mu|\le\tau_s$
+the connections $c_\theta+st\widehat c_c$
+lie in $\mathcal W^+$, and
+$\|D_*(c_\theta)^{-1}\|_2\le g_1$.
+There is a positive strip margin
+$\ell_*(e_*^{2\varepsilon}-e_*^{3\varepsilon})$:
+split the imaginary constant connection
+into a part bounded by $c_\tau/e_*$ and a
+remaining part absorbed into $\mathfrak X_*$.
+The latter has vanishing first differences.
+The mass condition bounds its total imaginary
+part by $\mu_*/24$. On this larger open strip,
+\cite[(73)]{TerminalPressure} gives
+the same matrix power-series bound $|g_D^\theta|\le B_1$.
+The function is holomorphic there and
+$2\pi$-periodic in each twist variable.
+For real twists, periodicity is conjugation by
+the periodic gauge factor
+$\exp(-2\pi i c_\mu/\ell_*)$; the identity
+theorem extends it to the strip.
+
+We recall the short Fourier estimate to make the
+size of this suppression explicit. A bounded
+periodic holomorphic function $g$ in a closed
+strip of width $\tau\ge1$ has
+$|\widehat g(m)|\le B \mathrm e^{-\tau|m|_1}$:
+shift each Fourier contour towards
+$-i\tau\operatorname{sgn}(m_\mu)$, first using
+an interior width and then taking its limit.
+The vertical sides cancel by periodicity.
+The nonconstant Fourier sum is bounded by
+\[
+ B\left[\left(\frac{1+\mathrm e^{-\tau}}{1-\mathrm e^{-\tau}}\right)^3-1\right]
+                                      \le25B\mathrm e^{-\tau}.
+\]
+The last inequality follows by expanding the
+bracket divided by $\mathrm e^{-\tau}$ as a power
+series with positive coefficients and evaluating
+at $\mathrm e^{-\tau}=\mathrm e^{-1}$. Thus the difference
+between two real values is at most $52B\mathrm e^{-\tau}$.
+Apply this to $g_D^\theta(t)$ to obtain
+\begin{equation}\label{eq:interacting-twist-suppression}
+ |g_D^\theta(t)-g_D^0(t)|\le52B_1\mathrm e^{-\tau_s}
+                                  \le e_*^{1/4-9\varepsilon}.
+\end{equation}
+
+Finally the normalized logarithm identity and
+\eqref{eq:interacting-factor-definition} give
+\[
+ w_c(t)=g_D^\theta(t)-g_D^0(t)
+                +\log f_{\rm int}(te_c)-\log f_{\rm int}(0).
+\]
+The principal logarithm of $f_{\rm int}$ is
+analytic and has modulus at most
+$e_*^{1/4-9\varepsilon}$. Both sides vanish
+at zero and exponentiate to the same ratio;
+uniqueness of the logarithm justifies the
+identity. Equation
+\eqref{eq:interacting-twist-suppression} proves
+\eqref{eq:interacting-one-cell-error}.
+\end{proof}
+
+Let $\phi_0(t)=\sum_{i=0}^4N_0^{(i)}(0)t^i/i!$.
+Cauchy's estimate applied to
+$|N_0(t)-1|\le2B_0$ on $|t|=t_x=4r$ gives
+\begin{equation}\label{eq:interacting-free-jet}
+ |c_2|\le r^{-2}/16,\qquad |c_4|\le r^{-4}/16,\qquad
+ \|\phi_0-1\|_r\le1/6,\qquad \|\phi_0\|_r\le2.
+\end{equation}
+The odd coefficients vanish. Expanding $\log N_0$
+through degree four gives
+$\ell_0^{(4)}(0)=c_4-3c_2^2$, the chamber fourth coefficient
+of \cite[Theorem~B]{PositiveProbe}.
+
+\section{Derivatives in separated cells}
+\label{subsec:interacting-separated}
+
+To estimate mixed logarithmic derivatives, we use the
+real covariance $G=D_*(\mathscr A)^{-1}$. On the
+coarse Grassmann algebra, write an even element
+without constant term as
+\[
+ F=\sum_{p\ge2}\frac1{p!}\sum_{u_1,\ldots,u_p}
+ F_p(u_1,\ldots,u_p)\Psi(u_1)\cdots\Psi(u_p),
+\]
+with antisymmetric kernels.
+For a symmetric weight $w\ge1$, define
+\begin{align}
+ \rho_G(F;w)&=\sum_{p\ge2}\frac{h_G^p}{(p-1)!}
+       \sup_{u_1}\sum_{u_2,\ldots,u_p}|F_p(u_1,\ldots,u_p)|w,
+                                                     \notag\\
+ N_G(F;w)&=\sum_{p\ge2}\frac{h_G^p}{(p-1)!}
+       \sum_{u_1,\ldots,u_p}|F_p(u_1,\ldots,u_p)|w .
+                                     \label{eq:interacting-tree-norms}
+\end{align}
+The supremum in $\rho_G$ is taken separately
+at each degree. The indices include site, spin,
+and barred or unbarred status; their distance
+is the distance between the sites. We use
+\[
+ w_\delta(u_1,\ldots,u_p)=
+          \mathrm e^{\vartheta_0\max_{i,j}d(u_i,u_j)},\qquad
+ w_P(u_1,\ldots,u_p)=\mathrm e^{\vartheta_0\max_i d(u_i,P)} .
+\]
+The constants $h_G,\vartheta_0,\alpha_G$ are
+those of \cite[(74)]{TerminalPressure}.
+Antisymmetrizing a kernel that is not antisymmetric
+bounds $N_G$ by the same expression for that
+kernel. For $\rho_G$, replace the supremum at
+the first argument by the largest supremum
+over all argument positions.
+
+In the fine algebra absorb the terminal mass
+into each single-cube activity:
+\[
+ E^a(X;t)=\mathscr E_*(X;\mathscr A,\mathscr C(t))
+              -\mathbf1_{\{X\text{ is an }M\text{-cube}\}}
+                         m_*\langle\bar\psi,\psi\rangle_X.
+\]
+Let $E^a_{nm}(X;t)$ denote its fine spinor/pair
+kernels. The antisymmetric mass kernel has
+norm $8M^3$: its two fine-index weights multiply
+$48\eta_*^{-3}$, its diagonal Kronecker factors
+leave $48(M/\eta_*)^3$ chamber sites, and there
+are four spin components and two orders.
+It follows from \eqref{eq:interacting-activity-input}
+that, when $a_w\le e_*^{-1/4+\varepsilon}$ and
+$(4+M^3/2)e_*^\varepsilon\le1$,
+\begin{equation}\label{eq:interacting-absorbed-activity}
+ \sum_{n,m}\frac{a_w^{n+m}}{n!m!}\|E^a_{nm}(X;t)\|
+          \le w_*^{\rm E}\mathrm e^{-\kappa d_M(X)},\qquad
+ w_*^{\rm E}=e_*^{1/4-7\varepsilon}
+                                      \quad(|t|_\infty\le t_x).
+\end{equation}
+Cauchy's formula on the circles of radius $t_x/2$
+in one or two distinct mark variables gives,
+on $|t|_\infty\le t_x/2$, the same bound
+for $\partial_cE^a_{nm}$ and
+$\partial_c\partial_{c'}E^a_{nm}$ multiplied
+respectively by $q_x=2/t_x$ and $q_x^2$.
+The circle integrals precede the finite weighted
+kernel sums, so the coefficient norm is bounded
+without replacing it by a supremum of individual
+coefficients. Locality gives
+$\partial_cE^a(X;t)=0$ unless $X\cap P_c\ne\varnothing$.
+
+After substituting the terminal field maps, put
+\begin{align}
+ V(t)&=-\langle\bar\Psi,K(t)\Psi\rangle
+           +\sum_X E^a(X;t)[H_*^\#(\mathscr A+\mathscr C(t))\Psi],
+                                                        \notag\\
+ K(t)&=D_*(\mathscr A+\mathscr C(t))-D_*(\mathscr A),\qquad
+ V_0(t)=\sum_XE^a_{00}(X;t),\qquad V_+(t)=V(t)-V_0(t).
+                                    \label{eq:interacting-tree-interaction}
+\end{align}
+It is even and analytic, and $V_+$ has no
+constant term. Gaussian integration gives
+\begin{equation}\label{eq:interacting-real-Gaussian-factor}
+ Z_{\rm tm}(t)=\det D_*(\mathscr A)\mathrm e^{V_0(t)}
+                                  \int\dd\mu_G\,\mathrm e^{V_+(t)} .
+\end{equation}
+The choice of the real covariance will allow
+the exponential weights in the tree expansion.
+
+\begin{proposition}\label{prop:interacting-differentiated-norms}
+Suppose
+\begin{equation}\label{eq:interacting-tree-smallness}
+ 5h_{\rm L}h_G\le e_*^{-1/4+\varepsilon},\qquad
+ (4+M^3/2)e_*^\varepsilon\le1,\qquad
+ \alpha_G\bar r\le1/2,
+ \quad
+ \bar r=4h_G^2C_Ke_*^{2\varepsilon}
+                            +650K_0e_*^{1/4-7\varepsilon}.
+\end{equation}
+Let $d_{\rm sep}=\min_{c\ne c'}d(P_c,P_{c'})$ and
+suppose $d_{\rm sep}\ge6M+8$.
+With
+$s_F=(24/\gamma^F)^3$ and
+$C_V^{\mathrm{ins}}=10^3C_H^2s_F^4K_0$, we have
+\begin{align}
+ \rho_G(V_+(t);w_\delta)&\le\bar r
+                                      &&(|t|_\infty\le t_x),\notag\\
+ N_G(\partial_cV_+(t);w_{P_c})&\le q_xC_V^{\mathrm{ins}}h_G^2p_\beta,
+ \quad
+ \rho_G(\partial_cV_+(t);w_{P_c})\le q_xC_V^{\mathrm{ins}}h_G^2,\notag\\
+ N_G(\partial_c\partial_{c'}V_+(t);1)
+          +|\partial_c\partial_{c'}V_0(t)|
+ &\le q_x^2C_V^{\mathrm{ins}}h_G^2p_\beta
+                    \mathrm e^{-\vartheta_0(d_{\rm sep}-4M-6)} .
+                             \label{eq:interacting-differentiated-norms}
+\end{align}
+The last two lines hold on $|t|_\infty\le t_x/2$,
+with $c\ne c'$ in the last line. If the lattice
+probe vanishes, all marked derivatives vanish.
+\end{proposition}
+
+\begin{proof}
+We give the kernel summation which preserves
+the marked supports. For a polymer $X$, let
+$X^+$ be its unit-site one-neighborhood.
+Every fine index in an activity supported on
+$X$ has its position set in $X^+$. This
+includes both chamber sites in an internal
+pair and the first site of an external
+nearest-neighbor pair whose other endpoint
+lies over $X$. The polymer diameter estimate
+gives
+\begin{equation}\label{eq:interacting-X-diameter}
+ \vartheta_0\operatorname{diam}(X^+)\le d_M(X)+3 .
+\end{equation}
+The weighted kernel after substituting the
+field maps is, at degree $p=n+m$,
+\[
+ K_{nm}^X(u_1,\ldots,u_p)=
+ \int E^a_{nm}(X;t;v_1,\ldots,v_p)
+           \prod_{i=1}^p\operatorname{Leg}(v_i;u_i)\,\dd v .
+\]
+Here $\dd v$ includes the fine weights already
+specified. Passing from the bidegree expression
+to a degree-$p$ kernel produces the factor
+$p!/(n!m!)$; in the tree norms its remaining
+factor is $p h_G^p/(n!m!)$.
+
+Suppose a weight is bounded by
+$c_w\prod_i \mathrm e^{\vartheta_0d(u_i,\operatorname{pos}(v_i))}$.
+Each summed leg contributes at most $h_{\rm L}$.
+If one argument $u$ is fixed, its leg contributes
+at most
+$h_{\rm L}\mathrm e^{-(\gamma^F/4)d(u,X^+)}$.
+Thus the full kernel sum is at most
+$c_wh_{\rm L}^p\|E^a_{nm}(X;t)\|$, and the
+sum with one fixed argument retains the
+extra exponential in $d(u,X^+)$.
+For $w_\delta$, the triangle inequality between
+the two farthest arguments and their position
+sets, followed by \eqref{eq:interacting-X-diameter},
+permits $c_w=\mathrm e^{d_M(X)+3}$.
+
+The needed rooted polymer sum is
+\begin{equation}\label{eq:interacting-rooted-polymer-sum}
+ \sum_X \mathrm e^{-(\gamma^F/4)d(u,X^+)}
+                       \mathrm e^{-(\kappa-1)d_M(X)}\le32K_0.
+\end{equation}
+Indeed the sum of
+$\mathrm e^{-(\gamma^F/4)d(u,\square^+)}$ over $M$-cubes
+is at most $32$. The neighboring $27$ cubes
+contribute at most $27$; a cube $j$ layers
+away has distance at least $(j-1)M$ and there
+are at most $(2j+1)^3$ such cubes.
+Use $\gamma^FM/4\ge4$ to sum the remaining
+geometric tail. Assigning a cube of $X$
+and applying the anchored polymer sum $K_0$
+proves \eqref{eq:interacting-rooted-polymer-sum}.
+
+Apply \eqref{eq:interacting-absorbed-activity}
+with $a_w=5h_{\rm L}h_G$. The factor $5^{-p}$
+absorbs the polynomial degree factors.
+The preceding full and rooted sums give
+\[
+ \rho_G\left(\sum_X E^a(X;t)[H_*^\#\Psi]_+;w_\delta\right)
+                                       \le650K_0w_*^{\rm E}.
+\]
+More generally, for kernels bounded by
+$\mathcal B \mathrm e^{-\kappa d_M(X)}$ at that
+weight, these sums give
+$650K_0\mathcal B$ in $\rho_G$ and
+$\exp(3)\mathcal B\sum_X\mathrm e^{-(\kappa-1)d_M(X)}$
+in $N_G$. This follows by summing
+$\sum_{p\ge2}p5^{-p}=9/80$ in the rooted
+case and using $p\le5^p$ in the full case.
+The quadratic term contributes at most
+$4h_G^2C_Ke_*^{2\varepsilon}$, since
+$\vartheta_0\le\gamma^F/2$. This proves the
+first line of \eqref{eq:interacting-differentiated-norms}.
+
+For the first derivative, there are three
+types of term: the coarse quadratic derivative,
+the activity-kernel derivative, and a derivative
+of one leg. The first has respective bounds
+$8h_G^2C_K\epsilon_cp_\beta$ and
+$4h_G^2C_K\epsilon_c$ in $N_G$ and $\rho_G$,
+with $\epsilon_c=e_*|\widehat c_c|_\infty\le q_x$.
+In its chain through $z\in P_c$, the weight
+$w_{P_c}$ is absorbed by the exponential
+distances from the two coarse endpoints to $z$.
+
+For the kernel derivative, $X$ must meet $P_c$.
+The same weight comparison uses that meeting
+point and \eqref{eq:interacting-X-diameter}.
+The Cauchy bound multiplies
+$\mathcal B=w_*^{\rm E}$ by $q_x$, and
+the sum of polymers meeting $P_c$ is at most
+$K_0p_\beta$. Its $N_G$ bound is
+$\exp(3)K_0p_\beta q_xw_*^{\rm E}$ and its
+$\rho_G$ bound is $650K_0q_xw_*^{\rm E}$.
+
+For a differentiated leg at position $j$, the
+insertion estimate has a chain
+$w\in\operatorname{pos}(v_j)\to z\in P_c^+\to u_j$.
+The weight obeys
+\[
+ w_{P_c}\le \mathrm e^{d_M(X)+5}
+ \mathrm e^{\vartheta_0[d(w,z)+d(z,u_j)]}
+            \prod_{i\ne j}\mathrm e^{\vartheta_0d(u_i,\operatorname{pos}(v_i))}.
+\]
+The extra two in the exponent accounts for
+$d(P_c^+,P_c)\le M+1$.
+Summing the differentiated leg and the other
+legs leaves, before the degree sum,
+\[
+ 2\mathrm e^{d_M(X)+5}h_{\rm L}^{p-1}
+       C_H\epsilon_cs_F
+       \sum_{z\in P_c^+}\mathrm e^{-(\gamma^F/2)d(z,X^+)}
+                                      \|E^a_{nm}(X;t)\|.
+\]
+There are $p$ choices of the differentiated
+leg. The kernel norm contributes one further
+factor $p$, and $p^2\le5^p$ absorbs both.
+Use \eqref{eq:interacting-rooted-polymer-sum}
+with $\gamma^F/2$ in place of $\gamma^F/4$.
+The result is bounded by
+$9500C_Hs_FK_0w_*^{\rm E}p_\beta\epsilon_c$
+in $N_G$.
+
+For $\rho_G$, if the fixed argument lies on
+the differentiated leg, split its two-edge
+exponent as $7\gamma^F/8=3\gamma^F/8+\gamma^F/2$.
+Summing the intermediate site leaves
+$s_F\mathrm e^{-(\gamma^F/4)d(u,X^+)}$.
+If the fixed argument lies on another leg,
+that leg supplies the same rooted exponential,
+and the differentiated leg contributes
+$2C_H\epsilon_cs_F^2$.
+Both cases therefore have the bound
+$9500C_Hs_F^2K_0w_*^{\rm E}\epsilon_c$.
+Here the degree sum is
+$\sum_{p\ge2}p^25^{-p}=43/160$.
+Adding the three types of term, using
+$w_*^{\rm E}\le1/8$, $C_K\le C_Hs_F^2$,
+and $C_H\ge2$, proves the second line with
+$C_V^{\mathrm{ins}}=10^3C_H^2s_F^4K_0$.
+
+For the mixed derivative, put
+\[
+ d_0=d(P_c^+,P_{c'}^+),\quad
+ d_1=d(X^+,P_c^+),\quad d_2=d(X^+,P_{c'}^+).
+\]
+Then $d_0\ge d_{\rm sep}-2M-2$.
+The differentiated coarse quadratic term is
+bounded in $N_G$ by
+\[
+ 16h_G^2C_H^2s_F^3p_\beta q_x^2
+                                      \mathrm e^{-(\gamma^F/2)d_{\rm sep}}.
+\]
+For an activity kernel with $p$ legs, there
+are $(p+1)^2$ placements of the two derivatives.
+They may act on two legs, the same leg, a
+kernel and a leg, or both on the kernel.
+The summed first differentiated legs are
+bounded by $2C_H\epsilon_cs_F^2\mathrm e^{-(\gamma^F/2)d_1}$
+and its $c'$ version. The mixed leg is
+bounded by
+\[
+ 2C_H^2\epsilon_c\epsilon_{c'}s_F^3\mathrm e^{-(\gamma^F/2)d_0}
+       \bigl(\mathrm e^{-(\gamma^F/2)d_1}+\mathrm e^{-(\gamma^F/2)d_2}\bigr).
+\]
+If a derivative acts on the kernel, its
+corresponding distance $d_i$ is zero by
+locality. Normalize the first kernel
+derivatives by $q_x$ and the mixed one by
+$q_x^2$. Each of the four resulting kernel
+types satisfies \eqref{eq:interacting-absorbed-activity}.
+Every product-rule term is consequently at most
+$4q_x^2C_H^2s_F^4h_{\rm L}^p\|E_{\rm type}\|\mathcal D(X)$,
+where
+\[
+ \mathcal D(X)=\mathrm e^{-(\gamma^F/2)(d_1+d_2)}
+       +\mathrm e^{-(\gamma^F/2)d_0}
+                  \bigl(\mathrm e^{-(\gamma^F/2)d_1}+\mathrm e^{-(\gamma^F/2)d_2}\bigr).
+\]
+
+The triangle inequality through $X^+$ gives
+$d_0\le d_1+d_2+M d_M(X)+2M+2$.
+Use $\vartheta_0\le\gamma^F/8$ and
+$\vartheta_0M\le1$ to obtain
+\[
+ \mathcal D(X)\mathrm e^{-\kappa d_M(X)}
+ \le2\mathrm e^{-\vartheta_0(d_0-2M-2)}
+       \bigl(\mathrm e^{-(\gamma^F/4)d_1}+\mathrm e^{-(\gamma^F/4)d_2}\bigr)
+                                \mathrm e^{-(\kappa-1)d_M(X)}.
+\]
+Sum the two distance factors over the sites
+of $P_c^+$ and $P_{c'}^+$, then use
+\eqref{eq:interacting-rooted-polymer-sum}.
+The degree factor $p(p+1)^2$ is at most
+$5^p$ for $p\ge2$. At $p=0$ there is
+one kernel term with no legs, and the same
+bound controls $\partial_c\partial_{c'}V_0$.
+The four kernel types contribute in total
+at most
+$256C_H^2s_F^4K_0p_\beta q_x^2
+\mathrm e^{-\vartheta_0(d_{\rm sep}-4M-4)}$.
+Adding the quadratic term proves the last
+line of \eqref{eq:interacting-differentiated-norms}.
+If the lattice probe is zero, $\mathscr C(t)=0$
+and there is no mark dependence.
+\end{proof}
+
+We next turn these kernel estimates into a bound
+for the logarithm. The finite-dimensional tree
+formula is recalled with its proof, since the
+distance between its two marked vertices is
+the source of the mixed-cell decay.
+
+For $n$ copies of the generators, let
+$\Delta^{ij}=\sum_{x,y}G(x,y)
+\partial_{\bar\Psi^{(j)}(y)}\partial_{\Psi^{(i)}(x)}$
+and $\Delta_{\{i,j\}}=\Delta^{ij}+\Delta^{ji}$.
+The derivatives are left Grassmann derivatives.
+For a forest $T$ and edge parameters
+$\tau\in[0,1]^T$, let $s_{ij}^T(\tau)$ be the
+minimum parameter on the path from $i$ to $j$,
+zero if there is no path, and $s_{ii}^T=1$.
+Write $\Delta[s]=\sum_{i,j}s_{ij}\Delta^{ij}$
+and let $\epsilon_0$ extract the constant term.
+For even elements $F_1,\ldots,F_n$ without
+constant term, define
+\begin{equation}\label{eq:interacting-connected-tree}
+ T_n(F_1,\ldots,F_n)=
+ \sum_{\text{trees }T}\int_{[0,1]^T}
+ \epsilon_0\left\{\prod_{\ell\in T}\Delta_\ell
+          \mathrm e^{\Delta[s^T(\tau)]}\prod_iF_i(\Psi^{(i)})\right\}\,\dd\tau .
+\end{equation}
+For $n=1$ this is the Gaussian expectation.
+
+\begin{proposition}\label{prop:interacting-tree-log}
+If $V_+(t)$ satisfies
+\eqref{eq:interacting-tree-smallness} and is analytic,
+then
+\[
+ W(t)=V_0(t)+\sum_{n\ge1}\frac1{n!}
+                       T_n(V_+(t),\ldots,V_+(t))
+\]
+is analytic on $\mathbb D(t_x)$ and
+$Z_{\rm tm}(t)=\det D_*(\mathscr A)\mathrm e^{W(t)}$.
+For $c\ne c'$ and nonempty unit-site sets $P,P'$,
+\begin{align}
+ |\partial_c\partial_{c'}(W-V_0)|
+ \le{}&2N_G(\partial_c\partial_{c'}V_+;1)\notag\\
+ &+2\alpha_GN_G(\partial_cV_+;w_P)
+       \rho_G(\partial_{c'}V_+;w_{P'})
+                                  \mathrm e^{-\vartheta_0d(P,P')}.
+                                  \label{eq:interacting-tree-mixed}
+\end{align}
+\end{proposition}
+
+\begin{proof}
+The forest interpolation formula for a polynomial $H$ is
+\[
+ H(\mathbf1)=\sum_F\int
+       \left(\prod_{\ell\in F}\partial_{s_\ell}H\right)
+                                 (s^F(\tau))\,\dd\tau.
+\]
+For a partition $\pi$ of the vertices, keep fixed
+entries $s_{\mathrm{in}}(i,j)$ inside its blocks and
+put $X_\pi(u)_{ij}=u$ on pairs joining distinct blocks.
+The chain rule and the fundamental theorem of calculus give
+\begin{equation}\label{eq:interacting-forest-first-step}
+ G(X_\pi(u))=G(X_\pi(0))
+       +\sum_{\substack{\ell=(i,j)\\
+                        i,j\text{ in distinct blocks of }\pi}}
+          \int_0^u(\partial_{s_\ell}G)(X_\pi(w))\,\dd w .
+\end{equation}
+When $\ell$ joins two blocks, merge them and assign
+the value $w$ to every pair between those two blocks.
+The interpolation point is unchanged. Begin with singleton
+blocks, $G=H$ and $u=1$, and iterate this identity
+on each integrand. Each derivative
+merges two components, so after at most $n-1$
+steps the procedure ends. The successive
+parameters are ordered decreasingly; when two
+vertices merge, their common value is the
+minimum parameter on their eventual path.
+For a fixed forest, its edge orderings divide
+the parameter cube into these ordered simplices.
+Summing them gives the formula.
+
+The matrix $s^F$ is a Gram matrix of unit
+vectors: at $u\in[0,1]$, assign to vertex $i$
+the basis vector of its component among the
+edges with $\tau_\ell>u$, and integrate their
+scalar products in $u$. This scalar product
+is the length of the interval on which the
+two vertices remain connected, namely
+$s_{ij}^F$. Wick's formula and the Gram
+inequality therefore bound a residual monomial
+of degree $p$ under $\mathrm e^{\Delta[s^F]}$
+by $g^p$, where $\|G\|_2\le g^2$.
+Indeed, its determinant entries are
+$\langle\omega_i\otimes\delta_x,\omega_j\otimes G\delta_y\rangle$.
+These facts apply whether or not the
+interpolated covariance is invertible.
+
+Let vertex $i$ of a tree have degree $k_i$
+and let the chosen homogeneous part of $F_i$
+have degree $p_i$. The edge derivatives leave
+the factorial $(p_i-k_i)!^{-1}$ and $p_i-k_i$
+uncontracted fields at that vertex; terms with
+$p_i<k_i$ vanish. Wick's Gram bound supplies
+$g^{p_i-k_i}$. Sum contracted arguments from
+the leaves to vertex $1$, using the weighted
+row and column bound $\alpha_G$ for every
+edge. If nonnegative symmetric weights $w_i$
+and a distance $D$ satisfy
+\[
+ \mathrm e^{\vartheta_0D}\le
+       \prod_iw_i(\text{arguments at }i)
+       \prod_{\ell=(i,j)}
+          \mathrm e^{\vartheta_0d(\text{edge arguments})},
+\]
+this yields $\mathrm e^{-\vartheta_0D}\alpha_G^{n-1}$
+times the full kernel sum at vertex $1$
+and the rooted sums at the other vertices.
+The number of trees with degrees $k_1,\ldots,k_n$
+is $(n-2)!/\prod_i(k_i-1)!$; here $n\ge2$,
+$k_i\ge1$ and $\sum_i k_i=2n-2$, as in
+\cite[Proposition~4]{PostnikovLin2019}.
+Enlarge the sum over degrees and use
+\[
+ \sum_{k=1}^{p}
+       \frac{g^{p-k}}{(k-1)!(p-k)!}
+       =\frac{(1+g)^{p-1}}{(p-1)!}
+       \le\frac{h_G^p}{(p-1)!}.
+\]
+We obtain, for $n\ge2$,
+\begin{equation}\label{eq:interacting-tree-bound}
+ |T_n(F_1,\ldots,F_n)|
+ \le \mathrm e^{-\vartheta_0D}(n-2)!\alpha_G^{n-1}
+                N_G(F_1;w_1)\prod_{i=2}^n\rho_G(F_i;w_i).
+\end{equation}
+For $n=1$ the bound is $N_G(F_1;1)$.
+This also explains why the tree norms use
+$(p-1)!$ rather than $p!$.
+
+Apply the forest formula to the replicated
+Gaussian expectation of $V_+^n$.
+Different forest components contain disjoint
+generator sets and their even factors commute,
+so their expectations factor. Grouping by
+component partitions gives
+\[
+ \int\dd\mu_G\,V_+^n
+       =\sum_{\{B_1,\ldots,B_q\}}
+                     \prod_{a=1}^qT_{|B_a|}(V_+,\ldots,V_+).
+\]
+The exponential formula for partitions
+identifies the Gaussian integral with the
+exponential of the connected tree sum.
+The identity first holds as a formal series
+in a scalar multiplying $V_+$. Bound
+\eqref{eq:interacting-tree-bound} and
+$\alpha_G\rho_G(V_+;1)\le1/2$ make the
+connected series absolutely convergent up
+to that scalar equal to one, so the formal
+identity is an analytic identity there.
+The tree terms are polynomial in the
+activity coefficients, and their series
+converges locally uniformly in $t$. Thus $W$
+is analytic and its derivatives are obtained
+term by term.
+
+Two derivatives of the symmetric multilinear
+tree expression either act on the same vertex
+or on two different vertices. The first
+terms, including $n=1$, sum to at most
+$2N_G(\partial_c\partial_{c'}V_+;1)$.
+For the second terms put the two derivatives
+at vertices $1$ and $2$. The weights there
+are $w_P,w_{P'}$, and those at all other
+vertices are $w_\delta$.
+Along the unique path from $1$ to $2$,
+the distance $d(P,P')$ is at most the
+sum of the two endpoint distances, all
+edge distances, and the argument diameters
+at intermediate vertices. Hence the weight
+condition for \eqref{eq:interacting-tree-bound}
+holds with $D=d(P,P')$. The tree sum leaves
+$\alpha_GN_G(\partial_cV_+;w_P)
+\rho_G(\partial_{c'}V_+;w_{P'})
+\mathrm e^{-\vartheta_0d(P,P')}$ times
+$\sum_{n\ge2}(\alpha_G\rho_G(V_+;w_\delta))^{n-2}\le2$.
+This proves \eqref{eq:interacting-tree-mixed}.
+\end{proof}
+
+For a function $f$ of the marks, let
+$t^T$ keep the coordinates indexed by $T$
+and set all others to zero, and define
+its component with variable set $S$ by
+\[
+ f_S(t)=\sum_{T\subset S}(-1)^{|S\setminus T|}f(t^T).
+\]
+Then $f=\sum_Sf_S$, $f_\varnothing=f(0)$,
+and $f_S$ vanishes if any variable of $S$
+vanishes. The latter statement follows by
+pairing the terms with and without that
+variable. In particular a variable absent
+from $f$ makes every component containing
+it zero. Two coordinate differences can
+be represented by two integrals of the
+mixed derivative. Consequently
+\begin{equation}\label{eq:interacting-Mobius-bound}
+ \sup_{|t|_\infty\le R}|f_S(t)|
+ \le2^{|S|-2}R^2
+          \sup_{|t|_\infty\le R}|\partial_c\partial_{c'}f(t)|
+ \qquad(c,c'\in S,\ c\ne c').
+\end{equation}
+
+\begin{proposition}\label{prop:interacting-mixed-logarithm}
+Assume the factor and mass conditions
+\eqref{eq:interacting-factor-conditions}--\eqref{eq:interacting-small-complex-mass},
+the tree conditions \eqref{eq:interacting-tree-smallness}, and
+$d_{\rm sep}\ge6M+8$. For $|S|\ge2$, the normalized logarithm satisfies
+\begin{equation}\label{eq:interacting-mixed-logarithm}
+ \sup_{|t|_\infty\le t_x/2}|\mathcal G_S(t;\theta,A)|
+                     \le\varpi_{\rm sep}\le\varpi_{\rm sep}^+,
+\end{equation}
+where
+\begin{align}
+ C_W^{\mathrm{mix}}&=3C_V^{\mathrm{ins}}h_G^2+2\alpha_G(C_V^{\mathrm{ins}})^2h_G^4
+                             +4\exp(6)C_dM^3K_0,\notag\\
+ \varpi_{\rm sep}&=2^{N_*}C_W^{\mathrm{mix}}p_\beta
+                    \mathrm e^{-\vartheta_0(d_{\rm sep}-4M-6)},\notag\\
+ \varpi_{\rm sep}^+&=2^{N_*}C_W^{\mathrm{mix}}p_\beta
+                    \mathrm e^{-\vartheta_0(Mr_*/(8L)-4M-7)} .
+                                  \label{eq:interacting-separation-errors}
+\end{align}
+\end{proposition}
+
+\begin{proof}
+The tree representation and uniqueness of the
+normalized logarithm give
+\[
+ \mathcal G(t)=\sum_X\mathfrak P_*(X,\mathscr C(t))+W(t)-W(0).
+\]
+The component of a determinant activity is zero
+unless $X$ meets every $P_c$, $c\in S$.
+Such a polymer has
+$d_M(X)\ge d_{\rm sep}/M-2\ge1$.
+Use \eqref{eq:interacting-P-bound}, sum the
+polymers anchored at one of at most $p_\beta$
+cubes, and keep $\mathrm e^{-2d_M(X)}$ from
+$\kappa-\kappa_0\ge2$.
+Its total contribution is at most
+$2^{|S|}2\exp(4)C_dM^3K_0p_\beta
+\mathrm e^{-\vartheta_0d_{\rm sep}}$.
+
+Apply \eqref{eq:interacting-tree-mixed}
+with $P=P_c$, $P'=P_{c'}$ and
+\eqref{eq:interacting-differentiated-norms}.
+The bound for $\partial_c\partial_{c'}W$ is
+\[
+ q_x^2p_\beta\left[
+       2C_V^{\mathrm{ins}}h_G^2\mathrm e^{-\vartheta_0(d_{\rm sep}-4M-6)}
+           +2\alpha_G(C_V^{\mathrm{ins}})^2h_G^4\mathrm e^{-\vartheta_0d_{\rm sep}}\right].
+\]
+In \eqref{eq:interacting-Mobius-bound}, take
+$R=t_x/2$ and use $q_xR=1$.
+Add the determinant contribution and
+$|S|\le N_*$ to obtain the first inequality.
+The placement estimate
+$d_{\rm sep}\ge Mr_*/(8L)-1$
+proves the second.
+When the lattice probe is zero,
+$R_{\rm tm}=1$, $\mathcal G=0$ and the
+first separation error is interpreted as zero.
+\end{proof}
+
+\section{The positive small-field measure and its complement}
+\label{subsec:interacting-complement}
+
+\cite[Proposition~3.1]{TerminalPressure} identifies $F_N$
+with $(A_*;\zeta_j)_{j<k_*}$. Their scalar
+coordinates have the form
+$\zeta_j(\Upsilon)=\langle\phi_{j,\Upsilon},F^{\rm u}\rangle$
+with orthonormal $\phi_{j,\Upsilon}$; each
+coarse plaquette coordinate $(dA_*)(p)$ has
+the form $\langle\phi_p,F^{\rm u}\rangle$ with
+$\|\phi_p\|\le1$.
+There are at most $2\ell_*^3L^{3(k_*-j)}$
+coordinates at level $j$ and $3\ell_*^3$
+coarse plaquettes. The stop Gaussian
+$\dd\mathsf m_*$ is nondegenerate on the
+real mean-zero coclosed coarse fields.
+The row and count statements are
+\cite[(13)]{TerminalPressure} and
+\cite[(14)]{TerminalPressure}; the
+Gaussian assertion is \cite[(12)]{TerminalPressure}.
+
+Let $\mathfrak G$ require
+$|\zeta_j(\Upsilon)|\le p_{0,j}$
+and $|dA_*|_\infty\le p_*$, and let
+$\mathfrak G^-$ decrease each threshold by one.
+Put
+\begin{align}
+ \varpi_0&=18\ell_*^3\mathrm e^{-p_{0*}/2}
+               +6\ell_*^3\mathrm e^{-(p_*-1)^2/(2C_0^2)},\notag\\
+ t_2&=e\,\min\left\{N_*^{-1/2},\,C_\beta^{-1},
+                                     (2\sqrt{N_*\mathbf D})^{-1}\right\},\notag\\
+ \varpi_L&=\sqrt{\varpi_0}\,\mathrm e^{\mathbf D/2},
+ \qquad M_L=2+\mathrm e^{\mathbf D/2},\notag\\
+ \lambda_L&=(\varpi_L^{1/3}M_L^{2/3})^{1/N_*}
+                              5(2N_*r/t_2)^4 .
+                                     \label{eq:interacting-complement-constants}
+\end{align}
+A reciprocal with zero denominator is interpreted
+as $+\infty$. The number $\mathbf D$ is the
+uniform probe energy bound, so $v_\eta\le\mathbf D$.
+
+\begin{proposition}\label{prop:interacting-complement}
+Assume the hypotheses of \cref{prop:interacting-one-cell,prop:interacting-mixed-logarithm}
+and the tail conditions $v_*\ge8$ and $p_0v_*^{p_0-1}\ge28$.
+For a fixed $0<s<1$, set
+$\bar\kappa_1=6e_*^{1/4-9\varepsilon}$.
+Assume
+\begin{equation}\label{eq:interacting-jet-conditions}
+ 2\varpi_{\rm sep}^+\le\bar\kappa_1^{N_*},\quad
+ N_*\bar\kappa_1^{1-s}\le1/2,\quad
+ \varpi_0\le1/4,\quad 8N_*t_2\le t_x .
+\end{equation}
+There is a finite positive measure $v_{\rm sf}$
+on $[-\pi,\pi]^3\times\{\chi_*=1\}$, of
+mass in $[1-\varpi_0,1]$, such that
+\begin{equation}\label{eq:interacting-small-field-representation}
+ \frac{\bar\nu^{a(t)}(\mathfrak G)}{\bar\nu(F_N)}
+       =\int \mathrm e^{\mathcal G(t;\theta,A)}\,v_{\rm sf}(\dd\theta\,\dd A).
+\end{equation}
+The normalized complement
+$L(t)=\bar\nu^{a(t)}(F_N\setminus\mathfrak G)/\bar\nu(F_N)$
+is entire. Its fourth jet in each variable has
+coefficient norm at radius $r$ at most
+$\lambda_L^{N_*}$.
+\end{proposition}
+
+\begin{proof}
+First, the union bound and
+\cite[(7)]{TerminalPressure} give
+\begin{equation}\label{eq:interacting-small-field-tail}
+ \bar\mu(F_N\setminus\mathfrak G^-)\le\varpi_0 .
+\end{equation}
+For $i=k_*-j\ge1$, write
+$v_j=v_*+i(\log L)/2$.
+The scale conditions
+$v_*\ge8$, $p_0v_*^{p_0-1}\ge28$ give
+$p_{0,j}\ge p_{0*}+14i\log L$.
+Since $(p_{0,j}-1)^2\ge p_{0,j}$,
+the individual tail is at most
+$2\mathrm e^{-p_{0*}/2}L^{-7i}$.
+Multiply by the coordinate count
+$2\ell_*^3L^{3i}$ and sum $L^{-4i}$.
+The $3\ell_*^3$ coarse plaquettes give the
+second term in \eqref{eq:interacting-complement-constants}.
+These estimates yield \eqref{eq:interacting-small-field-tail},
+with room in the coefficient $18$.
+
+The exact density identity defines
+\begin{equation}\label{eq:interacting-small-field-measure}
+ v_{\rm sf}(\dd\theta\,\dd A)=
+   \frac{\chi_*(A)Y_*^{\rm x}(A+c_\theta;0)}
+             {\bar\nu(F_N)}\,\frac{\dd\theta}{(2\pi)^3}
+                                      \dd\mathsf m_*(A).
+\end{equation}
+We check positivity of this density, which
+does not follow from the formal Grassmann
+representation. For real marks, the original
+fine law $\nu^{\theta,a(t)}$ is nonnegative.
+The identity \cite[(21)]{TerminalPressure} says, for every
+nonnegative bounded Borel $\Phi$,
+\[
+ \int\Phi(A)\chi_*(A)Y_*^{\rm x}(A+c_\theta;\mathscr C(t))
+                \,\dd\mathsf m_*(A)
+       =\nu^{\theta,a(t)}(\mathbf1_{\mathfrak G}\Phi(A_*))\ge0.
+\]
+The terminal density is continuous. On the
+interior of the compact convex set
+$\{\chi_*=1\}=\{|dA|_\infty\le p_*\}$, a
+nonzero imaginary part or negative real
+part would persist on a ball of positive
+Gaussian measure, contradicting this identity.
+At the boundary, approach along $uA$,
+$u\uparrow1$; zero is an interior point.
+Thus the density is nonnegative everywhere
+on this set. \Cref{prop:interacting-factor}
+makes it nonzero there, hence strictly positive.
+This reasoning also proves
+$\mathcal G(t;\theta,A)\in\R$ for real $t$:
+its exponential is a positive ratio and its
+continuous value at zero is zero.
+
+Integration of the exact terminal identity over
+$\theta$, followed by
+\eqref{eq:interacting-terminal-ratio}, proves
+\eqref{eq:interacting-small-field-representation}.
+At $t=0$ the mass is $\bar\mu(\mathfrak G)$,
+which lies in $[1-\varpi_0,1]$.
+All integrals here are well-defined Borel
+integrals: the density is continuous on
+the compact support and zero elsewhere.
+
+For real $t=ez$ with $|t|_\infty\le t_2$,
+put $G_z=\sum_cz_cd\widehat{\mathfrak a}_c$.
+Disjoint supports imply
+$\|G_z\|^2=v_\eta|z|_2^2\le1/4$.
+The real source shift gives
+\[
+ L(ez)=\mathrm e^{-v_\eta|z|_2^2/2}
+ \bar\mu\left(\mathbf1_{(F_N\setminus\mathfrak G)+G_z}
+                              \mathrm e^{\langle G_z,F^{\rm u}\rangle}\right).
+\]
+Every photon coordinate changes by at most
+$\|G_z\|\le1$ under the shift. Thus the
+shifted complement is contained in
+$F_N\setminus\mathfrak G^-$.
+Cauchy--Schwarz, \eqref{eq:interacting-small-field-tail},
+and Gaussian domination at $2G_z$ give
+\begin{equation}\label{eq:interacting-real-complement}
+ 0\le L(t)\le\sqrt{\varpi_0}\,
+          \mathrm e^{v_\eta|z|_2^2/2}\le\varpi_L .
+\end{equation}
+This is the only place where the lowered
+thresholds of $\mathfrak G^-$ are needed.
+
+The source-shift identity also gives, for complex marks,
+\[
+ |\mathring\Phi(t)|\le
+       \exp\left(\frac{v_\eta}{2e^2}
+                                      \sum_c(\operatorname{Im}t_c)^2\right).
+\]
+It follows directly by bounding the expectation
+of the real exponential and canceling its
+real quadratic normalization.
+On $|t|_\infty\le t_2$ this is at most
+$\mathrm e^{\mathbf D/2}$.
+The small-field integral has modulus at most
+$2$. Indeed, evenness and the double zero of
+$\ell_0$ give $|\ell_0(t)|\le B_0|t|^2/t_x^2$,
+while the zero of $w_c$ gives
+$|w_c(t)|\le(3/8)|t|/t_x$.
+Their sum over cells at
+$t_2\le t_x/(8N_*)$ is at most
+$1/(256N_*)+3/64$. The remaining logarithm
+components sum to at most
+$2^{N_*}\varpi_{\rm sep}^+
+\le(2\bar\kappa_1)^{N_*}/2\le N_*^{-N_*}/2$,
+by \eqref{eq:interacting-jet-conditions}.
+Thus $|\mathcal G|\le1/2$ and
+$|\mathrm e^{\mathcal G}|\le2$.
+Since $L$ is the difference between the
+full generating function and the small-field
+integral, $|L|\le M_L$ on that polydisc.
+It is entire because the finite determinant
+density is entire and is bounded on compact
+mark sets uniformly in the real photon
+field and real twist. The modulus bound
+in the external-response section supplies
+the required Gaussian integrable majorant
+also for either Borel event.
+
+We use the following two-constants estimate.
+Let $n\ge1$ be an integer. If a holomorphic function
+on a polydisc in $\C^n$ of radius $R$ has modulus at most $M$, and
+at most $\delta\le M$ on its real points,
+then its modulus is at most $\delta^{1/3}M^{2/3}$
+on the polydisc of radius $R/(2n)$.
+On the upper
+half of the unit disc the harmonic function
+$\omega(z)=\frac2\pi\arg[(1+z)/(1-z)]$
+is zero on the diameter and one on the
+semicircle. Comparing $\log|f(R'z)|$
+with $(1-\omega)\log\delta+\omega\log M$,
+for $R'<R$, the maximum principle gives
+the same inequality in the half disc.
+To handle its endpoints, subtract
+$\epsilon\log[4/|1-z^2|]$ before applying
+the principle, then let $\epsilon\downarrow0$.
+Its harmonic conjugate gives a holomorphic
+function to which the modulus principle
+applies. On $|z|\le q$, $\omega(z)\le
+(4/\pi)\arctan q$; reflection treats the
+lower half disc. Let $R'\uparrow R$.
+Apply this one-variable estimate successively
+with $q=1/(2n)$. The remaining exponent of
+$\delta$ is at least
+$(1-\frac4\pi\arctan(1/(2n)))^n
+\ge1-2/\pi>1/3$, proving the assertion.
+The case $\delta=0$ follows by the identity
+theorem, and $M=0$ is immediate.
+
+Apply it to $L$, with $n=N_*$ and $R=t_2$.
+Cauchy's coefficient bound gives
+\[
+ |L_\alpha|\le\varpi_L^{1/3}M_L^{2/3}(2N_*/t_2)^{|\alpha|}.
+\]
+In the fourth jet, every exponent is at most
+four. Since $y=2N_*r/t_2\ge1$,
+\[
+ \sum_{\alpha_c\le4}|L_\alpha|r^{|\alpha|}
+   \le\varpi_L^{1/3}M_L^{2/3}
+                 (1+y+\cdots+y^4)^{N_*}
+   \le\lambda_L^{N_*}.
+\]
+Reality on real marks gives real jet coefficients.
+\end{proof}
+
+\section{The fourth-order cancellation}
+\label{subsec:interacting-fourth-jet}
+
+Work in the finite ring
+$\mathcal J=\C[t_c:c\in\mathcal C_*]/(t_c^5:c\in\mathcal C_*)$,
+with coefficient norm
+$\|P\|_r=\sum_{\alpha_c\le4}|P_\alpha|r^{|\alpha|}$.
+This norm is submultiplicative, since discarding
+terms with an exponent at least five can only
+decrease the coefficient sum.
+The jet map is a ring homomorphism; it
+keeps degree at most four in each variable.
+For $S=\{c\}$ set $k_S=\mathrm e^{w_c}-1$ in this
+ring, and for $|S|\ge2$ set
+$k_S=\mathrm e^{\mathcal G_S}-1$.
+Every monomial of $k_S$ uses every variable
+of $S$ and no other variable.
+
+For a component $f_S$ bounded on a polydisc
+of radius $R$, Cauchy's estimate at a smaller
+radius $R'\le R/2$ gives
+\[
+ \|f_S\|_{R'}\le\sup|f_S|
+             \left(\sum_{j=1}^4(R'/R)^j\right)^{|S|}
+                         \le\sup|f_S|.
+\]
+Its monomials contain each variable of $S$
+because it vanishes on every corresponding
+coordinate hyperplane. Use this with
+$R=t_x/2$, $R'=r$, and use the one-cell
+estimate on radius $t_x$, to obtain
+\begin{equation}\label{eq:interacting-error-jets}
+ \|k_{\{c\}}\|_r\le\bar\kappa_1,\qquad
+ \|k_S\|_r\le2\varpi_{\rm sep}^+
+                       \le\bar\kappa_1^{N_*}\quad(|S|\ge2).
+\end{equation}
+We used $\|w_c\|_r\le3e_*^{1/4-9\varepsilon}\le3/8$
+and $\|\mathrm e^P-1\|_r\le2\|P\|_r$ for $\|P\|_r\le1/2$.
+The coefficients are continuous in $(\theta,A)$:
+express the logarithm coefficients by Cauchy
+integrals on a fixed small torus, and then
+take the finite polynomial expressions in
+those coefficients. They are real because
+the logarithm is real at real marks.
+
+In $\mathcal J$ the normalized generating
+function has the exact representation
+\begin{equation}\label{eq:interacting-jet-representation}
+ \mathring\Phi=
+   \prod_c\phi_0(t_c)
+       \int\prod_{\varnothing\ne S\subset\mathcal C_*}
+                         (1+k_S)\,v_{\rm sf}(\dd\theta\,\dd A)
+       +L^{[4]}.
+\end{equation}
+To justify taking the jet inside the integral,
+use joint continuity, holomorphy, and
+$|\mathrm e^{\mathcal G}|\le2$ on a fixed
+polydisc of radius at most $t_2$.
+Cauchy's coefficient formulas and Fubini
+then commute every required coefficient
+with the finite measure integral.
+Decompose $\mathcal G$ into its variable-set
+components; its singleton components are
+$\ell_0(t_c)+w_c(t_c)$.
+Exponentiation, the jet homomorphism,
+and $\mathrm e^{\ell_0}=N_0$ prove the representation.
+
+\begin{theorem}\label{thm:interacting-reference-error}
+Use the fixed construction, common trajectory and terminal inputs of
+\cref{sec:rrm-terminal-inputs}. Suppose the factor and mass conditions
+\eqref{eq:interacting-factor-conditions}--\eqref{eq:interacting-small-complex-mass},
+the one-cell conditions \eqref{eq:interacting-one-cell-conditions},
+the tree conditions \eqref{eq:interacting-tree-smallness}, and the jet
+conditions \eqref{eq:interacting-jet-conditions} hold. Assume also
+$r_*>31L+16$, $Mr_*/(8L)-1\ge6M+8$,
+$v_*\ge8$, $p_0v_*^{p_0-1}\ge28$, and
+$\lambda_L\le\bar\kappa_1^s$, where $0<s<1$.
+For $m=2,4$,
+\begin{equation}\label{eq:interacting-Theta-bound}
+ \Theta_m^{(0)}\le
+        m!r^{-m}\bigl(2\exp(1)\bar\kappa_1^s+\lambda_L\bigr)
+                       \le8m!r^{-m}\bar\kappa_1^s.
+\end{equation}
+With
+$\mathfrak e=s(1/4-9\varepsilon)-12\varepsilon>0$,
+\begin{align}
+ \Theta_4^{(0)}
+    &\le3\cdot10^5 C_b^4e_*^{\mathfrak e}
+           \le3\cdot10^5C_b^4h^{1/8}e^{\mathfrak e},\notag\\
+ (1+|c_2|)\Theta_2^{(0)}
+    &\le3\cdot10^4C_b^4e_*^{\mathfrak e}
+           \le3\cdot10^4C_b^4h^{1/8}e^{\mathfrak e}.
+                                    \label{eq:interacting-final-terminal-error}
+\end{align}
+The constants are independent of the ultraviolet cutoff and the
+admitted placement. The terminal estimates used before harmonic
+averaging hold uniformly in the real twist.
+\end{theorem}
+
+\begin{proof}
+On the one-variable jet space define
+$\ell_c(t_c^j)=m!\mathbf1_{\{j=m\}}-c_m\mathbf1_{\{j=0\}}$
+and let $\ell=\bigotimes_c\ell_c$.
+Then $(\Theta_m^{(0)})^{N_*}=|\ell(\mathring\Phi)|$.
+The free jet satisfies $\ell_c(\phi_0)=0$.
+From \eqref{eq:interacting-free-jet},
+$|\ell(P)|\le(m!r^{-m})^{N_*}\|P\|_r$.
+These statements follow by evaluating the
+functionals on monomials with every exponent
+in $\{0,m\}$.
+
+Expand the product in
+\eqref{eq:interacting-jet-representation} over
+families $\mathcal Y$ of nonempty cell sets.
+If $\mathcal Y$ fails to cover a cell $c$,
+its error factors do not contain $t_c$;
+the factor $\phi_0(t_c)$ is therefore
+annihilated by $\ell_c$. Only covering
+families contribute.
+Assign cost one to each singleton and
+cost $N_*$ to each larger set, and let
+$a(\mathcal Y)$ be the sum of these costs.
+A covering family has $a(\mathcal Y)\ge N_*$:
+either it contains a larger set or it
+contains every singleton.
+By \eqref{eq:interacting-error-jets} its
+coefficient norm is at most
+$\bar\kappa_1^{a(\mathcal Y)}$.
+The free factors have norm at most $2^{N_*}$.
+Keep $\bar\kappa_1^{sN_*}$ from the cost
+and sum the rest over all families. This
+sum is
+\[
+ (1+\bar\kappa_1^{1-s})^{N_*}
+  (1+\bar\kappa_1^{(1-s)N_*})^{2^{N_*}-1-N_*}
+ \le\exp\left(N_*\bar\kappa_1^{1-s}
+                  +2^{N_*}\bar\kappa_1^{(1-s)N_*}\right)
+ \le\exp(1).
+\]
+The last step uses $N_*\bar\kappa_1^{1-s}\le1/2$.
+The positive small-field measure has mass at
+most one. Its total contribution is thus
+bounded by
+$(m!r^{-m})^{N_*}\exp(1)(2\bar\kappa_1^s)^{N_*}$.
+The complement contributes at most
+$(m!r^{-m}\lambda_L)^{N_*}$.
+Taking the $N_*$th root proves
+\eqref{eq:interacting-Theta-bound}.
+
+Since $r^{-4}=256C_b^4e_*^{-12\varepsilon}$
+and $\bar\kappa_1^s\le6e_*^{s(1/4-9\varepsilon)}$,
+the $m=4$ bound has coefficient at most
+$8\cdot24\cdot1536<3\cdot10^5$.
+For $m=2$, $1+|c_2|\le(17/16)r^{-2}$,
+so its coefficient is at most
+$17\cdot1536<3\cdot10^4$.
+Finally $0<\mathfrak e<1/4$ and
+$e_*\le e\sqrt h$ imply
+$e_*^{\mathfrak e}\le h^{1/8}e^{\mathfrak e}$.
+The scale and probe bounds entering this
+proof are uniform in the stated choices.
+\end{proof}
+
+\section{A positive charge interval}
+\label{subsec:interacting-positive-threshold}
+
+We now verify that the response conditions admit
+a common interval of charges, independent of the
+ultraviolet cutoff. In addition to
+\eqref{eq:interacting-factor-conditions},
+\eqref{eq:interacting-small-complex-mass},
+\eqref{eq:interacting-one-cell-conditions},
+\eqref{eq:interacting-tree-smallness}, and
+\eqref{eq:interacting-jet-conditions}, require
+$r_*>31L+16$, $v_*\ge8$, $p_0v_*^{p_0-1}\ge28$, and
+\begin{gather}
+ Mr_*/(8L)-1\ge6M+8,\qquad
+ \lambda_L\le\bar\kappa_1^s,
+                                  \label{eq:interacting-last-response-conditions}\\
+ D_\beta^{\rm buf}/2+1/2\le3\ell_c/8,\qquad
+ D_\beta^{\rm buf}+3\le\ell_c .
+                                  \label{eq:interacting-placement-conditions}
+\end{gather}
+The construction of \cite[\S6.1]{CoverTuning}
+fixes an odd $L\ge13$, a power
+$M$ of $L$ with $M\ge L^2$, a localization
+power $r_{\rm loc}\ge2$, and cutoff powers
+$p_0\ge2$, $p>2p_0$. It also fixes
+$0<\varepsilon\le1/200$ and $0<s<1$ such that
+\begin{equation}\label{eq:interacting-response-exponents}
+ \mathfrak e=s(1/4-9\varepsilon)-12\varepsilon>0.
+\end{equation}
+For the construction fixed in the introduction, take $s=1/2$;
+then $\mathfrak e\ge17/400$.
+
+\begin{proposition}\label{prop:interacting-positive-threshold}
+For the fixed construction constants, $\bar m$,
+and probe $\beta$, there is $e_\sharp(\beta)>0$
+such that all response conditions hold for
+$0<e\le e_\sharp(\beta)$ and every
+$N\ge N_{\rm ref}(e)$. The threshold depends
+on the probe only through
+$C_\beta,\mathbf D,D_\beta^{\rm buf}$.
+It is independent of $N$, the twist, and the
+admitted placement. All centered placements
+are admitted in this range.
+\end{proposition}
+
+\begin{proof}
+Write
+$v_K=-\log(e\sqrt h)$ and
+$r_K=\min\{L^i:L^i\ge v_K^{r_{\rm loc}}\}$.
+Then $R^*(e)=hMr_K/L$ and
+$\ell_c=R^*(e)/(2L)$.
+\cite[Proposition~6.1]{CoverTuning} and
+\cite[(53)]{CoverTuning} give
+a finite $N_{\rm ref}(e)$.
+
+For $N\ge N_{\rm ref}(e)$ the stop level
+is $K-1$ or $K-2$ by
+\cite[(54)]{CoverTuning}. In particular its
+scales are independent of $N$ and satisfy
+\begin{gather}
+ v_K\le v_*,\quad e_*=\mathrm e^{-v_*},\quad
+ a_*\in\{h/L,h/L^2\},\notag\\
+ v_*^{r_{\rm loc}}\le r_*,\quad
+ Mv_*^{r_{\rm loc}}\le\ell_*<LMv_*^{r_{\rm loc}},
+ \quad p_{0*}=v_*^{p_0},\quad p_*=v_*^p,\notag\\
+ p_\beta\le p_\beta^+:=
+                (D_\beta^{\rm buf}L^2/h+2M+4)^3,\qquad
+ \ell_c\ge hMv_K^{r_{\rm loc}}/(2L^2).
+                                  \label{eq:interacting-threshold-scales}
+\end{gather}
+The strict wrapping condition $r_*>31L+16$
+already follows from \cite[(50)]{CoverTuning}
+whenever $e\sqrt h\le e_1$.
+Thus every response condition is a condition
+on $e$ alone once the construction and probe
+are fixed.
+
+A bound $A v^d \mathrm e^{-\gamma v}$
+with $A,d\ge0$ and $\gamma>0$ tends to zero,
+uniformly on a sufficiently large half-line.
+Split the exponential in half and use
+$v^d\mathrm e^{-\gamma v/2}\le(2d/(\gamma\exp(1)))^d$.
+Likewise, $cv^2$ exceeds $bv+\log^+A$
+on a sufficiently large half-line for
+$c>0$. We apply these two inequalities to
+the following groups of conditions.
+
+The local tree smallness and terminal factor
+conditions follow from exponential decay
+with positive rates
+$\varepsilon$, $2\varepsilon$,
+$1/4-\varepsilon$, and $1/4-9\varepsilon$;
+the volume factors are bounded by
+$(LM)^3v_*^{3r_{\rm loc}}$.
+For $\bar r$, use
+$1/4-7\varepsilon>2\varepsilon$.
+The complex mass and coarse determinant
+conditions similarly have rate $2\varepsilon$.
+The support count is bounded by $p_\beta^+$.
+All three summands of $B_0$ tend to zero:
+their rates are $4\varepsilon$, $2\varepsilon$,
+and the quadratic decay $\mathrm e^{-r_*}\le \mathrm e^{-v_*^2}$.
+Also $\tau_s\ge c_\tau Mv_*^2$, so both
+$\tau_s\ge1$ and
+$52B_1\mathrm e^{-\tau_s}\le e_*^{1/4-9\varepsilon}$
+hold once $v_*$ is large.
+
+The separation condition follows from
+$r_*\ge v_*^2$. Its error obeys
+\[
+ 2\varpi_{\rm sep}^+
+ \le2^{N_*+1}C_W^{\mathrm{mix}}p_\beta^+
+          \mathrm e^{\vartheta_0(4M+7)}
+          \mathrm e^{-\vartheta_0Mv_*^2/(8L)} .
+\]
+Since $\bar\kappa_1\ge \mathrm e^{-v_*/4}$,
+quadratic decay makes this at most
+$\bar\kappa_1^{N_*}$ for all sufficiently
+large $v_*$. The family summation condition
+$N_*\bar\kappa_1^{1-s}\le1/2$
+uses the positive rate
+$(1-s)(1/4-9\varepsilon)$.
+
+For the photon complement, the inequalities $v_*\ge8$ and
+$p_0v_*^{p_0-1}\ge28$ hold on a sufficiently large half-line,
+since $p_0\ge2$. Moreover $p>2p_0$ implies
+$(p_*-1)^2\ge C_0^2p_{0*}$ once $v_*$
+is large. Therefore
+\begin{equation}\label{eq:interacting-complement-threshold}
+ \varpi_0\le24(LM)^3v_*^{3r_{\rm loc}}\mathrm e^{-v_*^2/2}.
+\end{equation}
+This is eventually at most $1/4$.
+Moreover $t_2/e$ is fixed and positive, while
+$e$ is between $(L/h)^{1/2}e_*$
+and $Lh^{-1/2}e_*$. Hence
+$8N_*t_2/t_x$ is bounded by a fixed
+constant times $e_*^{1-3\varepsilon}$,
+which tends to zero.
+
+The potentially largest loss is the fourth
+derivative radius in $\lambda_L$.
+From \eqref{eq:interacting-complement-threshold},
+the definition of $\lambda_L$, and
+$r/t_2\le C \mathrm e^{v_*}$, we obtain
+\begin{equation}\label{eq:interacting-lambda-threshold}
+ \lambda_L\le A_8
+   \exp\left(-\frac{v_*^2}{12N_*}
+                     +\left(\frac{r_{\rm loc}}{2N_*}+4\right)v_*\right)
+\end{equation}
+for a finite $A_8>0$ depending only on the
+fixed constants and probe bounds.
+For clarity one can take
+\[
+ A_8=[24(LM)^3]^{1/(6N_*)}
+       \mathrm e^{\mathbf D/(6N_*)}M_L^{2/(3N_*)}
+       5\left[
+        \frac{N_*\sqrt h}{2C_b\sqrt L}(t_2/e)^{-1}\right]^4 .
+\]
+If
+$v_*^2/(12N_*)\ge
+(r_{\rm loc}/(2N_*)+17/4)v_*+\log^+A_8$,
+then $\lambda_L\le \mathrm e^{-v_*/4}\le\bar\kappa_1^s$.
+Thus the complex continuation and the
+fourth derivatives preserve a positive
+small-charge interval.
+Finally the two placement inequalities
+hold when
+$\ell_c\ge(4/3)D_\beta^{\rm buf}+3$;
+this follows from
+\eqref{eq:interacting-threshold-scales} as $v_K\to\infty$.
+
+Choose a finite $V$ beyond all the half-lines
+just specified and put
+$e_V=h^{-1/2}\min(e_1,\mathrm e^{-V})>0$.
+Every $0<e\le e_V$ has $v_*\ge v_K\ge V$
+and satisfies every response condition.
+Define $e_\sharp$ as one half of the
+supremum of the charges $e'\le e_1h^{-1/2}$
+for which all conditions hold for every
+$0<e\le e'$. Its defining set contains
+$e_V$, so $e_\sharp\ge e_V/2>0$.
+For $e\le e_\sharp$, a member of the
+defining set exceeds $e_\sharp$, which
+ensures that all inequalities hold at $e$
+even if the scale functions have jumps.
+This avoids assuming monotonicity of the
+rounded stop scales.
+
+The scale identities depend on $e,h$ and
+the fixed construction constants; the probe
+enters through
+$C_\beta,\mathbf D,D_\beta^{\rm buf}$.
+They do not involve the twist or placement,
+and they are unchanged by the coordinate
+reflections used to form the cell probes.
+Centered placements satisfy the admission
+inequality by
+\eqref{eq:interacting-placement-conditions},
+since their centers differ from the cell
+center by at most $\eta/2\le1/2$.
+The same conditions give
+$D_\beta^{\rm buf}+3\eta\le\ell_c$ and
+$R^*(e)\ge D_\beta+1$.
+\end{proof}
+
+
+
+\begin{proof}[Proof of \cref{thm:rrm-main}]
+The base construction gives the positive physical ceiling
+\[
+ e_G=\begin{cases}
+ e_1,&h=1,\\
+ \min\{e_1/\sqrt h,\,1/(\sqrt h\log h)\},&h>1,
+ \end{cases}
+\]
+as in \cite[(31)]{QED3Integration}. On this interval the common pair
+and all upstream terminal estimates apply.
+Choose $e_{\rm RR}=\min\{e_G,e_\sharp(\beta)\}$, with the threshold
+of \cref{prop:interacting-positive-threshold}, at $s=1/2$.
+That proposition verifies the additional inequalities of
+\cref{thm:interacting-reference-error} for every smaller positive
+charge and every $N\ge N_{\rm ref}(e)$, and admits every centered
+placement. The bounds \eqref{eq:interacting-final-terminal-error}
+give \eqref{eq:rrm-main-bound} with the stated common constant.
+The exact unfolding identifies the normalized density with the
+zero-flux law, \cref{prop:external-entire} proves entireness, and
+\eqref{eq:external-Wick-product} proves \eqref{eq:rrm-main-wick}.
+Its differentiation proof establishes the required integrability.
+\end{proof}
 \printbibliography
 \end{document}
