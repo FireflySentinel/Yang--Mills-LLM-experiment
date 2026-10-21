@@ -4,19 +4,19 @@
 
 Project codename: **RN1**.
 
-- **RNO1** — [Relevant extraction and contraction of local interactions](RNO1.pdf).
-- **AI-written manuscript:** **RNM1** — [Relevant extraction and contraction of local interactions](RNM1.pdf) · [TeX source](RNM1.tex).
+- **[RNO1](RNO1.pdf)** — [Relevant extraction and contraction of local interactions](RNO1.pdf).
+- **AI-written manuscript:** **[RNM1](RNM1.pdf)** — [Relevant extraction and contraction of local interactions](RNM1.pdf) · [TeX source](RNM1.tex) · [Compilation instructions](#building-the-manuscript).
 - **Human-written manuscript:** to be added.
 
-## Role in the QEM1 assembly
+## Role in the [QEM1](../QEM1.pdf) assembly
 
 Relevant normalization, contraction and conditional reconstruction.
 
-QEO1 contracts: [S09](../QEO1.pdf#page=92), [S10](../QEO1.pdf#page=94), [S11](../QEO1.pdf#page=95).
+[QEO1](../QEO1.pdf) contracts: [S09](../QEO1.pdf#page=92), [S10](../QEO1.pdf#page=94), [S11](../QEO1.pdf#page=95).
 
 ## Main statements
 
-The setting and principal theorem below are reproduced from **RNM1**. Notation and numbered references follow that manuscript; references to other documents use their codenames. The referenced activity spaces, maps and imported hypotheses remain part of the statement.
+The setting and principal theorem below are reproduced from **[RNM1](RNM1.pdf)**. Notation and numbered references follow that manuscript; references to other documents use their codenames. The referenced activity spaces, maps and imported hypotheses remain part of the statement.
 
 Let $`L\ge5`$ be odd, let $`M=L^m`$ with $`m\in\mathbb{Z}_{\ge2}`$, and put
 $`\eta_k=L^{-k}`$, $`k\in\mathbb{Z}_{\ge0}`$. We use the photon torus
@@ -27,14 +27,14 @@ face-connected union of the partition $`M`$-cubes. Its size parameter
 $`Md_M(X)`$ is the infimum of the lengths of connected finite nets
 meeting every cube of $`X`$; it is called small if $`d_M(X)\le L`$.
 The net convention and its estimates are given in
-Appendix B.
+[Appendix B](RNM1.pdf#page=25).
 
 An activity is a family of Grassmann polynomials in independent
 ordinary generators $`\psi,\bar\psi`$ and ordered-pair generators
 $`\chi,\bar\chi`$. The latter represent covariant Hölder differences
 only when the fields are evaluated. We work with the space
 $`K_k^{x,\mathbb{C}}(\ell)`$ defined in
-Section 2: its families are balanced, holomorphic
+[Section 2](RNM1.pdf#page=3): its families are balanced, holomorphic
 on $`\widetilde R_k\times\mathfrak X_k`$, local in the stated
 ordinary and pair indices and in the connection bonds, and covariant
 under the specified lattice, independent real-gauge and charge
@@ -57,8 +57,8 @@ h_{k,1}=e_k^{-1/4},\qquad h_{k,2}=e_k^{-1/4+\varepsilon},\qquad
 
 Here $`0<e_k<1`$; the weighted coefficient norm and the two
 connection domains are specified in
-(5) and
-(3). There is no smallness assumption
+[(5)](RNM1.pdf#page=4) and
+[(3)](RNM1.pdf#page=3). There is no smallness assumption
 on the activity in the following linear theorem.
 
 Set
@@ -75,7 +75,7 @@ Set
   </picture>
 </p>
 
-**Theorem A (Extraction and normalized contraction).**
+**[Theorem A](RNM1.pdf#page=2) (Extraction and normalized contraction).**
 
 Assume that both $`\ell/(LM)`$ and $`\ell/(L^2M)`$ are odd
 integers at least $`13`$. Suppose
@@ -129,7 +129,7 @@ $`K_k^x`$, with
 </p>
 
 The extracted mass matrix is $`m(\mathscr E)1_4`$.
-The local subtraction $`R`$ of (17)
+The local subtraction $`R`$ of [(17)](RNM1.pdf#page=8)
 satisfies $`\|R\mathscr E\|_k^x\le2\|\mathscr E\|_k^x`$ and the
 exact independent-generator identity
 
@@ -150,7 +150,7 @@ On a small polymer its zero-field vacuum kernel and the integral
 of its zero-field ordinary quadratic kernel vanish.
 
 **(ii)**  The shortest-chain adjustment of
-(23) gives
+[(23)](RNM1.pdf#page=9) gives
 $`E=(R\mathscr E)^{\mathrm{nat}}\in K_k^{x,\mathbb{C}}(\ell)`$, with
 $`\|E\|_k^x\le20\|\mathscr E\|_k^x`$. It leaves the evaluated
 value of $`R\mathscr E`$ unchanged whenever
@@ -221,18 +221,18 @@ $`c_{\mathrm{fl}}L^{-3/8+6\bar\varepsilon}\le1/16`$.
 All the stated maps preserve the real subspaces and commute with
 setting the second connection argument to zero.
 
-Theorem B of RNM1 (Section 7, “Local reconstruction of a mean field”) gives local reconstruction under its separate hypotheses; the final mean-field recovery clause additionally requires the stated fine inverses.
+[Theorem B](RNM1.pdf#page=18) of [RNM1](RNM1.pdf) ([Section 7](RNM1.pdf#page=17), “Local reconstruction of a mean field”) gives local reconstruction under its separate hypotheses; the final mean-field recovery clause additionally requires the stated fine inverses.
 
 
 ## Navigation
 
-[QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Links to published outlines use their repository locations; links to manuscripts open the corresponding README. Citations to material outside this assembly remain visible without a download link.
+[QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Document and numbered-result links open the published PDFs; assembly links open the topic READMEs. Citations to material outside this assembly remain visible without a download link.
 
 ## Building the manuscript
 
 The TeX sources are beside the PDFs. Build in a temporary copy of these files, retain the resulting PDF, and remove the temporary build directory.
 
-For `RNM1.tex`:
+For [RNM1.tex](RNM1.tex):
 
 ```sh
 pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error RNM1.tex

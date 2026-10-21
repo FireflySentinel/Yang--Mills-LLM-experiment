@@ -4,27 +4,27 @@
 
 Project codename: **VT1**.
 
-- **VTO1** — [Volume transfer and non-Gaussian continuum components](VTO1.pdf).
-- **AI-written manuscript:** **VTM1** — [Volume transfer and component cumulants for lattice QED in three dimensions](VTM1.pdf) · [TeX source](VTM1.tex).
+- **[VTO1](VTO1.pdf)** — [Volume transfer and non-Gaussian continuum components](VTO1.pdf).
+- **AI-written manuscript:** **[VTM1](VTM1.pdf)** — [Volume transfer and component cumulants for lattice QED in three dimensions](VTM1.pdf) · [TeX source](VTM1.tex) · [Compilation instructions](#building-the-manuscript).
 - **Human-written manuscript:** to be added.
 
-## Role in the QEM1 assembly
+## Role in the [QEM1](../QEM1.pdf) assembly
 
 All-volume products, prescribed-parent finite-periodic moments and component cumulants.
 
-QEO1 contracts: [T17](../QEO1.pdf#page=37), [T18](../QEO1.pdf#page=122), [B5](../QEO1.pdf#page=39), [A3](../QEO1.pdf#page=43).
+[QEO1](../QEO1.pdf) contracts: [T17](../QEO1.pdf#page=37), [T18](../QEO1.pdf#page=122), [B5](../QEO1.pdf#page=39), [A3](../QEO1.pdf#page=43).
 
 Retain the same selected mass/parent, component Gaussian hypothesis and numerical inputs.
 
-Related inputs: [TPM1](../Terminal%20measure%20and%20pressure%20%28TP1%29/README.md), [RRM1](../Reference%20response%20%28RR1%29/README.md), [PRM1](../Positive%20probes%20and%20free%20response%20%28PR1%29/README.md), [LPM1](../Infinite-lattice%20reflection%20positivity%20%28LP1%29/README.md), [CEM1](../Continuum%20existence%20%28CE1%29/README.md), [ECM1](../Continuum%20components%20and%20clustering%20%28EC1%29/README.md). Read their hypotheses at the cited results.
+Related inputs: [TPM1](../Terminal%20measure%20and%20pressure%20%28TP1%29/TPM1.pdf), [RRM1](../Reference%20response%20%28RR1%29/RRM1.pdf), [PRM1](../Positive%20probes%20and%20free%20response%20%28PR1%29/PRM1.pdf), [LPM1](../Infinite-lattice%20reflection%20positivity%20%28LP1%29/LPM1.pdf), [CEM1](../Continuum%20existence%20%28CE1%29/CEM1.pdf), [ECM1](../Continuum%20components%20and%20clustering%20%28EC1%29/ECM1.pdf). Read their hypotheses at the cited results.
 
 ## Principal statement
 
-Notation and numbered references below follow **VTM1**. The imported construction and estimates are part of the hypotheses.
+Notation and numbered references below follow **[VTM1](VTM1.pdf)**. The imported construction and estimates are part of the hypotheses.
 
 ### Setting
 
-Let $`\mathbb P_{n;q,\boldsymbol\mu}^{\rm af}`$ be the all-flux chamber QED law on $`C(n)=\mathbb{Z}^3/n\mathbb{Z}^3`$, with charge $`q>0`$, real lattice mass $`\boldsymbol\mu`$, Wilson parameter $`0<\rho<1`$, weights $`(6,6\sqrt2,6\sqrt2,6)`$ and antiperiodic fermions. Its real curvature is $`F^{\rm u}=dA+(2\pi/q)z`$, where $`z`$ is a closed integer two-cochain. Write $`Z_n`$ for its unnormalized partition function and $`F^\sharp`$ for the physical step field: on the cube of side $`\eta`$ centered at a plaquette, its corresponding component is $`\eta^{-3/2}F^{\rm u}`$. The measure and its normalization are recalled in Section 2.
+Let $`\mathbb P_{n;q,\boldsymbol\mu}^{\rm af}`$ be the all-flux chamber QED law on $`C(n)=\mathbb{Z}^3/n\mathbb{Z}^3`$, with charge $`q>0`$, real lattice mass $`\boldsymbol\mu`$, Wilson parameter $`0<\rho<1`$, weights $`(6,6\sqrt2,6\sqrt2,6)`$ and antiperiodic fermions. Its real curvature is $`F^{\rm u}=dA+(2\pi/q)z`$, where $`z`$ is a closed integer two-cochain. Write $`Z_n`$ for its unnormalized partition function and $`F^\sharp`$ for the physical step field: on the cube of side $`\eta`$ centered at a plaquette, its corresponding component is $`\eta^{-3/2}F^{\rm u}`$. The measure and its normalization are recalled in [Section 2](VTM1.pdf#page=4).
 
 Fix an odd integer $`L\ge13`$, $`M=L^k`$ with integer $`k\ge2`$, $`0<\varepsilon\le1/200`$ and $`0<\bar m\le1`$. Set
 
@@ -132,7 +132,7 @@ Here and below $`e`$ is the charge, so $`e^{-m}`$ is its inverse power. With $`X
   </picture>
 </p>
 
-Let $`z_{r,n}`$ be the positive zero-flux matter factor in (16). At continuum mass $`\bar m`$ define
+Let $`z_{r,n}`$ be the positive zero-flux matter factor in [(16)](VTM1.pdf#page=4). At continuum mass $`\bar m`$ define
 
 <!-- display-math:eq-147-61d842ff69
 b(f)=-6\mathrm{tr}\left[
@@ -146,11 +146,11 @@ b(f)=-6\mathrm{tr}\left[
   </picture>
 </p>
 
-where $`\gamma_\nu=\mathrm{diag}(\sigma_\nu,-\sigma_\nu)`$. The displayed fourth power is trace class and its trace is real by (**PRM1**, Theorem A).
+where $`\gamma_\nu=\mathrm{diag}(\sigma_\nu,-\sigma_\nu)`$. The displayed fourth power is trace class and its trace is real by (**[PRM1](../Positive%20probes%20and%20free%20response%20%28PR1%29/PRM1.pdf)**, [Theorem A](../Positive%20probes%20and%20free%20response%20%28PR1%29/PRM1.pdf#page=1)).
 
 ### Finite-law and reference-cell conventions
 
-The chamber operator is the finite-range operator of (**LPM1**, Section 2); its bond argument is a phase. It acts on four spin components and $`48`$ chamber labels per site. The fermions are antiperiodic in each coordinate. For a rectangular coordinate torus with $`V`$ sites and every side at least four, put $`r_q=2\pi/q`$. The unnormalized integral of a curvature observable $`O`$ is
+The chamber operator is the finite-range operator of (**[LPM1](../Infinite-lattice%20reflection%20positivity%20%28LP1%29/LPM1.pdf)**, [Section 2](../Infinite-lattice%20reflection%20positivity%20%28LP1%29/LPM1.pdf#page=3)); its bond argument is a phase. It acts on four spin components and $`48`$ chamber labels per site. The fermions are antiperiodic in each coordinate. For a rectangular coordinate torus with $`V`$ sites and every side at least four, put $`r_q=2\pi/q`$. The unnormalized integral of a curvature observable $`O`$ is
 
 <!-- display-math:eq-148-97c53c0568
 Z[O]=\sum_{\substack{z\in C^2(\mathbb{Z})\\dz=0}}
@@ -166,9 +166,9 @@ Z[O]=\sum_{\substack{z\in C^2(\mathbb{Z})\\dz=0}}
   </picture>
 </p>
 
-Cochains and the integer sum are on this torus; norms and pairings count positively oriented cells. The identification $`(A,z)\sim(A+r_qk,z-dk)`$ makes the integral independent of the chosen fundamental domain. The law is $`Z[O]/Z[1]`$. The partition function is finite and positive for every real $`\boldsymbol\mu`$, and the determinant gives nonnegative weights; see (**LPM1**, Section 2–3). Flux is the three integer periods of $`z`$, ordered as $`(23,13,12)`$. We retain every flux sector in (14).
+Cochains and the integer sum are on this torus; norms and pairings count positively oriented cells. The identification $`(A,z)\sim(A+r_qk,z-dk)`$ makes the integral independent of the chosen fundamental domain. The law is $`Z[O]/Z[1]`$. The partition function is finite and positive for every real $`\boldsymbol\mu`$, and the determinant gives nonnegative weights; see (**[LPM1](../Infinite-lattice%20reflection%20positivity%20%28LP1%29/LPM1.pdf)**, [Section 2–3](../Infinite-lattice%20reflection%20positivity%20%28LP1%29/LPM1.pdf#page=3)). Flux is the three integer periods of $`z`$, ordered as $`(23,13,12)`$. We retain every flux sector in [(14)](VTM1.pdf#page=4).
 
-The coordinate-torus Gaussian bound (**LPM1**, Proposition 5.1) is
+The coordinate-torus Gaussian bound (**[LPM1](../Infinite-lattice%20reflection%20positivity%20%28LP1%29/LPM1.pdf)**, [Proposition 5.1](../Infinite-lattice%20reflection%20positivity%20%28LP1%29/LPM1.pdf#page=27)) is
 
 <!-- display-math:eq-149-efff95abf6
 \mathbb{E}^{\rm af}\exp\langle g,F^{\rm u}\rangle
@@ -199,7 +199,7 @@ z_{r,n}=\int_{[-\pi,\pi]^3}\frac{\mathrm{d}\theta}{(2\pi)^3}
   </picture>
 </p>
 
-The subscript $`r`$ denotes the regulator. The exact zero-flux factorization of (**RRM1**, Section 3.4) gives
+The subscript $`r`$ denotes the regulator. The exact zero-flux factorization of (**[RRM1](../Reference%20response%20%28RR1%29/RRM1.pdf)**, [Section 3.4](../Reference%20response%20%28RR1%29/RRM1.pdf#page=11)) gives
 
 <!-- display-math:eq-151-d378bb160e
 Z_n^{(0)}[1]=Z_n^{\rm ph}z_{r,n},
@@ -224,7 +224,7 @@ Z_n^{\rm ph}=r_q^{\,n^3+2}(2\pi)^{n^3-1}
   </picture>
 </p>
 
-where $`\mathcal L(n)`$ is the scalar-Laplacian logarithmic determinant in Section 4. Thus the normalized zero-flux curvature law is the Gaussian law weighted by the twist-averaged determinant in (16). The factorization retains the gauge and harmonic volume factors; they will contribute to the partition defect.
+where $`\mathcal L(n)`$ is the scalar-Laplacian logarithmic determinant in [Section 4](VTM1.pdf#page=7). Thus the normalized zero-flux curvature law is the Gaussian law weighted by the twist-averaged determinant in [(16)](VTM1.pdf#page=4). The factorization retains the gauge and harmonic volume factors; they will contribute to the partition defect.
 
 Write $`p_{\rm cell}=n_*/L`$ and $`w=p_{\rm cell}/2`$. The reference side $`n_*`$ and $`p_{\rm cell}`$ are odd, so $`w`$ is half-integral. The number $`2L`$ of cells per side is even. In unit-lattice coordinates the open cells are $`Q_c^\circ=w(c+(0,1)^3)`$.
 
@@ -299,7 +299,7 @@ For the placed probe, the coordinate map $`g_c`$ carrying the base cell to cell 
   </picture>
 </p>
 
-The placement condition (6) ensures that their support boxes are strictly inside the open cells and that the boxes enlarged by one embed in the torus. Each polynomial $`P(X_c)`$ is consequently read by the same local scalar integrand on every such torus.
+The placement condition [(6)](VTM1.pdf#page=2) ensures that their support boxes are strictly inside the open cells and that the boxes enlarged by one embed in the torus. Each polynomial $`P(X_c)`$ is consequently read by the same local scalar integrand on every such torus.
 
 ### Limit topology
 
@@ -316,9 +316,9 @@ H_{-4}=\left\{F:\sum_\kappa\lambda_\kappa^{-8}
   </picture>
 </p>
 
-It is continuously embedded in tempered two-form distributions, and each Schwartz evaluation is continuous there. The step-field realization, tightness and fixed-spacing limits in this space are proved in (**CEM1**).
+It is continuously embedded in tempered two-form distributions, and each Schwartz evaluation is continuous there. The [step-field realization](../Continuum%20existence%20%28CE1%29/CEM1.pdf#page=6), [tightness](../Continuum%20existence%20%28CE1%29/CEM1.pdf#page=7) and [fixed-spacing limits](../Continuum%20existence%20%28CE1%29/CEM1.pdf#page=13) in this space are proved in (**[CEM1](../Continuum%20existence%20%28CE1%29/CEM1.pdf)**).
 
-**Theorem A (Volume transfer and component cumulants).**
+**[Theorem A](VTM1.pdf#page=2) (Volume transfer and component cumulants).**
 
 Fix the data above and a charge interval $`0<e\le e_*\le1/3`$. For each charge let $`N_{\rm ref}(e)`$ be a finite nonnegative integer. Assume the following conditions for every charge in this interval and every $`N\ge N_{\rm ref}(e)`$.
 
@@ -433,7 +433,7 @@ Here $`\tau_yf(x)=f(x-y)`$ and $`\mathbb{E}_{N,T}`$ is expectation under $`\math
   </picture>
 </p>
 
-Fix one charge. Let $`\mu`$ be any prescribed volume-first limit: for $`N_i\to\infty`$, choose fixed-spacing weak volume limits $`\mu_i`$ of these laws, with $`\mu_i\Rightarrow\mu`$. All weak convergence here is on the negative Hermite space $`H_{-4}`$ specified in Section 7. Assume that $`\mu`$ is translation invariant and that almost every component in its translation-ergodic decomposition $`\mu=\int\mu_\xi\,\mathrm{d}\nu(\xi)`$ satisfies
+Fix one charge. Let $`\mu`$ be any prescribed volume-first limit: for $`N_i\to\infty`$, choose fixed-spacing weak volume limits $`\mu_i`$ of these laws, with $`\mu_i\Rightarrow\mu`$. All weak convergence here is on the negative Hermite space $`H_{-4}`$ specified in [Section 7](VTM1.pdf#page=14). Assume that $`\mu`$ is translation invariant and that almost every component in its translation-ergodic decomposition $`\mu=\int\mu_\xi\,\mathrm{d}\nu(\xi)`$ satisfies
 
 <!-- display-math:eq-166-dad7b8cdfe
 \mathbb{E}_{\mu_\xi}\exp(F(g))\le\exp(\|g\|_2^2/2)
@@ -466,13 +466,13 @@ If $`b(f)>0`$ and $`C_fe^\sigma\le b(f)/2`$, every component in this set has $`\
 
 ## Navigation
 
-[QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Links to published outlines use their repository locations; links to manuscripts open the corresponding README. Citations to material outside this assembly remain visible without a download link.
+[QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Document and numbered-result links open the published PDFs; assembly links open the topic READMEs. Citations to material outside this assembly remain visible without a download link.
 
 ## Building the manuscript
 
 The TeX sources are beside the PDFs. Build in a temporary copy of these files, retain the resulting PDF, and remove the temporary build directory.
 
-For `VTM1.tex`:
+For [VTM1.tex](VTM1.tex):
 
 ```sh
 pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error VTM1.tex

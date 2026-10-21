@@ -4,21 +4,21 @@
 
 Project codename: **NL1**.
 
-- **NLO1** — [The exact nonlinear renormalization step](NLO1.pdf).
-- **AI-written manuscript:** **NLM1** — [The exact nonlinear renormalization step for lattice QED in three dimensions](NLM1.pdf) · [TeX source](NLM1.tex).
+- **[NLO1](NLO1.pdf)** — [The exact nonlinear renormalization step](NLO1.pdf).
+- **AI-written manuscript:** **[NLM1](NLM1.pdf)** — [The exact nonlinear renormalization step for lattice QED in three dimensions](NLM1.pdf) · [TeX source](NLM1.tex) · [Compilation instructions](#building-the-manuscript).
 - **Human-written manuscript:** to be added.
 
-## Role in the QEM1 assembly
+## Role in the [QEM1](../QEM1.pdf) assembly
 
 Exact conditional nonlinear step and connected logarithm.
 
-QEO1 contracts: [S12](../QEO1.pdf#page=97), [S13](../QEO1.pdf#page=99), [S14](../QEO1.pdf#page=101), [S15](../QEO1.pdf#page=27).
+[QEO1](../QEO1.pdf) contracts: [S12](../QEO1.pdf#page=97), [S13](../QEO1.pdf#page=99), [S14](../QEO1.pdf#page=101), [S15](../QEO1.pdf#page=27).
 
-Related inputs: [MBM1](../Maxwell%20block%20analysis%20%28MB1%29/README.md), [FBM1](../Chamber%20fermion%20block%20analysis%20%28FB1%29/README.md), [RNM1](../Relevant%20extraction%20and%20normalized%20contraction%20%28RN1%29/README.md). Read their hypotheses at the cited results.
+Related inputs: [MBM1](../Maxwell%20block%20analysis%20%28MB1%29/MBM1.pdf), [FBM1](../Chamber%20fermion%20block%20analysis%20%28FB1%29/FBM1.pdf), [RNM1](../Relevant%20extraction%20and%20normalized%20contraction%20%28RN1%29/RNM1.pdf). Read their hypotheses at the cited results.
 
 ## Main statements
 
-The setting and principal theorem below are reproduced from **NLM1**. Notation and numbered references follow that manuscript; references to other documents use their codenames. The referenced activity spaces, maps and imported hypotheses remain part of the statement.
+The setting and principal theorem below are reproduced from **[NLM1](NLM1.pdf)**. Notation and numbered references follow that manuscript; references to other documents use their codenames. The referenced activity spaces, maps and imported hypotheses remain part of the statement.
 
 We consider one block transformation of noncompact lattice QED with
 four-component chamber fermions. The photon field is periodic on
@@ -26,7 +26,7 @@ $`\eta\mathbb{Z}^3/\ell\mathbb{Z}^3`$, and spinors are antiperiodic in every coo
 Each photon site carries $`48`$ chamber labels. The chamber measure is
 $`\eta^3/48`$; barred and unbarred Grassmann generators are independent.
 The Dirac stencil, block averages and weighted transposes are those of
-FBM1 (Section 1).
+[FBM1](../Chamber%20fermion%20block%20analysis%20%28FB1%29/FBM1.pdf) ([Section 1](../Chamber%20fermion%20block%20analysis%20%28FB1%29/FBM1.pdf#page=1)).
 
 Fix $`0<\rho<1`$, odd $`L\ge4^8`$, an integer power $`M`$ of $`L`$ with $`M\ge L^2`$ and $`M>4L`$,
 and $`k\in\mathbb{Z}_{\ge0}`$. Put $`\eta=L^{-k}`$, $`e=e_k\in(0,1)`$,
@@ -53,8 +53,8 @@ $`\widetilde R_k\times\mathfrak X_k`$, local in its polymer and its
 connection bonds, and covariant under the lattice, independent local
 real-gauge and charge-conjugation actions. The real space $`K_k^x`$
 also satisfies the antilinear reality identity. We use exactly the
-domains, pair support and actions of RNM1 (Section 2),
-recalled in Section 2. In particular, $`\widetilde R_k`$
+domains, pair support and actions of [RNM1](../Relevant%20extraction%20and%20normalized%20contraction%20%28RN1%29/RNM1.pdf) ([Section 2](../Relevant%20extraction%20and%20normalized%20contraction%20%28RN1%29/RNM1.pdf#page=3)),
+recalled in [Section 2](NLM1.pdf#page=4). In particular, $`\widetilde R_k`$
 permits independent local real gauges; it imposes no bound on a real
 harmonic part. With $`d_M(X)`$ the connected-net length divided by $`M`$,
 the weights and norm are
@@ -94,8 +94,8 @@ $`n_k=\ell^3`$, $`n_{k+1}=(\ell/L)^3`$, and $`q=e_k`$ at $`k=0`$.
 The real photon domain is
 $`\mathrm{Dom}_j=\{A:H_j^{\mathrm{ph}}A\in\frac14\widetilde R_j\}`$.
 The density $`\mathscr F_j^x`$ and normalized block operator $`\mathbf T_k^x`$
-are defined by (38) and
-(39); the latter integrates over
+are defined by [(38)](NLM1.pdf#page=12) and
+[(39)](NLM1.pdf#page=12); the latter integrates over
 $`\mathrm{Box}_k=\{\sup_\Upsilon|\zeta(\Upsilon)|\le p_{0,k}\}`$.
 
 The quantitative constants are
@@ -124,19 +124,19 @@ The primitive constants $`C_w,\gamma_w,\alpha_0>0`$, the photon
 local-gauge constant $`C_B`$, and the two exponential-sum bounds
 $`c_\gamma`$ are those of the photon and fermion families in hypothesis (i) below; $`C_w,c_\gamma\ge1`$.
 
-**Theorem A (The exact nonlinear step).**
+**[Theorem A](NLM1.pdf#page=2) (The exact nonlinear step).**
 
 In the setting above, assume the following simultaneous hypotheses.
 
 **(i)**  Use a single system of photon and fermion primitives on this
 torus. Assume the full hypotheses and conclusions of
-MBM1 (Theorems A–B and Proposition 5.1)
+[MBM1](../Maxwell%20block%20analysis%20%28MB1%29/MBM1.pdf) ([Theorems A](../Maxwell%20block%20analysis%20%28MB1%29/MBM1.pdf#page=2)–[B](../Maxwell%20block%20analysis%20%28MB1%29/MBM1.pdf#page=14) and [Proposition 5.1](../Maxwell%20block%20analysis%20%28MB1%29/MBM1.pdf#page=12))
 and
-FBM1 (Theorem A, Propositions 4.1,
-4.2,
-4.3,
-6.1 and
-6.2).
+[FBM1](../Chamber%20fermion%20block%20analysis%20%28FB1%29/FBM1.pdf) ([Theorem A](../Chamber%20fermion%20block%20analysis%20%28FB1%29/FBM1.pdf#page=3), [Propositions 4.1](../Chamber%20fermion%20block%20analysis%20%28FB1%29/FBM1.pdf#page=15),
+[4.2](../Chamber%20fermion%20block%20analysis%20%28FB1%29/FBM1.pdf#page=16),
+[4.3](../Chamber%20fermion%20block%20analysis%20%28FB1%29/FBM1.pdf#page=17),
+[6.1](../Chamber%20fermion%20block%20analysis%20%28FB1%29/FBM1.pdf#page=23) and
+[6.2](../Chamber%20fermion%20block%20analysis%20%28FB1%29/FBM1.pdf#page=24)).
 Use common constants $`(\alpha_0,\gamma_w,\kappa_w;C_w)`$ for their
 analytic kernel and short Hölder bounds on
 $`|s_a|\le M^{\alpha_0}`$. This assumption includes component
@@ -144,9 +144,9 @@ restriction, row vanishing, local read bonds, the exact operators at
 $`s=1`$, and their lattice, gauge, transpose and reality identities.
 At $`k=0`$ retain the stated diagonal families and chamber covariance.
 Use the weighted integration conventions of
-FBM1 (Theorem B and Proposition 5.1)
+[FBM1](../Chamber%20fermion%20block%20analysis%20%28FB1%29/FBM1.pdf) ([Theorem B](../Chamber%20fermion%20block%20analysis%20%28FB1%29/FBM1.pdf#page=21) and [Proposition 5.1](../Chamber%20fermion%20block%20analysis%20%28FB1%29/FBM1.pdf#page=19))
 and the extraction, reconstruction and geometry of
-RNM1 (Theorems A–B and Appendix B).
+[RNM1](../Relevant%20extraction%20and%20normalized%20contraction%20%28RN1%29/RNM1.pdf) ([Theorems A](../Relevant%20extraction%20and%20normalized%20contraction%20%28RN1%29/RNM1.pdf#page=2)–[B](../Relevant%20extraction%20and%20normalized%20contraction%20%28RN1%29/RNM1.pdf#page=18) and [Appendix B](../Relevant%20extraction%20and%20normalized%20contraction%20%28RN1%29/RNM1.pdf#page=25)).
 The fine inverses required for reconstruction exist at both signs
 of every total connection in $`\widetilde G_k`$ by the fermion hypothesis.
 
@@ -276,7 +276,7 @@ For two data in $`\mathrm{Ball}_k^x(1)`$,
 The second quotient is omitted at $`k=0`$.
 
 For the local determinant terms of
-Proposition 6.1 of FBM1, put
+[Proposition 6.1](../Chamber%20fermion%20block%20analysis%20%28FB1%29/FBM1.pdf#page=23) of [FBM1](../Chamber%20fermion%20block%20analysis%20%28FB1%29/FBM1.pdf), put
 
 <!-- display-math:eq-076-8a559e0c8a
 \delta E_k^{\mathrm{det}}(X;\mathscr A,\mathscr C)
@@ -293,10 +293,10 @@ Proposition 6.1 of FBM1, put
 </p>
 
 These are scalar activities. We use reblocking
-$`\mathcal L`$ from (34) of RNM1.
+$`\mathcal L`$ from [(34)](../Relevant%20extraction%20and%20normalized%20contraction%20%28RN1%29/RNM1.pdf#page=11) of [RNM1](../Relevant%20extraction%20and%20normalized%20contraction%20%28RN1%29/RNM1.pdf).
 The maps $`R`$, $`(\cdot)^{\mathrm{nat}}`$, $`m(\cdot)`$ and
 $`\varepsilon_{\mathrm v}(\cdot)`$ are the subtraction, adjustment and
-extraction maps of RNM1 (Theorem A).
+extraction maps of [RNM1](../Relevant%20extraction%20and%20normalized%20contraction%20%28RN1%29/RNM1.pdf) ([Theorem A](../Relevant%20extraction%20and%20normalized%20contraction%20%28RN1%29/RNM1.pdf#page=2)).
 The outgoing maps are
 
 <!-- display-math:eq-077-7b2328ce83
@@ -413,13 +413,13 @@ that the outgoing datum lies in the next unit ball.
 
 ## Navigation
 
-[QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Links to published outlines use their repository locations; links to manuscripts open the corresponding README. Citations to material outside this assembly remain visible without a download link.
+[QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Document and numbered-result links open the published PDFs; assembly links open the topic READMEs. Citations to material outside this assembly remain visible without a download link.
 
 ## Building the manuscript
 
 The TeX sources are beside the PDFs. Build in a temporary copy of these files, retain the resulting PDF, and remove the temporary build directory.
 
-For `NLM1.tex`:
+For [NLM1.tex](NLM1.tex):
 
 ```sh
 pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error NLM1.tex

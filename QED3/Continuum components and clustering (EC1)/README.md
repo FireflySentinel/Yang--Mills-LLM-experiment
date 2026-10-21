@@ -6,22 +6,22 @@ Project codename: **EC1**.
 
 **Proof outline:** [ECO1 — Continuum components and clustering](ECO1.pdf) (11 pages), with a linked dependency map and source-based proof tasks.
 
-- **AI-written manuscript:** **ECM1** — [Ergodic components and clustering for reflection-positive fields](ECM1.pdf) · [TeX source](ECM1.tex).
+- **AI-written manuscript:** **[ECM1](ECM1.pdf)** — [Ergodic components and clustering for reflection-positive fields](ECM1.pdf) · [TeX source](ECM1.tex) · [Compilation instructions](#building-the-manuscript).
 - **Human-written manuscript:** to be added.
 
-## Role in the QEM1 assembly
+## Role in the [QEM1](../QEM1.pdf) assembly
 
 Clustering and reflection/Gaussian inheritance for the same components.
 
-QEO1 contracts: [B2](../QEO1.pdf#page=21).
+[QEO1](../QEO1.pdf) contracts: [B2](../QEO1.pdf#page=21).
 
-CEM1 supplies the application hypotheses. ECO1 expands QEO1/B2 and M11–M14, separating the spectral clustering argument, reflection inheritance in the components, and the additional same-constant Gaussian bound.
+[CEM1](../Continuum%20existence%20%28CE1%29/CEM1.pdf) supplies the application hypotheses. [ECO1](ECO1.pdf) expands [QEO1/B2](../QEO1.pdf#page=21) and [M11–M14](../QEO1.pdf#page=64), separating the spectral clustering argument, reflection inheritance in the components, and the additional same-constant Gaussian bound.
 
-Related inputs: [CEM1](../Continuum%20existence%20%28CE1%29/README.md). Read their hypotheses at the cited results.
+Related inputs: [CEM1](../Continuum%20existence%20%28CE1%29/CEM1.pdf). Read their hypotheses at the cited results.
 
 ## Principal statements
 
-Notation and numbered references below follow **ECM1**.
+Notation and numbered references below follow **[ECM1](ECM1.pdf)**.
 
 ### Setting
 
@@ -54,7 +54,7 @@ Write $`U(a)=\widehat{\tau_a}`$. For open $`O\subset\mathbb{R}^3`$, let $`\Sigma
 
 for finite character sums $`A=\sum_bz_be^{iF(f_b)}`$ with real $`f_b\in C_c^\infty(H^+;V)`$. The positive sides below are chosen by making the displayed linear coordinate function positive.
 
-**Theorem A (Components and clustering).**
+**[Theorem A](ECM1.pdf#page=1) (Components and clustering).**
 
 Let $`\lambda`$ be a translation-invariant probability law on $`\mathcal X`$, invariant and reflection positive at the nine planes
 
@@ -87,7 +87,7 @@ Let $`\mathcal I`$ be the translation-invariant sigma-algebra, with invariance u
 
 for every $`A,B\in L^2(\lambda)`$.
 
-There is a unique translation-ergodic decomposition $`\lambda=\int\lambda_\xi\,\mathrm{d}\nu(\xi)`$, understood as the distribution of its conditional law on $`\mathcal X`$. On one common $`\nu`$-full set, every $`\lambda_\xi`$ is translation ergodic, invariant and reflection positive at every real translate of the planes in (2), and
+There is a unique translation-ergodic decomposition $`\lambda=\int\lambda_\xi\,\mathrm{d}\nu(\xi)`$, understood as the distribution of its conditional law on $`\mathcal X`$. On one common $`\nu`$-full set, every $`\lambda_\xi`$ is translation ergodic, invariant and reflection positive at every real translate of the planes in [(2)](ECM1.pdf#page=1), and
 
 <!-- display-math:eq-019-99dccc7a74
 \langle A,U(a)B\rangle_{L^2(\lambda_\xi)}
@@ -119,18 +119,18 @@ If in addition, for some fixed $`C\ge0`$,
   </picture>
 </p>
 
-then the common full-measure set above may be chosen so that every component in it satisfies (5) with the same $`C`$, simultaneously for all real tests. Any specified measurable event of full $`\lambda`$-measure has full measure in almost every component.
+then the common full-measure set above may be chosen so that every component in it satisfies [(5)](ECM1.pdf#page=2) with the same $`C`$, simultaneously for all real tests. Any specified measurable event of full $`\lambda`$-measure has full measure in almost every component.
 
 
 ## Navigation
 
-[QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Links to published outlines use their repository locations; links to manuscripts open the corresponding README. Citations to material outside this assembly remain visible without a download link.
+[QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Document and numbered-result links open the published PDFs; assembly links open the topic READMEs. Citations to material outside this assembly remain visible without a download link.
 
 ## Building the manuscript
 
 The TeX sources are beside the PDFs. Build in a temporary copy of these files, retain the resulting PDF, and remove the temporary build directory.
 
-For `ECM1.tex`:
+For [ECM1.tex](ECM1.tex):
 
 ```sh
 pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error ECM1.tex

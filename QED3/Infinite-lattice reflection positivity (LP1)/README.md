@@ -4,13 +4,13 @@
 
 Project codename: **LP1**.
 
-- **LPO1** — [Reflection positivity on the infinite lattice: expanded proof outline](LPO1.pdf).
-- **AI-written manuscript:** **LPM1** — [Reflection positivity for chamber QED on the infinite lattice](LPM1.pdf) · [TeX source](LPM1.tex).
+- **[LPO1](LPO1.pdf)** — [Reflection positivity on the infinite lattice: expanded proof outline](LPO1.pdf).
+- **AI-written manuscript:** **[LPM1](LPM1.pdf)** — [Reflection positivity for chamber QED on the infinite lattice](LPM1.pdf) · [TeX source](LPM1.tex) · [Compilation instructions](#building-the-manuscript).
 - **Human-written manuscript:** to be added.
 
 ## Main theorem
 
-The statement and setting below are reproduced from the introduction of **LPM1**, with TeX macros and formatting adapted for GitHub.
+The statement and setting below are reproduced from the introduction of **[LPM1](LPM1.pdf)**, with TeX macros and formatting adapted for GitHub.
 
 We fix the lattice spacing and use unit lattice coordinates. The photon
 field is a real one-cochain on $`\mathbb{Z}^3`$. Write $`d`$ for the lattice
@@ -84,7 +84,7 @@ over the torus plaquettes, and $`Z_{C(n)}[1]`$ is the same expression
 without $`G`$. Thus every closed integer cochain is summed, with no
 restriction on its flux.
 
-**Theorem A (Reflection positivity in infinite volume).**
+**[Theorem A](LPM1.pdf#page=2) (Reflection positivity in infinite volume).**
 
 Fix $`q>0`$, $`0<\rho<1`$, $`M\in\mathbb{R}`$ and $`w_0,\ldots,w_3>0`$.
 The family $`(\mu_n)_{n\ge4}`$ is tight on $`\Omega`$. Let
@@ -160,15 +160,15 @@ These signs occur both in invariance of the law and in its reflected
 form.
 
 
-[QEM1 assembly index](../README.md). QEO1 contract: [Q1](../QEO1.pdf#page=16).
+[QEM1 assembly index](../README.md). [QEO1](../QEO1.pdf) contract: [Q1](../QEO1.pdf#page=16).
 
-The separate coordinate lattice-limit outline LLO1 cited in the PDF is outside this assembly.
+The coordinate construction used by the outline is proved in [LPM1, Section 5.3](LPM1.pdf#page=27), following [Proposition 5.1](LPM1.pdf#page=27).
 
 ## Building the manuscript
 
 The TeX sources are beside the PDFs. Build in a temporary copy of these files, retain the resulting PDF, and remove the temporary build directory.
 
-For `LPM1.tex`:
+For [LPM1.tex](LPM1.tex):
 
 ```sh
 pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error LPM1.tex
@@ -177,3 +177,7 @@ pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error LPM1.tex
 pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error LPM1.tex
 pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error LPM1.tex
 ```
+
+## Original chamber-QED reference
+
+The frozen source QEDII / S2 is available as the [original 811-page PDF](ChamberQED.pdf) and [matching TeX](ChamberQED.tex). In particular, the upper-half integrand class is [Definition 3.33, page 113](ChamberQED.pdf#page=113).

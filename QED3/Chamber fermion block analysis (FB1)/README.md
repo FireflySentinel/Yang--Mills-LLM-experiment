@@ -4,21 +4,21 @@
 
 Project codename: **FB1**.
 
-- **FBO1** — [Chamber fermion locality and local integration](FBO1.pdf).
-- **AI-written manuscript:** **FBM1** — [Chamber fermion locality and local integration](FBM1.pdf) · [TeX source](FBM1.tex).
+- **[FBO1](FBO1.pdf)** — [Chamber fermion locality and local integration](FBO1.pdf).
+- **AI-written manuscript:** **[FBM1](FBM1.pdf)** — [Chamber fermion locality and local integration](FBM1.pdf) · [TeX source](FBM1.tex) · [Compilation instructions](#building-the-manuscript).
 - **Human-written manuscript:** to be added.
 
-## Role in the QEM1 assembly
+## Role in the [QEM1](../QEM1.pdf) assembly
 
 Chamber inverses, locality, determinant gains and local integration.
 
-QEO1 contracts: [S01](../QEO1.pdf#page=77), [S02](../QEO1.pdf#page=79), [S05](../QEO1.pdf#page=85), [S06](../QEO1.pdf#page=87), [S07](../QEO1.pdf#page=89), [S08](../QEO1.pdf#page=90).
+[QEO1](../QEO1.pdf) contracts: [S01](../QEO1.pdf#page=77), [S02](../QEO1.pdf#page=79), [S05](../QEO1.pdf#page=85), [S06](../QEO1.pdf#page=87), [S07](../QEO1.pdf#page=89), [S08](../QEO1.pdf#page=90).
 
-Related inputs: [MBM1](../Maxwell%20block%20analysis%20%28MB1%29/README.md). Read their hypotheses at the cited results.
+Related inputs: [MBM1](../Maxwell%20block%20analysis%20%28MB1%29/MBM1.pdf). Read their hypotheses at the cited results.
 
 ## Main statements
 
-The setting and principal theorem below are reproduced from **FBM1**. Notation and numbered references follow that manuscript; references to other documents use their codenames.
+The setting and principal theorem below are reproduced from **[FBM1](FBM1.pdf)**. Notation and numbered references follow that manuscript; references to other documents use their codenames.
 
 Fix $`0<\rho<1`$, an odd integer $`L\ge5`$, $`0<\alpha<1`$, and
 $`\varepsilon>0`$. At level $`k\ge0`$, put $`\eta=\eta_k=L^{-k}`$.
@@ -246,7 +246,7 @@ indicator restricts the first point. At level zero,
 $`N_\gamma^{\mathrm{ker}}`$ replaces the localized operator norm by
 the supremum of the normalized chamber kernel on the two clusters.
 
-**Theorem A.**
+**[Theorem A](FBM1.pdf#page=3).**
 
 There are $`a'>0`$ and $`0<\gamma\le(6L)^{-1}`$, depending only on
 $`\rho,L,\alpha`$, with the following property. Set
@@ -266,7 +266,7 @@ M>4L,\qquad q(1)\le\tfrac12,\qquad
 </p>
 
 For every $`A\in\widetilde{\mathcal G}_k`$, all the operators
-(2) are invertible. Their inverses
+[(2)](FBM1.pdf#page=2) are invertible. Their inverses
 $`S_y(A)`$ are analytic in the connection and satisfy
 
 <!-- display-math:eq-014-23f4c9aaea
@@ -288,18 +288,18 @@ The constants are independent of the level, mesh, volume,
 permitted connection, reference mass $`\mu\in(0,1]`$, and resolvent
 parameter in its stated range.
 
-Theorem B of FBM1 (Section 5, “Weighted Grassmann block integration”) gives the block-integration identity and determinant localization under Theorem A and the additional weakened-walk hypotheses stated there.
+[Theorem B](FBM1.pdf#page=21) of [FBM1](FBM1.pdf) ([Section 5](FBM1.pdf#page=19), “Weighted Grassmann block integration”) gives the block-integration identity and determinant localization under [Theorem A](FBM1.pdf#page=3) and the additional weakened-walk hypotheses stated there.
 
 
 ## Navigation
 
-[QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Links to published outlines use their repository locations; links to manuscripts open the corresponding README. Citations to material outside this assembly remain visible without a download link.
+[QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Document and numbered-result links open the published PDFs; assembly links open the topic READMEs. Citations to material outside this assembly remain visible without a download link.
 
 ## Building the manuscript
 
 The TeX sources are beside the PDFs. Build in a temporary copy of these files, retain the resulting PDF, and remove the temporary build directory.
 
-For `FBM1.tex`:
+For [FBM1.tex](FBM1.tex):
 
 ```sh
 pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error FBM1.tex

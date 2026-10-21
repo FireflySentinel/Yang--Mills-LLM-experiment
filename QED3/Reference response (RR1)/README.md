@@ -4,29 +4,29 @@
 
 Project codename: **RR1**.
 
-- **RRO1** — [Exact sources and normalized reference response](RRO1.pdf).
-- **AI-written manuscript:** **RRM1** — [Exact source identities and normalized reference response for lattice QED in three dimensions](RRM1.pdf) · [TeX source](RRM1.tex).
+- **[RRO1](RRO1.pdf)** — [Exact sources and normalized reference response](RRO1.pdf).
+- **AI-written manuscript:** **[RRM1](RRM1.pdf)** — [Exact source identities and normalized reference response for lattice QED in three dimensions](RRM1.pdf) · [TeX source](RRM1.tex) · [Compilation instructions](#building-the-manuscript).
 - **Human-written manuscript:** to be added.
 
-## Role in the QEM1 assembly
+## Role in the [QEM1](../QEM1.pdf) assembly
 
 Early source identities and later normalized reference response.
 
-QEO1 contracts: [T05](../QEO1.pdf#page=110), [T06](../QEO1.pdf#page=111), [T07](../QEO1.pdf#page=112), [Q4R](../QEO1.pdf#page=36), [T12](../QEO1.pdf#page=116), [T13](../QEO1.pdf#page=118), [T14](../QEO1.pdf#page=120), [T15](../QEO1.pdf#page=121).
+[QEO1](../QEO1.pdf) contracts: [T05](../QEO1.pdf#page=110), [T06](../QEO1.pdf#page=111), [T07](../QEO1.pdf#page=112), [Q4R](../QEO1.pdf#page=36), [T12](../QEO1.pdf#page=116), [T13](../QEO1.pdf#page=118), [T14](../QEO1.pdf#page=120), [T15](../QEO1.pdf#page=121).
 
-Early zero-flux/Wick identities feed TPM1; later response results import terminal bounds. These are separate result ports, not a whole-paper cycle.
+Early zero-flux/Wick identities feed [TPM1](../Terminal%20measure%20and%20pressure%20%28TP1%29/TPM1.pdf); later response results import terminal bounds. These are separate result ports, not a whole-paper cycle.
 
-Related inputs: [CVM1](../Cover%20agreement%20and%20common%20tuning%20%28CV1%29/README.md), [TPM1](../Terminal%20measure%20and%20pressure%20%28TP1%29/README.md). Read their hypotheses at the cited results.
+Related inputs: [CVM1](../Cover%20agreement%20and%20common%20tuning%20%28CV1%29/CVM1.pdf), [TPM1](../Terminal%20measure%20and%20pressure%20%28TP1%29/TPM1.pdf). Read their hypotheses at the cited results.
 
 ## Principal statements
 
-Notation and numbered references below follow **RRM1**. The imported construction and estimates are part of the hypotheses.
+Notation and numbered references below follow **[RRM1](RRM1.pdf)**. The imported construction and estimates are part of the hypotheses.
 
 ### Setting
 
-We use the chamber regulator with weights $`(6,6\sqrt2,6\sqrt2,6)`$ and Wilson parameter $`0<\rho<1`$. The operator $`D^{\rm ch}[B]`$ acts on four-component spinors with $`48`$ chamber labels per site, antiperiodic in every coordinate; its argument $`B`$ is the bond phase. The stencil is recalled in Section 1.1.
+We use the chamber regulator with weights $`(6,6\sqrt2,6\sqrt2,6)`$ and Wilson parameter $`0<\rho<1`$. The operator $`D^{\rm ch}[B]`$ acts on four-component spinors with $`48`$ chamber labels per site, antiperiodic in every coordinate; its argument $`B`$ is the bond phase. The stencil is recalled in [Section 1.1](RRM1.pdf#page=3).
 
-Fix the block construction of (**QEM1**, Proposition 4.1 and Section 4.1–4.4), with its positive charge ceilings $`e_1\le e_0<1`$ and the common-pair theorem (**CVM1**, Theorem D). Thus $`L\ge13`$ is odd, $`M=L^m`$ with $`m\in\mathbb{Z}_{\ge2}`$, $`0<\alpha<1`$, $`1-\alpha<\varepsilon\le1/200`$, and the localization and cutoff powers are $`r_{\rm loc}=2`$, $`p_0=9`$, $`p=19`$. The fixed ceilings denoted by $`e_0,e_1`$ here are the $`\bar e_0,\bar e_1`$ of (**QEM1**); they are distinct from the running charge $`e_j`$ at $`j=0`$. These fixed constants include the photon and fermion inverse bounds, the exact block step and the terminal conditions. The parameter input is Proposition 4.1 of (**QEM1**), which supplies the construction and charge ceilings before any probe-dependent restriction. The response estimates are proved here.
+Fix the block construction of (**[QEM1](../QEM1.pdf)**, [Proposition 4.1](../QEM1.pdf#page=8) and [Section 4.1–4.4](../QEM1.pdf#page=8)), with its positive charge ceilings $`e_1\le e_0<1`$ and the common-pair theorem (**[CVM1](../Cover%20agreement%20and%20common%20tuning%20%28CV1%29/CVM1.pdf)**, [Theorem D](../Cover%20agreement%20and%20common%20tuning%20%28CV1%29/CVM1.pdf#page=27)). Thus $`L\ge13`$ is odd, $`M=L^m`$ with $`m\in\mathbb{Z}_{\ge2}`$, $`0<\alpha<1`$, $`1-\alpha<\varepsilon\le1/200`$, and the localization and cutoff powers are $`r_{\rm loc}=2`$, $`p_0=9`$, $`p=19`$. The fixed ceilings denoted by $`e_0,e_1`$ here are the $`\bar e_0,\bar e_1`$ of (**[QEM1](../QEM1.pdf)**); they are distinct from the running charge $`e_j`$ at $`j=0`$. These fixed constants include the photon and fermion inverse bounds, the exact block step and the terminal conditions. The parameter input is [Proposition 4.1](../QEM1.pdf#page=8) of (**[QEM1](../QEM1.pdf)**), which supplies the construction and charge ceilings before any probe-dependent restriction. The response estimates are proved here.
 
 For $`0<\bar m\le1`$ put
 
@@ -54,7 +54,7 @@ R_{\rm top}=hMr_K,\qquad R^*=R_{\rm top}/L,\qquad
   </picture>
 </p>
 
-The finite threshold $`N_{\rm ref}(e)`$ and stopping level on $`R^*`$ are those of (**CVM1**, Proposition 6.1 and (53)). For $`N\ge N_{\rm ref}(e)`$ use the real pair $`P_N(e)=(m_{0,N},\varepsilon_{0,N}^{\rm v})`$ selected on $`R_{\rm top}`$ by (**CVM1**, Theorem D), and write $`\boldsymbol\mu_N=\bar m\eta+m_{0,N}`$. This same pair is used for every source and every twist. Its vacuum factor cancels from the normalized response below.
+The finite threshold $`N_{\rm ref}(e)`$ and stopping level on $`R^*`$ are those of (**[CVM1](../Cover%20agreement%20and%20common%20tuning%20%28CV1%29/CVM1.pdf)**, [Proposition 6.1](../Cover%20agreement%20and%20common%20tuning%20%28CV1%29/CVM1.pdf#page=23) and [(53)](../Cover%20agreement%20and%20common%20tuning%20%28CV1%29/CVM1.pdf#page=24)). For $`N\ge N_{\rm ref}(e)`$ use the real pair $`P_N(e)=(m_{0,N},\varepsilon_{0,N}^{\rm v})`$ selected on $`R_{\rm top}`$ by (**[CVM1](../Cover%20agreement%20and%20common%20tuning%20%28CV1%29/CVM1.pdf)**, [Theorem D](../Cover%20agreement%20and%20common%20tuning%20%28CV1%29/CVM1.pdf#page=27)), and write $`\boldsymbol\mu_N=\bar m\eta+m_{0,N}`$. This same pair is used for every source and every twist. Its vacuum factor cancels from the normalized response below.
 
 Fix a real nonzero $`\beta\in C_c^\infty(\mathbb{R}^3;\Lambda^2)`$, put $`f=dd^*\beta`$, and let $`D_\beta`$ be the side of a least coordinate cube containing $`\mathrm{supp}\beta`$. Enlarge that cube by two in each direction to obtain $`Q_\beta`$ of side $`D_\beta^{\rm buf}=D_\beta+4`$ and center $`z_\beta`$. With $`J_\eta`$ denoting cube averaging and $`\delta_{\eta,\mu}`$ the centered difference, define the covering bond cochain
 
@@ -72,7 +72,7 @@ Fix a real nonzero $`\beta\in C_c^\infty(\mathbb{R}^3;\Lambda^2)`$, put $`f=dd^*
   </picture>
 </p>
 
-A placement $`v\in\eta\mathbb{Z}^3`$ is admitted when $`v+Q_\beta\subset[\ell_c/8,7\ell_c/8]^3`$. Translate the probe by $`v`$, reflect it into the cells indexed by $`\mathcal C_*=(\mathbb{Z}/2L\mathbb{Z})^3`$, and periodize on $`C(n_*)`$. The resulting cochains are $`\widehat a_c`$; the reflection maps and their orientation action are specified in Section 2. They have mutually orthogonal curvatures, all of squared norm $`v_\eta=\|d\widehat a^o\|_{\ell^2}^2`$.
+A placement $`v\in\eta\mathbb{Z}^3`$ is admitted when $`v+Q_\beta\subset[\ell_c/8,7\ell_c/8]^3`$. Translate the probe by $`v`$, reflect it into the cells indexed by $`\mathcal C_*=(\mathbb{Z}/2L\mathbb{Z})^3`$, and periodize on $`C(n_*)`$. The resulting cochains are $`\widehat a_c`$; the reflection maps and their orientation action are specified in [Section 2](RRM1.pdf#page=3). They have mutually orthogonal curvatures, all of squared norm $`v_\eta=\|d\widehat a^o\|_{\ell^2}^2`$.
 
 Write $`C(n_*)=\mathbb{Z}^3/n_*\mathbb{Z}^3`$ with its oriented cubical cells. Let $`\gamma_{n_*}`$ be the standard Gaussian on its exact real two-cochains, with counting inner product. For such a curvature $`u`$, let $`A(u)`$ be its mean-zero transverse potential. Set $`H_{\theta,\nu}=\theta_\nu/(qn_*)`$ and $`a(t)=e^{-1}\sum_ct_c\widehat a_c`$. Define
 
@@ -240,7 +240,7 @@ Transport to the unit lattice and define
 
 Its coboundary uses unscaled unit-lattice differences.
 
-Form $`\widehat{\mathfrak a}`$ with $`\tau_v\beta`$ as in (8), and periodize it on $`C(n_*)`$, $`n_*=R^*/\eta`$. For $`c\in\mathcal C_*=\{0,\ldots,2L-1\}^3`$, write $`\widehat{\mathfrak a}_c`$ for its cell copy; thus $`\widehat{\mathfrak a}_c=\widehat a_c`$ in the introduction. In physical coordinates the wall map carrying the first cell to cell $`c`$ acts in coordinate $`\mu`$ by translation through $`2i\ell_c`$ if $`c_\mu=2i`$, and by reflection $`y_\mu\mapsto(2i+2)\ell_c-y_\mu`$ if $`c_\mu=2i+1`$.
+Form $`\widehat{\mathfrak a}`$ with $`\tau_v\beta`$ as in [(8)](RRM1.pdf#page=4), and periodize it on $`C(n_*)`$, $`n_*=R^*/\eta`$. For $`c\in\mathcal C_*=\{0,\ldots,2L-1\}^3`$, write $`\widehat{\mathfrak a}_c`$ for its cell copy; thus $`\widehat{\mathfrak a}_c=\widehat a_c`$ in the introduction. In physical coordinates the wall map carrying the first cell to cell $`c`$ acts in coordinate $`\mu`$ by translation through $`2i\ell_c`$ if $`c_\mu=2i`$, and by reflection $`y_\mu\mapsto(2i+2)\ell_c-y_\mu`$ if $`c_\mu=2i+1`$.
 
 For a level-$`j`$ bond function $`A`$, $`\partial A`$ uses forward differences divided by $`\eta_j`$, and
 
@@ -318,9 +318,9 @@ C_\beta\le2\sqrt h(1+h+3h^2)|\beta|_{C^3},
   </picture>
 </p>
 
-**Theorem A (Normalized reference response).**
+**[Theorem A](RRM1.pdf#page=2) (Normalized reference response).**
 
-For the fixed construction, mass $`0<\bar m\le1`$, and probe $`\beta`$ above, there is $`e_{\rm RR}>0`$ such that for every $`0<e\le e_{\rm RR}`$ and every integer $`N\ge N_{\rm ref}(e)`$, the function (2) is entire and
+For the fixed construction, mass $`0<\bar m\le1`$, and probe $`\beta`$ above, there is $`e_{\rm RR}>0`$ such that for every $`0<e\le e_{\rm RR}`$ and every integer $`N\ge N_{\rm ref}(e)`$, the function [(2)](RRM1.pdf#page=2) is entire and
 
 <!-- display-math:eq-113-05dd993ab9
 \Theta_4^{(0)}\le C e^{\mathfrak e},\qquad
@@ -334,9 +334,9 @@ For the fixed construction, mass $`0<\bar m\le1`$, and probe $`\beta`$ above, th
   </picture>
 </p>
 
-The constants are independent of $`N`$ and of the admitted placement. Every centered placement, $`|v+z_\beta-(\ell_c/2)(1,1,1)|_\infty\le\eta/2`$, is admitted in this range. One may take $`C=3\cdot10^5(1+\sqrt h\,C_\beta)^4h^{1/8}`$, where the finite, charge-independent $`C_\beta`$ is defined in (58).
+The constants are independent of $`N`$ and of the admitted placement. Every centered placement, $`|v+z_\beta-(\ell_c/2)(1,1,1)|_\infty\le\eta/2`$, is admitted in this range. One may take $`C=3\cdot10^5(1+\sqrt h\,C_\beta)^4h^{1/8}`$, where the finite, charge-independent $`C_\beta`$ is defined in [(58)](RRM1.pdf#page=15).
 
-Let $`\mathbb E^{(0)}`$ denote the normalized zero-flux curvature law on this same reference torus and at the same tuned mass. Equivalently it is the probability law of $`F^{\rm u}=u`$ obtained by weighting $`\gamma_{n_*}`$ with the zero-source twist-averaged determinant in (2). For $`X_c=\langle d\widehat a_c,F^{\rm u}\rangle`$ and $`H_2(y)=y^2-v_\eta`$, $`H_4(y)=y^4-6v_\eta y^2+3v_\eta^2`$,
+Let $`\mathbb E^{(0)}`$ denote the normalized zero-flux curvature law on this same reference torus and at the same tuned mass. Equivalently it is the probability law of $`F^{\rm u}=u`$ obtained by weighting $`\gamma_{n_*}`$ with the zero-source twist-averaged determinant in [(2)](RRM1.pdf#page=2). For $`X_c=\langle d\widehat a_c,F^{\rm u}\rangle`$ and $`H_2(y)=y^2-v_\eta`$, $`H_4(y)=y^4-6v_\eta y^2+3v_\eta^2`$,
 
 <!-- display-math:eq-114-3c4a086e1c
 \mathbb E^{(0)}\prod_{c\in\mathcal C_*}
@@ -355,18 +355,18 @@ Let $`\mathbb E^{(0)}`$ denote the normalized zero-flux curvature law on this sa
 
 All expectations are finite. The response estimate concerns the full fixed family of $`N_*=8L^3`$ cells and the harmonic-averaged zero-flux law.
 
-RRM1 also contains **Theorem B in Section 10**, the quantitative terminal reference-error estimate under the factor, mass, one-cell, tree and jet conditions. **Proposition 11.1** admits those conditions on a positive charge interval.
+[RRM1](RRM1.pdf) also contains **[Theorem B](RRM1.pdf#page=32) in [Section 10](RRM1.pdf#page=31)**, the quantitative terminal reference-error estimate under the factor, mass, one-cell, tree and jet conditions. **[Proposition 11.1](RRM1.pdf#page=33)** admits those conditions on a positive charge interval.
 
 
 ## Navigation
 
-[QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Links to published outlines use their repository locations; links to manuscripts open the corresponding README. Citations to material outside this assembly remain visible without a download link.
+[QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Document and numbered-result links open the published PDFs; assembly links open the topic READMEs. Citations to material outside this assembly remain visible without a download link.
 
 ## Building the manuscript
 
 The TeX sources are beside the PDFs. Build in a temporary copy of these files, retain the resulting PDF, and remove the temporary build directory.
 
-For `RRM1.tex`:
+For [RRM1.tex](RRM1.tex):
 
 ```sh
 pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error RRM1.tex
