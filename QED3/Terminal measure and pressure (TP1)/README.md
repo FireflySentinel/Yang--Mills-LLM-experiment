@@ -1,28 +1,18 @@
-# Terminal measure and pressure (TP1)
+**Terminal measure and pressure (TP1)**
 
 **Disclaimer:** these documents are largely LLM-created. Their correctness has not been satisfactorily verified.
 
 Project codename: **TP1**.
 
 - **[TPO1](TPO1.pdf)** — [The terminal measure and pressure estimates](TPO1.pdf).
-- **AI-written manuscript:** **[TPM1](TPM1.pdf)** — [The terminal measure and pressure estimates for lattice QED in three dimensions](TPM1.pdf) · [TeX source](TPM1.tex) · [Compilation instructions](#building-the-manuscript).
+- **AI-written manuscript:** **[TPM1](TPM1.pdf)** — [The terminal measure and pressure estimates for lattice QED in three dimensions](TPM1.pdf) · [TeX source](TPM1.tex).
 - **Human-written manuscript:** to be added.
 
-## Role in the [QEM1](../QEM1.pdf) assembly
-
-Terminal measure, pressure and two-torus comparison.
-
-[QEO1](../QEO1.pdf) contracts: [T08](../QEO1.pdf#page=113), [T09](../QEO1.pdf#page=32), [T10](../QEO1.pdf#page=115), [T11](../QEO1.pdf#page=34).
-
-Only early [RRM1](../Reference%20response%20%28RR1%29/RRM1.pdf) source identities are imported here; later [RRM1](../Reference%20response%20%28RR1%29/RRM1.pdf) response uses [TPM1](TPM1.pdf).
-
-Related inputs: [CVM1](../Cover%20agreement%20and%20common%20tuning%20%28CV1%29/CVM1.pdf), [RRM1](../Reference%20response%20%28RR1%29/RRM1.pdf). Read their hypotheses at the cited results.
-
-## Principal statements
+**Principal statements**
 
 Notation and numbered references below follow **[TPM1](TPM1.pdf)**. The imported construction and estimates are part of the hypotheses.
 
-### Setting
+**Setting**
 
 We use the chamber regulator with weights $`(6,6\sqrt2,6\sqrt2,6)`$ and Wilson parameter $`0<\rho<1`$. On the unit cubic torus $`C_n`$ with $`n`$ sites per side, let $`\mathcal F_n=dC^1(C_n;\mathbb{R})`$ be the space of exact real two-cochains, with counting inner product and standard Gaussian measure $`\gamma_n`$. Write $`A(u)`$ for the mean-zero coclosed potential of $`u\in\mathcal F_n`$. For $`q>0`$ and a real lattice mass $`\boldsymbol\mu`$, define the matter factor
 
@@ -42,9 +32,9 @@ z_{r,n}(q,\boldsymbol\mu)=
   </picture>
 </p>
 
-Here $`D^{\rm ch}[qB]`$ is the unit-mesh, four-spin-component chamber Dirac operator of (**[LPM1](../Infinite-lattice%20reflection%20positivity%20%28LP1%29/LPM1.pdf)**, [Section 2](../Infinite-lattice%20reflection%20positivity%20%28LP1%29/LPM1.pdf#page=3)), with $`48`$ chamber labels per site and antiperiodic spinors. Its argument $`qB`$ is the bond phase; the subscript $`r`$ in $`z_{r,n}`$ denotes the regulator. The harmonic average in [(1)](TPM1.pdf#page=1) is the zero-flux matter factor of (**[RRM1](../Reference%20response%20%28RR1%29/RRM1.pdf)**, [(37)–(40)](../Reference%20response%20%28RR1%29/RRM1.pdf#page=11)).
+Here $`D^{\rm ch}[qB]`$ is the unit-mesh, four-spin-component chamber Dirac operator of (**[LPM1](../Infinite-lattice%20reflection%20positivity%20%28LP1%29/LPM1.pdf)**, [Section 2](../Infinite-lattice%20reflection%20positivity%20%28LP1%29/LPM1.pdf)), with $`48`$ chamber labels per site and antiperiodic spinors. Its argument $`qB`$ is the bond phase; the subscript $`r`$ in $`z_{r,n}`$ denotes the regulator. The harmonic average in [(1)](TPM1.pdf) is the zero-flux matter factor of (**[RRM1](../Reference%20response%20%28RR1%29/RRM1.pdf)**, [(37)–(40)](../Reference%20response%20%28RR1%29/RRM1.pdf)).
 
-Fix once and for all a choice of the block construction constants satisfying (**[QEM1](../QEM1.pdf)**, [Proposition 4.1](../QEM1.pdf#page=8)), through its charge ceilings $`e_1\le e_0<1`$ and terminal scalar conditions. Thus $`L`$ is odd, $`M`$ is a power of $`L`$, $`M\ge L^2`$, $`0<\varepsilon\le1/200`$, and the exponents are $`r=2`$, $`p_0=9`$, $`p=19`$. The fixed ceilings denoted by $`e_0,e_1`$ here are the $`\bar e_0,\bar e_1`$ of (**[QEM1](../QEM1.pdf)**); they are distinct from the running charge $`e_j`$ at $`j=0`$. This choice includes the photon and fermion primitive bounds, the exact normalized block step, and its field domains. For $`0<\bar m\le1`$ and $`N\in\mathbb{Z}_{\ge0}`$ put
+Fix once and for all a choice of the block construction constants satisfying (**[QEM1](../QEM1.pdf)**, [Proposition 4.1](../QEM1.pdf)), through its charge ceilings $`e_1\le e_0<1`$ and terminal scalar conditions. Thus $`L`$ is odd, $`M`$ is a power of $`L`$, $`M\ge L^2`$, $`0<\varepsilon\le1/200`$, and the exponents are $`r=2`$, $`p_0=9`$, $`p=19`$. The fixed ceilings denoted by $`e_0,e_1`$ here are the $`\bar e_0,\bar e_1`$ of (**[QEM1](../QEM1.pdf)**); they are distinct from the running charge $`e_j`$ at $`j=0`$. This choice includes the photon and fermion primitive bounds, the exact normalized block step, and its field domains. For $`0<\bar m\le1`$ and $`N\in\mathbb{Z}_{\ge0}`$ put
 
 <!-- display-math:eq-128-c3de5f4201
 h=L^{\lfloor\log_L\bar m^{-1}\rfloor},\qquad
@@ -71,7 +61,7 @@ R_{\rm top}=hMr_K,\qquad R_*=R_{\rm top}/L,\qquad
   </picture>
 </p>
 
-For $`R\in\mathcal T(e)`$, the threshold $`N_{\min}(R,e)`$ and first stopping level $`k_*(R)\ge1`$ are those of (**[CVM1](../Cover%20agreement%20and%20common%20tuning%20%28CV1%29/CVM1.pdf)**, [Proposition 6.1](../Cover%20agreement%20and%20common%20tuning%20%28CV1%29/CVM1.pdf#page=23) and [(52)](../Cover%20agreement%20and%20common%20tuning%20%28CV1%29/CVM1.pdf#page=23)): the stop is the first level with $`\ell_j=Mr_j`$, where $`\ell_j=R/a_j`$. At cutoffs $`N\ge N_{\min}(R,e)`$, write $`a_*=a_{k_*}`$, $`e_*=e_{k_*}`$, $`\mu_*=\mu_{k_*}`$ and $`\ell_*=\ell_{k_*}`$. These physical quantities are independent of $`N`$, and
+For $`R\in\mathcal T(e)`$, the threshold $`N_{\min}(R,e)`$ and first stopping level $`k_*(R)\ge1`$ are those of (**[CVM1](../Cover%20agreement%20and%20common%20tuning%20%28CV1%29/CVM1.pdf)**, [Proposition 6.1](../Cover%20agreement%20and%20common%20tuning%20%28CV1%29/CVM1.pdf) and [(52)](../Cover%20agreement%20and%20common%20tuning%20%28CV1%29/CVM1.pdf)): the stop is the first level with $`\ell_j=Mr_j`$, where $`\ell_j=R/a_j`$. At cutoffs $`N\ge N_{\min}(R,e)`$, write $`a_*=a_{k_*}`$, $`e_*=e_{k_*}`$, $`\mu_*=\mu_{k_*}`$ and $`\ell_*=\ell_{k_*}`$. These physical quantities are independent of $`N`$, and
 
 <!-- display-math:eq-130-2d4eef612d
 Mv_*^2\le\ell_*<LMv_*^2,\qquad
@@ -86,9 +76,9 @@ Mv_*^2\le\ell_*<LMv_*^2,\qquad
   </picture>
 </p>
 
-The threshold is finite and nonincreasing in $`R`$. The numerical consequences of the fixed scheme used below are listed and verified in [Section 5](TPM1.pdf#page=14).
+The threshold is finite and nonincreasing in $`R`$. The numerical consequences of the fixed scheme used below are listed and verified in [Section 5](TPM1.pdf).
 
-Use the real pair $`P_N(e)=(m_{0,N}(e),\varepsilon_{0,N}^{\rm v}(e))`$ of (**[CVM1](../Cover%20agreement%20and%20common%20tuning%20%28CV1%29/CVM1.pdf)**, [Theorem D](../Cover%20agreement%20and%20common%20tuning%20%28CV1%29/CVM1.pdf#page=27)): it is selected on $`R_{\rm top}`$ with zero initial activity and zero terminal mass shift and vacuum term there. The same pair gives a controlled trajectory on every $`R\in\mathcal T(e)`$ above its stated threshold. In particular, $`|m_{0,N}(e)|\le\frac18 q^{3/4-8\varepsilon}`$. Set $`\boldsymbol\mu_N=\bar m\eta+m_{0,N}(e)`$ and abbreviate $`z_{r,n}=z_{r,n}(q,\boldsymbol\mu_N)`$, $`n=R/\eta`$. The total mass $`\boldsymbol\mu_N`$ may have either sign. Its free comparison uses the positive reference mass:
+Use the real pair $`P_N(e)=(m_{0,N}(e),\varepsilon_{0,N}^{\rm v}(e))`$ of (**[CVM1](../Cover%20agreement%20and%20common%20tuning%20%28CV1%29/CVM1.pdf)**, [Theorem D](../Cover%20agreement%20and%20common%20tuning%20%28CV1%29/CVM1.pdf)): it is selected on $`R_{\rm top}`$ with zero initial activity and zero terminal mass shift and vacuum term there. The same pair gives a controlled trajectory on every $`R\in\mathcal T(e)`$ above its stated threshold. In particular, $`|m_{0,N}(e)|\le\frac18 q^{3/4-8\varepsilon}`$. Set $`\boldsymbol\mu_N=\bar m\eta+m_{0,N}(e)`$ and abbreviate $`z_{r,n}=z_{r,n}(q,\boldsymbol\mu_N)`$, $`n=R/\eta`$. The total mass $`\boldsymbol\mu_N`$ may have either sign. Its free comparison uses the positive reference mass:
 
 <!-- display-math:eq-131-f0dada9984
 z_{r,n}^{\rm free}
@@ -119,9 +109,9 @@ p_{\rm ch}^0(m)=\int_{[-\pi,\pi]^3}
   </picture>
 </p>
 
-The positive constants $`C_6,\kappa_{(0)}`$, depending only on $`\rho`$ and the fixed weights, are given in [Proposition 4.1](TPM1.pdf#page=10). Write $`\varepsilon_5(x)=C_6\log(1-e^{-\kappa_{(0)}x})^{-1}`$ and $`N_{\rm ref}(e)=N_{\min}(R_*,e)`$.
+The positive constants $`C_6,\kappa_{(0)}`$, depending only on $`\rho`$ and the fixed weights, are given in [Proposition 4.1](TPM1.pdf). Write $`\varepsilon_5(x)=C_6\log(1-e^{-\kappa_{(0)}x})^{-1}`$ and $`N_{\rm ref}(e)=N_{\min}(R_*,e)`$.
 
-**[Theorem A](TPM1.pdf#page=2) (Common pressure and the two-torus comparison).**
+**[Theorem A](TPM1.pdf) (Common pressure and the two-torus comparison).**
 
 Fix the construction and the common pair specified above, and assume $`0<e\sqrt h\le e_1`$. For every $`R\in\mathcal T(e)`$ and $`N\ge N_{\min}(R,e)`$, the matter factors $`z_{r,n}`$ and $`z_{r,n}^{\rm free}`$ are positive, and
 
@@ -169,11 +159,11 @@ In particular let $`R_*=R_{\mathrm{top}}/L`$, $`n_*=R_*/\eta`$, and $`N\ge N_{\r
 
 The same $`p_F=p_F(N,e,\bar m)`$ is used for every asserted side. The displayed error bounds are uniform in $`N`$; $`C_{\rm mat}`$ depends only on $`L,\rho`$ and the fixed chamber weights.
 
-### Free pressure and harmonic twists
+**Free pressure and harmonic twists**
 
 The partition comparison requires an error in the free pressure which depends on the physical size, rather than on the number of lattice sites. It also requires a twist estimate for the operator with a block penalty. The latter penalty removes the small-mass singularity before the fine mesh is taken to zero.
 
-For $`0<m\le1`$ let $`\mathfrak d_m(p)=\det\mathcal D_m(p)`$, where $`\mathcal D_m`$ is the $`192`$-dimensional chamber symbol in (**[FBM1](../Chamber%20fermion%20block%20analysis%20%28FB1%29/FBM1.pdf)**, [Section 2.2](../Chamber%20fermion%20block%20analysis%20%28FB1%29/FBM1.pdf#page=5)), and set
+For $`0<m\le1`$ let $`\mathfrak d_m(p)=\det\mathcal D_m(p)`$, where $`\mathcal D_m`$ is the $`192`$-dimensional chamber symbol in (**[FBM1](../Chamber%20fermion%20block%20analysis%20%28FB1%29/FBM1.pdf)**, [Section 2.2](../Chamber%20fermion%20block%20analysis%20%28FB1%29/FBM1.pdf)), and set
 
 <!-- display-math:eq-135-ec79c8d851
 p_{\rm ch}^0(m)=
@@ -188,9 +178,9 @@ p_{\rm ch}^0(m)=
   </picture>
 </p>
 
-The spin-block identity and positive real part imply $`\mathfrak d_m(p)>0`$ for real $`p`$. In this subsection $`|z|=|z|_\infty`$ for $`z\in\mathbb{Z}^3`$. Write $`\kappa_{(0)}=\kappa_{\mathrm{strip}}`$ from (**[FBM1](../Chamber%20fermion%20block%20analysis%20%28FB1%29/FBM1.pdf)**, [Proposition 2.2](../Chamber%20fermion%20block%20analysis%20%28FB1%29/FBM1.pdf#page=5)).
+The spin-block identity and positive real part imply $`\mathfrak d_m(p)>0`$ for real $`p`$. In this subsection $`|z|=|z|_\infty`$ for $`z\in\mathbb{Z}^3`$. Write $`\kappa_{(0)}=\kappa_{\mathrm{strip}}`$ from (**[FBM1](../Chamber%20fermion%20block%20analysis%20%28FB1%29/FBM1.pdf)**, [Proposition 2.2](../Chamber%20fermion%20block%20analysis%20%28FB1%29/FBM1.pdf)).
 
-**[Proposition 4.1](TPM1.pdf#page=10).**
+**[Proposition 4.1](TPM1.pdf).**
 
 There is a finite $`C_6`$, depending only on $`\rho`$, such that, with
 
@@ -251,14 +241,11 @@ Then $`z_{r,n}^{\rm free}>0`$ and
   </picture>
 </p>
 
-[TPM1](TPM1.pdf) also contains **[Theorem B](TPM1.pdf#page=8) in [Section 3.2](TPM1.pdf#page=6)**, the exact terminal-density identity for bounded Borel observables, under the photon-coordinate, box, domain and external-connection conventions of [Section 3](TPM1.pdf#page=4).
+[TPM1](TPM1.pdf) also contains **[Theorem B](TPM1.pdf) in [Section 3.2](TPM1.pdf)**, the exact terminal-density identity for bounded Borel observables, under the photon-coordinate, box, domain and external-connection conventions of [Section 3](TPM1.pdf).
 
+Only early [RRM1](../Reference%20response%20%28RR1%29/RRM1.pdf) source identities are imported here; later [RRM1](../Reference%20response%20%28RR1%29/RRM1.pdf) response uses [TPM1](TPM1.pdf).
 
-## Navigation
-
-[QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Document and numbered-result links open the published PDFs; assembly links open the topic READMEs. Citations to material outside this assembly remain visible without a download link.
-
-## Building the manuscript
+**Building the manuscript**
 
 The TeX sources are beside the PDFs. Build in a temporary copy of these files, retain the resulting PDF, and remove the temporary build directory.
 

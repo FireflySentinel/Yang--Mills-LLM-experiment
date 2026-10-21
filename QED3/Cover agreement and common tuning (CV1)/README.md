@@ -1,22 +1,14 @@
-# Cover agreement and common tuning (CV1)
+**Cover agreement and common tuning (CV1)**
 
 **Disclaimer:** these documents are largely LLM-created. Their correctness has not been satisfactorily verified.
 
 Project codename: **CV1**.
 
 - **[CVO1](CVO1.pdf)** — [Agreement across covers and common tuning](CVO1.pdf).
-- **AI-written manuscript:** **[CVM1](CVM1.pdf)** — [Agreement across covers and common tuning for lattice QED in three dimensions](CVM1.pdf) · [TeX source](CVM1.tex) · [Compilation instructions](#building-the-manuscript).
+- **AI-written manuscript:** **[CVM1](CVM1.pdf)** — [Agreement across covers and common tuning for lattice QED in three dimensions](CVM1.pdf) · [TeX source](CVM1.tex).
 - **Human-written manuscript:** to be added.
 
-## Role in the [QEM1](../QEM1.pdf) assembly
-
-Exact cover agreement, stopping arithmetic and one common tuned pair.
-
-[QEO1](../QEO1.pdf) contracts: [S16](../QEO1.pdf#page=103), [S17](../QEO1.pdf#page=105), [S18](../QEO1.pdf#page=29), [T01](../QEO1.pdf#page=31).
-
-Related inputs: [NLM1](../Nonlinear%20renormalization%20step%20%28NL1%29/NLM1.pdf). Read their hypotheses at the cited results.
-
-## Main statements
+**Main statements**
 
 The setting and principal theorem below are reproduced from **[CVM1](CVM1.pdf)**. Notation and numbered references follow that manuscript; references to other documents use their codenames. The referenced activity spaces, maps and imported hypotheses remain part of the statement.
 
@@ -105,23 +97,23 @@ and, for every $`v\ge-\log\bar e_1`$,
 **The activity maps.**
 
 Use the real chamber activity spaces, with independent connection
-arguments, defined in [Section 2](CVM1.pdf#page=3). Write $`\mathscr E_j`$ for an activity
+arguments, defined in [Section 2](CVM1.pdf). Write $`\mathscr E_j`$ for an activity
 with external connection $`\mathscr C`$, and $`E_j=\mathscr E_j|_{\mathscr C=0}`$.
 At every used scale impose all the simultaneous hypotheses
-(i)–(iv) of [NLM1](../Nonlinear%20renormalization%20step%20%28NL1%29/NLM1.pdf) ([Theorem A](../Nonlinear%20renormalization%20step%20%28NL1%29/NLM1.pdf#page=2)), including its
+(i)–(iv) of [NLM1](../Nonlinear%20renormalization%20step%20%28NL1%29/NLM1.pdf) ([Theorem A](../Nonlinear%20renormalization%20step%20%28NL1%29/NLM1.pdf)), including its
 primitive, inverse-domain, determinant, extraction, reconstruction,
 contour and connected-logarithm conditions. The constants, norms and
 operators are those of that theorem and of
-[RNM1](../Relevant%20extraction%20and%20normalized%20contraction%20%28RN1%29/RNM1.pdf) ([Theorems A](../Relevant%20extraction%20and%20normalized%20contraction%20%28RN1%29/RNM1.pdf#page=2)–[B](../Relevant%20extraction%20and%20normalized%20contraction%20%28RN1%29/RNM1.pdf#page=18)); their definitions and the
-parts used below are recalled in [Section 2](CVM1.pdf#page=3) and [Section 3](CVM1.pdf#page=7).
+[RNM1](../Relevant%20extraction%20and%20normalized%20contraction%20%28RN1%29/RNM1.pdf) ([Theorems A](../Relevant%20extraction%20and%20normalized%20contraction%20%28RN1%29/RNM1.pdf)–[B](../Relevant%20extraction%20and%20normalized%20contraction%20%28RN1%29/RNM1.pdf)); their definitions and the
+parts used below are recalled in [Section 2](CVM1.pdf) and [Section 3](CVM1.pdf).
 These are hypotheses on the actual chamber maps. In particular the
 following tuning inequalities do not replace their domain or numerical
 conditions. The decay weight satisfies $`\kappa\ge7\kappa_0+7`$, where
 $`\kappa_0=54\log72`$; the constants are calibrated together as in the
-[cited step theorem](../Nonlinear%20renormalization%20step%20%28NL1%29/NLM1.pdf#page=2).
+[cited step theorem](../Nonlinear%20renormalization%20step%20%28NL1%29/NLM1.pdf).
 
 On the top torus choose the photon and fermion families of
-[Section 4.3](CVM1.pdf#page=13), with polymer decay
+[Section 4.3](CVM1.pdf), with polymer decay
 $`\kappa_w+\kappa_0`$, where $`\kappa_w=\kappa+\kappa_0+3`$.
 On each smaller odd quotient use their projections, with common
 constant $`C_w=64K_0C_w^{(1)}`$, $`K_0=\exp(\kappa_0)/36`$.
@@ -137,7 +129,7 @@ Its two torus images are called flat. Local agreement means equality
 under the common covering generators for connection pairs agreeing
 on $`\mathrm{box}(\widetilde X)^{\sim6(2L+1)}`$.
 Here the superscript denotes enlargement by that number of $`M`$-cube
-layers. [Proposition 5.1](CVM1.pdf#page=13) justifies this identification.
+layers. [Proposition 5.1](CVM1.pdf) justifies this identification.
 
 The estimates used for tuning take the following form.
 Set $`w_j^{\mathrm m}=e_j^{3/4-8\varepsilon}`$ and
@@ -207,10 +199,10 @@ $`d_E=\|E-\widetilde E\|_j/w_j^{\mathrm E}`$.
 The same size estimate holds for the external-slot norm. The
 fixed-point argument uses the no-slot difference estimate.
 Initially $`E_0=\mathscr E_0=\mathfrak P_0=0`$, where
-$`\mathfrak P_j`$ is the scalar external family in [Section 3](CVM1.pdf#page=7).
-The first step uses the chamber definitions in [Section 3](CVM1.pdf#page=7).
+$`\mathfrak P_j`$ is the scalar external family in [Section 3](CVM1.pdf).
+The first step uses the chamber definitions in [Section 3](CVM1.pdf).
 
-**[Theorem A](CVM1.pdf#page=3) (A common mass and vacuum pair).**
+**[Theorem A](CVM1.pdf) (A common mass and vacuum pair).**
 
 Under the hypotheses above, the following assertions hold.
 For each $`R\in\mathcal T(e)`$ there is a finite threshold
@@ -218,7 +210,7 @@ $`N_{\min}(R,e)`$ such that the first stop exists for
 $`N\ge N_{\min}(R,e)`$. Its physical quantities are then independent
 of $`N`$. The thresholds are nonincreasing and the stopping levels
 nondecreasing
-with $`R`$; their precise formulas are in [(52)](CVM1.pdf#page=23).
+with $`R`$; their precise formulas are in [(52)](CVM1.pdf).
 
 For $`N\ge N_{\min}(R_{\rm top},e)`$, there is exactly one real
 pair $`P_N(e)=(m_{0,N}(e),\varepsilon_{0,N}^v(e))`$ whose top-torus
@@ -230,7 +222,7 @@ For every $`R\in\mathcal T(e)`$ with $`N\ge N_{\min}(R,e)`$,
 the same pair is controlled on $`R`$. Up to its stop, the scalar
 mass and vacuum sequences equal the top sequences, while the
 activities and external scalar families agree on admissible flat
-lifts under the algebra identification of [Proposition 5.1](CVM1.pdf#page=13). On each such torus,
+lifts under the algebra identification of [Proposition 5.1](CVM1.pdf). On each such torus,
 
 <!-- display-math:eq-045-e53f5891ec
 |m_j|\le\tfrac18e_j^{3/4-8\varepsilon},\qquad
@@ -278,12 +270,7 @@ a_*\in\{h/L,h/L^2\},\qquad
   </picture>
 </p>
 
-
-## Navigation
-
-[QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Document and numbered-result links open the published PDFs; assembly links open the topic READMEs. Citations to material outside this assembly remain visible without a download link.
-
-## Building the manuscript
+**Building the manuscript**
 
 The TeX sources are beside the PDFs. Build in a temporary copy of these files, retain the resulting PDF, and remove the temporary build directory.
 

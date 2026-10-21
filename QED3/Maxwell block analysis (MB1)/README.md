@@ -1,20 +1,14 @@
-# Maxwell block analysis (MB1)
+**Maxwell block analysis (MB1)**
 
 **Disclaimer:** these documents are largely LLM-created. Their correctness has not been satisfactorily verified.
 
 Project codename: **MB1**.
 
 - **[MBO1](MBO1.pdf)** — [Maxwell block minimization and Gaussian fluctuations](MBO1.pdf).
-- **AI-written manuscript:** **[MBM1](MBM1.pdf)** — [Maxwell block minimization and Gaussian fluctuations](MBM1.pdf) · [TeX source](MBM1.tex) · [Compilation instructions](#building-the-manuscript).
+- **AI-written manuscript:** **[MBM1](MBM1.pdf)** — [Maxwell block minimization and Gaussian fluctuations](MBM1.pdf) · [TeX source](MBM1.tex).
 - **Human-written manuscript:** to be added.
 
-## Role in the [QEM1](../QEM1.pdf) assembly
-
-Photon minimization and constrained Gaussian primitives.
-
-[QEO1](../QEO1.pdf) contracts: [S03](../QEO1.pdf#page=81), [S04](../QEO1.pdf#page=83), [S05](../QEO1.pdf#page=85).
-
-## Main statements
+**Main statements**
 
 The setting and principal theorem below are reproduced from **[MBM1](MBM1.pdf)**. Notation and numbered references follow that manuscript; references to other documents use their codenames.
 
@@ -130,7 +124,7 @@ orders. Write $`\mathcal Z=\{Z:\mathbf QZ=0,\ \tau Z=0\}`$.
 For a coarse field $`A'`$ on side $`\ell/L`$, set
 $`A'_L(b)=L^{-1/2}A'(b/L)`$.
 
-**[Theorem A](MBM1.pdf#page=2).**
+**[Theorem A](MBM1.pdf).**
 
 Assume that $`\ell/(LM)`$ is an odd integer at least $`13`$.
 There are constants $`C_P^{\mathrm{ph}}>0`$ and
@@ -252,14 +246,9 @@ pullback intertwines $`H_k^{\mathrm{ph}},\Delta_k,C, \widetilde\Delta_k,(\wideti
 $`\widetilde\Delta_k^{-1/2},\mathrm{Sq}_k`$, and
 $`A_k^{\min}`$ on the two tori.
 
-[Theorem B](MBM1.pdf#page=14) of [MBM1](MBM1.pdf) ([Section 6](MBM1.pdf#page=13), “Domains for block integration”) gives additional domain estimates under the geometry, weakening and small-charge hypotheses stated there.
+[Theorem B](MBM1.pdf) of [MBM1](MBM1.pdf) ([Section 6](MBM1.pdf), “Domains for block integration”) gives additional domain estimates under the geometry, weakening and small-charge hypotheses stated there.
 
-
-## Navigation
-
-[QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Document and numbered-result links open the published PDFs; assembly links open the topic READMEs. Citations to material outside this assembly remain visible without a download link.
-
-## Building the manuscript
+**Building the manuscript**
 
 The TeX sources are beside the PDFs. Build in a temporary copy of these files, retain the resulting PDF, and remove the temporary build directory.
 

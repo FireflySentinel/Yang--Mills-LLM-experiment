@@ -1,16 +1,16 @@
-# RP O(d) trick (RP1)
+**RP O(d) trick (RP1)**
 
 **Disclaimer:** these documents are largely LLM-created. Their correctness has not been satisfactorily verified.
 
 Project codename: **RP1**.
 
 - **[RPO1](RP1O1.pdf)** — [Reflection positivity to rotations: expanded proof outline](RP1O1.pdf).
-- **AI-written manuscript:** **[RPM1](RPM1.pdf)** — [Rotation invariance from lattice symmetry and reflection positivity](RPM1.pdf) · [TeX source](RPM1.tex) · [Compilation instructions](#building-the-manuscript).
+- **AI-written manuscript:** **[RPM1](RPM1.pdf)** — [Rotation invariance from lattice symmetry and reflection positivity](RPM1.pdf) · [TeX source](RPM1.tex).
 - **Human-written manuscript:** to be added.
 
-## Main theorem
+**Main theorem**
 
-The statement below is taken from [Theorem A](RPM1.pdf#page=2) of **[RPM1](RPM1.pdf)**, with its notation from the manuscript. The TeX formatting and macros have been adapted for GitHub.
+The statement below is taken from [Theorem A](RPM1.pdf) of **[RPM1](RPM1.pdf)**, with its notation from the manuscript. The TeX formatting and macros have been adapted for GitHub.
 
 Fix a number $`d\geq 2`$, and consider $`d`$-dimensional Euclidean spacetime $`\mathbb{R}^d`$.
 
@@ -79,7 +79,7 @@ For an isometry $`T(\mathbf{x})=g\mathbf{x}+\mathbf{a}`$, our pullback conventio
 Here $`\rho(g)`$ is the pullback action on the tensor indices; thus
 $`\rho(g_1g_2)=\rho(g_2)\rho(g_1)`$. It is an isometry for real $`g`$.
 
-**[Theorem A](RPM1.pdf#page=2).**
+**[Theorem A](RPM1.pdf).**
 
 Suppose that:
 
@@ -98,6 +98,7 @@ Suppose that:
 for every real $`\chi\in\mathcal{S}`$.
 
 **(ii)**
+
 The measure is invariant under spacetime translations. That is, for any $`T:\mathbb{R}^d\to \mathbb{R}^d`$ of the form $`T(\mathbf{x})=\mathbf{x}+\mathbf{a}`$ for $`\mathbf{a}\in \mathbb{R}^d`$,
 
 <!-- display-math:eq-173-dbc34c76f6
@@ -128,7 +129,7 @@ Then the measure is rotationally-invariant in the sense of Osterwalder--Schrader
 
 Here, $`R^* \chi=(R^* \chi_1,\dots,R^* \chi_N)`$.
 
-## Building the manuscript
+**Building the manuscript**
 
 The TeX sources are beside the PDFs. Build in a temporary copy of these files, retain the resulting PDF, and remove the temporary build directory.
 
@@ -144,6 +145,6 @@ pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error RPM1.tex
 
 The first pass may report symbol-footnote counter errors before page assignments settle; the later passes must finish successfully.
 
-## Historical source of the scalar supplement
+**Historical source of the scalar supplement**
 
-The scalar application on [RPO1, page 33](RP1O1.pdf#page=33) uses the [preserved 27-page RPM1 edition, Section 11](RPM1-27-page.pdf#page=24), with [exact TeX line references](RPM1-27-page.tex) and the [matching TeX/bibliography archive](RPM1-27-page-source.zip). This is the historical edition; the current [RPM1](RPM1.pdf) has 30 pages.
+The scalar application on [RPO1, page 33](RP1O1.pdf) uses the [preserved 27-page RPM1 edition, Section 11](RPM1-27-page.pdf), with [exact TeX line references](RPM1-27-page.tex) and the [matching TeX/bibliography archive](RPM1-27-page-source.zip). This is the historical edition; the current [RPM1](RPM1.pdf) has 30 pages.

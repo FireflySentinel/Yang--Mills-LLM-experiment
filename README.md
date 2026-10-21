@@ -5,11 +5,11 @@ We will digest/exposit and formalize what we can. For example, we are currently 
 [LA: At the moment we do (appear to) have a YM4 (i.e. $`\mathbb{R}^4`$, not just in finite volume) existence argument / slop, but it is extremely long and basically not understandable as is. Thus in the meanwhile it is being written much more methodically (thus quite slowly!) and our intention with e.g. QED3 and then YM3 (both also $`\mathbb{R}^3`$) is to show some of the coolest YM4 arguments (e.g. winning O(4)-invariance via an [RP trick](RP%20O%28d%29%20trick%20%28RP1%29/README.md)) in a much simpler, and shorter to write, setting.
 I take blame for the immodesty of the previous sentence! However we have been made aware of emails going around from groups now working on the exact same thing, making sudden progress off of the arguments above, so I wanted to be clear we are not stuck! The goal is understanding and rigor. Please, we need to not incentivize rushing out 10,000-page slop, which I think would be especially useless here!]
 
-## Manuscripts
+**Manuscripts**
 
 - **AI-written manuscripts:** [QED3](QED3/README.md) and the [RP O(d) trick](RP%20O%28d%29%20trick%20%28RP1%29/README.md), with PDFs and TeX sources.
 - **Human-written manuscript:** to be added.
 
-Each manuscript has one complete TeX file beside its PDF, with the required bibliography and style files in the same folder. The manuscript pages link to their inline compilation instructions. The cited [chamber-QED reference supplement](QED3/Infinite-lattice%20reflection%20positivity%20%28LP1%29/ChamberQED.tex) is preserved as a separate file; see [LPM1’s reference entry](QED3/Infinite-lattice%20reflection%20positivity%20%28LP1%29/LPM1.pdf#page=53).
+Each manuscript has one complete TeX file beside its PDF, with the required bibliography and style files in the same folder. Compilation instructions are included in each manuscript README. The cited [chamber-QED reference supplement](QED3/Infinite-lattice%20reflection%20positivity%20%28LP1%29/ChamberQED.tex) is preserved as a separate file; see [LPM1’s reference entry](QED3/Infinite-lattice%20reflection%20positivity%20%28LP1%29/LPM1.pdf).
 
 [Original project proposal](README.pdf). Its bibliography links now open the public article pages; the supplied proposal text is preserved.

@@ -1,24 +1,14 @@
-# Continuum existence (CE1)
+**Continuum existence (CE1)**
 
 **Disclaimer:** these documents are largely LLM-created. Their correctness has not been satisfactorily verified.
 
 Project codename: **CE1**.
 
 - **[CEO1](CEO1.pdf)** — [Continuum limits from second-moment bounds](CEO1.pdf).
-- **AI-written manuscript:** **[CEM1](CEM1.pdf)** — [Gaussian domination and structural properties of continuum limits](CEM1.pdf) · [TeX source](CEM1.tex) · [Compilation instructions](#building-the-manuscript).
+- **AI-written manuscript:** **[CEM1](CEM1.pdf)** — [Gaussian domination and structural properties of continuum limits](CEM1.pdf) · [TeX source](CEM1.tex).
 - **Human-written manuscript:** to be added.
 
-## Role in the [QEM1](../QEM1.pdf) assembly
-
-Gaussian/correlation stability, compactness, structural inheritance and prescribed-parent recovery.
-
-[QEO1](../QEO1.pdf) contracts: [B3](../QEO1.pdf#page=18), [A1](../QEO1.pdf#page=20).
-
-[CEO1](CEO1.pdf) covers compactness only. Current compact-link IVM1, which is not included in this assembly, is not the real-curvature input. The selected common bare sequence is required in the QED3 application.
-
-Related inputs: [LPM1](../Infinite-lattice%20reflection%20positivity%20%28LP1%29/LPM1.pdf), [CVM1](../Cover%20agreement%20and%20common%20tuning%20%28CV1%29/CVM1.pdf). Read their hypotheses at the cited results.
-
-## Main statements
+**Main statements**
 
 The setting and principal theorems below are reproduced from **[CEM1](CEM1.pdf)**. Notation and numbered references follow that manuscript; references to other documents use their codenames.
 
@@ -62,7 +52,7 @@ For a law $`P`$, its smeared $`n`$-point correlation is
 $`S_n^P(f_1,\ldots,f_n)=\mathbb{E}_P\prod_{j=1}^n F(f_j)`$ whenever
 this expectation exists.
 
-**[Theorem A](CEM1.pdf#page=1) (Gaussian domination and convergence of correlations).**
+**[Theorem A](CEM1.pdf) (Gaussian domination and convergence of correlations).**
 
 Fix integers $`d,r\ge1`$ and a real number $`t>0`$. Let $`P_j`$ and $`P`$ be Borel probability
 laws on $`H_{-t}`$ such that $`P_j\Longrightarrow P`$. Suppose
@@ -153,7 +143,7 @@ with every derivative. Thus all joint cumulants converge, where
 
 and $`\kappa_n^{P_j}`$ is defined in the same way.
 
-**[Theorem B](CEM1.pdf#page=2) (Continuum limits of lattice fields).**
+**[Theorem B](CEM1.pdf) (Continuum limits of lattice fields).**
 
 Fix integers $`d,r\ge1`$, offsets $`t_1,\ldots,t_r\in[0,1]^d`$,
 and a set $`I\subset(0,1]`$ with $`0`$ in its closure. For each
@@ -255,7 +245,7 @@ boundary, reflection positivity means
   </picture>
 </p>
 
-**[Theorem C](CEM1.pdf#page=3) (Identities, symmetries and reflection positivity).**
+**[Theorem C](CEM1.pdf) (Identities, symmetries and reflection positivity).**
 
 Let $`P_j\Rightarrow P`$ weakly on $`H_{-t}`$, and suppose
 
@@ -277,12 +267,14 @@ reflections through the origin. Choose an open side $`H_r^+`$ for
 each $`r\in\mathcal R`$. Assume:
 
 **(i)**
+
 For each $`\xi\in C_c^\infty(\mathbb{R}^d;W)`$ there are real
 $`v_j(\xi)\in\mathcal S`$ such that $`F(v_j(\xi))=0`$,
 $`P_j`$-almost surely, and
 $`\|v_j(\xi)-D^*\xi\|_2\to0`$.
 
 **(ii)**
+
 For each $`g\in\mathcal G`$ there are real linear maps
 $`T_{j,g}:\mathcal S\to\mathcal S`$ satisfying
 
@@ -299,6 +291,7 @@ $`T_{j,g}:\mathcal S\to\mathcal S`$ satisfying
 </p>
 
 **(iii)**
+
 For every $`r\in\mathcal R`$, every finite family of real
 $`f_a\in C_c^\infty(H_r^+;V)`$, and every $`z_a\in\mathbb{C}`$,
 
@@ -324,12 +317,9 @@ translate of every plane in $`\mathcal R`$.
 Along the same sequence, all joint moments and cumulants of every
 fixed finite family of Schwartz evaluations converge to those of $`P`$.
 
+[CEO1](CEO1.pdf) covers compactness only. The current compact-link IVM1 is not the real-curvature input. The selected common bare sequence is required in the QED3 application.
 
-## Navigation
-
-[QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Document and numbered-result links open the published PDFs; assembly links open the topic READMEs. Citations to material outside this assembly remain visible without a download link.
-
-## Building the manuscript
+**Building the manuscript**
 
 The TeX sources are beside the PDFs. Build in a temporary copy of these files, retain the resulting PDF, and remove the temporary build directory.
 
@@ -343,6 +333,6 @@ pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error CEM1.tex
 pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error CEM1.tex
 ```
 
-## Historical real-curvature source
+**Historical real-curvature source**
 
-The LatticeLimits / IV1M1 citations use the [preserved 20-page IVM1 revision of October 19, 2026](IVM1-20261019.pdf), especially [Section 5.3](IVM1-20261019.pdf#page=7) and [Section 6.1](IVM1-20261019.pdf#page=8). Its [exact source archive](IVM1-20261019-source.zip) retains the fragment filenames and line numbers cited in [CEO1](CEO1.pdf). The current compact-link IVM1 is a different revision and is not the cited input.
+The LatticeLimits / IV1M1 citations use the [preserved 20-page IVM1 revision of October 19, 2026](IVM1-20261019.pdf), especially [Section 5.3](IVM1-20261019.pdf) and [Section 6.1](IVM1-20261019.pdf). Its [exact source archive](IVM1-20261019-source.zip) retains the fragment filenames and line numbers cited in [CEO1](CEO1.pdf). The current compact-link IVM1 is a different revision and is not the cited input.

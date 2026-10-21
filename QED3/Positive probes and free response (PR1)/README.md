@@ -1,26 +1,18 @@
-# Positive probes and free response (PR1)
+**Positive probes and free response (PR1)**
 
 **Disclaimer:** these documents are largely LLM-created. Their correctness has not been satisfactorily verified.
 
 Project codename: **PR1**.
 
 - **[PRO1](PRO1.pdf)** — [Positive compact probes and free response coefficients](PRO1.pdf).
-- **AI-written manuscript:** **[PRM1](PRM1.pdf)** — [Positive compact probes and free response coefficients for lattice QED in three dimensions](PRM1.pdf) · [TeX source](PRM1.tex) · [Compilation instructions](#building-the-manuscript).
+- **AI-written manuscript:** **[PRM1](PRM1.pdf)** — [Positive compact probes and free response coefficients for lattice QED in three dimensions](PRM1.pdf) · [TeX source](PRM1.tex).
 - **Human-written manuscript:** to be added.
 
-## Role in the [QEM1](../QEM1.pdf) assembly
-
-Positive compact probe and free second/fourth response coefficients.
-
-[QEO1](../QEO1.pdf) contracts: [B7](../QEO1.pdf#page=35), [T02](../QEO1.pdf#page=106), [T03](../QEO1.pdf#page=107), [T04](../QEO1.pdf#page=108).
-
-Related inputs: [FBM1](../Chamber%20fermion%20block%20analysis%20%28FB1%29/FBM1.pdf). Read their hypotheses at the cited results.
-
-## Principal statements
+**Principal statements**
 
 Notation and numbered references below follow **[PRM1](PRM1.pdf)**.
 
-### Continuum setting
+**Continuum setting**
 
 Let $`\sigma_\nu`$ be the Pauli matrices and $`\gamma_\nu=\mathrm{diag}(\sigma_\nu,-\sigma_\nu)`$, $`1\le\nu\le3`$. Thus $`\gamma_\nu\gamma_\mu+\gamma_\mu\gamma_\nu=2\delta_{\mu\nu}`$. On $`L^2(\mathbb{R}^3;\mathbb{C}^4)`$, for $`M>0`$ and real $`a\in C_c^\infty(\mathbb{R}^3;\mathbb{R}^3)`$, write
 
@@ -52,7 +44,7 @@ b(f)=-6\mathrm{tr}[(S_{\bar m}i\gamma\cdot d^*\beta)^4]
 
 This depends only on $`f`$: two choices of $`d^*\beta`$ with the same exterior derivative differ by a compactly supported smooth one-form that is closed and coclosed, hence harmonic and therefore zero.
 
-**[Theorem A](PRM1.pdf#page=1) (A positive continuum probe).**
+**[Theorem A](PRM1.pdf) (A positive continuum probe).**
 
 For every real $`a\in C_c^\infty(\mathbb{R}^3;\mathbb{R}^3)`$ and $`M>0`$, the operator $`(S_MV_a)^4`$ is trace class and its trace is real. There is $`C_a<\infty`$ such that, for $`M\ge1`$,
 
@@ -71,7 +63,7 @@ For every real $`a\in C_c^\infty(\mathbb{R}^3;\mathbb{R}^3)`$ and $`M>0`$, the o
 
 In particular, for every $`\bar m>0`$ there is a real $`\beta\in C_c^\infty(\mathbb{R}^3;\Lambda^2)`$ for which $`f=dd^*\beta`$ satisfies $`b(f)>0`$.
 
-### Lattice setting
+**Lattice setting**
 
 Fix $`0<\rho<1`$ and $`0<\bar m\le1`$. Let $`\beta`$ be a real nonzero compactly supported smooth two-form, and put $`a=d^*\beta`$, $`f=dd^*\beta`$. Thus $`a_\nu=-\sum_{\mu\ne\nu}\partial_\mu\beta_{\mu\nu}`$. Let $`Q_\beta`$ be a closed coordinate cube of least side $`D_\beta`$ containing $`\mathrm{supp}\beta`$; this side includes no buffer. For $`0<\eta\le1`$ define
 
@@ -152,7 +144,7 @@ For a spinor $`\psi:\mathbb{Z}^3\times O_{\mathrm{cub}}\to\mathbb{C}^4`$ with $`
   </picture>
 </p>
 
-Here $`B`$ is an $`n\mathbb{Z}^3`$-periodic cochain on the oriented nearest-neighbor edges of the covering lattice, with $`B(c',c)=-B(c,c')`$ for $`c,c'\in\mathbb{Z}^3`$. The operator is determined by its values for $`c\in\{0,\ldots,n-1\}^3`$; when $`n=2`$, edges with the same quotient endpoints remain distinct. This is the chamber operator of (**[LPM1](../Infinite-lattice%20reflection%20positivity%20%28LP1%29/LPM1.pdf)**, [Section 2](../Infinite-lattice%20reflection%20positivity%20%28LP1%29/LPM1.pdf#page=3)) in lattice units. The spinor pairing uses counting measure in $`c`$ and $`48^{-1}\sum_g`$ in the labels.
+Here $`B`$ is an $`n\mathbb{Z}^3`$-periodic cochain on the oriented nearest-neighbor edges of the covering lattice, with $`B(c',c)=-B(c,c')`$ for $`c,c'\in\mathbb{Z}^3`$. The operator is determined by its values for $`c\in\{0,\ldots,n-1\}^3`$; when $`n=2`$, edges with the same quotient endpoints remain distinct. This is the chamber operator of (**[LPM1](../Infinite-lattice%20reflection%20positivity%20%28LP1%29/LPM1.pdf)**, [Section 2](../Infinite-lattice%20reflection%20positivity%20%28LP1%29/LPM1.pdf)) in lattice units. The spinor pairing uses counting measure in $`c`$ and $`48^{-1}\sum_g`$ in the labels.
 
 Let
 
@@ -187,7 +179,7 @@ b_R(f)=-6\mathrm{Tr}(S^Ri\gamma\cdot a^R)^4,
   </picture>
 </p>
 
-**[Theorem B](PRM1.pdf#page=2) (Free lattice response).**
+**[Theorem B](PRM1.pdf) (Free lattice response).**
 
 For the operator and sampled probe above, fix $`0<\rho<1`$, $`0<\bar m\le1`$, and real nonzero $`\beta\in C_c^\infty(\mathbb{R}^3;\Lambda^2)`$. For all $`0<\eta\le1`$ and $`n=R/\eta\in\mathbb{N}`$ with $`n\ge2`$, the following assertions hold.
 
@@ -238,12 +230,7 @@ There is $`C_{\rho,\bar m,\beta}<\infty`$, unchanged by real translations of $`\
 
 All coefficients are independent of $`e`$ in the charge convention above. They are unchanged by translating the probe through $`\eta\mathbb{Z}^3`$ or by replacing its external cochain by a cubic reflected cochain.
 
-
-## Navigation
-
-[QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Document and numbered-result links open the published PDFs; assembly links open the topic READMEs. Citations to material outside this assembly remain visible without a download link.
-
-## Building the manuscript
+**Building the manuscript**
 
 The TeX sources are beside the PDFs. Build in a temporary copy of these files, retain the resulting PDF, and remove the temporary build directory.
 
