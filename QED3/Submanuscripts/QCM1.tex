@@ -1,28 +1,67 @@
-\documentclass[11pt]{amsart}
-\usepackage[margin=1in]{geometry}
-\usepackage{amsmath,amssymb,mathrsfs}
+\documentclass[11pt,letterpaper,reqno]{amsart}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype}
+\usepackage[letterpaper,margin=1in,headheight=15pt]{geometry}
+\usepackage{amsmath,amsthm,amssymb,mathtools,mathrsfs}
+\usepackage{enumitem,perpage}
 \usepackage{xcolor}
 \definecolor{manuscriptred}{rgb}{0.6,0.1,0.1}
 \definecolor{manuscriptblue}{rgb}{0.1,0.3,0.5}
 \definecolor{manuscriptmagenta}{HTML}{60445C}
 \usepackage[hypertexnames=false,pdfauthor={}]{hyperref}
 \hypersetup{colorlinks=true,linkcolor=manuscriptred,citecolor=manuscriptblue,urlcolor=manuscriptmagenta}
+\hypersetup{pdftitle={Massless photons and Maxwell infrared limits in three-dimensional QED}}
+\setcounter{tocdepth}{1}
+\renewcommand{\thefigure}{\Roman{figure}}
+\renewcommand{\thetable}{\Roman{table}}
+\MakePerPage{footnote}
+\renewcommand{\thefootnote}{\ifnum\value{footnote}>9\arabic{footnote}\else\fnsymbol{footnote}\fi}
 \allowdisplaybreaks
 \emergencystretch=3em
 \newcommand{\namedhead}{}
 \theoremstyle{definition}
 \newtheorem*{namedinner}{\namedhead}
-\newenvironment{named}[1]{\renewcommand{\namedhead}{#1}\begin{namedinner}}{\end{namedinner}}
+% Preserve the manually assigned statement identifiers.
+\makeatletter
+\def\qcm@settype#1 #2\@nil{\def\qcm@type{#1}}
+\def\qcm@theorem{Theorem}
+\def\qcm@corollary{Corollary}
+\newenvironment{named}[1]{%
+  \renewcommand{\namedhead}{#1}\begin{namedinner}%
+  \qcm@settype#1 \@nil\pushQED{\qed}%
+  \ifx\qcm@type\qcm@theorem
+    \renewcommand{\qedsymbol}{$\blacksquare\square$}%
+  \else\ifx\qcm@type\qcm@corollary
+    \renewcommand{\qedsymbol}{$\blacksquare\square$}%
+  \else
+    \renewcommand{\qedsymbol}{$\blacksquare$}%
+  \fi\fi
+}{\popQED\end{namedinner}}
+\makeatother
 \renewcommand{\descriptionlabel}[1]{\hspace\labelsep\upshape\bfseries #1}
-\pagestyle{plain}
 \begin{document}
-\title{Massless photons and interacting field-strength theories\newline in three-dimensional QED}
-\author{}
+\title[Massless photons and Maxwell infrared limits]{Massless photons and Maxwell infrared limits\newline in three-dimensional QED}
 \date{}
 \begin{abstract}
-We study the curvature laws of noncompact lattice QED with a massive chamber fermion. An estimate on the meson correlator gives a massless photon in almost every ergodic component of every volume-first limit point. We construct the corresponding local relativistic field and identify its infrared limit. For the tuned masses at small charge, the same components have a positive fourth cumulant.
+We prove further properties of the continuum curvature laws constructed
+from noncompact lattice QED with chamber fermions. At any fixed charge,
+assume that the positive lattice masses are eventually at most one and
+bounded below by a fixed positive multiple of the spacing. A meson
+correlator estimate then gives a positive massless photon weight in
+almost every translation-ergodic component of every volume-first limit
+point. The full infrared law of each such component converges to a free
+Maxwell law. The previously established Osterwalder--Schrader axioms
+already yield a local relativistic field; we give a direct
+realization with quantitative energy and analytic-continuation bounds.
+We verify the mass hypothesis for the tuned construction at sufficiently
+small charge. Combined with its previously proved positive fourth
+cumulant, this gives non-Gaussian component theories with nondegenerate
+Maxwell infrared limits.
 \end{abstract}
 \maketitle
+\tableofcontents
+
+\section*{Introduction}
 
 Let $P_{N,T}$ be the all-flux curvature laws of the chamber construction of
 \cite{QEDII,QEDIII}, with standard weights, Wilson parameter $0<\rho<1$,
@@ -33,6 +72,8 @@ A mass assignment is a real sequence $m_{0,N}$ independent of $T$;
 its lattice mass is $\boldsymbol\mu_N=\bar m\eta+m_{0,N}$.
 Write $\Pi_{\mathrm c}$ for the orthogonal projection of
 $L^2(\mathbb R^3;\Lambda^2)$ onto the closed forms.
+Existence of the limit points and the properties in clause~(i) below
+are recalled from \cite[Theorems~1.3 and~1.4]{QEDII}.
 
 \begin{named}{Theorem A}
 Fix $e>0$ and a mass assignment for which, with a constant
@@ -162,6 +203,17 @@ The limit is the free Maxwell law of weight $z_\xi$.
 \end{itemize}
 \end{named}
 
+The additional conclusions concern the positive photon weight and
+component Fisher bounds in~(ii), the identified massless subspace
+in~(iii), and the infrared limit of the full law in~(iv). The local Wightman
+field associated with~(i) is supplied by the Osterwalder--Schrader
+reconstruction theorem \cite[Section~IV.1]{OS1975}, with the two-form
+covariance and reflection conventions used here; see also
+\cite[Section~6]{OS1973} for nonscalar fields. Section~3 gives a
+direct realization on $D=\bigcap_mD(H^m)$, including the energy bound
+of Theorem~3.3(a) and the tube bounds of Theorem~3.3(f). These estimates
+also enter the proof of the infrared limit.
+
 The cluster assertion concerns the components. The theorem gives an
 integral bound on the reciprocals of their photon weights; it does not give a positive
 lower bound independent of $\xi$. The massless subspace in (iii) is
@@ -170,7 +222,10 @@ the one generated by a single field applied to the vacuum.
 The mass hypothesis holds for every assignment
 $c_-\eta\le\boldsymbol\mu_N\le c_+\eta$ eventually, with
 $0<c_-\le c_+<\infty$. We call such an assignment physical.
-The tuned shifts of \cite{QEDIII} are physical in the following range.
+Here this term refers only to the two-sided bounds on the lattice mass.
+We prove these bounds for the tuned shifts of \cite{QEDIII} in the
+following range and combine them with that construction's
+fourth-cumulant estimate.
 
 \begin{named}{Corollary B}
 Let $(\beta,x_0,r_\beta)$ be data of \cite[Theorem~44]{QEDIII},
@@ -193,8 +248,9 @@ for every $N\ge N_1(e)$, with $N_1(e)<\infty$.
 \end{named}
 
 \subsection*{The proof}
-Reflection positivity and Euclidean invariance alone allow the zero
-field. The estimate that excludes it is a bound on the second spatial
+The preceding construction supplies the OS properties, but those
+properties alone do not ensure a positive massless photon weight.
+The estimate that yields this weight is a bound on the second spatial
 moment of the meson correlator in one box of size comparable with the
 inverse lattice mass. The determinant supplies a Ward identity, and the
 identity turns this moment into a bound on the Fisher information of
@@ -215,12 +271,12 @@ inequality survives those limits; taking the supremum over finite
 partitions controls the mean of the component constants. This gives
 the integral estimate in Theorem~A(ii).
 
-The relativistic field is constructed directly from the curvature.
-First we prove that products of this field generate the reconstructed
-Hilbert space. Bounded insertions in a time slab give holomorphic
-point-field vectors with a precise bound near the boundary of the
+The direct reconstruction in Sections~2 and~3 provides the quantitative
+realization used below. Products of the curvature field generate the
+probabilistic OS Hilbert space. Bounded insertions in a time slab give
+holomorphic point-field vectors with a bound near the boundary of the
 forward tube. Their boundary values define the Minkowski field on
-$D$; analytic continuation gives covariance and locality. This also
+$D$ with the energy estimate in Theorem~3.3(a). The construction also
 identifies the massless subspace produced by one field.
 
 Finally, dilating an ergodic law sends its spectral measure to its atom
@@ -233,11 +289,11 @@ The contact-term argument then identifies the full law. Applied to
 subsequential limits of dilates, this proves (iv).
 
 The general photon theorem uses the mass hypothesis in Theorem~A and
-holds at every charge. Corollary~B adds the separate fourth-cumulant
-estimate of the tuned construction.
-
-
-\tableofcontents
+holds at every charge. For Corollary~B, Section~6 verifies that
+hypothesis for the tuned masses. The positive fourth cumulant is
+imported from \cite[Theorem~44]{QEDIII}; the corollary establishes that
+the same non-Gaussian components have the photon and infrared
+properties of Theorem~A.
 
 \section*{Notation and the preceding construction}
 All Euclidean test forms are two-forms on $\mathbb R^3$.
@@ -744,6 +800,12 @@ That $\mu_\xi$ fulfils the hypotheses for every $\xi\in\Xi_\mu$ follows from Cor
 
 
 \section{The local relativistic field}
+
+The OS axioms and their growth condition give a local Wightman theory
+by \cite[Section~IV.1]{OS1975}. We retain a direct reconstruction to
+identify its field on the probabilistic OS Hilbert space and prove
+the energy and tube estimates on its common domain in Theorem~3.3. These
+estimates are used in Section~4 to identify the full infrared law.
 
 \emph{Conventions.}
 We use the conventions above and \cite[(n1)--(n8)]{QEDIII}.
@@ -1364,11 +1426,15 @@ As a function of $c$ it extends to $\overline{\mathcal T}^{\,3}$ in the manner r
 If $W_4^{\mathrm{tr}}$ vanished, it would follow, on letting $h_a\to\delta_0b_a$, that $\mathcal W_4^{\mathrm{tr}}=0$ on $\mathcal T_4$.
 \end{proof}
 
+The Euclidean fourth-cumulant bound used here is part of the tuned
+construction. Corollary~3.4 gives its Minkowski continuation and its
+consequence for arbitrary disjoint open sets.
+
 \begin{named}{Proposition 3.5}
-\emph{Parity, $\mathsf{CT}$, charge conjugation; no term of Chern--Simons type.}
+\emph{Discrete symmetries and the parity-even field-strength two-point function.}
 Let $\mathrm{lw}=\mu_\xi$ be the law of Proposition~3.1.
 \begin{itemize}
-\item[(a)] \emph{On functions of $F$, parity is not broken spontaneously.}
+\item[(a)] \emph{Component reflection invariance, recalled from (Inv).}
 Every reflection $r$ of $\mathbb R^3$ satisfies $r_*\mu_\xi=\mu_\xi$.
 In other words, although the reflections, under which $\mu$ is invariant, could permute the components of $\mu$, each component with $\xi\in\Xi_\mu$ is fixed by them.
 Denoting by $\mathrm{Rl}$ the linear part of $r$, the action of $r$ on $b=\ast f$ is $(r\cdot b)(y)=-\mathrm{Rl}\,b(r^{-1}y)$; thus the dual field is a pseudovector.
@@ -1491,6 +1557,10 @@ If (iii) holds, then $W_n=(-1)^nW_n$, which is (ii).
 Finally assume (ii).
 Step~25 gives $\mathcal W_n=0$ for odd $n$, so that $\mathrm{Cc}_*\mathrm{lw}$, a law with (G) and (dF), has the same moments as $\mathrm{lw}$ at disjoint supports; Proposition~1.2\,(c) then yields (i).
 \end{proof}
+
+The next proposition is the Reeh--Schlieder consequence of positive
+energy and locality \cite{ReehSchlieder1961}. We include its proof for
+the common domain $D$ used in Theorem~3.3.
 
 \begin{named}{Proposition 3.6}
 \emph{The property of Reeh and Schlieder.}
@@ -4683,7 +4753,7 @@ The term containing $S\ge0$ is estimated by the Schwarz inequality and Step~6.
 \end{proof}
 
 
-\section{Physicality of the tuned masses}
+\section{Bounds on the tuned lattice masses}
 
 Given a power $h$ of $L$, one calls \emph{class} the interval $I_h:=(\frac1{Lh},\frac1h]$.
 For $m>0$ put $h(m):=L^{\lfloor\log_L(1/m)\rfloor}$;
@@ -4748,7 +4818,7 @@ A subalgebra of $C_0(X;\mathbb R)$ which separates the points of $X$ and has no 
 \end{itemize}
 
 \begin{named}{Theorem 6.1}
-\emph{The tuned masses are physical.}
+\emph{Two-sided bounds on the tuned lattice masses.}
 Suppose that $\bar m\in(0,1]$ and $e>0$ satisfy $e\,h^{1/2}\le e_1$; the data of \cite[Theorem~44]{QEDIII} satisfy this condition.
 Then there is a number $N_1(e)<\infty$, one and the same for all such $\bar m$, such that every $N\ge N_1(e)$ satisfies
 \begin{equation*}
@@ -4760,7 +4830,8 @@ Then $e\,h^{1/2}\le e_1$, and
 \begin{equation*}
 \tfrac12\bar m\,\eta\le\boldsymbol\mu_N\le2\bar m\,\eta\qquad\text{for }N\ge N_1(e).
 \end{equation*}
-Hence $\liminf_N\boldsymbol\mu_N/\eta\ge\frac12\bar m>0$: \textbf{the tuned mass assignment is physical.}
+Hence $\liminf_N\boldsymbol\mu_N/\eta\ge\frac12\bar m>0$, and the
+tuned assignment satisfies the mass hypothesis of Theorem~A.
 Here $e_7=c\,\bar m^{1/2}$, and the number $c=(4C_\natural)^{-1/2}$ does not depend on $\bar m$.
 \item[(b)] For $N\ge N_1(e)$ one has $|m_{0,N}(e)|\le(C_\natural e^2+\epsilon_e\bar m)\,\eta$.
 Since $\bar m\le1$ and $e\le1$, the right side does not exceed $(C_\natural+4L^{\varepsilon/2})\,e^{\varepsilon}\eta$, uniformly in $\bar m$.
@@ -6312,6 +6383,24 @@ Their limit represents $G_\infty$, is independent of $E_0$, and is carried by $\
 \end{proof}
 
 \begin{thebibliography}{99}
+
+\bibitem{OS1973}
+K.~Osterwalder and R.~Schrader,
+\emph{Axioms for Euclidean Green's functions},
+Commun.\ Math.\ Phys.\ 31 (1973), 83--112.
+\url{https://doi.org/10.1007/BF01645738}.
+
+\bibitem{OS1975}
+K.~Osterwalder and R.~Schrader,
+\emph{Axioms for Euclidean Green's functions II},
+Commun.\ Math.\ Phys.\ 42 (1975), 281--305.
+\url{https://doi.org/10.1007/BF01608978}.
+
+\bibitem{ReehSchlieder1961}
+H.~Reeh and S.~Schlieder,
+\emph{Bemerkungen zur Unit\"ar\"aquivalenz von Lorentzinvarianten Feldern},
+Nuovo Cimento 22 (1961), 1051--1068.
+\url{https://doi.org/10.1007/BF02787889}.
 
 \bibitem{QEDI}
 \emph{Noncompact lattice QED in three dimensions: limit points of the curvature field
