@@ -4,7 +4,7 @@
 
 Project codename: **EC1**.
 
-No separate outline is registered for this manuscript. Its assembly contract is in QEO1.
+**Proof outline:** [ECO1 — Continuum components and clustering](ECO1.pdf) (11 pages), with a linked dependency map and source-based proof tasks.
 
 - **AI-written manuscript:** **ECM1** — [Ergodic components and clustering for reflection-positive fields](ECM1.pdf) · [TeX source](ECM1-source/ECM1.tex).
 - **Human-written manuscript:** to be added.
@@ -15,7 +15,7 @@ Clustering and reflection/Gaussian inheritance for the same components.
 
 QEO1 contracts: [B2](../QEO1.pdf#page=21).
 
-CEM1 supplies application hypotheses, not a premise of the abstract component proof. No separately registered outline exists.
+CEM1 supplies the application hypotheses. ECO1 expands QEO1/B2 and M11–M14, separating the spectral clustering argument, reflection inheritance in the components, and the additional same-constant Gaussian bound.
 
 Related inputs: [CEM1](../Continuum%20existence%20%28CE1%29/README.md). Read their hypotheses at the cited results.
 

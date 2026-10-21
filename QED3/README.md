@@ -43,7 +43,7 @@ The current construction has thirteen manuscript units. This index follows the c
 | [Continuum existence (CE1)](Continuum%20existence%20%28CE1%29/README.md) | CEM1 / CEO1 | Gaussian/correlation stability, compactness, structural inheritance and prescribed-parent recovery |
 | [Cover agreement and common tuning (CV1)](Cover%20agreement%20and%20common%20tuning%20%28CV1%29/README.md) | CVM1 / CVO1 | Exact cover agreement, stopping arithmetic and one common tuned pair |
 | [Reference response (RR1)](Reference%20response%20%28RR1%29/README.md) | RRM1 / RRO1 | Early source identities and later normalized reference response |
-| [Continuum components and clustering (EC1)](Continuum%20components%20and%20clustering%20%28EC1%29/README.md) | ECM1 / no separate outline | Clustering and reflection/Gaussian inheritance for the same components |
+| [Continuum components and clustering (EC1)](Continuum%20components%20and%20clustering%20%28EC1%29/README.md) | ECM1 / [ECO1](Continuum%20components%20and%20clustering%20%28EC1%29/ECO1.pdf) | Clustering and reflection/Gaussian inheritance for the same components |
 | [Terminal measure and pressure (TP1)](Terminal%20measure%20and%20pressure%20%28TP1%29/README.md) | TPM1 / TPO1 | Terminal measure, pressure and two-torus comparison |
 | [Volume transfer (VT1)](Volume%20transfer%20%28VT1%29/README.md) | VTM1 / VTO1 | All-volume products, prescribed-parent finite-periodic moments and component cumulants |
 
