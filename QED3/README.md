@@ -46,13 +46,6 @@ The current construction has thirteen manuscript units. This index follows the c
 
 The early source identities in RRM1 enter TPM1; the later response estimate in RRM1 uses TPM1. These are distinct stages within one manuscript. CEO1 covers the compactness part of CEM1; the latter also supplies structural inheritance and prescribed-parent recovery.
 
-## Earlier manuscript editions
-
-The QEM1 entry above identifies the current assembly. These earlier editions include the corrections of October 20, 2026:
-
-- [Comprehensive edition](qed3.pdf) — 263 pages.
-- [Earlier manuscript with correction sheet](qed3_manuscript.pdf) — the original 130-page edition preceded by a one-page correction sheet. The original printed page numbers are retained.
-
 ## Navigation
 
 The published PDFs retain their mathematical text. Links to published outlines use their repository locations; links to withheld manuscripts open the corresponding README. Citations to material outside this assembly remain visible without a download link.
