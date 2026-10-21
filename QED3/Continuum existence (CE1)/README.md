@@ -318,7 +318,3 @@ Along the same sequence, all joint moments and cumulants of every
 fixed finite family of Schwartz evaluations converge to those of $`P`$.
 
 [CEO1](CEO1.pdf) covers compactness only. The current compact-link IVM1 is not the real-curvature input. The selected common bare sequence is required in the QED3 application.
-
-**Historical real-curvature source**
-
-The LatticeLimits / IV1M1 citations use the [preserved 20-page IVM1 revision of October 19, 2026](IVM1-20261019.pdf), especially [Section 5.3](IVM1-20261019.pdf) and [Section 6.1](IVM1-20261019.pdf). Its [exact source archive](IVM1-20261019-source.zip) retains the fragment filenames and line numbers cited in [CEO1](CEO1.pdf). The current compact-link IVM1 is a different revision and is not the cited input.

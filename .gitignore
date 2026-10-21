@@ -16,3 +16,8 @@ S[123].tex
 S[123].pdf
 ChamberQED.tex
 ChamberQED.pdf
+
+# Superseded editions and snapshots stay in the local archive.
+QEM1-preintegration.tex
+IVM1-20261019*
+RPM1-27-page*

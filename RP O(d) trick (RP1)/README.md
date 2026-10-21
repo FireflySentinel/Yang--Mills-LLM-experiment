@@ -128,7 +128,3 @@ where $`\Theta:\mathbb{R}^d\to\mathbb{R}^d`$ denotes reflection across the hyper
 Then the measure is rotationally-invariant in the sense of Osterwalder--Schrader, meaning $`S_N(R^* \chi) = S_N(\chi)`$ for all $`R\in \mathrm{O}(d)`$ and $`\chi\in \mathcal{S}_N`$.
 
 Here, $`R^* \chi=(R^* \chi_1,\dots,R^* \chi_N)`$.
-
-**Historical source of the scalar supplement**
-
-The scalar application on [RPO1, page 33](RP1O1.pdf) uses the [preserved 27-page RPM1 edition, Section 11](RPM1-27-page.pdf), with [exact TeX line references](RPM1-27-page.tex) and the [matching TeX/bibliography archive](RPM1-27-page-source.zip). This is the historical edition; the current [RPM1](RPM1.pdf) has 30 pages.
