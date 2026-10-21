@@ -29,7 +29,7 @@ Related inputs: [LPM1](Infinite-lattice%20reflection%20positivity%20%28LP1%29/RE
 
 The current construction has thirteen manuscript units. This index follows the current QEO1 document assembly; a written draft does not certify correctness.
 
-[Assembly overview](QEO1_assembly_overview.pdf) · [Full QEO1 outline](QEO1.pdf) · [RGO1](Renormalized%20construction%20and%20response%20%28RG1%29/README.md) stage outline.
+[Assembly overview](QEO1_assembly_overview.pdf) · [Full QEO1 outline](QEO1.pdf).
 
 | Part | Manuscript / outline | Role |
 | --- | --- | --- |
