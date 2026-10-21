@@ -12,9 +12,9 @@ The measure can be chosen as a translation-ergodic component of a volume-first c
 
 See [QEM1, Theorem A](QEM1.pdf) for the precise statement and hypotheses.
 
-- **[QEO1](QEO1.pdf)** — [The QED3 construction: theorem contracts and proof assignments](QEO1.pdf).
+- **[QEO1](Submanuscripts/QEO1.pdf)** — [The QED3 construction: theorem contracts and proof assignments](Submanuscripts/QEO1.pdf).
 - **AI-written manuscript:** **[QEM1](QEM1.pdf)** — [The continuum field-strength construction for QED in three dimensions](QEM1.pdf) · [TeX source](QEM1.tex).
-- **AI-written manuscript:** **[QCM1](qed3-consequences.pdf)** — [Massless photons and interacting field-strength theories in three-dimensional QED](qed3-consequences.pdf) · [TeX source](QCM1.tex).
+- **AI-written manuscript:** **[QCM1](Submanuscripts/qed3-consequences.pdf)** — [Massless photons and interacting field-strength theories in three-dimensional QED](Submanuscripts/qed3-consequences.pdf) · [TeX source](Submanuscripts/QCM1.tex).
 - **Human-written manuscript:** to be added.
 
 - **AI-written main manuscript:** [Comprehensive edition](qed3.pdf) — 263 pages.
