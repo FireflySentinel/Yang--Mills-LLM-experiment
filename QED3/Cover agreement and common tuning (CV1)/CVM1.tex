@@ -1,6 +1,145 @@
+% BEGIN EMBEDDED BIBLIOGRAPHY
+% Bibliography data are part of this source; the compiler writes its temporary input.
+\begin{filecontents*}[overwrite]{\jobname.bib}
+@unpublished{QED3Master,
+ title={The field-strength {Osterwalder--Schrader} axioms for {QED} in three dimensions},
+ shorthand={QED}, date={2026}, note = {Comprehensive edition, 263 pp., 20 October 2026, before the modular integration revision},
+ url={https://github.com/ethanwsussman/Yang--Mills-LLM-experiment/blob/main/QED3/qed3.pdf}
+}
+@unpublished{MaxwellBlockManuscript,
+ title={Maxwell block minimization and Gaussian fluctuations},
+ shorthand={MB}, date={2026}, note={Companion manuscript, version of 20 October 2026},
+ url={https://github.com/ethanwsussman/Yang--Mills-LLM-experiment/blob/main/QED3/Maxwell%20block%20analysis%20%28MB1%29/MBM1.pdf}
+}
+@unpublished{FermionBlockManuscript,
+ title={Chamber fermion locality and local integration},
+ shorthand={FB}, date={2026}, note={Companion manuscript, version of 20 October 2026},
+ url={https://github.com/ethanwsussman/Yang--Mills-LLM-experiment/blob/main/QED3/Chamber%20fermion%20block%20analysis%20%28FB1%29/FBM1.pdf}
+}
+@unpublished{NormalizedContraction,
+ title={Relevant extraction and contraction of local interactions},
+ shorthand={NC}, date={2026}, note={Companion manuscript, version of 20 October 2026},
+ url={https://github.com/ethanwsussman/Yang--Mills-LLM-experiment/blob/main/QED3/Relevant%20extraction%20and%20normalized%20contraction%20%28RN1%29/RNM1.pdf}
+}
+
+@unpublished{NonlinearStep,
+ title={The exact nonlinear renormalization step for lattice {QED} in three dimensions},
+ shorthand={NL}, date={2026}, note={Companion manuscript, version of 20 October 2026},
+ url={https://github.com/ethanwsussman/Yang--Mills-LLM-experiment/blob/main/QED3/Nonlinear%20renormalization%20step%20%28NL1%29/NLM1.pdf}
+}
+@unpublished{ChamberRG,
+ title={Noncompact lattice {QED} in three dimensions: the chamber fermion, the renormalisation group analysis and the fourth cumulant},
+ shorthand={ChRG}, note={Unpublished manuscript}
+}
+@unpublished{LatticeCurvature,
+ title={Noncompact lattice {QED} in three dimensions: limit points of the curvature field and their fourth cumulant},
+ shorthand={LC}, note={Unpublished manuscript}
+}
+@misc{BrightMetric2023,
+ author={Bright, Paige}, title={Introduction to Metric Spaces},
+ date={2023-01-24}, note={MIT 18.S190, Lecture 5, Theorem 8},
+ url={https://ocw.mit.edu/courses/18-s190-introduction-to-metric-spaces-january-iap-2023/mit18_s190iap23_lec5.pdf}}
+\end{filecontents*}
+% END EMBEDDED BIBLIOGRAPHY
 % CVM1 / d042: proof companion to CVO1.
 \documentclass[11pt,letterpaper,reqno]{amsart}
-\usepackage[bibliography]{manuscript-style}
+% BEGIN INLINE manuscript-style
+\makeatletter
+\NeedsTeXFormat{LaTeX2e}[2020/10/01]
+% Use with \documentclass[11pt,letterpaper,reqno]{amsart}.
+% This file controls presentation only. It supplies no mathematical content.
+
+\RequirePackage[T1]{fontenc}
+\RequirePackage{lmodern}
+\RequirePackage{microtype}
+\RequirePackage[letterpaper,margin=1in,headheight=15pt]{geometry}
+\RequirePackage{amsmath,amsthm,amssymb,mathtools}
+\RequirePackage{enumitem}
+\RequirePackage{perpage}
+\RequirePackage{xcolor}
+\definecolor{manuscriptred}{rgb}{0.6,0.1,0.1}
+\definecolor{manuscriptcyan}{rgb}{0.1,0.3,0.5}
+\definecolor{manuscriptmagenta}{HTML}{8B008B}
+\RequirePackage[breaklinks=true,colorlinks=true,
+  linkcolor=manuscriptred,citecolor=manuscriptcyan,urlcolor=manuscriptmagenta]{hyperref}
+\RequirePackage{cleveref}
+\hypersetup{pdfauthor={}}
+
+% Retain the AMS paragraph, title, heading and running-head conventions.
+% Equations retain one global Arabic sequence, as in the reference.
+\setcounter{tocdepth}{1}
+\renewcommand{\thefigure}{\Roman{figure}}
+\renewcommand{\thetable}{\Roman{table}}
+\MakePerPage{footnote}
+\renewcommand{\thefootnote}{%
+  \ifnum\value{footnote}>9\arabic{footnote}\else\fnsymbol{footnote}\fi}
+
+% Upright statements. Main results are A, B, C; supporting statements
+% share a section-local sequence. These end marks indicate typography,
+% never proof completeness, validation, or a deferred-proof status.
+\theoremstyle{definition}
+\newtheorem{ms@theorem}{Theorem}
+\renewcommand{\thems@theorem}{\Alph{ms@theorem}}
+\newtheorem*{ms@theoremstar}{Theorem}
+\newtheorem{ms@proposition}{Proposition}[section]
+\newtheorem{ms@lemma}[ms@proposition]{Lemma}
+\newtheorem{ms@definition}[ms@proposition]{Definition}
+\newtheorem{ms@corollary}[ms@proposition]{Corollary}
+\newtheorem*{ms@corollarystar}{Corollary}
+
+\newcommand{\ms@majorstart}{%
+  \pushQED{\qed}\renewcommand{\qedsymbol}{$\blacksquare\square$}}
+\newcommand{\ms@minorstart}{%
+  \pushQED{\qed}\renewcommand{\qedsymbol}{$\blacksquare$}}
+\newenvironment{theorem}[1][]{\ms@majorstart\ms@theorem[#1]}
+  {\popQED\endms@theorem}
+\newenvironment{theorem*}[1][]{\ms@majorstart\ms@theoremstar[#1]}
+  {\popQED\endms@theoremstar}
+\newenvironment{proposition}[1][]{\ms@minorstart\ms@proposition[#1]}
+  {\popQED\endms@proposition}
+\newenvironment{lemma}[1][]{\ms@minorstart\ms@lemma[#1]}
+  {\popQED\endms@lemma}
+\newenvironment{definition}[1][]{\ms@minorstart\ms@definition[#1]}
+  {\popQED\endms@definition}
+\newenvironment{corollary}[1][]{\ms@majorstart\ms@corollary[#1]}
+  {\popQED\endms@corollary}
+\newenvironment{corollary*}[1][]{\ms@majorstart\ms@corollarystar[#1]}
+  {\popQED\endms@corollarystar}
+% The source's lemma/proposition variants are deliberately not carried over:
+% choose one marker for each statement type rather than encode proof status.
+
+\theoremstyle{remark}
+\newtheorem{remark}[ms@proposition]{Remark}
+\newtheorem*{remark*}{Remark}
+% The ordinary amsthm proof environment retains its open square.
+
+\crefname{ms@theorem}{theorem}{theorems}
+\Crefname{ms@theorem}{Theorem}{Theorems}
+\crefname{ms@proposition}{proposition}{propositions}
+\Crefname{ms@proposition}{Proposition}{Propositions}
+\crefname{ms@lemma}{lemma}{lemmas}
+\Crefname{ms@lemma}{Lemma}{Lemmas}
+\crefname{ms@definition}{definition}{definitions}
+\Crefname{ms@definition}{Definition}{Definitions}
+\crefname{ms@corollary}{corollary}{corollaries}
+\Crefname{ms@corollary}{Corollary}{Corollaries}
+\crefname{remark}{remark}{remarks}
+\Crefname{remark}{Remark}{Remarks}
+
+% Bibliography configuration for this manuscript.
+  \RequirePackage[backend=biber,style=alphabetic,backref=true,
+    giveninits=true,isbn=false,date=year]{biblatex}
+  \addbibresource{\jobname.bib}
+  \setcounter{biburlnumpenalty}{100}
+  \setcounter{biburllcpenalty}{100}
+  \setcounter{biburlucpenalty}{100}
+  \renewcommand*{\bibfont}{\footnotesize}
+  \renewbibmacro{in:}{}
+  \DeclareFieldFormat{pages}{#1}
+  % Use the public alphabetic style. No private author-hash overrides;
+  % repeated author names are printed in full.
+\makeatother
+% END INLINE manuscript-style
 \usepackage{mathrsfs}
 \newcommand{\R}{\mathbb R}
 \newcommand{\C}{\mathbb C}
