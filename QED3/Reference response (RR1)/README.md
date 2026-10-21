@@ -348,17 +348,3 @@ All expectations are finite. The response estimate concerns the full fixed famil
 [RRM1](RRM1.pdf) also contains **[Theorem B](RRM1.pdf) in [Section 10](RRM1.pdf)**, the quantitative terminal reference-error estimate under the factor, mass, one-cell, tree and jet conditions. **[Proposition 11.1](RRM1.pdf)** admits those conditions on a positive charge interval.
 
 Early zero-flux/Wick identities feed [TPM1](../Terminal%20measure%20and%20pressure%20%28TP1%29/TPM1.pdf); later response results import terminal bounds.
-
-**Building the manuscript**
-
-The TeX sources are beside the PDFs. Build in a temporary copy of these files, retain the resulting PDF, and remove the temporary build directory.
-
-For [RRM1.tex](RRM1.tex):
-
-```sh
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error RRM1.tex
-biber RRM1
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error RRM1.tex
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error RRM1.tex
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error RRM1.tex
-```

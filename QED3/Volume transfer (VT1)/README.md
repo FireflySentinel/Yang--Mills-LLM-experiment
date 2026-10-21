@@ -454,17 +454,3 @@ Then, on one $`\nu`$-full set,
 If $`b(f)>0`$ and $`C_fe^\sigma\le b(f)/2`$, every component in this set has $`\kappa_4^{\mu_\xi}(f)\ge e^4b(f)/2>0`$. The full-measure set is for this fixed charge, probe and parent law.
 
 The same selected mass/parent, component Gaussian hypothesis and numerical inputs are required.
-
-**Building the manuscript**
-
-The TeX sources are beside the PDFs. Build in a temporary copy of these files, retain the resulting PDF, and remove the temporary build directory.
-
-For [VTM1.tex](VTM1.tex):
-
-```sh
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error VTM1.tex
-biber VTM1
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error VTM1.tex
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error VTM1.tex
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error VTM1.tex
-```

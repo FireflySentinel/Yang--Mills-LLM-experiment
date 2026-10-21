@@ -281,17 +281,3 @@ permitted connection, reference mass $`\mu\in(0,1]`$, and resolvent
 parameter in its stated range.
 
 [Theorem B](FBM1.pdf) of [FBM1](FBM1.pdf) ([Section 5](FBM1.pdf), “Weighted Grassmann block integration”) gives the block-integration identity and determinant localization under [Theorem A](FBM1.pdf) and the additional weakened-walk hypotheses stated there.
-
-**Building the manuscript**
-
-The TeX sources are beside the PDFs. Build in a temporary copy of these files, retain the resulting PDF, and remove the temporary build directory.
-
-For [FBM1.tex](FBM1.tex):
-
-```sh
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error FBM1.tex
-biber FBM1
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error FBM1.tex
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error FBM1.tex
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error FBM1.tex
-```

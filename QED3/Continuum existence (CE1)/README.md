@@ -319,20 +319,6 @@ fixed finite family of Schwartz evaluations converge to those of $`P`$.
 
 [CEO1](CEO1.pdf) covers compactness only. The current compact-link IVM1 is not the real-curvature input. The selected common bare sequence is required in the QED3 application.
 
-**Building the manuscript**
-
-The TeX sources are beside the PDFs. Build in a temporary copy of these files, retain the resulting PDF, and remove the temporary build directory.
-
-For [CEM1.tex](CEM1.tex):
-
-```sh
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error CEM1.tex
-biber CEM1
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error CEM1.tex
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error CEM1.tex
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error CEM1.tex
-```
-
 **Historical real-curvature source**
 
 The LatticeLimits / IV1M1 citations use the [preserved 20-page IVM1 revision of October 19, 2026](IVM1-20261019.pdf), especially [Section 5.3](IVM1-20261019.pdf) and [Section 6.1](IVM1-20261019.pdf). Its [exact source archive](IVM1-20261019-source.zip) retains the fragment filenames and line numbers cited in [CEO1](CEO1.pdf). The current compact-link IVM1 is a different revision and is not the cited input.

@@ -401,17 +401,3 @@ The estimates are independent of the side and harmonic part, for
 one primitive system satisfying the stated hypotheses. The theorem
 asserts one step on the two admitted sides; it makes no assertion
 that the outgoing datum lies in the next unit ball.
-
-**Building the manuscript**
-
-The TeX sources are beside the PDFs. Build in a temporary copy of these files, retain the resulting PDF, and remove the temporary build directory.
-
-For [NLM1.tex](NLM1.tex):
-
-```sh
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error NLM1.tex
-biber NLM1
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error NLM1.tex
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error NLM1.tex
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error NLM1.tex
-```

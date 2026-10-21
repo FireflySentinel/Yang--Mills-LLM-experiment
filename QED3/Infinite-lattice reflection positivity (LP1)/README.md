@@ -161,20 +161,6 @@ form.
 
 The coordinate construction used by the outline is proved in [LPM1, Section 5.3](LPM1.pdf), following [Proposition 5.1](LPM1.pdf).
 
-**Building the manuscript**
-
-The TeX sources are beside the PDFs. Build in a temporary copy of these files, retain the resulting PDF, and remove the temporary build directory.
-
-For [LPM1.tex](LPM1.tex):
-
-```sh
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error LPM1.tex
-biber LPM1
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error LPM1.tex
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error LPM1.tex
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error LPM1.tex
-```
-
 **Original chamber-QED reference**
 
 The frozen source QEDII / S2 is available as the [original 811-page PDF](ChamberQED.pdf) and [matching TeX](ChamberQED.tex). In particular, the upper-half integrand class is [Definition 3.33, page 113](ChamberQED.pdf).

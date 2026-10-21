@@ -112,17 +112,3 @@ If in addition, for some fixed $`C\ge0`$,
 then the common full-measure set above may be chosen so that every component in it satisfies [(5)](ECM1.pdf) with the same $`C`$, simultaneously for all real tests. Any specified measurable event of full $`\lambda`$-measure has full measure in almost every component.
 
 [CEM1](../Continuum%20existence%20%28CE1%29/CEM1.pdf) supplies the application hypotheses. [ECO1](ECO1.pdf) separates the spectral clustering argument, reflection inheritance in the components, and the additional same-constant Gaussian bound.
-
-**Building the manuscript**
-
-The TeX sources are beside the PDFs. Build in a temporary copy of these files, retain the resulting PDF, and remove the temporary build directory.
-
-For [ECM1.tex](ECM1.tex):
-
-```sh
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error ECM1.tex
-biber ECM1
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error ECM1.tex
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error ECM1.tex
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error ECM1.tex
-```

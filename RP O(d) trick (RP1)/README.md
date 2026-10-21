@@ -129,22 +129,6 @@ Then the measure is rotationally-invariant in the sense of Osterwalder--Schrader
 
 Here, $`R^* \chi=(R^* \chi_1,\dots,R^* \chi_N)`$.
 
-**Building the manuscript**
-
-The TeX sources are beside the PDFs. Build in a temporary copy of these files, retain the resulting PDF, and remove the temporary build directory.
-
-For [RPM1.tex](RPM1.tex):
-
-```sh
-pdflatex -no-shell-escape -interaction=nonstopmode RPM1.tex
-biber RPM1
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error RPM1.tex
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error RPM1.tex
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error RPM1.tex
-```
-
-The first pass may report symbol-footnote counter errors before page assignments settle; the later passes must finish successfully.
-
 **Historical source of the scalar supplement**
 
 The scalar application on [RPO1, page 33](RP1O1.pdf) uses the [preserved 27-page RPM1 edition, Section 11](RPM1-27-page.pdf), with [exact TeX line references](RPM1-27-page.tex) and the [matching TeX/bibliography archive](RPM1-27-page-source.zip). This is the historical edition; the current [RPM1](RPM1.pdf) has 30 pages.

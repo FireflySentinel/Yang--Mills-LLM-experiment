@@ -269,17 +269,3 @@ a_*\in\{h/L,h/L^2\},\qquad
     <img src="../../assets/eq-047-19fd70f498.light.svg" alt="a_*\in\{h/L,h/L^2\},\qquad \ell_*=Mr_*,\qquad r_*&gt;31L+16,\qquad L^{-3}&lt;\mu_*\le L^{-1}." width="528">
   </picture>
 </p>
-
-**Building the manuscript**
-
-The TeX sources are beside the PDFs. Build in a temporary copy of these files, retain the resulting PDF, and remove the temporary build directory.
-
-For [CVM1.tex](CVM1.tex):
-
-```sh
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error CVM1.tex
-biber CVM1
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error CVM1.tex
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error CVM1.tex
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error CVM1.tex
-```

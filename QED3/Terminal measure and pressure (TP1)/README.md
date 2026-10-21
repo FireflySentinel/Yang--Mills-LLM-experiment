@@ -244,17 +244,3 @@ Then $`z_{r,n}^{\rm free}>0`$ and
 [TPM1](TPM1.pdf) also contains **[Theorem B](TPM1.pdf) in [Section 3.2](TPM1.pdf)**, the exact terminal-density identity for bounded Borel observables, under the photon-coordinate, box, domain and external-connection conventions of [Section 3](TPM1.pdf).
 
 Only early [RRM1](../Reference%20response%20%28RR1%29/RRM1.pdf) source identities are imported here; later [RRM1](../Reference%20response%20%28RR1%29/RRM1.pdf) response uses [TPM1](TPM1.pdf).
-
-**Building the manuscript**
-
-The TeX sources are beside the PDFs. Build in a temporary copy of these files, retain the resulting PDF, and remove the temporary build directory.
-
-For [TPM1.tex](TPM1.tex):
-
-```sh
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error TPM1.tex
-biber TPM1
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error TPM1.tex
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error TPM1.tex
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error TPM1.tex
-```

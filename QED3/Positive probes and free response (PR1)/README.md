@@ -229,17 +229,3 @@ There is $`C_{\rho,\bar m,\beta}<\infty`$, unchanged by real translations of $`\
 </p>
 
 All coefficients are independent of $`e`$ in the charge convention above. They are unchanged by translating the probe through $`\eta\mathbb{Z}^3`$ or by replacing its external cochain by a cubic reflected cochain.
-
-**Building the manuscript**
-
-The TeX sources are beside the PDFs. Build in a temporary copy of these files, retain the resulting PDF, and remove the temporary build directory.
-
-For [PRM1.tex](PRM1.tex):
-
-```sh
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error PRM1.tex
-biber PRM1
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error PRM1.tex
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error PRM1.tex
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error PRM1.tex
-```

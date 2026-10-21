@@ -216,17 +216,3 @@ All the stated maps preserve the real subspaces and commute with
 setting the second connection argument to zero.
 
 [Theorem B](RNM1.pdf) of [RNM1](RNM1.pdf) ([Section 7](RNM1.pdf), “Local reconstruction of a mean field”) gives local reconstruction under its separate hypotheses; the final mean-field recovery clause additionally requires the stated fine inverses.
-
-**Building the manuscript**
-
-The TeX sources are beside the PDFs. Build in a temporary copy of these files, retain the resulting PDF, and remove the temporary build directory.
-
-For [RNM1.tex](RNM1.tex):
-
-```sh
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error RNM1.tex
-biber RNM1
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error RNM1.tex
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error RNM1.tex
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error RNM1.tex
-```

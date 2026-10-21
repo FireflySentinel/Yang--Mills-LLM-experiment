@@ -247,17 +247,3 @@ $`\widetilde\Delta_k^{-1/2},\mathrm{Sq}_k`$, and
 $`A_k^{\min}`$ on the two tori.
 
 [Theorem B](MBM1.pdf) of [MBM1](MBM1.pdf) ([Section 6](MBM1.pdf), “Domains for block integration”) gives additional domain estimates under the geometry, weakening and small-charge hypotheses stated there.
-
-**Building the manuscript**
-
-The TeX sources are beside the PDFs. Build in a temporary copy of these files, retain the resulting PDF, and remove the temporary build directory.
-
-For [MBM1.tex](MBM1.tex):
-
-```sh
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error MBM1.tex
-biber MBM1
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error MBM1.tex
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error MBM1.tex
-pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error MBM1.tex
-```
