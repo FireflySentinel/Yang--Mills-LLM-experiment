@@ -29,11 +29,17 @@ antiperiodic in all three directions. Each photon site has 48 chamber
 labels, with measure $`\eta_k^3/48`$ at mesh $`\eta_k=L^{-k}`$.
 For an integer $`N\ge0`$, set
 
-```math
+<!-- display-math:eq-038-1b1b96ff6c
 h=L^{\lfloor\log_L(1/\bar m)\rfloor},\qquad
  \eta=L^{-N},\quad K=N+\log_Lh,\quad
  a_j=L^{j-N},\quad e_j=e\sqrt{a_j},\quad \mu_j=\bar m a_j.
-```
+-->
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="../../assets/math/eq-038-1b1b96ff6c.dark.svg">
+    <img src="../../assets/math/eq-038-1b1b96ff6c.light.svg" alt="h=L^{\lfloor\log_L(1/\bar m)\rfloor},\qquad \eta=L^{-N},\quad K=N+\log_Lh,\quad a_j=L^{j-N},\quad e_j=e\sqrt{a_j},\quad \mu_j=\bar m a_j." width="627">
+  </picture>
+</p>
 
 Here $`0\le j\le K`$, and $`q=e\sqrt\eta`$ denotes the charge at
 level zero. We write $`\bar e_0,\bar e_1`$ for the fixed charge
@@ -41,10 +47,16 @@ ceilings, to distinguish them from the running charges $`e_j`$.
 Put $`v_j=-\log e_j`$, and let $`r_j`$ be the least power $`L^i`$,
 $`i\in\mathbb Z_{\ge0}`$, with $`r_j\ge v_j^r`$. The physical sides are
 
-```math
+<!-- display-math:eq-039-1eb7b89538
 R_{\rm top}=hMr_K,\quad R^*=R_{\rm top}/L,\qquad
  \mathcal T(e)=\{hL^T:T\in\mathbb N\cup\{0\},\ hL^T\le R_{\rm top}\}.
-```
+-->
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="../../assets/math/eq-039-1eb7b89538.dark.svg">
+    <img src="../../assets/math/eq-039-1eb7b89538.light.svg" alt="R_{\rm top}=hMr_K,\quad R^*=R_{\rm top}/L,\qquad \mathcal T(e)=\{hL^T:T\in\mathbb N\cup\{0\},\ hL^T\le R_{\rm top}\}." width="549">
+  </picture>
+</p>
 
 They are independent of $`N`$. For $`R\in\mathcal T(e)`$, define
 $`\ell_j=R/a_j`$ and
@@ -58,17 +70,23 @@ $`\mu_*=\mu_{k_*(R)}`$.
 
 Assume
 
-```math
+<!-- display-math:eq-040-912104fc4f
 \begin{gathered}
  0<e\sqrt h\le\bar e_1\le\min(\bar e_0,1/3),\qquad
  \bar e_0^\varepsilon\le1/4,\\[0pt]
  c_{\rm fl}L^{-3/8+6/200}\le1/16,\qquad L^{-5/8}\le1/4,
  \end{gathered}
-```
+-->
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="../../assets/math/eq-040-912104fc4f.dark.svg">
+    <img src="../../assets/math/eq-040-912104fc4f.light.svg" alt="\begin{gathered} 0&lt;e\sqrt h\le\bar e_1\le\min(\bar e_0,1/3),\qquad \bar e_0^\varepsilon\le1/4,\\[0pt] c_{\rm fl}L^{-3/8+6/200}\le1/16,\qquad L^{-5/8}\le1/4, \end{gathered}" width="313">
+  </picture>
+</p>
 
 and, for every $`v\ge-\log\bar e_1`$,
 
-```math
+<!-- display-math:eq-041-a5530b901e
 \begin{gathered}
  v\ge8,\qquad
  \left(1+\frac{3\log L}{2v}\right)^r<L,\qquad
@@ -76,7 +94,13 @@ and, for every $`v\ge-\log\bar e_1`$,
  (c_{\rm fl}+2)e^{-\varepsilon v}
        \le\frac{1-L^{-\varepsilon/2}}{16}.
  \end{gathered}
-```
+-->
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="../../assets/math/eq-041-a5530b901e.dark.svg">
+    <img src="../../assets/math/eq-041-a5530b901e.light.svg" alt="\begin{gathered} v\ge8,\qquad \left(1+\frac{3\log L}{2v}\right)^r&lt;L,\qquad v^r&gt;31L+16,\\[0pt] (c_{\rm fl}+2)e^{-\varepsilon v} \le\frac{1-L^{-\varepsilon/2}}{16}. \end{gathered}" width="368">
+  </picture>
+</p>
 
 **The activity maps.**
 
@@ -126,7 +150,7 @@ complexified spaces. Unit balls below are closed balls in their real
 subspaces. At zero the activity coordinate is fixed to zero.
 The maps preserve reality and obey
 
-```math
+<!-- display-math:eq-042-4e7e72252d
 \begin{aligned}
 m_{j+1}&=L(m_j+m(E_j)),&
  \varepsilon_{j+1}^v&=L^3(\varepsilon_j^v+\varepsilon_v(E_j)+\delta\varepsilon_j^0),
@@ -135,20 +159,32 @@ m_{j+1}&=L(m_j+m(E_j)),&
  \Phi_j(m,E)&=\mathcal L(RE)^{\rm nat}
                   +\mathcal LE_j^{\det}+E_j^*(m,E).
 \end{aligned}
-```
+-->
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="../../assets/math/eq-042-4e7e72252d.dark.svg">
+    <img src="../../assets/math/eq-042-4e7e72252d.light.svg" alt="\begin{aligned} m_{j+1}&amp;=L(m_j+m(E_j)),&amp; \varepsilon_{j+1}^v&amp;=L^3(\varepsilon_j^v+\varepsilon_v(E_j)+\delta\varepsilon_j^0), \\[0pt] E_{j+1}&amp;=\Phi_j(m_j,E_j),&amp; \Phi_j(m,E)&amp;=\mathcal L(RE)^{\rm nat} +\mathcal LE_j^{\det}+E_j^*(m,E). \end{aligned}" width="509">
+  </picture>
+</p>
 
 Restriction to $`\mathscr C=0`$ commutes with the full external-slot recursion
 and does not increase its norm. Scalar extraction is linear and real,
 
-```math
+<!-- display-math:eq-043-16fbc07414
 |m(E)|\le c_{\rm fl}e_j^{1/2}\|E\|_j,\qquad
  |\varepsilon_v(E)|\le c_{\rm fl}\|E\|_j,\qquad
  0\le\delta\varepsilon_j^0\le e_j^7.
-```
+-->
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="../../assets/math/eq-043-16fbc07414.dark.svg">
+    <img src="../../assets/math/eq-043-16fbc07414.light.svg" alt="|m(E)|\le c_{\rm fl}e_j^{1/2}\|E\|_j,\qquad |\varepsilon_v(E)|\le c_{\rm fl}\|E\|_j,\qquad 0\le\delta\varepsilon_j^0\le e_j^7." width="441">
+  </picture>
+</p>
 
 On the unit ball the normalized size and difference estimates are
 
-```math
+<!-- display-math:eq-044-1f4c44bd21
 \begin{aligned}
  L^{-1}w_{j+1}^m/w_j^{\mathrm m}&\le1/4,\\[0pt]
  \|\Phi_j(m,E)\|_{j+1}/w_{j+1}^E
@@ -158,7 +194,13 @@ On the unit ball the normalized size and difference estimates are
  \|\Phi_j(m,E)-\Phi_j(\widetilde m,\widetilde E)\|_{j+1}/w_{j+1}^E
    &\le\tfrac1{16}d_E+e_{j+1}^\varepsilon(d_m+d_E),
  \end{aligned}
-```
+-->
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="../../assets/math/eq-044-1f4c44bd21.dark.svg">
+    <img src="../../assets/math/eq-044-1f4c44bd21.light.svg" alt="\begin{aligned} L^{-1}w_{j+1}^m/w_j^{\mathrm m}&amp;\le1/4,\\[0pt] \|\Phi_j(m,E)\|_{j+1}/w_{j+1}^E &amp;\le\tfrac1{16}\|E\|_j/w_j^{\mathrm E}+2e_{j+1}^{\varepsilon},\\[0pt] |m(E)-m(\widetilde E)|/w_j^{\mathrm m} &amp;\le c_{\rm fl}e_j^\varepsilon d_E,\\[0pt] \|\Phi_j(m,E)-\Phi_j(\widetilde m,\widetilde E)\|_{j+1}/w_{j+1}^E &amp;\le\tfrac1{16}d_E+e_{j+1}^\varepsilon(d_m+d_E), \end{aligned}" width="411">
+  </picture>
+</p>
 
 where $`d_m=|m-\widetilde m|/w_j^{\mathrm m}`$ and
 $`d_E=\|E-\widetilde E\|_j/w_j^{\mathrm E}`$.
@@ -190,11 +232,17 @@ mass and vacuum sequences equal the top sequences, while the
 activities and external scalar families agree on admissible flat
 lifts under the algebra identification of Proposition 5.1. On each such torus,
 
-```math
+<!-- display-math:eq-045-e53f5891ec
 |m_j|\le\tfrac18e_j^{3/4-8\varepsilon},\qquad
  \|E_j\|_j\le\|\mathscr E_j\|_j^x\le4e_j^{1/4-6\varepsilon},\qquad
  |\varepsilon_j^v|\le5c_{\rm fl}e_j^{1/4-6\varepsilon}.
-```
+-->
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="../../assets/math/eq-045-e53f5891ec.dark.svg">
+    <img src="../../assets/math/eq-045-e53f5891ec.light.svg" alt="|m_j|\le\tfrac18e_j^{3/4-8\varepsilon},\qquad \|E_j\|_j\le\|\mathscr E_j\|_j^x\le4e_j^{1/4-6\varepsilon},\qquad |\varepsilon_j^v|\le5c_{\rm fl}e_j^{1/4-6\varepsilon}." width="488">
+  </picture>
+</p>
 
 The smaller terminal couplings need not vanish.
 
@@ -203,20 +251,32 @@ $`(N,e,\bar m)`$ and is independent of the smaller side, twist,
 external connection and probe. Define only $`m_{0,N}(e)=0`$ below
 the top definition threshold. For every $`N\ge0`$,
 
-```math
+<!-- display-math:eq-046-6515f1be90
 m_{0,N}(e)\in\mathbb R,\qquad
  |m_{0,N}(e)|\le\tfrac18q^{3/4-8\varepsilon}<\tfrac18 .
-```
+-->
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="../../assets/math/eq-046-6515f1be90.dark.svg">
+    <img src="../../assets/math/eq-046-6515f1be90.light.svg" alt="m_{0,N}(e)\in\mathbb R,\qquad |m_{0,N}(e)|\le\tfrac18q^{3/4-8\varepsilon}&lt;\tfrac18 ." width="315">
+  </picture>
+</p>
 
 The total bare mass $`\boldsymbol\mu_N=\bar mL^{-N}+m_{0,N}(e)`$
 has no asserted sign. On $`R^*`$, for
 $`N\ge N_{\rm ref}(e):=N_{\min}(R^*,e)`$,
 
-```math
+<!-- display-math:eq-047-19fd70f498
 a_*\in\{h/L,h/L^2\},\qquad
  \ell_*=Mr_*,\qquad r_*>31L+16,\qquad
  L^{-3}<\mu_*\le L^{-1}.
-```
+-->
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="../../assets/math/eq-047-19fd70f498.dark.svg">
+    <img src="../../assets/math/eq-047-19fd70f498.light.svg" alt="a_*\in\{h/L,h/L^2\},\qquad \ell_*=Mr_*,\qquad r_*&gt;31L+16,\qquad L^{-3}&lt;\mu_*\le L^{-1}." width="528">
+  </picture>
+</p>
 
 
 ## Navigation

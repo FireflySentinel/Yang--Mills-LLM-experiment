@@ -44,11 +44,17 @@ retain the unshifted positive reference mass.
 
 For a real compact smooth two-form $`\beta`$, set
 
-```math
+<!-- display-math:eq-125-f4dd119687
 f=dd^*\beta,\qquad
  b(f)=-6\mathrm{Tr}
  [(\bar m+\gamma\cdot\partial)^{-1}i\gamma\cdot d^*\beta]^4.
-```
+-->
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="../../assets/math/eq-125-f4dd119687.dark.svg">
+    <img src="../../assets/math/eq-125-f4dd119687.light.svg" alt="f=dd^*\beta,\qquad b(f)=-6\mathrm{Tr} [(\bar m+\gamma\cdot\partial)^{-1}i\gamma\cdot d^*\beta]^4." width="360">
+  </picture>
+</p>
 
 The probe theorem [B7](RGO1.pdf#page=13) supplies a choice with $`b(f)>0`$.
 The desired conclusion is that there are $`C_f<\infty`$,
@@ -56,9 +62,15 @@ $`\sigma>0`$, and $`e_f>0`$, independent of the chosen parent
 and its component, such that for $`0<e\le e_f`$, every
 volume-first parent law $`\mu`$ of this construction has
 
-```math
+<!-- display-math:eq-126-271e93a037
 |\kappa_4^{\mu_\xi}(f)-e^4b(f)|\le C_fe^{4+\sigma}
-```
+-->
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="../../assets/math/eq-126-271e93a037.dark.svg">
+    <img src="../../assets/math/eq-126-271e93a037.light.svg" alt="|\kappa_4^{\mu_\xi}(f)-e^4b(f)|\le C_fe^{4+\sigma}" width="193">
+  </picture>
+</p>
 
 on one full-measure set of its translation-ergodic components.
 Reducing $`e_f`$ so $`C_fe^\sigma\le b(f)/2`$ gives
