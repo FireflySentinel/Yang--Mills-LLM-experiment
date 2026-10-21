@@ -10,3 +10,9 @@
 *.synctex.gz
 *.fdb_latexmk
 *.fls
+
+# Raw QED3 inputs are local evidence and must not be published.
+S[123].tex
+S[123].pdf
+ChamberQED.tex
+ChamberQED.pdf

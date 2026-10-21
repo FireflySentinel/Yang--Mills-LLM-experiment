@@ -160,7 +160,3 @@ These signs occur both in invariance of the law and in its reflected
 form.
 
 The coordinate construction used by the outline is proved in [LPM1, Section 5.3](LPM1.pdf), following [Proposition 5.1](LPM1.pdf).
-
-**Original chamber-QED reference**
-
-The frozen source QEDII / S2 is available as the [original 811-page PDF](ChamberQED.pdf) and [matching TeX](ChamberQED.tex). In particular, the upper-half integrand class is [Definition 3.33, page 113](ChamberQED.pdf).
