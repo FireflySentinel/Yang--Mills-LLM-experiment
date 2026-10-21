@@ -5,7 +5,7 @@
 Project codename: **MB1**.
 
 - **MBO1** — [Maxwell block minimization and Gaussian fluctuations](MBO1.pdf).
-- **AI-written manuscript:** **MBM1** — *Maxwell block minimization and Gaussian fluctuations* (manuscript to be added).
+- **AI-written manuscript:** **MBM1** — [Maxwell block minimization and Gaussian fluctuations](MBM1.pdf) · [TeX source](MBM1-source/MBM1.tex).
 - **Human-written manuscript:** to be added.
 
 ## Role in the QEM1 assembly
@@ -257,4 +257,4 @@ Theorem B of MBM1 (Section 6, “Domains for block integration”) gives additio
 
 ## Navigation
 
-[QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Links to published outlines use their repository locations; links to withheld manuscripts open the corresponding README. Citations to material outside this assembly remain visible without a download link.
+[QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Links to published outlines use their repository locations; links to manuscripts open the corresponding README. Citations to material outside this assembly remain visible without a download link.

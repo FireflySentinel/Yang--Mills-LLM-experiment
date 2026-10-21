@@ -1,0 +1,164 @@
+\section{Periodic fields and a prescribed continuum law}
+\label{sec:continuum-limits}
+
+A finite periodic step field does not satisfy the sharp global
+$L^2(\R^3)$ Gaussian bound for arbitrary Schwartz tests.
+The periodized norm must be retained until the volume tends
+to infinity. We give the moment argument of
+\cite[\S6.1--6.2]{QED3Master}; it is the step needed to use the
+finite-volume product estimates for a prescribed parent.
+
+Let $\mathsf A=1+|y|^2-\Delta$ on $\R^3$, with real
+$L^2$-orthonormal Hermite two-forms $h_\kappa$ and eigenvalues
+$\lambda_\kappa$. Each scalar Hermite function occurs once
+for each of the three components. We use the Hilbert space
+\[
+ H_{-4}=\left\{F:\sum_\kappa\lambda_\kappa^{-8}
+                                  |F(h_\kappa)|^2<\infty\right\}.
+\]
+It is continuously embedded in tempered two-form distributions,
+and each Schwartz evaluation is continuous there.
+The step-field realization, tightness and fixed-spacing limits
+in this space are proved in \cite{ContinuumExistence}.
+
+\subsection{The periodic seminorm}
+
+For $R=n\eta$ and a Schwartz two-form $g$, set
+$g^R(y)=\sum_{k\in\Z^3}g(y+Rk)$ and
+\[
+ g_\eta([\sigma])=\eta^{-3}
+                \int_{Q_\eta(\sigma)}g^R_{\mu\nu}(y)\,\dd y,
+ \qquad |g_\eta|_\eta^2=\eta^3\sum_{[\sigma]}|g_\eta([\sigma])|^2.
+\]
+Unfolding the absolutely convergent sum gives
+\begin{equation}\label{eq:limit-step-pairing}
+ F^\sharp(g)=\eta^{3/2}\sum_{[\sigma]}
+                         g_\eta([\sigma])F^{\rm u}(\sigma).
+\end{equation}
+Cell Cauchy--Schwarz and Minkowski give
+\begin{equation}\label{eq:limit-torus-norm}
+ |g_\eta|_\eta\le\|g^R\|_{L^2(\R^3/R\Z^3)}\le p_R(g),
+ \qquad
+ p_R(g)=\|g\|_2+
+      26R^{-2}\||y|^2g\|_{L^2(\R^3\setminus Q_R)},
+\end{equation}
+where $Q_R=[-R/2,R/2)^3$.
+For completeness, put $a_k=\|g\|_{L^2(Q_R+Rk)}$.
+The periodized norm is at most $\sum_ka_k$. On a cube with
+$k\ne0$, $|y|\ge R|k|_\infty/2$, so
+\[
+ \sum_{k\ne0}a_k
+ \le4R^{-2}\left(\sum_{k\ne0}|k|_\infty^{-4}\right)^{1/2}
+                 \||y|^2g\|_{L^2(\R^3\setminus Q_R)}.
+\]
+The shell count $24j^2+2$ gives a sum
+$4\pi^2+\pi^4/45<41.65$; its square root times four is
+less than $26$. This proves \eqref{eq:limit-torus-norm}.
+For $R\ge1$,
+\[
+ p_R(g)\le p_1(g),\qquad p_R(g)\longrightarrow\|g\|_2
+                      \quad(R\longrightarrow\infty).
+\]
+The seminorm $p_1$ is continuous on Schwartz space.
+If the support of $g$ lies in a translate of an open
+$R$-cube, its distinct period translates are disjoint and
+$|g_\eta|_\eta\le\|g\|_2$.
+
+By \eqref{eq:slab-gaussian-domination},
+\begin{equation}\label{eq:limit-cutoff-G}
+ \E_{N,T}\exp(F^\sharp(g))
+       \le\exp(|g_\eta|_\eta^2/2)\le\exp(p_R(g)^2/2)
+                          \qquad(g\text{ real}).
+\end{equation}
+
+\begin{proposition}\label{prop:vtm-periodic-moments}
+Suppose $N_i,T_i\to\infty$ and the laws $P_{N_i,T_i}$ of
+$F^\sharp$ converge weakly on $H_{-4}$ to $\mu$.
+Then $\E_\mu\exp(F(g))\le\exp(\|g\|_2^2/2)$ for every real
+Schwartz two-form $g$. Every joint moment of a fixed finite
+family of Schwartz tests converges along the same sequence.
+\end{proposition}
+
+\begin{proof}
+Truncate $\exp(F(g))$ above, pass this bounded continuous
+function to the limit, and remove the truncation.
+Since $R_i\to\infty$, \eqref{eq:limit-torus-norm} proves the
+Gaussian bound.
+
+For fixed complex tests $g_1,\ldots,g_s$ put
+\[
+ Z_i(z)=\E_{N_i,T_i}\exp\left(\sum_a z_aF^\sharp(g_a)\right),
+ \qquad
+ Z(z)=\E_\mu\exp\left(\sum_a z_aF(g_a)\right).
+\]
+The evaluations are continuous on $H_{-4}$, and
+\[
+ \E_{N_i,T_i}
+ \left|\exp\left(\sum_a z_aF^\sharp(g_a)\right)\right|^2
+ \le\exp\left(2p_1\left(\operatorname{Re}\sum_a z_ag_a\right)^2\right).
+\]
+This is uniform in $i$ and on compact $z$-sets.
+Uniform integrability and weak convergence give pointwise
+convergence of $Z_i$ to $Z$. The exponential bounds make
+these functions entire and locally uniformly bounded.
+Cauchy's estimates give equicontinuity on compact sets;
+pointwise convergence is therefore locally uniform.
+Cauchy's formula passes every derivative at zero to the limit,
+which proves joint moment convergence.
+\end{proof}
+
+We also record the varying-test estimate used below.
+If $g_1,\ldots,g_J$ are real and their supports lie in one
+open period cube, the Gaussian moment bounds and H\"older
+give
+\[
+ \E\prod_{a=1}^J|F^\sharp(g_a)|
+                     \le c_J\prod_{a=1}^J\|g_a\|_2
+\]
+for a constant $c_J$ depending only on $J$.
+The same estimate holds for $\mu$.
+Thus replacing each factor from a bounded family of tests
+by another test, with $L^2$ difference at most $\delta$,
+changes the expectation of a degree-$J$ monomial by at most
+$Jc_JB^{J-1}\delta$, where $B$ bounds their $L^2$ norms.
+This follows by telescoping the $J$ slots. For any fixed
+finite family of compactly supported translates, the
+support condition holds once $R_i$ is sufficiently large.
+
+\subsection{Realizing the chosen parent by finite tori}
+
+Let $\mu_i$ and $\mu$ be the prescribed laws in
+\cref{thm:vtm-main}. Fix a metric $d_{\rm w}$ for weak
+convergence of probability measures on the separable Hilbert
+space $H_{-4}$. At spacing $\eta_i=L^{-N_i}$, take the
+defining volume sequence for $\mu_i$. Choose an element
+$T_i$ of that sequence so large that
+\[
+ d_{\rm w}(P_{N_i,T_i},\mu_i)<1/i,\qquad
+ T_i\ge i+T^*(e)+1.
+\]
+Then
+\[
+ d_{\rm w}(P_{N_i,T_i},\mu)
+ \le1/i+d_{\rm w}(\mu_i,\mu)\longrightarrow0.
+\]
+Both cutoffs diverge. This is the prescribed-parent
+diagonal of \cite[Corollary~7.4]{ContinuumExistence},
+with the finite-periodic moment conclusion supplied by
+\cref{prop:vtm-periodic-moments}. Discard finitely many terms
+so that $N_i\ge N_{\rm ref}(e)$.
+At this fixed charge the translation spacing
+$\lambda=R^*(e)/L$ is independent of $i$.
+
+The four reference quantities
+$c_{2,i},c_{4,i},u_{2,i},u_{4,i}$ are bounded by the estimates
+of \cref{prop:transfer-UV-inputs}. A subsequence on which
+they converge still has weak limit $\mu$.
+For every fixed finite $Y\subset\lambda\Z^3$, the points
+are eventually incongruent modulo the torus and all the
+translated supports fit in a single open period cube.
+The next section passes the Wick products along this
+same coefficient subsequence. The threshold for support
+containment may depend on $Y$; the coefficients and parent
+law do not.
+

@@ -5,7 +5,7 @@
 Project codename: **RR1**.
 
 - **RRO1** — [Exact sources and normalized reference response](RRO1.pdf).
-- **AI-written manuscript:** **RRM1** — *Exact source identities and normalized reference response for lattice QED in three dimensions* (manuscript to be added).
+- **AI-written manuscript:** **RRM1** — [Exact source identities and normalized reference response for lattice QED in three dimensions](RRM1.pdf) · [TeX source](RRM1-source/RRM1.tex).
 - **Human-written manuscript:** to be added.
 
 ## Role in the QEM1 assembly
@@ -360,4 +360,4 @@ RRM1 also contains **Theorem B in Section 10**, the quantitative terminal refere
 
 ## Navigation
 
-[QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Links to published outlines use their repository locations; links to withheld manuscripts open the corresponding README. Citations to material outside this assembly remain visible without a download link.
+[QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Links to published outlines use their repository locations; links to manuscripts open the corresponding README. Citations to material outside this assembly remain visible without a download link.

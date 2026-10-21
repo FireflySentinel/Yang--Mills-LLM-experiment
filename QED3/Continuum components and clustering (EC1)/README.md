@@ -6,7 +6,7 @@ Project codename: **EC1**.
 
 No separate outline is registered for this manuscript. Its assembly contract is in QEO1.
 
-- **AI-written manuscript:** **ECM1** — *Ergodic components and clustering for reflection-positive fields* (manuscript to be added).
+- **AI-written manuscript:** **ECM1** — [Ergodic components and clustering for reflection-positive fields](ECM1.pdf) · [TeX source](ECM1-source/ECM1.tex).
 - **Human-written manuscript:** to be added.
 
 ## Role in the QEM1 assembly
@@ -124,4 +124,4 @@ then the common full-measure set above may be chosen so that every component in 
 
 ## Navigation
 
-[QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Links to published outlines use their repository locations; links to withheld manuscripts open the corresponding README. Citations to material outside this assembly remain visible without a download link.
+[QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Links to published outlines use their repository locations; links to manuscripts open the corresponding README. Citations to material outside this assembly remain visible without a download link.

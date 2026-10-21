@@ -5,7 +5,7 @@
 Project codename: **NL1**.
 
 - **NLO1** — [The exact nonlinear renormalization step](NLO1.pdf).
-- **AI-written manuscript:** **NLM1** — *The exact nonlinear renormalization step for lattice QED in three dimensions* (manuscript to be added).
+- **AI-written manuscript:** **NLM1** — [The exact nonlinear renormalization step for lattice QED in three dimensions](NLM1.pdf) · [TeX source](NLM1-source/NLM1.tex).
 - **Human-written manuscript:** to be added.
 
 ## Role in the QEM1 assembly
@@ -413,4 +413,4 @@ that the outgoing datum lies in the next unit ball.
 
 ## Navigation
 
-[QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Links to published outlines use their repository locations; links to withheld manuscripts open the corresponding README. Citations to material outside this assembly remain visible without a download link.
+[QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Links to published outlines use their repository locations; links to manuscripts open the corresponding README. Citations to material outside this assembly remain visible without a download link.

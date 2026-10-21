@@ -1,0 +1,323 @@
+\section{The connected logarithm}
+\label{subsec:rgnl-cluster-logarithm}
+
+Two polymers are incompatible when their union is connected
+through faces. In particular a polymer is incompatible with
+itself. For an ordered tuple $(X_1,\ldots,X_n)$ define
+$u^T(X_1)=1$ and
+\[
+ u^T(X_1,\ldots,X_n)=\sum_{G\text{ connected}}
+                                      (-1)^{|G|},\quad n\ge2,
+\]
+where $G$ ranges over spanning subgraphs of the incompatibility
+graph of the tuple. The coefficient is zero when that graph
+is disconnected.
+
+We will use the formal connected-graph identity
+\begin{equation}\label{eq:rgnl-connected-graph-identity}
+ \sum_{\{X_i\}\text{ compatible}}\prod_i z_{X_i}
+ =\exp\left\{\sum_{n\ge1}\frac1{n!}
+       \sum_{(X_1,\ldots,X_n)}u^T(X_1,\ldots,X_n)
+                                           \prod_i z_{X_i}\right\}
+\end{equation}
+and the tree bound
+\begin{equation}\label{eq:rgnl-tree-domination}
+ |u^T(X_1,\ldots,X_n)|
+       \le\#\{\text{spanning trees of the incompatibility graph}\}.
+\end{equation}
+Here the identity is one of formal series in commuting
+variables, before substitution into a normed algebra.
+For its proof, express the left side as an ordered sum with
+factor $1/n!$ and multiply by
+$\prod_{i<j}(1-\mathbf1_{\{X_i,X_j\}\text{ incompatible}})$.
+Expanding this product sums over all graphs. A graph is
+uniquely the union of its connected components. Grouping by
+their vertex sets gives the exponential on the right:
+an ordered list of component sizes $n_1,\ldots,n_r$ has
+$n!/(n_1!\cdots n_r!)$ vertex assignments, and division
+by $r!$ removes the order of its components.
+Only finitely many terms contribute to a fixed degree.
+
+For \eqref{eq:rgnl-tree-domination}, let $\mathbf G$ be
+the incompatibility graph and suppose it is connected.
+For a connected spanning subgraph $G$, root at $1$ and,
+for $i\ne1$, choose as its parent the least labelled
+neighbor at distance $d_G(i)-1$ from the root.
+These edges form a tree $T(G)$ with the same root distances
+as $G$. Given a spanning tree $\tau$, let $R(\tau)$ contain
+its edges, all edges of $\mathbf G$ within one distance
+level, and all edges from $i$ to the preceding level whose
+other endpoint exceeds the parent of $i$ in $\tau$.
+Then
+\[
+ T(G)=\tau\quad\Longleftrightarrow\quad
+                                      \tau\subseteq G\subseteq R(\tau).
+\]
+In one direction the distances and least parents force
+every edge of $G$ to belong to $R(\tau)$.
+Conversely, along any edge of $R(\tau)$ the tree distance
+changes by at most one. Thus a graph between $\tau$ and
+$R(\tau)$ has the tree's distances, and the least neighbor
+in the preceding level is its tree parent.
+The connected subgraphs are therefore partitioned into
+these intervals, and their signed sum is
+\[
+ \sum_\tau(-1)^{n-1}
+           \sum_{A\subseteq R(\tau)\setminus\tau}(-1)^{|A|}
+ =(-1)^{n-1}\#\{\tau:R(\tau)=\tau\}.
+\]
+This proves the tree bound, including the cases
+of a disconnected graph and $n=1$.
+
+For this section and the symmetry proof, write $\widehat\mu=\widehat\mu_k$ for the normalized product box law in \eqref{eq:rg-step-box-normalization}.
+
+\begin{proposition}\label{prop:rgnl-cluster-logarithm}
+Let $V(X)$ be even elements in the old and fluctuation
+generators, continuous on $\mathrm{Box}_k$, with
+\[
+ \|V(X)\|_{(w;\mathsf w_W)}
+                       \le H_{\mathrm{cl}}\exp(-a_2d_M(X)).
+\]
+Assume that $V(X)$ has fluctuation indices only in $X$ and
+depends on $\zeta$ only through coordinates supported in $X$.
+For any union $Y$ of $M$-cubes put
+\begin{align}
+ K(Y)&=\sum_{\substack{\{X_i\}\text{ distinct}\\\bigcup_iX_i=Y}}
+                    \prod_i(\exp V(X_i)-1),\qquad K(\varnothing)=1,
+                                      \label{eq:rgnl-Mayer-activity}\\
+ H(Y)&=\int\dd\mu_I(W)\,\dd\widehat\mu(\zeta)\,K(Y).
+                                      \label{eq:rgnl-integrated-activity}
+\end{align}
+For a connected $Y$ define
+\begin{equation}\label{eq:rgnl-log-activity}
+ E^\#(Y)=\sum_{n\ge1}\frac1{n!}
+   \sum_{\bigcup_iY_i=Y}u^T(Y_1,\ldots,Y_n)\prod_iH(Y_i).
+\end{equation}
+The last series converges absolutely in the $w$ norm and
+\begin{align}
+ \int\dd\mu_I(W)\,\dd\widehat\mu(\zeta)
+                         \exp\left\{\sum_XV(X)\right\}
+       &=\exp\left\{\sum_YE^\#(Y)\right\},
+                                      \label{eq:rgnl-log-identity}\\
+ \|E^\#(Y)\|_w
+       &\le c_S'H_{\mathrm{cl}}\exp(-a_3d_M(Y)),
+                                      \label{eq:rgnl-log-bound}
+\end{align}
+Here $a_3=\kappa-5\kappa_0-4$ and
+$c_S'=14c_X^2K_0^2\exp(3\kappa)$.
+The sum of the norms of the terms with $n>N$ in
+\eqref{eq:rgnl-log-activity} is at most $2^{-N}$ times the
+right side of \eqref{eq:rgnl-log-bound}.
+\end{proposition}
+
+\begin{proof}
+Set
+\[
+ \begin{gathered}
+ a_4=\kappa-3\kappa_0-3,\quad
+ a_5=\kappa-3\kappa_0-2,\quad
+ a_6=\kappa-5\kappa_0-3,\\
+ H_1=7c_XK_0\exp(3a_5)H_{\mathrm{cl}},\qquad
+ z_S=28H_1\exp(\kappa_0)K_0\exp(3a_6).
+ \end{gathered}
+\]
+The fixed small-charge choice
+\[
+ c_S e^{1/4-5\varepsilon}\le1,\qquad
+ c_S=10^5c_X^5K_0^5\exp(6\kappa)
+\]
+implies
+\begin{equation}\label{eq:rgnl-cluster-smallness}
+ H_{\mathrm{cl}}\le1,\qquad
+ 4H_{\mathrm{cl}}K_0c_X\exp(3a_5)\le1,\qquad
+                                      z_S\le\tfrac12.
+\end{equation}
+Indeed the second left side is
+$144c_X^3K_0^3\exp(3a_5)e^{1/4-5\varepsilon}$.
+For the third,
+$2z_S=14112c_X^3K_0^4
+\exp(3a_5+3a_6+\kappa_0)e^{1/4-5\varepsilon}$, and
+$3a_5+3a_6+\kappa_0\le6\kappa$.
+
+Even elements commute, so expanding their exponential
+gives $\exp(\sum_XV(X))=\sum_YK(Y)$.
+Moreover $K(Y)$ factors over the connected components
+of $Y$: every polymer in its defining set belongs to
+exactly one component.
+If distinct polymers $X_1,\ldots,X_n$ have connected
+union $Y$, their incompatibility graph is connected.
+Otherwise two nonempty groups would partition their
+union; connectedness of $Y$ would give coincident or
+adjacent cubes in different groups and hence an edge
+between them.
+For each incompatibility-tree edge, choose coincident or
+face-adjacent cubes in the two polymers and points
+where their nets meet these cubes. The two points
+lie in a box of side lengths $M,M,2M$, so they
+can be joined by a segment of length at most
+$\sqrt6M<3M$. Joining near-minimal nets along
+the tree proves
+\[
+ d_M(Y)\le\sum_i d_M(X_i)+3(n-1).
+\]
+Using $\|\exp V-1\|\le2\|V\|$ and $a_2=a_5+\kappa_0$
+therefore bounds the product by
+\[
+ \exp(-a_5d_M(Y))
+       \big(2H_{\mathrm{cl}}\exp(3a_5)\big)^n
+                                  \prod_i \exp(-\kappa_0d_M(X_i)).
+\]
+Replace distinct sets by ordered tuples with factor $1/n!$,
+and use the counting bound for subpolymers of $Y$. The result is
+\[
+ \|K(Y)\|\le \exp(-a_5d_M(Y))x_Y\exp(x_Y),\qquad
+ x_Y=2H_{\mathrm{cl}}K_0\exp(3a_5)|Y|_M.
+\]
+By \eqref{eq:rgnl-cluster-smallness},
+\[
+ \begin{gathered}
+ x_Y\le(d_M(Y)+1)/2,\\
+ x_Y\le4H_{\mathrm{cl}}K_0c_X\exp(3a_5)\exp(d_M(Y)/2).
+ \end{gathered}
+\]
+Since $4\exp(1/2)\le7$ and $a_5-1=a_4$, we obtain
+\begin{equation}\label{eq:rgnl-Mayer-bound}
+ \|K(Y)\|_{(w;\mathsf w_W)}
+                         \le H_1\exp(-a_4d_M(Y))=:\mu(Y).
+\end{equation}
+
+Weighted Berezin integration costs no norm here:
+each paired moment at level zero is
+$\pm48^{|J|/2}$, which is exactly covered by the
+weight $(\sqrt{48})^{|J|}$ of its generators.
+The corresponding moment is $\pm1$ at positive levels.
+The photon measure is a probability measure on its compact
+box. Hence $\|H(Y)\|_w\le\mu(Y)$.
+These integrals produce even elements, since a nonzero
+Berezin moment uses an even number of generators.
+For compatible polymers the fluctuation modes and
+supported photon coordinates are disjoint. The two
+product measures therefore factor, with the external
+old generators left as coefficients. It follows that
+\begin{equation}\label{eq:rgnl-compatible-partition}
+ \int\dd\mu_I(W)\,\dd\widehat\mu(\zeta)e^{\sum_XV(X)}
+             =\sum_{\{Y_i\}\text{ compatible}}\prod_iH(Y_i).
+\end{equation}
+
+We now bound the infinite connected series. Let
+\[
+ S_n(Y)=\sum_{\bigcup_iY_i=Y}
+                   |u^T(Y_1,\ldots,Y_n)|\prod_i\mu(Y_i).
+\]
+For $n\ge2$, apply \eqref{eq:rgnl-tree-domination}.
+For every contributing tree the union estimate and
+$a_4=a_6+2\kappa_0$ give
+\[
+ \prod_i \exp(-a_4d_M(Y_i))
+ \le \exp(-a_6d_M(Y))\exp(3a_6(n-1))
+                                  \prod_i \exp(-2\kappa_0d_M(Y_i)).
+\]
+Drop the prescribed union, retaining $Y_i\subseteq Y$,
+and root the tree at $1$. Write $q_j$ for the number
+of children at $j$. A polymer incompatible with $Y'$
+contains one of at most $7|Y'|_M$ cubes consisting of
+its cubes and their face neighbors. Since
+$|Z|_M\le c_X(d_M(Z)+1)\le\kappa_0(d_M(Z)+1)$ and
+$a^q\le q!\exp(a)$, the counting estimate gives
+\begin{align*}
+ \sum_{Z\text{ incompatible with }Y'}
+      \exp(-2\kappa_0d_M(Z))|Z|_M^{q}
+            &\le7q!\exp(\kappa_0)K_0|Y'|_M,\\
+ \sum_{Z\subseteq Y}\exp(-2\kappa_0d_M(Z))|Z|_M^q
+            &\le q!\exp(\kappa_0)K_0|Y|_M.
+\end{align*}
+Summing from leaves to root thus costs at most
+$(7\exp(\kappa_0)K_0)^n|Y|_M\prod_jq_j!$.
+For prescribed children counts, Cayley's degree formula
+\cite[Proposition~4]{PostnikovLin2019}
+counts
+$(n-2)!/((q_1-1)!\prod_{j\ge2}q_j!)$ trees, where
+$q_1\ge1$ and $\sum_jq_j=n-1$.
+Consequently
+\[
+ \sum_{\text{trees}}\prod_jq_j!
+   =(n-2)!\sum_{(q_j)}q_1
+   \le(n-1)!\binom{2n-2}{n-1}
+   \le(n-1)!4^{n-1}.
+\]
+Collecting the factors, also for $n=1$, gives
+\begin{equation}\label{eq:rgnl-connected-n-bound}
+ \frac{S_n(Y)}{n!}
+ \le7H_1\exp(\kappa_0)K_0|Y|_M
+                                      \exp(-a_6d_M(Y))z_S^{n-1}.
+\end{equation}
+Since $z_S\le1/2$, sum the geometric series and use
+$|Y|_M\le c_X\exp(d_M(Y))$ and $a_6-1=a_3$.
+The bound becomes
+\[
+ 98c_X^2K_0^2\exp(\kappa_0+3a_5)
+                                 H_{\mathrm{cl}}\exp(-a_3d_M(Y))
+ \le c_S'H_{\mathrm{cl}}\exp(-a_3d_M(Y)),
+\]
+because $\kappa_0+3a_5=3\kappa-8\kappa_0-6$.
+Summing only $n>N$ gives the additional factor $2^{-N}$.
+This proves absolute convergence and the claimed estimates.
+
+It remains to justify the logarithm identity after
+substitution in \eqref{eq:rgnl-connected-graph-identity}.
+The even subalgebra with the coefficient norm is a
+commutative Banach algebra, and the polymer set is finite.
+The total norm sum of the connected terms is finite by
+\eqref{eq:rgnl-connected-n-bound}.
+In the exponential of their sum, the norm sum of all
+products of connected terms is bounded by the exponential
+of that total norm sum. Regrouping is therefore permitted.
+Regroup by monomials in the formal variables $z_Y$.
+The coefficients are those of
+\eqref{eq:rgnl-connected-graph-identity}, namely one
+for compatible sets and zero for all other monomials.
+Its substitution $z_Y=H(Y)$ gives
+\eqref{eq:rgnl-compatible-partition}. Grouping the
+connected terms by their union gives
+$\sum_YE^\#(Y)$ and proves \eqref{eq:rgnl-log-identity}.
+\end{proof}
+
+\subsection{Polynomial approximation at fixed volume}\label{subsec:rgnl-polynomial-approximation}
+
+There are also polynomial approximants to this logarithm
+which converge uniformly for all families satisfying the
+preceding bound, at fixed side. Replace $\exp V-1$ by
+$p_N(V)=\sum_{1\le j\le N}V^j/j!$ in $K,H$, and stop
+the connected series at $n=N$; denote the result $E_N^\#$.
+It is a polynomial in integrals of products of $V(X_i)$,
+$X_i\subseteq Y$, and has the same bound
+\eqref{eq:rgnl-log-bound}. To verify uniform convergence,
+write $D=|\mathcal P_k|$. Since $\|V(X)\|\le1$,
+\[
+ \|\exp V(X)-1-p_N(V(X))\|
+                                  \le\frac{\exp(1)}{(N+1)!}.
+\]
+Telescoping each finite product in $K$ gives
+\[
+ \|H(Y)-H_N(Y)\|\le
+                             \frac{4^DD\exp(1)}{(N+1)!}.
+\]
+Thus this difference is at most $\delta_N\mu(Y)$, where
+\[
+ \delta_N=\frac{4^DD\exp(1)}
+                      {(N+1)!\min_{Y\in\mathcal P_k}\mu(Y)}
+                                                   \longrightarrow0.
+\]
+Replacing the $n$ factors in a connected term costs at
+most $n\delta_N\prod_i\mu(Y_i)$. Summing
+\eqref{eq:rgnl-connected-n-bound} with this factor, using
+$\sum_{n\ge1}n2^{-(n-1)}=4$, and adding the tail yields
+\[
+ \sup_Y\|E^\#(Y)-E_N^\#(Y)\|
+ \le28\delta_NH_1\exp(\kappa_0)K_0(\ell/M)^3
+                                  +2^{-N}c_S'H_{\mathrm{cl}}.
+\]
+This convergence is uniform in the connections and the
+allowed data. The displayed error depends on the side;
+no volume-independent approximation is claimed.
+

@@ -1,0 +1,458 @@
+\section{The free chamber inverse}\label{sec:propagators}
+
+The chamber estimates of \cite[Section~9]{QED3Manuscript} give bounds which
+are uniform in the mesh, the volume, and the running mass. There are two
+sources of coercivity. The internal chamber graph controls the part of a
+spinor whose mean over a cluster vanishes. The averaging penalty controls
+the remaining four components. The first of these bounds also identifies
+the singular part of the free propagator. This permits a local regularity
+estimate with constants independent of the mesh, which is needed when
+the inverses on small tori are combined into an inverse on the full torus.
+
+\subsection{The cluster decomposition}\label{subsec:cluster-decomposition}
+
+We first allow an arbitrary mesh $a>0$, using the chamber stencil of
+\cref{sec:introduction} with $\eta$ replaced by $a$. Put
+$\widehat d_i(c,g)=-gn_i$ and
+\[
+ M_i(c,g)=\frac{w_i}{2}(\rho-\gamma\cdot\widehat d_i(c,g)).
+\]
+
+The discussion applies on the covering lattice and on a torus of side
+$R\in a\N$, with any unitary character
+$f(c+Re_\mu,g)=-\exp(i\theta_\mu)f(c,g)$. Pairings on the torus are
+formed over a period cell. The notation $d(c,c')$ denotes the sup
+distance modulo $R\Z^3$, or the covering sup distance when $R=\infty$.
+They use the measure
+\[
+ \int\dd x\,v(x)=\frac{a^3}{48}\sum_c\sum_gv(c,g),
+ \qquad
+ \|f\|_2^2=\int\dd x\,|f(x)|_2^2.
+\]
+On four-component spinors depending only on $c$, the measure is
+$a^3\sum_c$. With the cluster maps $J,J^*$ of the introduction,
+set $P=JJ^*$ and $Q=1-P$. The decomposition $f=J\xi+h$, with
+$\xi=J^*f$ and $h=Qf$, is orthogonal. In particular,
+\begin{equation}\label{eq:cluster-orthogonal}
+ \|f\|_2^2=\|\xi\|_2^2+\|h\|_2^2.
+\end{equation}
+The normalization by $48$ makes $J$ an isometry. Kernels on the chamber
+lattice are taken with respect to $\dd x$, so the kernel of the identity
+is $48a^{-3}\mathbf1[x=x']1_4$.
+
+Let $A$ be a connection and write
+$u_A(c,c')=\exp(ie_a aA(c,c'))$ on a photon bond. The charge $e_a$ in
+this notation is the charge at the level under consideration. The
+phases on the internal bonds are one. Put
+\[
+ R_i(A)f(x)=U_A(x,x^{(i)})f(x^{(i)}),\qquad
+ \mathcal L_A=\sum_{i=0}^3w_i(1-R_i(A)).
+\]
+The massless chamber operator is
+\begin{equation}\label{eq:propagator-dirac}
+ D_Af(x)=-a^{-1}\sum_{i=0}^3M_i(x)
+       \big(U_A(x,x^{(i)})f(x^{(i)})-f(x)\big).
+\end{equation}
+At level $k$, $a=\eta_k$ and $e_a=e_k$. The reference mass is
+added separately as $D_A+\mu$.
+For real $A$, the involutions $R_i(A)$ are unitary and self-adjoint,
+and the bond expansion gives
+\begin{equation}\label{eq:dirac-realpart}
+ \operatorname{Re}(f,D_Af)=\frac{\rho}{2a}(f,\mathcal L_Af),
+ \qquad D_A^*=\gamma_5D_A\gamma_5,
+ \qquad \gamma_5=\begin{pmatrix}0&1_2\\1_2&0\end{pmatrix}.
+\end{equation}
+Here $\gamma_5$ is Hermitian, $\gamma_5^2=1$, and it anticommutes with
+each $\gamma_\mu$. Each unoriented bond contributes
+$a^3w_i|U_A(x,x^{(i)})f(x^{(i)})-f(x)|_2^2/48$ to the energy.
+
+On one cluster let
+\[
+ \mathcal L_{\mathrm{int}}=\sum_{i=0}^2w_i(1-R_i),
+ \qquad R_iv(g)=v(gs_i).
+\]
+Its kernel consists of the constants: the three reflections
+$s_0,s_1,s_2$ generate $O_{\mathrm{cub}}$. Denote its least positive
+eigenvalue by $\lambda_{\mathrm{int}}$ and set
+\[
+ g_{\mathrm h}=\frac{\rho\lambda_{\mathrm{int}}}{2},\qquad
+ c_* =\frac{\min(w_3,\lambda_{\mathrm{int}})}{18},\qquad
+ c_{\mathrm{lh}}=\sqrt3(1+\rho).
+\]
+No numerical evaluation of $\lambda_{\mathrm{int}}$ is needed.
+
+\begin{proposition}\label{prop:cluster-energy}
+For real $A$ and $\xi=J^*f$,
+\begin{equation}\label{eq:cluster-energy}
+ (f,\mathcal L_Af)\ge\lambda_{\mathrm{int}}\|Qf\|_2^2,
+ \qquad
+ a^{-2}(f,\mathcal L_Af)\ge c_*\|\nabla_A\xi\|_2^2,
+\end{equation}
+where
+$\nabla_{A,\mu}\xi(c)=a^{-1}(u_A(c,c+ae_\mu)\xi(c+ae_\mu)-\xi(c))$.
+The same inequalities hold on a finite set $E$ of photon sites, with the
+energy restricted to bonds whose endpoints lie over $E$ and the photon
+differences restricted to bonds in $E$. Moreover,
+\begin{equation}\label{eq:offdiagonal-bound}
+ \|QD_AJ\xi\|_2\le c_{\mathrm{lh}}\|\nabla_A\xi\|_2,
+ \qquad
+ |(\xi,J^*D_AQf)|\le
+ c_{\mathrm{lh}}\|\nabla_A\xi\|_2\|f\|_2.
+\end{equation}
+On $\operatorname{ran}Q$, for $t>-g_{\mathrm h}/a$,
+\begin{equation}\label{eq:heavy-inverse}
+ \|(QD_AQ+t)^{-1}\|_{2\to2}\le(t+g_{\mathrm h}/a)^{-1}.
+\end{equation}
+All constants are independent of $a,R$, the character, and the real
+connection.
+\end{proposition}
+
+\begin{proof}
+The internal bonds over $c$ give
+$a^3(f(c,\cdot),\mathcal L_{\mathrm{int}}f(c,\cdot))$ and hence at
+least $\lambda_{\mathrm{int}}a^3\|Qf(c,\cdot)\|^2$. Summing over
+$c\in E$ proves the first bound in \eqref{eq:cluster-energy}.
+
+For the second bound, consider a photon bond $c'=c+av$. The eight
+labels with $ge_1=v$ correspond to the eight chamber bonds crossing it.
+Write $\mathcal O_v(c)$ for this octet. Since their endpoints form
+$\mathcal O_{-v}(c')$, the difference of the cluster means is the sum
+of the mean of the eight bond differences and two means of $Qf$:
+\begin{align*}
+ u_A(c,c')\xi(c')-\xi(c)
+ ={}&\frac18\sum_{x\in\mathcal O_v(c)}
+       \big(U_A(x,x^{(3)})f(x^{(3)})-f(x)\big)\\
+ &-\frac{u_A(c,c')}8\sum_{x'\in\mathcal O_{-v}(c')}Qf(x')
+   +\frac18\sum_{x\in\mathcal O_v(c)}Qf(x).
+\end{align*}
+The square is bounded by $3/8$ times the sum of the squared terms in
+these three octets. Distinct photon bonds use distinct chamber bonds;
+each octet of cluster remainders occurs at most once. Consequently,
+with $\mathcal E_3$ and $\mathcal E_{\mathrm{int}}$ denoting the two
+parts of the energy,
+\[
+ a^2\|\nabla_A\xi\|_{2,E}^2
+ \le18\big(w_3^{-1}\mathcal E_3+\|Qf\|_{2,E}^2\big)
+ \le18\big(w_3^{-1}\mathcal E_3+
+                \lambda_{\mathrm{int}}^{-1}\mathcal E_{\mathrm{int}}\big).
+\]
+This proves the local bound and therefore the global one.
+
+The internal hops vanish on $J\xi$. Thus
+\[
+ (D_AJ\xi)(c,g)=-3(\rho-\gamma\cdot ge_1)
+                   \nabla_{A,ge_1}\xi(c).
+\]
+Each of the six directions occurs eight times. The norm of the matrix
+in this formula is $3(1+\rho)$, and the two directed differences on a
+photon bond have equal norms. It follows that
+$\|D_AJ\xi\|_2^2\le3(1+\rho)^2\|\nabla_A\xi\|_2^2$.
+Projection gives the first bound in \eqref{eq:offdiagonal-bound}; the
+second follows from \eqref{eq:dirac-realpart}, since $J$ and $Q$ commute
+with $\gamma_5$.
+
+For $Qf=f$, \eqref{eq:dirac-realpart} gives
+$\operatorname{Re}(f,(QD_AQ+t)f)\ge(t+g_{\mathrm h}/a)\|f\|_2^2$.
+The same lower bound holds for the adjoint. The operator has closed
+range and its adjoint has zero kernel, so it is onto, also on the
+infinite lattice. This proves \eqref{eq:heavy-inverse}.
+\end{proof}
+
+\subsection{The free symbol and its Schur complement}
+\label{subsec:schur-symbol}
+
+Use lattice units for the moment. Let $\mathcal D_m(p)$ be the symbol
+of $D_0+m$, $0\le m\le1$, on
+$V=\ell^2(O_{\mathrm{cub}};\C^4)$ with measure $48^{-1}\sum_g$:
+\[
+ (\mathcal D_m(p)v)(g)=m v(g)
+ +\sum_{i=0}^2M_i(g)(v(g)-v(gs_i))
+ +M_3(g)(v(g)-\exp(ip\cdot ge_1)v(gr_{e_1})).
+\]
+Let $D_{\mathrm{ll}},D_{\mathrm{lh}},D_{\mathrm{hl}},D_{\mathrm{hh}}$
+be its blocks in $V=\operatorname{ran}J\oplus\operatorname{ran}Q$.
+The mass is included in the diagonal blocks. Set
+\[
+ H_m(p)=D_{\mathrm{hh}}(p)^{-1},\qquad
+ B_m(p)=D_{\mathrm{ll}}(p)-D_{\mathrm{lh}}(p)H_m(p)D_{\mathrm{hl}}(p),
+ \qquad t(p)=\sum_\mu(1-\cos p_\mu).
+\]
+The compression of the full operator is the Wilson operator:
+\[
+ D_{\mathrm{ll}}(p)=m+i\gamma\cdot\sin p+\rho t(p).
+\]
+Its Schur complement also contains the contribution from the heavy
+part. In particular, adding a mass to the chamber operator changes
+$H_m$ as well as $D_{\mathrm{ll}}$.
+
+\begin{proposition}\label{prop:schur-symbol}
+There are positive constants $\theta_0,c_{\mathrm e},\kappa_{\mathrm{strip}}$, depending
+on $\rho$ only, such that $H_m$ and $B_m$ are holomorphic in a
+neighbourhood of $\{|\operatorname{Im}p_\mu|\le\theta_0\}$ and
+$2\pi\Z^3$-periodic. On the real cube $[-\pi,\pi]^3$,
+\begin{align}
+ \|H_m(p)\|&\le(g_{\mathrm h}+m)^{-1},\label{eq:symbol-heavy}\\
+ \|D_{\mathrm{lh}}(p)\|+\|D_{\mathrm{hl}}(p)\|
+   &\le2c_{\mathrm{lh}}(2t(p))^{1/2},\label{eq:symbol-cross}\\
+ B_m(p)&=m+i\gamma\cdot\sin p+E_m(p),\qquad
+ \|E_m(p)\|\le K_\rho t(p),\label{eq:schur-expansion}\\
+ \operatorname{Re}(v,B_m(p)v)&\ge(m+\rho c_*t(p))|v|_2^2,
+                 \label{eq:schur-realpart}\\
+ |B_m(p)v|_2&\ge c_{\mathrm e}(|p|_2^2+m^2)^{1/2}|v|_2,
+                 \label{eq:schur-ellipticity}
+\end{align}
+where $K_\rho=\rho+2c_{\mathrm{lh}}^2/g_{\mathrm h}$. For every
+multi-index $\nu$,
+\begin{equation}\label{eq:schur-inverse-derivatives}
+ \|\partial_p^\nu B_m(p)^{-1}\|
+       \le C_\nu(\rho)(|p|_2^2+m^2)^{-(1+|\nu|)/2}.
+\end{equation}
+If $m>0$, the inverse exists also on
+$|\operatorname{Im}p_\mu|\le\kappa_{\mathrm{strip}}m$, where the same bound holds
+with $\operatorname{Re}p$ on the right, for
+$\operatorname{Re}p\in[-\pi,\pi]^3$. At $m=0$ the real derivative
+bound is asserted away from $p=0$.
+\end{proposition}
+
+\begin{proof}
+Only the fourth hop depends on $p$. For $p=p'+ip''$,
+\[
+ \|\mathcal D_m(p)-\mathcal D_m(p')\|
+       \le3(1+\rho)(\exp(|p''|_\infty)-1).
+\]
+Choose $\theta_0$ so that the right side is $g_{\mathrm h}/2$ when
+$|p''|_\infty=\theta_0$. The heavy gap then gives
+$\operatorname{Re}D_{\mathrm{hh}}(p)\ge m+g_{\mathrm h}/2$ on this
+strip. Invertibility holds on a slightly larger strip, which proves
+holomorphy up to the closed strip. For real $p$, the off-diagonal bounds
+in \cref{prop:cluster-energy} give
+$\|D_{\mathrm{lh}}\|,\|D_{\mathrm{hl}}\|
+\le c_{\mathrm{lh}}(2t(p))^{1/2}$. This proves
+\eqref{eq:schur-expansion}.
+
+To retain the real-part bound after eliminating the heavy part, put
+$u=Jv-H_mD_{\mathrm{hl}}v$. Then
+$J^*u=v$, $Q\mathcal D_m u=0$, and
+$\mathcal D_m u=JB_mv$. Therefore
+\[
+ \operatorname{Re}(v,B_mv)
+   =\operatorname{Re}(u,\mathcal D_m u)
+   =m\|u\|^2+\frac\rho2(u,\mathcal L_0(p)u)
+   \ge(m+\rho c_*t(p))|v|_2^2.
+\]
+This proves \eqref{eq:schur-realpart}.
+
+The ellipticity estimate uses the Dirac part near zero and the real
+part away from zero. Put $t_0=(4K_\rho^2)^{-1}$. One has
+$K_\rho\ge48/\lambda_{\mathrm{int}}>1$, since
+$\lambda_{\mathrm{int}}\le12+24\sqrt2<48$.
+Hence $t_0\le1/4$. If $t(p)\le t_0$, then
+$|\sin p|_2^2\ge t(p)$ and
+$\|E_m(p)\|\le\tfrac12t(p)^{1/2}$. Since
+\[
+ |(m+i\gamma\cdot\sin p)v|_2^2=(m^2+|\sin p|_2^2)|v|_2^2,
+\]
+it follows that
+$|B_m(p)v|_2\ge\tfrac12(m^2+t(p))^{1/2}|v|_2$.
+On $[-\pi,\pi]^3$, $t(p)\ge2|p|_2^2/\pi^2$. This proves
+\eqref{eq:schur-ellipticity} in this region. If $t(p)\ge t_0$, then
+\eqref{eq:schur-realpart} gives
+$|B_m(p)v|_2\ge(m+\rho c_*t_0)|v|_2$.
+The inequality $(|p|_2^2+m^2)^{1/2}\le m+\pi\sqrt3$ closes the
+estimate with, for example,
+\[
+ c_{\mathrm e}=\min\left(0.22,\frac{\rho c_*t_0}{\pi\sqrt3}\right).
+\]
+
+The strip bounds give uniform bounds on the derivatives of $B_m$ by
+Cauchy's formula. Differentiating $B_mB_m^{-1}=1$ and inducting on
+$|\nu|$ proves \eqref{eq:schur-inverse-derivatives}. For the complex
+strip, let $K_s$ bound $B_m$ on the fixed strip. On half that strip,
+$\|\partial_\mu B_m\|\le2K_s/\theta_0$. Choose
+\[
+ \kappa_{\mathrm{strip}}=\min\left(\frac{\theta_0}{2},
+                \frac{c_{\mathrm e}\theta_0}{12K_s}\right).
+\]
+Integration along the segment from $p'$ to $p'+ip''$ shows that the
+change in $B_m$ is at most $c_{\mathrm e}m/2$. The lower bound is thus
+at least $c_{\mathrm e}(|p'|_2^2+m^2)^{1/2}/2$. Differentiating the
+inverse identity once more gives the asserted complex derivative bounds.
+\end{proof}
+
+\subsection{Free kernels and coercivity}\label{subsec:free-kernels}
+
+Solving the heavy equation gives the inverse symbol
+\begin{equation}\label{eq:inverse-symbol-blocks}
+ \mathcal D_m^{-1}=
+ \begin{pmatrix}
+ B_m^{-1}&-B_m^{-1}D_{\mathrm{lh}}H_m\\
+ -H_mD_{\mathrm{hl}}B_m^{-1}&
+ H_m+H_mD_{\mathrm{hl}}B_m^{-1}D_{\mathrm{lh}}H_m
+ \end{pmatrix}.
+\end{equation}
+The first term is independent of the cluster labels after insertion by
+$J$ and $J^*$. Every other term has a weaker singularity at $p=0$:
+$D_{\mathrm{lh}}$ and $D_{\mathrm{hl}}$ vanish there, whereas $H_m$
+and all its derivatives are uniformly bounded.
+
+\begin{proposition}\label{prop:free-chamber-kernel}
+On the unit covering lattice let
+\[
+ G_m(c,g;c',g')=\int_{[-\pi,\pi]^3}\frac{\dd p}{(2\pi)^3}
+       \exp(ip\cdot(c-c'))[\mathcal D_m(p)^{-1}](g,g').
+\]
+The bracket is the kernel on $V$ relative to the label measure
+$48^{-1}\sum_g$, consistently with the chamber kernel convention.
+It is well-defined also at $m=0$. It decomposes as
+$G_m(x,x')=G_m^{\mathrm l}(c-c')+G_m^{\mathrm h}(x,x')$, where
+\begin{align}
+ |G_m^{\mathrm l}(n)|_2&\le C_G(1+|n|_\infty)^{-2},\label{eq:free-light}\\
+ |G_m^{\mathrm l}(n+v)-G_m^{\mathrm l}(n)|_2
+       &\le C_G(1+|n|_\infty)^{-3},\quad v\in\{\pm e_\mu\},\\
+ |G_m^{\mathrm h}(x,x')|_2&\le C_G(1+|c-c'|_\infty)^{-3}.
+\end{align}
+Consequently $|G_m(x,x')|_2\le2C_G(1+|c-c'|_\infty)^{-2}$ and
+\begin{equation}\label{eq:free-bond-difference}
+ |G_m(x^{(i)},x')-G_m(x,x')|_2
+       \le20C_G(1+|c-c'|_\infty)^{-3}.
+\end{equation}
+For $m>0$ these bounds have the additional factor
+$\exp(-\kappa_{\mathrm{strip}}m|c-c'|_\infty)$. The constants are uniform for
+$0\le m\le1$.
+\end{proposition}
+
+\begin{proof}
+The Fourier estimate used here can be proved directly. If a periodic
+symbol $T$ satisfies
+$|\partial^\nu T(p)|\le A|p|_2^{-q-|\nu|}$, where $q<3$ and
+$|\nu|\le N>3-q$, then its Fourier coefficients are bounded by
+$C A(1+|n|_\infty)^{-(3-q)}$. For $n\ne0$, put
+$r=|n|_\infty^{-1}$ and split the integral using a cutoff equal to
+one for $|p|_2\le r$ and zero for $|p|_2\ge2r$. The inner integral
+is bounded by $CA r^{3-q}$. On the complement integrate $N$ times in
+a coordinate with $|n_\mu|=|n|_\infty$. The differentiated integrand
+has integral at most $CA r^{3-q-N}$; the prefactor is $r^N$.
+Derivatives of the cutoff are supported in $r\le|p|_2\le2r$ and have
+the same bound. Boundary terms cancel by periodicity.
+
+Apply this estimate with $(q,N)=(1,3)$ to $B_m^{-1}$. Multiplication
+by $\exp(ip\cdot v)-1$ lowers its singularity to order zero, for which
+$(q,N)=(0,4)$ applies. In \eqref{eq:inverse-symbol-blocks}, the two
+off-diagonal terms have order zero and the term with two off-diagonal
+factors has order $-1$. The latter can also be bounded by the
+order-zero estimate. The remaining term $H_m$ is holomorphic on the
+fixed strip, and its Fourier coefficients decay exponentially.
+The kernel normalization costs a factor $48$ for operator-valued
+symbols on $V$; this is absorbed in $C_G$.
+
+For $m>0$, shift one coordinate of the contour by
+$i\kappa_{\mathrm{strip}}m\operatorname{sgn}(n_\mu)$, where
+$|n_\mu|=|n|_\infty$. The complex derivative bounds of
+\cref{prop:schur-symbol} give the same Fourier estimates
+on the shifted contour. This supplies the exponential factor.
+The fixed-strip bound for $H_m$ is stronger than the required one.
+
+An internal hop leaves $c$ fixed, so its difference cancels
+$G_m^{\mathrm l}$. An external hop replaces $c$ by $c+ge_1$; use the
+light difference bound and the two heavy bounds at these points.
+The inequalities $1+|n+v|_\infty\ge(1+|n|_\infty)/2$ and
+$\exp(\kappa_{\mathrm{strip}}m)<\sqrt3$ give the factor $20$ in
+\eqref{eq:free-bond-difference}.
+\end{proof}
+
+The Green kernel at mesh $a$, for $0\le\mu a\le1$, is
+$a^{-2}G_{\mu a}(x/a,x'/a)$. Thus
+\begin{equation}\label{eq:mesh-free-kernel}
+ |G(x,x')|_2\le2C_G(a+|c-c'|_\infty)^{-2},\qquad
+ |G(x^{(i)},x')-G(x,x')|_2
+       \le20C_Ga(a+|c-c'|_\infty)^{-3}.
+\end{equation}
+Fourier multiplication gives both inverse identities on finitely
+supported functions. The factor $48$ in the identity kernel is
+consistent with the measure $\dd x$ above.
+
+For distinct sites put
+$d_X(x,\widetilde x)=\max(|c-\widetilde c|_\infty,a)$.
+The chamber graph has paths from $x$ to $\widetilde x$ of at most
+$39d_X(x,\widetilde x)/a$ bonds, with photon sites in the coordinate
+box spanned by $c,\widetilde c$. Indeed, the generators
+$s_0,s_1,s_2$ are the simple reflections of the signed permutation
+group, with nine positive roots. Their Coxeter length is at most nine
+\cite[Theorem~22.14]{EtingofLieNotes}, so any two labels in one
+cluster are joined by at most nine internal bonds. A monotone photon
+path has at most $3|c-\widetilde c|_\infty/a$ steps. Before each step
+move to a label with the required external direction, and after the
+last step move to the final label. This uses at most
+$10\cdot3|c-\widetilde c|_\infty/a+9\le39d_X/a$ bonds.
+If $d_X$ is less than half the distance to $c'$, sum
+\eqref{eq:mesh-free-kernel} along such a path. In the other case use
+the two size bounds. The resulting interpolation gives, for
+$0\le\alpha\le1$,
+\begin{equation}\label{eq:free-holder-kernel}
+ |G(x,x')-G(\widetilde x,x')|_2
+ \le6240C_G d_X(x,\widetilde x)^\alpha
+ \left((a+|c-c'|_\infty)^{-2-\alpha}
+       +(a+|\widetilde c-c'|_\infty)^{-2-\alpha}\right).
+\end{equation}
+
+The following coercivity estimate is separate from the real-part bound.
+It is needed to recover mesh-independent control of the block remainder.
+
+\begin{proposition}\label{prop:free-coercivity}
+There is $c_b=c_b(\rho)>0$ such that
+\begin{equation}\label{eq:free-coercivity}
+ \|D_0f\|_2^2\ge c_ba^{-2}(f,\mathcal L_0f).
+\end{equation}
+For a cube $E$ of side $\ell_E$, let $P_E$ be the mean over
+$E\times O_{\mathrm{cub}}$. Then
+\begin{equation}\label{eq:chamber-poincare}
+ \|f-P_Ef\|_{2,E}^2\le C_P\ell_E^2a^{-2}(f,\mathcal L_0f)_E,
+ \qquad C_P=\frac1{8c_*}+\frac1{\lambda_{\mathrm{int}}}.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The Schur estimate at zero mass implies
+$|B_0(p)v|\ge c_{\mathrm l}t(p)^{1/2}|v|$, with
+$c_{\mathrm l}=\rho c_*/(2K_\rho)$: use the Dirac part for
+$t(p)\le t_0$ and the real part for $t(p)\ge t_0$.
+Write $u=Jv+h$ in a fibre and $f=\mathcal D_0(p)u$. The heavy equation
+and then the light equation give
+\[
+ h=H_0(f_{\mathrm h}-D_{\mathrm{hl}}v),\qquad
+ B_0v=f_{\mathrm l}-D_{\mathrm{lh}}H_0f_{\mathrm h}.
+\]
+Since $t(p)\le6$, these imply
+$(2t(p))^{1/2}|v|\le A_1\|f\|$ and $\|h\|\le A_2\|f\|$, where
+\[
+ A_1=\frac{\sqrt2}{c_{\mathrm l}}
+         \left(1+\frac{6(1+\rho)}{g_{\mathrm h}}\right),\qquad
+ A_2=g_{\mathrm h}^{-1}(1+c_{\mathrm{lh}}A_1).
+\]
+The bond decomposition also gives
+\[
+ (u,\mathcal L_0(p)u)\le6t(p)|v|^2+(30+24\sqrt2)\|h\|^2.
+\]
+For the internal bonds the light part cancels, leaving at most
+$2(w_0+w_1+w_2)\|h\|^2$. In an external bond difference, split off
+the photon difference of $v$ and the two heavy endpoint values, and
+bound the square by three times their squared norms. The octet count
+then gives $6t(p)|v|^2+3w_3\|h\|^2$. This proves the displayed
+upper bound.
+This yields \eqref{eq:free-coercivity} in each fibre with
+$c_b=(3A_1^2+(30+24\sqrt2)A_2^2)^{-1}$.
+Fourier decomposition gives the assertion for all characters on the
+torus and on the covering lattice, restoring the factor $a^{-2}$.
+
+For \eqref{eq:chamber-poincare}, first apply the scalar lattice
+Poincar\'e bound
+$\|\xi-P_E\xi\|_{2,E}^2\le\ell_E^2\|\nabla_0\xi\|_{2,E}^2/8$.
+In one dimension this follows by writing each difference as a sum of
+nearest-neighbour differences; the coefficient of a bond at position
+$j$ is $j(n-j)/2\le n^2/8$. In three dimensions use the three commuting
+line averages, whose successive remainders are orthogonal.
+Now $f-P_Ef=J(\xi-P_E\xi)+Qf$. Its two parts are orthogonal, and the
+local bounds \eqref{eq:cluster-energy} give
+\eqref{eq:chamber-poincare}. The heavy term uses $\ell_E\ge a$.
+\end{proof}
+

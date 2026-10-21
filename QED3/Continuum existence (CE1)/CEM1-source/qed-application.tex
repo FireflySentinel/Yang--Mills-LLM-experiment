@@ -1,0 +1,237 @@
+\section{Application to the QED3 curvature}\label{sec:qed}
+The lattice input is a probability law of real curvature.
+For the all-flux chamber model, the infinite-volume construction
+in \cite[Theorem~A(i) and Section~2]{ChamberLattice} gives such a
+law at each fixed spacing. Its finite model has antiperiodic
+spinors, the chamber fermion operator, and parameters
+\[
+ q>0,\qquad 0<\rho<1,\qquad w_0,w_1,w_2,w_3>0,\qquad M\in\R.
+\]
+The photon curvature is $u=dA+(2\pi/q)z$, with all closed
+integer fluxes $z$ included. The precise operator and photon
+measure are those of the cited section. The parameters may
+depend on the spacing but are fixed during each volume limit;
+the physical charge scaling is $q_a=e\sqrt a$ for fixed $e>0$.
+
+Every selected real-curvature limit $\nu_a$ from that construction
+satisfies
+\begin{equation}\label{eq:qed-gaussian-input}
+ \E_{\nu_a}\exp\left(\sum_{x,i<j}b_{ij}(x)u_{ij}(x)\right)
+ \le\exp\left(\frac12\sum_{x,i<j}|b_{ij}(x)|^2\right)
+\end{equation}
+for every finitely supported real $b$. The constant is one,
+independently of the spacing and the selected volume limit.
+For completeness, the passage from finite volume uses only a
+fixed finite support: it embeds injectively into sufficiently
+large tori, so its counting norm is unchanged. The finite Gaussian
+estimate \cite[Proposition~5.1]{ChamberLattice} applies there.
+Weak convergence passes the bounded continuous cylinder
+function $\min\{R,\exp(\sum b_{ij}u_{ij})\}$ to the limit,
+and monotone convergence as $R\to\infty$ gives
+\eqref{eq:qed-gaussian-input}.
+
+\subsection{Centered plaquettes and their continuum limits}\label{sec:plaquettes}
+An oriented lattice two-cochain has real components
+\(u_{\ell m}(x)\), \(x\in\Z^3\), \(\ell<m\), with the usual sign
+under reversal of orientation. Its coboundary is
+\[
+ (du)(x)=u_{23}(x+e_1)-u_{23}(x)
+        -u_{13}(x+e_2)+u_{13}(x)
+        +u_{12}(x+e_3)-u_{12}(x).
+\]
+For \(p=(x;\ell m)\) and \(a>0\), set
+\begin{equation}\label{eq:plaquette-cells}
+ Q_a(p)=a\bigl(x+(e_\ell+e_m)/2+[-1/2,1/2)^3\bigr),\qquad
+ f_{[a]}(p)=a^{-3/2}\int_{Q_a(p)}f_{\ell m}(y)\,\dd y.
+\end{equation}
+The \(\ell m\) component of the step field \(F_a\) equals
+\(a^{-3/2}u_{\ell m}(x)\) on \(Q_a(p)\).
+The geometric action is the exterior-square action on two-forms.
+
+
+\begin{corollary}\label{cor:qed-continuum}
+Let $a_n>0$ tend to zero. For each $n$, let $\nu_{a_n}$ be
+a Borel probability law on real arrays
+$(u_{ij}(x))_{x\in\Z^3,\,1\le i<j\le3}$ satisfying
+\eqref{eq:qed-gaussian-input}. Let \(F_{a_n}\) be their centered-plaquette step fields as in \eqref{eq:plaquette-cells}.
+There are a subsequence and a Borel probability law $\mu$ of
+real tempered two-forms on $\R^3$ such that the laws of these
+step fields converge weakly to $\mu$ in $H_{-4}$. Here
+\[
+ \|F\|_{-4}^2=\sum_{i<j}\sum_{k\in\N_0^3}
+       (2|k|_1+4)^{-8}|F(h_k\,\dd y_i\wedge\dd y_j)|^2.
+\]
+Each step-field law and every such limit $\mu$ satisfy
+\[
+ \E e^{F(f)}\le e^{\|f\|_2^2/2}
+ \qquad\bigl(f\in\mathcal S(\R^3;\Lambda^2)\text{ real}\bigr).
+\]
+Along the selected subsequence, all joint moments and cumulants
+of complex Schwartz pairings converge to those of $\mu$.
+Their finite-family generating functions and logarithms have
+the locally uniform convergence asserted in
+\cref{thm:gaussian-convergence}.
+In particular, this conclusion applies to any choices of the
+infinite-volume real-curvature laws of the chamber model just
+described.
+\end{corollary}
+
+\begin{proof}
+For a finitely supported $b$, let $Y=\sum b_{ij}(x)u_{ij}(x)$
+and $v^2=\sum|b_{ij}(x)|^2$. Substituting $tb$ in
+\eqref{eq:qed-gaussian-input} gives
+$\E e^{tY}\le e^{t^2v^2/2}$ for every real $t$.
+As in \cite[Proposition~5.1]{QED3Manuscript}, this implies
+\begin{equation}\label{eq:qed-second-input}
+ \E|Y|^2\le v^2.
+\end{equation}
+The one-variable calculation is the first paragraph of the
+proof of \cref{prop:subgaussian}.
+
+Apply \cref{prop:step-realization} to each law with $d=r=3$,
+$C=1$, the three components $12,13,23$, and their offsets
+$(e_i+e_j)/2$. Then apply \cref{prop:compactness} to the sequence
+of step fields with $s=3$ and $t=4$, as in the proof of
+\cref{thm:lattice-continuum}. This also permits different choices
+of law when a spacing occurs more than once.
+The resulting weak limit on $H_{-4}$ has exactly the
+two-form interpretation and norm stated above.
+
+It remains to retain the exponential estimate. For a real
+Schwartz two-form $f$, let $b_{a_n}^{(m)}$ be the finite
+cell-coefficient truncations used in
+\cref{prop:step-realization}. Their pairings converge almost
+surely to $F_{a_n}(f)$. Fatou's lemma and
+\eqref{eq:qed-gaussian-input} give
+\[
+ \E e^{F_{a_n}(f)}
+ \le\liminf_{m\to\infty}
+        \exp\bigl(\|b_{a_n}^{(m)}\|_{\ell^2}^2/2\bigr)
+ =\exp\bigl(\|b_{a_n}\|_{\ell^2}^2/2\bigr)
+ \le e^{\|f\|_2^2/2}.
+\]
+This is the infinite-lattice test extension of
+\cite[Section~6.1]{LatticeLimits}. Apply
+\cref{thm:gaussian-convergence} to the weakly convergent
+subsequence already chosen. It gives the Gaussian bound for
+$\mu$ and all the stated correlation and cumulant limits.
+\end{proof}
+
+
+The following consequence adds the lattice identities and reflection
+hypotheses. The preceding corollary supplies weakly convergent
+subsequences; the assertion below applies to every selected weak limit.
+
+\begin{corollary}\label{cor:plaquette-limit}
+Let \(a_j\downarrow0\) and let \(\nu_j\) be laws of real
+two-cochains on \(\Z^3\). Suppose that:
+\begin{enumerate}[label=(\roman*),leftmargin=*]
+\item \(du=0\) almost surely and
+\(\E_{\nu_j}e^{\langle h,u\rangle}\le e^{\|h\|_{\ell^2}^2/2}\)
+for every finitely supported real plaquette test \(h\).
+\item Each \(\nu_j\) is invariant under integer translations,
+the oriented cubic action and \(u\mapsto-u\).
+\item Each \(\nu_j\) is reflection positive for
+\(x_\ell=0\) and \(x_\ell\pm x_m=0\), \(\ell<m\),
+on character sums supported on plaquettes all of whose corners
+lie strictly on the chosen positive side.
+\item The laws of \(F_{a_j}\) are realized on \(H_{-4}\) and
+converge weakly there to \(P\).
+\end{enumerate}
+Then \(P\) is a translation-invariant law of closed real tempered
+two-forms, invariant under the cubic group and field-sign change.
+It satisfies \(\E_Pe^{F(f)}\le e^{\|f\|_2^2/2}\) and is invariant
+and reflection positive at every plane
+\(x_\ell=c\), \(x_\ell\pm x_m=c\), \(c\in\R\).
+All fixed finite-family moments and cumulants converge along
+the given sequence.
+\end{corollary}
+
+\subsection{Pairings and equivariance}
+\Cref{prop:step-realization} gives the measurable realization and
+\(F_a(f)=\langle f_{[a]},u\rangle\). The cell estimate
+\eqref{eq:cell-contraction} and the Fatou argument in
+\cref{cor:qed-continuum} give
+\begin{equation}\label{eq:step-gaussian}
+ \E e^{F_a(f)}\le e^{\|f\|_2^2/2}.
+\end{equation}
+If \(\gamma\) is an affine cubic symmetry of the unit lattice
+and \(\gamma_a\) its physical rescaling, define
+\((\gamma\cdot h)(p)=h(\gamma^{-1}p)\), where reversing the
+orientation of a plaquette reverses the coefficient's sign.
+A change of variables gives
+\begin{equation}\label{eq:limit-test-equivariance}
+ (\gamma_a\cdot f)_{[a]}=\gamma\cdot f_{[a]}.
+\end{equation}
+Signed coordinate permutations carry cell centers to the corresponding
+plaquette centers and carry cubes to cubes, up to null boundaries.
+The orientation sign is the exterior-square matrix in both actions.
+Integer translations give physical translations in \(a\Z^3\).
+These are the exact symmetries used in \cref{sec:stability}.
+
+\subsection{The discrete identity and the reflection support}
+Let \(\xi\in C_c^\infty(\R^3;\R)\) denote the three-form
+\(\xi\,\dd y_1\wedge\dd y_2\wedge\dd y_3\). Define
+\[
+ \partial_\ell^a\xi(y)
+ =a^{-1}\bigl(\xi(y+ae_\ell/2)-\xi(y-ae_\ell/2)\bigr),\qquad
+ (v^a_{23},v^a_{13},v^a_{12})
+ =(-\partial_1^a\xi,\partial_2^a\xi,-\partial_3^a\xi).
+\]
+Then
+\begin{equation}\label{eq:limit-Bianchi-error}
+ F_a(v^a)=0,\qquad
+ \|v^a-d^*\xi\|_2
+ \le\frac{a^2}{24}\sum_{\ell=1}^3\|\partial_\ell^3\xi\|_2.
+\end{equation}
+For the exact identity, assign to each unit cube the number
+\[
+ \xi_{[a]}(x)=a^{-5/2}\int_{a(x+[0,1)^3)}\xi(y)\,\dd y.
+\]
+The \(23,13,12\) coefficients of \(v^a_{[a]}\) are
+\[
+ -(\xi_{[a]}(x)-\xi_{[a]}(x-e_1)),\quad
+ \xi_{[a]}(x)-\xi_{[a]}(x-e_2),\quad
+ -(\xi_{[a]}(x)-\xi_{[a]}(x-e_3)).
+\]
+Their finite pairing with \(u\) regroups to
+\(\sum_x\xi_{[a]}(x)(du)(x)=0\).
+The Fourier multiplier of
+\(\partial_\ell^a-\partial_\ell\) is
+\(i(2a^{-1}\sin(ap_\ell/2)-p_\ell)\), whose modulus is at most
+\(a^2|p_\ell|^3/24\). Plancherel gives the second assertion.
+
+For a mirror with defining function
+\(\ell(y)=y_j\) or \(y_j\pm y_k\), take compact tests supported
+in \(\{\ell\ge\delta\}\), \(\delta>0\).
+A nonzero cell coefficient comes from a cell meeting this set.
+For every corner \(q\) of its physical plaquette and every \(y\)
+in that cell, \(|\ell(q)-\ell(y)|\le2a\):
+each coordinate displacement is at most \(a\), and the normal
+has at most two nonzero coordinates of modulus one.
+Thus \(2a<\delta\) puts all contributing plaquette corners
+strictly on the positive side. There are only finitely many such
+plaquettes. The lattice reflection inequality and
+\eqref{eq:limit-test-equivariance} give \eqref{eq:rp-approx}.
+
+\begin{proof}[Proof of \cref{cor:plaquette-limit}]
+Equation \eqref{eq:step-gaussian} gives the common Gaussian input.
+Equation \eqref{eq:limit-Bianchi-error} verifies the identity
+hypothesis with \(D^*=d^*\). Equivariance gives cubic symmetry and
+mesh translations converging to every continuum translation.
+The support check gives the eventual character inequalities at the
+nine origin mirrors. \Cref{thm:structural-limit} applies.
+Field-sign invariance passes directly through its
+characteristic-function identity.
+\end{proof}
+
+The real-curvature laws supplied by \cite[Theorem~A]{ChamberLattice}
+satisfy the additional hypotheses of \cref{cor:plaquette-limit}.
+Together with \cref{cor:qed-continuum}, this gives subsequential
+continuum laws with all the stated structural properties. The
+reflection passage is the origin-height argument of
+\cite[Proposition~6.1]{QED3Manuscript}; translations supply every
+height. The conditional corollary imposes no arithmetic restriction
+on the spacing sequence.
+
+\input{recovery}

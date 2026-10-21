@@ -1,0 +1,290 @@
+\section{Symmetries of the local logarithm}
+\label{subsec:rgnl-symmetries}
+
+Apply \cref{prop:rgnl-cluster-logarithm} with
+$V=F$, $w=h/4$ and denote its output by
+$E_k^\#(m,\mathscr E)$. Each connected term assigned to
+$Y$ is a product of integrated activities on subpolymers
+of $Y$. Thus ordinary and admissible pair support, local
+connection dependence, and dependence only on $m'$ and
+$\mathscr E^r(X)$, $X\subseteq Y$, pass to the sum.
+The uniform bound and the polynomial approximants prove
+analyticity of its coefficients in $(A,\mathscr C)$.
+
+Let $\mathbb G_k^L$ denote the chamber symmetry group with
+translations in $LM\Z^3$, so that it preserves every
+parameter partition. Its actions and the gauge,
+charge-conjugation and reality actions are those of
+\cref{subsec:rg-activity-spaces}.
+
+\begin{proposition}\label{prop:rgnl-symmetries}
+The local logarithm satisfies
+\begin{align}
+ a_{\tilde g}E_k^\#(\tilde gY;\tilde gA,\tilde g\mathscr C)
+          &=E_k^\#(Y;A,\mathscr C),\qquad \tilde g\in\mathbb G_k^L,
+                                      \label{eq:rgnl-lattice-symmetry}\\
+ G_{\lambda+\lambda'}E_k^\#(Y;A^1,\mathscr C^1)
+          &=E_k^\#(Y;A,\mathscr C),    \label{eq:rgnl-gauge-symmetry}\\
+ \mathrm{Cg}\,E_k^\#(Y;-A,-\mathscr C)
+          &=E_k^\#(Y;A,\mathscr C).    \label{eq:rgnl-charge-symmetry}
+\end{align}
+In the gauge identity both pairs belong to the domain and
+ $A^1=A-d\lambda$, $\mathscr C^1=\mathscr C-d\lambda'$
+on all bonds at distance at most $1$ from $Y$, with
+real $\lambda,\lambda'$. Here $d\lambda$ denotes the
+lattice gradient, as in the preceding gauge conventions.
+For real $m$ and $\mathscr E\in K_k^x$ one also has
+\begin{equation}\label{eq:rgnl-reality-symmetry}
+ \mathbf K E_k^\#(Y;-\overline A,-\overline{\mathscr C})
+                                        =E_k^\#(Y;A,\mathscr C).
+\end{equation}
+Every monomial is balanced.
+\end{proposition}
+
+\begin{proof}
+We first record how transformations pass through the
+finite operations. Each of the four algebra maps is a
+continuous ring automorphism, linear for the first three
+and antilinear for $\mathbf K$. If an odd field transforms
+like the generators it replaces, the two compositions of
+the field substitution with the automorphism agree on
+each generator; hence they agree on the algebra.
+The same observation applies to adding a field.
+Real-coefficient finite differences
+\eqref{eq:rgnl-finite-difference} then commute with these
+actions. A lattice symmetry also permutes the parameter
+cubes and localization summands. It preserves face
+connectedness, incidence relations and the Ursell coefficient.
+
+The contour functional commutes with the linear actions.
+For the antilinear action, parametrize $t=r\exp(i\theta)$:
+\[
+ \mathcal C_rf=\frac1{2\pi}\int_0^{2\pi}
+             \frac{f(r\exp(i\theta))}{r\exp(i\theta)-1}\,\dd\theta.
+\]
+Conjugation of coefficients, together with
+$t\mapsto\bar t$ and $\theta\mapsto-\theta$, gives the
+same integral at the transformed other arguments.
+The integration over $W$ commutes with every linear or
+antilinear action which sends
+$W\mapsto UW$, $\bar W\mapsto(U^{-1})^T\bar W$.
+Indeed Wick's rule preserves every paired moment under
+this change, and all these moments are real.
+This applies to the lattice and gauge actions, to
+$\mathbf K$ with $U=\varkappa$, and to charge conjugation
+extended by the identity on $W$.
+The last extension will require a separate covariance
+argument below.
+
+For a lattice symmetry the primitive covariance gives
+\[
+ Z(\tilde gs')[\tilde g\zeta]=\tilde gZ(s')[\zeta],\qquad
+ H_k(\tilde gs'',\tilde gB)\tilde g=\tilde gH_k(s'',B),
+ \qquad
+ \Gamma_k(\tilde gs'',\tilde gB)\tilde g=\tilde g\Gamma_k(s'',B).
+\]
+The barred action is $(S^{-1})^T$ on spinors;
+$(S^{-1})^T=\pm\mathsf C^{-1}S\mathsf C$ gives the
+same covariance for $\bar H_k$.
+H\"older quotients commute with the simultaneous
+transformation of their endpoints and connection.
+Thus $J_k^\#\Psi$ and $W_k^\#$ transform like their
+ordinary and pair generators.
+The quadratic primitive satisfies
+$M_k(\tilde gX,\tilde gB)=\tilde gM_k(X,B)\tilde g^{-1}$,
+so its bilinear form is invariant.
+The mass form is invariant by the change of chamber
+site and spin indices, and $R\mathscr E$ has the
+incoming lattice symmetry. The reconstruction substitution
+commutes with the action by
+\eqref{eq:rg-step-substitution-covariances}.
+The box measure is invariant under $\zeta\mapsto\tilde g\zeta$.
+Apply these identities to $G_1,G_2,G_3$, the first
+localization and substitution, then to the second
+localization, $K,H$, and the convergent connected sum.
+They prove \eqref{eq:rgnl-lattice-symmetry}.
+
+For the gauge identity set $\Lambda=\lambda+\lambda'$.
+In a summand assigned to $Y$, all parameters outside $Y$
+vanish. The local row result proves that $B^1$ may be
+replaced by $B-d\Lambda$ in every row used in that
+summand. The latter field is still in the operator domain,
+since real gauge shifts preserve it.
+Telescoping the gradient along each path gives
+\[
+ U_{B-d\Lambda}(x,x')
+       =U_B(x,x')\exp\big(-ie(\Lambda(c')-\Lambda(c))\big).
+\]
+The ordinary primitive row obeys
+\[
+ H_k(s'',B^1)(x,\cdot)
+       =\exp(ie\Lambda(c))H_k(s'',B)(x,\cdot)
+                                                 \exp(-ie\Lambda^u),
+\]
+when it is nonzero, where $\Lambda^u$ is the function
+on the unit indices. The barred row has the inverse
+phases. In the H\"older row the phase at its second
+point cancels that from the transport, leaving exactly
+$\exp(ie\Lambda(c))$, the phase of the first point.
+The row of $\Gamma_k$ has the corresponding two-sided
+gauge covariance. Its composition with $H_k^\#$ thus
+gives the same covariance for $W_k^\#$, including the
+rows which vanish outside $Y$.
+The primitive bilinear and the local mass form are
+gauge invariant, and so is $R\mathscr E$ under the
+separate shifts of its two slots. The reconstruction
+substitution also commutes with this local gauge action.
+The photon fields and photon measure are unchanged.
+The finite operations and integration therefore prove
+\eqref{eq:rgnl-gauge-symmetry}.
+
+For reality, the photon primitives are real on real
+parameter families. Their analytic dependence extends
+this identity to
+$\overline{O(\bar s')}=O(s')$ on the full polydisk.
+Since $C$ is real,
+\[
+ Z(\bar s')[-\zeta]=-\overline{Z(s')[\zeta]}.
+\]
+Transform $s\mapsto\bar s$, $t\mapsto\bar t$,
+$\zeta\mapsto-\zeta$ and
+$(A,\mathscr C)\mapsto(-\bar A,-\overline{\mathscr C})$.
+The fermion identities are
+\[
+ \overline{H_k(\bar s'',-\bar B)}
+                         =\varkappa^{-1}H_k(s'',B)\varkappa,\qquad
+ \overline{\Gamma_k(\bar s'',-\bar B)}
+                         =\varkappa^{-1}\Gamma_k(s'',B)\varkappa.
+\]
+For the barred field use
+$\varkappa\mathsf C=-\mathsf C\varkappa$.
+The transport relation
+$\overline{U_{-\bar B}(x,x')}=U_B(x,x')$
+then gives the same identities for the H\"older rows.
+The local quadratic primitive obeys the corresponding
+identity, and $\varkappa^T\varkappa=1$ preserves the
+mass form. The number $m'$ is real for the present data,
+and $R\mathscr E$ and the reconstruction substitution
+have the reality symmetry. The contour argument just
+given, invariance of the box under sign reversal, and
+weighted integration prove
+\eqref{eq:rgnl-reality-symmetry}.
+
+Charge conjugation gives the first-localization symmetry
+by
+\[
+ \begin{gathered}
+ H_k(s'',-B)\mathsf C=\mathsf C\bar H_k(s'',B),\qquad
+ \bar H_k(s'',-B)\mathsf C=\mathsf C H_k(s'',B),\\
+ M_k(X,-B)^T=\mathsf C^{-1}M_k(X,B)\mathsf C .
+ \end{gathered}
+\]
+Anticommuting the two transformed legs verifies the
+bilinear and mass-form identities. The first-step
+vertex has this symmetry by its explicit two-half formula.
+It follows that
+\[
+ \mathrm{Cg}\,E_{\le3}(X;-A,-\mathscr C,-\zeta)
+                                        =E_{\le3}(X;A,\mathscr C,\zeta).
+\]
+Direct covariance of the second substitution is not
+available, since its unbarred and barred fluctuations
+use different factors. We instead compare their Wick
+covariances.
+
+Introduce independent generators $\phi^\#$ indexed like
+$\psi^\#$, with their own charge-conjugation action,
+and let $\operatorname{ad}$ add them to the old generators.
+Put
+\begin{align*}
+ \mathcal V(X)
+   ={}&\operatorname{ad}E_{\le3}(X)
+      +\operatorname{ad}\mathscr E^r(X)-\mathscr E^r(X)\\
+     &-\mathbf1_{X=\square}m'
+          \big(\operatorname{ad}
+                         \langle\bar\psi,\psi\rangle_\square
+                                -\langle\bar\psi,\psi\rangle_\square\big).
+\end{align*}
+It has charge-conjugation symmetry under
+$(A,\mathscr C,\zeta)\mapsto(-A,-\mathscr C,-\zeta)$.
+Let $I_{s'',B}$ fix the old generators and replace
+$\phi^\#$ by $W_k^\#(s'',B)$. The second-localization
+input is exactly $I_{s'',B}\mathcal V(X)$, since
+the polynomial contours in $G_4,G_5$ give their value
+at $1$ minus their value at $0$.
+For any union $U$, interpolation restricted to cubes
+of $U$, with the disconnected terms removed, gives
+\begin{equation}\label{eq:rgnl-subvolume-substitution}
+ \sum_{Y\subseteq U}F(Y)=
+                        I_{\mathbf1_U,B}\sum_{X\subseteq U}\mathcal V(X).
+\end{equation}
+
+At $s''=\mathbf1_U$ define
+\[
+ \phi_\pm=H_k(\mathbf1_U,\pm B)\Gamma_k(\mathbf1_U,\pm B)W,
+ \qquad
+ \bar\phi_\pm=\bar H_k(\mathbf1_U,\pm B)\bar W,
+ \qquad
+ \phi'=\mathsf C\bar\phi_-,\quad
+ \bar\phi'=\mathsf C^{-1}\phi_-.
+\]
+The substitution by $(\phi',\bar\phi')$ and their
+H\"older quotients, denoted $I'$, satisfies
+$\mathrm{Cg}\,I_{\mathbf1_U,-B}=I'\mathrm{Cg}$
+on every generator, when $\mathrm{Cg}$ fixes $W$.
+The only nonzero ordinary pair expectations for the
+positive substitution are the kernel of
+\[
+ \mathcal G_U(B)
+        =H_k(\mathbf1_U,B)\Gamma_k(\mathbf1_U,B)
+                                            \bar H_k(\mathbf1_U,B)^T.
+\]
+The identity moment has kernel
+$\mathbf1_{u=u'}/\nu(u)$, with $\nu=1/48$ at zero.
+This precisely cancels one of the two measures in
+the kernel composition, so the same formula holds
+at every level. The primitive transpose relation gives
+\[
+ \mathcal G_U(-B)^T
+                      =-\mathsf C^{-1}\mathcal G_U(B)\mathsf C^{-1}.
+\]
+Anticommuting $\bar\phi_-$ and $\phi_-$ therefore gives
+\[
+ \int\dd\mu_I(W)\,\phi'(x)\bar\phi'(x')^T
+     =\mathsf C[-\mathcal G_U(-B)^T(x,x')]\mathsf C
+     =\mathcal G_U(B)(x,x').
+\]
+Same-bar pair expectations vanish in both substitutions.
+The pair generators are obtained by the identical
+linear H\"older maps at $B,-B$, so their pair expectations
+also agree. Wick's theorem now proves
+$\int\dd\mu_I(W)I'Q=\int\dd\mu_I(W)I_{\mathbf1_U,B}Q$
+for every polynomial $Q$ in the old and $\phi^\#$
+generators: each monomial integral is the Pfaffian of
+its pair expectations, with old generators as coefficients.
+
+Apply this equality to the exponential of
+$\sum_{X\subseteq U}\mathcal V(X)$ and use
+$\zeta\mapsto-\zeta$. By
+\eqref{eq:rgnl-subvolume-substitution}, the integrated
+subvolume expression
+$\Xi_U=\int\dd\mu_I(W)\dd\widehat\mu(\zeta)
+\exp(\sum_{Y\subseteq U}F(Y))$
+has charge-conjugation symmetry.
+But $\Xi_U=\sum_{Z\subseteq U}H(Z)$, by the finite
+Mayer expansion. Inverting this finite subset sum gives
+\[
+ H(Z)=\sum_{U\subseteq Z}(-1)^{|Z\setminus U|_M}\Xi_U.
+\]
+Thus each $H(Z)$ has the symmetry, and the real
+coefficients and absolute convergence of the connected
+series prove \eqref{eq:rgnl-charge-symmetry}.
+
+Finally take a constant $\lambda$ and $\lambda'=0$
+in \eqref{eq:rgnl-gauge-symmetry}. A monomial with
+$n_u$ unbarred and $n_b$ barred legs acquires the factor
+$\exp(ie\lambda(n_u-n_b))$. Invariance for every real
+$\lambda$ and independence of the basis monomials force
+its coefficient to vanish unless $n_u=n_b$.
+\end{proof}
+

@@ -1,0 +1,293 @@
+\section{The local formulas}\label{app:formulas}
+This appendix recalls the finite expressions used in the comparison.
+Their construction and estimates are the input results of
+\cref{sec:inputs}. In the formulas below, $k$ is fixed and
+$B=A+\mathscr C$.
+
+\subsection{Extraction and reconstruction}
+The extraction maps of \cite[\S3.1]{NormalizedContraction} use the
+ordinary quadratic part
+\[
+ \mathscr E^{[2,0]}(X;A,\mathscr C)=\int\dd x\,\dd x'\,
+ \bar\psi(x)^T K_X(A,\mathscr C;x,x')\psi(x').
+\]
+For a small $X$, choose one lift $\widetilde X$ and define
+\begin{equation}\label{eq:rg-local-extractions}
+ a_0(\mathscr E,X)
+       =\operatorname{Vol}(X)^{-1}\mathscr E_{00}(X;0,0),\qquad
+ a_2(\mathscr E,X)
+       =\operatorname{Vol}(X)^{-1}
+             \int_{\widetilde X}\dd x\int_{\widetilde X}\dd x'\,
+                                                    K_X(0,0;x,x').
+\end{equation}
+Both cluster labels are averaged with measure $\eta_k^3/48$.
+The second expression is independent of the lift: simultaneous
+translation by a period multiplies its two arguments by the
+same antiperiodic sign, whose product is one.
+
+For an $M$-cube $\square$ put
+\begin{equation}\label{eq:rg-counterterm-maps}
+ \varepsilon_{\mathrm v}(\mathscr E,\square)
+          =-\sum_{\substack{X\supset\square\\X\text{ small}}}
+                                                     a_0(\mathscr E,X),
+ \qquad
+ M(\mathscr E,\square)
+          =-\sum_{\substack{X\supset\square\\X\text{ small}}}
+                                                     a_2(\mathscr E,X).
+\end{equation}
+Translations by $M\Z^3$ identify the small-polymer sets over
+different cubes. They leave the two extracted quantities
+unchanged. Thus the two sums do not depend on $\square$.
+Write their values as $\varepsilon_{\mathrm v}(\mathscr E)$ and
+$M(\mathscr E)$.
+
+The imported scalarity assertion is $M(\mathscr E)=m(\mathscr E)1$.
+On a small polymer the normalized remainder is
+\cite[(17)]{NormalizedContraction}
+\begin{equation}\label{eq:rg-normalized-remainder}
+ (R\mathscr E)(X;A,\mathscr C)=\mathscr E(X;A,\mathscr C)
+ -a_0(\mathscr E,X)\operatorname{Vol}(X)
+ -\int_X\dd x\,\bar\psi(x)^Ta_2(\mathscr E,X)\psi(x).
+\end{equation}
+On other polymers it leaves the activity unchanged.
+The operation $\Theta_{X,B}$ is the
+shortest-chain quadratic adjustment of \cite[\S3.2]{NormalizedContraction}.
+It averages over the shortest chains of $M$-cubes in $X$, using the
+same six-path transports and pair coefficients $d_X^\alpha$.
+We use the resulting $(R\mathscr E)^{\mathrm{nat}}$ from that definition.
+
+Let $\Delta_y$ be the unit block centered at $y$.
+For $c\in\Delta_y$, let $c_j(c)$ be the center of its block of side
+$L^j\eta_k$. The averaging phase and its normalized average are
+\[
+ \varphi_A(y,c)=\exp\left(ie_k\eta_k\sum_{j=0}^{k-1}
+          (\tau A)(c_{j+1}(c),c_j(c))\right),\qquad
+ (\mathcal Q_k(A)f)(y)=\frac{\eta_k^3}{48}
+       \sum_{c\in\Delta_y,g}\varphi_A(y,c)f(c,g).
+\]
+The reverse is the weighted transpose $\mathcal Q_k(-A)^T$.
+For $y\in Y$ the two reconstruction rows of
+\cite[Theorem~B]{NormalizedContraction} are as follows, where
+$c_3=\pi x^{(3)}$.
+\begin{equation}\label{eq:rg-reconstruction-two-pieces}
+ \begin{split}
+ (T_Y^{(1)}(A)\psi)(y)
+ &=\int_{\Delta_y}\dd x\,\varphi_A(y,c)
+    \Bigl\{(1+\mu/b_k)\psi(x)\\
+ &\qquad-(b_k\eta_k)^{-1}\!\!\sum_{i:\,x^{(i)}\text{ over }Y}
+           M_i(x)[U_A(x,x^{(i)})\psi(x^{(i)})-\psi(x)]\Bigr\},\\
+ (T_Y^{(2)}(A)\chi)(y)
+ &=-b_k^{-1}\eta_k^{\alpha-1}\int_{\Delta_y}\dd x\,
+                1[c_3\notin Y]\varphi_A(y,c)M_3(x)\chi(x,x^{(3)}).
+ \end{split}
+\end{equation}
+Rows outside $Y$ are zero. The first row contains ordinary
+legs only over $Y$. The second row contains precisely the
+type-$3$ pairs leaving $Y$, which are admissible boundary
+pairs of length $\eta_k$. Their coefficients read $A$ only
+on bonds with an endpoint in $\Delta_y$.
+The barred rows are $\bar T_Y^{(i)}(B)=\mathsf C^{-1}T_Y^{(i)}(-B)\mathsf C$.
+The substitution $\operatorname{sub}_{Y,B}$ replaces independent
+unit generators $\Psi,\bar\Psi$ by these ordinary and pair rows and
+fixes the old generators. This specifies the homomorphism used below.
+
+\subsection{The determinant primitive and the first vertex}
+Use the unprimed polymer resolvents $S_{k,y}(X,B)$ of
+\cite[\S4.3]{FermionBlockManuscript}. Write
+$\mathcal B_{k,y}=B_{k,y}$ for the finite block resolvent compared in
+\cref{subsec:rgcov-finite-rows}, and $b_L=L^{-1}$.
+At zero $F_0=D_B+\mu+b_LJP_LJ^*$ and $\Gamma_0=F_0^{-1}$.
+The determinant primitive is \cite[(76)]{FermionBlockManuscript}:
+\begin{align}
+ \widetilde E_k(X,A)
+    &=-ib_k^2\int_0^\infty\dd y\,
+       \operatorname{Tr}\bigl[\gamma_5\mathcal B_{k,y}\mathcal Q_k
+           S_{k,y}(X,A)\mathcal Q_k^\sharp\mathcal B_{k,y}\bigr]
+                   \quad(k\ge1),\label{eq:local-determinant-definition}\\
+ \widetilde E_0(X,A)
+    &=\int_1^\infty\frac{\dd y}{y}
+                     \operatorname{Tr}[F_0S_{0,y}(X,A)]
+       -i\int_0^1\dd y\,\operatorname{Tr}[\gamma_5S_{0,y}(X,A)],\notag\\
+ E_k^d(X,A)&=\tfrac14\bigl(\widetilde E_k(X,A)
+       +\widetilde E_k(X,-A)
+       +\overline{\widetilde E_k(X,\overline A)}
+       +\overline{\widetilde E_k(X,-\overline A)}\bigr),\notag\\
+ E_k^{\mathrm{det}}(X,A)&=E_k^d(X,A)-E_k^d(X,0).\notag
+\end{align}
+The traces use unit counting measure for coarse spinors and the
+chamber measure $1/48$ at level zero. Absolute convergence and the
+reblocked gain are part of the determinant input.
+
+At zero write $q=e_0$ for the running charge. The local vertex of
+\cite[(47)]{NonlinearStep} is
+\begin{equation}\label{eq:rg-step-first-vertex}
+ \begin{split}
+ \mathcal V_0(Z,\square)=\frac12\int_\square\dd x\,
+   \Big\{&
+    \bar\psi(x)^TM_3(x)(e^{iqZ(c,c_3)}-1)
+                                  [\psi(x)+\chi(x,x^{(3)})]\\
+    &+[\bar\psi(x)+\bar\chi(x,x^{(3)})]^T
+               M_3(x^{(3)})(e^{-iqZ(c,c_3)}-1)\psi(x)\Big\},
+ \end{split}
+\end{equation}
+where $x=(c,g)$, $c_3=c+ge_1$ and
+$\int_\square\dd x=48^{-1}\sum_{c\in\square}\sum_g$.
+The pair $(x,x^{(3)})$ has $d_X=1$ and is admissible
+for $\square$ of the second kind. Thus the vertex
+has ordinary legs over the cube and precisely the
+boundary pair legs allowed in the activity algebra.
+Its coefficients are entire functions of $Z$ on
+the bonds meeting the cube.
+
+
+\subsection{The two finite localizations}
+The definitions in this subsection are those of
+\cite[\S5]{NonlinearStep}. For $\zeta\in\mathrm{Box}_k$ put
+\begin{equation}\label{eq:rgnl-weakened-photon}
+ Z(s')=H_k^{\mathrm{ph}}(s')C C_k^{1/2}(s')\zeta.
+\end{equation}
+The radii, with $e=e_k$, are
+\begin{equation}\label{eq:rgnl-contour-radii}
+ r_1=\tfrac12e^{-3/4+9\varepsilon/2},\qquad
+ r_2=e^{-3/4+7\varepsilon},\qquad r_4=e^{-1/4+3\varepsilon}.
+\end{equation}
+The imported contour bounds give $2\le r_2,r_4\le r_1$ and
+$A+tZ\in\widetilde R_k$, $B+tZ\in\widetilde G_k$ for $|t|\le r_1$.
+The arguments of $H_k^\#$ are independent pairs
+$(\Phi,\bar\Phi)$; in $H_k^\#\Phi$ the single symbol denotes
+this pair. Write
+$\psi^\#=(\psi,\chi;\bar\psi,\bar\chi)$ for the ordinary,
+pair, barred ordinary and barred pair generators, respectively.
+Then
+\[
+ \begin{aligned}
+ H_k^\#(s'',B)\Phi
+   ={}&(H_k(s'',B)\Phi,\delta_{\alpha,B}H_k(s'',B)\Phi;\\
+       &
+       \bar H_k(s'',B)\bar\Phi,
+                       \delta_{\alpha,-B}\bar H_k(s'',B)\bar\Phi),\\
+ \bar H_k(s'',B)&=\mathsf C^{-1}H_k(s'',-B)\mathsf C.
+ \end{aligned}
+\]
+Define
+$J_k^\#(s'',B,Z)=H_k^\#(s'',B+Z)-H_k^\#(s'',B)$ and
+\[
+ \widetilde\Gamma_k(s'',B)(W,\bar W)
+                         =(\Gamma_k(s'',B)W,\bar W),\qquad
+ W_k^\#(s'',B)=H_k^\#(s'',B)
+                         \big(\Gamma_k(s'',B)W,\bar W\big).
+\]
+The notation $J_k,\bar J_k$ denotes the components without
+H\"older quotient; $\mathrm{Wc},\overline{\mathrm{Wc}}$ denotes
+the corresponding components of $W_k^\#$.
+The auxiliary generators $W$ have weight
+$\mathsf w_W=1$ for $k\ge1$ and $\sqrt{48}$ for $k=0$.
+
+In the following localization, cubes and polymers are sets
+of photon sites. Containment refers to all their lattice sites,
+and two cubes meet when they share a lattice site.
+Let $P_0(X)$ be the parameter cubes contained in $X$.
+For a set $P$ of parameter cubes disjoint from $P_0(X)$, let $Y'(X,P)$ be the union of
+the $M$-cubes meeting $X$ or a cube of $P_0(X)\cup P$.
+For a continuous analytic family $G(s,X)$ define
+\begin{align}
+ \mathcal T_PG(X)
+  &=\int_{[0,1]^P}\dd s_P\,
+       \partial_PG(s,X)
+       \big|_{s=1\text{ on }P_0(X),\,
+                    s=0\text{ outside }P_0(X)\cup P},
+                          \label{eq:rgnl-interpolation}\\
+ \operatorname{Loc}G(Y)
+  &=\sum_{(X,P):Y'(X,P)=Y}\mathcal T_PG(X).
+                          \label{eq:rgnl-localization}
+\end{align}
+For a function analytic near the closed disk $|t|\le r$, $r>1$,
+write
+\[
+ \mathcal C_rf=\frac1{2\pi i}\int_{|t|=r}
+                                      \frac{f(t)}{t(t-1)}\,\dd t .
+\]
+This is $f(1)-f(0)$ and satisfies
+$\|\mathcal C_rf\|\le(r-1)^{-1}\sup_{|t|=r}\|f(t)\|$.
+Let $(m,\mathscr E)\in\operatorname{Ball}_k^x(4)$ and set
+$m'=m+m(\mathscr E)$, $\mathscr E^r=R\mathscr E$.
+For $k\ge1$ define
+\begin{align}
+ G_1(s,X)&=\mathcal C_{r_1}
+                \langle\bar\Psi,M_k(X,B+tZ(s'))\Psi\rangle_1,
+                                      \label{eq:rgnl-G1}\\
+ G_2(s,X)&=\mathcal C_{r_2}\,
+       \mathscr E^r(X;A+tZ(s'),\mathscr C,
+                    \psi^\#+tJ_k^\#(s'',B,Z(s'))\Psi),
+                                      \label{eq:rgnl-G2}\\
+ G_3(s,\square)&=\mathcal C_{r_2}(-m')
+       \langle\bar\psi+t\bar J_k(s'',B,Z(s'))\bar\Psi,
+                         \psi+tJ_k(s'',B,Z(s'))\Psi\rangle_\square .
+                                      \label{eq:rgnl-G3}
+\end{align}
+The symbols $M_k(X,\cdot)$ denote the local Dirac primitives.
+A function defined for one cube is zero on the other polymers.
+Put
+\[
+ E_i^*(Y)=\operatorname{Loc}G_i(Y),\qquad
+ E_i(Y)=\operatorname{sub}_{Y,B}E_i^*(Y),\qquad
+ E_{\le3}=\sum_{i=1}^3E_i.
+\]
+The substitution was defined above.
+At $k=0$ there is no $\Psi$ and no substitution:
+$G_1(s,\square)=\mathcal V_0(Z(s'),\square)$,
+$G_2=G_3=0$, and $E_{\le3}=\operatorname{Loc}G_1$.
+All parameter kinds occur in this first localization.
+
+For the second localization, which uses only $\pi_k$, let
+$v=W_k^\#(s'',B)$ and define
+\begin{align}
+ G_{\le3}^{\,W}(s'',X)&=E_{\le3}(X;A,\mathscr C,\zeta,
+                                                      \psi^\#+v),
+                                      \label{eq:rgnl-GW}\\
+ G_4(s'',X)&=\mathcal C_{r_4}
+                  \mathscr E^r(X;A,\mathscr C,\psi^\#+tv),\\
+ G_5(s'',\square)&=\mathcal C_{r_4}(-m')
+                 \langle\bar\psi+t\overline{\mathrm{Wc}},
+                                   \psi+t\mathrm{Wc}\rangle_\square,\\
+ F(Y)&=\operatorname{Loc}(G_{\le3}^{\,W}+G_4+G_5)(Y).
+                                      \label{eq:rgnl-finite-activity}
+\end{align}
+At $k=0$ the term $G_4$ is zero and $m'=m$.
+
+
+\subsection{Integration, logarithm and reblocking}
+For the even activity $F$ just defined, set
+\begin{align*}
+ K(Y)&=\sum_{\substack{\{X_i\}\text{ distinct}\\\bigcup_iX_i=Y}}
+             \prod_i(\exp F(X_i)-1),\qquad K(\varnothing)=1,\\
+ H(Y)&=\int\dd\mu_I(W)\,\dd\widehat\mu_k(\zeta)\,K(Y),\\
+ E_k^\#(Y)&=\sum_{n\ge1}\frac1{n!}
+       \sum_{\bigcup_iY_i=Y}u^T(Y_1,\ldots,Y_n)\prod_iH(Y_i).
+\end{align*}
+Here $\widehat\mu_k$ is the product of the normal laws restricted
+and normalized on $[-p_{0,k},p_{0,k}]$. The measure $\mu_I(W)$ is
+the normalized identity-covariance Grassmann measure: the covariance
+kernel is the inverse mode weight. The coefficient $u^T$ is the
+sum of $(-1)^{|E(G)|}$ over connected spanning subgraphs of the
+incompatibility graph of the tuple. Two polymers are incompatible
+when their union is connected; in particular repetitions are incompatible.
+Absolute convergence in the weighted coefficient norm is supplied by
+\cite[Proposition~6.1]{NonlinearStep}.
+
+For an outgoing polymer $Y$, put
+\[
+ E_k^*(Y;A',\mathscr C')=\sum_{\bar X^L=LY}
+              S_LE_k^\#(X;A'_L,\mathscr C'_L),\qquad
+ A'_L(b)=L^{-1/2}A'(b/L).
+\]
+The bar denotes the union of $LM$-cubes containing the $M$-cubes of $X$.
+The map $S_L$ multiplies ordinary and pair legs by $L^{-1}$ and
+$L^{-1-\alpha}$, respectively. The same sum defines $\mathcal L$
+on any input activity. The scaled-domain inclusion used in comparison is
+\begin{equation}\label{eq:rg-scaled-domain-inclusion}
+ (A',\mathscr C')\in\widetilde R_{k+1}\times\mathfrak X_{k+1}
+ \quad\Longrightarrow\quad
+ (A'_L,\mathscr C'_L)\in\widetilde R_k^-\times\mathfrak X_k;
+\end{equation}
+it is \cite[(29)]{NormalizedContraction} under the assumed numerical conditions.

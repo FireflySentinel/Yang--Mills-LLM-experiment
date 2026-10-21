@@ -5,7 +5,7 @@
 Project codename: **RG1**.
 
 - **RGO1** — [Renormalized construction and non-Gaussianity in QED3](RGO1.pdf).
-- **AI-written manuscript:** to be added.
+- **AI-written manuscripts:** see the [QEM1 assembly index](../README.md).
 - **Human-written manuscript:** to be added.
 
 RGO1 organizes the nine renormalization and response parts of the QEM1 assembly. It is a stage outline, not an additional manuscript unit.

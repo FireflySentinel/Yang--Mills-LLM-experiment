@@ -7,5 +7,5 @@ I take blame for the immodesty of the previous sentence! However we have been ma
 
 ## Manuscripts
 
-- **AI-written manuscript:** to be added.
+- **AI-written manuscripts:** [QED3](QED3/README.md) and the [RP O(d) trick](RP%20O%28d%29%20trick%20%28RP1%29/README.md), with PDFs and TeX sources.
 - **Human-written manuscript:** to be added.

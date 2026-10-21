@@ -1,0 +1,173 @@
+\section{Scaling and coupling estimates}
+\label{subsec:rgnl-scaled-correction}
+
+Let $S_L$ be the field scaling of
+\exteq{30}{NormalizedContraction}. The nonlinear correction is
+\begin{equation}\label{eq:rgnl-scaled-correction}
+ E_k^*(m,\mathscr E)(Y;\mathscr A,\mathscr C)
+  =\sum_{\bar X^L=LY}S_L
+        E_k^\#(m,\mathscr E)(X;\mathscr A_L,\mathscr C_L).
+\end{equation}
+This formula uses field scaling and summation over fine
+polymers. Quadratic adjustment enters the incoming
+activity term in the full step below.
+The domain inclusions
+\exteq{29}{NormalizedContraction} ensure
+$(\mathscr A_L,\mathscr C_L)
+\in\widetilde R_k^-\times\mathfrak X_k$.
+
+\begin{proposition}\label{prop:rgnl-scaled-correction}
+For $(m,\mathscr E)\in\operatorname{Ball}_k^x(4)$,
+\[
+ E_k^*(m,\mathscr E)\in K_{k+1}^{x,\C},\qquad
+                  \|E_k^*(m,\mathscr E)\|_{k+1}^x
+                                      \le e^{1/4-6\varepsilon}.
+\]
+For real data its value belongs to $K_{k+1}^x$.
+On any affine complex line in the data space its value
+is norm continuous on the part in the closed ball and
+norm analytic in its interior.
+For two data in $\operatorname{Ball}_k^x(1)$,
+\begin{equation}\label{eq:rgnl-coupling-Lipschitz}
+ \|E_k^*(m_1,\mathscr E_1)-E_k^*(m_2,\mathscr E_2)\|_{k+1}^x
+ \le e^{1/4-6\varepsilon}
+       \left(\frac{|m_1-m_2|}{w_k^{\mathrm m}}
+              +\frac{\|\mathscr E_1-\mathscr E_2\|_k^x}
+                                                    {w_k^{\mathrm E}}\right).
+\end{equation}
+The second quotient is absent at $k=0$.
+Restriction to $\mathscr C=0$ gives the correction formed
+without an external slot from $(m,\mathscr E|_0)$.
+\end{proposition}
+
+\begin{proof}
+The scaling identity gives
+\[
+ \|S_LQ\|_{h_{k+1}}
+   =\|Q\|_{(L^{-1}h_{k+1,1},L^{-1-\alpha}h_{k+1,2})}
+   \le\|Q\|_{h_k/4},
+\]
+since $h_{k+1,1}=L^{-1/8}h_{k,1}$,
+$h_{k+1,2}=L^{-1/8+\varepsilon/2}h_{k,2}$ and $L\ge4$.
+The polymer sum in \eqref{eq:rgnl-scaled-correction}
+uses $Ld_M(Y)\le d_M(X)$ and $X\subseteq LY$.
+Splitting $a_3=(a_3-\kappa_0)+\kappa_0$ therefore yields
+\begin{align*}
+ \sum_{\bar X^L=LY}\exp(-a_3d_M(X))
+  &\le \exp(-L(a_3-\kappa_0)d_M(Y))
+                         \sum_{X\subseteq LY}\exp(-\kappa_0d_M(X))\\
+  &\le c_XK_0L^3
+                  \exp(-[L(\kappa-6\kappa_0-4)-1]d_M(Y))
+   \le c_XK_0L^3\exp(-\kappa d_M(Y)).
+\end{align*}
+Together with \eqref{eq:rgnl-log-bound} this gives
+\[
+ \|E_k^*\|_{k+1}^x
+  \le c_XK_0L^3c_S'H_{\mathrm{cl}}
+  =504c_X^5K_0^5\exp(3\kappa)L^3e^{1/4-5\varepsilon}
+  \le e^{1/4-6\varepsilon},
+\]
+using $c_SL^3e^\varepsilon\le1$.
+
+All generators of a summand lie over $X$ or at a pair
+admissible for $X$. Scaling maps the ordinary sites
+into $Y$; it maps each of the six paths into the
+corresponding scaled path and maps
+$(x,x^{(3)})$ to $(x/L,(x/L)^{(3)})$.
+These pairs are admissible for $Y$, including
+intracluster pairs. A bond meeting $X$ scales to
+one meeting $Y$, giving local connection dependence.
+The scaled-domain inclusion and coefficient analyticity
+give analytic kernels.
+The map $(S,a)\mapsto(S,a/L)$ identifies
+$\mathbb G_k^L$ with $\mathbb G_{k+1}$ and intertwines
+its generator actions with $S_L$. For gauge transformations
+use $\Lambda_L(c)=L^{1/2}\Lambda(c/L)$ and
+$(d\Lambda)_L=d(\Lambda_L)$.
+A gauge relation on the unit neighborhood of $Y$
+then holds on the unit neighborhood of every
+$X\subseteq LY$. Charge conjugation and reality also
+commute with the real scaling factors.
+\Cref{prop:rgnl-symmetries} thus gives all the
+defining symmetries of $K_{k+1}^{x,\C}$, and the real
+space assertion follows from its reality clause.
+
+For norm analyticity, take data
+$(m_a+t m_b,\mathscr E_a+t\mathscr E_b)$ in the closed
+ball and denote their parameter set by $T$.
+It is closed and convex. The finite activity $F_t(X)$
+is affine in $t$ by \cref{prop:rgnl-finite-bounds}.
+The polynomial approximants to $E_k^\#$ are therefore
+polynomials in $t$. Reblock them by
+\eqref{eq:rgnl-scaled-correction}; the resulting polynomials
+$f_N(t)$ converge uniformly on $T$ in the full activity
+norm, since both finite polymer sets are fixed and the
+error bound in \cref{subsec:rgnl-polynomial-approximation} is uniform.
+Their values have bounded full norm.
+If $T$ has more than one point, it contains infinitely
+many points. The coefficients of each polynomial are
+finite numerical linear combinations of its values at
+distinct points of $T$, by polynomial interpolation.
+Hence these coefficients have finite full norm, and the
+uniform limit is norm continuous on $T$.
+If $T$ is empty or a singleton there is no continuity
+or interior analyticity assertion to check.
+
+For a closed disk $|t-t_0|\le r$ in $T$, take its
+coefficientwise Cauchy integrals
+\[
+ f_j=\frac1{2\pi i}\int_{|t-t_0|=r}
+                             f(t)(t-t_0)^{-j-1}\,\dd t.
+\]
+They have analytic connection kernels, and the support,
+symmetry and balance conditions pass through this
+complex linear integral. Moreover
+$\|f_j\|_{k+1}^x\le e^{1/4-6\varepsilon}r^{-j}$.
+Coefficientwise Cauchy's formula, with this summable
+norm bound, gives
+$f(t)=\sum_{j\ge0}f_j(t-t_0)^j$ in activity norm for
+$|t-t_0|<r$. This proves the stated analyticity.
+
+To obtain \eqref{eq:rgnl-coupling-Lipschitz}, vary first
+the mass, keeping $\mathscr E_1$ fixed. With
+$\Delta m=m_1-m_2\ne0$, the line
+$(m_2+t\Delta m,\mathscr E_1)$ remains in the large
+ball for $|t|\le r=3w_k^{\mathrm m}/|\Delta m|$.
+Here $r\ge3/2$. The contour formula on any circle
+$1<r'<r$ gives
+\[
+ \|f(1)-f(0)\|_{k+1}^x
+        \le\frac{e^{1/4-6\varepsilon}}{r'-1}.
+\]
+Let $r'\uparrow r$ and use $r-1\ge r/3$.
+The bound is the first quotient on the right of
+\eqref{eq:rgnl-coupling-Lipschitz}.
+Vary the activity with mass $m_2$ fixed and radius
+$3w_k^{\mathrm E}/\|\mathscr E_1-\mathscr E_2\|_k^x$
+to obtain the second quotient.
+The zero differences require no contour.
+
+Finally restriction commutes with extraction:
+$m(\mathscr E)=m(\mathscr E|_0)$ and
+$(R\mathscr E)|_0=R(\mathscr E|_0)$.
+Every fermion operator uses the sum of its first
+connection and $\mathscr C$; photon operations and
+measures do not use $\mathscr C$.
+At $\mathscr C=0$ the two constructions therefore have
+identical finite expressions, connected series and
+scaled corrections. Analyticity without a slot is
+understood in the first connection alone.
+\end{proof}
+
+The possible H\"older legs can also be read directly.
+In $G_2,G_4$ an existing pair generator is changed by
+addition of a fluctuation field; this creates no new
+pair index. The mass contours contain no pair
+generators. The reconstruction substitution and the
+first-step vertex introduce only pairs $(x,x^{(3)})$.
+Every later sum, product and integral preserves this
+set of available indices. Thus the correction has
+only scaled incoming pair indices and these scaled
+type-$3$ indices. At $k=0$ it has only the latter,
+of length $\eta_1$, since the incoming activity is zero.
+

@@ -1,0 +1,281 @@
+\section{Probes on the reference cells}\label{sec:reference-cells}
+
+The sampling and placement arguments are those of
+\cite[\S19]{QED3Master}. The external-source identity uses a finitely supported bond cochain.
+The continuum cumulant uses the test $f=dd^*\beta$. We identify the
+discrete source with a nearby smooth test and place it strictly inside
+one reference cell. Copies in distinct cells then have orthogonal
+curvatures, which makes the normal-ordering factor separate over cells.
+
+\subsection{The discrete source and the smooth test}
+
+Fix a real nonzero $\beta\in C_c^\infty(\R^3;\Lambda^2)$.
+Use the unbuffered support-cube side $D_\beta$ from the introduction,
+and write
+$D_\beta^{\mathrm{buf}}=D_\beta+4$. Choose a cube
+$Q_\beta=z_\beta+[-D_\beta^{\mathrm{buf}}/2,
+D_\beta^{\mathrm{buf}}/2]^3$ containing
+$\supp\beta+[-2,2]^3$. Use the centered differences
+$\delta_{\eta,\mu}$ and cube average $J_\eta$ defined in the introduction.
+Put
+\begin{align}
+ a'_{\eta,\nu}&=-\sum_{\mu\ne\nu}
+                          \delta_{\eta,\mu}\beta_{\mu\nu},\notag\\
+ f^\eta_{\mu\nu}&=\delta_{\eta,\mu}a'_{\eta,\nu}
+                         -\delta_{\eta,\nu}a'_{\eta,\mu}.
+                                      \label{eq:cells-smooth-test}
+\end{align}
+All these functions are smooth and real. Since each centred
+difference enlarges support by at most $\eta/2$ in its direction,
+\[
+ \supp f^\eta,\ \supp J_\eta a'_\eta
+                   \subset\supp\beta+[-\eta,\eta]^3.
+\]
+In particular their supports lie in $Q_\beta$ for $0<\eta\le1$.
+
+On the physical lattice $\eta\Z^3$ set
+\[
+ b_{\eta,\mu\nu}(c)
+       =(J_\eta\beta_{\mu\nu})
+                       (c+\eta(e_\mu+e_\nu)/2),\qquad
+ a_\eta^o=d_\eta^*b_\eta.
+\]
+Here $d_\eta$ is the mesh-normalized forward cochain differential
+and $d_\eta^*$ its adjoint for the pairing $\eta^3\sum$.
+The adjoint formula gives
+\begin{equation}\label{eq:cells-midpoint-source}
+ a_{\eta,\nu}^o(c)=(J_\eta a'_{\eta,\nu})(c+\eta e_\nu/2).
+\end{equation}
+Transport to the unit lattice and define
+\[
+ \hat{\mathfrak a}_\eta^o(x,x+e_\nu)
+                    =\eta^{1/2}a_{\eta,\nu}^o(\eta x).
+\]
+Its coboundary uses unscaled unit-lattice differences. The
+midpoint identities yield
+\begin{equation}\label{eq:cells-source-curvature}
+ d\hat{\mathfrak a}_\eta^o(\sigma)
+                        =f^\eta_{[\eta]}(\sigma).
+\end{equation}
+Indeed, the bond values in the curl are evaluated at the two
+points displaced by $\pm\eta e_\mu/2$ from the plaquette centre.
+Their difference is $\eta\delta_{\eta,\mu}J_\eta a'_{\eta,\nu}$.
+Commutation of the average and differences then gives
+$\eta^{3/2}J_\eta f^\eta$ at that centre, which is the right
+side of \eqref{eq:cells-source-curvature}.
+
+For a compactly supported smooth two-form $g$, let $g_{[\eta]}$
+be the covering plaquette cochain with value $\eta^{3/2}J_\eta g$
+at the plaquette center. On a torus $C(n)$ of physical side
+$R=n\eta$, periodize this cochain by summing its translates by
+$n\Z^3$. Write $F^\sharp$ for the periodic componentwise step
+field whose value on the physical cube centered at a plaquette
+is $\eta^{-3/2}F^{\rm u}$. Then $F^\sharp(g)$ is the finite-torus
+pairing of the periodized $g_{[\eta]}$ with $F^{\rm u}$.
+Periodizing the source likewise gives the exact observable identity
+\begin{equation}\label{eq:cells-observable}
+ \langle d\hat{\mathfrak a}_\eta,F^{\mathrm u}\rangle
+                            =F^\sharp(f^\eta).
+\end{equation}
+The source is transverse: $a_\eta^o=d_\eta^*b_\eta$ is
+orthogonal to every closed bond cochain, by summation by
+parts. This applies to both the covering cochain and its
+periodization.
+
+The continuum approximation has the uniform bound
+\begin{equation}\label{eq:cells-test-error}
+ \|f^\eta-f\|_{H^s}\le\eta^2\|\beta\|_{H^{s+4}}
+                         \qquad(s\in\R,\ 0<\eta\le1).
+\end{equation}
+To see this, the difference symbol is
+$is_\mu(p)$ with $s_\mu(p)=2\eta^{-1}\sin(\eta p_\mu/2)$.
+One has $|s_\mu|\le|p_\mu|$ and
+$|s_\mu-p_\mu|\le\eta^2|p_\mu|^3/24$, so
+\[
+ |s_\mu s_\nu-p_\mu p_\nu|
+                               \le\eta^2|p|^4/12.
+\]
+Each component of $f^\eta-f$ contains four such terms.
+Cauchy--Schwarz on these terms, followed by summation over
+the three two-form components, gives
+$|\widehat{f^\eta-f}|^2\le(\eta^2/3)^2|p|^8|\hat\beta|^2$.
+Plancherel's theorem proves \eqref{eq:cells-test-error}.
+
+\subsection{Reference geometry and placement}
+
+Let $T^*\ge1$ be the reference exponent furnished by the
+construction, and put
+\[
+ R^*=hL^{T^*},\qquad n_*=R^*/\eta,\qquad
+ p_{\rm cell}=n_*/L,\qquad w=p_{\rm cell}/2,\qquad \ell_c=\eta w=R^*/(2L).
+\]
+Since $h$ and $\eta^{-1}$ are powers of the odd integer $L$,
+$p_{\rm cell}$ is an odd integer, $w\in\Z+1/2$, and the open unit-lattice
+reference cells are $Q_c^\circ=w(c+(0,1)^3)$.
+The reference torus $C(n_*)$ has $2L$ cells per side and
+$N_*=8L^3$ in all.
+
+The probe fits the reference cells if
+\begin{equation}\label{eq:cells-fit}
+ D_\beta^{\mathrm{buf}}+3\eta\le\ell_c.
+\end{equation}
+A placement is a vector $v\in\eta\Z^3$ satisfying
+\[
+ |v+z_\beta-(\ell_c/2)(1,1,1)|_\infty\le\eta/2.
+\]
+Such a vector always exists by coordinatewise rounding.
+It translates $Q_\beta$ into $[\eta,\ell_c-\eta]^3$:
+the displacement of its centre is at most $\eta/2$, and
+the half-side is at most $(\ell_c-3\eta)/2$.
+Hence
+\begin{equation}\label{eq:cells-probe-margin}
+ \supp(\tau_v\beta)
+                     \subset[2+\eta,\ell_c-2-\eta]^3.
+\end{equation}
+Form the source $\hat{\mathfrak a}^o$ with this translated
+probe.
+
+Every endpoint of a bond in the source support is within
+$3\eta/2$ in sup distance of $\supp(\tau_v\beta)$.
+By \eqref{eq:cells-probe-margin}, its lattice coordinates
+therefore lie in
+$[2/\eta-1/2,w-2/\eta+1/2]$.
+If a plaquette has nonzero $d\hat{\mathfrak a}^o$, at least
+one of its boundary bonds belongs to that support. Its
+other two corners are one unit away. Thus the whole
+plaquette lies in the box
+\begin{equation}\label{eq:cells-support-box}
+ B_0=(w/2)(1,1,1)+[-r_0,r_0]^3,\qquad
+ r_0=w/2-2/\eta+3/2.
+\end{equation}
+Condition \eqref{eq:cells-fit} gives $r_0\ge3$.
+The distance of this box from each bounding wall is
+$2/\eta-3/2\ge1/2$, so $B_0\subset Q_0^\circ$.
+Its reflected copies lie strictly inside the corresponding
+cells. This is the support margin needed by the local
+source identity.
+
+\subsection{Orthogonal sources and translated observables}
+
+For a cell index $c$, define the wall map $g_c$ coordinatewise:
+if $c_\mu=2i$, it sends $x_\mu$ to $x_\mu+2iw$; if
+$c_\mu=2i+1$, it sends $x_\mu$ to $(2i+2)w-x_\mu$.
+It carries $Q_0^\circ$ to $Q_c^\circ$ and acts on cochains by
+transporting oriented bonds, with a sign upon orientation reversal. Put
+$\hat{\mathfrak a}_c^o=(g_c)_*\hat{\mathfrak a}^o$ on the
+covering lattice and periodize it on $C(n)$, where $p_{\rm cell}$ divides
+$n$ and $n\ge n_*$, to obtain $\hat{\mathfrak a}_c$.
+The period lattice identifies cell indices modulo
+$(2n/p_{\rm cell})\Z^3$. The coboundary commutes with these actions
+and periodization, and its support lies in $B_c=g_cB_0$.
+For cell representatives on this torus,
+\begin{equation}\label{eq:cells-orthogonality}
+ \langle d\hat{\mathfrak a}_c,d\hat{\mathfrak a}_{c'}\rangle_n
+             =v_\eta\,\mathbf1_{\{c=c'\}},\qquad
+ v_\eta=\|d\hat{\mathfrak a}^o\|^2.
+\end{equation}
+The covering norm is the unweighted $\ell^2$ norm, and the
+torus pairing is the counting pairing.
+
+To prove the identity, unfold one factor:
+\[
+ \langle d\hat{\mathfrak a}_c,d\hat{\mathfrak a}_{c'}\rangle_n
+  =\sum_{\sigma}\sum_{z\in\Z^3}
+       d\hat{\mathfrak a}_c^o(\sigma)
+       d\hat{\mathfrak a}_{c'}^o(\sigma+nz).
+\]
+A nonzero summand has $\sigma\subset Q_c^\circ$ and
+$\sigma+nz\subset Q_{c'}^\circ$. The open cells are disjoint,
+so necessarily $c'=c+(2n/p_{\rm cell})z$. For distinct torus cells
+there is no such $z$. For the same cell exactly one translate
+can contribute; its summands are the squares of
+$d\hat{\mathfrak a}_c^o$. The wall action preserves the
+counting norm, which proves \eqref{eq:cells-orthogonality}.
+Changing the placement by a vector in $\eta\Z^3$ translates
+the covering source by an integer vector. Thus $v_\eta$
+depends only on $\beta$ and $\eta$, and is independent of
+the torus and the placement.
+
+For a closed cochain $u$ define
+$X_c(u)=\langle d\hat{\mathfrak a}_c,u\rangle_n$.
+Every polynomial in this observable is read by one and the
+same local integrand on all these tori. On the cover its
+local expression is
+\[
+ \widehat A\longmapsto
+ P\left(\sum_{\sigma\subset B_c}
+             d\hat{\mathfrak a}_c^o(\sigma)(d\widehat A)(\sigma)\right).
+\]
+This is a scalar gauge-invariant polynomial. Cauchy--Schwarz
+bounds its argument by
+\[
+ \sqrt{v_\eta}\left(\sum_{\sigma\subset B_c}
+                      |d\widehat A(\sigma)|^2\right)^{1/2}.
+\]
+The polynomial is therefore bounded by
+\[
+ C_{\mathrm{pol}}\exp\left(\frac14\sum_{\sigma\subset B_c}
+                                      |d\widehat A(\sigma)|^2\right)
+\]
+for a finite constant $C_{\mathrm{pol}}$ depending on the polynomial
+and the covering source. This is the local Gaussian-growth condition used for the
+observable class $\mathcal A(Q_c^\circ)$ in \cite[\S4.1, (46)]{ChamberLattice}.
+
+The local boxes embed in the torus. Indeed, writing
+$p_{\rm cell}=2m_{\rm cell}+1$, condition \eqref{eq:cells-fit} gives $m_{\rm cell}\ge7$,
+and
+\[
+ 2r_0+2=w-4/\eta+5\le w+1<p_{\rm cell}\le n.
+\]
+For each $c$, the translates of $B_c+[-1,1]^3$ by
+$nz$, $z\in\Z^3$, are consequently disjoint.
+On a local lift, $d\widehat A=F^{\mathrm u}$; unfolding
+the finite cochain sum reads the polynomial as $P(X_c)$.
+For a real polynomial its reflected copy from the base
+cell is exactly $P(X_c)$, since conjugation fixes its
+coefficients. This applies to the centered Wick polynomials.
+
+The variance in \eqref{eq:cells-orthogonality} approaches
+the continuum normal-ordering variance:
+\begin{equation}\label{eq:cells-variance-limit}
+ \left|\sqrt{v_\eta}-\|f\|_2\right|
+ \le21\eta|\beta|_{C^3}(D_\beta^{\mathrm{buf}})^{3/2}
+                      +\eta^2\|\beta\|_{H^4}.
+\end{equation}
+Let $\Pi_\eta f^\eta$ be the componentwise cell-average step
+function on a period cube. By \eqref{eq:cells-source-curvature},
+its $L^2$ norm is $\sqrt{v_\eta}$.
+Each first derivative of $f^\eta_{\mu\nu}$ is bounded
+by $4|\beta|_{C^3}$, from the four centred-difference
+terms in \eqref{eq:cells-smooth-test} and the identity
+$\delta_{\eta,\mu}g=\int_{-1/2}^{1/2}
+(\partial_\mu g)(\,\cdot+t\eta e_\mu)\,\dd t$.
+The pointwise error of the cell average is at most
+$12\eta|\beta|_{C^3}$. It vanishes outside the periodic
+images of the buffered cube, whose measure in one period
+is $(D_\beta^{\mathrm{buf}})^3$.
+Summing the three component squares bounds the $L^2$
+error by $21\eta|\beta|_{C^3}(D_\beta^{\mathrm{buf}})^{3/2}$.
+The norm triangle inequality and
+\eqref{eq:cells-test-error} prove
+\eqref{eq:cells-variance-limit}.
+
+Finally the even cell indices give pure translations.
+For $y\in(R^*/L)\Z^3=p_{\rm cell}\eta\Z^3$ set
+$c(y)=2y/(p_{\rm cell}\eta)\in2\Z^3$. Then $g_{c(y)}$ is the unit-lattice
+translation by $y/\eta$, and
+\begin{equation}\label{eq:cells-translation-observable}
+ X_{c(y)}=F^\sharp(\tau_{v+y}f^\eta).
+\end{equation}
+Two such cells agree on $C(n)$ exactly when their physical
+translations agree modulo $R\Z^3$. Any fixed finite set
+of distinct translations therefore occupies distinct
+cells once the volume is sufficiently large.
+Lattice translation invariance removes the common placement
+$v$ from the expectation of any polynomial in these
+observables. Its integrability follows from Gaussian
+domination. These identities enter the subsequent volume transfer of
+\cite[Theorem~A]{VolumeTransfer}, which supplies the larger-volume estimates
+for the translates $\tau_yf^\eta$ and their passage to component cumulants.
+
+

@@ -1,0 +1,368 @@
+\section{Extraction and quadratic normalization}
+\label{sec:extraction}
+
+The extraction and shortest-chain adjustment follow
+\cite[\S\S12.3,12.5]{QED3Manuscript}. They solve different problems.
+The extracted matrix becomes scalar only after summing over polymers.
+The adjustment then converts the vanishing integral of each remaining
+quadratic kernel into vanishing of the full kernel at zero connection.
+This is the normalization used in the Cauchy estimate.
+
+\subsection{Vacuum and mass extraction}
+\label{subsec:rg-extraction}
+
+For a balanced activity, its part of bidegree $(2,0)$ can be
+written uniquely as
+\[
+ \mathscr E^{[2,0]}(X;\mathscr A,\mathscr C)
+   =\int\dd x\,\dd x'\,
+             \bar\psi(x)^T K_X(\mathscr A,\mathscr C;x,x')\psi(x').
+\]
+The matrix kernel is the ordinary antisymmetric kernel with
+the first bar index one and the second bar index zero.
+Antisymmetry accounts for the other ordering; in particular
+\begin{equation}\label{eq:rg-bilinear-norm}
+ \|\mathscr E^{[2,0]}(X;\mathscr A,\mathscr C)\|_{h_k}
+   =h_{k,1}^2\sum_{\beta,\beta'}\int\dd x\,\dd x'
+                     |K_X(\mathscr A,\mathscr C;x,x')_{\beta\beta'}|.
+\end{equation}
+The kernel is antiperiodic in each argument separately.
+
+For a small $X$, choose one lift $\widetilde X$ and define
+\begin{equation}\label{eq:rg-local-extractions}
+ a_0(\mathscr E,X)
+       =\operatorname{Vol}(X)^{-1}\mathscr E_{00}(X;0,0),\qquad
+ a_2(\mathscr E,X)
+       =\operatorname{Vol}(X)^{-1}
+             \int_{\widetilde X}\dd x\int_{\widetilde X}\dd x'\,
+                                                    K_X(0,0;x,x').
+\end{equation}
+Both cluster labels are averaged with measure $\eta_k^3/48$.
+The second expression is independent of the lift: simultaneous
+translation by a period multiplies its two arguments by the
+same antiperiodic sign, whose product is one.
+
+For an $M$-cube $\square$ put
+\begin{equation}\label{eq:rg-counterterm-maps}
+ \varepsilon_{\mathrm v}(\mathscr E,\square)
+          =-\sum_{\substack{X\supset\square\\X\text{ small}}}
+                                                     a_0(\mathscr E,X),
+ \qquad
+ M(\mathscr E,\square)
+          =-\sum_{\substack{X\supset\square\\X\text{ small}}}
+                                                     a_2(\mathscr E,X).
+\end{equation}
+Translations by $M\Z^3$ identify the small-polymer sets over
+different cubes. They leave the two extracted quantities
+unchanged. Thus the two sums do not depend on $\square$.
+Write their values as $\varepsilon_{\mathrm v}(\mathscr E)$ and
+$M(\mathscr E)$.
+
+\begin{proposition}\label{prop:rg-scalar-counterterms}
+There is a complex-linear scalar map $m(\mathscr E)$ such that
+$M(\mathscr E)=m(\mathscr E)1$. Both $m$ and
+$\varepsilon_{\mathrm v}$ are real on $K_k^x$, and
+\begin{equation}\label{eq:rg-counterterm-bounds}
+ |\varepsilon_{\mathrm v}(\mathscr E)|
+                  \le K_0M^{-3}\|\mathscr E\|_k^x,
+ \qquad
+ |m(\mathscr E)|\le K_0M^{-3}e_k^{1/2}\|\mathscr E\|_k^x.
+\end{equation}
+They commute with restriction of the second connection argument
+to zero.
+\end{proposition}
+
+\begin{proof}
+Substitution of the generator transformations in a bilinear,
+followed by uniqueness of its kernel, gives
+\begin{equation}\label{eq:rg-extraction-matrix-symmetries}
+ \begin{split}
+ a_2(\mathscr E,\tilde gX)&=S a_2(\mathscr E,X)S^{-1},\\
+ a_2(\mathscr E,X)&=\mathsf C^{-1}a_2(\mathscr E,X)^T\mathsf C,\\
+ a_2(\mathscr E,X)&=\varkappa^{-1}
+                         \overline{a_2(\mathscr E,X)}\varkappa
+                                                   \quad(\mathscr E\in K_k^x).
+ \end{split}
+\end{equation}
+For the first relation, the two variables and their labels
+are transformed together, and the measure is unchanged.
+For charge conjugation, moving the unbarred leg past the barred
+leg cancels the minus sign in its transformation, and exchanges
+the two kernel variables. For the last relation, the reality
+map conjugates the coefficient and multiplies both legs by
+$\varkappa$; its inverse transpose is $\varkappa^{-1}$.
+The constant kernel has the corresponding scalar invariance
+and is real for a real family.
+
+Let $z$ be the center of $\square$ and take
+$S=\gamma_1,\gamma_2,\gamma_3$ or $\gamma_5$.
+The symmetry $(S,(1-r(S))z)$ fixes $\square$ and permutes the
+small polymers containing it. The first relation in
+\eqref{eq:rg-extraction-matrix-symmetries} therefore shows that
+$M(\mathscr E)$ commutes with all four matrices. Their commutant
+is scalar. In the fixed Dirac basis, $\gamma_3$ and
+$\Sigma_3=-i\gamma_1\gamma_2\gamma_3$ are diagonal with the
+four distinct pairs of diagonal entries
+$(1,1),(-1,1),(-1,-1),(1,-1)$. A commuting matrix is diagonal;
+commutation with $\gamma_1$ identifies its first two and last
+two entries, and commutation with $\gamma_5$ identifies these
+pairs. This proves the scalar assertion. The last relation in
+\eqref{eq:rg-extraction-matrix-symmetries} makes this scalar
+real for a real family.
+
+The coefficient norm gives, for each small $X$,
+\begin{equation}\label{eq:rg-single-extraction-bounds}
+ \begin{split}
+ \operatorname{Vol}(X)|a_0(\mathscr E,X)|
+                    &\le\|\mathscr E(X;0,0)\|_{h_k},\\
+ \operatorname{Vol}(X)\sum_{\beta,\beta'}
+                              |a_2(\mathscr E,X)_{\beta\beta'}|
+                    &\le h_{k,1}^{-2}
+                               \|\mathscr E^{[2,0]}(X;0,0)\|_{h_k}.
+ \end{split}
+\end{equation}
+Use $h_{k,1}^{-2}=e_k^{1/2}$ and
+$\operatorname{Vol}(X)\ge M^3$. Each contribution is bounded
+by the corresponding right side of
+\eqref{eq:rg-counterterm-bounds}, times $\exp(-\kappa d_M(X))$.
+The polymer sum over a fixed cube is at most $K_0$ by
+$\kappa\ge\kappa_0$. For the mass use one diagonal entry of
+the matrix sum, now known to be scalar. This proves the bounds.
+Linearity follows from uniqueness of the antisymmetric kernels.
+Restriction gives the same kernels at $(0,0)$, proving the
+last assertion.
+\end{proof}
+
+Subtract these local terms only on small polymers:
+\begin{equation}\label{eq:rg-normalized-remainder}
+ (R\mathscr E)(X;\mathscr A,\mathscr C)
+ =\mathscr E(X;\mathscr A,\mathscr C)
+       -a_0(\mathscr E,X)\operatorname{Vol}(X)
+       -\int_X\dd x\,\bar\psi(x)^Ta_2(\mathscr E,X)\psi(x).
+\end{equation}
+For large $X$ set $R\mathscr E=\mathscr E$. Then
+\begin{equation}\label{eq:rg-exact-extraction-identity}
+ \sum_X\mathscr E(X;\mathscr A,\mathscr C)
+  =-\varepsilon_{\mathrm v}(\mathscr E)\ell^3
+     -m(\mathscr E)\langle\bar\psi,\psi\rangle
+                           +\sum_X(R\mathscr E)(X;\mathscr A,\mathscr C).
+\end{equation}
+Indeed, decompose the integral and volume of each small polymer
+over its $M$-cubes, interchange the finite sums, and use
+\eqref{eq:rg-counterterm-maps} on each cube. Every chamber
+component receives the same scalar mass coefficient:
+\[
+ m(\mathscr E)\langle\bar\psi,\psi\rangle
+ =m(\mathscr E)\frac{\eta_k^3}{48}
+         \sum_c\sum_g\sum_{\beta=1}^4
+                                      \bar\psi_\beta(c,g)\psi_\beta(c,g).
+\]
+
+The diagonal bilinear of a constant matrix $A$ on $X$ has
+kernel $48\eta_k^{-3}1[x=x'\text{ over }X]A$ when both
+arguments are taken over the same lift. Its integral is
+$\operatorname{Vol}(X)A$, and its norm is
+\[
+ h_{k,1}^2\operatorname{Vol}(X)
+                         \sum_{\beta,\beta'}|A_{\beta\beta'}|.
+\]
+These identities and \eqref{eq:rg-single-extraction-bounds}
+show that
+\begin{equation}\label{eq:rg-remainder-properties}
+ \begin{split}
+ (R\mathscr E)_{00}(X;0,0)&=0\quad(X\text{ small}),\\
+ \int_{\widetilde X}\dd x\,\dd x'\,
+                  (R\mathscr E)_{20}(X;0,0;x,x')&=0\quad(X\text{ small}),\\
+ \|R\mathscr E\|_k^x&\le2\|\mathscr E\|_k^x.
+ \end{split}
+\end{equation}
+For the bound, the two subtracted terms have distinct bidegrees
+and together have norm at most $\|\mathscr E(X;0,0)\|_{h_k}$.
+Apply the triangle inequality to
+\eqref{eq:rg-normalized-remainder}, then the activity norm.
+
+The map $R$ preserves the activity spaces and restriction to
+zero. The subtracted kernels are independent of the connections,
+and their two legs lie over $X$, so analyticity and locality
+remain. A diagonal bilinear is invariant under every local
+gauge. Its lattice, charge and reality transformations follow
+from \eqref{eq:rg-extraction-matrix-symmetries}; the volume
+and constant term have the same symmetries. This verifies
+each requirement on the remainder, without assuming that
+an individual matrix $a_2(\mathscr E,X)$ is scalar.
+
+For later comparisons, the extraction has a precise local
+meaning across different sides. Fix a lifted $M$-cube and
+consider all lifted small polymers containing it. Their
+projections are bijective onto the small polymers containing
+its image, and their $d_M$ and volumes are unchanged.
+If two families have the same constant and quadratic kernels
+on every such lifted polymer at zero connections, then their
+vacuum and mass matrices over this cube agree term by term in
+\eqref{eq:rg-counterterm-maps}. Volume independence of a flow
+will require this equality of kernels from the step comparison.
+\subsection{Adjustment of the quadratic kernel}
+\label{subsec:rg-adjustment}
+
+The extraction makes the integral of the zero-field quadratic
+kernel vanish. For contraction we need the kernel itself to
+vanish. We achieve this by writing each ordinary leg as a
+transported average and a sum of H\"older differences. This
+changes the activity before evaluation and leaves its evaluated
+value unchanged.
+
+Let $X$ be small, choose a lift $\widetilde X$, and let
+$x=(c,g)$ and $\tilde x=(\tilde c,\tilde g)$ lie over this lift.
+Take all shortest face chains of its $M$-cubes between their
+two cubes. For a chain $(\square_0,\ldots,\square_n)$ with
+centers $z_i$, use the points
+\[
+ p_0=x,\qquad p_{i+1}=(z_i,g)\quad(0\le i\le n),\qquad
+ p_{n+2}=\tilde x.
+\]
+The initial label is kept at each intermediate center.
+Each distinct consecutive pair is admissible for $X$ of the
+first kind. The paths in the first and last cube remain in
+those cubes; between adjacent centers all six paths are the
+straight segment across their common face. The last pair
+can have different labels, and can lie inside one cluster.
+For a coincident pair there is no difference term.
+
+With $u_B(p,p')=U_B(p,p')$ and $u_B(p,p)=1$, set
+\[
+ U_i^\pm=\prod_{j<i}u_B(p_j,p_{j+1})^{\pm1}.
+\]
+The chain has no repeated cube, and
+$n+1\le|X|_M\le c_X(L+1)$. Hence
+\begin{equation}\label{eq:rg-chain-length}
+ \sum_{i=0}^{n+1}|\pi p_i-\pi p_{i+1}|_1\le(n+3)M
+          \le3c_XLM,\qquad
+ \sum_{i:p_i\ne p_{i+1}}d_X(p_i,p_{i+1})^\alpha\le3c_XLM.
+\end{equation}
+The second estimate uses $d_X^\alpha\le\max(1,d_X)\le M$.
+The transport bound is
+$|u_B(p,p')^{\pm1}|\le\exp(e_k\|\operatorname{Im}B\|_\infty
+|\pi p-\pi p'|_1)$, obtained by counting the bonds in each path.
+
+For $B=\mathscr A+\mathscr C$, the domain decomposition and
+$e_k^\varepsilon\le1/4$ give
+$e_k\|\operatorname{Im}B\|_\infty\le e_k^\varepsilon/2$.
+Assume in addition
+\begin{equation}\label{eq:rg-adjustment-charge-condition}
+ 90c_XLM e_k^\varepsilon\le1.
+\end{equation}
+The modulus of every partial product $U_i^\pm$ is then at most
+$\exp(1)$, uniformly in the chain and mesh.
+
+Let $\operatorname{Mn}$ be the mean over the shortest chains.
+Define the homomorphism $\Theta_{X,B}$ on ordinary generators by
+\begin{equation}\label{eq:rg-chain-homomorphism}
+ \begin{split}
+ \Theta_{X,B}\psi(x)
+  =\operatorname{Vol}(X)^{-1}\int_{\widetilde X}\dd\tilde x\,
+    \operatorname{Mn}\left[
+       U_{n+2}^+\psi(\tilde x)
+       -\sum_{i:p_i\ne p_{i+1}}
+           U_i^+d_X(p_i,p_{i+1})^\alpha\chi(p_i,p_{i+1})\right],\\
+ \Theta_{X,B}\bar\psi(x)
+  =\operatorname{Vol}(X)^{-1}\int_{\widetilde X}\dd\tilde x\,
+    \operatorname{Mn}\left[
+       U_{n+2}^-\bar\psi(\tilde x)
+       -\sum_{i:p_i\ne p_{i+1}}
+           U_i^-d_X(p_i,p_{i+1})^\alpha\bar\chi(p_i,p_{i+1})\right].
+ \end{split}
+\end{equation}
+The spin components are unchanged. Both displayed images are
+linear combinations of odd independent generators, so they
+anticommute and determine a unique homomorphism on the
+subalgebra of ordinary legs over $X$. Translation of the lift
+by a period preserves every transport and chain and multiplies
+each generator by the same antiperiodic sign. Thus the
+homomorphism is independent of this choice of lift.
+
+If the generators are evaluated at fields satisfying their
+covariant H\"older relations, repeated substitution of
+\[
+ \psi(p_i)=u_B(p_i,p_{i+1})\psi(p_{i+1})
+                    -d_X(p_i,p_{i+1})^\alpha\chi(p_i,p_{i+1})
+\]
+along a chain gives exactly the first expression in
+\eqref{eq:rg-chain-homomorphism}; the barred relation uses
+$u_B^{-1}$. Taking the two means therefore reproduces the
+original leg. This proves equality after evaluation for
+every polynomial in the ordinary legs over $X$.
+
+The adjusted family is
+\begin{equation}\label{eq:rg-adjustment-definition}
+ \mathscr E^{\mathrm{nat}}(X)
+   =\mathscr E(X)-\mathscr E^{[2,0]}(X)
+           +\Theta_{X,\mathscr A+\mathscr C}
+                                      \mathscr E^{[2,0]}(X)
+                                      \qquad(X\text{ small}),
+\end{equation}
+and is unchanged on large polymers. The equality just proved
+shows that the adjusted and original families have equal
+evaluated values. Only bidegrees $(2,0),(1,1),(0,2)$ can change.
+
+At zero connection all $U_i^\pm$ are one. The ordinary part
+of an adjusted bilinear with kernel $K$ is therefore
+\[
+ \bar\psi_{\mathrm{av}}^T
+    \left[\int_{\widetilde X}\dd x\,\dd x'\,K(x,x')\right]
+                                                     \psi_{\mathrm{av}},
+ \qquad
+ \psi_{\mathrm{av}}=\operatorname{Vol}(X)^{-1}
+                                        \int_{\widetilde X}\dd x\,\psi(x).
+\]
+Apply this to $R\mathscr E$, whose kernel integral vanishes.
+With $E=(R\mathscr E)^{\mathrm{nat}}$, we obtain the stronger
+normalization
+\begin{equation}\label{eq:rg-adjusted-kernel-normalization}
+ E_{00}(X;0,0)=0,\qquad E_{20}(X;0,0;\cdot,\cdot)=0
+                                                     \quad(X\text{ small}).
+\end{equation}
+
+The same chain estimate controls the norm of adjustment.
+Decompose $\Theta\psi=L_\psi+L_\chi$ by bidegree. For arbitrary
+generator weights $(w_1,w_2)$,
+\[
+ \|L_\psi\|_w\le\exp(1)w_1,\qquad
+ \|L_\chi\|_w\le\exp(1)(3c_XLM)w_2.
+\]
+The normalized site and label mean has total mass one.
+Writing $s_K=\sum_{\beta,\beta'}\int|K_{\beta\beta'}|$ for
+the balanced quadratic kernel and $F=\Theta\mathscr E^{[2,0]}$
+gives the three bounds
+\[
+ \begin{aligned}
+ \|F^{[2,0]}\|_w&\le\exp(2)w_1^2s_K,\\
+ \|F^{[1,1]}\|_w&\le2\exp(2)(3c_XLM)w_1w_2s_K,\\
+ \|F^{[0,2]}\|_w&\le\exp(2)(3c_XLM)^2w_2^2s_K.
+ \end{aligned}
+\]
+Since $h_{k,2}=e_k^\varepsilon h_{k,1}$ and
+$3c_XLM e_k^\varepsilon\le1/30$, summing these bounds yields
+\begin{equation}\label{eq:rg-adjustment-norm}
+ \|\mathscr E^{\mathrm{nat}}(X)\|_{h_k}
+ \le\exp(2)(1+3c_XLM e_k^\varepsilon)^2\|\mathscr E(X)\|_{h_k}
+                                               \le10\|\mathscr E(X)\|_{h_k}.
+\end{equation}
+Subtracting the original quadratic part before adding its
+image uses additivity of the norm over bidegrees.
+
+All new legs lie over $X$ or at its admissible chain pairs,
+and all new transports read bonds with both ends in $X$.
+Thus adjustment preserves locality. It preserves analyticity
+because these transports are entire in the connection.
+For the lattice covariance, symmetries carry shortest chains,
+their centers and labels to the corresponding image chains.
+For a real gauge the factors along a partial chain telescope
+to the phase difference at its endpoints, giving the original
+leg phase. Charge conjugation replaces $u_B$ by $u_B^{-1}$;
+the reality map uses $\overline{u_{-\overline B}}=u_B$.
+These identities on generators prove all four covariance
+identities for $\Theta$, and hence the activity symmetries
+for adjustment. Restriction to $\mathscr C=0$ commutes with
+adjustment because it leaves the same total connection and
+the same ordinary quadratic kernel. Therefore adjustment
+preserves the complex and real activity spaces.

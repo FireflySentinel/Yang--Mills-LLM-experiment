@@ -1,0 +1,230 @@
+\section{Physical scales and stopping levels}\label{sec:rg-flow}
+
+The logarithmic charge scale determines where the finite-volume
+iteration stops. We express the stopping rule in terms of depth below
+the physical mass scale. This removes the cutoff from the terminal
+physical quantities and gives the side margins needed for comparison
+at every preceding step.
+We follow \cite[\S16.1]{QED3Master}, which retains the stopping-scale
+calculation of \cite[Chapter~19]{LatticeCurvature}.
+
+\subsection{Physical scales and stopping levels}
+\label{subsec:rgfl-scales}
+
+Fix $\bar m\in(0,1]$ and put
+$h=L^{\lfloor\log_L(1/\bar m)\rfloor}$.
+For a cutoff $N\ge0$, define
+\begin{equation}\label{eq:rgfl-physical-scales}
+ \eta=L^{-N},\qquad K=N+\log_Lh,\qquad
+ a_j=L^{j-N},\qquad e_j=e\sqrt{a_j},\qquad
+ \mu_j=\bar m a_j.
+\end{equation}
+Thus $a_j$ is the physical length of one unit at
+level $j$, and $a_K=h$.
+At zero the charge is written $q=e\sqrt\eta$;
+the fixed charge ceilings $\bar e_0,\bar e_1$ retain their
+earlier meanings. A formula with variable index $j$
+uses $e_j$ for the running charge, including $q$
+when $j=0$.
+For $0\le j\le K$ set
+\[
+ v_j=-\log e_j,\qquad
+ r_j=\min\{L^i:i\in\N\cup\{0\},\ L^i\ge v_j^r\},
+ \qquad p_j=v_j^p,\quad p_{0,j}=v_j^{p_0}.
+\]
+The integers $r,p,p_0$ and the constants of the
+preceding estimates are fixed.
+Here $r\ge2$, $L$ is odd with $L\ge13$, and $M$
+is a power of $L$ with $M\ge L^2$.
+We assume the hypotheses of the primitive and
+step estimates, and use a ceiling
+$\bar e_1\le\min(\bar e_0,1/3)$ such that, for all
+$v\ge-\log\bar e_1$,
+\begin{equation}\label{eq:rgfl-scale-smallness}
+ \begin{gathered}
+ v\ge8,\qquad
+ \left(1+\frac{3\log L}{2v}\right)^r<L,\qquad
+ v^r>31L+16,\\
+ (c_{\mathrm{fl}}+2)\exp(-\varepsilon v)
+               \le\frac1{16}(1-L^{-\varepsilon/2}).
+ \end{gathered}
+\end{equation}
+In addition
+$0<\varepsilon\le1/200$,
+$c_{\mathrm{fl}}\ge1$,
+$\bar e_0^\varepsilon\le1/4$,
+$c_{\mathrm{fl}}L^{-3/8+6/200}\le1/16$, and
+$L^{-5/8}\le1/4$.
+The construction below applies whenever
+$0<e\sqrt h\le\bar e_1$.
+
+The physical top side and reference side are
+\begin{equation}\label{eq:rgfl-reference-sides}
+ R_{\mathrm{top}}=hMr_K,\qquad
+ R^*=R_{\mathrm{top}}/L=hL^{T^*(e)},\qquad
+ T^*(e)=\log_L(Mr_K)-1.
+\end{equation}
+They are independent of $N$, since
+$v_K=-\log(e\sqrt h)$.
+The admissible physical sides for the flow are
+\[
+ \mathcal T(e)=\{hL^T:T\in\N\cup\{0\},\ hL^T\le R_{\mathrm{top}}\}.
+\]
+For $R\in\mathcal T(e)$ put
+$\ell_j(R)=R/a_j$,
+$T_j(R)=\eta_j\Z^3/\ell_j(R)\Z^3$ and
+$\mathfrak n_j=\log_L(\ell_j/(Mr_j))$.
+The allowed unit sides are
+$\mathrm{Cl}=\{\ell:\ell/(LM)\text{ is an odd integer at least }13\}$.
+Their occurrence at every required scale is part
+of the following arithmetic argument.
+
+\begin{proposition}\label{prop:rgfl-scales}
+For each $R\in\mathcal T(e)$ there is a finite integer
+$N_{\min}(R,e)\ge0$ such that, when $N\ge N_{\min}(R,e)$,
+the first level with $\mathfrak n_j=0$ exists and
+satisfies $1\le k_*(R)\le K$.
+Its physical quantities $a_*,e_*,\mu_*,\ell_*,r_*$
+are independent of $N$ in this range.
+For $j\le k_*(R)$,
+\begin{equation}\label{eq:rgfl-scale-ranges}
+ \begin{gathered}
+ \ell_j\in\mathrm{Cl},\qquad
+ \ell_j\ge Mr_j,\qquad r_j\ge r_*>31L+16,\\
+ v_j\ge v_*\ge v_K,\qquad
+ 0<e_j\le e_*\le e_K\le\bar e_1,\qquad
+ 0<\mu_j\le\mu_*\le\bar m h\le1 .
+ \end{gathered}
+\end{equation}
+For $j<k_*(R)$ one has $\ell_j\ge LMr_j$,
+$\ell_{j+1}=\ell_j/L\in\mathrm{Cl}$,
+$e_{j+1}=\sqrt L e_j\le\bar e_0$ and
+$0<\mu_j=\mu_{j+1}/L\le1/L$.
+At the stop,
+\begin{equation}\label{eq:rgfl-terminal-scales}
+ \ell_*=Mr_*,\qquad
+ Mv_*^r\le\ell_*<LMv_*^r,\qquad
+ \mu_*^{-1}<L\ell_*,\qquad e_*^2\ell_*=e^2R.
+\end{equation}
+If $R\le R'$ in $\mathcal T(e)$, then
+$N_{\min}(R',e)\le N_{\min}(R,e)$ and
+$k_*(R)\le k_*(R')$ for a common cutoff above both stated thresholds.
+\end{proposition}
+
+\begin{proof}
+Use the depth $s=K-j$. Its quantities are
+\[
+ \widehat v_s=v_K+\tfrac{s}{2}\log L,\qquad
+ \widehat r_s=\min\{L^i:i\ge0,\ L^i\ge\widehat v_s^r\},\qquad
+ \widehat n_s(R)=T+s-\log_L(M\widehat r_s).
+\]
+They do not depend on $N$. At depth $s=K-j$ they
+equal $v_j,r_j,\mathfrak n_j$, while
+$a_j=hL^{-s}$ and $\ell_j=L^{T+s}$.
+Since $\widehat v_s\ge v_K$, the scalar condition gives
+\[
+ \widehat v_{s+1}^r
+   =\widehat v_s^r\left(1+\frac{\log L}{2\widehat v_s}\right)^r
+                    \le L\widehat v_s^r\le L\widehat r_s.
+\]
+Thus
+$\widehat r_{s+1}\in\{\widehat r_s,L\widehat r_s\}$
+and $\widehat n_{s+1}-\widehat n_s\in\{0,1\}$.
+Also $\widehat n_0\le0$ because $R\le R_{\mathrm{top}}$.
+Minimality of the rounded power gives
+$\widehat r_s<L\widehat v_s^r$ and hence
+\[
+ \widehat n_s>T+s-1-\log_LM-r\log_L(v_K+\tfrac{s}{2}\log L)
+                                                    \longrightarrow\infty .
+\]
+The integer sequence therefore has a largest zero.
+Denote its index by $s_*(R,e)$.
+It is nonpositive up to that index and at least $1$
+afterwards.
+
+The condition $\ell_0\ge LMr_0$ is
+$\widehat n_K\ge1$, equivalently $K>s_*$.
+Its exact threshold is
+\begin{equation}\label{eq:rgfl-mesh-threshold}
+ N_{\min}(R,e)=\max\{0,s_*(R,e)+1-\log_Lh\},
+             \qquad k_*(R)=K-s_*(R,e).
+\end{equation}
+This gives $1\le k_*\le K$ and
+$a_*=hL^{-s_*}$, proving cutoff independence of
+the terminal quantities.
+Increasing $T$ increases every $\widehat n_s$
+by the same integer; thus it decreases $s_*$,
+decreases $N_{\min}$ and increases $k_*$.
+
+For $j\le k_*$, the depth satisfies $K-j\ge s_*$.
+Monotonicity gives the asserted ranges of
+$\mathfrak n_j,r_j,v_j,e_j$, and the running mass
+increases with $j$.
+Moreover
+$\bar m h=L^{\lfloor\log_L(1/\bar m)\rfloor-\log_L(1/\bar m)}
+\in(1/L,1]$.
+Since $\mu_*\ell_*=\bar mR\ge\bar m h>1/L$,
+we obtain $\mu_*^{-1}<L\ell_*$.
+The rounded-power inequality at $v_*$ gives
+the two bounds for $\ell_*$ in
+\eqref{eq:rgfl-terminal-scales}; its last identity
+uses $e_*^2=e^2a_*$.
+
+Finally $r_*\ge v_*^r>31L+16>L$ implies
+$r_*\ge L^2$, as it is a power of $L$.
+At every required level,
+$\ell_j/(LM)=r_jL^{\mathfrak n_j-1}$
+is a positive power of the odd integer $L\ge13$.
+This proves $\ell_j\in\mathrm{Cl}$.
+Before the stop $\mathfrak n_j\ge1$, giving the
+stronger side bound. The mass and charge bounds
+for the step follow at $j+1$.
+\end{proof}
+
+On $R^*$ define the reference mesh threshold
+\begin{equation}\label{eq:rgfl-reference-threshold}
+                    N_{\mathrm{ref}}(e)=N_{\min}(R^*(e),e).
+\end{equation}
+The stop on this torus has depth $s_*\in\{1,2\}$.
+Indeed, for $s=1,2,3$ the stronger inequality in
+\eqref{eq:rgfl-scale-smallness} gives
+$\widehat r_s\in\{r_K,Lr_K\}$.
+On $R^*$,
+$\widehat n_s=s-1-\log_L(\widehat r_s/r_K)$.
+Its values at $s=0,1,2,3$ are respectively
+$-1$, an element of $\{-1,0\}$, an element of
+$\{0,1\}$, and an element of $\{1,2\}$.
+The zero-step-or-one-step rule forces the last zero
+to be $1$ or $2$. On $R_{\mathrm{top}}$ the sequence
+is larger by one, so its last zero is $0$ or $1$.
+Consequently
+\begin{equation}\label{eq:rgfl-reference-stop}
+ \begin{gathered}
+ k_*(R^*)\in\{K-1,K-2\},\qquad
+ a_*\in\{h/L,h/L^2\},\qquad r_*\in\{r_K,Lr_K\},\\
+ k_{\mathrm{top}}\in\{K,K-1\},\qquad
+ L^{-3}<\mu_*\le L^{-1}\quad\text{on }R^* .
+ \end{gathered}
+\end{equation}
+All these physical terminal values are independent
+of $N\ge N_{\mathrm{ref}}(e)$.
+
+The scale proposition verifies every side, mass
+and charge hypothesis of the step theorem
+on $R_{\mathrm{top}}$ and on the smaller tori it covers with odd degree.
+At each level use the top system of
+\cref{subsec:rgcov-top-system}; on a smaller
+torus use its projection from
+\cref{prop:rgcov-projected-system}.
+These are the actual mean-field, covariance,
+local resolvent and photon families constructed
+earlier, with the same common estimates.
+The ratio $R_{\mathrm{top}}/R$ is a power of the
+odd integer $L$, and $k_*(R)\le k_{\mathrm{top}}$.
+Thus the required top families exist whenever
+a smaller-volume step is used.
+Furthermore
+$\ell_{j+1}(R)\ge Mr_{j+1}>(31L+16)M$;
+the next-side hypothesis of the cover comparison
+holds at every such step.
+

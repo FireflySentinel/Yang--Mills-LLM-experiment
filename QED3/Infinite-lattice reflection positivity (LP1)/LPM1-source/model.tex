@@ -1,0 +1,447 @@
+\section{The chamber regularization}\label{sec:regularization}
+
+The photon field is a real one-cochain on the cubic lattice. The fermion
+has one site in each chamber of the lattice mirrors. This choice has a
+specific consequence: a fermion bond crossing a mirror joins a site to
+its reflected site and is perpendicular to the mirror. The hopping term
+then admits a positive reflected expansion. We prove this expansion and
+the resulting finite-volume reflection positivity below. The construction
+also requires a nonzero partition function when the bare mass has
+undetermined sign. For this purpose we identify a nonzero coefficient
+of the fermion determinant, independent of the mass. We reproduce the
+chamber construction and this normalization argument from
+\cite[Sections~2.1--2.3, 3.1--3.5 and 4.1--4.4]{ChamberQED}.
+
+Throughout this section, $0<\rho<1$, $q>0$, and the mass parameter $M$
+is real. The hopping weights $w_0,\ldots,w_3$ are positive. All constants may depend on these fixed parameters unless a uniform
+bound is stated.
+
+\subsection{The photon field and the flux sum}\label{subsec:reg-photon}
+
+We orient each link $(x,\mu)$ from $x$ to $x+e_\mu$ and each plaquette
+$(x;\mu\nu)$, $\mu<\nu$, by the ordered pair $(e_\mu,e_\nu)$.
+The real $k$-cochains are denoted by $C^k$, and the integer cochains by
+$C^k(\Z)$. The coboundary $d$ and its adjoint $d^*$ use these
+orientations. Thus
+\begin{equation}\label{eq:reg-coboundary}
+ (dA)_{\mu\nu}(x)=A_\mu(x)+A_\nu(x+e_\mu)
+                     -A_\mu(x+e_\nu)-A_\nu(x).
+\end{equation}
+An oriented link may also be written as a pair of its endpoints;
+$A(y,x)=-A(x,y)$ and $A(x,x)=0$. Pullback by a lattice isometry includes
+the orientation of the image cell. In particular, pullback commutes
+with $d$. For a coordinate reflection, this gives a minus sign on
+the curvature components containing the normal direction and a
+plus sign on the tangential component. These are the two-form
+reflection signs used throughout.
+
+Let $\Gamma\subset\Z^3$ be a rank-three subgroup with
+\[
+ \min\{|g|_\infty:g\in\Gamma\setminus\{0\}\}\ge4.
+\]
+We write $C^k(\Gamma)$ for the cochains on $\Z^3/\Gamma$ and identify
+them with their periodic extensions. The torus has
+$V=[\Z^3:\Gamma]$ photon sites, $3V$ links and $3V$ plaquettes. The
+inner product on real cochains is the sum over positively oriented
+cells, and $\|\cdot\|$ denotes its norm.
+
+A photon configuration is a class in
+\begin{equation}\label{eq:reg-configuration}
+ \operatorname{Conf}(\Gamma)
+ =\{(A,z):A\in C^1(\Gamma),\ z\in C^2(\Gamma;\Z),\ dz=0\}/\!\sim,
+ \qquad
+ (A,z)\sim\left(A+\frac{2\pi}{q}k,z-dk\right),
+\end{equation}
+where $k\in C^1(\Gamma;\Z)$. Its curvature and link phases are
+\begin{equation}\label{eq:reg-curvature}
+ F=dA+\frac{2\pi}{q}z,
+ \qquad u_b=\exp(iqA(b)).
+\end{equation}
+Both are independent of the representative, and $dF=0$. The integer
+cochain is required to be closed; there is no restriction on its flux.
+The curvature therefore remains a real, unbounded field.
+
+Put $r_q=2\pi/q$. Each class has a unique representative with
+$A(b)\in[0,r_q)$ at every link. The measure on the quotient is defined
+by
+\begin{equation}\label{eq:reg-configuration-integral}
+ \int_{\operatorname{Conf}(\Gamma)}\Phi(A,z)\,\dd(A,z)
+ =\sum_{\substack{z\in C^2(\Gamma;\Z)\\dz=0}}
+       \int_{[0,r_q)^{3V}}\Phi(A,z)\,\dd A.
+\end{equation}
+This formula holds for nonnegative measurable functions and for
+absolutely integrable complex functions. Any measurable fundamental
+domain may be used instead. Indeed, the changes of representative
+preserve Lebesgue measure in $A$ and counting measure in $z$.
+
+We will repeatedly use the finite number
+\begin{equation}\label{eq:reg-gaussian-sum}
+ C_q(\varepsilon)=\sup_{y\in\R}\sum_{j\in\Z}
+                  e^{-\varepsilon(y+r_qj)^2},\qquad \varepsilon>0.
+\end{equation}
+It satisfies
+\[
+ C_q(\varepsilon)\le2+\frac{q}{2\pi}\sqrt{\frac{\pi}{\varepsilon}}.
+\]
+To see this, retain the two terms nearest the origin and bound each
+remaining term by $r_q^{-1}$ times the Gaussian integral over the
+adjacent interval of length $r_q$ closer to the origin. Those intervals
+have disjoint interiors. Write $C_q=C_q(1/2)$. Dropping the constraint
+$dz=0$ in the flux sum gives
+\begin{equation}\label{eq:reg-maxwell-integral}
+ 0<\int_{\operatorname{Conf}(\Gamma)}e^{-\|F\|^2/2}\,\dd(A,z)
+ \le(r_qC_q)^{3V}.
+\end{equation}
+The lower bound follows already from $z=0$; for the upper bound, sum
+each $z_\sigma$ separately at fixed $A$.
+
+The periodic extensions of the curvatures lie in
+\[
+ \Omega=\{F\in C^2:dF=0\},
+\]
+with the topology of pointwise convergence on plaquettes. This is a
+closed subspace of a countable product of copies of $\R$. Local
+observables depend on finitely many plaquette values. For a finitely
+supported real two-cochain $\beta$, the character
+$\exp(i\langle\beta,F\rangle)$ is bounded and continuous on $\Omega$.
+
+\subsection{Chambers and the fermion graph}\label{subsec:reg-chambers}
+
+The lattice mirrors are
+\begin{equation}\label{eq:reg-mirrors}
+ \{x_\mu=c\},\quad c\in\tfrac12\Z,
+ \qquad
+ \{x_\mu\pm x_\nu=c\},\quad c\in\Z,\quad\mu<\nu.
+\end{equation}
+They form three coordinate families and six diagonal families. Let
+$\mathcal L$ be the corresponding linear forms $\ell$ and write
+$\ell(x)=n_\ell\cdot x$. The admissible positions are
+$\operatorname{Adm}(x_\mu)=\frac12\Z$ and
+$\operatorname{Adm}(x_\mu\pm x_\nu)=\Z$. The reflection in a mirror
+$\Pi=(\ell,c)$ is
+\begin{equation}\label{eq:reg-reflection}
+ \theta_\Pi x=x-\frac{2(\ell(x)-c)}{|n_\ell|^2}n_\ell.
+\end{equation}
+Its upward normal is $n_\ell/|n_\ell|$. Coordinate mirrors at integer
+positions are called site planes, and those at half-integer positions
+are called link planes.
+
+The group generated by these reflections is
+\[
+ W=\Z^3\rtimes O_{\mathrm{cub}},
+ \qquad O_{\mathrm{cub}}=O(3)\cap\operatorname{GL}(3,\Z).
+\]
+Here $O_{\mathrm{cub}}$ consists of the $48$ signed permutation matrices.
+A fundamental chamber is
+\[
+ C_0=\{0<x_3<x_2<x_1<\tfrac12\}.
+\]
+Its wall reflections are
+\begin{align*}
+ s_0(x)&=(x_1,x_2,-x_3),&
+ s_1(x)&=(x_1,x_3,x_2),\\
+ s_2(x)&=(x_2,x_1,x_3),&
+ s_3(x)&=(1-x_1,x_2,x_3).
+\end{align*}
+Denote the walls by $\Pi_i$ and their inward unit normals by
+\begin{equation}\label{eq:reg-wall-normals}
+ n_0=e_3,\quad n_1=(e_2-e_3)/\sqrt2,
+ \quad n_2=(e_1-e_2)/\sqrt2,\quad n_3=-e_1.
+\end{equation}
+
+Fix $v_0=(v_1,v_2,v_3)\in C_0$. The fermion sites and their neighbours
+are
+\begin{equation}\label{eq:reg-fermion-sites}
+ \mathcal X=Wv_0,\qquad (gv_0)^{(i)}=gs_iv_0.
+\end{equation}
+The unordered bond $\{x,x^{(i)}\}$ has type $i$. A site has the unique
+form $x=k+rv_0$, with $k\in\Z^3$ and $r\in O_{\mathrm{cub}}$; put
+$\pi(x)=k$ and $y(x)=rv_0$. Thus $\pi(x)$ is its nearest photon site.
+
+\begin{proposition}\label{prop:reg-geometry}
+The chambers are precisely $gC_0$, $g\in W$, and $W$ acts on them
+simply transitively. No fermion site lies on a mirror. Every bond
+crosses exactly one mirror, its chamber wall, and crosses it
+orthogonally at its midpoint. Consequently a bond crossing $\Pi$ is
+$\{x,\theta_\Pi x\}$.
+
+The projection $\pi$ is $W$-equivariant. Bonds of types $0,1,2$ have
+the same photon site at both ends; a type-$3$ bond joins two nearest
+photon sites. Exactly eight fermion bonds lie over each photon link.
+If a mirror does not cut the link and its open segment lies on one
+side, all eight bonds lie on that side.
+The graph is connected and bipartite, and each site has one neighbour
+of each type.
+\end{proposition}
+
+\begin{proof}
+Coordinate reflections and coordinate transpositions generate
+$O_{\mathrm{cub}}$, and
+$\theta_{x_\mu,1/2}\theta_{x_\mu,0}=\tau_{e_\mu}$ gives the
+translations. Conversely, \eqref{eq:reg-reflection} is an affine signed
+permutation with integer translation, so the mirror group is $W$.
+
+For a point on no mirror, subtract the unique nearest lattice point.
+The resulting three coordinates are nonzero, have distinct absolute
+values, and lie in $(-1/2,1/2)$. There is exactly one signed
+permutation making them positive and decreasing. This places the
+point in exactly one translate of $C_0$. These translates are disjoint
+open convex sets, meet no mirror, and cover its complement. They are
+therefore the chambers, with the asserted free transitive action.
+
+For the four bonds from $v_0$, the midpoint is, respectively,
+\[
+ (v_1,v_2,0),\quad
+ (v_1,(v_2+v_3)/2,(v_2+v_3)/2),\quad
+ ((v_1+v_2)/2,(v_1+v_2)/2,v_3),\quad
+ (1/2,v_2,v_3).
+\]
+Each belongs to the relative interior of its wall and to no other
+mirror. Each half of the bond, except its midpoint, lies in one of
+the two adjacent chambers. Transport by $g\in W$ proves the bond
+assertion at every site.
+
+In the coordinates $x=k+rv_0$, the first three neighbours are
+$k+rs_iv_0$, whereas the fourth is
+$k+re_1+rr_{e_1}v_0$, where $r_{e_1}$ changes the sign of the first
+coordinate. This proves the statements about $\pi$ and its
+equivariance. Over $(k,\mu)$ the lower ends are exactly the eight
+sites for which $y_\mu=v_1$: the remaining two absolute values can
+be ordered in two ways, with four choices of their signs. Their
+type-$3$ neighbours are the upper ends of these eight bonds.
+
+The bond over $b=(k,\mu)$ has the segment
+$k+te_\mu+y_\perp$, $v_1\le t\le1-v_1$, where the other two
+coordinates of $y_\perp$ have absolute values $v_2,v_3$. For a
+diagonal height involving $x_\mu$, its varying part is
+$t\pm y_\nu\in(0,1)$, the same interval between integers as on the
+open photon link. For heights not involving $x_\mu$, the changes
+are $y_\nu$ or $y_\nu\pm y_{\nu'}$, whose absolute values are
+smaller than $1/2$ or $1$, respectively. Away from a mirror
+containing $b$ these preserve its side. The coordinate height
+$x_\mu$ gives the same side except at the unique link plane through
+the midpoint, which cuts $b$. This proves the assertion about
+photon links.
+
+The generators $s_0,s_1,s_2$ generate the signed permutations, and
+$s_3r_{e_1}=\tau_{e_1}$; conjugation gives all coordinate translations.
+Thus the four wall reflections generate $W$, proving connectivity.
+The two parts are the sites $gv_0$ with $\det r=1$ and with
+$\det r=-1$, since each neighbour changes this determinant.
+\end{proof}
+
+The geometric location records reflection, while $(k,r)$ labels the
+fermion sites by a photon site and a signed permutation. If
+$d_i=\operatorname{dist}(v_0,\Pi_i)$, then
+\[
+ x^{(i)}-x=-2d_i\,rn_i,
+ \qquad \frac{x^{(i)}-x}{|x^{(i)}-x|}=-rn_i.
+\]
+The directions, bond types and projected endpoints in these
+coordinates do not depend on $v_0$. Hence neither the operator below
+nor its determinant depends on $v_0$ after this identification.
+\subsection{The chamber operator and the finite-volume law}
+\label{subsec:reg-law}
+
+Let $\sigma_\mu$ be the Pauli matrices and
+\[
+ \gamma_\mu=\diag(\sigma_\mu,-\sigma_\mu),\qquad
+ \gamma_v=\sum_\mu v_\mu\gamma_\mu.
+\]
+They form a Hermitian Clifford triple. For a unit vector $n$, put
+$P_n^\pm=(1\pm\gamma_n)/2$. Both projections have rank two, and
+\begin{equation}\label{eq:reg-clifford-reflection}
+ \gamma_n\gamma_v\gamma_n=-\gamma_{r_nv},\qquad
+ r_nv=v-2(v\cdot n)n.
+\end{equation}
+This follows by multiplying
+$\gamma_n\gamma_v+\gamma_v\gamma_n=2n\cdot v$ by $\gamma_n$.
+
+For an oriented bond $(x,x')$ of type $i$ define
+\begin{equation}\label{eq:reg-hop}
+ U_A(x,x')=\exp(iqA(\pi(x),\pi(x'))),\qquad
+ w(x,x')=\frac{w_i}{2}\left(\rho-\gamma_{(x'-x)/|x'-x|}\right).
+\end{equation}
+The chamber operator is
+\begin{equation}\label{eq:reg-dirac}
+ (\mathcal D_A\psi)(x)=M\psi(x)-\sum_{i=0}^3
+                   w(x,x^{(i)})U_A(x,x^{(i)})\psi(x^{(i)}).
+\end{equation}
+Its lattice mass is
+\begin{equation}\label{eq:reg-lattice-mass}
+ m=M-\frac\rho2\sum_iw_i.
+\end{equation}
+A fermion boundary condition is a character
+$\chi:\Gamma\to\{1,-1\}$. Write $\mathbb T=(\Gamma,\chi)$.
+Its spinors satisfy $\psi(x+g)=\chi(g)\psi(x)$ for $g\in\Gamma$.
+The restriction $\mathcal D_A^{\mathbb T}$ acts on a space of dimension $192V$,
+with the inner product obtained by summing over representatives of
+$\mathcal X/\Gamma$. For each site introduce generators
+$\psi_\alpha(x),\bar\psi_\alpha(x)$, $1\le\alpha\le4$, obeying the same
+boundary conditions. Their Grassmann algebra is denoted by
+$\operatorname{Gr}_{\mathbb T}$. Its Berezin integral is normalized by
+\begin{equation}\label{eq:reg-berezin}
+ \int_{\mathbb T}\prod_{x\in\mathcal X/\Gamma}
+                  \prod_{\alpha=1}^4\psi_\alpha(x)\bar\psi_\alpha(x)=1.
+\end{equation}
+Products of pairs are even, so their ordering is immaterial. With
+$S_{\mathbb T}(A)=\sum_x\bar\psi(x)(\mathcal D_A\psi)(x)$, this normalization
+gives $\int_{\mathbb T}e^{-S_{\mathbb T}(A)}=\det \mathcal D_A^{\mathbb T}$.
+
+The unnormalized functional is
+\begin{equation}\label{eq:reg-functional}
+ Z_{\mathbb T}[G]=\int_{\operatorname{Conf}(\Gamma)}
+      e^{-\|F\|^2/2}\int_{\mathbb T}e^{-S_{\mathbb T}(A)}G(A,z)
+      \,\dd(A,z).
+\end{equation}
+For a scalar $G$ the inner integral is
+$G(A,z)\det \mathcal D_A^{\mathbb T}$. For a Grassmann-valued integrand,
+absolute convergence is understood coefficient by coefficient.
+Bounded measurable coefficients suffice: $e^{-S_{\mathbb T}(A)}$
+has finitely many coefficients, each a polynomial in the link phases,
+and \eqref{eq:reg-maxwell-integral} supplies an integrable majorant.
+
+\begin{proposition}\label{prop:reg-determinant-sign}
+For every real $A$ and $M$,
+\[
+ \det \mathcal D_A^{\mathbb T}\ge0,
+ \qquad
+ \|\mathcal D_A^{\mathbb T}\|\le |M|+\frac{1+\rho}{2}\sum_iw_i.
+\]
+Moreover $\Re \mathcal D_A^{\mathbb T}=m+\frac\rho2\nabla_A^*\nabla_A$, where
+\[
+ (\nabla_A\psi)(x,i)=\sqrt{w_i/2}\,
+           \bigl(\psi(x)-U_A(x,x^{(i)})\psi(x^{(i)})\bigr).
+\]
+The determinant is not identically zero as a function of the link
+phases, for every real mass parameter $M$.
+\end{proposition}
+
+\begin{proof}
+Write
+\[
+ H_A\psi(x)=\sum_iw_iU_A(x,x^{(i)})\psi(x^{(i)}),\qquad
+ J_A\psi(x)=\sum_iw_i\gamma_{(x^{(i)}-x)/|x^{(i)}-x|}
+                         U_A(x,x^{(i)})\psi(x^{(i)}).
+\]
+Reversing a bond conjugates its phase and reverses its direction.
+Reindexing by the involution $x\mapsto x^{(i)}$ therefore gives
+$H_A^*=H_A$ and $J_A^*=-J_A$. Hence
+\[
+ \mathcal D_A=M-\frac\rho2H_A+\frac12J_A,\qquad
+ \nabla_A^*\nabla_A=\sum_iw_i-H_A.
+\]
+This proves the real-part identity. In the splitting
+$\C^4=\C^2\oplus\C^2$, the two blocks of $H_A$ coincide, and the two
+blocks of $J_A$ have opposite signs. It follows that
+\begin{equation}\label{eq:reg-two-blocks}
+ \mathcal D_A^{\mathbb T}=\diag(\check{\mathcal D}_A^{\mathbb T},
+                                      (\check{\mathcal D}_A^{\mathbb T})^*),
+ \qquad \det \mathcal D_A^{\mathbb T}=|\det\check{\mathcal D}_A^{\mathbb T}|^2.
+\end{equation}
+Each hopping matrix has norm $w_i(1+\rho)/2$, while the associated
+translation with phase is unitary. Their sum gives the norm bound.
+
+For the last assertion we view the determinant as a Laurent
+polynomial $P_{\mathbb T}$ in the independent variables $u_b$.
+Only type-$3$ bonds contain a variable, with $u_b$ at the lower end
+and $u_b^{-1}$ at the upper end. Fix a coordinate direction $\mu$.
+The coefficient of
+\begin{equation}\label{eq:reg-extreme-monomial}
+ \prod_{b\parallel e_\mu}u_b^{32}
+\end{equation}
+will be computed without using $M$.
+
+Partition the sites modulo $\Gamma$ into six layers according to
+the increasing values
+\[
+ y_\mu=-v_1,-v_2,-v_3,v_3,v_2,v_1.
+\]
+Each layer has $8V$ sites. Each site has one upward neighbour,
+one downward neighbour, and two neighbours in its own layer. The
+upward map is a permutation of the sites and visits successive layers
+modulo six. Its bond types are
+\begin{equation}\label{eq:reg-upward-types}
+ (i_1,i_2,i_3,i_4,i_5,i_6)=(2,1,0,1,2,3).
+\end{equation}
+For layers $1,\ldots,5$ the upward phase is one; in layer six it is
+$u_b$ for the link $(\pi(x),\mu)$. These facts follow by changing the
+smallest sign or exchanging successive absolute values in the
+neighbour formulas above. The sixth step changes $v_1$ to $-v_1$
+and increases the photon coordinate by one.
+
+There are eight lower and eight upper fermion ends over each photon
+link, each carrying four matrix rows. An exponent $32$ at a link
+therefore requires every lower row to take the upward type-$3$
+block and every upper row to avoid the reverse block. Imposing this
+at all links in direction $\mu$ forces every row in every layer to
+take its upward block. Indeed, layer-six rows fill all columns in
+layer one. A layer-one row cannot then use a column in its own layer,
+and the reverse block is excluded by the exponent condition; it must
+go upward to layer two. Inductively the columns in the current and
+preceding layers are already occupied, so layers two through five
+must also go upward. The selected terms use no other link variables.
+
+The remaining freedom is a permutation of the four spin indices at
+each site. The site permutation, repeated four times, has sign one.
+Summing over the spin permutations therefore gives the product of
+the $4\times4$ determinants of the selected hopping blocks. The
+boundary signs have fourth power one, and
+\[
+ \det w(x,x^\uparrow)
+   =(w_{i_k}/2)^4(1-\rho^2)^2
+\]
+at a site in layer $k$. Consequently the coefficient of
+\eqref{eq:reg-extreme-monomial} is $C_*^V$, where
+\begin{equation}\label{eq:reg-extreme-coefficient}
+ C_*=(w_0/2)^{32}(w_1/2)^{64}(w_2/2)^{64}(w_3/2)^{32}
+                                           (1-\rho^2)^{96}>0.
+\end{equation}
+This coefficient is independent of $M$. In particular the determinant
+polynomial, and its restriction to the phase torus, are nonzero.
+\end{proof}
+
+The real-part estimate alone would require control of the sign of
+$m$ to prove invertibility. The coefficient computation instead
+proves that the determinant has positive integral at every real $M$,
+which is all that is needed to define the law.
+
+\begin{proposition}\label{prop:reg-partition}
+The partition function satisfies $0<Z_{\mathbb T}[1]<\infty$.
+More precisely,
+\begin{equation}\label{eq:reg-partition-bounds}
+ r_q^{3V}e^{-6r_q^2V}C_*^V
+ \le Z_{\mathbb T}[1]
+ \le(r_qC_q)^{3V}\left(|M|+\frac{1+\rho}{2}\sum_iw_i\right)^{192V}.
+\end{equation}
+Thus $\E_{\mathbb T}[G]=Z_{\mathbb T}[G]/Z_{\mathbb T}[1]$ defines a
+probability law on scalar observables. Its curvature law
+$\mu_{\mathbb T}$ is the law of the periodic extension $\widetilde F$
+on $\Omega$.
+\end{proposition}
+
+\begin{proof}
+For a nonnegative Laurent polynomial $P$ on the phase torus, every
+Fourier coefficient satisfies
+\[
+ |\widehat P(\lambda)|
+ =\left|\int P(u)\overline{u^\lambda}\,\dd u\right|
+ \le\int P(u)\,\dd u,
+\]
+where Haar measure is normalized. By the preceding proposition and
+\eqref{eq:reg-extreme-coefficient},
+\[
+ \int_{[0,r_q)^{3V}}\det \mathcal D_A^{\mathbb T}\,\dd A
+ \ge r_q^{3V}C_*^V.
+\]
+On this box $|(dA)_\sigma|\le2r_q$ and
+$\|dA\|^2\le12Vr_q^2$. The $z=0$ term in
+\eqref{eq:reg-functional} gives the lower bound in
+\eqref{eq:reg-partition-bounds}. For the upper bound use
+$|\det \mathcal D_A^{\mathbb T}|\le\|\mathcal D_A^{\mathbb T}\|^{192V}$ and
+\eqref{eq:reg-maxwell-integral}. The density
+$e^{-\|F\|^2/2}\det \mathcal D_A^{\mathbb T}$ is nonnegative. After division
+by its strictly positive integral it is a probability density, whose
+image under $(A,z)\mapsto\widetilde F$ is the asserted law.
+\end{proof}
+

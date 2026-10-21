@@ -1,0 +1,679 @@
+\section{Localizing the fluctuation activity}\label{sec:rg-nonlinear-step}
+
+The finite fluctuation integral in
+\eqref{eq:rg-step-fluctuation-exponent} has a logarithm which is a
+sum of local activities. Its construction has two localizations.
+The first resolves the change of background and reconstructs
+the coarse mean; the second resolves the fermion fluctuations.
+After these finite operations, a connected-polymer expansion
+gives the logarithm. The estimates below apply also to the first
+step, where the fluctuation generators have chamber measure
+$1/48$.
+
+\subsection{Contour domains and localization}
+\label{subsec:rgnl-domains}
+
+Keep the admissible sides, mass and charge of
+\cref{sec:rg-step}, and assume in addition
+$\ell\ge Mr_k$. Put $e=e_k$, $h=(h_{k,1},h_{k,2})$.
+The weakened photon and fermion primitives are taken on the
+polydisk
+\[
+ \mathrm{Pd}_k=\{s=(s',s''):|s_{\mathrm{pc}}|\le M^{\alpha_0}\}.
+\]
+Here $s'=(s'_M,s'_{LM})$ contains the photon reconstruction
+and square-root parameters, of kinds $\pi_M,\pi_{LM}$ in
+\exteq{37}{MaxwellBlockManuscript}; $s''$ contains the
+fermion $M$-cube parameters $\pi_k$ of
+Section~\extref{4.1}{FermionBlockManuscript}.
+We assume their analytic kernel and H\"older estimates,
+component restriction, row vanishing and coefficient support
+with common constants $(\alpha_0,\gamma_w,\kappa_w;C_w)$,
+where $\kappa_w=\kappa+\kappa_0+3$.
+The photon hypotheses are those of
+Proposition~\extref{5.1}{MaxwellBlockManuscript},
+\exteq{42}{MaxwellBlockManuscript} and the component
+restriction following them. The fermion hypotheses are those of
+Propositions~\extref{4.1}{FermionBlockManuscript} and
+\extref{4.3}{FermionBlockManuscript}, including
+\exteq{57}{FermionBlockManuscript},
+\exteq{58}{FermionBlockManuscript}, and their covariance
+identities. At parameter value one all families equal the
+exact operators. Their gauge, lattice, transpose and reality
+actions are the actions of those exact operators with the
+parameters transformed accordingly. At level zero we retain
+the stated diagonal families and the chamber covariance
+with measure $1/48$.
+
+The quantitative assumptions are those of \cref{thm:rgnl-current-step}.
+
+For $\zeta\in\mathrm{Box}_k$, write
+\begin{equation}\label{eq:rgnl-weakened-photon}
+ Z(s')=H_k^{\mathrm{ph}}(s')C C_k^{1/2}(s')\zeta .
+\end{equation}
+In this formula $C$ is the real photon coordinate map of
+\exteq{21}{MaxwellBlockManuscript}. The diagonal photon
+family is used at $k=0$. For a bond field $Z$ set
+\[
+ |Z|_*=\max\{\|Z\|_\infty,\|\partial Z\|_\infty,
+                              \|\delta_\alpha\partial Z\|_\infty\}.
+\]
+The three thresholds defining $R_k$ are
+$\theta_i=e^{-3/4+i\varepsilon}$, $i=1,2,3$.
+Thus $\widetilde R_k^-$ consists of the permitted real-gauge
+part plus a field satisfying the three strict bounds
+$(1-e^\varepsilon)\theta_i$.
+Introduce the radii
+\begin{equation}\label{eq:rgnl-contour-radii}
+ r_1=\tfrac12e^{-3/4+9\varepsilon/2},\qquad
+ r_2=e^{-3/4+7\varepsilon},\qquad
+ r_4=e^{-1/4+3\varepsilon}.
+\end{equation}
+
+\begin{proposition}\label{prop:rgnl-contour-domains}
+For every $s\in\mathrm{Pd}_k$ and
+$\zeta\in\mathrm{Box}_k$,
+\[
+ |Z(s')|_*\le\tfrac12e^{-\varepsilon/2}.
+\]
+The radii satisfy $2\le r_2,r_4\le r_1$ and
+$(r_i-1)^{-1}\le2/r_i$, $i=2,4$.
+If $A\in\widetilde R_k^-$, $\mathscr C\in\mathfrak X_k$,
+and $|Z|_*\le\tfrac12e^{-\varepsilon/2}$, then
+\[
+ A+tZ\in\widetilde R_k,\qquad
+ A+\mathscr C+tZ\in\widetilde{\mathcal G}_k
+                  \quad (|t|\le r_1).
+\]
+\end{proposition}
+
+\begin{proof}
+The square-root kernel is bounded by
+$C_w\exp(-\gamma_w d(\Upsilon,\Upsilon'))$.
+The summability constant $c_\gamma$ and
+the coordinate bound $|\zeta(\Upsilon')|\le p_{0,k}
+\le e^{-\varepsilon/4}$ give
+\[
+ \sup_\Upsilon|(C_k^{1/2}(s')\zeta)(\Upsilon)|
+                                      \le C_wc_\gamma e^{-\varepsilon/4}.
+\]
+The coordinate map is real. Its bound
+$\|Cv\|_\infty\le c_C\sup_\Upsilon|v(\Upsilon)|$
+also gives the absolute row bound
+$\sum_\Upsilon|C(b,\Upsilon)|\le c_C$:
+apply the real bound to the signs of the entries of a fixed
+row. Therefore
+\[
+ \|CC_k^{1/2}(s')\zeta\|_\infty
+                                  \le c_CC_wc_\gamma e^{-\varepsilon/4}.
+\]
+Each of the reconstruction, derivative and H\"older derivative
+kernels has the same summable exponential bound. Consequently
+\[
+ |Z(s')|_*\le c_CC_w^2c_\gamma^2 e^{-\varepsilon/4}
+                                          \le\tfrac12 e^{-\varepsilon/2},
+\]
+where the last inequality is
+$2c_CC_w^2c_\gamma^2e^{\varepsilon/4}\le1$.
+At level zero the polynomial diagonal family has the same
+row bounds: its constant is
+$4\exp(2\gamma_w)M^{27\alpha_0}\le C_w$.
+
+Since $\varepsilon\le1/200$,
+\[
+ \frac{r_2}{r_1}=2e^{5\varepsilon/2}\le1,\qquad
+ \frac{r_4}{r_1}=2e^{1/2-3\varepsilon/2}
+                                      \le2e^{5\varepsilon/2}\le1.
+\]
+The small-charge condition
+$88M^3e^{1/4-6\varepsilon}\le1$ gives
+$r_4^{-1}=e^{1/4-3\varepsilon}\le1/88$ and
+$r_2^{-1}\le r_4^{-1}$.
+In particular both radii are at least $2$, and their stated
+inverse bounds follow.
+
+For $|t|\le r_1$ the three norms of $tZ$ are at most
+$\frac14e^{-3/4+4\varepsilon}$, strictly less than
+$e^\varepsilon\theta_3$. Adding this field fills less than the
+margin in each of the three defining bounds of
+$\widetilde R_k^-$. The permitted gauge part is unchanged.
+Hence $A+tZ\in\widetilde R_k$.
+Finally $\widetilde R_k+\mathfrak X_k
+\subset\widetilde{\mathcal G}_k$ gives the second inclusion.
+\end{proof}
+The first-step vertex estimate
+\eqref{eq:rg-step-first-vertex-small-bound} now applies to
+$Z(s')$ for every weakening parameter. In particular,
+$96M^3e^{1/4}\le1$ gives its bound
+$e^{1/4-5\varepsilon}$ in the $h/2$ norm.
+
+Let $B=A+\mathscr C$.
+The arguments of $H_k^\#$ are independent pairs
+$(\Phi,\bar\Phi)$; in $H_k^\#\Phi$ the single symbol denotes
+this pair. Write
+$\psi^\#=(\psi,\chi;\bar\psi,\bar\chi)$ for the ordinary,
+pair, barred ordinary and barred pair generators, respectively.
+Then
+\[
+ \begin{aligned}
+ H_k^\#(s'',B)\Phi
+   ={}&(H_k(s'',B)\Phi,\delta_{\alpha,B}H_k(s'',B)\Phi;\\
+       &
+       \bar H_k(s'',B)\bar\Phi,
+                       \delta_{\alpha,-B}\bar H_k(s'',B)\bar\Phi),\\
+ \bar H_k(s'',B)&=\mathsf C^{-1}H_k(s'',-B)\mathsf C.
+ \end{aligned}
+\]
+Define
+$J_k^\#(s'',B,Z)=H_k^\#(s'',B+Z)-H_k^\#(s'',B)$ and
+\[
+ \widetilde\Gamma_k(s'',B)(W,\bar W)
+                         =(\Gamma_k(s'',B)W,\bar W),\qquad
+ W_k^\#(s'',B)=H_k^\#(s'',B)
+                         \big(\Gamma_k(s'',B)W,\bar W\big).
+\]
+The notation $J_k,\bar J_k$ denotes the components without
+H\"older quotient; $\mathrm{Wc},\overline{\mathrm{Wc}}$ denotes
+the corresponding components of $W_k^\#$.
+The auxiliary generators $W$ have weight
+$\mathsf w_W=1$ for $k\ge1$ and $\sqrt{48}$ for $k=0$.
+
+These fields are continuous in all closed polydisk and box
+variables and analytic in the open parameter polydisk and the
+connection variables. For the H\"older rows this follows
+directly from
+\[
+ (\delta_{\alpha,B}H_k)((x,x'),u)
+   =d_X(x,x')^{-\alpha}
+       \big(U_B(x,x')H_k(x',u)-H_k(x,u)\big).
+\]
+The transport is entire in $B$. \Cref{prop:rgnl-contour-domains}
+places every connection on the closed contours inside the
+open domain of the primitives. Thus compositions at
+$B+tZ(s')$ have the stated regularity also when the contour
+variable is on its circle.
+
+In the following localization, cubes and polymers are sets
+of photon sites. Containment refers to all their lattice sites,
+and two cubes meet when they share a lattice site.
+Let $P_0(X)$ be the parameter cubes contained in $X$.
+For a set $P$ of parameter cubes disjoint from $P_0(X)$, let $Y'(X,P)$ be the union of
+the $M$-cubes meeting $X$ or a cube of $P_0(X)\cup P$.
+For a continuous analytic family $G(s,X)$ define
+\begin{align}
+ \mathcal T_PG(X)
+  &=\int_{[0,1]^P}\dd s_P\,
+       \partial_PG(s,X)
+       \big|_{s=1\text{ on }P_0(X),\,
+                    s=0\text{ outside }P_0(X)\cup P},
+                          \label{eq:rgnl-interpolation}\\
+ \operatorname{Loc}G(Y)
+  &=\sum_{(X,P):Y'(X,P)=Y}\mathcal T_PG(X).
+                          \label{eq:rgnl-localization}
+\end{align}
+Repeated one-variable integration gives the useful identity
+\begin{equation}\label{eq:rgnl-finite-difference}
+ \mathcal T_PG(X)=
+    \sum_{Q\subseteq P}(-1)^{|P|-|Q|}
+                                 G(\mathbf1_{P_0(X)\cup Q},X).
+\end{equation}
+In particular, coefficient locality can be checked at
+indicator families; no statement about the convergence of
+the later logarithm is used here.
+
+\begin{lemma}\label{lem:rgnl-resummation}
+Suppose
+$\|G(s,X)\|\le B_0\exp(-\kappa'd_M(X))$ on the parameter
+polydisk, where $\kappa_0\le\kappa'\le\kappa$.
+Assume $\mathcal T_PG(X)=0$ whenever $Y'(X,P)$ is
+disconnected. Then
+\begin{gather}
+ \sum_Y\operatorname{Loc}G(Y)=\sum_XG(1,X),
+                         \label{eq:rgnl-localization-sum}\\
+ \|\operatorname{Loc}G(Y)\|
+   \le4c_XK_0B_0
+             \exp\big(-(\kappa'-\kappa_0-1)d_M(Y)\big).
+                         \label{eq:rgnl-resummation-bound}
+\end{gather}
+\end{lemma}
+
+\begin{proof}
+Applying $f(1)=f(0)+\int_0^1f'(t)\dd t$ in each parameter
+outside $P_0(X)$ gives $G(1,X)=\sum_P\mathcal T_PG(X)$.
+The sums are finite. After removing the vanishing disconnected
+terms, each term belongs to exactly one polymer $Y'(X,P)$.
+This proves \eqref{eq:rgnl-localization-sum}.
+
+Put $R=M^{\alpha_0}$. Cauchy's estimate on a polydisk of
+radius less than $R-1$ about each integration point, followed
+by the limit of these radii to $R-1$, gives
+\[
+ \|\mathcal T_PG(X)\|
+       \le B_0\exp(-\kappa'd_M(X))(R-1)^{-|P|}.
+\]
+If $Y'(X,P)=Y$, then $X\subseteq Y$ and
+$|Y\setminus X|_M\le N_c|P|$, since every added $M$-cube
+meets a parameter cube and each parameter cube meets at
+most $N_c=(2L+1)^3$ such cubes.
+To compare their tree lengths, order the cubes of $Y\setminus X$
+by graph distance from $X$. Each added cube is adjacent
+to a preceding one. Extend a net by a segment from
+a point of that preceding closed cube to their common
+face, of length at most $M$. Starting from an
+arbitrarily near-minimal net for $X$ gives
+$d_M(Y)\le d_M(X)+|Y\setminus X|_M$.
+Conversely every net for $Y$ is a net for $X$.
+Thus $0\le d_M(Y)-d_M(X)\le N_c|P|$.
+Writing $a_X=\log(6c_X)$, the condition
+$R-1\ge\exp(N_c\kappa+a_X)$ implies
+\[
+ \|\mathcal T_PG(X)\|
+ \le B_0\exp(-(\kappa'-\kappa_0)d_M(Y))
+             \exp(-\kappa_0d_M(X))\exp(-a_X|P|).
+\]
+At most $3|Y|_M$ parameter cubes are contained in $Y$.
+Hence
+\[
+ \sum_P\exp(-a_X|P|)
+       \le(1+(6c_X)^{-1})^{3|Y|_M}
+       \le \exp((d_M(Y)+1)/2).
+\]
+The polymer counting and size estimates give
+\[
+ \sum_{X\subseteq Y}\exp(-\kappa_0d_M(X))
+   \le K_0|Y|_M
+   \le2c_XK_0\exp(d_M(Y)/2).
+\]
+The product of the last two bounds is at most
+$4c_XK_0\exp(d_M(Y))$. Summing the estimate for
+$\mathcal T_PG(X)$ proves
+\eqref{eq:rgnl-resummation-bound}.
+\end{proof}
+
+\subsection{The two finite localizations}
+\label{subsec:rgnl-finite-localizations}
+
+For a function analytic near the closed disk $|t|\le r$, $r>1$,
+write
+\[
+ \mathcal C_rf=\frac1{2\pi i}\int_{|t|=r}
+                                      \frac{f(t)}{t(t-1)}\,\dd t .
+\]
+This is $f(1)-f(0)$ and satisfies
+$\|\mathcal C_rf\|\le(r-1)^{-1}\sup_{|t|=r}\|f(t)\|$.
+Let $(m,\mathscr E)\in\operatorname{Ball}_k^x(4)$ and set
+$m'=m+m(\mathscr E)$, $\mathscr E^r=R\mathscr E$.
+For $k\ge1$ define
+\begin{align}
+ G_1(s,X)&=\mathcal C_{r_1}
+                \langle\bar\Psi,M_k(X,B+tZ(s'))\Psi\rangle_1,
+                                      \label{eq:rgnl-G1}\\
+ G_2(s,X)&=\mathcal C_{r_2}\,
+       \mathscr E^r(X;A+tZ(s'),\mathscr C,
+                    \psi^\#+tJ_k^\#(s'',B,Z(s'))\Psi),
+                                      \label{eq:rgnl-G2}\\
+ G_3(s,\square)&=\mathcal C_{r_2}(-m')
+       \langle\bar\psi+t\bar J_k(s'',B,Z(s'))\bar\Psi,
+                         \psi+tJ_k(s'',B,Z(s'))\Psi\rangle_\square .
+                                      \label{eq:rgnl-G3}
+\end{align}
+The symbols $M_k(X,\cdot)$ denote the local Dirac primitives.
+A function defined for one cube is zero on the other polymers.
+Put
+\[
+ E_i^*(Y)=\operatorname{Loc}G_i(Y),\qquad
+ E_i(Y)=\operatorname{sub}_{Y,B}E_i^*(Y),\qquad
+ E_{\le3}=\sum_{i=1}^3E_i.
+\]
+The substitution is \eqref{eq:rg-step-local-substitution}.
+At $k=0$ there is no $\Psi$ and no substitution:
+$G_1(s,\square)=\mathcal V_0(Z(s'),\square)$,
+$G_2=G_3=0$, and $E_{\le3}=\operatorname{Loc}G_1$.
+All parameter kinds occur in this first localization.
+
+For the second localization, which uses only $\pi_k$, let
+$v=W_k^\#(s'',B)$ and define
+\begin{align}
+ G_{\le3}^{\,W}(s'',X)&=E_{\le3}(X;A,\mathscr C,\zeta,
+                                                      \psi^\#+v),
+                                      \label{eq:rgnl-GW}\\
+ G_4(s'',X)&=\mathcal C_{r_4}
+                  \mathscr E^r(X;A,\mathscr C,\psi^\#+tv),\\
+ G_5(s'',\square)&=\mathcal C_{r_4}(-m')
+                 \langle\bar\psi+t\overline{\mathrm{Wc}},
+                                   \psi+t\mathrm{Wc}\rangle_\square,\\
+ F(Y)&=\operatorname{Loc}(G_{\le3}^{\,W}+G_4+G_5)(Y).
+                                      \label{eq:rgnl-finite-activity}
+\end{align}
+At $k=0$ the term $G_4$ is zero and $m'=m$.
+
+\begin{proposition}\label{prop:rgnl-finite-locality}
+All finite expressions just defined exist on
+$\widetilde R_k^-\times\mathfrak X_k\times\mathrm{Box}_k$.
+The element $F(Y)$ is even, has ordinary legs over $Y$ and
+pair legs admissible for $Y$, and has fluctuation generators
+only at unit indices in $Y$. Its coefficients read $A,\mathscr C$
+only on bonds meeting $Y$ and read $\zeta$ only through the
+coordinates $\zeta(\Upsilon)$ with $\supp\Upsilon\subset Y$.
+They are continuous in these arguments and analytic in the
+connection variables. The same assertions hold for $E_{\le3}(Y)$,
+which has no fluctuation generators.
+
+The disconnected terms in both localizations vanish, and
+\begin{equation}\label{eq:rgnl-two-localization-sums}
+ \sum_YE_i^*(Y)=\sum_XG_i(1,X),\qquad
+ \sum_YF(Y)=\sum_X(G_{\le3}^{\,W}+G_4+G_5)(1,X).
+\end{equation}
+The finite expressions on $Y$ depend on the datum only through
+$m'$ and the $\mathscr E^r(X)$ with $X\subseteq Y$.
+\end{proposition}
+
+\begin{proof}
+We give the component argument which is responsible for
+locality. Let $\mathrm{Ps}=P_0(X)\cup P$, let
+$Y'=Y'(X,P)$ and let $Y'_1$ be its component containing $X$.
+Set the weakening parameters to zero outside $\mathrm{Ps}$.
+For each of the three parameter kinds, any link-component
+$\mathrm{Lnk}$ of $\mathrm{Ps}$ is contained in the polymer
+formed by the $M$-cubes meeting it. This polymer lies in one
+component of $Y'$. If a site of $Y'_1$ lies in $\mathrm{Lnk}$,
+or in the enlarged parameter cube of a photon kind, that
+polymer has a cube in common with $Y'_1$, and hence lies
+entirely in $Y'_1$.
+
+The row-vanishing property of the weakened photon families
+and their component restriction give, on any fine bond $b$
+meeting $Y'_1$,
+\begin{equation}\label{eq:rgnl-restricted-photon}
+ Z(s')(b)=
+  \sum_{\substack{b',\Upsilon,\Upsilon'\subset Y'_1}}
+   H_k^{\mathrm{ph}}(s')(b,b')C(b',\Upsilon)
+          C_k^{1/2}(s')(\Upsilon,\Upsilon')\zeta(\Upsilon').
+\end{equation}
+Indeed, the reconstruction row is zero unless $b$ lies in
+one link-component; its columns lie in that component.
+The coordinate map has columns supported in the $L$-blocks
+of the ends of $b'$, and each block lies in the $M$-cube of
+the corresponding end. The square-root row then has columns
+in its own link-component. Each component involved is
+attached to $Y'_1$ by the preceding argument.
+These rows are unchanged if the parameters outside $Y'_1$
+are changed while their common zero set outside $\mathrm{Ps}$
+is kept.
+
+For a chamber site $x=(c,g)$ at distance at most $1$ from
+$Y'_1$, put $K_c=\{c':|c'-c|_\infty\le2L\}$, as in
+\cite[Proposition~4.1]{FermionBlockManuscript}.
+The fermion row is zero unless every parameter cube
+meeting $K_c$ is present. These cubes form one
+link-component. When the row is nonzero, that component
+contains $c$ and a site of $Y'_1$, so it lies in $Y'_1$.
+The row of $H_k(s'',B)$, and its barred counterpart,
+then has columns in that component and reads $B$ only on
+bonds meeting it. At a column of this row, the corresponding
+row of $\Gamma_k(s'',B)$ has columns in the same component.
+These conclusions also hold at level zero: the diagonal
+factor is
+\[
+ \prod_{\mathrm{pc}\in\pi_0:\mathrm{pc}\cap K_c\ne\varnothing}
+                                                       s''_{\mathrm{pc}},
+\]
+and the kernel of that multiplication operator is
+$48\mathbf1_{x=x'}$ times this factor. Its composition with
+$\Gamma_0$ uses the measure $1/48$.
+
+An endpoint of a pair admissible for $X$ is at distance
+at most $\eta_k\le1$ from $X$. Its transport reads only
+bonds contained in $X$, or the one type-$3$ bond meeting $X$.
+Thus the preceding row argument applies to every row
+used in $J_k^\#$ and $W_k^\#$.
+The H\"older row has only the two columns $x,x'$ and
+the entire transport coefficient displayed above.
+Finite compositions preserve this dependence: the columns
+of $O_2O_1$ are the union of the columns of $O_1$ at the
+finitely many columns of $O_2$, and its read bonds are the
+union of their read bonds. Entries of the transport and
+reconstruction rows are entire in the connections, and finite
+compositions of these algebraic rows retain this property.
+Compositions involving weakened primitives are holomorphic
+on their stated primitive domains. These are the finite-row
+properties used here; the weakened operators themselves
+are not asserted to have finite range.
+
+For $G_1$ at $k\ge1$, the local primitive $M_k(X,\cdot)$
+has both indices in $X$ and reads only bonds meeting $X$.
+For $G_2,G_3$, the incoming activity or mass form has ordinary
+legs in $X$ and admissible pair legs; the substitution by
+$J_k^\#\Psi$ introduces $\Psi$ only in $Y'_1$.
+At $k=0$ the vertex has precisely these ordinary and
+type-$3$ pair legs and reads $Z$ only on bonds meeting
+its cube. Equation~\eqref{eq:rgnl-restricted-photon}
+therefore proves the same component dependence for every
+first-localization function.
+
+If $Y'$ is disconnected, choose an $M$-cube outside $Y'_1$.
+It cannot meet $X$ or a parameter cube contained in $X$,
+so it meets a cube of $P$ outside $Y'_1$. The integrand is
+independent of that parameter. Pairing the subsets in
+\eqref{eq:rgnl-finite-difference} according to whether they
+contain this cube proves that the term is zero.
+For a term assigned to a connected $Y$, all parameter cubes
+in $P_0(X)\cup P$ and $X$ lie in $Y$.
+Equation~\eqref{eq:rgnl-finite-difference} now gives the
+claimed locality of $E_i^*$.
+
+The reconstruction substitution adds only ordinary legs
+over $Y$ and boundary pairs $(x,x^{(3)})$ admissible for
+$Y$. Its finite rows at a unit site $y$ read bonds contained
+in $\Delta_y$ or type-$3$ bonds from this block. These bonds
+meet $Y$ since $\Delta_y\subset Y$. The barred rows have
+the same support. Thus it preserves the claimed coefficient
+locality and removes $\Psi$.
+For the second localization, the row argument for
+$H_k^\#\widetilde\Gamma_kW$ gives fluctuation generators
+only in $Y'_1$. It applies to each of the three functions
+in \eqref{eq:rgnl-finite-activity}. The same disconnected
+parameter cancellation proves the second assertion.
+\Cref{lem:rgnl-resummation} gives both sum identities.
+
+Regularity follows from the established contour domains,
+the primitive regularity, and finite sums and substitutions.
+Contour integrals preserve analyticity: their Riemann sums
+converge uniformly on compact sets. The same argument
+applies to finite parameter integrals. The incoming
+activities and mass forms are even, and each substitution
+sends generators to odd linear combinations, so every
+expression remains even.
+Finally $G_1$ is independent of the datum; $G_2,G_4$
+use $\mathscr E^r(X)$ and $G_3,G_5$ use $m'$.
+Tracing the two localizations shows that no incoming
+polymer outside $Y$ enters the result.
+\end{proof}
+
+The proof identifies the primitive entries determining a
+finite expression on $Y$. With parameters zero outside $Y$,
+the photon field reads only
+$H_k^{\mathrm{ph}}(s')(b,b')$ for $b$ meeting $Y$,
+$b'\subset Y$, and
+$C_k^{1/2}(s')(\Upsilon,\Upsilon')$ with both supports
+in $Y$. Its remaining factor is the fixed coordinate map.
+The fermion fields use $H_k,\bar H_k$ at chamber sites
+over $Y$, with unit columns in $Y$, at $B+Z(s')$ and
+$B$, and $\Gamma_k(s'',B)$ with both unit indices in $Y$.
+At zero, the kernel sums have measure $1/48$ and the
+diagonal rows have the factor $48$ already recorded.
+The Dirac primitive has both indices in $X\subseteq Y$
+and connection $B+tZ(s')$ on $|t|=r_1$.
+H\"older transports read only bonds meeting $Y$.
+The reconstruction substitution contains only the fixed
+finite $T_k^{(i)},\bar T_k^{(i)}$ rows at unit sites of its
+own subpolymer.
+
+Consequently two systems with the stated hypotheses on this torus give the
+same finite expressions on $Y$ if these entries agree
+for every parameter family zero outside $Y$, at the
+connections formed with their respective photon fields.
+The restricted photon sum first gives equality of the
+fields on bonds meeting $Y$; the transports and incoming
+activities there then agree by their locality.
+The listed fermion and Dirac entries give equal first
+functions, their localizations and reconstruction
+substitutions. They give equal second functions and
+localizations in turn, and then equal activities $K(Y)$ and
+$H(Y)$ in \eqref{eq:rgnl-Mayer-activity} and
+\eqref{eq:rgnl-integrated-activity}, and each term of the
+connected series \eqref{eq:rgnl-log-activity}.
+Agreement of the photon
+entries and agreement of the fermion entries as functions
+on the full operator domain is sufficient: if the two
+composed connections differ outside $Y$, local row
+dependence removes that difference first.
+The same comparison passes to the convergent logarithm
+once its convergence has been established.
+
+\subsection{Bounds before fluctuation integration}
+\label{subsec:rgnl-finite-bounds}
+
+Set
+\[
+ \begin{gathered}
+ \kappa_w=\kappa+\kappa_0+3,\qquad
+ a_1=\kappa-\kappa_0-1,\qquad a_2=\kappa-2\kappa_0-2,\\
+ C_W=28C_w^2c_\gamma,
+ \qquad H_{\mathrm{cl}}=36c_X^2K_0^2e^{1/4-5\varepsilon}.
+ \end{gathered}
+\]
+The notation $H_{\mathrm{cl}}$ is a scalar cluster bound. For a
+scalar-component kernel $O(a,b)$ with column measure $\nu(b)$, write
+$|O|_{1,\infty}=\sup_a\sum_b\nu(b)|O(a,b)|$, including spin indices.
+This is the row norm of \cite[Theorem~B]{NormalizedContraction}.
+The finite primitive bounds imply
+\begin{align}
+ \|\langle\bar\Psi,M_k(X,B)\Psi\rangle_1\|_{w_3}
+ &\le4c_Xc_\gamma C_wM^3w_3^2
+                   \exp(-(\kappa_w-1)d_M(X)),\quad k\ge1,
+                                      \label{eq:rgnl-M-bound}\\
+ |H_k^\#(s'',B)|_{1,\infty}&\le4C_w,\\
+ |J_k^\#(s'',B,Z)|_{1,\infty}
+                  &\le16C_we^{3/4-9\varepsilon/2},\\
+ \mathsf w_W|H_k^\#(s'',B)\widetilde\Gamma_k(s'',B)|_{1,\infty}
+                  &\le C_W.           \label{eq:rgnl-W-bound}
+\end{align}
+Here $B=A+\mathscr C$ and $|Z|_*\le\frac12e^{-\varepsilon/2}$.
+To see the first bound, count $4M^3|X|_M$ rows and sum
+the exponential kernel in its second index, giving
+$c_\gamma C_w \exp(-\kappa_wd_M(X))$ per row.
+Then $|X|_M\le c_X\exp(d_M(X))$ gives
+\eqref{eq:rgnl-M-bound}.
+For $H_k^\#$ the primitive bound controls the ordinary
+and short-pair rows by $C_w$. A long pair, $d_X\ge1$,
+has its H\"older quotient bounded by four times the
+ordinary sup norm. At level zero every pair is long.
+The monomial matrices $\mathsf C^{\pm1}$ preserve row norms,
+so the barred rows have the same bounds.
+Apply $\mathcal C_{r_1}$ to
+$H_k^\#(s'',B+tZ)$ to obtain the bound for $J_k^\#$.
+Finally $|\Gamma_k|_{1,\infty}\le C_wc_\gamma$ by kernel
+summation, using $1/48$ at level zero. Submultiplicativity
+and $\mathsf w_W\le7$ give \eqref{eq:rgnl-W-bound}.
+
+\begin{proposition}\label{prop:rgnl-finite-bounds}
+For the data of \cref{prop:rgnl-finite-locality},
+\begin{align}
+ \|E_{\le3}(Y)\|_{h/2}
+       &\le8c_XK_0e^{1/4-5\varepsilon}\exp(-a_1d_M(Y)),
+                                      \label{eq:rgnl-E3-bound}\\
+ \|F(Y)\|_{(h/4;\mathsf w_W)}
+       &\le H_{\mathrm{cl}}\exp(-a_2d_M(Y)).
+                                      \label{eq:rgnl-F-bound}
+\end{align}
+The element $F(Y)$ is the sum of a term independent of
+$(m,\mathscr E)$ and a term complex linear in these data.
+\end{proposition}
+
+\begin{proof}
+Extraction gives
+\[
+ \|\mathscr E^r(X)\|_h\le2\|\mathscr E\|_k^x\exp(-\kappa d_M(X))
+                   \le12e^{1/4-7\varepsilon}\exp(-\kappa d_M(X)),
+ \qquad |m'|\le8e^{3/4-8\varepsilon}.
+\]
+The mass bound uses
+$c_{\mathrm{fl}}e^\varepsilon\le1$.
+With chamber measure $\eta_k^3/48$, direct counting gives
+\[
+ \|\langle\bar\psi,\psi\rangle_\square\|_{(w_1,w_2)}
+                                                    =4M^3w_1^2.
+\]
+The number of monomials is
+$4\cdot48\eta_k^{-3}M^3$ and their common coefficient
+is $\eta_k^3/48$.
+
+In the first localization give $\Psi$ the weight
+$w_3=C_Th_{k,1}$ and the old generators the weights $h/2$.
+The contour bound and \eqref{eq:rgnl-M-bound} give
+\[
+ \|G_1(s,X)\|\le
+ 16c_Xc_\gamma C_wC_T^2M^3e^{1/4-9\varepsilon/2}
+                 \exp(-(\kappa_w-1)d_M(X))
+ \le e^{1/4-5\varepsilon}\exp(-\kappa d_M(X)).
+\]
+The last step uses
+\[
+ 16c_Xc_\gamma C_wC_T^2M^3e^{\varepsilon/2}\le1.
+\]
+At $k=0$ the weighted vertex instead gives
+$12M^3e^{1/2-\varepsilon/2}\le e^{1/4-5\varepsilon}$.
+Moreover,
+\[
+ r_2|J_k^\#|_{1,\infty}w_3
+     \le16C_wC_Te^{3\varepsilon/2}h_{k,2}
+     \le\tfrac12h_{k,2}.
+\]
+The substitution bound therefore takes the integrand norm
+of $G_2$ to the $h$ norm of $\mathscr E^r$, and that of
+$G_3$ to the $h$ norm of the mass form. It gives
+\[
+ \|G_2(s,X)\|\le24e^{1-14\varepsilon}\exp(-\kappa d_M(X)),
+ \qquad \|G_3(s,\square)\|\le64M^3e^{1-15\varepsilon}.
+\]
+The condition $88M^3e^{1/4-6\varepsilon}\le1$ implies
+\[
+ 24e^{3/4-9\varepsilon}
+                   +64M^3e^{3/4-10\varepsilon}\le1.
+\]
+Thus $\sum_{i\le3}G_i$ is bounded by
+$2e^{1/4-5\varepsilon}\exp(-\kappa d_M(X))$.
+Apply \cref{lem:rgnl-resummation}, using the disconnected
+cancellation in \cref{prop:rgnl-finite-locality}.
+The reconstruction substitution costs no norm, since
+$C_T(h_{k,1}+h_{k,2})/2\le w_3$.
+This proves \eqref{eq:rgnl-E3-bound}.
+
+For the second localization, the condition
+$112C_w^2c_\gamma e^{2\varepsilon}\le3$ gives
+\[
+ r_4C_W\le\tfrac34h_{k,2},\qquad C_W\le\tfrac14h_{k,2}.
+\]
+Consequently addition of $W_k^\#$ maps the $h/4$ norm
+to the $h/2$ norm at $t=1$ and to the $h$ norm on
+the contour $|t|=r_4$. The three input bounds are
+\begin{align*}
+ \|G_{\le3}^{\,W}(s'',X)\|
+       &\le8c_XK_0e^{1/4-5\varepsilon}\exp(-a_1d_M(X)),\\
+ \|G_4(s'',X)\|&\le24e^{1/2-10\varepsilon}\exp(-\kappa d_M(X)),\\
+ \|G_5(s'',\square)\|&\le64M^3e^{1/2-11\varepsilon}.
+\end{align*}
+Their sum is at most
+$9c_XK_0e^{1/4-5\varepsilon}\exp(-a_1d_M(X))$,
+again by $88M^3e^{1/4-6\varepsilon}\le1$.
+Since $\kappa_0\le a_1\le\kappa$, resummation gives
+\eqref{eq:rgnl-F-bound}.
+At level zero $G_4=0$; all the other inequalities include
+the factor $\mathsf w_W$ already, so they apply unchanged.
+Linearity follows from the definitions: $G_1$ is fixed,
+$G_2,G_4$ are linear in $R\mathscr E$, $G_3,G_5$ in $m'$,
+and localization, the reconstruction substitution and the
+contour functionals are linear.
+\end{proof}
+

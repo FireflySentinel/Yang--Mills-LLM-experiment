@@ -1,0 +1,229 @@
+\section{A positive charge interval}
+\label{subsec:interacting-positive-threshold}
+
+We now verify that the response conditions admit
+a common interval of charges, independent of the
+ultraviolet cutoff. In addition to
+\eqref{eq:interacting-factor-conditions},
+\eqref{eq:interacting-small-complex-mass},
+\eqref{eq:interacting-one-cell-conditions},
+\eqref{eq:interacting-tree-smallness}, and
+\eqref{eq:interacting-jet-conditions}, require
+$r_*>31L+16$, $v_*\ge8$, $p_0v_*^{p_0-1}\ge28$, and
+\begin{gather}
+ Mr_*/(8L)-1\ge6M+8,\qquad
+ \lambda_L\le\bar\kappa_1^s,
+                                  \label{eq:interacting-last-response-conditions}\\
+ D_\beta^{\rm buf}/2+1/2\le3\ell_c/8,\qquad
+ D_\beta^{\rm buf}+3\le\ell_c .
+                                  \label{eq:interacting-placement-conditions}
+\end{gather}
+The construction of \cite[\S6.1]{CoverTuning}
+fixes an odd $L\ge13$, a power
+$M$ of $L$ with $M\ge L^2$, a localization
+power $r_{\rm loc}\ge2$, and cutoff powers
+$p_0\ge2$, $p>2p_0$. It also fixes
+$0<\varepsilon\le1/200$ and $0<s<1$ such that
+\begin{equation}\label{eq:interacting-response-exponents}
+ \mathfrak e=s(1/4-9\varepsilon)-12\varepsilon>0.
+\end{equation}
+For the construction fixed in the introduction, take $s=1/2$;
+then $\mathfrak e\ge17/400$.
+
+\begin{proposition}\label{prop:interacting-positive-threshold}
+For the fixed construction constants, $\bar m$,
+and probe $\beta$, there is $e_\sharp(\beta)>0$
+such that all response conditions hold for
+$0<e\le e_\sharp(\beta)$ and every
+$N\ge N_{\rm ref}(e)$. The threshold depends
+on the probe only through
+$C_\beta,\mathbf D,D_\beta^{\rm buf}$.
+It is independent of $N$, the twist, and the
+admitted placement. All centered placements
+are admitted in this range.
+\end{proposition}
+
+\begin{proof}
+Write
+$v_K=-\log(e\sqrt h)$ and
+$r_K=\min\{L^i:L^i\ge v_K^{r_{\rm loc}}\}$.
+Then $R^*(e)=hMr_K/L$ and
+$\ell_c=R^*(e)/(2L)$.
+\cite[Proposition~6.1]{CoverTuning} and
+\cite[(53)]{CoverTuning} give
+a finite $N_{\rm ref}(e)$.
+
+For $N\ge N_{\rm ref}(e)$ the stop level
+is $K-1$ or $K-2$ by
+\cite[(54)]{CoverTuning}. In particular its
+scales are independent of $N$ and satisfy
+\begin{gather}
+ v_K\le v_*,\quad e_*=\mathrm e^{-v_*},\quad
+ a_*\in\{h/L,h/L^2\},\notag\\
+ v_*^{r_{\rm loc}}\le r_*,\quad
+ Mv_*^{r_{\rm loc}}\le\ell_*<LMv_*^{r_{\rm loc}},
+ \quad p_{0*}=v_*^{p_0},\quad p_*=v_*^p,\notag\\
+ p_\beta\le p_\beta^+:=
+                (D_\beta^{\rm buf}L^2/h+2M+4)^3,\qquad
+ \ell_c\ge hMv_K^{r_{\rm loc}}/(2L^2).
+                                  \label{eq:interacting-threshold-scales}
+\end{gather}
+The strict wrapping condition $r_*>31L+16$
+already follows from \cite[(50)]{CoverTuning}
+whenever $e\sqrt h\le e_1$.
+Thus every response condition is a condition
+on $e$ alone once the construction and probe
+are fixed.
+
+A bound $A v^d \mathrm e^{-\gamma v}$
+with $A,d\ge0$ and $\gamma>0$ tends to zero,
+uniformly on a sufficiently large half-line.
+Split the exponential in half and use
+$v^d\mathrm e^{-\gamma v/2}\le(2d/(\gamma\exp(1)))^d$.
+Likewise, $cv^2$ exceeds $bv+\log^+A$
+on a sufficiently large half-line for
+$c>0$. We apply these two inequalities to
+the following groups of conditions.
+
+The local tree smallness and terminal factor
+conditions follow from exponential decay
+with positive rates
+$\varepsilon$, $2\varepsilon$,
+$1/4-\varepsilon$, and $1/4-9\varepsilon$;
+the volume factors are bounded by
+$(LM)^3v_*^{3r_{\rm loc}}$.
+For $\bar r$, use
+$1/4-7\varepsilon>2\varepsilon$.
+The complex mass and coarse determinant
+conditions similarly have rate $2\varepsilon$.
+The support count is bounded by $p_\beta^+$.
+All three summands of $B_0$ tend to zero:
+their rates are $4\varepsilon$, $2\varepsilon$,
+and the quadratic decay $\mathrm e^{-r_*}\le \mathrm e^{-v_*^2}$.
+Also $\tau_s\ge c_\tau Mv_*^2$, so both
+$\tau_s\ge1$ and
+$52B_1\mathrm e^{-\tau_s}\le e_*^{1/4-9\varepsilon}$
+hold once $v_*$ is large.
+
+The separation condition follows from
+$r_*\ge v_*^2$. Its error obeys
+\[
+ 2\varpi_{\rm sep}^+
+ \le2^{N_*+1}C_W^{\mathrm{mix}}p_\beta^+
+          \mathrm e^{\vartheta_0(4M+7)}
+          \mathrm e^{-\vartheta_0Mv_*^2/(8L)} .
+\]
+Since $\bar\kappa_1\ge \mathrm e^{-v_*/4}$,
+quadratic decay makes this at most
+$\bar\kappa_1^{N_*}$ for all sufficiently
+large $v_*$. The family summation condition
+$N_*\bar\kappa_1^{1-s}\le1/2$
+uses the positive rate
+$(1-s)(1/4-9\varepsilon)$.
+
+For the photon complement, the inequalities $v_*\ge8$ and
+$p_0v_*^{p_0-1}\ge28$ hold on a sufficiently large half-line,
+since $p_0\ge2$. Moreover $p>2p_0$ implies
+$(p_*-1)^2\ge C_0^2p_{0*}$ once $v_*$
+is large. Therefore
+\begin{equation}\label{eq:interacting-complement-threshold}
+ \varpi_0\le24(LM)^3v_*^{3r_{\rm loc}}\mathrm e^{-v_*^2/2}.
+\end{equation}
+This is eventually at most $1/4$.
+Moreover $t_2/e$ is fixed and positive, while
+$e$ is between $(L/h)^{1/2}e_*$
+and $Lh^{-1/2}e_*$. Hence
+$8N_*t_2/t_x$ is bounded by a fixed
+constant times $e_*^{1-3\varepsilon}$,
+which tends to zero.
+
+The potentially largest loss is the fourth
+derivative radius in $\lambda_L$.
+From \eqref{eq:interacting-complement-threshold},
+the definition of $\lambda_L$, and
+$r/t_2\le C \mathrm e^{v_*}$, we obtain
+\begin{equation}\label{eq:interacting-lambda-threshold}
+ \lambda_L\le A_8
+   \exp\left(-\frac{v_*^2}{12N_*}
+                     +\left(\frac{r_{\rm loc}}{2N_*}+4\right)v_*\right)
+\end{equation}
+for a finite $A_8>0$ depending only on the
+fixed constants and probe bounds.
+For clarity one can take
+\[
+ A_8=[24(LM)^3]^{1/(6N_*)}
+       \mathrm e^{\mathbf D/(6N_*)}M_L^{2/(3N_*)}
+       5\left[
+        \frac{N_*\sqrt h}{2C_b\sqrt L}(t_2/e)^{-1}\right]^4 .
+\]
+If
+$v_*^2/(12N_*)\ge
+(r_{\rm loc}/(2N_*)+17/4)v_*+\log^+A_8$,
+then $\lambda_L\le \mathrm e^{-v_*/4}\le\bar\kappa_1^s$.
+Thus the complex continuation and the
+fourth derivatives preserve a positive
+small-charge interval.
+Finally the two placement inequalities
+hold when
+$\ell_c\ge(4/3)D_\beta^{\rm buf}+3$;
+this follows from
+\eqref{eq:interacting-threshold-scales} as $v_K\to\infty$.
+
+Choose a finite $V$ beyond all the half-lines
+just specified and put
+$e_V=h^{-1/2}\min(e_1,\mathrm e^{-V})>0$.
+Every $0<e\le e_V$ has $v_*\ge v_K\ge V$
+and satisfies every response condition.
+Define $e_\sharp$ as one half of the
+supremum of the charges $e'\le e_1h^{-1/2}$
+for which all conditions hold for every
+$0<e\le e'$. Its defining set contains
+$e_V$, so $e_\sharp\ge e_V/2>0$.
+For $e\le e_\sharp$, a member of the
+defining set exceeds $e_\sharp$, which
+ensures that all inequalities hold at $e$
+even if the scale functions have jumps.
+This avoids assuming monotonicity of the
+rounded stop scales.
+
+The scale identities depend on $e,h$ and
+the fixed construction constants; the probe
+enters through
+$C_\beta,\mathbf D,D_\beta^{\rm buf}$.
+They do not involve the twist or placement,
+and they are unchanged by the coordinate
+reflections used to form the cell probes.
+Centered placements satisfy the admission
+inequality by
+\eqref{eq:interacting-placement-conditions},
+since their centers differ from the cell
+center by at most $\eta/2\le1/2$.
+The same conditions give
+$D_\beta^{\rm buf}+3\eta\le\ell_c$ and
+$R^*(e)\ge D_\beta+1$.
+\end{proof}
+
+
+
+\begin{proof}[Proof of \cref{thm:rrm-main}]
+The base construction gives the positive physical ceiling
+\[
+ e_G=\begin{cases}
+ e_1,&h=1,\\
+ \min\{e_1/\sqrt h,\,1/(\sqrt h\log h)\},&h>1,
+ \end{cases}
+\]
+as in \cite[(31)]{QED3Integration}. On this interval the common pair
+and all upstream terminal estimates apply.
+Choose $e_{\rm RR}=\min\{e_G,e_\sharp(\beta)\}$, with the threshold
+of \cref{prop:interacting-positive-threshold}, at $s=1/2$.
+That proposition verifies the additional inequalities of
+\cref{thm:interacting-reference-error} for every smaller positive
+charge and every $N\ge N_{\rm ref}(e)$, and admits every centered
+placement. The bounds \eqref{eq:interacting-final-terminal-error}
+give \eqref{eq:rrm-main-bound} with the stated common constant.
+The exact unfolding identifies the normalized density with the
+zero-flux law, \cref{prop:external-entire} proves entireness, and
+\eqref{eq:external-Wick-product} proves \eqref{eq:rrm-main-wick}.
+Its differentiation proof establishes the required integrability.
+\end{proof}

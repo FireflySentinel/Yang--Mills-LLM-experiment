@@ -1,0 +1,665 @@
+% Document CEM1. Canonical proof manuscript; companion outline CEO1.
+\documentclass[11pt,letterpaper,reqno]{amsart}
+\usepackage[bibliography]{manuscript-style}
+\input{notation}
+\title[Gaussian domination and continuum limits]
+ {Gaussian domination and structural properties of continuum limits}
+\date{}
+\hypersetup{pdftitle={Gaussian domination and structural properties of continuum limits},pdfauthor={}}
+\begin{document}
+\begin{abstract}
+Gaussian domination is preserved under weak convergence of laws of
+tempered fields. Under a common $L^2$ Gaussian bound, the generating
+functions of every finite family of Schwartz pairings converge
+locally uniformly, as do their logarithms near the origin.
+Consequently all joint moments and cumulants converge. We also
+prove a lattice compactness theorem under the weaker assumption of
+a uniform second-moment bound. Cell averaging and Hermite coefficient
+estimates give subsequential continuum laws. We prove that approximate
+linear identities, geometric symmetries and reflection inequalities
+pass to these limits, and establish tensor Schwinger-function bounds.
+For chamber QED3, the resulting laws are closed, translation and
+cubically invariant, and reflection positive at the nine lattice
+mirror directions at every height. We also recover the real lattice
+law associated with a prescribed fixed-spacing volume limit.
+\end{abstract}
+\maketitle
+\tableofcontents
+
+\section{Introduction}\label{sec:introduction}
+Let $\mathcal S=\mathcal S(\R^d;\R^r)$ be the real Schwartz space
+and $\mathcal S'$ its continuous dual. Write $e_\alpha$ for the
+standard basis of $\R^r$. For the normalized real Hermite functions
+$h_k$, $k\in\N_0^d$, set
+\[
+ (1-\Delta+|y|^2)h_k=\lambda_k h_k,\qquad
+ \lambda_k=2|k|_1+d+1,\qquad |k|_1=k_1+\cdots+k_d.
+\]
+For $t>0$ we use the separable Hilbert space
+\begin{equation}\label{eq:hermite-space}
+ H_{-t}=\{F\in\mathcal S':\|F\|_{-t}<\infty\},\qquad
+ \|F\|_{-t}^2=
+ \sum_{\alpha=1}^r\sum_{k\in\N_0^d}
+       \lambda_k^{-2t}|F(h_ke_\alpha)|^2.
+\end{equation}
+All weak convergence of probability laws on this space refers to
+its norm topology.
+
+Extend each real distribution complex linearly to
+$\mathcal S_{\mathbb C}=\mathcal S(\R^d;\mathbb C^r)$.
+For a law $P$, its smeared $n$-point correlation is
+$S_n^P(f_1,\ldots,f_n)=\E_P\prod_{j=1}^n F(f_j)$ whenever
+this expectation exists.
+
+\begin{theorem}[Gaussian domination and convergence of correlations]
+\label{thm:gaussian-convergence}
+Fix integers $d,r\ge1$ and a real number $t>0$. Let $P_j$ and $P$ be Borel probability
+laws on $H_{-t}$ such that $P_j\Longrightarrow P$. Suppose
+\begin{equation}\label{eq:sequence-gaussian}
+ \E_{P_j}e^{F(f)}\le e^{\|f\|_2^2/2}
+ \qquad(j\ge1,\ f\in\mathcal S).
+\end{equation}
+Then
+\begin{equation}\label{eq:limit-continuum-G}
+ \E_P e^{F(f)}\le e^{\|f\|_2^2/2}
+ \qquad(f\in\mathcal S).
+\end{equation}
+For every finite family $f_1,\ldots,f_m\in\mathcal S_{\mathbb C}$,
+the functions
+\[
+ Z_j(z)=\E_{P_j}\exp\left(\sum_{a=1}^m z_aF(f_a)\right),
+ \qquad
+ Z(z)=\E_P\exp\left(\sum_{a=1}^m z_aF(f_a)\right)
+\]
+are entire on $\mathbb C^m$. They satisfy $Z_j\to Z$ locally
+uniformly, with every complex derivative. In particular, for
+every $n\ge1$ and $f_1,\ldots,f_n\in\mathcal S_{\mathbb C}$,
+\begin{equation}\label{eq:correlation-convergence}
+ S_n^{P_j}(f_1,\ldots,f_n)\longrightarrow
+ S_n^P(f_1,\ldots,f_n).
+\end{equation}
+On the common domain
+\begin{equation}\label{eq:zero-free-domain}
+ D_f=\left\{z\in\mathbb C^m:
+                 \sum_{a=1}^m|z_a|\|f_a\|_2<2/5\right\},
+\end{equation}
+all $Z_j$ and $Z$ satisfy $|Z_j-1|<1/2$ and $|Z-1|<1/2$.
+Their principal logarithms converge locally uniformly on $D_f$,
+with every derivative. Thus all joint cumulants converge, where
+\[
+ \kappa_n^P(f_1,\ldots,f_n)
+ =\left.\partial_{z_1}\cdots\partial_{z_n}
+       \log\E_P\exp\left(\sum_{a=1}^n z_aF(f_a)\right)
+   \right|_{z=0},
+\]
+and $\kappa_n^{P_j}$ is defined in the same way.
+\end{theorem}
+
+The exponential estimate controls the unbounded observables in
+\eqref{eq:correlation-convergence}. More precisely, it gives
+a uniform second-moment bound for each exponential in $Z_j$,
+so weak convergence passes these expectations to the limit.
+Local bounds for the entire generating functions then pass all
+their derivatives. The bound $|Z_j-1|<1/2$ on
+$D_f$ permits the same argument for their
+logarithms. We give the proof in \cref{sec:gaussian}, following
+the random-linear-form estimates and convergence argument in
+\cite[Sections~5.1--5.2 and~6.2]{QED3Manuscript}.
+
+The weakly convergent subsequences needed for this result can be
+obtained from second moments alone. We state the lattice form
+separately, since it does not require Gaussian domination.
+
+\begin{theorem}[Continuum limits of lattice fields]\label{thm:lattice-continuum}
+Fix integers $d,r\ge1$, offsets $t_1,\ldots,t_r\in[0,1]^d$,
+and a set $I\subset(0,1]$ with $0$ in its closure. For each
+$a\in I$, let $\nu_a$ be a Borel probability law on
+$\R^{\Z^d\times\{1,\ldots,r\}}$ with the coordinate product
+topology. Suppose there is a constant $0\le C<\infty$ such that
+\begin{equation}\label{eq:lattice-second}
+ \E_{\nu_a}\left|\sum_{\alpha,x}b_\alpha(x)u_\alpha(x)\right|^2
+ \le C\sum_{\alpha,x}|b_\alpha(x)|^2
+\end{equation}
+for every $a\in I$ and every finitely supported real coefficient
+array $b$. Define
+\begin{equation}\label{eq:step-definition}
+ (F_a)_\alpha(y)=a^{-d/2}u_\alpha(x)
+ \quad\text{for }y\in Q_{a,\alpha,x}
+ :=a\bigl(x+t_\alpha+[-1/2,1/2)^d\bigr).
+\end{equation}
+Then $F_a$ is almost surely a real tempered distribution, and
+\begin{equation}\label{eq:smeared-second}
+ \E_{\nu_a}|F_a(f)|^2\le C\|f\|_{L^2(\R^d;\R^r)}^2
+ \qquad(f\in\mathcal S).
+\end{equation}
+For every fixed $t>d/2$, these fields have Borel realizations in
+$H_{-t}$ whose laws are uniformly tight. Consequently, for every
+sequence $a_j\in I$ tending to zero there are a subsequence
+$a_{j_\ell}$ and a Borel probability measure $\mu$ on $H_{-t}$
+such that
+\[
+ \mathcal L(F_{a_{j_\ell}})\ \Longrightarrow\ \mu.
+\]
+Along this subsequence the pairings with every finite family of
+Schwartz tests converge jointly in distribution to their pairings
+under $\mu$.
+\end{theorem}
+
+The hypothesis bounds the raw second moment of every finite linear
+combination. Bounds on the individual coordinates suffice to realize
+the step field, but the full inequality \eqref{eq:lattice-second}
+is needed for \eqref{eq:smeared-second}. No compatibility between
+the laws at different spacings is assumed. The conclusion is
+subsequential existence; it does not assert uniqueness or that a
+limit is nonzero.
+
+There are two points in the proof. First, the cell coefficients
+\begin{equation}\label{eq:cell-coefficients}
+ b_{a,\alpha}(x)=a^{-d/2}\int_{Q_{a,\alpha,x}}f_\alpha(y)\,\dd y
+\end{equation}
+satisfy $\|b_a\|_{\ell^2}\le\|f\|_2$. Applying the lattice
+bound to finite truncations therefore controls the smeared field
+uniformly in spacing. In \cref{prop:step-realization}, a spatially
+weighted lattice norm identifies these limits, for all tests at
+once, with the samplewise step distribution. Second, the test estimate gives
+\[
+ \E\|F_a\|_{-s}^2\le Cr\sum_k\lambda_k^{-2s}<\infty
+ \qquad(s>d/2).
+\]
+For $t>s$, a closed bounded ball in $H_{-s}$ is compact in $H_{-t}$:
+the extra factor $\lambda_k^{-2(t-s)}$ makes its coefficient tails
+uniformly small. Markov's inequality and Prokhorov's theorem then
+give the asserted subsequences, as proved in \cref{prop:compactness}.
+Choosing $d/2<s<t$ gives every exponent claimed in the theorem;
+its proof concludes \cref{sec:compactness}.
+
+This proof uses the Hermite compactness argument for curvature laws
+in \cite[Sections~5.4 and~6.2]{QED3Manuscript}, together with the
+weighted lattice realization in
+\cite[Sections~5.3 and~6.1]{LatticeLimits}. We isolate the
+second-moment assumptions used by those arguments. The dimension
+and the number of components enter only through the lattice weight,
+cell volume and Hermite multiplicities. The Hermite description of
+Schwartz space and its dual is recalled from
+\cite[Sections~2, 4 and~5]{RadhaThangavelu}; the probability compactness
+result is Prokhorov's theorem in the form stated in
+\cite[Theorem~1.1]{Sorensen}. The application in \cref{sec:qed}
+uses the already constructed real-curvature laws of chamber QED3.
+The next theorem supplies the identities, symmetries and reflection
+forms retained by these limits.
+
+For the structural assertion, identify the component space $\R^r$ with a real inner-product space \(V\), and let \(W\) be another
+finite-dimensional real inner-product space.
+Fix an orthogonal representation \(\rho:O(d)\to O(V)\).
+For \(g(x)=Qx+b\), use the actions
+\begin{equation}\label{eq:geometric-action}
+ (g\cdot f)(x)=\rho(Q)f(Q^{-1}(x-b)),\qquad
+ (g\cdot F)(f)=F(g^{-1}\cdot f).
+\end{equation}
+Invariance concerns the law as a random tempered distribution,
+with the sigma-algebra generated by evaluations.
+For an open set \(O\), write \(\Sigma_O\) for the sigma-algebra
+generated by \(F(f)\), \(f\in C_c^\infty(O;V)\) real.
+For an open half-space \(H^+\) and an \(r\)-invariant law \(P\),
+where \(r\) reflects in its
+boundary, reflection positivity means
+\[
+ \E_P[\overline{B(r\cdot F)}B(F)]\ge0
+ \qquad\bigl(B\in L^2(\Sigma_{H^+},P)\bigr).
+\]
+
+\begin{theorem}[Identities, symmetries and reflection positivity]
+\label{thm:structural-limit}
+Let \(P_j\Rightarrow P\) weakly on \(H_{-t}\), and suppose
+\begin{equation}\label{eq:common-gaussian}
+ \E_{P_j}e^{F(f)}\le e^{\|f\|_2^2/2}
+ \qquad(j\ge1,\ f\in\mathcal S\text{ real}).
+\end{equation}
+Let \(D^*:C_c^\infty(\R^d;W)\to\mathcal S\) be continuous and
+linear. Let \(\mathcal G\) be a group of Euclidean isometries
+containing all translations and a finite set \(\mathcal R\) of
+reflections through the origin. Choose an open side \(H_r^+\) for
+each \(r\in\mathcal R\). Assume:
+\begin{enumerate}[label=(\roman*),leftmargin=*]
+\item\label{hyp:identity}
+For each \(\xi\in C_c^\infty(\R^d;W)\) there are real
+\(v_j(\xi)\in\mathcal S\) such that \(F(v_j(\xi))=0\),
+\(P_j\)-almost surely, and
+\(\|v_j(\xi)-D^*\xi\|_2\to0\).
+\item\label{hyp:symmetry}
+For each \(g\in\mathcal G\) there are real linear maps
+\(T_{j,g}:\mathcal S\to\mathcal S\) satisfying
+\[
+ \E_{P_j}e^{iF(T_{j,g}f)}=\E_{P_j}e^{iF(f)},\qquad
+ \|T_{j,g}f-g\cdot f\|_2\longrightarrow0
+ \quad(f\in\mathcal S).
+\]
+\item\label{hyp:reflection}
+For every \(r\in\mathcal R\), every finite family of real
+\(f_a\in C_c^\infty(H_r^+;V)\), and every \(z_a\in\C\),
+\begin{equation}\label{eq:rp-approx}
+ \sum_{a,b}\overline z_a z_b
+ \E_{P_j}e^{iF(f_b-r\cdot f_a)}\ge0
+\end{equation}
+for all sufficiently large \(j\), depending on the family.
+\end{enumerate}
+Then \(P\) satisfies \(\E_Pe^{F(f)}\le e^{\|f\|_2^2/2}\)
+for every real \(f\in\mathcal S\), is
+\(\mathcal G\)-invariant, and almost every \(F\) satisfies
+\(F(D^*\xi)=0\) simultaneously for all \(\xi\).
+The law is reflection invariant and reflection positive at every
+translate of every plane in \(\mathcal R\).
+Along the same sequence, all joint moments and cumulants of every
+fixed finite family of Schwartz evaluations converge to those of \(P\).
+\end{theorem}
+
+A linear identity is retained because its error vanishes in mean
+square. Symmetry is expressed by characteristic functions, whose
+change is bounded by the \(L^2\) error in the transformed test.
+Reflection positivity passes through a finite sum of bounded
+continuous characters; reflection invariance then extends the form
+to the positive-side \(L^2\) space. These are the structural limit
+arguments of \cite[Sections~6.3 and~6.5]{QED3Manuscript}, stated
+here with their test-approximation hypotheses explicit. Their proofs
+are given in \cref{sec:stability}.
+
+Gaussian stability and convergence of moments and cumulants are
+provided by \cref{thm:gaussian-convergence}.
+The structural arguments require only
+\(\E|F(f)|^2\le C\|f\|_2^2\), except that passage of the reflection
+form requires no moment estimate. The common exponential hypothesis
+supplies the quadratic control and the correlation conclusions.
+
+The application in \cref{sec:qed} starts from specified
+infinite-lattice laws. Their existence, reflection inequalities
+and estimates are supplied by \cite[Theorem~A]{ChamberLattice}.
+The fixed-spacing identification with prescribed volume limits is
+proved in \cref{sec:recovery}, following
+\cite[Section~6.4]{QED3Manuscript}.
+The resulting symmetry group is the affine cubic group; the limit
+argument introduces no additional rotations.
+
+
+\section{Gaussian bounds and convergence of correlations}\label{sec:gaussian}
+We first collect the estimates for one law. Their proofs are
+the random-linear-form arguments of
+\cite[Proposition~5.1 and Section~5.2]{QED3Manuscript}.
+They apply in every finite dimension and for any finite number
+of components, since they use only the $L^2$ norm of the tests.
+
+\begin{proposition}\label{prop:subgaussian}
+Let $Q$ be a probability law of real tempered distributions
+with measurable test pairings, and suppose
+\begin{equation}\label{eq:probability-G}
+ \E_Q e^{F(f)}\le e^{\|f\|_2^2/2}\qquad(f\in\mathcal S).
+\end{equation}
+Then, for real $f$,
+\begin{equation}\label{eq:field-variance}
+ \E_Q F(f)=0,\qquad \E_Q|F(f)|^2\le\|f\|_2^2.
+\end{equation}
+For $p>0$ set $c_p=2\,2^{p/2}\Gamma(1+p/2)$. One has
+\[
+ \E_Q|F(f)|^p\le c_p\|f\|_2^p\qquad(f\in\mathcal S).
+\]
+For complex tests $f_1,\ldots,f_n$,
+\begin{equation}\label{eq:joint-moment-bound}
+ \E_Q\prod_{a=1}^n|F(f_a)|
+       \le 2^{n/2}c_n\prod_{a=1}^n\|f_a\|_2.
+\end{equation}
+The generating function of each finite family of complex tests
+is entire. For every $g\in\mathcal S_{\mathbb C}$,
+\begin{align}
+ \left|\E_Q e^{F(g)}\right|
+       &\le e^{\|\operatorname{Re}g\|_2^2/2},
+                      \label{eq:entire-generating-bound}\\
+ \left|\E_Q e^{F(g)}-1\right|
+       &\le e^{2\|g\|_2^2}-1. \label{eq:zero-free-bound}
+\end{align}
+\end{proposition}
+
+\begin{proof}
+For real $f$, put $Y=F(f)$ and $v=\|f\|_2$. Applying
+\eqref{eq:probability-G} to $tf$ gives
+\begin{align*}
+ \E_Q e^{tY}&\le e^{t^2v^2/2} &&(t\in\R),\\
+ \E_Q e^{t|Y|}&\le2e^{t^2v^2/2} &&(t\ge0).
+\end{align*}
+The second bound justifies differentiation at zero. Comparing
+the linear terms in the first bound for both signs of $t$
+gives $\E_QY=0$; comparing the quadratic terms gives
+$\E_QY^2\le v^2$. If $v=0$, this also gives $Y=0$ almost
+surely. If $v>0$, Markov's inequality with $t=u/v^2$,
+applied to $Y$ and $-Y$, gives
+\[
+ Q(|Y|\ge u)\le2e^{-u^2/(2v^2)}\qquad(u>0).
+\]
+Integration yields
+\[
+ \E_Q|Y|^p
+ =p\int_0^\infty u^{p-1}Q(|Y|>u)\,\dd u
+ \le2\,2^{p/2}\Gamma(1+p/2)v^p.
+\]
+For $g=g_1+ig_2$ with real $g_1,g_2$ and integer $n\ge1$,
+the triangle inequality in $L^n(Q)$ gives
+\[
+ \|F(g)\|_{L^n(Q)}
+ \le c_n^{1/n}(\|g_1\|_2+\|g_2\|_2)
+ \le\sqrt2\,c_n^{1/n}\|g\|_2.
+\]
+H\"older's inequality proves \eqref{eq:joint-moment-bound}.
+
+On a compact polydisc in $\mathbb C^m$, the integrand
+$\exp(\sum_a z_aF(f_a))$ is bounded in absolute value by
+\[
+ \exp\left(C\sum_a
+       \bigl(|F(\operatorname{Re}f_a)|
+             +|F(\operatorname{Im}f_a)|\bigr)\right)
+\]
+for a constant $C$ depending only on that polydisc. H\"older's
+inequality and the exponential bound above make this majorant
+integrable. The same bound on a larger polydisc justifies
+differentiation under the expectation, so the generating
+function is entire. Taking the modulus of its integrand and
+applying \eqref{eq:probability-G} proves
+\eqref{eq:entire-generating-bound}.
+
+For the last estimate, put $\varphi(u)=e^u-1-u$. Since
+$\E_Q F(g)=0$ and $|e^z-1-z|\le\varphi(|z|)$,
+\[
+ \left|\E_Q e^{F(g)}-1\right|
+ \le\E_Q\varphi(|F(g)|).
+\]
+For $u\ge0$, $\varphi(u)\le2(\cosh u-1)$. Writing
+$g=g_1+ig_2$, convexity and monotonicity on $[0,\infty)$
+therefore give
+\begin{align*}
+ \E_Q\varphi(|F(g)|)
+ &\le\tfrac12\E_Q\varphi(2|F(g_1)|)
+       +\tfrac12\E_Q\varphi(2|F(g_2)|)\\
+ &\le e^{2\|g_1\|_2^2}-1+e^{2\|g_2\|_2^2}-1\\
+ &\le e^{2\|g\|_2^2}-1.
+\end{align*}
+This proves \eqref{eq:zero-free-bound}.
+\end{proof}
+
+\begin{proof}[Proof of \Cref{thm:gaussian-convergence}]
+Schwartz evaluation is continuous on $H_{-t}$:
+$|F(f)|\le\|F\|_{-t}\|f\|_t$, with the test norm
+defined in the proof of \cref{prop:compactness}.
+For real $f$, the function $F\mapsto\min\{R,e^{F(f)}\}$
+is bounded and continuous. Weak convergence gives
+\[
+ \E_P\min\{R,e^{F(f)}\}
+ =\lim_{j\to\infty}\E_{P_j}\min\{R,e^{F(f)}\}
+ \le e^{\|f\|_2^2/2}.
+\]
+Letting $R\to\infty$ proves \eqref{eq:limit-continuum-G}.
+Thus \cref{prop:subgaussian} applies to $P$ as well as to
+every $P_j$. In particular, the generating functions in
+the theorem are entire.
+
+Fix $f_1,\ldots,f_m\in\mathcal S_{\mathbb C}$ and write
+$g_z=\sum_a z_af_a$. The map
+$F\mapsto\exp(F(g_z))$ is continuous, and
+\begin{equation}\label{eq:exponential-ui}
+ \E_{P_j}\bigl|e^{F(g_z)}\bigr|^2
+ =\E_{P_j}e^{2F(\operatorname{Re}g_z)}
+ \le e^{2\|\operatorname{Re}g_z\|_2^2}.
+\end{equation}
+The same inequality holds under $P$. For each $z$, it gives
+uniform integrability of these exponentials. Truncating their
+real and imaginary parts, passing the bounded continuous
+expectations to the weak limit, and removing the truncations
+therefore proves $Z_j(z)\to Z(z)$.
+
+The right side of \eqref{eq:entire-generating-bound}, applied
+to $g_z$, is bounded on each compact subset of $\mathbb C^m$,
+uniformly in $j$. Cauchy's estimates on a larger polydisc give
+uniform bounds for the first derivatives on a smaller one.
+The functions $Z_j$ are consequently equicontinuous on compact
+sets. A finite covering by small balls, together with pointwise
+convergence and continuity of $Z$, upgrades the convergence to
+local uniform convergence. Cauchy's formula on surrounding
+polydiscs then gives local uniform convergence of every complex
+derivative. Differentiation under the expectations identifies
+the derivatives at zero with joint moments, proving
+\eqref{eq:correlation-convergence}.
+
+For $z\in D_f$, the triangle inequality gives
+$\|g_z\|_2\le\sum_a|z_a|\|f_a\|_2<2/5$. Hence
+\eqref{eq:zero-free-bound} gives
+\[
+ |Z_j(z)-1|,\ |Z(z)-1|
+ \le e^{2\|g_z\|_2^2}-1
+ < e^{8/25}-1<\tfrac12.
+\]
+All the images lie in the disk of radius $1/2$ about $1$,
+on which the principal logarithm is analytic. Local uniform
+convergence of $Z_j$ gives local uniform convergence of their
+logarithms on $D_f$. Cauchy's formula again gives convergence
+of every derivative, and in particular of every joint cumulant.
+\end{proof}
+
+\section{Realization of the step field}\label{sec:realization}
+We first work at one fixed spacing. The estimate that makes the
+step field a distribution may depend on this spacing. The estimate
+on its second moments will retain the constant in
+\eqref{eq:lattice-second}.
+
+\begin{proposition}\label{prop:step-realization}
+Fix $d,r\ge1$, $a>0$ and offsets $t_\alpha\in[0,1]^d$.
+Suppose a Borel probability law $\nu$ on real lattice arrays
+satisfies \eqref{eq:lattice-second} with constant $C$.
+On one measurable set of full measure, the step function
+\eqref{eq:step-definition} is tempered and, for every $f\in\mathcal S$,
+\begin{equation}\label{eq:absolute-pairing}
+ F_a(f)=\sum_{\alpha,x}b_{a,\alpha}(x)u_\alpha(x),\qquad
+ \sum_{\alpha,x}|b_{a,\alpha}(x)u_\alpha(x)|<\infty.
+\end{equation}
+After setting $F_a=0$ off this set, every test pairing is measurable.
+The finite truncations of \eqref{eq:absolute-pairing} converge in
+$L^2(\nu)$, and
+\[
+ \E_\nu|F_a(f)|^2\le C\|b_a\|_{\ell^2}^2\le C\|f\|_2^2.
+\]
+\end{proposition}
+
+\begin{proof}
+Choose $p>d/2$ and put
+\[
+ \|u\|_{\ell^2_{-p}}^2
+ =\sum_{\alpha,x}(1+|x|^2)^{-p}|u_\alpha(x)|^2.
+\]
+Apply \eqref{eq:lattice-second} to each coordinate. Tonelli's
+theorem gives
+\begin{equation}\label{eq:lattice-weighted}
+ \E_\nu\|u\|_{\ell^2_{-p}}^2
+ \le Cr\sum_{x\in\Z^d}(1+|x|^2)^{-p}<\infty.
+\end{equation}
+Thus $\Omega_p:=\{u:\|u\|_{\ell^2_{-p}}<\infty\}$ is a
+measurable set of full measure, independent of the test function.
+
+For $u\in\Omega_p$, weighted Cauchy--Schwarz yields
+\begin{equation}\label{eq:weighted-pairing}
+ \sum_{\alpha,x}|b_{a,\alpha}(x)u_\alpha(x)|
+ \le\|u\|_{\ell^2_{-p}}
+ \left(\sum_{\alpha,x}(1+|x|^2)^p
+                       |b_{a,\alpha}(x)|^2\right)^{1/2}.
+\end{equation}
+The second factor is controlled by a Schwartz seminorm. Indeed,
+Cauchy--Schwarz on each cube bounds its square by
+\[
+ \sum_{\alpha,x}(1+|x|^2)^p
+             \int_{Q_{a,\alpha,x}}|f_\alpha(y)|^2\,\dd y
+ \le C_{a,p,d}\int_{\R^d}(1+|y|^2)^p|f(y)|^2\,\dd y.
+\]
+Here $|x|\le a^{-1}|y|+\tfrac32\sqrt d$ on the cube, and
+the cubes partition $\R^d$ for each component. The constant may
+depend on $a,p,d$, but is uniform in the allowed offsets.
+The right side is a continuous Schwartz seminorm squared.
+Consequently \eqref{eq:absolute-pairing} defines a continuous
+linear functional for every $u\in\Omega_p$. The same estimate
+with $|f_\alpha|$ in the cell integrals shows absolute
+integrability against the step function, so the functional is
+precisely its distributional pairing. Finite coordinate sums are
+measurable. Their pointwise limits on $\Omega_p$, extended by zero
+outside it, prove measurability of the pairings.
+
+For the uniform estimate, use Cauchy--Schwarz without the spatial
+weight. Since each cube has volume $a^d$,
+\begin{equation}\label{eq:cell-contraction}
+ \sum_{\alpha,x}\left|a^{-d/2}
+               \int_{Q_{a,\alpha,x}}f_\alpha(y)\,\dd y\right|^2
+ \le\sum_{\alpha,x}\int_{Q_{a,\alpha,x}}|f_\alpha(y)|^2\,\dd y
+ =\|f\|_2^2.
+\end{equation}
+Let $b_a^{(m)}$ be the restriction of $b_a$ to $|x|\le m$,
+with every component retained. These restrictions converge to $b_a$
+in $\ell^2$. Applying \eqref{eq:lattice-second} to
+$b_a^{(m)}-b_a^{(n)}$ shows that their pairings form an
+$L^2(\nu)$ Cauchy sequence. Their almost sure limit on $\Omega_p$
+is \eqref{eq:absolute-pairing}, so their $L^2$ limit agrees with
+$F_a(f)$. Passing to the limit in the finite quadratic bound and
+then using \eqref{eq:cell-contraction} proves the assertion.
+\end{proof}
+
+\section{Compactness from Hermite coefficients}\label{sec:compactness}
+The preceding proposition reduces the problem to a family of
+random distributions with a common $L^2$ test estimate. We state
+the resulting compactness criterion independently of the lattice.
+The proof retains the coefficient argument of
+\cite[Section~5.4]{QED3Manuscript} and
+\cite[Section~6.1]{LatticeLimits}.
+
+\begin{proposition}\label{prop:compactness}
+Let $(X_i)_{i\in J}$ be a family of random real tempered
+distributions in $\mathcal S'(\R^d;\R^r)$, defined on possibly
+different probability spaces. Suppose $X_i(f)$ is
+measurable for each $f\in\mathcal S$ and
+\begin{equation}\label{eq:distribution-second}
+ \E|X_i(f)|^2\le C\|f\|_2^2
+ \qquad(i\in J,\ f\in\mathcal S)
+\end{equation}
+for one $0\le C<\infty$. For every $s>d/2$, the fields have
+Borel realizations in $H_{-s}$ and
+\begin{equation}\label{eq:hermite-expectation}
+ \sup_i\E\|X_i\|_{-s}^2\le
+ B_s:=Cr\sum_{k\in\N_0^d}\lambda_k^{-2s}<\infty.
+\end{equation}
+For every $t>s$ and $R>0$, the set
+\[
+ K_R=\{X\in H_{-s}:\|X\|_{-s}\le R\}
+\]
+is compact in $H_{-t}$ and
+$\inf_i\mathbb P(X_i\in K_R)\ge1-B_s/R^2$.
+The laws are uniformly tight in $H_{-t}$ and every sequence has
+a weakly convergent subsequence there. The inclusion
+$H_{-t}\hookrightarrow\mathcal S'$ is continuous for the strong
+distribution topology.
+\end{proposition}
+
+\begin{proof}
+We first recall the identification of the Hilbert space. If
+$f_{\alpha k}=\langle f_\alpha,h_k\rangle_{L^2}$, the Hermite
+expansion of $f\in\mathcal S$ converges in $\mathcal S$. The norm
+$\|f\|_s$, defined by
+\[
+ \|f\|_s^2:=\sum_{\alpha,k}\lambda_k^{2s}|f_{\alpha k}|^2
+\]
+is a continuous Schwartz seminorm. Indeed, for real $s\ge0$ and
+an integer $m\ge s$,
+\[
+ \|f\|_s\le\|(1-\Delta+|y|^2)^m f\|_2.
+\]
+These facts are the Hermite description
+of Schwartz space in \cite[Sections~2, 4 and~5]{RadhaThangavelu}.
+For any coefficients $c_{\alpha k}$ with
+$\sum\lambda_k^{-2s}|c_{\alpha k}|^2<\infty$, the formula
+\[
+ f\longmapsto\sum_{\alpha,k}c_{\alpha k}f_{\alpha k}
+\]
+defines a tempered distribution by weighted Cauchy--Schwarz.
+It has the prescribed Hermite coefficients. Conversely, the
+Schwartz expansion identifies every $X\in H_{-s}$ with this
+formula for $c_{\alpha k}=X(h_ke_\alpha)$. Thus $H_{-s}$ is
+isometric to a weighted $\ell^2$ space and is separable and complete.
+
+\emph{Expected norm and measurable realization.}
+The bound \eqref{eq:distribution-second} gives
+$\E|X_i(h_ke_\alpha)|^2\le C$. Tonelli's theorem therefore
+gives \eqref{eq:hermite-expectation}. To check summability,
+group the indices by $|k|_1=n$:
+\begin{equation}\label{eq:hermite-trace}
+ \sum_{k\in\N_0^d}\lambda_k^{-2s}
+ =\sum_{n=0}^\infty
+    \binom{n+d-1}{d-1}(2n+d+1)^{-2s}<\infty
+ \qquad(2s>d).
+\end{equation}
+The multiplicity is of order $(1+n)^{d-1}$. On the measurable
+full-measure event where the norm is finite, the finite Hermite
+sums of $X_i$ converge in $H_{-s}$. Each sum is a Borel random
+variable, since it has finitely many measurable coefficients.
+Their limit, extended by zero off that event, is a Borel
+$H_{-s}$-valued random variable. The coefficient identification
+above shows that it agrees there with the given distribution
+$X_i$, for every Schwartz test at once.
+
+\emph{Compact balls.}
+For $X\in K_R$, the tail of the weaker norm satisfies
+\begin{equation}\label{eq:compact-tail}
+ \sum_{\alpha,k:\lambda_k>M}\lambda_k^{-2t}
+                    |X(h_ke_\alpha)|^2
+ \le M^{-2(t-s)}R^2.
+\end{equation}
+Take a sequence $(X_n)$ in $K_R$. Each coefficient is bounded
+by $R\lambda_k^s$, so a diagonal subsequence makes every
+coefficient converge to a number $c_{\alpha k}$. Fatou's lemma
+gives $\sum\lambda_k^{-2s}|c_{\alpha k}|^2\le R^2$.
+These coefficients therefore define an $X\in K_R$. On the
+finitely many indices with $\lambda_k\le M$, coefficient
+convergence gives convergence in $H_{-t}$. On the remaining
+indices, the squared norm of $X_n-X$ is at most
+$4R^2M^{-2(t-s)}$, by \eqref{eq:compact-tail} applied to the
+difference. First let $n\to\infty$ and then $M\to\infty$.
+The chosen subsequence converges to $X$ in $H_{-t}$. This proves
+compactness of $K_R$ in that metric space.
+
+Markov's inequality and \eqref{eq:hermite-expectation} give
+$\mathbb P(X_i\notin K_R)\le B_s/R^2$, uniformly in $i$.
+Thus the laws are tight in the separable complete Hilbert space
+$H_{-t}$. Prokhorov's theorem
+\cite[Theorem~1.1]{Sorensen} gives their relative weak sequential
+compactness.
+
+Finally, for a bounded subset $D\subset\mathcal S$, weighted
+Cauchy--Schwarz gives
+\begin{equation}\label{eq:strong-inclusion}
+ \sup_{f\in D}|X(f)|\le\|X\|_{-t}\sup_{f\in D}\|f\|_t.
+\end{equation}
+The last supremum is finite. These are the seminorms defining
+the strong topology of $\mathcal S'$, so the inclusion is
+continuous.
+\end{proof}
+
+\begin{proof}[Proof of \Cref{thm:lattice-continuum}]
+Apply \cref{prop:step-realization} to each $\nu_a$. It gives
+one tempered step distribution at that spacing, measurable test
+pairings, and \eqref{eq:smeared-second} with the common constant
+$C$. Fix $t>d/2$ and choose $d/2<s<t$.
+\Cref{prop:compactness} gives Borel laws on $H_{-t}$,
+uniform tightness and a weakly convergent subsequence along
+any prescribed sequence $a_j\to0$. For any finite collection
+$f_1,\ldots,f_m\in\mathcal S$, the map
+$X\mapsto(X(f_1),\ldots,X(f_m))$ is continuous on $H_{-t}$
+by \eqref{eq:strong-inclusion}. Composing bounded continuous
+functions on $\R^m$ with this map proves the asserted joint
+convergence. The continuous inclusion also regards the limit
+as a Borel law on the space of tempered distributions.
+\end{proof}
+
+\input{structure}
+\input{tensors}
+\input{qed-application}
+
+\printbibliography
+\end{document}

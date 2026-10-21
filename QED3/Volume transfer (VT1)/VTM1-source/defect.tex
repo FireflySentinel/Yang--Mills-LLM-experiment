@@ -1,0 +1,212 @@
+\section{The photon, matter and flux defect}\label{sec:vtm-defect}
+
+\subsection{The scalar-Laplacian determinant}
+
+The zero-flux Gaussian factor involves the determinant of the
+unit-lattice scalar Laplacian with its constant mode removed.
+Write its logarithm as
+\[
+ \mathcal L(n_1,n_2,n_3)
+  =\sum_{\substack{k\in\prod_\mu\Z/n_\mu\Z\\k\ne0}}
+      \log\left(\sum_{\mu=1}^3
+                       \left(2-2\cos\frac{2\pi k_\mu}{n_\mu}\right)\right),
+ \qquad \mathcal L(n)=\mathcal L(n,n,n).
+\]
+For $j\ge2$ put
+\[
+ G_j=\left(1+\frac j{3.2}\right)\frac{2j^2}{2.56},\qquad
+ K_j=(1+j+j^2)(\log j+jG_j).
+\]
+The estimate used for the two reference volumes is
+\begin{equation}\label{eq:transfer-photon-logdet}
+ \frac12\bigl(\mathcal L(jn)-j^3\mathcal L(n)\bigr)
+              \le-(j^3-1)\log n+K_j
+                   \qquad(n,j\in\Z,\ n,j\ge2).
+\end{equation}
+Its logarithmic term cancels the corresponding scale dependence
+of the Gaussian normalization. We retain the finite-volume
+calculation since a bulk determinant bound would lose this term.
+
+Sum first in the first coordinate. For a nonzero transverse
+momentum $k'=(k_2,k_3)$ define $\omega(k')>0$ by
+\[
+ 2\cosh\omega(k')
+     =2+\sum_{\mu=2,3}
+                 \left(2-2\cos\frac{2\pi k_\mu}{n_\mu}\right).
+\]
+Factoring over the $n_1$-th roots of unity gives
+\[
+ \prod_{k_1\in\Z/n_1\Z}
+       \left(2\cosh\omega-2\cos\frac{2\pi k_1}{n_1}\right)
+                       =4\sinh^2(n_1\omega/2).
+\]
+For $k'=0$, omit $k_1=0$; the corresponding product is $n_1^2$.
+Therefore
+\begin{equation}\label{eq:transfer-photon-one-direction}
+ \mathcal L(n_1,n_2,n_3)
+   =2\log n_1+
+       2\sum_{k'\ne0}\log\bigl(2\sinh(n_1\omega(k')/2)\bigr).
+\end{equation}
+For $z>0$ let $g(z)=-\log(1-\exp(-2z))$.
+The identity $2\sinh z=\exp(z)(1-\exp(-2z))$ shows that
+\[
+ \log(2\sinh(jz))-j\log(2\sinh z)\le jg(z).
+\]
+Consequently
+\begin{multline}\label{eq:transfer-photon-side-difference}
+ \mathcal L(jn_1,n_2,n_3)-j\mathcal L(n_1,n_2,n_3)\\
+ \le2\log(jn_1)-2j\log n_1
+                       +2j\sum_{k'\ne0}g(n_1\omega(k')/2).
+\end{multline}
+
+In the three applications below, $n_1=n$ and
+$n_2,n_3\in\{n,jn\}$. Represent each transverse momentum by
+$|k_\mu|\le n_\mu/2$ and put $p_\mu=2\pi k_\mu/n_\mu$.
+For
+$M(p)=\sum_{\mu=2,3}(2-2\cos p_\mu)$,
+\[
+ \frac4{\pi^2}|p|^2\le M(p)\le8,\qquad
+ \omega=2\operatorname{arcsinh}(\sqrt M/2)\ge0.51|p|.
+\]
+The last inequality follows from concavity of
+$\operatorname{arcsinh}$ on $[0,\sqrt2]$ and
+$\operatorname{arcsinh}\sqrt2>0.81\sqrt2$.
+Thus $n\omega(k')/2\ge c_j|k'|$, where $c_j=1.6/j$.
+Since
+$g(z)\le\exp(-2z)(1+(2z)^{-1})$, and
+$|k'|\ge(|k_2|+|k_3|)/\sqrt2$, one obtains
+\begin{align*}
+ \sum_{k'\ne0}g(n\omega(k')/2)
+ &\le\left(1+\frac1{2c_j}\right)
+   \left[
+     \left(\sum_{i\in\Z}\exp(-\sqrt2c_j|i|)\right)^2-1
+   \right]\\
+ &=\left(1+\frac1{2c_j}\right)
+                  \sinh(c_j/\sqrt2)^{-2}
+ \le\left(1+\frac1{2c_j}\right)\frac2{c_j^2}
+ =G_j.
+\end{align*}
+Enlargement to all of $\Z^2\setminus\{0\}$ is valid because
+the chosen representatives are distinct.
+
+Finally telescope the enlargement of the three sides:
+\begin{align*}
+ \mathcal L(jn,jn,jn)-j^3\mathcal L(n,n,n)
+ ={}&\bigl[\mathcal L(jn,jn,jn)-j\mathcal L(n,jn,jn)\bigr]\\
+ &+j\bigl[\mathcal L(jn,n,jn)-j\mathcal L(n,n,jn)\bigr]\\
+ &+j^2\bigl[\mathcal L(jn,n,n)-j\mathcal L(n,n,n)\bigr].
+\end{align*}
+Symmetry of $\mathcal L$ supplies this identity.
+Each bracket is bounded by
+$2\log j+2(1-j)\log n+2jG_j$ by
+\eqref{eq:transfer-photon-side-difference}.
+Multiplication by $1,j,j^2$ and summation prove
+\eqref{eq:transfer-photon-logdet}.
+
+\subsection{The photon, matter and flux contributions}
+
+Fix $q>0$ and a real lattice mass. On a cubic torus with
+$n\ge4$ sites per side, let $Z_n^{(w)}[1]$ be the
+partition function in flux sector $w\in\Z^3$, and put
+$P_n(w)=Z_n^{(w)}[1]/Z_n[1]$. The flux order is
+$(23,13,12)$. Define
+\begin{equation}\label{eq:transfer-flux-tail}
+ \varsigma_n=\sum_{w\ne0}
+              \exp\left(-\frac{2\pi^2|w|_2^2}{q^2n}\right).
+\end{equation}
+The notation $z_{r,n}$ below is the positive matter factor
+of \eqref{eq:external-matter-factor}.
+
+\begin{proposition}\label{prop:transfer-flux-defect}
+For $n\ge4$ and an integer $j\ge2$,
+\begin{align}
+ Z_n[1]&=\frac{Z_n^{\mathrm{ph}}z_{r,n}}{P_n(0)},
+                  \qquad 0<P_n(0)\le1,\label{eq:transfer-zero-factor}\\
+ P_n(w)&\le\exp\left(-\frac{2\pi^2|w|_2^2}{q^2n}\right),
+ \qquad P_n(0)\ge1-\varsigma_n. \label{eq:transfer-flux-weight}
+\end{align}
+If $q^2n\le1$, then
+\begin{equation}\label{eq:transfer-flux-small}
+ \varsigma_n\le7\exp\left(-\frac{2\pi^2}{q^2n}\right)<\frac18.
+\end{equation}
+The defect $D_j$ of \eqref{eq:transfer-reference-data}
+decomposes as
+\begin{align}
+ D_j&=D_j^{\mathrm{ph}}+D_j^{\mathrm{mat}}+D_j^{\mathrm{fl}},
+                                      \label{eq:transfer-defect-split}\\
+ D_j^{\mathrm{mat}}&=j^3\log z_{r,n}-\log z_{r,jn},
+ \qquad
+ D_j^{\mathrm{fl}}=-j^3\log P_n(0)+\log P_{jn}(0),\notag\\
+ D_j^{\mathrm{ph}}
+   &=(j^3-1)\log\frac{2\pi}{q^2}
+                +\tfrac12[\mathcal L(jn)-j^3\mathcal L(n)]\notag\\
+   &\le(j^3-1)\log\frac{2\pi}{q^2n}+K_j.
+                                      \label{eq:transfer-photon-defect}
+\end{align}
+If $\varsigma_n<1$, then
+\begin{equation}\label{eq:transfer-flux-defect}
+ D_j^{\mathrm{fl}}\le-j^3\log(1-\varsigma_n).
+\end{equation}
+All identities use the same charge and lattice mass at
+the two sides; the mass can have either sign.
+\end{proposition}
+
+\begin{proof}
+The zero-flux factorization \eqref{eq:external-zero-factorization}
+gives $Z_n^{(0)}[1]=Z_n^{\mathrm{ph}}z_{r,n}>0$.
+All sectors have nonnegative weights, and their absolutely
+convergent sum is $Z_n[1]$. Hence
+$0<P_n(0)\le1$ and \eqref{eq:transfer-zero-factor}.
+
+For a configuration of flux $w$, let $h_w$ be the
+constant two-cochain with value
+$r_qw_{\mu\nu}/n^2$ on plaquettes of orientation $\mu\nu$.
+The Fourier Hodge decomposition writes
+$r_qz=dB+h$ with $h$ constant.
+Summing over a coordinate two-torus annihilates $dB$
+and gives $n^2h_{\mu\nu}=r_qw_{\mu\nu}$.
+Thus $F-h_w$ is exact. A constant cochain is orthogonal
+to every exact cochain, by periodic summation by parts.
+In particular $\langle h,F\rangle=\langle h,h_w\rangle$
+on sector $w$ whenever $h$ is constant.
+
+Apply Gaussian domination \eqref{eq:slab-gaussian-domination}
+with $h=h_{w'}$ and split the expectation into its sectors:
+\[
+ 1\ge\sum_w
+ \exp\bigl(\langle h_{w'},h_w\rangle-\|h_{w'}\|^2/2\bigr)P_n(w)
+ \ge \exp(\|h_{w'}\|^2/2)P_n(w').
+\]
+Since $\|h_w\|^2=r_q^2|w|_2^2/n$, this proves the
+first bound in \eqref{eq:transfer-flux-weight}.
+The identity $\sum_wP_n(w)=1$ proves the second.
+
+Set $x=\exp(-2\pi^2/(q^2n))$. Positivity permits the
+factorization
+\[
+ \varsigma_n=\left(\sum_{i\in\Z}x^{i^2}\right)^3-1
+ \le\left(1+\frac{2x}{1-x}\right)^3-1.
+\]
+For $q^2n\le1$, one has $x<2^{-18}$.
+The bound $(1-x)^{-1}\le1+2x$ gives
+$2x/(1-x)\le2.001x<10^{-5}$. Therefore
+$\varsigma_n\le2.001x(3+3\cdot10^{-5}+10^{-10})
+\le7x<1/8$. This also proves convergence of
+\eqref{eq:transfer-flux-tail}.
+
+Taking logarithms in \eqref{eq:transfer-zero-factor}
+at $n$ and $jn$ gives \eqref{eq:transfer-defect-split}.
+By \eqref{eq:external-photon-factor},
+\[
+ \log Z_n^{\mathrm{ph}}
+   =(n^3+2)\log r_q+(n^3-1)\log(2\pi)-\mathcal L(n)/2.
+\]
+Its bulk terms cancel in the defect. The remaining
+constant is $(j^3-1)\log(2\pi/q^2)$.
+Equation \eqref{eq:transfer-photon-logdet} proves
+\eqref{eq:transfer-photon-defect}. Finally
+$\log P_{jn}(0)\le0$, and
+$P_n(0)\ge1-\varsigma_n>0$ gives
+\eqref{eq:transfer-flux-defect}.
+\end{proof}
+

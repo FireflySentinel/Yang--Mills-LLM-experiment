@@ -1,0 +1,158 @@
+\section{Wick products on larger cutoff tori}\label{sec:vtm-wick}
+
+Use the cell sources of Section~\ref{sec:reference-cells}
+and write
+\[
+ N_*=8L^3,\qquad
+ a_L=\frac{L^3-1}{(L-1)^3},\qquad
+ D^{\mathrm{mat}}=L^3\log z_{r,n_*}-\log z_{r,Ln_*},
+ \qquad
+ \delta=\frac{D_L}{(L-1)^3N_*}.
+\]
+Fix $0<e\le1/3$, with $q=e\sqrt\eta$ and
+$q^2n_*=e^2R^*$, and assume
+\begin{equation}\label{eq:transfer-W3}
+ 6N_*e^2R^*\log(1/e)\le\pi^2.
+\end{equation}
+The choice of scales ensuring this condition is given
+below. Let $\mathcal C_*=\{0,\ldots,2L-1\}^3$
+and use the probe variance $v_\eta$ of
+\eqref{eq:cells-orthogonality}. For real $c_2,c_4$ put
+\begin{align}
+ O_m^{[c]}&=W_m(X_c;v_\eta,c_m),\qquad m=2,4,
+                                      \label{eq:transfer-Wick-observable}\\
+ \Theta_m^{(0)}
+  &=\left|
+      \left[\prod_{c\in\mathcal C_*}
+            (\partial_{t_c}^m-c_m)\right]\mathring\Phi(0)
+    \right|^{1/N_*}.                  \label{eq:transfer-Theta}\\
+ M_4&=600N_*^2v_\eta^2e^{-4}+|c_4|,\qquad
+ M_2=12N_*v_\eta e^{-2}+|c_2|,\notag\\
+ T_m&=\Theta_m^{(0)}+2e^6M_m,\qquad
+ u_m=\exp(\delta)T_m.                 \label{eq:transfer-Wick-data}
+\end{align}
+Here $\mathring\Phi$ is the normalized external partition
+function \eqref{eq:external-reference-partition}.
+The notation $e^{-m}$ denotes an inverse power of the
+charge.
+
+\begin{proposition}\label{prop:transfer-Wick}
+Assume the probe placement condition \eqref{eq:cells-fit}.
+For $n=n_*$, or $n\in p_{\rm cell}\Z$ with $n\ge Ln_*$,
+the all-flux law with the fixed real lattice mass obeys
+\begin{align}
+ 0\le\delta
+ &\le\frac{a_L}{N_*}\log\frac{2\pi}{e^2R^*}
+       +\frac{K_L+D^{\mathrm{mat}}+1}{(L-1)^3N_*},
+                                           \label{eq:transfer-delta}\\
+ \left|\E_n^{\mathrm{af}}\prod_{c\in\mathcal C}
+                        O_m^{[c]}\right|
+ &\le u_m^{|\mathcal C|}              \label{eq:transfer-Wick-product}
+\end{align}
+for every set $\mathcal C$ of distinct cells and $m=2,4$.
+In particular, if $\kappa_j$ denotes the cumulant of
+$X_0$ on that torus, then
+\begin{align}
+ \left|e^{-2}(\kappa_2-v_\eta)-c_2\right|&\le u_2,
+                                      \label{eq:transfer-second-cumulant}\\
+ \left|e^{-4}\kappa_4-(c_4-3c_2^2)\right|
+   &\le u_4+3u_2(2|c_2|+u_2).        \label{eq:transfer-fourth-cumulant}
+\end{align}
+The bounds are uniform in $n$.
+Their right sides are formed on the two reference tori;
+$\Theta_m^{(0)}$, and therefore $u_m$, may depend on
+the placement.
+\end{proposition}
+
+\begin{proof}
+Condition \eqref{eq:transfer-W3} implies $e^2R^*<1$,
+since $N_*\ge1000$ and $\log(1/e)\ge\log3>1$.
+Put $x=\exp(-2\pi^2/(e^2R^*))$. The same condition gives
+\[
+ x\le e^{12N_*},\qquad x^{1/(2N_*)}\le e^6.
+\]
+Apply Proposition~\ref{prop:transfer-flux-defect} at
+$n_*$ and $j=L$. Since $\varsigma_{n_*}\le7x<1/8$,
+\[
+ D_L^{\mathrm{fl}}\le-L^3\log(1-\varsigma_{n_*})
+              \le8L^3x=N_*x
+              \le N_*3^{-12N_*}\le1.
+\]
+The photon estimate and the defect decomposition
+now prove the upper bound in \eqref{eq:transfer-delta};
+its lower bound is Proposition~\ref{prop:transfer-general}.
+
+All the polynomials in \eqref{eq:transfer-Wick-observable}
+are the same local integrands on every carrying torus,
+by Section~\ref{sec:reference-cells}. They are real
+elements of the cell observable class. Write
+$O_m^\sharp=\prod_{c\in\mathcal C_*}O_m^{[c]}$ on
+$C(n_*)$. Its all-flux expectation is nonnegative,
+by the fold trace \eqref{eq:transfer-fold-trace}.
+We estimate it by splitting flux zero from the
+other sectors.
+
+First, Gaussian domination and the moment bound
+give, for every positive integer $i$,
+\[
+ \E_{n_*}^{\mathrm{af}}X_c^{2i}
+                              \le(2i\exp(1)v_\eta)^i.
+\]
+Minkowski's inequality at exponent $2N_*$ yields
+\begin{align*}
+ \|H_4(X_c;v_\eta)\|_{2N_*}
+   &\le[64\exp(2)N_*^2+24\exp(1)N_*+3]v_\eta^2
+       \le600N_*^2v_\eta^2,\\
+ \|H_2(X_c;v_\eta)\|_{2N_*}
+   &\le[4\exp(1)N_*+1]v_\eta
+       \le12N_*v_\eta.
+\end{align*}
+Thus $\|O_m^{[c]}\|_{2N_*}\le M_m$.
+The finite moments justify all uses of H\"older
+and Cauchy--Schwarz below, also when $v_\eta=0$.
+
+On the zero-flux sector,
+\eqref{eq:external-Wick-product} gives
+\[
+ \left|\E_{n_*}^{\mathrm{af}}
+               [O_m^\sharp\mathbf1_{\{\mathrm{flux}=0\}}]\right|
+   =P_{n_*}(0)\left|\E_{n_*}^{(0)}O_m^\sharp\right|
+   \le(\Theta_m^{(0)})^{N_*}.
+\]
+On the remaining sectors, Cauchy--Schwarz followed
+by H\"older with $N_*$ factors gives
+\begin{align*}
+ \left|\E_{n_*}^{\mathrm{af}}
+               [O_m^\sharp\mathbf1_{\{\mathrm{flux}\ne0\}}]\right|
+ &\le\varsigma_{n_*}^{1/2}
+                \bigl(\E_{n_*}^{\mathrm{af}}|O_m^\sharp|^2\bigr)^{1/2}\\
+ &\le\varsigma_{n_*}^{1/2}
+                \prod_{c\in\mathcal C_*}\|O_m^{[c]}\|_{2N_*}\\
+ &\le\bigl(\varsigma_{n_*}^{1/(2N_*)}M_m\bigr)^{N_*}.
+\end{align*}
+Since $\varsigma_{n_*}^{1/(2N_*)}\le2e^6$,
+the nonnegative $N_*$-th root satisfies
+\[
+ \|O_m\|_*=
+       \bigl(\E_{n_*}^{\mathrm{af}}O_m^\sharp\bigr)^{1/N_*}
+             \le\Theta_m^{(0)}+2e^6M_m=T_m.
+\]
+For nonnegative $a,b$ we used
+$(a^{N_*}+b^{N_*})^{1/N_*}\le a+b$.
+Proposition~\ref{prop:transfer-general}, with
+$s_0=2L$ and $j=L$, proves
+\eqref{eq:transfer-Wick-product}.
+
+For one cell the same estimate gives
+$|e^{-m}\E H_m(X_0;v_\eta)-c_m|\le u_m$.
+Charge conjugation makes the odd moments zero.
+Writing $y=e^{-2}\E H_2(X_0;v_\eta)$, one has
+\[
+ e^{-4}\kappa_4=e^{-4}\E H_4(X_0;v_\eta)-3y^2.
+\]
+The second-order conclusion follows at once.
+For the fourth, use $|y-c_2|\le u_2$ and
+$|y+c_2|\le2|c_2|+u_2$ to obtain
+\eqref{eq:transfer-fourth-cumulant}.
+\end{proof}
+

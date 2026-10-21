@@ -5,7 +5,7 @@
 Project codename: **PR1**.
 
 - **PRO1** — [Positive compact probes and free response coefficients](PRO1.pdf).
-- **AI-written manuscript:** **PRM1** — *Positive compact probes and free response coefficients for lattice QED in three dimensions* (manuscript to be added).
+- **AI-written manuscript:** **PRM1** — [Positive compact probes and free response coefficients for lattice QED in three dimensions](PRM1.pdf) · [TeX source](PRM1-source/PRM1.tex).
 - **Human-written manuscript:** to be added.
 
 ## Role in the QEM1 assembly
@@ -241,4 +241,4 @@ All coefficients are independent of $`e`$ in the charge convention above. They a
 
 ## Navigation
 
-[QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Links to published outlines use their repository locations; links to withheld manuscripts open the corresponding README. Citations to material outside this assembly remain visible without a download link.
+[QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Links to published outlines use their repository locations; links to manuscripts open the corresponding README. Citations to material outside this assembly remain visible without a download link.

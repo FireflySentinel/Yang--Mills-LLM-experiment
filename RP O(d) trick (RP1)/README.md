@@ -5,7 +5,7 @@
 Project codename: **RP1**.
 
 - **RP1O1** — [Reflection positivity to rotations: expanded proof outline](RP1O1.pdf).
-- **AI-written manuscript:** **RP1M1** — *Rotation invariance from lattice symmetry and reflection positivity* (manuscript to be added).
+- **AI-written manuscript:** **RPM1** — [Rotation invariance from lattice symmetry and reflection positivity](RPM1.pdf) · [TeX source](RPM1-source/RPM1.tex).
 - **Human-written manuscript:** to be added.
 
 ## Main theorem

@@ -1,0 +1,1602 @@
+\documentclass[11pt,letterpaper,reqno]{amsart}
+\usepackage[bibliography]{manuscript-style}
+\input{notation}
+\title[Positive probes and free Dirac response]{Positive compact probes and free response coefficients for lattice QED in three dimensions}
+\date{}
+\hypersetup{pdftitle={Positive compact probes and free response coefficients for lattice QED in three dimensions},pdfauthor={}}
+\begin{document}
+\begin{abstract}
+We construct compactly supported real two-form probes with positive
+fourth response for the massive doubled Dirac operator in three
+dimensions. The proof gives the local large-mass coefficient
+$1/(240\pi M^5)$ and a remainder of order $M^{-7}$.
+For the chamber lattice regulator, the fourth logarithmic
+determinant derivative converges to this continuum trace with
+error $O(\eta^{1/4})$ at fixed physical mass, uniformly in the
+torus size; the remaining volume error decays exponentially.
+A cancellation between the two-vertex and contact terms gives
+uniform bounds on the second and fourth ordinary determinant
+derivatives. The constants are uniform under real translations
+of the compact probe.
+\end{abstract}
+\maketitle
+\tableofcontents
+
+\section{Introduction}\label{sec:introduction}
+
+Let $\sigma_\nu$ be the Pauli matrices and
+$\gamma_\nu=\diag(\sigma_\nu,-\sigma_\nu)$, $1\le\nu\le3$.
+Thus $\gamma_\nu\gamma_\mu+\gamma_\mu\gamma_\nu=2\delta_{\mu\nu}$.
+On $L^2(\R^3;\C^4)$, for $M>0$ and real
+$a\in C_c^\infty(\R^3;\R^3)$, write
+\[
+ S_M=(M+\gamma\cdot\partial)^{-1},\qquad
+ V_a=i\gamma\cdot a,\qquad
+ q_{4,M}(a)=-\tfrac14\tr[(S_MV_a)^4].
+\]
+For a real compact smooth two-form $\beta$, use the Euclidean
+codifferential
+$(d^*\beta)_\nu=-\sum_{\mu\ne\nu}\partial_\mu\beta_{\mu\nu}$,
+put $f=dd^*\beta$, and define, at fixed mass $\bar m>0$,
+\begin{equation}\label{eq:positive-coefficient}
+ b(f)=-6\tr[(S_{\bar m}i\gamma\cdot d^*\beta)^4]
+      =24q_{4,\bar m}(d^*\beta).
+\end{equation}
+This depends only on $f$: two choices of $d^*\beta$ with the same
+exterior derivative differ by a compactly supported smooth one-form
+that is closed and coclosed, hence harmonic and therefore zero.
+\begin{theorem}[A positive continuum probe]\label{prop:positive-probe}
+For every real $a\in C_c^\infty(\R^3;\R^3)$ and $M>0$,
+the operator $(S_MV_a)^4$ is trace class and its trace is real. There
+is $C_a<\infty$ such that, for $M\ge1$,
+\begin{equation}\label{eq:large-mass-quartic}
+ \left|q_{4,M}(a)-\frac1{240\pi M^5}
+       \int_{\R^3}|\operatorname{curl}a|^4\,\dd x\right|
+ \le C_aM^{-7}.
+\end{equation}
+In particular, for every $\bar m>0$ there is a real
+$\beta\in C_c^\infty(\R^3;\Lambda^2)$ for which $f=dd^*\beta$ satisfies
+$b(f)>0$.
+\end{theorem}
+
+
+The sign in \eqref{eq:positive-coefficient} is obtained by dilating
+the compact probe after evaluating the large-mass coefficient.
+The leading local term is the three-dimensional analogue of the
+quartic field-strength term in the Heisenberg--Euler effective
+Lagrangian \cite{HeisenbergEuler1936}. The coefficient and remainder
+in \cref{prop:positive-probe} are proved here by the continuum
+argument of \cite[\S17]{QED3Master}.
+
+\subsection{The lattice response}\label{subsec:response-conventions}
+
+Fix $0<\rho<1$ and $0<\bar m\le1$. Let $\beta$ be a real nonzero compactly
+supported smooth two-form, and put $a=d^*\beta$, $f=dd^*\beta$.
+Thus $a_\nu=-\sum_{\mu\ne\nu}\partial_\mu\beta_{\mu\nu}$.
+Let $Q_\beta$ be a closed coordinate cube of least side $D_\beta$
+containing $\supp\beta$; this side includes no buffer. For $0<\eta\le1$
+define
+\[
+ J_\eta v(y)=\eta^{-3}\int_{[-\eta/2,\eta/2]^3}v(y+z)\,\dd z,
+ \qquad
+ \delta_{\eta,\mu}v(y)=
+      \frac{v(y+\eta e_\mu/2)-v(y-\eta e_\mu/2)}{\eta}.
+\]
+The interpolating functions
+\begin{equation}\label{eq:response-lattice-probe}
+ a_{\eta,\nu}^0(y)=-\sum_{\mu\ne\nu}
+               \delta_{\eta,\mu}J_\eta\beta_{\mu\nu}(y)
+\end{equation}
+are defined without periodization. If $n=R/\eta\in\N$, $n\ge2$,
+the lattice one-cochain on the physical torus is
+\begin{equation}\label{eq:response-periodic-probe}
+ a_{\eta,\nu}(\eta c)=\sum_{z\in\Z^3}
+       a_{\eta,\nu}^0(\eta c+\eta e_\nu/2+Rz).
+\end{equation}
+It is the adjoint lattice coboundary of the cube-averaged probe
+at plaquette centers. In lattice units the external connection
+is $B_t(c,c+e_\nu)=t\eta a_{\eta,\nu}(\eta c)$, extended with
+the orientation sign to reversed bonds. The free mass in
+these units is $m=\bar m\eta$.
+
+
+The chamber labels are the $48$ signed permutation matrices
+$g\in O_{\mathrm{cub}}=O(3)\cap\operatorname{GL}(3,\Z)$.
+Let $s_0$ change the sign of the third coordinate, let $s_1,s_2$
+interchange coordinates $(2,3)$ and $(1,2)$, respectively, and let
+$r_{e_1}$ change the sign of the first coordinate. Set
+\begin{gather*}
+ n_0=e_3,\quad n_1=(e_2-e_3)/\sqrt2,\quad
+ n_2=(e_1-e_2)/\sqrt2,\quad n_3=-e_1,\\
+ (w_0,w_1,w_2,w_3)=(6,6\sqrt2,6\sqrt2,6).
+\end{gather*}
+For a spinor $\psi:\Z^3\times O_{\mathrm{cub}}\to\C^4$ with
+$\psi(c+ne_\nu,g)=-\psi(c,g)$, put
+$M_i(g)=\frac{w_i}{2}(\rho+\gamma\cdot gn_i)$ and define
+\begin{equation}\label{eq:prm-chamber-operator}
+\begin{split}
+ (D^{\mathrm{ch}}[B]\psi)(c,g)
+ ={}&\sum_{i=0}^2M_i(g)\bigl(\psi(c,g)-\psi(c,gs_i)\bigr)\\
+ &+M_3(g)\bigl(\psi(c,g)
+       -e^{iB(c,c+ge_1)}\psi(c+ge_1,gr_{e_1})\bigr).
+\end{split}
+\end{equation}
+Here $B$ is an $n\Z^3$-periodic cochain on the oriented nearest-neighbor
+edges of the covering lattice, with $B(c',c)=-B(c,c')$ for
+$c,c'\in\Z^3$. The operator is determined by its values for
+$c\in\{0,\ldots,n-1\}^3$; when $n=2$, edges with the same quotient
+endpoints remain distinct. This is the chamber operator
+of \cite[\S2]{ChamberLattice} in lattice units.
+The spinor pairing uses counting measure in $c$ and
+$48^{-1}\sum_g$ in the labels.
+
+Let
+\begin{equation}\label{eq:response-free-ratio}
+ N_0(t)=\frac{\det(D^{\mathrm{ch}}[B_t]+m)}
+                  {\det(D^{\mathrm{ch}}[0]+m)},\qquad
+ c_j=N_0^{(j)}(0),\qquad
+ a_{\mathrm{ch}}=(\log N_0)''(0),\quad
+ b_{\mathrm{ch}}=(\log N_0)^{(4)}(0).
+\end{equation}
+The logarithm is the holomorphic branch equal to zero at the
+origin. Its denominator is nonzero: the real part of
+$D^{\mathrm{ch}}[0]+m$ is at least $m>0$. For comparison
+with the charge convention, for $e>0$ put $q=e\eta^{1/2}$; the normalized
+probe is $\widehat a=\eta^{1/2}a_\eta$, so
+$B_t=q(t/e)\widehat a$. The free ratio and its coefficients
+are independent of $e$.
+
+On $T_R=\R^3/R\Z^3$ use spinors antiperiodic in all three directions.
+Their momentum set is
+$\mathcal P_R=\frac{2\pi}{R}(\Z+\frac12)^3$, and
+$S^R$ is the multiplier $s_{\bar m}(P)$ there, where
+$s_m(p)=(m+i\gamma\cdot p)^{-1}$. For
+$R\ge D_\beta+1$ let $a^R=\sum_za(\,\cdot+Rz)$, and put
+\begin{equation}\label{eq:response-continuum-fourth}
+ b_R(f)=-6\operatorname{Tr}(S^Ri\gamma\cdot a^R)^4,
+ \qquad b(f)=-6\operatorname{Tr}(S_{\bar m}i\gamma\cdot a)^4.
+\end{equation}
+
+
+\begin{theorem}[Free lattice response]\label{prop:response-fourth}
+For the operator and sampled probe above, fix
+$0<\rho<1$, $0<\bar m\le1$, and real nonzero
+$\beta\in C_c^\infty(\R^3;\Lambda^2)$.
+For all $0<\eta\le1$ and $n=R/\eta\in\N$ with $n\ge2$,
+the following assertions hold.
+
+If $R\ge D_\beta+1$, the operators $S^Ri\gamma\cdot a^R$ and
+$S_{\bar m}i\gamma\cdot a$ belong to the Schatten class
+of order four; their fourth-power traces are real.
+There are constants
+$C_1(\rho,\bar m,\beta)$ and $C_2(\bar m,\beta)$ such that
+\begin{align}\label{eq:response-fourth-errors}
+ |b_{\mathrm{ch}}(\eta,R)-b_R(f)|&\le C_1\eta^{1/4},\notag\\
+ |b_R(f)-b(f)|&\le C_2e^{-\bar m(R-D_\beta)},
+ \qquad R\ge D_\beta+1,\quad0<\eta\le1,\quad R/\eta\in\N.
+\end{align}
+The constants are unchanged by every real translate of
+the probe. In particular $b_{\mathrm{ch}}(\eta,R)$ tends
+to $b(f)$ whenever $\eta\to0$ and $R\to\infty$.
+
+The function $N_0$ is entire, even, and positive on the real axis.
+Its derivatives at zero are real and satisfy
+\[
+ c_{2j+1}=0,\qquad c_2=a_{\mathrm{ch}},\qquad
+ c_4=b_{\mathrm{ch}}+3c_2^2 .
+\]
+There is $C_{\rho,\bar m,\beta}<\infty$, unchanged by real
+translations of $\beta$, such that
+\[
+ |c_2|\le C_{\rho,\bar m,\beta}\quad(R\ge1),\qquad
+ |c_4|\le C_{\rho,\bar m,\beta}\quad(R\ge D_\beta+1).
+\]
+All coefficients are independent of $e$ in the charge convention
+above. They are unchanged by translating the probe through
+$\eta\Z^3$ or by replacing its external cochain by a cubic reflected
+cochain.
+\end{theorem}
+
+
+\subsection{The proof and its use}
+
+For a probe chosen by \cref{prop:positive-probe}, the errors in
+\eqref{eq:response-fourth-errors} are eventually smaller than its
+positive coefficient. The choice of probe precedes every
+interacting comparison. The free estimates themselves apply to
+every real compact smooth probe, regardless of the sign of $b(f)$.
+
+The continuum proof differentiates the fourth trace in the mass.
+Its diagonal kernel admits a local expansion, and gauge covariance
+reduces the leading term to the antisymmetric first derivative of
+the connection. A constant-field heat kernel evaluates that term;
+integration in the mass and dilation give \cref{prop:positive-probe}.
+The kernel regularity and coefficientwise inverse identities are
+proved in \cref{sec:positive-probe}.
+
+For the lattice comparison, the chamber inverse splits into a
+Dirac inverse on constant labels and a uniformly bounded remainder.
+Repeated differentiation of a bond phase gives contact terms.
+The contact traces tend to zero, while the four first-order
+vertices converge in Schatten norm. Fourier aliases and the
+discarded high momenta are bounded uniformly in the torus size.
+The comparison with infinite space then follows from the
+exponential decay of the Yukawa images. These comparisons are
+proved in \cref{subsec:response-fourth}.
+
+The second derivative needs a separate cancellation. Its
+two-vertex trace and contact trace form a polarization kernel whose
+momentum integral vanishes to second order at zero. Pairing its
+quadratic bound and the finite-volume quadrature error with the
+decaying probe transform yields the uniform bound for $c_2$.
+The identity $c_4=b_{\mathrm{ch}}+3c_2^2$ then gives the bound
+for the ordinary fourth derivative. The cancellation is proved in
+\cref{subsec:response-polarization}, and
+\cref{subsec:response-uniform-coefficients} completes the proof of
+\cref{prop:response-fourth}.
+
+The proofs reproduce the continuum and chamber response arguments
+of \cite[\S17--18]{QED3Master}. The chamber construction and its
+free Schur-complement estimates are imported from that manuscript
+with precise references below. The present results concern the
+free determinant at zero background connection.
+
+We use Euclidean norms and the Fourier convention
+$\widehat v(P)=\int_{\R^3}v(x)e^{-iP\cdot x}\,\dd x$.
+Write
+$|\beta|_{C^j}=\max_{\mu<\nu,\,|\alpha|\le j}
+\|\partial^\alpha\beta_{\mu\nu}\|_\infty$.
+For compact operators, $\|\cdot\|_p$ denotes the Schatten norm;
+bounded multiplication, completeness, trace cyclicity and
+H\"older's inequality are used in the forms of
+\cite[slides~16, 53--56]{PongeSchatten2025}.
+Finite-dimensional traces include all spin and chamber labels.
+\section{The local continuum response}\label{sec:positive-probe}
+
+We prove \cref{prop:positive-probe}. The mass derivative has a
+five-propagator kernel whose diagonal is continuous. A compact gauge
+transformation removes the constant connection at each point.
+Quartic homogeneity and parity then leave only the fourth power of
+the field strength at leading order. The constant-field calculation
+determines its coefficient.
+
+\subsection{Kernels and differentiation in the mass}
+
+The kernel and Fourier multiplier of $S_M$ are
+\begin{align}
+ S_M(z)&=(M-\gamma\cdot\partial)
+              \frac{e^{-M|z|}}{4\pi|z|},\label{eq:probe-free-kernel}\\
+ \widehat S_M(p)&=\frac{M-i\gamma\cdot p}{M^2+|p|^2},\qquad
+ |\widehat S_M(p)|=(M^2+|p|^2)^{-1/2}.
+ \label{eq:probe-free-symbol}
+\end{align}
+In particular,
+\[
+ |S_M(z)|\le\frac{e^{-M|z|}(2M|z|+1)}{4\pi|z|^2},\qquad
+ S_M(z)=M^2S_1(Mz),\qquad \|S_M\|_{L^1}\le3/M.
+\]
+The operator $G=S_MV_aS_M$ is Hilbert--Schmidt. Indeed, its momentum
+kernel, with measure $(2\pi)^{-3}\dd p$, is
+$\widehat S_M(p)i\gamma\cdot\widehat a(p-q)\widehat S_M(q)$.
+Writing $u(p)=(M^2+|p|^2)^{-1}$, the matrix norm bound and Young's
+inequality give
+\[
+ \|G\|_{\mathrm{HS}}^2
+ \le8(2\pi)^{-6}\int u(p)(|\widehat a|^2*u)(p)\,\dd p
+ \le8(2\pi)^{-3}\|u\|_2^2\|a\|_2^2
+ =\frac{\|a\|_2^2}{\pi M}.
+\]
+Here $\|u\|_2^2=\pi^2/M$. Since $(S_MV_a)^4=GV_aGV_a$,
+\begin{equation}\label{eq:probe-trace-bound}
+ |q_{4,M}(a)|\le\frac{\|a\|_2^2\|a\|_\infty^2}{4\pi M}.
+\end{equation}
+The matrix $\gamma_5=\left(\begin{smallmatrix}0&1_2\\1_2&0\end{smallmatrix}\right)$
+conjugates $S_M$ to $S_M^*$ and $V_a$ to $V_a^*=-V_a$.
+Conjugation of the fourth power and cyclicity of the trace therefore
+give a real trace. Cyclicity here involves a bounded factor and the
+trace-class product $GV_aG$, so it does not presume that $S_MV_a$
+itself is trace class.
+
+We will evaluate the mass derivative on the diagonal of a kernel with
+five propagators. This requires continuity at the diagonal, including
+for the linear connections used below. For either a compact smooth
+connection or a linear connection, $|a(z)|\le c_a(1+|z|)$ and
+$a$ is Lipschitz. Choose
+$s(z)=K|z|^{-2}e^{-M|z|/2}$ so that
+$|S_M(z)|(1+|z|)^{24}\le s(z)$. Its convolution powers obey
+\begin{equation}\label{eq:probe-convolutions}
+ s^{*2}(z)\le C|z|^{-1}e^{-M|z|/2},\quad
+ s^{*2}(z)\le C|z|^{-3/2},\quad
+ s^{*3}(z)\le C|z|^{-1/2}.
+\end{equation}
+For example, the bound for the second convolution follows by factoring
+out $e^{-M|z|/2}$ and scaling
+$\int|z-w|^{-2}|w|^{-2}\,\dd w=C|z|^{-1}$; the third follows by
+convolving $|z|^{-2}$ and $|z|^{-3/2}$. Thus $s^{*2}\in L^2$,
+$s^{*4}=s^{*2}*s^{*2}$ is bounded and continuous, and so is
+$s^{*5}=s*s^{*4}$.
+
+Let $R_a^{(j)}(x,y)$ be the integral kernel of
+$(-1)^j(S_MV_a)^jS_M$, initially off the diagonal, for $0\le j\le4$.
+Distributing the factors $1+|z_l|$ along the chain of propagators gives
+\begin{equation}\label{eq:probe-kernel-majorant}
+ |R_a^{(j)}(x,y)|\le[c_a(1+|x|)]^j s^{*(j+1)}(x-y).
+\end{equation}
+These integrals act as the indicated operators on Schwartz spinors;
+absolute integration against such a spinor justifies every composition.
+The fourth kernel extends continuously to all $(x,y)$. To see this,
+use the four independent increments of the first three and last
+propagators. Changing $(x,y)$ then changes four Lipschitz factors and
+the middle propagator. On $|x|,|y|,|x'|,|y'|\le r$, the resulting
+difference is bounded by
+\begin{multline}\label{eq:probe-kernel-continuity}
+ C_{a,r}\bigl((|x-x'|+|y-y'|)\|s^{*5}\|_\infty\\
+ +\|s^{*4}\|_\infty
+       \|S_M-S_M(\,\cdot+(x'-y')-(x-y))\|_{L^1}\bigr).
+\end{multline}
+This tends to zero. Define
+$r_4(x;M,a)=\tr R_a^{(4)}(x,x)$ using this extension.
+
+For compact $a$, differentiation in $M$ now gives
+\begin{equation}\label{eq:probe-mass-derivative}
+ \frac{\dd}{\dd M}q_{4,M}(a)=\int r_4(x;M,a)\,\dd x,
+ \qquad q_{4,M}(a)\longrightarrow0\quad(M\longrightarrow\infty).
+\end{equation}
+To justify this differentiation, write the trace as the absolutely convergent
+four-vertex integral
+\[
+ -\tfrac14\int\tr\bigl[S_M(z_4-z_1)V_a(z_1)
+ S_M(z_1-z_2)V_a(z_2)S_M(z_2-z_3)V_a(z_3)
+ S_M(z_3-z_4)V_a(z_4)\bigr]\,\dd z_1\cdots\dd z_4.
+\]
+Its absolute integral is at most
+$4\|a\|_\infty^3\|a\|_{L^1}s^{*4}(0)$ before the factor $1/4$.
+On any compact interval of positive masses, $S_M$ and
+$\partial_MS_M$ have a common majorant of the same form. Since
+$\partial_MS_M=-S_M*S_M$, the four differentiated terms have equal
+integrals by cyclicity. The factor $-1/4$ and the minus sign in this
+derivative cancel. Inserting the convolution yields the diagonal
+five-propagator integral in \eqref{eq:probe-mass-derivative}; its absolute
+integral is bounded by $4\|a\|_\infty^3\|a\|_{L^1}s^{*5}(0)$.
+This also proves continuous differentiability. The limit at infinity
+follows from \eqref{eq:probe-trace-bound}.
+
+\subsection{The local large-mass expansion}
+
+Write
+\[
+ V_j(x;w)=i\gamma\cdot\sum_{|\alpha|=j}
+                  \frac{w^\alpha}{\alpha!}\partial^\alpha a(x).
+\]
+The substitution $z_l=x+M^{-1}w_l$ in the diagonal kernel gives
+\begin{multline}\label{eq:probe-scaled-kernel}
+ r_4(x;M,a)=M^{-2}\tr\int S_1(-w_1)V_a(x+M^{-1}w_1)
+ S_1(w_1-w_2)V_a(x+M^{-1}w_2)\\
+ {}\cdot S_1(w_2-w_3)V_a(x+M^{-1}w_3)
+ S_1(w_3-w_4)V_a(x+M^{-1}w_4)S_1(w_4)\,\dd w.
+\end{multline}
+Let $\rho_j(x;a)$ be the sum of these integrals with the four
+connection factors replaced by $V_{j_l}(x;w_l)$ and
+$j_1+\cdots+j_4=j$. Taylor expansion through total order five gives
+\begin{equation}\label{eq:probe-local-expansion}
+ r_4(x;M,a)=\sum_{j=0}^5M^{-2-j}\rho_j(x;a)+O_a(M^{-8}),
+ \qquad M\ge1,
+\end{equation}
+uniformly in $x$. The remainder contains four factors bounded by
+$C\|a\|_{C^6}(1+|w_l|)^6$ and at least the factor $M^{-6}$.
+With $w_0=0$,
+$\prod_l(1+|w_l|)^6\le\prod_l(1+|w_l-w_{l-1}|)^{24}$.
+Use the weighted majorant at unit mass for the five factors $S_1$.
+Its fifth convolution at zero bounds the remainder integral by a
+constant independent of $M$.
+The coefficients vanish off $\supp a$. There is also a spatial tail
+bound
+\begin{equation}\label{eq:probe-spatial-tail}
+ \int_{\operatorname{dist}(x,\supp a)\ge1}|r_4(x;M,a)|\,\dd x
+ \le C_ae^{-M}.
+\end{equation}
+Indeed, the first and last propagators each travel at least
+$d=\operatorname{dist}(x,\supp a)$; their bound is $Me^{-Md}$ for
+$d\ge1$. Integrating the three intervening propagators gives
+\[
+ |r_4(x;M,a)|\le108\|a\|_\infty^4|\supp a|M^{-1}e^{-2Md}.
+\]
+For $M,d\ge1$, $2Md\ge M+d$, which proves
+\eqref{eq:probe-spatial-tail}.
+
+The reduction to field strength must be justified at the level of this
+diagonal kernel. Let $\lambda\in C_c^\infty(\R^3)$ be real. On Schwartz
+spinors, as a formal power series in $u$,
+\[
+ (M+\gamma\cdot\partial+ui\gamma\cdot(a+d\lambda))^{-1}
+ =e^{-iu\lambda}(M+\gamma\cdot\partial+ui\gamma\cdot a)^{-1}
+                       e^{iu\lambda}.
+\]
+All coefficients preserve Schwartz space. Comparing the coefficient
+of $u^4$ gives, almost everywhere off the diagonal,
+\begin{equation}\label{eq:probe-gauge-kernel}
+ R_{a+d\lambda}^{(4)}(x,y)=\sum_{j=0}^4R_a^{(j)}(x,y)
+       \frac{[-i(\lambda(x)-\lambda(y))]^{4-j}}{(4-j)!}.
+\end{equation}
+For $j=0,1,2,3$, the bounds in
+\eqref{eq:probe-convolutions}--\eqref{eq:probe-kernel-majorant} show
+that these terms are respectively $O(|x-y|^2)$,
+$O(|x-y|^2)$, $O(|x-y|^{3/2})$, and $O(|x-y|)$ locally in $x$.
+Continuity of the fourth kernel therefore implies
+\[
+ r_4(x;M,a+d\lambda)=r_4(x;M,a).
+\]
+Uniqueness of the finite asymptotic expansion in
+\eqref{eq:probe-local-expansion} gives the same invariance for
+$\rho_j$, $0\le j\le5$.
+
+Fix $x$. If $p^{(k)}(z)$ is the homogeneous part of degree $k$ of
+the fifth-order Taylor polynomial of $a(x+z)$, choose a compact
+$\lambda$ equal near $x$ to
+\[
+ \lambda(x+z)=-\sum_{k=0}^5\frac{z\cdot p^{(k)}(z)}{k+1}.
+\]
+Euler's identity gives $z\cdot(a+d\lambda)^{[5]}(x+z)=0$ for
+the Taylor polynomial. Thus the transformed constant term vanishes,
+and its first derivative is the antisymmetric matrix
+$F_{\nu\mu}(x)/2$, where
+$F_{\nu\mu}=\partial_\nu a_\mu-\partial_\mu a_\nu$.
+Each term defining $\rho_j$ has four connection factors. Hence it
+vanishes for $j<4$, and at order four only $(j_1,j_2,j_3,j_4)=(1,1,1,1)$
+remains. Put
+\[
+ A_{F,\mu}(z)=\tfrac12\sum_\nu z_\nu F_{\nu\mu},\qquad
+ \Psi(F)=r_4(0;1,A_F).
+\]
+Then $\rho_4(x;a)=\Psi(F(x))$. The odd coefficients vanish as well:
+substitution $w_l\mapsto-w_l$ and conjugation by $\gamma_5$ leave
+the trace unchanged and multiply it by $(-1)^j$. In particular
+$\rho_5=0$. Consequently
+\begin{equation}\label{eq:probe-field-strength-reduction}
+ r_4(x;M,a)=M^{-6}\Psi(F(x))+O_a(M^{-8}).
+\end{equation}
+
+\subsection{The constant-field coefficient}
+
+Rotation of the variables and conjugation by the spin lift in $SU(2)$
+show that $\Psi(F)$ depends on the vector
+$B_l=\tfrac12\sum_{\nu,\mu}\varepsilon_{l\nu\mu}F_{\nu\mu}$ only
+through $|B|$. Take $B=(0,0,b)$, $b\ge0$, and
+$A=(-bz_2/2,bz_1/2,0)$. Set $D_u=\partial+iuA$ and
+\[
+ h_u=1-\Delta+uW_1+u^2W_2,\qquad
+ W_1=-2iA\cdot\partial+b\sigma_3,\quad
+ W_2=|A|^2.
+\]
+The Clifford relations give
+\begin{equation}\label{eq:probe-squared-dirac}
+ (1-\gamma\cdot D_u)(1+\gamma\cdot D_u)
+   =\diag(h_u,h_u),\qquad
+ (1+\gamma\cdot D_u)^{-1}
+   =(1-\gamma\cdot D_u)\diag(h_u^{-1},h_u^{-1}).
+\end{equation}
+These are identities of formal series acting on Schwartz spinors;
+no expansion of an operator with an unbounded connection is being
+assumed in operator norm.
+
+We compute the fourth coefficient of $h_u^{-1}$ from the kernel
+\begin{multline}\label{eq:probe-Mehler}
+ k_u(t;x,y)=(4\pi t)^{-3/2}e^{-|x-y|^2/(4t)}
+ \frac{\tau}{\sinh\tau}\exp\left(-\frac{(\tau\coth\tau-1)|x_p-y_p|^2}{4t}
+                           +\frac{iub}{2}x\wedge y\right)
+ e^{-\tau\sigma_3},\\
+ \tau=ubt,\quad x_p=(x_1,x_2),\quad x\wedge y=x_1y_2-x_2y_1.
+\end{multline}
+It is analytic in $u$ for $|u|bt<\pi$. The kernel satisfies
+$(\partial_t+h_u-1)k_u=0$. The planar verification uses
+$\alpha=(ub/4)\coth(ubt)$ and
+$\phi=-\alpha|x_p-y_p|^2+iub(x\wedge y)/2$:
+\[
+ \frac{\check h e^\phi}{e^\phi}
+   =4\alpha-(4\alpha^2-u^2b^2/4)|x_p-y_p|^2,
+ \qquad \alpha'=-(4\alpha^2-u^2b^2/4),
+\]
+where $\check h=-\partial_1^2-\partial_2^2
+-iub(x_1\partial_2-x_2\partial_1)+u^2b^2|x_p|^2/4$.
+Differentiation of the prefactor supplies $-4\alpha$; differentiation
+of $e^{-\tau\sigma_3}$ supplies the spin term. The longitudinal
+Gaussian satisfies the one-dimensional heat equation.
+
+Here only the coefficients of \eqref{eq:probe-Mehler} are needed.
+Write $k_u=\sum_{n\ge0}u^nk^{(n)}$. Each coefficient is the Gaussian
+times a finite polynomial in $t,x-y,y$, whose monomials
+$t^j(x-y)^\alpha y^\beta$ have $2j+|\alpha|\ge n$.
+The factor $e^{iub(x-y)\wedge y/2}$ has weight at least one per
+power of $u$, and the other factors have weight at least two,
+if $t$ has weight two and $x-y$ weight one.
+Thus
+\[
+ K^{(n)}(x,y)=\int_0^\infty e^{-t}k^{(n)}(t;x,y)\,\dd t
+\]
+converges off the diagonal and, for $n\ge1$, on the diagonal.
+Its terms are $y^\beta$ times
+\[
+ m_{j,\alpha}(x-y)=\int_0^\infty e^{-t}t^j(x-y)^\alpha
+                 (4\pi t)^{-3/2}e^{-|x-y|^2/(4t)}\,\dd t.
+\]
+Their Fourier transforms are
+$(i\partial_p)^\alpha[j!(1+|p|^2)^{-j-1}]$, so they define
+operators preserving Schwartz space.
+
+Coefficientwise integration of the heat equation identifies these
+operators with the formal inverse of $h_u$. Indeed, for a Schwartz
+spinor $\varphi$, the zeroth heat coefficient converges to $\varphi$
+as $t\downarrow0$. The $n$th coefficient for $n\ge1$ tends to zero
+uniformly, since every polynomial term is bounded after integration
+against $\varphi$ by $C_\varphi t^{j+|\alpha|/2}$.
+Integrating from $\epsilon$ to infinity and sending $\epsilon$ to
+zero therefore gives
+\[
+ (1-\Delta)K^{(n)}+W_1K^{(n-1)}+W_2K^{(n-2)}=\delta_{n0}1.
+\]
+The convergence can be taken in tempered distributions; the
+polynomial differential operators are continuous there. Since the
+constant operator $1-\Delta$ is invertible on Schwartz space, the
+right inverse is the unique formal inverse.
+
+To evaluate the diagonal, the kernel of its fourth coefficient must
+agree with the continuous kernel already constructed. The functions
+$m_{j,\alpha}$ are continuous when $2j+|\alpha|\ge2$ and continuously
+differentiable when $2j+|\alpha|\ge3$. For this, write
+$m_{j,\alpha}(z)=z^\alpha\mu_j(|z|)$ with
+\[
+ \mu_j(s)=\int_0^\infty e^{-t}t^j(4\pi t)^{-3/2}e^{-s^2/(4t)}\,\dd t.
+\]
+For $j\ge1$, $\mu_j$ is bounded and continuous at zero and
+$\mu_j'(s)=-s\mu_{j-1}(s)/2$ for $s>0$; for $j=0$ use
+$\mu_0(s)=e^{-s}/(4\pi s)$. These formulas give the asserted
+regularity at zero. Consequently $K^{(3)},K^{(4)}$ and
+$\partial_xK^{(4)}$ are continuous. From
+\eqref{eq:probe-squared-dirac} the fourth Dirac coefficient has kernel
+\[
+ (1-\gamma\cdot\partial_x)\diag(K^{(4)},K^{(4)})(x,y)
+       -i\gamma\cdot A(x)\diag(K^{(3)},K^{(3)})(x,y).
+\]
+It equals $R_A^{(4)}$ because both continuous kernels give the same
+operator on Schwartz space. At $x=y=0$, $A(0)=0$, and the derivative
+term has zero trace: the two Pauli blocks have opposite signs.
+It follows that
+\begin{align}
+ \Psi(F)&=2\int_0^\infty e^{-t}\tr k^{(4)}(t;0,0)\,\dd t\\
+ &=-\frac4{45}(4\pi)^{-3/2}\Gamma(7/2)b^4
+   =-\frac1{48\pi}|B|^4.\label{eq:probe-constant-field}
+\end{align}
+In the second line we used
+$\tr k_u(t;0,0)=2(4\pi t)^{-3/2}\tau\coth\tau$ and
+$\tau\coth\tau=1+\tau^2/3-\tau^4/45+O(\tau^6)$.
+
+\subsection{Integration and dilation}
+
+Integrate \eqref{eq:probe-field-strength-reduction} over the unit
+neighbourhood of $\supp a$, and use \eqref{eq:probe-spatial-tail}
+on its complement. Equations \eqref{eq:probe-mass-derivative} and
+\eqref{eq:probe-constant-field} give
+\[
+ \frac{\dd}{\dd M}q_{4,M}(a)
+ =-\frac1{48\pi M^6}\int|\operatorname{curl}a|^4\,\dd x
+                                    +O_a(M^{-8}).
+\]
+Integration from $M$ to infinity proves
+\eqref{eq:large-mass-quartic}.
+
+Finally let $\varphi(x)=e^{-1/(1-|x|^2)}$ for $|x|<1$ and zero
+otherwise, set $\beta_{12}=\varphi$, $\beta_{13}=\beta_{23}=0$, and
+$a=d^*\beta=(\partial_2\varphi,-\partial_1\varphi,0)$.
+The third component of $\operatorname{curl}a$ is
+$-(\partial_1^2+\partial_2^2)\varphi$ and has value $4e^{-1}$ at zero.
+Thus $I=\int|\operatorname{curl}a|^4\,\dd x>0$.
+For $\ell\ge1$ put
+$\beta^{(\ell)}(x)=\ell^2\beta(x/\ell)$,
+$a_\ell(x)=\ell a(x/\ell)$, and $f_\ell=dd^*\beta^{(\ell)}$.
+The unitary dilation $U_\ell\psi(x)=\ell^{-3/2}\psi(x/\ell)$ gives
+\[
+ U_\ell^{-1}S_{\bar m}V_{a_\ell}U_\ell
+       =\ell^2S_{\bar m\ell}V_a,
+ \qquad q_{4,\bar m}(a_\ell)=\ell^8q_{4,\bar m\ell}(a).
+\]
+For $\bar m\ell\ge1$, therefore,
+\begin{equation}\label{eq:probe-positive-dilation}
+ b(f_\ell)=24q_{4,\bar m}(a_\ell)
+   =\frac{\ell^3I}{10\pi\bar m^5}
+                      +O_a(\ell\bar m^{-7}).
+\end{equation}
+This is positive for sufficiently large $\ell$ and completes the proof
+of \cref{prop:positive-probe}.
+
+
+\section{The chamber symbol and determinant derivatives}\label{subsec:response-bloch}\label{sec:free-response}
+
+The free chamber symbol has a single four-component Dirac singularity.
+We first isolate it, then use its inverse bounds to control the contact
+terms in the fourth derivative.
+
+\subsection{The singular part of the inverse}
+
+Use the fiber $V=\ell^2(O_{\mathrm{cub}};\C^4)$ with measure
+$48^{-1}\sum_g$ and the constant-label isometry $(Jz)(g)=z$.
+The orthogonal projection onto its complement is $Q=1-JJ^*$.
+The fiber $V$ has dimension $192$, and traces use this full dimension;
+the label measure does not multiply the matrix trace by
+$1/48$. Write $\mathcal D_m(p)$ for the free symbol of
+\cite[\S2.2]{FermionBlock}, and $R_m(p)=\mathcal D_m(p)^{-1}$.
+For real $p$ it is invertible when $m>0$.
+
+The light and heavy blocks are the blocks relative to
+$\operatorname{ran}J\oplus\operatorname{ran}Q$. The heavy inverse,
+the vanishing of the mixed blocks at zero momentum, and the
+ellipticity of the light Schur complement are proved in
+\cite[Proposition~2.2]{FermionBlock}.
+
+We need a bound on the difference between the full inverse
+and its single light Dirac part, including mixed and heavy
+blocks. There is $C_\rho<\infty$ such that
+\begin{equation}\label{eq:response-bloch-remainder}
+ R_m(p)=J(m+i\gamma\cdot p)^{-1}J^*+\mathcal E_m(p),\qquad
+ \|\mathcal E_m(p)\|\le C_\rho,\qquad p\in[-\pi,\pi]^3,\quad0<m\le1.
+\end{equation}
+To prove this, use the block inversion formula
+\cite[(16)]{FermionBlock}. The off-diagonal blocks
+vanish at zero momentum, and are $O(|p|)$ because only
+the external hop varies with $p$. The heavy inverse is
+bounded by \cite[(10)]{FermionBlock}. The light Schur complement
+therefore has the form
+\[
+ B_m(p)=m+i\gamma\cdot p+r_m(p),\qquad
+                    \|r_m(p)\|\le C_\rho|p|^2.
+\]
+For $|p|$ below a fixed $\rho$-dependent radius, the product
+$r_m(p)(m+i\gamma\cdot p)^{-1}$ has norm at most one half.
+Its Neumann inverse gives
+\[
+ \|B_m(p)^{-1}-(m+i\gamma\cdot p)^{-1}\|
+        \le2C_\rho |p|^2(m^2+|p|^2)^{-1}\le2C_\rho,
+ \qquad |p|\|B_m(p)^{-1}\|\le2.
+\]
+In the other four terms of the block inverse, each mixed
+block supplies a factor $|p|$ beside this light inverse.
+The heavy terms are bounded. This proves
+\eqref{eq:response-bloch-remainder} near zero. Away from
+zero, the real-part and high-momentum ellipticity bounds
+of \cite[\S2.2]{FermionBlock} bound the full inverse uniformly,
+and the continuum inverse is bounded by $1/|p|$. This
+proves the estimate on the whole cube. In particular
+\begin{equation}\label{eq:response-bloch-bounds}
+ \|R_m(p)\|\le C_\rho+(m^2+|p|^2)^{-1/2}
+                    \le\frac{C'_\rho}{m+|p|}.
+\end{equation}
+
+Define external-hop matrices
+\[
+ (T_\nu^\pm u)(g)=1_{\{ge_1=\pm e_\nu\}}
+                          3(\rho\mp\gamma_\nu)u(gr_{e_1}).
+\]
+Then
+\begin{align}\label{eq:response-symbol-vertices}
+ \mathcal D_m(p)&=\mathcal D_{m,\mathrm{loc}}
+       -\sum_\nu(e^{ip_\nu}T_\nu^++e^{-ip_\nu}T_\nu^-),\notag\\
+ V_\nu(p):=\partial_\nu\mathcal D_m(p)
+       &=-i(e^{ip_\nu}T_\nu^+-e^{-ip_\nu}T_\nu^-),\notag\\
+ W_\nu(p):=\partial_\nu^2\mathcal D_m(p)
+       &=e^{ip_\nu}T_\nu^++e^{-ip_\nu}T_\nu^-.
+\end{align}
+Mixed second derivatives vanish. The disjoint rows indexed
+by $ge_1=\pm e_\nu$ imply
+$\|\sum z_\nu^\pm T_\nu^\pm\|\le3(1+\rho)\max|z_\nu^\pm|$.
+Since eight labels contribute to each direction,
+\begin{equation}\label{eq:response-light-vertex}
+ J^*T_\nu^\pm J=\tfrac12(\rho\mp\gamma_\nu),\qquad
+ J^*V_\nu(0)J=i\gamma_\nu.
+\end{equation}
+All nonzero derivatives of the symbol are bounded by six
+on real momenta. Differentiating $R_m\mathcal D_m=1$ gives
+\[
+ \partial^\alpha R_m=-\sum_{0<\delta\le\alpha}
+   \binom\alpha\delta(\partial^{\alpha-\delta}R_m)
+                    (\partial^\delta\mathcal D_m)R_m.
+\]
+Starting with \eqref{eq:response-bloch-bounds}, induction bounds
+each summand by a constant times
+$(\operatorname{dist}(p,2\pi\Z^3)+m)^{-1-|\alpha|}$;
+the remaining factor of the distance has nonnegative exponent
+and is bounded by a power of seven. Thus
+\begin{equation}\label{eq:response-inverse-derivatives}
+ \|\partial^\alpha R_m(p)\|
+   \le C_{\alpha,\rho}
+       (\operatorname{dist}(p,2\pi\Z^3)+m)^{-1-|\alpha|}.
+\end{equation}
+The involution $(\mathcal Uu)(g)=\gamma_5u(-g)$ satisfies
+\begin{equation}\label{eq:response-bloch-parity}
+ \mathcal U\mathcal D_m(p)\mathcal U=\mathcal D_m(-p),\qquad
+ \mathcal UV_\nu(p)\mathcal U=-V_\nu(-p).
+\end{equation}
+Indeed $-g$ reverses every bond direction, and
+$\gamma_5\gamma_\nu\gamma_5=-\gamma_\nu$ restores the
+hopping matrix. The external phase then changes $p$ to
+$-p$. This parity will cancel the first momentum derivative
+of the polarization kernel.
+
+\subsection{Derivative and contact terms}\label{subsec:response-contact}
+
+Let $\mathcal P_n=\frac{2\pi}{n}(\Z+\frac12)^3\cap(-\pi,\pi]^3$.
+The normalized Bloch vectors are $n^{-3/2}e^{ip\cdot c}$,
+and the lattice free propagator $G$ is the multiplier
+$R_m(p)$ on these antiperiodic momenta. Write
+$A_\nu(c)=a_{\eta,\nu}(\eta c)$ and
+$A_\nu^-(c)=A_\nu(c-e_\nu)$, and let
+$U_\nu^\pm\psi(c)=\psi(c\pm e_\nu)$. The bond values are
+$b_\nu^+=\eta A_\nu$, $b_\nu^-=-\eta A_\nu^-$.
+The exact connection derivatives are
+\begin{equation}\label{eq:response-connection-derivatives}
+ D_j=-\sum_{\nu,\pm}(ib_\nu^\pm)^jT_\nu^\pm U_\nu^\pm,
+ \quad D^{\mathrm{ch}}[B_t]-D^{\mathrm{ch}}[0]
+                  =\sum_{j\ge1}\frac{t^j}{j!}D_j,
+ \quad Y_j=GD_j.
+\end{equation}
+The shifts act first. These $D_j$ are derivatives, with
+the factorials outside the vertices.
+
+For small complex $t$, $N_0(t)=\det(1+\sum_{j\ge1}t^jY_j/j!)$
+and its zero-at-zero logarithm is the convergent finite-matrix
+trace series $\sum_{l\ge1}(-1)^{l+1}\operatorname{Tr}(\sum_j
+t^jY_j/j!)^l/l$. The tail $l\ge5$ is $O(t^5)$, so it
+contributes no fourth derivative. Cyclicity of the trace
+in the terms $l\le4$ gives
+\begin{equation}\label{eq:response-fourth-identity}
+ \begin{split}
+ b_{\mathrm{ch}}={}&\operatorname{Tr}Y_4
+       -4\operatorname{Tr}(Y_1Y_3)-3\operatorname{Tr}Y_2^2\\
+       &+12\operatorname{Tr}(Y_1^2Y_2)-6\operatorname{Tr}Y_1^4.
+ \end{split}
+\end{equation}
+For example, the cyclically equal orders $(1,1,2)$,
+$(1,2,1)$ and $(2,1,1)$ contribute
+$24\cdot\frac13\cdot\frac32=12$. The quadratic identity
+is $a_{\mathrm{ch}}=\operatorname{Tr}Y_2-\operatorname{Tr}Y_1^2$.
+The determinant series is used only near zero; the determinant
+itself is entire in $t$.
+
+We bound all four contact traces in
+\eqref{eq:response-fourth-identity} uniformly in $R$ and the
+position of the probe. The interpolating periodic field is
+\[
+ \widetilde A_\nu(y)=\sum_z
+             a_{\eta,\nu}^0(y+\eta e_\nu/2+Rz),
+ \qquad A_\nu(c)=\widetilde A_\nu(\eta c).
+\]
+When $R\ge D_\beta+1$, averaging translates of the derivatives
+of $\beta$ shows
+\begin{equation}\label{eq:response-probe-estimates}
+ \begin{gathered}
+ \|\widetilde A\|_\infty+\|\partial\widetilde A\|_\infty\le C_\beta^{\mathrm{free}},
+ \qquad \|\widetilde A-a^R\|_\infty\le C_\beta^{\mathrm{free}}\eta,\\
+ \eta^3|\{c:A_\nu(c)\ne0\text{ for some }\nu\}|\le(D_\beta+3)^3,
+ \qquad
+ \|\eta A_\nu\|_{\ell^4}\le C_\beta^{\mathrm{free}}\eta^{1/4},\\
+ \|\eta(A_\nu^--A_\nu)\|_{\ell^4}\le C_\beta^{\mathrm{free}}\eta^{5/4},
+ \qquad\|\widetilde A-a^R\|_{L^4(T_R)}\le C_\beta^{\mathrm{free}}\eta.
+ \end{gathered}
+\end{equation}
+Every averaging displacement has size at most $\eta$ in
+sup norm. The translates of $\supp\beta$ are disjoint,
+so their derivative sup norms are unchanged. The supports
+of the interpolants lie in $Q_\beta+[-\eta,\eta]^3$ modulo
+the periods. Its volume and number of lattice points give
+the last estimates, including the union with its one-step
+translate for the difference.
+
+Let $\widehat{A_\nu^j}(k)=n^{-3}\sum_cA_\nu(c)^je^{-ik\cdot c}$
+on the finite momentum group $\mathcal G_n=\frac{2\pi}{n}\Z^3/
+2\pi\Z^3$, and set $F_j(k)=\sum_\nu|\widehat{A_\nu^j}(k)|$.
+There are constants $C_{\mathrm{Four},1},C_{\mathrm{Four},0}$ depending only on $\beta$ with
+\begin{equation}\label{eq:response-probe-fourier-norms}
+ \|F_j\|_{\ell^1(\mathcal G_n)}\le C_{\mathrm{Four},1}^j,
+ \qquad R^3\|F_j\|_\infty\le C_{\mathrm{Four},1}^{j-1}C_{\mathrm{Four},0}.
+\end{equation}
+The transform of the centered difference and the cube average
+in \eqref{eq:response-lattice-probe} is
+\[
+ -\sum_{\mu\ne\nu}iP_\mu\operatorname{sinc}(\eta P_\mu/2)
+ \prod_l\operatorname{sinc}(\eta P_l/2)\widehat\beta_{\mu\nu}(P),
+\]
+where $\operatorname{sinc}(z)=\sin z/z$ and $\operatorname{sinc}(0)=1$.
+The midpoint shift multiplies this transform by a phase of modulus one.
+The shifted transform has modulus at most
+$C_\beta^{\mathrm{free}}(1+|P|)^{-4}$. Poisson summation \cite[Theorems~4--7]{GuthFourier2015} gives
+\[
+ \widehat A_\nu(k)=R^{-3}\sum_{z\in\Z^3}
+      \widehat{a_{\eta,\nu}^0(\,\cdot+\eta e_\nu/2)}
+                                      ((k+2\pi z)/\eta).
+\]
+Summing over representatives $k$ and $z$ gives a single
+sum over $\frac{2\pi}{R}\Z^3$, bounded after multiplication
+by $R^{-3}$ by its integrable radial majorant, uniformly
+for $R\ge1$. For $|k|_\infty\le\pi$, nonzero $z$ have
+$|(k+2\pi z)/\eta|\ge\pi|z|_\infty/\eta$; the convergent
+sum $\sum_{z\ne0}|z|_\infty^{-4}$ gives the sup bound.
+Powers of $A_\nu$ give convolutions on $\mathcal G_n$;
+$\ell^1*\ell^1\to\ell^1$ and $\ell^1*\ell^\infty\to\ell^\infty$
+give \eqref{eq:response-probe-fourier-norms} for all $j$.
+
+The momentum blocks of a vertex are
+\[
+ D_j(p,p')=-\eta^j\sum_\nu\widehat{A_\nu^j}(p-p')
+       [i^je^{ip'_\nu}T_\nu^++(-i)^je^{-ip_\nu}T_\nu^-],
+ \qquad\|D_j(p,p')\|\le6\eta^jF_j(p-p').
+\]
+For $l\le3$ and $j_1+\cdots+j_l=4$, apply these bounds
+and \eqref{eq:response-bloch-bounds} to the cyclic trace.
+With differences $k_i=p_i-p_{i+1}$, the sum is parametrized
+by $p_1,k_1,\ldots,k_{l-1}$. H\"older in $p_1$ bounds
+the product of its $l$ translates of $(m+|p|)^{-1}$ by
+$\sum_p(m+|p|)^{-l}$. Bound the final $F_{j_l}$ in sup
+norm and the others in $\ell^1$. Thus
+\begin{equation}\label{eq:response-cyclic-contact}
+ |\operatorname{Tr}(Y_{j_1}\cdots Y_{j_l})|
+   \le192(6C'_\rho)^l C_{\mathrm{Four},1}^3C_{\mathrm{Four},0}\,
+          \eta\left(n^{-3}\sum_{p\in\mathcal P_n}(m+|p|)^{-l}\right).
+\end{equation}
+The factor $\eta$ is $\eta^4n^3/R^3$.
+
+For antiperiodic momenta, comparison with their disjoint
+cubes of side $2\pi/n$ gives, for a decreasing radial
+function $h$, $n^{-3}\sum_ph(|p|)\le\pi^{-3}\int h(|y|)\,\dd y$.
+Indeed in the cube of $p$ one has $|y|\le2|p|$, and a
+rescaling by two gives the factor $\pi^{-3}$. On the
+bounded momentum cube this yields constants for $l=1,2$
+and $\log(1+5/m)$ for $l=3$. Inserting the multiplicities
+$1,4,3,12$ from \eqref{eq:response-fourth-identity} proves
+\begin{equation}\label{eq:response-contact-bound}
+ \begin{split}
+ &|\operatorname{Tr}Y_4|+4|\operatorname{Tr}(Y_1Y_3)|
+          +3|\operatorname{Tr}Y_2^2|+12|\operatorname{Tr}(Y_1^2Y_2)|\\
+ &\hspace{25mm}\le C_{\mathrm{ct}}(\rho,\beta)\,
+               \eta\left(1+\log(1+5/(\bar m\eta))\right).
+ \end{split}
+\end{equation}
+The constant does not depend on $\bar m$, $\eta$, $R$ or
+the position of $\supp\beta$.
+
+\section{Comparison of the fourth traces}\label{subsec:response-fourth}
+
+The contact bound reduces the first estimate in
+\eqref{eq:response-fourth-errors} to the trace with four first-order
+vertices. We compare that trace with the continuum torus trace in
+five steps. The Schatten-four norm controls each replacement,
+and the Yukawa kernel controls the remaining volume error.
+
+\begin{proof}[Proof of the fourth-coefficient assertions in \cref{prop:response-fourth}]
+We first establish the trace bounds used in the comparisons.
+For a lattice multiplier $M_h$ with fiber symbol $h(p)$
+and a scalar multiplication operator $v$, one has
+\begin{equation}\label{eq:response-four-ideal-lattice}
+ \|M_hv\|_4\le
+       \left(n^{-3}\sum_{p\in\mathcal P_n}\|h(p)\|_4^4\right)^{1/4}
+                                         \|v\|_{\ell^4}.
+\end{equation}
+To prove it put $U=M_{h^*h}$ and $V=|v|^2$. Expanding the
+nonnegative trace of $(UV-VU)^*(UV-VU)$ gives
+$\operatorname{Tr}(UVUV)\le\operatorname{Tr}(U^2V^2)$.
+The left side is $\|M_hv\|_4^4$, and each normalized
+Bloch vector has constant squared modulus $n^{-3}$.
+Evaluating the right side in that basis gives
+\eqref{eq:response-four-ideal-lattice}. On the continuum
+torus the same proof, first for a finite set of momenta,
+gives
+\begin{equation}\label{eq:response-four-ideal-torus}
+ \|M_hv\|_4\le
+       \left(R^{-3}\sum_{P\in\mathcal P_R}\|h(P)\|_4^4\right)^{1/4}
+                                           \|v\|_{L^4(T_R)}.
+\end{equation}
+Truncation in momentum converges in the Schatten norm
+when the sum is finite, and its operator-norm limit is
+$M_hv$, proving the general form.
+
+The cube comparison used above also gives
+\begin{equation}\label{eq:response-four-momentum-sums}
+ \begin{gathered}
+ n^{-3}\sum_{p\in\mathcal P_n}(m^2+|p|^2)^{-2}\le\frac1{\pi m},
+ \qquad
+ R^{-3}\sum_{P\in\mathcal P_R}(\bar m^2+|P|^2)^{-2}
+                                             \le\frac1{\pi\bar m},\\
+ R^{-3}\sum_{|P|_\infty\le\pi/(2\eta)}|P|^{-2}\le C\eta^{-1},
+ \qquad
+ R^{-3}\sum_{|P|_\infty>\pi/(2\eta)}|P|^{-4}\le C\eta.
+ \end{gathered}
+\end{equation}
+For the last bound use the decreasing radial majorant
+$\min((2\eta/\pi)^4,|P|^{-4})$; its integral is $O(\eta)$.
+The preceding bounds and
+$\|s_{\bar m}(P)\|_4^4=4(\bar m^2+|P|^2)^{-2}$ show that
+$S^Ri\gamma\cdot a^R$ has a bounded Schatten-four norm,
+uniformly in $R\ge D_\beta+1$. The same estimate applies
+to the interpolating field $\widetilde A$.
+
+On $\R^3$, let
+\[
+ Y_{\bar m}(x)=\frac{e^{-\bar m|x|}}{4\pi|x|},\qquad
+ S_{\bar m}(x)=(\bar m-\gamma\cdot\partial)Y_{\bar m}(x).
+\]
+The scalar Fourier transform is $(\bar m^2+|P|^2)^{-1}$;
+the derivative has no point mass, since its boundary
+term on a sphere of radius $r$ is $O(r)$. Its Fourier
+transform therefore gives $s_{\bar m}(P)$. These kernels
+are integrable, so their convolutions are the corresponding
+bounded Fourier multipliers on $L^2$. Also
+$\|Y_{\bar m}\|_{L^2}^2=(8\pi\bar m)^{-1}$.
+For bounded compactly supported $v$, the kernel of
+$v^*S_{\bar m}^*S_{\bar m}v$ is
+$\overline{v(x)}Y_{\bar m}(x-y)v(y)1_4$. Tonelli and
+Cauchy--Schwarz in the translated factors give
+\[
+ \|S_{\bar m}v\|_4^4
+   \le4\|Y_{\bar m}\|_{L^2}^2\|v\|_{L^4}^4
+   =\frac{\|v\|_{L^4}^4}{2\pi\bar m}.
+\]
+For the matrix multiplication $i\gamma\cdot a$, the
+Clifford identity gives the same proof with $|a|$ in
+place of $|v|$. Thus
+\begin{equation}\label{eq:response-four-ideal-infinite}
+ \|S_{\bar m}i\gamma\cdot a\|_4^4\le
+                    (2\pi\bar m)^{-1}\int_{\R^3}|a|^4\,\dd x.
+\end{equation}
+The traces in
+\eqref{eq:response-continuum-fourth} exist by Schatten
+H\"older.
+
+To check reality, treat $S=S_{\bar m}$ or $S^R$ and
+$v=i\gamma\cdot a$ or $i\gamma\cdot a^R$ together.
+Factor $v=|a|^{1/2}(i\gamma\cdot a/|a|)|a|^{1/2}$,
+with the middle factor zero at its zeros. The preceding
+estimates put $SvS$ in the Hilbert--Schmidt class.
+One has $\gamma_5S\gamma_5=S^*$ and
+$\gamma_5v\gamma_5=v^*$. Hence conjugating
+$\operatorname{Tr}[(SvS)v(SvS)v]$ by $\gamma_5$ gives
+its complex conjugate after cyclically moving the
+bounded $v$ past a trace-class product of the two
+Hilbert--Schmidt factors. This proves reality.
+
+We now compare the lattice fourth-power trace with its
+continuum torus value. The four-power inequality used
+throughout is
+\begin{equation}\label{eq:response-fourth-trace-difference}
+ |\operatorname{Tr}X^4-\operatorname{Tr}Z^4|
+ \le4\max(\|X\|_4,\|Z\|_4)^3\|X-Z\|_4.
+\end{equation}
+It follows by expanding $X^4-Z^4$ into four products
+with one $X-Z$ factor and applying Schatten H\"older.
+All the operators compared below have uniformly bounded
+Schatten-four norms; each bound follows from
+\eqref{eq:response-four-ideal-lattice} or
+\eqref{eq:response-four-ideal-torus}. In particular
+\eqref{eq:response-bloch-bounds} gives
+$n^{-3}\sum_p\|R_m(p)\|_4^4\le
+C_\rho(1+m^{-1})$, which, with
+$\|\eta A_\nu\|_{\ell^4}\le C_\beta^{\mathrm{free}}\eta^{1/4}$,
+proves $\|Y_1\|_4\le C_{\rho,\bar m,\beta}$.
+
+\emph{Removing the bounded part of the inverse.}
+Let $\chi(p)=1_{\{|p|_\infty\le\pi/2\}}$ and
+$S_c$ be the lattice multiplier $\chi(p)s_m(p)$ on
+four-component antiperiodic spinors. The complementary
+inverse
+$R_m(p)-J\chi(p)s_m(p)J^*$ is uniformly bounded:
+\eqref{eq:response-bloch-remainder} controls the whole
+cube, and $s_m$ is bounded on $1-\chi$. Thus
+\[
+ \|Y_1-JS_cJ^*D_1\|_4\le C_{\rho,\beta}\eta^{1/4}.
+\]
+The two norms in \eqref{eq:response-fourth-trace-difference}
+are bounded by the same estimates. Since $J^*J=1$,
+cyclicity reduces the fourth-power trace of the light
+operator to that of $S_cw_1$, where
+\begin{equation}\label{eq:response-compressed-vertex}
+ w_1=J^*D_1J=-\frac{i\eta}{2}\sum_\nu
+       [A_\nu(\rho-\gamma_\nu)U_\nu^+
+             -A_\nu^-(\rho+\gamma_\nu)U_\nu^-].
+\end{equation}
+This comparison costs $C\eta^{1/4}$ in the trace. The
+compression uses \eqref{eq:response-light-vertex}, and
+therefore has one four-component light species.
+
+\emph{Replacing the vertex by multiplication.}
+Move shifts to the left by
+$A_\nu U_\nu^+=U_\nu^+A_\nu^-$ and
+$A_\nu^-U_\nu^-=U_\nu^-A_\nu$. Then
+\begin{equation}\label{eq:response-vertex-error}
+ \begin{split}
+ w_1-i\eta\gamma\cdot A=-\frac{i\eta}{2}\sum_\nu\big[&
+  (\rho-\gamma_\nu)(U_\nu^+-1)A_\nu^-
+       -(\rho+\gamma_\nu)(U_\nu^--1)A_\nu\\
+       &+(\rho-\gamma_\nu)(A_\nu^--A_\nu)\big].
+ \end{split}
+\end{equation}
+The multiplier
+$\chi(p)s_m(p)(\rho\mp\gamma_\nu)(e^{\pm ip_\nu}-1)$
+has norm at most two, since $|e^{ip_\nu}-1|\le|p_\nu|$.
+Its Schatten-four multiplier average is consequently
+bounded independently of the mass. The first two terms
+of \eqref{eq:response-vertex-error} then cost
+$O(\eta^{1/4})$. The last term costs
+$O(m^{-1/4}\eta^{5/4})=O(\eta)$ by
+\eqref{eq:response-probe-estimates}. Therefore
+$\|S_c(w_1-i\eta\gamma\cdot A)\|_4\le C\eta^{1/4}$,
+and \eqref{eq:response-fourth-trace-difference} gives
+the same trace error.
+
+\emph{Identifying the truncated continuum momenta.}
+The map $p\mapsto P=p/\eta$ identifies the retained
+lattice momenta with
+$\mathcal P_R^<=\{P\in\mathcal P_R:|P|_\infty\le\pi/(2\eta)\}$,
+and $\eta s_m(p)=s_{\bar m}(P)$. The operator
+$S_ci\eta\gamma\cdot A$ has range in this truncated
+space. Its fourth trace is thus that of its compression
+to the space. In the normalized momentum basis this
+compression has blocks
+\[
+ T_{\mathrm{lat}}(P,P')=s_{\bar m}(P)i\sum_\nu\gamma_\nu
+                 n^{-3}\sum_cA_\nu(c)e^{-i\eta(P-P')\cdot c}.
+\]
+Let $\widetilde A$ be the smooth interpolant and
+$\widehat A_R(k)=R^{-3}\int_{T_R}\widetilde A(y)e^{-ik\cdot y}\,\dd y$.
+Absolute Fourier convergence, using four derivatives
+of the interpolant, gives the exact alias identity
+\begin{equation}\label{eq:response-aliasing}
+ n^{-3}\sum_cA_\nu(c)e^{-i\eta k\cdot c}
+    =\widehat A_{R,\nu}(k)+
+          \sum_{z\ne0}\widehat A_{R,\nu}(k+2\pi z/\eta).
+\end{equation}
+For $k=P-P'$, $|k|_\infty\le\pi/\eta$. Four integrations
+by parts give
+$|\widehat A_{R,\nu}(k')|\le C_\beta^{\mathrm{free}} R^{-3}|k'|_\infty^{-4}$;
+the nonzero aliases in \eqref{eq:response-aliasing} are
+therefore bounded by $C_\beta^{\mathrm{free}} R^{-3}\eta^4$.
+
+Replacing the discrete matrix elements by $\widehat A_R$
+gives the compression $T_{\mathrm{int}}$ of
+$\chi S^Ri\gamma\cdot\widetilde A$. Its norm is bounded.
+For the difference, sum the squared Hilbert--Schmidt
+norms of its blocks. There are at most $R^3\eta^{-3}$
+choices of $P'$, while
+$\sum_{P\in\mathcal P_R^<}|P|^{-2}\le CR^3\eta^{-1}$.
+Since $\|\gamma\cdot z\|_2^2=4|z|^2$, the alias bound
+gives
+\[
+ \|T_{\mathrm{lat}}-T_{\mathrm{int}}\|_2^2
+     \le C_\beta^{\mathrm{free}}(R^3\eta^{-1})(R^3\eta^{-3})
+                                     (R^{-3}\eta^4)^2
+     =C_\beta^{\mathrm{free}}\eta^4.
+\]
+All powers of $R$ cancel. The Schatten-four norm is
+at most the Hilbert--Schmidt norm, so the trace error
+in this comparison is $O(\eta^2)$.
+
+\emph{Replacing the interpolant and removing the cutoff.}
+The difference between the compressions of
+$\chi S^Ri\gamma\cdot\widetilde A$ and
+$\chi S^Ri\gamma\cdot a^R$ has Schatten-four norm
+$O(\eta)$ by \eqref{eq:response-four-ideal-torus} and
+\eqref{eq:response-probe-estimates}. For an operator
+$X$ with $X=\chi X$, cyclicity gives
+$\operatorname{Tr}X^4=\operatorname{Tr}(\chi X\chi)^4$;
+the same holds for $X=X\chi$. Thus we can remove the
+compression and compare $\chi S^Ri\gamma\cdot a^R$
+directly with $S^Ri\gamma\cdot a^R$. The removed momentum
+tail in \eqref{eq:response-four-momentum-sums} gives
+\[
+ \|(1-\chi)S^Ri\gamma\cdot a^R\|_4\le C_\beta^{\mathrm{free}}\eta^{1/4}.
+\]
+These are respectively the fourth and fifth comparisons;
+their trace errors are $O(\eta)$ and $O(\eta^{1/4})$.
+The preceding three comparisons, together with
+\eqref{eq:response-contact-bound}, prove the first line
+of \eqref{eq:response-fourth-errors}. Here
+$\eta(1+\log(1+5/(\bar m\eta)))\le C_{\bar m}\eta^{1/4}$.
+
+It remains to compare torus and infinite-space traces.
+Because the multiplication by $a$ is supported in
+$Q_\beta$, both traces can be computed on $L^2(Q_\beta;\C^4)$,
+using extension by zero to $\R^3$ or antiperiodic extension
+to $T_R$. The same compression identity proves this
+localization. Convolution by the integrable kernel
+$S_{\bar m}(x)$ on antiperiodic functions agrees with
+$S^R$ on its momentum basis and hence on $L^2$.
+After restricting its two variables to $Q_\beta$, its
+difference from the infinite-space kernel is
+\[
+ W_R(x,y)=\sum_{z\in\Z^3\setminus\{0\}}
+                  (-1)^{z_1+z_2+z_3}S_{\bar m}(x-y-Rz).
+\]
+For $|u|\ge1$ the Yukawa formula gives
+$\|S_{\bar m}(u)\|\le(3/(4\pi))e^{-\bar m|u|}$.
+Moreover $|x-y-Rz|\ge R|z|_\infty-D_\beta\ge
+(R-D_\beta)+|z|_\infty-1\ge1$. Counting
+$24j^2+2$ images at $|z|_\infty=j$ yields
+\[
+ \|W_R(x,y)\|\le C_{\bar m}e^{-\bar m(R-D_\beta)},
+ \qquad x,y\in Q_\beta.
+\]
+The series converges absolutely and uniformly there.
+Multiplication by $i\gamma\cdot a(y)$ then gives a
+Hilbert--Schmidt difference with this same exponential
+bound, since $Q_\beta$ has finite volume. The infinite
+localized operator has bounded Schatten-four norm,
+and the torus one is bounded by it and the difference.
+Applying \eqref{eq:response-fourth-trace-difference}
+proves the second line of \eqref{eq:response-fourth-errors}.
+
+The constants above involve only $\rho$, $\bar m$,
+the side of the support cube, derivative sup and
+$L^1$ norms of $\beta$, and moduli of its Fourier
+transform. All are unchanged by a real translation.
+This gives the asserted uniformity and the limit.
+\end{proof}
+
+\section{Symmetry and the second-order response}\label{subsec:response-symmetry}
+
+\subsection{Evenness and placement}
+
+The coefficients in \eqref{eq:response-free-ratio} are real, and
+\begin{equation}\label{eq:response-coefficient-relations}
+ c_{2j+1}=0,\qquad c_2=a_{\mathrm{ch}},\qquad
+                 c_4=b_{\mathrm{ch}}+3c_2^2.
+\end{equation}
+We prove the determinant identities for complex external connections
+to obtain evenness for every complex value of $t$.
+
+For a real connection, let
+$(R_i(B)\psi)(c,g)=\psi(c,gs_i)$ for $i=0,1,2$, and
+\[
+ (R_3(B)\psi)(c,g)=e^{iB(c,c+ge_1)}
+                         \psi(c+ge_1,gr_{e_1}).
+\]
+The outgoing unit bond direction is $\widehat d_i(c,g)=-gn_i$.
+Each $R_i(B)$ is self-adjoint and unitary. The direction of a bond changes
+sign at its other endpoint. Consequently
+\[
+ D^{\mathrm{ch}}[B]=\frac{\rho}{2}
+       \sum_iw_i(1-R_i(B))+\frac12
+       \sum_iw_i(\gamma\cdot\widehat d_i)R_i(B),
+\]
+where the first sum is nonnegative and the second is anti-self-adjoint.
+The two spin sectors $\gamma_\mu=\diag(\sigma_\mu,-\sigma_\mu)$
+give adjoint restrictions, as in \cite[(17)]{ChamberLattice}. Thus
+$\det(D^{\mathrm{ch}}[B]+m)$ is a squared absolute value.
+The real part of $D^{\mathrm{ch}}[B]+m$ is at least $m>0$,
+so the determinant is strictly
+positive. In particular $N_0(t)>0$ for real $t$.
+
+The transpose identity extends charge symmetry to complex connections.
+Let $C=\sigma_2\oplus\sigma_2$ be the charge-conjugation matrix of
+\cite[\S3.1]{ChamberLattice}. Transposing a phased bond reverses its
+direction and changes its phase from $B$ to $-B$.
+The identity $C\gamma_v^\top C^{-1}=-\gamma_v$ changes the transposed
+matrix at the other endpoint back to the matrix at the original one.
+The diagonal part is scalar; hence
+\[
+ C(D^{\mathrm{ch}}[B]+m)^\top C^{-1}
+                   =D^{\mathrm{ch}}[-B]+m.
+\]
+The transpose here is for the bilinear chamber pairing. In the site
+basis this pairing is $1/48$ times the identity, so this is the
+ordinary matrix transpose and preserves the determinant. Every matrix
+entry is a finite sum of constants and exponentials of linear
+functions of $t$. Therefore $N_0$ is entire, and the transpose
+identity gives $N_0(-t)=N_0(t)$ for all $t\in\C$.
+Expanding its logarithm at zero proves
+\eqref{eq:response-coefficient-relations}.
+
+We also record exact covariance under lattice translations and cubic
+reflections. Let $g=(v,r)$, where $v\in\Z^3$ and $r$ is a signed
+permutation. A reflection with normal $\widehat n$ has the spin lift
+$S_{\widehat n}=(\gamma\cdot\widehat n)\gamma_5$, for which
+\[
+ S_{\widehat n}(\gamma\cdot z)S_{\widehat n}^{-1}
+       =\gamma\cdot(z-2(z\cdot\widehat n)\widehat n),
+                         \qquad z\in\C^3.
+\]
+Choose a word representing $r$ in the three linear chamber
+reflections and let $S_g$ be the corresponding product. It follows
+that $S_g(\gamma\cdot z)S_g^{-1}=\gamma\cdot rz$.
+The site map $(c,h)\mapsto(rc+v,rh)$ commutes with each bond
+involution and carries $\widehat d_i(c,h)$ to
+$r\widehat d_i(c,h)$. Therefore, for
+\[
+ (U_g\psi)(x)=S_g\psi(g^{-1}x),\qquad
+ (g_*B)(c,c')=B(g^{-1}c,g^{-1}c'),
+\]
+the hopping formula gives
+\begin{equation}\label{eq:response-complex-covariance}
+ D^{\mathrm{ch}}[g_*B]+m
+       =U_g(D^{\mathrm{ch}}[B]+m)U_g^{-1},
+                                             \qquad B\ \text{complex}.
+\end{equation}
+This identity descends to the antiperiodic torus. Indeed
+$r^{-1}e_\mu=\pm e_\nu$, and either translation by $ne_\nu$
+or by $-ne_\nu$ changes an antiperiodic spinor's sign.
+Thus $U_g$ and its inverse preserve the spinor space.
+Taking determinants in \eqref{eq:response-complex-covariance}
+shows that $N_0$, $c_j$, $a_{\mathrm{ch}}$ and $b_{\mathrm{ch}}$
+are unchanged when the external cochain is replaced by $g_*B_t$.
+
+For a physical translation $v\in\eta\Z^3$, cube averaging and
+centered differences commute with translation. Periodization in
+\eqref{eq:response-periodic-probe} then gives
+$a_\eta[\beta(\,\cdot-v)](y)=a_\eta[\beta](y-v)$.
+This is exactly the cochain action with lattice translation $v/\eta$.
+The same determinant coefficients can therefore be used at each
+lattice placement of the probe and at each of its reflected images.
+
+\subsection{The two-photon coefficient}\label{subsec:response-polarization}
+
+The coefficient is
+\[
+ a_{\mathrm{ch}}=\operatorname{Tr}(GD_2)-
+                     \operatorname{Tr}(GD_1GD_1).
+\]
+Estimating the two traces separately would lose a power of the mesh.
+We keep their cancellation by expressing their difference
+as a polarization kernel. Its integral vanishes at zero momentum;
+parity removes the first momentum derivative.
+
+Define the bosonic momentum representatives
+\[
+ \mathcal K_{\eta,R}=
+ \left\{\frac{2\pi}{R}j:j\in\Z^3,\ -n/2<j_\nu\le n/2\right\},
+                   \qquad n=R/\eta,
+\]
+and the midpoint transform of the unperiodized probe
+\begin{equation}\label{eq:response-midpoint-transform}
+ h_{\eta,\nu}(K)=\eta^3
+       \sum_{y\in\eta\Z^3+\eta e_\nu/2}
+                     a_{\eta,\nu}^0(y)e^{-iK\cdot y}.
+\end{equation}
+The sum is finite. For real $p,k$ put
+\begin{align}
+ L_{\mu\nu}(p,k)
+  &=\delta_{\mu\nu}\tr[R_m(p)W_\nu(p)]\notag\\
+  &\quad-\tr[R_m(p)V_\mu(p+k/2)
+                     R_m(p+k)V_\nu(p+k/2)],\label{eq:response-polarization-integrand}\\
+ \Pi^{\eta,R}_{\mu\nu}(K)
+  &=\eta^{-1}n^{-3}\sum_{p\in\mathcal P_n}
+                       L_{\mu\nu}(p,\eta K),\notag\\
+ \Pi^\eta_{\mu\nu}(K)
+  &=\eta^{-1}\int_{[-\pi,\pi]^3}
+          L_{\mu\nu}(p,\eta K)\frac{\dd p}{(2\pi)^3}.
+                                  \label{eq:response-polarization-kernels}
+\end{align}
+Only $\Pi^{\eta,R}$ is a finite-volume polarization; the integral
+$\Pi^\eta$ retains the lattice symbol but has no volume parameter.
+The exact coefficient is
+\begin{equation}\label{eq:response-polarization-identity}
+ a_{\mathrm{ch}}(\eta,R)
+    =R^{-3}\sum_{K\in\mathcal K_{\eta,R}}\sum_{\mu,\nu}
+       \overline{h_{\eta,\mu}(K)}h_{\eta,\nu}(K)
+                                      \Pi^{\eta,R}_{\mu\nu}(K).
+\end{equation}
+
+To check the midpoint and normalization in this formula, write
+$b_\nu(c)=\eta A_\nu(c)$ and
+$\widehat b_\nu(k)=n^{-3}\sum_cb_\nu(c)e^{-ik\cdot c}$.
+The derivative vertices of \cref{subsec:response-contact}
+give the blocks
+\begin{align*}
+ D_1[p+k,p]&=\sum_\nu\widehat b_\nu(k)e^{-ik_\nu/2}
+                                          V_\nu(p+k/2),\\
+ D_1[p,p+k]&=\sum_\mu
+         \overline{\widehat b_\mu(k)e^{-ik_\mu/2}}
+                                          V_\mu(p+k/2),\\
+ D_2[p,p]&=\sum_\nu\sum_k|\widehat b_\nu(k)|^2W_\nu(p).
+\end{align*}
+Here $k$ ranges over $\eta\mathcal K_{\eta,R}$; the last
+identity uses Parseval for the real function $b_\nu$.
+For example, the positive hop in $D_1[p+k,p]$ is
+$-i\widehat b_\nu(k)e^{ip_\nu}T_\nu^+$, and the negative hop
+is $i\widehat b_\nu(k)e^{-i(p_\nu+k_\nu)}T_\nu^-$.
+Their sum is the stated midpoint vertex. Under $k_\nu\mapsto
+k_\nu+2\pi$ both the phase and that vertex change sign, so
+their product is well-defined on momentum representatives.
+
+Unfolding the periodization gives, for $k=\eta K$,
+\[
+ \widehat b_\nu(k)e^{-ik_\nu/2}
+     =n^{-3}\eta\sum_{c\in\Z^3}
+          a_{\eta,\nu}^0(\eta c+\eta e_\nu/2)
+                            e^{-iK\cdot(\eta c+\eta e_\nu/2)}
+     =\eta R^{-3}h_{\eta,\nu}(K).
+\]
+Substitute these three block identities into the two traces.
+The scalar normalization is
+$\eta^2R^{-6}=R^{-3}\eta^{-1}n^{-3}$, which proves
+\eqref{eq:response-polarization-identity}. This identity
+requires no separation of the probe from its periodic images.
+
+\begin{proposition}\label{prop:response-polarization-bounds}
+There is $C_\rho<\infty$, independent of $0<\bar m\le1$,
+$0<\eta\le1$, $R/\eta\in\N$, $R/\eta\ge2$, and $K\in\R^3$,
+such that
+\begin{align}
+ |\Pi^{\eta,R}_{\mu\nu}(K)-\Pi^\eta_{\mu\nu}(K)|
+       &\le C_\rho\bar m^{-3}R^{-4},
+                            \label{eq:response-polarization-quadrature}\\
+ |\Pi^\eta_{\mu\nu}(K)|&\le C_\rho\bar m^{-1}|K|^2,\qquad
+ |\nabla_K\Pi^\eta_{\mu\nu}(K)|
+                    \le C_\rho\bar m^{-1}|K|.
+                            \label{eq:response-polarization-quadratic}
+\end{align}
+\end{proposition}
+
+\begin{proof}
+We first estimate the quadrature error. If $F$ is a $C^4$
+periodic function on the momentum torus, its Fourier coefficients
+satisfy
+\[
+ |\widehat F(z)|\le |z|_\infty^{-4}
+       \max_j\int_{[-\pi,\pi]^3}|\partial_j^4F(p)|
+                                      \frac{\dd p}{(2\pi)^3},
+                                                \qquad z\ne0.
+\]
+This follows by four integrations by parts in a coordinate attaining
+$|z|_\infty$. The coefficients are absolutely summable, since
+$\sum_{z\ne0}|z|_\infty^{-4}<42$. Their Fourier series equals
+$F$: its difference from $F$ has zero Fourier coefficients,
+and density of trigonometric polynomials in continuous periodic
+functions makes the difference zero. The antiperiodic mean
+selects the coefficients at $nz$ with sign $(-1)^{z_1+z_2+z_3}$.
+Consequently
+\begin{equation}\label{eq:response-quadrature-basic}
+ \left|n^{-3}\sum_{p\in\mathcal P_n}F(p)
+                  -\int_{[-\pi,\pi]^3}F(p)\frac{\dd p}{(2\pi)^3}\right|
+ \le42n^{-4}\max_j
+        \int_{[-\pi,\pi]^3}|\partial_j^4F(p)|
+                                      \frac{\dd p}{(2\pi)^3}.
+\end{equation}
+
+Set $x(p)=\operatorname{dist}(p,2\pi\Z^3)+m$. On a period
+cube $x(p)=|p|+m$ and $x(p)<7$. The inverse derivative
+estimate \eqref{eq:response-inverse-derivatives}, used up
+to order four, and the bounded symbol derivatives give
+\begin{equation}\label{eq:response-polarization-fourth-derivative}
+ |\partial_j^4L_{\mu\nu}(p,k)|
+                 \le C_\rho[x(p)^{-6}+x(p+k)^{-6}].
+\end{equation}
+For the contact term, each Leibniz summand has at most five
+powers of $x(p)^{-1}$; the remaining power is supplied by
+$x(p)<7$. For the bubble term, a summand with $a$ derivatives
+on the first inverse and $b$ on the second has the factor
+$x(p)^{-1-a}x(p+k)^{-1-b}$, with $a+b\le4$.
+The other derivatives fall on bounded vertices. Since
+$u^{-s}v^{-t}\le u^{-s-t}+v^{-s-t}$ for $s,t>0$,
+and $x<7$, the factor is bounded by a constant times the
+right side of \eqref{eq:response-polarization-fourth-derivative}.
+This bound is uniform in the shift $k$.
+
+For $j>3$, periodicity and the radial integral give
+\begin{equation}\label{eq:response-translated-integral}
+ \int_{[-\pi,\pi]^3}x(p+u)^{-j}\,\dd p
+ \le4\pi\int_0^\infty\frac{r^2\,\dd r}{(r+m)^j}
+       =\frac{8\pi m^{3-j}}{(j-1)(j-2)(j-3)},
+                                             \qquad u\in\R^3.
+\end{equation}
+Indeed the integral over a translated period cube is unchanged,
+and on the original cube it is bounded by the integral over $\R^3$.
+The case $j=6$ bounds the integral in
+\eqref{eq:response-quadrature-basic} by $C_\rho m^{-3}$.
+The definitions of the two polarizations then give the first
+estimate, because
+\[
+ \eta^{-1}n^{-4}m^{-3}
+           =\eta^{-1}(\eta/R)^4(\bar m\eta)^{-3}
+           =\bar m^{-3}R^{-4}.
+\]
+
+For the quadratic bound, use the symmetric bubble
+\[
+ F_{\mu\nu}(p,k)=
+ \tr[R_m(p-k/2)V_\mu(p)R_m(p+k/2)V_\nu(p)].
+\]
+It is periodic in $p$. Translating the period cube by $-k/2$
+shows that its integral is the integral of the bubble in
+\eqref{eq:response-polarization-integrand}. At $k=0$ the
+whole integrand is a total derivative:
+\begin{equation}\label{eq:response-polarization-total-derivative}
+ L_{\mu\nu}(p,0)=
+    \partial_\mu\tr[R_m(p)V_\nu(p)].
+\end{equation}
+In fact $\partial_\mu R_m=-R_mV_\mu R_m$ and
+$\partial_\mu V_\nu=\delta_{\mu\nu}W_\nu$. Its integral
+therefore vanishes, including the contact term. We obtain
+\begin{equation}\label{eq:response-polarization-subtracted}
+ \Pi^\eta_{\mu\nu}(K)=
+     -\eta^{-1}\int_{[-\pi,\pi]^3}
+          [F_{\mu\nu}(p,\eta K)-F_{\mu\nu}(p,0)]
+                                      \frac{\dd p}{(2\pi)^3}.
+\end{equation}
+
+Conjugation by the involution in
+\eqref{eq:response-bloch-parity} changes $(p,k)$ to $(-p,-k)$
+in $F_{\mu\nu}$; the signs of its two vertices cancel.
+Thus $F_{\mu\nu}(-p,-k)=F_{\mu\nu}(p,k)$.
+Its first $k$ derivative at zero is odd in $p$, and hence
+\begin{equation}\label{eq:response-polarization-parity-cancellation}
+ \int_{[-\pi,\pi]^3}
+              (\partial_{k_a}F_{\mu\nu})(p,0)\,\dd p=0.
+\end{equation}
+This removes the linear term as well as the constant term
+removed by \eqref{eq:response-polarization-total-derivative}.
+
+The Hessian has two derivatives in total on the inverse factors;
+the midpoint vertices no longer depend on $k$. With $p_\pm=p\pm k/2$
+and the vertices evaluated at $p$, it is
+\begin{align*}
+ \partial_{k_a}\partial_{k_b}F_{\mu\nu}
+ =\tfrac14\big(&
+  \tr[(\partial_a\partial_bR_m)(p_-)V_\mu R_m(p_+)V_\nu]\\
+ &-\tr[(\partial_aR_m)(p_-)V_\mu(\partial_bR_m)(p_+)V_\nu]\\
+ &-\tr[(\partial_bR_m)(p_-)V_\mu(\partial_aR_m)(p_+)V_\nu]\\
+ &+\tr[R_m(p_-)V_\mu(\partial_a\partial_bR_m)(p_+)V_\nu]\big).
+\end{align*}
+Apply \eqref{eq:response-inverse-derivatives} through order two
+and the same product inequality used above. It follows that
+\[
+ |\partial_{k_a}\partial_{k_b}F_{\mu\nu}(p,k)|
+               \le C_\rho[x(p-k/2)^{-4}+x(p+k/2)^{-4}],
+\]
+and \eqref{eq:response-translated-integral} with $j=4$ gives
+\begin{equation}\label{eq:response-polarization-hessian}
+ \int_{[-\pi,\pi]^3}
+     |\partial_{k_a}\partial_{k_b}F_{\mu\nu}(p,k)|
+                             \frac{\dd p}{(2\pi)^3}
+                  \le C_\rho m^{-1},\qquad k\in\R^3.
+\end{equation}
+
+Taylor's formula with integral remainder, followed by
+\eqref{eq:response-polarization-parity-cancellation}, now makes
+the two momentum powers explicit:
+\begin{equation}\label{eq:response-polarization-taylor}
+ \Pi^\eta_{\mu\nu}(K)=
+   -\eta\int_{[-\pi,\pi]^3}\int_0^1(1-s)
+      \sum_{a,b}K_aK_b
+       (\partial_{k_a}\partial_{k_b}F_{\mu\nu})(p,s\eta K)
+                           \,\dd s\,\frac{\dd p}{(2\pi)^3}.
+\end{equation}
+This gives the bound $C_\rho(\eta/m)|K|^2$.
+For the gradient, differentiate
+\eqref{eq:response-polarization-subtracted}, subtract its
+zero-momentum derivative using parity, and apply the
+first-order integral remainder:
+\[
+ \partial_{K_a}\Pi^\eta_{\mu\nu}(K)=
+  -\eta\int_{[-\pi,\pi]^3}\int_0^1
+       \sum_bK_b(\partial_{k_a}\partial_{k_b}F_{\mu\nu})(p,s\eta K)
+                              \,\dd s\,\frac{\dd p}{(2\pi)^3}.
+\]
+All differentiations are under an integral over a compact cube
+of a smooth function, since $m>0$. Using
+\eqref{eq:response-polarization-hessian} and $\eta/m=\bar m^{-1}$
+proves \eqref{eq:response-polarization-quadratic}.
+\end{proof}
+
+\subsection{Uniform bounds on the determinant coefficients}
+\label{subsec:response-uniform-coefficients}
+
+We finish by pairing the polarization bounds with decay of the
+probe transform. This step needs no continuum evaluation of
+the two-photon kernel.
+
+For each integer $j\ge0$ there is $C_{\beta,j}<\infty$ such that
+\begin{equation}\label{eq:response-midpoint-decay}
+ |h_{\eta,\nu}(K)|\le C_{\beta,j}(1+|K|)^{-j},
+                \qquad |K|_\infty\le\pi/\eta,\quad0<\eta\le1.
+\end{equation}
+The constants are unchanged by any real translation of $\beta$.
+Here is the discrete integration by parts that makes this
+uniform in the mesh. Suppose a smooth function $v$ is supported
+in a cube of side $\ell$, and sum it over a translate of $\eta\Z^3$.
+The backward difference
+$\Delta_{\eta,\mu}v(y)=\eta^{-1}(v(y)-v(y-\eta e_\mu))$
+satisfies
+$\|\Delta_{\eta,\mu}^jv\|_\infty
+\le\|\partial_\mu^jv\|_\infty$, by its integral representation.
+Its support is enlarged by at most $j\eta$ in one direction,
+and the number of sampling points, multiplied by $\eta^3$,
+is at most $(\ell+j+1)^3$. Summation by parts gives
+\[
+ [\eta^{-1}(1-e^{-i\eta K_\mu})]^j
+       \eta^3\sum_yv(y)e^{-iK\cdot y}
+          =\eta^3\sum_y\Delta_{\eta,\mu}^jv(y)e^{-iK\cdot y}.
+\]
+On $|\eta K_\mu|\le3\pi/2$ the modulus of the bracket
+is at least $0.3|K_\mu|$. Choose a coordinate attaining
+$|K|_\infty$. For $|K|\ge1$ this is at least
+$(1+|K|)/12$; for $|K|<1$ use the point-count estimate directly.
+We thus obtain, on that momentum cube,
+\[
+ \left|\eta^3\sum_yv(y)e^{-iK\cdot y}\right|
+ \le12^j(\ell+j+1)^3
+       \max(\|v\|_\infty,\max_\mu\|\partial_\mu^jv\|_\infty)
+                                               (1+|K|)^{-j}.
+\]
+
+Apply this to $v=a_{\eta,\nu}^0$ on
+$\eta\Z^3+\eta e_\nu/2$. Cube averaging has norm one on
+derivative sup norms, and a centered difference is an average
+of the corresponding first derivative. Consequently
+$\|\partial_\mu^ja_{\eta,\nu}^0\|_\infty
+\le2|\beta|_{C^{j+1}}$, while its support has side at most
+$D_\beta+2\eta$. One may take
+\[
+ C_{\beta,j}=2\cdot12^j(D_\beta+j+3)^3|\beta|_{C^{j+1}}.
+\]
+This proves \eqref{eq:response-midpoint-decay}, with position-independent
+constants and no assumption on $R$.
+
+\begin{proposition}\label{prop:response-uniform-coefficients}
+For each fixed $\rho$, $\bar m$ and $\beta$ as above,
+\[
+ |c_2|\le C_{\rho,\bar m,\beta},
+              \qquad 0<\eta\le1,\quad R\ge1,\quad
+                         R/\eta\in\N,\quad R/\eta\ge2.
+\]
+If in addition $R\ge D_\beta+1$, then
+$|c_4|\le C_{\rho,\bar m,\beta}$.
+The bounds are uniform in all real translations of $\beta$,
+and the coefficients have no dependence on $e$.
+\end{proposition}
+
+\begin{proof}
+\Cref{prop:response-polarization-bounds} gives
+\[
+ |\Pi^{\eta,R}_{\mu\nu}(K)|
+   \le C_\rho(\bar m^{-3}R^{-4}+\bar m^{-1}|K|^2).
+\]
+In \eqref{eq:response-polarization-identity} use the decay
+estimate with $j=2$ for the quadrature term and $j=3$ for
+the quadratic term. Since $R\ge1$, both contributions are
+bounded by a constant times $(1+|K|)^{-4}$; hence
+\[
+ |c_2|=|a_{\mathrm{ch}}|
+ \le9C_\rho
+       (\bar m^{-3}C_{\beta,2}^2+\bar m^{-1}C_{\beta,3}^2)
+       R^{-3}\sum_{K\in\mathcal K_{\eta,R}}(1+|K|)^{-4}.
+\]
+The last sum is bounded uniformly for $R\ge1$. To see this,
+tile $\R^3$ with cubes of side $2\pi/R$ centered at
+$K\in(2\pi/R)\Z^3$. On each cube,
+$1+|P|\le(1+\sqrt3\pi)(1+|K|)$, so its volume times
+$(1+|K|)^{-4}$ is bounded by a constant times the integral
+of $(1+|P|)^{-4}$ there. Sum over the cubes; that integral
+over $\R^3$ is finite. Restricting the sum to
+$\mathcal K_{\eta,R}$ only decreases it. This proves the
+uniform second-order bound.
+
+For the fourth coefficient, use
+\eqref{eq:response-coefficient-relations} and
+the fourth-trace estimates \eqref{eq:response-fourth-errors}, proved in \cref{subsec:response-fourth}. The infinite-space
+trace $b(f)$ is finite by \eqref{eq:response-four-ideal-infinite},
+and the two errors in \eqref{eq:response-fourth-errors} are
+bounded for $R\ge D_\beta+1$ and $0<\eta\le1$.
+Thus $|b_{\mathrm{ch}}|$ is bounded, and adding $3c_2^2$
+gives the asserted bound for $c_4$. All constants in the
+proof depend on support sizes and derivative norms of $\beta$,
+not on its position. Independence of $e$ follows directly
+from the external connection convention.
+\end{proof}
+
+
+
+\begin{proof}[Completion of the proof of \cref{prop:response-fourth}]
+The fourth-trace assertions were proved in
+\Cref{subsec:response-fourth}.
+The determinant symmetries and coefficient identities follow from
+\Cref{subsec:response-symmetry}, and
+\Cref{prop:response-uniform-coefficients} gives the second- and
+fourth-order bounds with the stated volume ranges.
+\end{proof}
+
+\printbibliography
+\end{document}

@@ -1,0 +1,506 @@
+\section{Comparison for arbitrary cubic sides}\label{sec:different-sides}
+
+The comparison states constructed above require increasingly divisible
+periods. The original cubic sequence need not have this property.
+We compare its side $n$ with a divisible side $m\le n$, using an
+empty slab to absorb the difference in each of the three folding
+directions. The empty slabs contribute partition functions without
+insertions. Their logarithms are controlled by a common pressure
+bound, and their total contribution is measured by their volumes
+multiplied by the corresponding H\"older exponents. This is the
+unequal-slab and companion-sequence argument of
+\cite[Sections~11.1--11.5]{ChamberQED}, restricted to the original
+cubic laws used in \cref{thm:main}.
+
+Throughout this section the parameters retain their fixed values
+$q>0$, $0<\rho<1$, $M\in\R$ and $w_i>0$. Write
+$D_m=D(m/2,m,m)$ when $m$ is even. The original torus is always
+$C(n)$; all tilted laws and comparison states in this section are
+formed on the auxiliary tori $D_m$.
+
+\subsection{Unequal slabs}\label{sec:unequal-heights}
+
+Let $\ell(x)=n_\ell\cdot x$ be a mirror family and let
+$\Xi=(\Gamma_\parallel,\chi_\parallel)$ be a cross-section. Put
+\[
+ |\Xi|=[\Z^3\cap\{\ell=0\}:\Gamma_\parallel].
+\]
+If $P>0$ belongs to $|n_\ell|^2\Z$, set
+\[
+ u_P=\frac{P}{|n_\ell|^2}n_\ell,\qquad
+ \mathbb T(\Xi;P)=
+   (\Gamma_\parallel\oplus\Z u_P,\chi_P),
+ \qquad \chi_P|_{\Gamma_\parallel}=\chi_\parallel,
+ \quad\chi_P(u_P)=-1.
+\]
+We use this notation only when the displayed period lattice has systole
+at least four. Then $u_P$ is an integer vector, the torus is adapted
+to $\ell$, and its volume is $P|\Xi|$. More generally, a torus with
+this cross-section and height period $p$ has volume $p|\Xi|$.
+Indeed, $\ell(\Z^3)=\Z$, and the quotient is counted by its $p$
+height classes and the $|\Xi|$ classes in each height. The character
+does not affect this count.
+
+\begin{proposition}[Unequal slab folds]\label{prop:unequal-slabs}
+Let $\mathbb T=(\Gamma,\chi)$ have cross-section $\Xi$ in the family
+$\ell$, and let $g\in\Gamma$ be a closing vector of minimal positive
+height $p=\ell(g)$. Choose an integer $k\ge1$ and admissible positions
+\[
+ c_0<c_1<\cdots<c_{2k}=c_0+p,\qquad h_j=c_j-c_{j-1}.
+\]
+Assume
+\begin{equation}\label{eq:sides-systole}
+ \min_{\gamma\in\Gamma_\parallel+
+       \Z(2kh_j n_\ell/|n_\ell|^2),\ \gamma\ne0}
+       |\gamma|_\infty\ge4,\qquad 1\le j\le2k.
+\end{equation}
+Let $G_j$ be a bounded scalar function of finitely many curvature
+plaquettes contained in the open slab $c_{j-1}<\ell<c_j$.
+For each $j$ put $\mathbb T_j=\mathbb T(\Xi;2kh_j)$ and form
+$\operatorname{fold}_\ell G_j$ by successive reflections in the
+planes $\ell=c_{j-1}+ih_j$. Then
+\begin{align}
+ Z_{\mathbb T_j}[\operatorname{fold}_\ell G_j]
+   &=\|\mathfrak S[G_j]\|_{2k}^{2k}\ge0,
+       \label{eq:sides-slab-norm}\\
+ \left|Z_{\mathbb T}\left[\prod_{j=1}^{2k}G_j\right]\right|
+   &\le\prod_{j=1}^{2k}
+       Z_{\mathbb T_j}[\operatorname{fold}_\ell G_j]^{1/(2k)},
+       \label{eq:sides-holder}\\
+ |\mathbb T|&=\sum_{j=1}^{2k}\frac{|\mathbb T_j|}{2k}.
+       \label{eq:sides-volumes}
+\end{align}
+In particular, the original torus need not admit a straightened torus
+of height $p$.
+\end{proposition}
+
+\begin{proof}
+Admissible positions form the group
+$\frac12|n_\ell|^2\Z$. Thus $h_j$ belongs to this group,
+$2kh_j\in|n_\ell|^2\Z$, and every plane used in the $j$th fold
+is admissible. Condition \eqref{eq:sides-systole} therefore defines
+each $\mathbb T_j$. Its volume is $2kh_j|\Xi|$, so summing
+$h_j$ proves \eqref{eq:sides-volumes}.
+
+The boundary spaces and the slab operator $\mathfrak S[G_j]$ depend
+on the cross-section and the two endpoints, not on the torus used
+to close a chain of slabs. Apply the reflected-pair identity
+\eqref{eq:slab-fold-holder} on $\mathbb T_j$, whose normal character
+is $-1$. Its closing translation cancels the translation of the
+repeated pairs, giving
+\[
+ Z_{\mathbb T_j}[\operatorname{fold}_\ell G_j]
+   =\operatorname{Tr}
+       (\mathfrak S[G_j]^*\mathfrak S[G_j])^k.
+\]
+This proves \eqref{eq:sides-slab-norm}.
+
+On the original torus the exact trace \eqref{eq:slab-trace} is
+\[
+ Z_{\mathbb T}\left[\prod_jG_j\right]
+  =\operatorname{Tr}\left(
+     V_g^{-1}U_{\mathrm f}^{(1+\chi(g))/2}
+     \mathfrak S[G_{2k}]\cdots\mathfrak S[G_1]\right).
+\]
+Its closing factor is unitary. All slab operators are
+Hilbert--Schmidt by \Cref{thm:slab-operators}, hence belong
+to the Schatten class of exponent $2k$. Apply
+\eqref{eq:slab-schatten-holder} with every exponent equal to $2k$,
+and then use \eqref{eq:sides-slab-norm}. This gives
+\eqref{eq:sides-holder}. The bounded scalar insertions are read on
+periodically extended curvatures throughout; they require no choice
+of a fermionic box or local lift.
+\end{proof}
+
+For example, when $n$ is odd the first diagonal height period of
+$C(n)$ is $n$, whereas a straight normal closing vector would be
+$(n/2)e_-$. This is not an integer vector. In the preceding proposition
+each replacement normal period is $2kh_j$, which is even for integer
+diagonal slab heights. This is the step that permits odd original sides.
+
+\subsection{An empty slab and its pressure cost}\label{sec:empty-slab}
+
+The exceptional torus in an unequal fold may be long. We use a bound
+valid for every shape. Set
+\begin{equation}\label{eq:sides-constants}
+ H_M=|M|+\frac{1+\rho}{2}\sum_{i=0}^3w_i,
+ \qquad \bar f=192\log H_M+3\log(r_qC_q).
+\end{equation}
+Both constants are finite, and $H_M>0$.
+
+\begin{lemma}\label{lem:uniform-ceiling}
+Every torus $\mathbb T$ used in the finite model satisfies
+\[
+ 0<Z_{\mathbb T}[1]\le e^{\bar f|\mathbb T|}.
+\]
+Consequently $f_\infty\le f(a,b,c)\le\bar f$ for all integer
+$a,b,c\ge4$.
+\end{lemma}
+
+\begin{proof}
+The determinant bound is $\det\mathcal D_A^{\mathbb T}
+\le H_M^{192|\mathbb T|}$, and the Maxwell integral is at most
+$(r_qC_q)^{3|\mathbb T|}$. Together with the positive lower bound
+in \eqref{eq:reg-partition-bounds}, these give the first assertion.
+The second follows from the definition of pressure and
+\Cref{prop:slab-pressure}.
+\end{proof}
+
+Use the diagonal cells \eqref{eq:slab-cells}, with heights
+$(\ell^1,\ell^2,\ell^3)=(x_1-x_2,x_1+x_2,x_3)$, admissible
+offsets $o_a$, and even width $h$. A finite family
+$\mathfrak G=(G_\kappa)_{\kappa\in\mathcal K}$ will mean bounded
+scalar curvature functions with $G_\kappa$ supported in the open
+cell $Q_\kappa$. For a direction $a$ and a layer $j$, write
+$\mathfrak R_a^{j,2k}\mathfrak G$ for the family obtained by retaining
+the factors with $\kappa_a=j$ and reflecting that layer into the
+$2k$ layers with indices $j,\ldots,j+2k-1$. The other two indices
+are unchanged. Its product is exactly the slab fold of the original
+layer product. This follows because the unique wall-group element
+taking one layer to another acts on each of its cells by the
+corresponding cell reflection.
+
+\begin{lemma}[One empty slab]\label{lem:one-step}
+Fix a direction $a$, a torus $\mathbb T$, and its cross-section $\Xi$
+and height period $p$ for $\ell^a$. Suppose $(2k-1)h<p$, and put
+\[
+ h^{\mathrm{exc}}=p-(2k-1)h,\qquad
+ \mathbb T^{\mathrm{reg}}=\mathbb T(\Xi;2kh),\qquad
+ \mathbb T^{\mathrm{exc}}=\mathbb T(\Xi;2kh^{\mathrm{exc}}).
+\]
+Assume both replacement period lattices have systole at least four.
+If every index of $\mathfrak G$ satisfies $0\le\kappa_a\le2k-2$,
+then
+\begin{align}
+ \left|Z_{\mathbb T}[\prod\mathfrak G]\right|
+ &\le Z_{\mathbb T^{\mathrm{exc}}}[1]^{1/(2k)}
+    \prod_{j=0}^{2k-2}
+      Z_{\mathbb T^{\mathrm{reg}}}
+       [\prod\mathfrak R_a^{j,2k}\mathfrak G]^{1/(2k)},
+       \label{eq:sides-step}\\
+ |\mathbb T|
+ &=\frac{2k-1}{2k}|\mathbb T^{\mathrm{reg}}|
+     +\frac1{2k}|\mathbb T^{\mathrm{exc}}|.
+       \label{eq:sides-step-volumes}
+\end{align}
+Every folded partition function on the right is nonnegative.
+\end{lemma}
+
+\begin{proof}
+Cut at $o_a+jh$ for $0\le j\le2k-1$ and at $o_a+p$.
+The first $2k-1$ slabs have height $h$; the final slab has height
+$h^{\mathrm{exc}}>0$ and contains no factor. The positions are
+admissible, since $p$ and $h$ are integers and $o_a$ is admissible.
+Apply \Cref{prop:unequal-slabs} to their layer products
+and to the constant $1$ in the final slab. The regular folds are
+the products of $\mathfrak R_a^{j,2k}\mathfrak G$, while the empty
+slab folds to $1$. Its three conclusions give the assertions.
+\end{proof}
+
+The empty slab has no local observable to transport. Thus its reflected
+copies may have a different width, while every regular factor remains
+in the original cell structure. Folding in direction $a$ leaves the
+other two cell indices unchanged, so the same lemma can be applied
+successively in the remaining directions.
+
+\subsection{The comparison inequality}
+
+Fix a real local trigonometric polynomial $O$ supported in a box
+$y+[-r,r]^3\subset Q_0$, with $r\ge1$. Choose the cell width even,
+$h\ge18$, and $h>8r+8$. The offsets are
+$o_1=c_0,o_2=c_+,o_3=c_3$, with $c_0,c_+\in\Z$ and
+$c_3\in\Z+1/2$. For $4h\mid m$, let $O_m^{\mathrm{fold}}$ be
+the full reflected array on $D_m$, and let $\mu_{D_m}^t$ be the
+tilt \eqref{eq:slab-tilted-law}. Its number of cells is
+$N=m^3/|Q|$, where $|Q|=h^3/2$.
+
+\begin{proposition}\label{prop:fold-any-side}
+Suppose $4h\mid m$, $m\ge4h$, and $n\ge m$ is an integer.
+Put
+\begin{align*}
+ V^{\mathrm{reg}}&=\frac{(m-h)^2(2m-h)}2,
+ &V^{\mathrm{exc}}&=n^3-V^{\mathrm{reg}},\\
+ \Delta'(n,m,h)&=f(m/2,2m,m)-f_\infty
+       +\frac{V^{\mathrm{exc}}}{V^{\mathrm{reg}}}
+                     (\bar f-f_\infty).
+\end{align*}
+Then $\Delta'(n,m,h)\ge0$ and, for every $t>0$,
+\begin{equation}\label{eq:sides-expectation-comparison}
+ \mu_{C(n)}(O)\le\mu_{D_m}^t(O)
+                   +\frac{|Q|\Delta'(n,m,h)}t.
+\end{equation}
+There is no parity restriction on $n$.
+\end{proposition}
+
+\begin{proof}
+Set $s=n-m\ge0$ and
+\[
+ k_1=k_3=\frac{m}{2h},\qquad k_2=\frac mh,\qquad
+ \mathcal K^{\mathrm{reg}}=
+   \{\kappa:0\le\kappa_a\le2k_a-2,\ a=1,2,3\}.
+\]
+These are integer ranges, with every $k_a\ge2$. Write
+\[
+ R=\prod_{a=1}^3(2k_a-1),\qquad
+ N=8k_1k_2k_3=\frac{m^3}{|Q|}.
+\]
+Then $R|Q|=V^{\mathrm{reg}}$, and
+$0<V^{\mathrm{reg}}<m^3\le n^3$. Since
+$f(m/2,2m,m)\ge f_\infty$ and $\bar f\ge f_\infty$,
+the claimed sign of $\Delta'$ follows.
+
+\emph{The array on the original torus.}
+For $\kappa\in\Z^3$ let
+\[
+ v(\kappa)=\frac h2(\kappa_1e_-+\kappa_2e_+)
+                         +h\kappa_3e_3,\qquad
+ G_\kappa=e^{tO^{\tau_{v(\kappa)}}}.
+\]
+The vector $v(\kappa)$ is integral because $h$ is even, and its
+three height coordinates are $h\kappa$. Thus $G_\kappa$ is
+supported in $Q_\kappa$. Define
+\[
+ \widetilde O_{\mathrm{reg}}
+     =\sum_{\kappa\in\mathcal K^{\mathrm{reg}}}
+                               O^{\tau_{v(\kappa)}},\qquad
+ \mathfrak G=(G_\kappa)_{\kappa\in\mathcal K^{\mathrm{reg}}}.
+\]
+Then $\prod\mathfrak G=e^{t\widetilde O_{\mathrm{reg}}}$.
+Jensen's inequality and translation invariance give
+\begin{equation}\label{eq:sides-jensen}
+ tR\mu_{C(n)}(O)
+ \le\log Z_{C(n)}[e^{t\widetilde O_{\mathrm{reg}}}]
+                            -\log Z_{C(n)}[1].
+\end{equation}
+
+\emph{The three replacement geometries.}
+Apply \Cref{lem:one-step} in the order
+$(\ell_-,\ell_+,x_3)$. The regular tori are
+\[
+ \mathbb T_0=C(n),\quad
+ \mathbb T_1=D'(m/2,n,n),\quad
+ \mathbb T_2=D(m/2,m,n),\quad
+ \mathbb T_3=D_m.
+\]
+For the first step the cross-section of $C(n)$ is generated by
+$ne_+,ne_3$, with characters $+1,-1$, respectively. Its height
+period is $n$, with closing vector $ne_1$. The regular normal
+vector is $k_1he_-=(m/2)e_-$, and the exceptional slab has height
+$n-(2k_1-1)h=h+s$. Hence
+\[
+ \mathbb T_1^{\mathrm{exc}}=D'(k_1(h+s),n,n).
+\]
+This calculation uses only that $n$ is an integer.
+
+In the second direction, $\mathbb T_1$ has cross-section generated
+by $(m/2)e_-,ne_3$, both with character $-1$. Its height period is
+$2n$, and the original closing vector $ne_+$ has character $+1$.
+The trace therefore contains the parity operator, which is unitary
+and is retained in \Cref{prop:unequal-slabs}. The regular
+normal vector is $k_2he_+=me_+$, now with character $-1$.
+The empty slab has height $h+2s$, giving
+\[
+ \mathbb T_2^{\mathrm{exc}}=D(m/2,k_2(h+2s),n).
+\]
+In the third direction, the cross-section of $\mathbb T_2$ is
+generated by $(m/2)e_-,me_+$, both with character $-1$, and the
+height period is $n$. The regular closing vector is $2k_3he_3=me_3$.
+The empty slab has height $h+s$, so
+\[
+ \mathbb T_3^{\mathrm{exc}}=D(m/2,m,2k_3(h+s)).
+\]
+
+All these tori are admissible. For positive integers $a,b,c$,
+the lattice generated by $ae_-,be_+,ce_3$ has systole
+$\min(a,b,c)$: a vector has coordinates $(aA+bB,-aA+bB,cC)$,
+and the maximum of the first two absolute values is
+$|aA|+|bB|$. The stated minimum follows, and is attained by a
+generator. Here every displayed coefficient is at least
+$\min(m/2,2(h+s),n)\ge36$. This checks the regular and exceptional
+systoles at each application of \Cref{lem:one-step}.
+
+\emph{The reflected arrays.}
+The first fold can be applied because the first indices of
+$\mathfrak G$ lie in $[0,2k_1-2]$. After retaining a first layer
+$j_1$ and reflecting it, the second and third index ranges are
+unchanged. The second fold may therefore be applied to each
+resulting family; afterwards the third range is still
+$[0,2k_3-2]$, so the third fold applies as well.
+
+For $j=(j_1,j_2,j_3)\in\mathcal K^{\mathrm{reg}}$, the final
+family is the full reflected array of $G_j$ in the cells
+\[
+ j+\mathcal K_0,\qquad
+ \mathcal K_0=\{\kappa:0\le\kappa_a\le2k_a-1\}.
+\]
+Indeed the three wall maps commute, and their product is the
+unique wall-group element carrying $Q_j$ to the prescribed cell.
+The periods of $D_m$ shift the cell indices by
+$(2k_1,0,0)$, $(0,2k_2,0)$ and $(0,0,2k_3)$, so
+$j+\mathcal K_0$ is a complete set of cell representatives.
+Changing those representatives does not change a scalar fold on
+periodic curvatures.
+
+The full fold of $G_j$ has the same partition function as the full
+fold of $e^{tO}$. Translation by $v(j)$ permutes the cell walls,
+conjugates their reflected maps, and preserves $D_m$. Thus it
+translates the full array of $e^{tO}$ into that of $G_j$, and
+translation invariance of the finite functional gives
+\[
+ Z_{D_m}[\operatorname{Fold}_{D_m}G_j]
+       =Z_{D_m}[e^{tO_m^{\mathrm{fold}}}].
+\]
+
+\emph{The weighted exceptional volume.}
+The three H\"older steps give $R$ regular factors, each with exponent
+$1/N$, and the exceptional exponents
+\[
+ \vartheta_1=\frac1{2k_1},\qquad
+ \vartheta_2=\frac{2k_1-1}{4k_1k_2},\qquad
+ \vartheta_3=\frac{(2k_1-1)(2k_2-1)}{8k_1k_2k_3}.
+\]
+All folded partition functions are nonnegative. Successive
+substitution in \eqref{eq:sides-step} is therefore valid and yields
+\begin{equation}\label{eq:sides-three-steps}
+ Z_{C(n)}[e^{t\widetilde O_{\mathrm{reg}}}]
+ \le\prod_{a=1}^3 Z_{\mathbb T_a^{\mathrm{exc}}}[1]^{\vartheta_a}
+       Z_{D_m}[e^{tO_m^{\mathrm{fold}}}]^{R/N}.
+\end{equation}
+The three volume identities \eqref{eq:sides-step-volumes} are
+\[
+ |\mathbb T_{a-1}|=
+       \frac{|\mathbb T_a^{\mathrm{exc}}|}{2k_a}
+        +\frac{2k_a-1}{2k_a}|\mathbb T_a|,
+        \qquad a=1,2,3.
+\]
+Substitute the third into the second, and then the result into the
+first. Since $|\mathbb T_3|=m^3$ and $Rm^3/N=R|Q|$, this gives
+\begin{equation}\label{eq:sides-exceptional}
+ \sum_{a=1}^3\vartheta_a|\mathbb T_a^{\mathrm{exc}}|
+       =n^3-R|Q|=V^{\mathrm{exc}}.
+\end{equation}
+Apply \Cref{lem:uniform-ceiling} separately to the exceptional
+factors in \eqref{eq:sides-three-steps}. The resulting bound is
+\begin{equation}\label{eq:sides-partition-comparison}
+ Z_{C(n)}[e^{t\widetilde O_{\mathrm{reg}}}]
+ \le e^{\bar f V^{\mathrm{exc}}}
+       Z_{D_m}[e^{tO_m^{\mathrm{fold}}}]^{V^{\mathrm{reg}}/m^3}.
+\end{equation}
+The weighted identity \eqref{eq:sides-exceptional} is essential here.
+The exceptional volumes themselves may exceed $n^3$.
+
+\emph{Normalization and convexity.}
+All partition functions in \eqref{eq:sides-partition-comparison}
+are positive. For the inserted ones this also follows directly
+from $|\widetilde O_{\mathrm{reg}}|\le R|O|_1$ and
+$|O_m^{\mathrm{fold}}|\le N|O|_1$.
+As in \eqref{eq:slab-fold-upper-tangent}, convexity of the logarithm
+of the tilted partition function gives
+\[
+ \log Z_{D_m}[e^{tO_m^{\mathrm{fold}}}]
+      \le\log Z_{D_m}[1]+tN\mu_{D_m}^t(O).
+\]
+The pressure bounds give
+\[
+ \log Z_{C(n)}[1]\ge n^3f_\infty,\qquad
+ \log Z_{D_m}[1]\le m^3f(m/2,2m,m),
+\]
+where the second inequality is \eqref{eq:slab-partition-chain}
+at the even side $m$. Combining these estimates with
+\eqref{eq:sides-jensen} and
+\eqref{eq:sides-partition-comparison} yields
+\begin{align*}
+ tR\mu_{C(n)}(O)
+ &\le tR\mu_{D_m}^t(O)
+       +V^{\mathrm{reg}}\bigl(f(m/2,2m,m)-f_\infty\bigr)\\
+ &\hspace{35mm}+V^{\mathrm{exc}}(\bar f-f_\infty).
+\end{align*}
+Divide by $tR=tV^{\mathrm{reg}}/|Q|$ to obtain
+\eqref{eq:sides-expectation-comparison}.
+\end{proof}
+
+\subsection{Divisible companion sides}\label{sec:companion-sequences}
+
+The comparison side must accommodate every fixed cell width used in
+the local estimates, including the coarser widths used for
+amplification. Rounding to multiples of a single fixed integer would
+not supply these widths. The following choice is eventually divisible
+by every positive integer and changes the side by less than its square
+root.
+
+\begin{lemma}\label{lem:companions-exist}
+Let $n_i\ge4$ be integers with $n_i\to\infty$. There are positive
+integers $m_i$ such that $m_i\le n_i$ eventually, $m_i/n_i\to1$,
+and every positive integer divides $m_i$ for all sufficiently large
+$i$. One choice, for $n_i\ge64$, is
+\[
+ k(n)=\max\{k\in\Z:k\ge1,\ 8k!\le\sqrt n\},\qquad
+ m_i=8k(n_i)!\left\lfloor\frac{n_i}{8k(n_i)!}\right\rfloor.
+\]
+The finitely many remaining terms may be set equal to $8$.
+\end{lemma}
+
+\begin{proof}
+For $n\ge64$ the set defining $k(n)$ is nonempty and finite.
+The remainder after division by $8k(n)!$ satisfies
+\[
+ 0\le n-8k(n)!\left\lfloor\frac n{8k(n)!}\right\rfloor
+       <8k(n)!\le\sqrt n.
+\]
+Thus $n_i-\sqrt{n_i}<m_i\le n_i$ for all large $i$, which gives
+$m_i/n_i\to1$ and $m_i\to\infty$. Given an integer $d\ge1$,
+the inequality $n_i\ge64(d!)^2$ holds eventually. It implies
+$k(n_i)\ge d$, so $d$ divides $k(n_i)!$ and hence $m_i$.
+\end{proof}
+
+\begin{proposition}[Comparison for arbitrary original sides]
+\label{thm:comparison-any-side}
+Let $n_i\ge4$ tend to infinity, and choose $m_i$ as in
+\Cref{lem:companions-exist}. Fix the cell data and observable
+$O$ of \Cref{prop:fold-any-side}. Form the tilted laws
+$\mu_i^t=\mu_{D_{m_i}}^t$ and their ordered comparison states using
+these companion sides. Then
+\[
+ \Delta'_i=\Delta'(n_i,m_i,h)\longrightarrow0.
+\]
+If $\mu_{C(n_i)}\Rightarrow\nu$ on a prescribed subsequence and
+$\nu_0$ is any comparison state subordinate to that subsequence,
+then
+\begin{equation}\label{eq:sides-limit-comparison}
+ \nu(O)\le\nu_0(O).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+For all sufficiently large $i$, one has $4h\mid m_i$, $m_i\ge4h$
+and $m_i\le n_i$. \Cref{prop:fold-any-side} therefore
+applies. The pressure term $f(m_i/2,2m_i,m_i)-f_\infty$ tends
+to zero by \Cref{prop:slab-pressure}. Moreover
+\begin{equation}\label{eq:sides-volume-ratio}
+ \frac{V_i^{\mathrm{reg}}}{n_i^3}
+ =\left(\frac{m_i}{n_i}\right)^3
+    \left(1-\frac h{m_i}\right)^2
+    \left(1-\frac h{2m_i}\right)\longrightarrow1.
+\end{equation}
+Hence $V_i^{\mathrm{exc}}/V_i^{\mathrm{reg}}\to0$, proving
+$\Delta'_i\to0$.
+
+All divisibility requirements used to construct comparison states
+hold for $(m_i)$. Choose the common volume subsequence $i_j$ and
+strengths $t_k\downarrow0$ in \eqref{eq:diag-comparison-state},
+subordinate to the prescribed original subsequence. For fixed $k$,
+\eqref{eq:sides-expectation-comparison} gives
+\[
+ \mu_{C(n_{i_j})}(O)\le\mu_{i_j}^{t_k}(O)
+                         +\frac{|Q|\Delta'_{i_j}}{t_k}.
+\]
+The observable $O$ is bounded and continuous. Letting $j\to\infty$
+at fixed $t_k>0$ therefore gives $\nu(O)\le\nu_{t_k}(O)$.
+Now let $k\to\infty$ to obtain \eqref{eq:sides-limit-comparison}.
+The factor $1/t_k$ in the error is the reason for this order of limits.
+\end{proof}
+
+The law on the left of \eqref{eq:sides-limit-comparison} remains the
+limit of the original cubic laws. The construction of $\nu_0$ uses
+the companion volumes and retains the wall positivity and even
+translation invariance proved for ordered comparison states.

@@ -5,7 +5,7 @@
 Project codename: **LP1**.
 
 - **LPO1** — [Reflection positivity on the infinite lattice: expanded proof outline](LPO1.pdf).
-- **AI-written manuscript:** **LPM1** — *Reflection positivity for chamber QED on the infinite lattice* (manuscript to be added).
+- **AI-written manuscript:** **LPM1** — [Reflection positivity for chamber QED on the infinite lattice](LPM1.pdf) · [TeX source](LPM1-source/LPM1.tex).
 - **Human-written manuscript:** to be added.
 
 ## Main theorem

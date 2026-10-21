@@ -1,0 +1,397 @@
+\subsection{The rows and their cancellation}
+The normalized average \eqref{eq:reconstruction-average} gives
+\begin{equation}\label{eq:rg-reconstruction-definition}
+ T_k(A)=b_k^{-1}\mathcal Q_k(A)
+            \big(D_A+\mu+b_k\mathcal Q_k^\sharp(A)\mathcal Q_k(A)\big)
+       =\mathcal Q_k(A)\big(b_k^{-1}D_A+1+\mu/b_k\big).
+\end{equation}
+The second form follows from
+$\mathcal Q_k\mathcal Q_k^\sharp=1$.
+At a connection where $F_\infty(A)$ is invertible, its mean map
+$H_k(A)=b_kF_\infty(A)^{-1}\mathcal Q_k^\sharp(A)$ satisfies
+\begin{equation}\label{eq:rg-reconstruction-left-inverse}
+ T_k(A)H_k(A)
+ =b_k^{-1}\mathcal Q_k(A)F_\infty(A)
+               b_kF_\infty(A)^{-1}\mathcal Q_k^\sharp(A)=1.
+\end{equation}
+The barred identity follows where the inverse at $-A$ exists,
+by conjugation with $\mathsf C$.
+
+For $c\in\Delta_y$, let $c_j(c)$ be the center of its block
+of side $L^j\eta_k$, $0\le j\le k$, so that $c_0(c)=c$ and
+$c_k(c)=y$. The averaging phase is
+\begin{equation}\label{eq:rg-reconstruction-phase}
+ \varphi_A(y,c)=\exp\left(ie_k\eta_k
+                 \sum_{j=0}^{k-1}(\tau A)(c_{j+1}(c),c_j(c))\right).
+\end{equation}
+The sum uses the average of the six rectilinear path sums.
+We write $(\tau_kA)(y,c)$ for this sum.
+All of these paths lie in $\Delta_y$ and their total length
+in bonds is at most $\frac32(L^k-1)$. Thus
+\begin{equation}\label{eq:rg-reconstruction-phase-moduli}
+ \begin{aligned}
+ |\varphi_A(y,c)^{\pm1}|&\le\exp(3\mathfrak i(A)/2),\\
+ |u_A(c,c')^{\pm1}|&\le\exp(\eta_k\mathfrak i(A))
+                                             \le\exp(\mathfrak i(A)).
+ \end{aligned}
+\end{equation}
+for a photon bond, with $u_A(c,c')=\exp(ie_k\eta_k A(c,c'))$.
+
+Write \(c_3=\pi x^{(3)}=c+\eta_kge_1\). The row form of
+\eqref{eq:rg-reconstruction-definition} is
+\begin{equation}\label{eq:rg-reconstruction-row}
+ \begin{aligned}
+ (T_k(A)\psi)(y)
+ &=\int_{\Delta_y}\dd x\,\varphi_A(y,c)
+                  \Bigl\{(1+\mu/b_k)\psi(x)\\
+ &\qquad-(b_k\eta_k)^{-1}\sum_{i=0}^3M_i(x)
+           [U_A(x,x^{(i)})\psi(x^{(i)})-\psi(x)]\Bigr\}.
+ \end{aligned}
+\end{equation}
+Here $U_A=1$ for $i\le2$ and $U_A(x,x^{(3)})=u_A(c,c_3)$.
+The normalized chamber integral over $\Delta_y$ has total mass
+one. This row exists for every complex connection, regardless
+of invertibility; the inverse hypothesis was needed only for
+\eqref{eq:rg-reconstruction-left-inverse}.
+
+The rows map antiperiodic fields to antiperiodic coarse fields:
+translation by a period preserves blocks, neighbors and phases,
+and supplies the single antiperiodic sign from the source field.
+
+If $Y$ is a union of $M$-cubes and $y\in Y$ is a unit site,
+then $\Delta_y\subset Y$: both $M$ and $L^k$ are odd, and the
+unit block is contained in the $M$-cube of its center.
+Define the two rows
+\begin{equation}\label{eq:rg-reconstruction-two-pieces}
+ \begin{split}
+ (T_Y^{(1)}(A)\psi)(y)
+ &=\int_{\Delta_y}\dd x\,\varphi_A(y,c)
+    \Bigl\{(1+\mu/b_k)\psi(x)\\
+ &\qquad-(b_k\eta_k)^{-1}\!\!\sum_{i:\,x^{(i)}\text{ over }Y}
+           M_i(x)[U_A(x,x^{(i)})\psi(x^{(i)})-\psi(x)]\Bigr\},\\
+ (T_Y^{(2)}(A)\chi)(y)
+ &=-b_k^{-1}\eta_k^{\alpha-1}\int_{\Delta_y}\dd x\,
+                1[c_3\notin Y]\varphi_A(y,c)M_3(x)\chi(x,x^{(3)}).
+ \end{split}
+\end{equation}
+Rows outside $Y$ are zero. The first row contains ordinary
+legs only over $Y$. The second row contains precisely the
+type-$3$ pairs leaving $Y$, which are admissible boundary
+pairs of length $\eta_k$. Their coefficients read $A$ only
+on bonds with an endpoint in $\Delta_y$.
+If $\chi=\delta_{\alpha,A}\psi$ on these boundary pairs, then
+\begin{equation}\label{eq:rg-reconstruction-local-identity}
+ T_Y^{(1)}(A)\psi+T_Y^{(2)}(A)\chi=T_k(A)\psi
+                                             \quad\text{on the unit sites of }Y.
+\end{equation}
+This follows by replacing the missing type-$3$ difference in
+\eqref{eq:rg-reconstruction-row} by
+$\eta_k^\alpha\chi(x,x^{(3)})$.
+The intra-cluster differences remain in $T_Y^{(1)}$.
+
+\begin{proposition}[Uniform row bounds]\label{prop:rg-reconstruction-estimate}
+The rows \eqref{eq:rg-reconstruction-two-pieces} and $T_k(A)$
+obey the Euclidean norm estimates
+\eqref{eq:rg-reconstruction-sup-estimate} for every complex
+connection $A$. If $\mathfrak i(A),q_d(A)\le1$, their coefficient
+row sums obey \eqref{eq:rg-reconstruction-coefficient-bound},
+with the stated constant $C_T$ independent of $k,\ell,Y$.
+\end{proposition}
+
+\begin{proof}
+Write $\mathfrak i=\mathfrak i(A)$ and $q_d=q_d(A)$.
+Put $E=\Delta_y\times O_{\mathrm{cub}}$ and divide it into
+\[
+ E_1=\{x\in E:c_3\in\Delta_y\},\quad
+ E_2=\{x\in E:c_3\in Y\setminus\Delta_y\},\quad
+ E_3=\{x\in E:c_3\notin Y\}.
+\]
+For each coordinate direction $a\in\{\pm e_\mu\}$ there are
+eight labels with $ge_1=a$. The face of $\Delta_y$ through
+which $c+\eta_ka$ leaves the unit block has $\eta_k^{-2}$
+photon sites. Thus
+\begin{equation}\label{eq:rg-reconstruction-face-count}
+ \#E=48\eta_k^{-3},\qquad \#(E_2\cup E_3)=48\eta_k^{-2}.
+\end{equation}
+
+The chamber hopping matrices satisfy
+\[
+ M_i(x^{(i)})-M_i(x)=w_i\gamma\cdot\widehat d_i(x),\qquad
+ \sum_{i=0}^3w_i\gamma\cdot\widehat d_i(x)=0.
+\]
+Also $\|M_3(x)\|_2\le6$ and
+$\|w_3\gamma\cdot\widehat d_3(x)\|_2=6$.
+Reindex each intra-cluster sum by $x\mapsto x^{(i)}$ and
+each type-$3$ sum in $E_1$ by $x\mapsto x^{(3)}$.
+Both are involutions of their summation sets. The intra-cluster
+sums become
+$\sum_{x\in E}\varphi_A(y,c)\sum_{i\le2}
+ (M_i(x^{(i)})-M_i(x))\psi(x)$, which equals
+$-\sum_{x\in E}\varphi_A(y,c)w_3\gamma\cdot\widehat d_3(x)\psi(x)$.
+The part over $E_1$ cancels with the corresponding matrix
+difference from the reindexed type-$3$ sum. Thus
+$(T_Y^{(1)}(A)\psi)(y)=R_0+R_1+R_2+R_3$, with
+\begin{equation}\label{eq:rg-reconstruction-summation-parts}
+ \begin{split}
+ R_0&=(1+\mu/b_k)\frac{\eta_k^3}{48}
+                         \sum_{x\in E}\varphi_A(y,c)\psi(x),\\
+ R_1&=b_k^{-1}\frac{\eta_k^2}{48}
+       \sum_{x\in E_2\cup E_3}
+                     \varphi_A(y,c)w_3\gamma\cdot\widehat d_3(x)\psi(x),\\
+ R_2&=-b_k^{-1}\frac{\eta_k^2}{48}\sum_{x\in E_2}
+       \varphi_A(y,c)M_3(x)[u_A(c,c_3)\psi(x^{(3)})-\psi(x)],\\
+ R_3&=-b_k^{-1}\frac{\eta_k^2}{48}\sum_{x\in E_1}
+       [\varphi_A(y,c_3)u_A(c_3,c)-\varphi_A(y,c)]
+                                             M_3(x^{(3)})\psi(x).
+ \end{split}
+\end{equation}
+The face count and phase moduli bound the first three terms by
+\[
+ \exp(3\mathfrak i/2)\|\psi\|_{\mathrm{su}}
+       \big[1+\mu/b_k+6b_k^{-1}
+                           +6b_k^{-1}(1+\exp(\mathfrak i))\big].
+\]
+The fourth term requires the curvature estimate.
+
+For neighboring photon sites $c,c'=c+\eta_ka$ in $\Delta_y$,
+let $j(c,a)$ be the first scale at which their block centers
+agree. The centers at all larger scales then agree as well.
+For $j\ge2$, such a $c$ lies on a face of a block of side
+$L^{j-1}\eta_k$. There are $L^{3(k-j+1)}$ such blocks inside
+$\Delta_y$, with $L^{2(j-1)}$ sites on the indicated face.
+For $j=1$ use all sites. We obtain
+\begin{equation}\label{eq:rg-first-common-block-count}
+ \#\{c:c,c+\eta_ka\in\Delta_y,\ j(c,a)=j\}
+                         \le\eta_k^{-3}L^{-(j-1)}.
+\end{equation}
+
+Write
+\[
+ \begin{aligned}
+ \varphi_A(y,c')u_A(c',c)-\varphi_A(y,c)
+    &=\varphi_A(y,c)(\exp(v(c,a))-1),\\
+ v(c,a)&=ie_k\eta_k
+      [(\tau_kA)(y,c')+A(c',c)-(\tau_kA)(y,c)].
+ \end{aligned}
+\]
+The contributions above scale $j(c,a)$ cancel in this bracket.
+The remaining expression is the mean of the line sums over
+closed paths from their common scale-$j$ center down to $c'$,
+then across the bond to $c$, and back up the reversed paths.
+All these loops lie in the scale-$j$ block, of side at most
+$L^j\eta_k$, and have at most $3L^j$ bonds.
+For a closed path of $n$ bonds in a box of side $s$, the axial
+path estimate gives $|A(\Gamma)|\le2ns\|dA\|_\infty$.
+To recall the reason, subtract the gauge obtained by line sums
+from one corner in coordinate order $1,2,3$. The difference on
+each bond is a sum over at most two strips of width one mesh
+and length at most $s$. Its modulus is at most
+$2s\|dA\|_\infty$, and the gauge sum around the loop vanishes.
+This argument applies to complex fields as well.
+Consequently, with $j=j(c,a)$,
+\begin{equation}\label{eq:rg-reconstruction-phase-defect}
+ |v(c,a)|\le6L^{2(j-k)}q_d,\qquad
+ |\exp(v(c,a))-1|
+                    \le6L^{2(j-k)}q_d\exp(6q_d).
+\end{equation}
+The factor $L^{2(j-k)}$ must be kept until after summing the
+locations of the first common block. By
+\eqref{eq:rg-first-common-block-count},
+\begin{align*}
+ \eta_k^2\sum_{\substack{c\in\Delta_y\\c+\eta_ka\in\Delta_y}}
+                                  |\exp(v(c,a))-1|
+ &\le6q_d\exp(6q_d)L^{1-k}\sum_{j=1}^kL^j\\
+ &\le9Lq_d\exp(6q_d).
+\end{align*}
+The six directions, eight labels per direction, and
+$\|M_3\|_2\le6$ now give
+\[
+ |R_3|_2\le54Lq_d\exp(6q_d)b_k^{-1}
+                         \exp(3\mathfrak i/2)\|\psi\|_{\mathrm{su}}.
+\]
+Together with the first three terms this proves the first
+line of \eqref{eq:rg-reconstruction-sup-estimate} for $T_Y^{(1)}$.
+Take $Y$ to be the full torus to obtain the bound for $T_k$.
+
+The second row is supported on $E_3$. Its definition and
+\eqref{eq:rg-reconstruction-face-count} give directly
+\[
+ |(T_Y^{(2)}(A)\chi)(y)|_2
+ \le b_k^{-1}\eta_k^{\alpha-1}\frac{\eta_k^3}{48}
+            48\eta_k^{-2}\exp(3\mathfrak i/2)6\|\chi\|_{\mathrm{su}},
+\]
+which is the second bound.
+
+For the coefficient norm, fix a row and choose each source
+component to have the conjugate phase of its row coefficient.
+Its component supremum is at most one, and its Euclidean
+spinor supremum is at most two. The row coefficient sum is
+then at most twice the corresponding bound in
+\eqref{eq:rg-reconstruction-sup-estimate}. When
+$\mathfrak i,q_d\le1$, use also $\mu\le1$ and $\eta_k^\alpha\le1$.
+The resulting bound is $C_T$ as stated. The normalized index
+measure is already in the row coefficients, so no extra
+factor $48$ enters. The domain is invariant under sign, and
+the matrix $\mathsf C$ is monomial; conjugating $T_Y^{(i)}(-A)$
+or $T_k(-A)$ by it permutes row and column moduli.
+This proves the barred bounds.
+For a total connection in $\widetilde R_k+\mathfrak X_k$,
+\eqref{eq:rg-total-imaginary-curvature-bounds} supplies
+$\mathfrak i,q_d\le1$ under
+\eqref{eq:rg-domain-charge-conditions}.
+\end{proof}
+
+The local reconstruction respects the symmetries of an activity.
+Telescoping the scalar gauge sum in the averaging paths gives
+\[
+ \begin{aligned}
+ \varphi_{A-d\lambda}(y,c)\exp(ie_k\lambda(c))
+       &=\exp(ie_k\lambda(y))\varphi_A(y,c),\\
+ u_{A-d\lambda}(c,c')\exp(ie_k\lambda(c'))
+       &=\exp(ie_k\lambda(c))u_A(c,c').
+ \end{aligned}
+\]
+Insert these two identities in
+\eqref{eq:rg-reconstruction-two-pieces}. Every term acquires
+the coarse factor $\exp(ie_k\lambda(y))$, where the boundary
+leg transforms with the phase of its first point. Thus, with
+$\lambda^{\mathrm u}$ the restriction to unit sites,
+\begin{equation}\label{eq:rg-reconstruction-gauge-covariance}
+ \begin{split}
+ T_Y^{(1)}(A-d\lambda)\exp(ie_k\lambda)\psi
+      &=\exp(ie_k\lambda^{\mathrm u})T_Y^{(1)}(A)\psi,\\
+ T_Y^{(2)}(A-d\lambda)\chi^\lambda
+      &=\exp(ie_k\lambda^{\mathrm u})T_Y^{(2)}(A)\chi,
+ \qquad\chi^\lambda(x,x')=\exp(ie_k\lambda(c))\chi(x,x').
+ \end{split}
+\end{equation}
+The identity also holds for gauges specified locally on the
+bonds and sites read by the row.
+
+A scheme symmetry $\tilde g=(S,a)$ maps nested blocks and their
+centers to their images, preserves the order of each coordinate
+path, and permutes the $48$ labels. Moreover
+$M_i(\tilde gx)S=SM_i(x)$ and
+$(\tilde gx)^{(i)}=\tilde g(x^{(i)})$.
+Changing variables in the two rows therefore proves
+\begin{equation}\label{eq:rg-reconstruction-lattice-covariance}
+ T_{\tilde gY}^{(i)}(\tilde gA)\tilde g
+                           =\tilde gT_Y^{(i)}(A).
+\end{equation}
+Complex conjugation changes the phases to those at $-A$, and
+$\overline{M_i}=\varkappa^{-1}M_i\varkappa$, giving
+\begin{equation}\label{eq:rg-reconstruction-reality}
+ \overline{T_Y^{(i)}(\overline A)}
+                         =\varkappa^{-1}T_Y^{(i)}(-A)\varkappa.
+\end{equation}
+
+The barred rows are $\bar T_Y^{(i)}(A)=\mathsf C^{-1}T_Y^{(i)}(-A)\mathsf C$.
+Their gauges have the opposite sign. For the lattice covariance,
+$(S^{-1})^T=\sigma(S)\mathsf C^{-1}S\mathsf C$ with
+$\sigma(S)\in\{\pm1\}$: both matrix maps are homomorphisms,
+and on each generating Dirac matrix they differ by a minus
+sign. This same sign occurs in the source and target spin
+actions and cancels in the barred intertwining identity.
+For reality, $\mathsf C$ is real and
+$\varkappa\mathsf C=-\mathsf C\varkappa$; the two signs from
+commuting the conjugations cancel. Thus the barred versions
+of \eqref{eq:rg-reconstruction-lattice-covariance} and
+\eqref{eq:rg-reconstruction-reality} hold with the inverse
+transpose spin action and the same $\varkappa$.
+
+
+\subsection{Local substitution of the mean field}
+\label{subsec:rg-step-local-substitution}
+
+For $k\ge1$, let $Y$ be a union of partition $M$-cubes and allow independent
+unit generators $\Psi,\bar\Psi$ over $Y$, together
+with the ordinary and H\"older generators.
+Using the two operators from
+\eqref{eq:rg-reconstruction-two-pieces}, define
+the substitution that fixes the latter generators and
+sets, at the unit sites of $Y$,
+\begin{equation}\label{eq:rg-step-local-substitution}
+ \begin{split}
+ \operatorname{sub}_{Y,B}\Psi
+       &=T_Y^{(1)}(B)\psi+T_Y^{(2)}(B)\chi,\\
+ \operatorname{sub}_{Y,B}\bar\Psi
+       &=\bar T_Y^{(1)}(B)\bar\psi+\bar T_Y^{(2)}(B)\bar\chi.
+ \end{split}
+\end{equation}
+The images are odd linear combinations of independent
+generators and therefore anticommute with one another
+and with the fixed generators. They determine a
+unique Grassmann homomorphism.
+Its new ordinary legs lie over $Y$ and its new pair
+legs are boundary pairs of the second kind with first
+point over $Y$. Its coefficients read $B$ on bonds
+meeting $Y$, by the row support proved in
+Section~\ref{subsec:rg-field-reconstruction}.
+Since a bar index is preserved, the substitution
+preserves balance and parity.
+
+If an evaluation has
+$\chi=\delta_{\alpha,B}\psi$ and the barred
+relation on these boundary pairs, then
+\eqref{eq:rg-reconstruction-local-identity}
+turns \eqref{eq:rg-step-local-substitution}
+into $T_k(B)\psi$ and $\bar T_k(B)\bar\psi$.
+If in addition $\psi=H_k(B)\Phi$ and
+$\bar\psi=\bar H_k(B)\bar\Phi$, the left-inverse
+identity gives $\Phi$ and $\bar\Phi$ over $Y$.
+Thus this local substitution represents the exact
+mean field under evaluation.
+
+The row covariances yield
+\begin{equation}\label{eq:rg-step-substitution-covariances}
+ \begin{split}
+ a_g\operatorname{sub}_{gY,gB}
+                        &=\operatorname{sub}_{Y,B}a_g,\\
+ G_\lambda\operatorname{sub}_{Y,B^1}
+                        &=\operatorname{sub}_{Y,B}G_\lambda,
+                 \qquad B^1=B-d\lambda\text{ on bonds meeting }Y,\\
+ \mathrm{Cg}\operatorname{sub}_{Y,-B}
+                        &=\operatorname{sub}_{Y,B}\mathrm{Cg},\\
+ \mathbf K\operatorname{sub}_{Y,-\overline B}
+                        &=\operatorname{sub}_{Y,B}\mathbf K.
+ \end{split}
+\end{equation}
+The final relation uses real $\mu$.
+Both sides fix the old generators according to the
+stated symmetry, so it suffices to compare their
+images of $\Psi,\bar\Psi$. The lattice and real-gauge
+relations follow from
+\eqref{eq:rg-reconstruction-lattice-covariance} and
+\eqref{eq:rg-reconstruction-gauge-covariance}; for
+a local gauge equality the rows read only the
+bonds on which that equality is assumed.
+For charge conjugation use
+$T_Y^{(i)}(-B)\mathsf C=\mathsf C\bar T_Y^{(i)}(B)$
+and its barred counterpart. For the antilinear map,
+\eqref{eq:rg-reconstruction-reality} with $-B$ gives
+$\overline{T_Y^{(i)}(-\overline B)}
+=\varkappa^{-1}T_Y^{(i)}(B)\varkappa$, and likewise
+for the barred row. These identities give
+\eqref{eq:rg-step-substitution-covariances} on
+each new generator.
+
+Assume $\mathfrak i(B),q_d(B)\le1$ under the standing hypotheses
+of this section. Proposition~\ref{prop:rg-reconstruction-estimate}
+gives the following norm statement. Assign weights
+$w_1,w_2$ to the ordinary and pair legs and weight $w_3$
+to the independent unit generators:
+\begin{equation}\label{eq:rg-step-substitution-bound}
+ \|\operatorname{sub}_{Y,B}F\|_{w_1,w_2}
+                         \le\|F\|_{w_1,w_2;w_3}
+             \quad\text{if }C_T(w_1+w_2)\le w_3.
+\end{equation}
+Indeed the image of a $\Psi$ generator has norm
+at most $C_Tw_1+C_Tw_2$, and the original generators
+retain their weights. The weighted linear-substitution
+bound in Lemma~\ref{lem:linear-substitution}
+applies on the subalgebra whose unit generators lie
+over $Y$. The measures for the two row sums are
+$\eta_k^3/48$ and $(\eta_k^3/48)^2$, respectively;
+their identity kernels include the reciprocal
+column measure. Thus this estimate has the same
+normalization as the reconstruction bound.

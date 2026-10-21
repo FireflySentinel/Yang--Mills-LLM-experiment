@@ -5,7 +5,7 @@
 Project codename: **VT1**.
 
 - **VTO1** — [Volume transfer and non-Gaussian continuum components](VTO1.pdf).
-- **AI-written manuscript:** **VTM1** — *Volume transfer and component cumulants for lattice QED in three dimensions* (manuscript to be added).
+- **AI-written manuscript:** **VTM1** — [Volume transfer and component cumulants for lattice QED in three dimensions](VTM1.pdf) · [TeX source](VTM1-source/VTM1.tex).
 - **Human-written manuscript:** to be added.
 
 ## Role in the QEM1 assembly
@@ -466,4 +466,4 @@ If $`b(f)>0`$ and $`C_fe^\sigma\le b(f)/2`$, every component in this set has $`\
 
 ## Navigation
 
-[QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Links to published outlines use their repository locations; links to withheld manuscripts open the corresponding README. Citations to material outside this assembly remain visible without a download link.
+[QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Links to published outlines use their repository locations; links to manuscripts open the corresponding README. Citations to material outside this assembly remain visible without a download link.

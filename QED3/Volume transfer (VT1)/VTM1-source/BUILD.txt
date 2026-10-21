@@ -1,0 +1,10 @@
+These are the TeX sources of the AI-written manuscript VTM1.
+
+Run these commands from this directory using a TeX distribution with the required packages:
+
+pdflatex -interaction=nonstopmode -halt-on-error VTM1.tex
+biber VTM1
+pdflatex -interaction=nonstopmode -halt-on-error VTM1.tex
+pdflatex -interaction=nonstopmode -halt-on-error VTM1.tex
+
+The published PDF is in the parent directory.

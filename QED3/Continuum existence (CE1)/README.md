@@ -5,7 +5,7 @@
 Project codename: **CE1**.
 
 - **CEO1** — [Continuum limits from second-moment bounds](CEO1.pdf).
-- **AI-written manuscript:** **CEM1** — *Gaussian domination and structural properties of continuum limits* (manuscript to be added).
+- **AI-written manuscript:** **CEM1** — [Gaussian domination and structural properties of continuum limits](CEM1.pdf) · [TeX source](CEM1-source/CEM1.tex).
 - **Human-written manuscript:** to be added.
 
 ## Role in the QEM1 assembly
@@ -327,4 +327,4 @@ fixed finite family of Schwartz evaluations converge to those of $`P`$.
 
 ## Navigation
 
-[QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Links to published outlines use their repository locations; links to withheld manuscripts open the corresponding README. Citations to material outside this assembly remain visible without a download link.
+[QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Links to published outlines use their repository locations; links to manuscripts open the corresponding README. Citations to material outside this assembly remain visible without a download link.

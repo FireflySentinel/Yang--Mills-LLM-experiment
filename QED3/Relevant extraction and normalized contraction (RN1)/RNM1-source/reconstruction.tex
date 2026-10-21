@@ -1,0 +1,171 @@
+\section{Local reconstruction of a mean field}
+\label{subsec:rg-field-reconstruction}
+
+The result in this section follows
+\cite[\S\S12.4,13.4]{QED3Manuscript} and has hypotheses independent
+of the large-\(L\) contraction conditions. Fix \(k\ge1\),
+\(\eta_k=L^{-k}\), \(L\ge5\) odd, \(M=L^m\) with \(m\in\Z_{\ge2}\),
+and an admissible torus as in Section~\ref{sec:activities}.
+Let \(0<\alpha<1\), \(0<\rho<1\), \(0<\mu\le1\), and
+\(b_k\ge b_->0\).
+
+The chamber Dirac stencil is
+\[
+ D_A\psi(x)=-\eta_k^{-1}\sum_{i=0}^3M_i(x)
+            [U_A(x,x^{(i)})\psi(x^{(i)})-\psi(x)],
+ \qquad
+ M_i(x)=\tfrac12w_i(\rho-\gamma\cdot\widehat d_i(x)),
+\]
+where
+\[
+ \begin{gathered}
+ w_0=w_3=6,\qquad w_1=w_2=6\sqrt2,\\
+ \widehat d_0=-ge_3,\quad
+ \widehat d_1=-g(e_2-e_3)/\sqrt2,\quad
+ \widehat d_2=-g(e_1-e_2)/\sqrt2,\quad
+ \widehat d_3=ge_1 .
+ \end{gathered}
+\]
+In particular
+\(\sum_iw_i\widehat d_i=0\) and \(\|M_3(x)\|_2\le6\).
+
+Let \(\Delta_y\) be the unit block centered at
+\(y\in\Z^3/\ell\Z^3\). For \(c\in\Delta_y\), join \(c\) to the
+successive centers of its nested blocks of sides
+\(\eta_k,L\eta_k,\ldots,1\). Let \(\varphi_A(y,c)\) be the
+exponential of \(ie_k\eta_k\) times the sum of the six-path
+averages along these successive center-to-site paths, as in
+\eqref{eq:rg-reconstruction-phase}. Define the normalized average
+and its reverse by
+\begin{equation}\label{eq:reconstruction-average}
+ (\mathcal Q_k(A)v)(y)
+      =\frac{\eta_k^3}{48}\sum_{c\in\Delta_y,g}
+                                     \varphi_A(y,c)v(c,g),\qquad
+ (\mathcal Q_k^\sharp(A)u)(c,g)=\varphi_A(y,c)^{-1}u(y).
+\end{equation}
+Thus \(\mathcal Q_k\mathcal Q_k^\sharp=1\).
+Equivalently \(\mathcal Q_k^\sharp(A)=\mathcal Q_k(-A)^T\),
+where \(T\) is the algebraic transpose with the stated fine
+measure and unit counting measure. Reversing the connection and
+taking this weighted transpose are separate operations.
+Put
+\[
+ F_\infty(A)=D_A+\mu+b_k\mathcal Q_k^\sharp(A)\mathcal Q_k(A),
+ \qquad
+ T_k(A)=\mathcal Q_k(A)(b_k^{-1}D_A+1+\mu/b_k).
+\]
+Write \(\bar T_k(A)=\mathsf C^{-1}T_k(-A)\mathsf C\).
+For a complex connection set
+\(\mathfrak i(A)=e_k\|\operatorname{Im}A\|_\infty\) and
+\(q_d(A)=e_k\|dA\|_\infty\).
+For a scalar-component kernel \(P(a,b)\) acting with column
+measure \(\nu(b)\), write
+\[
+ |P|_{1,\infty}=\sup_a\sum_b\nu(b)|P(a,b)|.
+\]
+The sum includes spin indices. For ordinary and pair columns
+the measures are \(\eta_k^3/48\) and \((\eta_k^3/48)^2\),
+respectively.
+
+\begin{theorem}[Local reconstruction]\label{thm:reconstruction}
+Under the preceding hypotheses the following statements hold.
+\begin{enumerate}[label=\textup{(\roman*)},leftmargin=*]
+\item For every complex connection \(A\) and every union \(Y\) of
+partition \(M\)-cubes, the rows \(T_Y^{(1)}(A)\) and
+\(T_Y^{(2)}(A)\) in \eqref{eq:rg-reconstruction-two-pieces} exist.
+The first uses only ordinary legs over \(Y\); the second uses
+the external ordered pairs leaving \(Y\). Their coefficients
+read only bonds meeting \(Y\), are entire in \(A\), and satisfy
+\[
+ T_Y^{(1)}(A)\psi+T_Y^{(2)}(A)\delta_{\alpha,A}\psi
+                       =T_k(A)\psi
+ \quad\text{at the unit sites in }Y.
+\]
+They obey the lattice, real-gauge and reality covariance
+identities \eqref{eq:rg-reconstruction-gauge-covariance}--%
+\eqref{eq:rg-reconstruction-reality}. Their barred counterparts
+are \(\bar T_Y^{(i)}(A)=\mathsf C^{-1}T_Y^{(i)}(-A)\mathsf C\).
+
+\item In Euclidean spinor supremum norm, writing
+\(\mathfrak i=\mathfrak i(A)\), \(q_d=q_d(A)\),
+\begin{equation}\label{eq:rg-reconstruction-sup-estimate}
+ \begin{aligned}
+ \|T_Y^{(1)}(A)\|_{\mathrm{su}},\ \|T_k(A)\|_{\mathrm{su}}
+ &\le e^{3\mathfrak i/2}
+       [1+b_-^{-1}(54Lq_de^{6q_d}+12+6e^{\mathfrak i}+\mu)],\\
+ \|T_Y^{(2)}(A)\|_{\mathrm{su}}
+ &\le6b_-^{-1}e^{3\mathfrak i/2}\eta_k^\alpha .
+ \end{aligned}
+\end{equation}
+If \(\mathfrak i,q_d\le1\), the coefficient row sums satisfy
+\begin{equation}\label{eq:rg-reconstruction-coefficient-bound}
+ |T_Y^{(i)}(A)|_{1,\infty},\ |T_k(A)|_{1,\infty},\
+ |\bar T_Y^{(i)}(A)|_{1,\infty},\ |\bar T_k(A)|_{1,\infty}
+ \le C_T\quad(i=1,2),
+\end{equation}
+where
+\[
+ C_T=2e^{3/2}[1+b_-^{-1}(54Le^6+12e+1)].
+\]
+This constant is independent of \(k,\ell,Y\). In particular
+the bound holds for \(A\in\widetilde R_k+\mathfrak X_k\)
+when \(0<\varepsilon\le1/200\), \(0<e_k<1\), and
+\eqref{eq:rg-domain-charge-conditions} holds.
+
+\item Introduce independent unit generators \(\Psi,\bar\Psi\)
+over \(Y\). Replacing them by
+\(T_Y^{(1)}\psi+T_Y^{(2)}\chi\) and its barred counterpart,
+and fixing the old generators, defines the homomorphism
+\(\operatorname{sub}_{Y,A}\) of
+\eqref{eq:rg-step-local-substitution}. It preserves balance
+and the symmetry identities
+\eqref{eq:rg-step-substitution-covariances}.
+If the original ordinary legs lie over \(Y\) and its pair legs
+are admissible for \(Y\), the substituted polynomial has the same
+support properties.
+If \(\mathfrak i,q_d\le1\) and the ordinary, pair and unit
+weights \(w_1,w_2,w_3>0\) satisfy
+\(C_T(w_1+w_2)\le w_3\), then
+\[
+ \|\operatorname{sub}_{Y,A}F\|_{w_1,w_2}
+                       \le\|F\|_{w_1,w_2;w_3}
+\]
+for every polynomial whose unit generators lie over \(Y\).
+
+\item At each \(A\) for which \(F_\infty(A)\) is invertible,
+define
+\[
+ H_k(A)=b_kF_\infty(A)^{-1}\mathcal Q_k^\sharp(A).
+\]
+Then \(T_k(A)H_k(A)=1\).
+For the barred recovery also assume \(F_\infty(-A)\) is
+invertible and define
+\(\bar H_k(A)=\mathsf C^{-1}H_k(-A)\mathsf C\).
+On evaluation at \(\psi=H_k(A)\Phi\),
+\(\chi=\delta_{\alpha,A}\psi\), and the barred analogues,
+the substitution sends \(\Psi,\bar\Psi\) to \(\Phi,\bar\Phi\)
+over \(Y\).
+\end{enumerate}
+\end{theorem}
+
+The inverse hypothesis in the last clause is additional to the
+row estimate. The proof below constructs the rows directly.
+Reindexing the internal chamber hops cancels the bulk part of
+the Dirac stencil. The remaining boundary rows are controlled by
+face counts, while the averaging-phase defect is controlled by
+curvature and the first common block scale.
+
+\input{reconstruction-proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:reconstruction}]
+Equations \eqref{eq:rg-reconstruction-definition}--%
+\eqref{eq:rg-reconstruction-local-identity} give the row
+construction, its locality and the evaluated identity.
+Proposition~\ref{prop:rg-reconstruction-estimate} proves the
+quantitative estimates; its proof uses only
+\(\mathfrak i,q_d\le1\) for the displayed constant \(C_T\).
+The generator checks and norm argument in
+Section~\ref{subsec:rg-step-local-substitution} give the
+substitution assertions. Where the indicated inverses exist,
+\eqref{eq:rg-reconstruction-left-inverse} gives recovery.
+\end{proof}

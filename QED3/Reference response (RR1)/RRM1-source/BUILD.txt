@@ -1,0 +1,10 @@
+These are the TeX sources of the AI-written manuscript RRM1.
+
+Run these commands from this directory using a TeX distribution with the required packages:
+
+pdflatex -interaction=nonstopmode -halt-on-error RRM1.tex
+biber RRM1
+pdflatex -interaction=nonstopmode -halt-on-error RRM1.tex
+pdflatex -interaction=nonstopmode -halt-on-error RRM1.tex
+
+The published PDF is in the parent directory.

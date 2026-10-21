@@ -1,0 +1,236 @@
+\section{The positive small-field measure and its complement}
+\label{subsec:interacting-complement}
+
+\cite[Proposition~3.1]{TerminalPressure} identifies $F_N$
+with $(A_*;\zeta_j)_{j<k_*}$. Their scalar
+coordinates have the form
+$\zeta_j(\Upsilon)=\langle\phi_{j,\Upsilon},F^{\rm u}\rangle$
+with orthonormal $\phi_{j,\Upsilon}$; each
+coarse plaquette coordinate $(dA_*)(p)$ has
+the form $\langle\phi_p,F^{\rm u}\rangle$ with
+$\|\phi_p\|\le1$.
+There are at most $2\ell_*^3L^{3(k_*-j)}$
+coordinates at level $j$ and $3\ell_*^3$
+coarse plaquettes. The stop Gaussian
+$\dd\mathsf m_*$ is nondegenerate on the
+real mean-zero coclosed coarse fields.
+The row and count statements are
+\cite[(13)]{TerminalPressure} and
+\cite[(14)]{TerminalPressure}; the
+Gaussian assertion is \cite[(12)]{TerminalPressure}.
+
+Let $\mathfrak G$ require
+$|\zeta_j(\Upsilon)|\le p_{0,j}$
+and $|dA_*|_\infty\le p_*$, and let
+$\mathfrak G^-$ decrease each threshold by one.
+Put
+\begin{align}
+ \varpi_0&=18\ell_*^3\mathrm e^{-p_{0*}/2}
+               +6\ell_*^3\mathrm e^{-(p_*-1)^2/(2C_0^2)},\notag\\
+ t_2&=e\,\min\left\{N_*^{-1/2},\,C_\beta^{-1},
+                                     (2\sqrt{N_*\mathbf D})^{-1}\right\},\notag\\
+ \varpi_L&=\sqrt{\varpi_0}\,\mathrm e^{\mathbf D/2},
+ \qquad M_L=2+\mathrm e^{\mathbf D/2},\notag\\
+ \lambda_L&=(\varpi_L^{1/3}M_L^{2/3})^{1/N_*}
+                              5(2N_*r/t_2)^4 .
+                                     \label{eq:interacting-complement-constants}
+\end{align}
+A reciprocal with zero denominator is interpreted
+as $+\infty$. The number $\mathbf D$ is the
+uniform probe energy bound, so $v_\eta\le\mathbf D$.
+
+\begin{proposition}\label{prop:interacting-complement}
+Assume the hypotheses of \cref{prop:interacting-one-cell,prop:interacting-mixed-logarithm}
+and the tail conditions $v_*\ge8$ and $p_0v_*^{p_0-1}\ge28$.
+For a fixed $0<s<1$, set
+$\bar\kappa_1=6e_*^{1/4-9\varepsilon}$.
+Assume
+\begin{equation}\label{eq:interacting-jet-conditions}
+ 2\varpi_{\rm sep}^+\le\bar\kappa_1^{N_*},\quad
+ N_*\bar\kappa_1^{1-s}\le1/2,\quad
+ \varpi_0\le1/4,\quad 8N_*t_2\le t_x .
+\end{equation}
+There is a finite positive measure $v_{\rm sf}$
+on $[-\pi,\pi]^3\times\{\chi_*=1\}$, of
+mass in $[1-\varpi_0,1]$, such that
+\begin{equation}\label{eq:interacting-small-field-representation}
+ \frac{\bar\nu^{a(t)}(\mathfrak G)}{\bar\nu(F_N)}
+       =\int \mathrm e^{\mathcal G(t;\theta,A)}\,v_{\rm sf}(\dd\theta\,\dd A).
+\end{equation}
+The normalized complement
+$L(t)=\bar\nu^{a(t)}(F_N\setminus\mathfrak G)/\bar\nu(F_N)$
+is entire. Its fourth jet in each variable has
+coefficient norm at radius $r$ at most
+$\lambda_L^{N_*}$.
+\end{proposition}
+
+\begin{proof}
+First, the union bound and
+\cite[(7)]{TerminalPressure} give
+\begin{equation}\label{eq:interacting-small-field-tail}
+ \bar\mu(F_N\setminus\mathfrak G^-)\le\varpi_0 .
+\end{equation}
+For $i=k_*-j\ge1$, write
+$v_j=v_*+i(\log L)/2$.
+The scale conditions
+$v_*\ge8$, $p_0v_*^{p_0-1}\ge28$ give
+$p_{0,j}\ge p_{0*}+14i\log L$.
+Since $(p_{0,j}-1)^2\ge p_{0,j}$,
+the individual tail is at most
+$2\mathrm e^{-p_{0*}/2}L^{-7i}$.
+Multiply by the coordinate count
+$2\ell_*^3L^{3i}$ and sum $L^{-4i}$.
+The $3\ell_*^3$ coarse plaquettes give the
+second term in \eqref{eq:interacting-complement-constants}.
+These estimates yield \eqref{eq:interacting-small-field-tail},
+with room in the coefficient $18$.
+
+The exact density identity defines
+\begin{equation}\label{eq:interacting-small-field-measure}
+ v_{\rm sf}(\dd\theta\,\dd A)=
+   \frac{\chi_*(A)Y_*^{\rm x}(A+c_\theta;0)}
+             {\bar\nu(F_N)}\,\frac{\dd\theta}{(2\pi)^3}
+                                      \dd\mathsf m_*(A).
+\end{equation}
+We check positivity of this density, which
+does not follow from the formal Grassmann
+representation. For real marks, the original
+fine law $\nu^{\theta,a(t)}$ is nonnegative.
+The identity \cite[(21)]{TerminalPressure} says, for every
+nonnegative bounded Borel $\Phi$,
+\[
+ \int\Phi(A)\chi_*(A)Y_*^{\rm x}(A+c_\theta;\mathscr C(t))
+                \,\dd\mathsf m_*(A)
+       =\nu^{\theta,a(t)}(\mathbf1_{\mathfrak G}\Phi(A_*))\ge0.
+\]
+The terminal density is continuous. On the
+interior of the compact convex set
+$\{\chi_*=1\}=\{|dA|_\infty\le p_*\}$, a
+nonzero imaginary part or negative real
+part would persist on a ball of positive
+Gaussian measure, contradicting this identity.
+At the boundary, approach along $uA$,
+$u\uparrow1$; zero is an interior point.
+Thus the density is nonnegative everywhere
+on this set. \Cref{prop:interacting-factor}
+makes it nonzero there, hence strictly positive.
+This reasoning also proves
+$\mathcal G(t;\theta,A)\in\R$ for real $t$:
+its exponential is a positive ratio and its
+continuous value at zero is zero.
+
+Integration of the exact terminal identity over
+$\theta$, followed by
+\eqref{eq:interacting-terminal-ratio}, proves
+\eqref{eq:interacting-small-field-representation}.
+At $t=0$ the mass is $\bar\mu(\mathfrak G)$,
+which lies in $[1-\varpi_0,1]$.
+All integrals here are well-defined Borel
+integrals: the density is continuous on
+the compact support and zero elsewhere.
+
+For real $t=ez$ with $|t|_\infty\le t_2$,
+put $G_z=\sum_cz_cd\widehat{\mathfrak a}_c$.
+Disjoint supports imply
+$\|G_z\|^2=v_\eta|z|_2^2\le1/4$.
+The real source shift gives
+\[
+ L(ez)=\mathrm e^{-v_\eta|z|_2^2/2}
+ \bar\mu\left(\mathbf1_{(F_N\setminus\mathfrak G)+G_z}
+                              \mathrm e^{\langle G_z,F^{\rm u}\rangle}\right).
+\]
+Every photon coordinate changes by at most
+$\|G_z\|\le1$ under the shift. Thus the
+shifted complement is contained in
+$F_N\setminus\mathfrak G^-$.
+Cauchy--Schwarz, \eqref{eq:interacting-small-field-tail},
+and Gaussian domination at $2G_z$ give
+\begin{equation}\label{eq:interacting-real-complement}
+ 0\le L(t)\le\sqrt{\varpi_0}\,
+          \mathrm e^{v_\eta|z|_2^2/2}\le\varpi_L .
+\end{equation}
+This is the only place where the lowered
+thresholds of $\mathfrak G^-$ are needed.
+
+The source-shift identity also gives, for complex marks,
+\[
+ |\mathring\Phi(t)|\le
+       \exp\left(\frac{v_\eta}{2e^2}
+                                      \sum_c(\operatorname{Im}t_c)^2\right).
+\]
+It follows directly by bounding the expectation
+of the real exponential and canceling its
+real quadratic normalization.
+On $|t|_\infty\le t_2$ this is at most
+$\mathrm e^{\mathbf D/2}$.
+The small-field integral has modulus at most
+$2$. Indeed, evenness and the double zero of
+$\ell_0$ give $|\ell_0(t)|\le B_0|t|^2/t_x^2$,
+while the zero of $w_c$ gives
+$|w_c(t)|\le(3/8)|t|/t_x$.
+Their sum over cells at
+$t_2\le t_x/(8N_*)$ is at most
+$1/(256N_*)+3/64$. The remaining logarithm
+components sum to at most
+$2^{N_*}\varpi_{\rm sep}^+
+\le(2\bar\kappa_1)^{N_*}/2\le N_*^{-N_*}/2$,
+by \eqref{eq:interacting-jet-conditions}.
+Thus $|\mathcal G|\le1/2$ and
+$|\mathrm e^{\mathcal G}|\le2$.
+Since $L$ is the difference between the
+full generating function and the small-field
+integral, $|L|\le M_L$ on that polydisc.
+It is entire because the finite determinant
+density is entire and is bounded on compact
+mark sets uniformly in the real photon
+field and real twist. The modulus bound
+in the external-response section supplies
+the required Gaussian integrable majorant
+also for either Borel event.
+
+We use the following two-constants estimate.
+Let $n\ge1$ be an integer. If a holomorphic function
+on a polydisc in $\C^n$ of radius $R$ has modulus at most $M$, and
+at most $\delta\le M$ on its real points,
+then its modulus is at most $\delta^{1/3}M^{2/3}$
+on the polydisc of radius $R/(2n)$.
+On the upper
+half of the unit disc the harmonic function
+$\omega(z)=\frac2\pi\arg[(1+z)/(1-z)]$
+is zero on the diameter and one on the
+semicircle. Comparing $\log|f(R'z)|$
+with $(1-\omega)\log\delta+\omega\log M$,
+for $R'<R$, the maximum principle gives
+the same inequality in the half disc.
+To handle its endpoints, subtract
+$\epsilon\log[4/|1-z^2|]$ before applying
+the principle, then let $\epsilon\downarrow0$.
+Its harmonic conjugate gives a holomorphic
+function to which the modulus principle
+applies. On $|z|\le q$, $\omega(z)\le
+(4/\pi)\arctan q$; reflection treats the
+lower half disc. Let $R'\uparrow R$.
+Apply this one-variable estimate successively
+with $q=1/(2n)$. The remaining exponent of
+$\delta$ is at least
+$(1-\frac4\pi\arctan(1/(2n)))^n
+\ge1-2/\pi>1/3$, proving the assertion.
+The case $\delta=0$ follows by the identity
+theorem, and $M=0$ is immediate.
+
+Apply it to $L$, with $n=N_*$ and $R=t_2$.
+Cauchy's coefficient bound gives
+\[
+ |L_\alpha|\le\varpi_L^{1/3}M_L^{2/3}(2N_*/t_2)^{|\alpha|}.
+\]
+In the fourth jet, every exponent is at most
+four. Since $y=2N_*r/t_2\ge1$,
+\[
+ \sum_{\alpha_c\le4}|L_\alpha|r^{|\alpha|}
+   \le\varpi_L^{1/3}M_L^{2/3}
+                 (1+y+\cdots+y^4)^{N_*}
+   \le\lambda_L^{N_*}.
+\]
+Reality on real marks gives real jet coefficients.
+\end{proof}
+

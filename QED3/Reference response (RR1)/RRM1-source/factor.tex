@@ -1,0 +1,357 @@
+\section{The terminal determinant ratio}
+\label{sec:interacting-response}
+
+The argument in this and the following sections is the terminal
+response proof of \cite[\S23]{QED3Master}.
+The free coefficients do not by themselves control the
+reference Wick products. We must compare the normalized
+interacting generating function with its one-cell free
+factors, including mixed derivatives in different cells.
+The quantity to be estimated is
+\begin{equation}\label{eq:interacting-reference-error}
+ \Theta_m^{(0)}=
+ \left|\left(\prod_{c\in\mathcal C_*}
+       (\partial_{t_c}^m-c_m)\mathring\Phi\right)(0)\right|^{1/N_*},
+ \qquad m=2,4,\qquad N_*=|\mathcal C_*|=8L^3,
+\end{equation}
+where $c_m=N_0^{(m)}(0)$. The exact relation to Wick
+products is \eqref{eq:external-Wick-product}.
+The proof uses decay between separate insertions,
+an analytic logarithm for the terminal fermion integral,
+and a separate estimate of the complement of the
+small-field set.
+
+\subsection{Analyticity and normalization}
+\label{subsec:interacting-determinant-ratio}
+
+For the marked connections of
+\eqref{eq:interacting-marked-connections}, set
+\begin{equation}\label{eq:interacting-mark-radii}
+ C_b=1+\sqrt h\,C_\beta,\qquad
+ t_x=\frac{e_*^{3\varepsilon}}{C_b},\qquad
+ t_x^+=\frac{e_*^{3\varepsilon}}{\sqrt h\,C_\beta},
+ \qquad r=t_x/4.
+\end{equation}
+If $C_\beta=0$, interpret $t_x^+=\infty$.
+For $t$ in the polydisc
+$\mathbb D(t_x^+)=\{|t_c|<t_x^+\text{ for every }c\}$,
+all the rescaled connections $a(t)^{[j]}$
+belong to $\mathfrak X_j$ and
+$e_*|\mathscr C(t)|_\infty<e_*^{3\varepsilon}$.
+Indeed, \eqref{eq:interacting-external-probe-bound}
+and $e_*\le e\sqrt h$ give
+$|a(t)|_{\rm ext}<e_*^{-1+3\varepsilon}$.
+This bounds the stop sup and first-difference
+norms by the defining thresholds of $\mathfrak X_*$.
+For $i=k_*-j$ the rescaling multiplies
+the sup norm by $L^{-i/2}$ and the first
+differences by $L^{-3i/2}$, while
+$e_j=L^{-i/2}e_*$. Since
+$\varepsilon<1/3$, the rescaled bounds are
+strictly below $e_j^{-1+2\varepsilon}$ and
+$e_j^{-1+3\varepsilon}$, respectively.
+
+We first control the determinant activities accumulated
+along the flow. Recall the local determinant
+function $E_j^d(X,A)$ of
+\cite[Proposition~6.1]{FermionBlock} and set
+$E_j^{\rm det}(X,A)=E_j^d(X,A)-E_j^d(X,0)$.
+Its analyticity, locality, real gauge invariance,
+and evenness will all be used below; the relevant
+bound is
+\begin{equation}\label{eq:interacting-determinant-input}
+ |E_j^d(X,A)|\le C_dM^3\mathrm e^{-(\kappa+1)d_M(X)}
+                       \qquad(A\in\widetilde G_j).
+\end{equation}
+For a level-$(j+1)$ bond cochain $C$, write
+$C_L(b)=L^{-1/2}C(b/L)$ for its one-step rescaling.
+Let $\mathfrak P_0=0$ and
+\begin{equation}\label{eq:interacting-P-recursion}
+ \mathfrak P_{j+1}(Y,C)=
+ \sum_{\overline X^{\,L}=LY}
+       \bigl(\mathfrak P_j(X,C_L)+E_j^{\rm det}(X,C_L)\bigr).
+\end{equation}
+Then $\mathfrak P_j(X,\cdot)$ is analytic on
+$\mathfrak X_j$, vanishes at zero, and depends only
+on bonds meeting $X$. To see locality under
+reblocking, a bond meeting $X$ has, after division
+by $L$, an endpoint in $Y$ whenever
+$\overline X^{\,L}=LY$. Analyticity follows from
+$C_L\in\mathfrak X_j$.
+
+For $d_M(Y)\ge1$, the reblocking estimate gives
+\[
+ \sum_{\overline X^{\,L}=LY}\mathrm e^{-\kappa d_M(X)}
+ \le c_{\rm rb}L^3\mathrm e^{-L(\kappa-\kappa_0-1)d_M(Y)}.
+\]
+With
+$L(\kappa-\kappa_0-1)\ge\kappa$ and
+$c_{\rm rb}L^3\mathrm e^{-[L(\kappa-\kappa_0-1)-\kappa]}\le1/2$,
+the weighted supremum $q_j$ of $\mathfrak P_j$
+over $d_M(X)\ge1$ satisfies
+$q_{j+1}\le(q_j+2C_dM^3)/2$. Since $q_0=0$,
+\begin{equation}\label{eq:interacting-P-bound}
+ |\mathfrak P_j(X,C)|\le2C_dM^3\mathrm e^{-\kappa d_M(X)}
+                           \qquad(d_M(X)\ge1).
+\end{equation}
+At $j=0$ the determinant activity includes all
+$192$ chamber components. The primitive bound and
+reblocking estimate have the same constants at
+that first step.
+
+The determinant identity
+\cite[(33)]{NonlinearStep} gives
+\begin{align}
+ \frac{\det(D^{\rm ch}[qa]+\bar m\eta)}{\det(D^{\rm ch}[0]+\bar m\eta)}
+ &=\exp\left(\sum_X\mathfrak P_*(X,a^{[k_*]})\right)
+                    \frac{\det D_*(a^{[k_*]})}{\det D_*(0)},
+                           \label{eq:interacting-determinant-telescope}\\
+ \sum_X\mathfrak P_*(X,a^{[k_*]})
+ &=\sum_{j<k_*}\sum_XE_j^{\rm det}(X,a^{[j]}).
+                           \label{eq:interacting-P-telescope}
+\end{align}
+Here $a^{[j]}\in\mathfrak X_j$ for every $j$.
+The fine determinant uses the phase-argument convention
+of \eqref{eq:response-free-ratio}: its connection argument
+is $qa(t)=\sqrt\eta\sum_ct_c\widehat{\mathfrak a}_c$.
+For a single cell this is precisely the phase connection
+$q(t/e)\widehat a_c$ in \eqref{eq:response-free-ratio}.
+Write $n_j=\ell_j^3$ for the number of unit sites at level $j$;
+the spinor dimension is $4n_j$ for $j\ge1$, and $192n_0$
+at the incoming chamber level. The one-step identity reads
+\[
+ \det D_{j+1}(a^{[j+1]})
+       =b^{4n_{j+1}}\det D_j(a^{[j]})/\delta Z_j(a^{[j]}).
+\]
+Divide it by its zero-field version and use
+\cite[(78)]{FermionBlock}. The resulting
+ratio acquires the factor
+\[
+ \exp\left(-\sum_XE_j^{\rm det}(X,a^{[j]})\right)
+\]
+at each
+step, which proves the first identity by iteration.
+Summing \eqref{eq:interacting-P-recursion} over $Y$
+proves the second: each fine polymer has exactly
+one reblocked image. The zero-field determinants
+are nonzero by the real covariance formula.
+At $j=0$ the incoming determinant has dimension
+$192n_0$, the outgoing one dimension $4n_1$;
+the factor $b^{4n_1}$ cancels in the ratio.
+
+Fix a coarse real photon field $A$ with
+$\chi_*(A)=1$, and a real twist $\theta$.
+The real gauge construction in
+\cite[(32)]{MaxwellBlock}--%
+\cite[(33)]{MaxwellBlock}
+gives a representative $A^g$ with
+$|A^g|_\infty\le2\ell_*^2p_*$.
+The curvature bound and
+\cite[Theorem~B]{MaxwellBlock}
+put both $A+c_\theta$ and $A^g+c_\theta$
+in $\mathrm{Dom}_{k_*}$.
+Write
+\[
+ \mathscr A^0=H_*^{\rm ph}A^g,\qquad
+ c_{\theta,\mu}=\frac{\theta_\mu}{e_*\ell_*},
+ \qquad \mathscr A=\mathscr A^0+c_\theta.
+\]
+Summing the three photon kernel estimates in
+\cite[(14)]{MaxwellBlock} bounds each
+field norm of $\mathscr A^0$ by
+$2C_0\ell_*^2p_*<e_*^{-\varepsilon}/2$;
+the strict inequality is the corresponding
+condition in \cite[(43)]{TerminalPressure}.
+The local photon domains and their invariance
+under real constants then give
+$s\mathscr A^0+c_\theta\in\frac14\widetilde R_*$
+for $0\le s\le1$. In particular all
+connections needed below belong to $\mathcal W$.
+
+The flow bound \cite[(66)]{CoverTuning}
+gives an activity with even Grassmann kernels,
+with equal barred and unbarred degrees, and
+\begin{equation}\label{eq:interacting-activity-input}
+ \|\mathscr E_*\|_*^x
+       \le4e_*^{1/4-6\varepsilon},\qquad
+ |m_*|\le e_*^{3/4-8\varepsilon}/8.
+\end{equation}
+The coefficient norm includes the weights
+$\eta_*^3/48$ for a fine spinor index and
+$(\eta_*^3/48)^2$ for a pair index, with all
+admissible pairs, including pairs inside a cluster.
+Its polymer factor is $\mathrm e^{\kappa d_M(X)}$.
+For $(A,C)\in\widetilde R_*\times\mathfrak X_*$ define
+\begin{equation}\label{eq:interacting-two-field-integral}
+ Z_{\rm in}(A,C)=\int D\Psi\,
+ \exp\left\{-\langle\bar\Psi,D_*(A+C)\Psi\rangle
+       -m_*\langle\bar\psi,\psi\rangle
+       +\sum_X\mathscr E_*(X;A,C,\psi,\chi)\right\},
+\end{equation}
+where $\psi,\bar\psi$ are substituted using
+$H_*^\#(A+C)\Psi$ and their barred partners,
+and $\chi,\bar\chi$ using the corresponding
+covariant Hölder quotients.
+The inclusion
+$\widetilde R_*+\mathfrak X_*\subset\widetilde G_*$
+makes all these maps analytic; the activity
+kernels are analytic in $(A,C)$.
+Berezin integration is coefficient extraction,
+and the exponential is its scalar exponential
+times a finite polynomial in the positive-degree
+coefficients. Thus $Z_{\rm in}$ is analytic
+on this two-field domain.
+Set
+\begin{align}
+ Z_{\rm tm}(t)&=Z_{\rm in}(\mathscr A,\mathscr C(t)),
+                               \label{eq:interacting-terminal-integral}\\
+ f_{\rm int}(t)&=
+   \frac{Z_{\rm tm}(t)}{\det D_*(c_\theta+\mathscr C(t))}.
+                               \label{eq:interacting-factor-definition}
+\end{align}
+The Berezin measure has one pair for each
+of the $4\ell_*^3$ coarse spinor coordinates.
+The two-field analyticity gives analyticity of
+$Z_{\rm tm}$ on
+$\mathbb D(t_x^+)$.
+
+\begin{proposition}\label{prop:interacting-factor}
+Suppose
+\begin{gather}
+ 4C_0\ell_*^3g_1\le e_*^{-1/4+\varepsilon},\qquad
+ 4\ell_*^3(2C_K+K_0+4)\le e_*^{-2\varepsilon},\qquad
+ e_*^{1/4-9\varepsilon}\le1/8,
+                                      \label{eq:interacting-factor-conditions}\\
+ 48e_*^{2\varepsilon}\le\mu_- .
+                                      \label{eq:interacting-small-complex-mass}
+\end{gather}
+Then $f_{\rm int}$ is analytic and
+\begin{equation}\label{eq:interacting-factor-bound}
+ |f_{\rm int}(t)-1|\le\frac12e_*^{1/4-9\varepsilon}
+                              \le\frac1{16}.
+\end{equation}
+In particular $Z_{\rm tm}$ has no zero on the
+polydisc. The normalized terminal ratio
+\begin{equation}\label{eq:interacting-terminal-ratio}
+ R_{\rm tm}(t;\theta,A)=
+ \frac{Y_*^{\rm x}(A+c_\theta;\mathscr C(t))}
+      {Y_*^{\rm x}(A+c_\theta;0)}
+ =\exp\left(\sum_X\mathfrak P_*(X,\mathscr C(t))\right)
+       \frac{Z_{\rm tm}(t)}{Z_{\rm tm}(0)}
+\end{equation}
+is nonzero, continuous in $(t,\theta,A)$ on
+$\mathbb D(t_x^+)\times\R^3\times\{\chi_*=1\}$,
+and analytic in $t$. It has a unique continuous
+logarithm $\mathcal G(t;\theta,A)$ that vanishes
+at zero, and this logarithm is analytic in $t$.
+\end{proposition}
+
+\begin{proof}
+Use the covariance
+\[
+ C_t=D_*(c_\theta+\mathscr C(t))^{-1}.
+\]
+The inverse exists by
+\cite[(75)]{TerminalPressure}, because
+$e_*|\mathscr C(t)|_\infty<e_*^{3\varepsilon}
+<\mu_*/24$. Each covariance row has sum at
+most $4\ell_*^3g_1$. Put
+$a_w=C_0^{-1}e_*^{-1/4+\varepsilon}$.
+The first condition in
+\eqref{eq:interacting-factor-conditions} gives
+$a_w\ge4\ell_*^3g_1\ge1$.
+
+Separate the quadratic form with covariance $C_t$
+from the remaining even interaction $V_t$.
+Normalized Gaussian Grassmann integration gives
+\begin{equation}\label{eq:interacting-crude-Gaussian}
+ |f_{\rm int}(t)-1|\le \mathrm e^{|V_t|_{a_w}}-1.
+\end{equation}
+To justify this particular norm bound, replace
+the unbarred generators by $C_t\Psi$ and leave
+the barred generators fixed. Their row sums
+are at most $a_w$, so this substitution maps
+the $a_w$ coefficient norm into the unit
+coefficient norm. Integration against the identity
+covariance has norm one in that latter norm.
+Apply this to $\mathrm e^{V_t}-1$, and use the
+submultiplicativity of the coefficient norm.
+
+There are three terms in $V_t$. The difference
+between the two coarse quadratic forms has
+entry sum at most
+$C_Ke_*^{1-\varepsilon}\ell_*^3/2$, by
+\cite[(66)]{TerminalPressure} integrated along
+$c_\theta+\mathscr C(t)+s\mathscr A^0$.
+A quadratic Grassmann form has coefficient norm
+at most $4a_w^2$ times this block sum, so
+its contribution is bounded by
+$2C_K\ell_*^3e_*^{1/2+\varepsilon}$.
+The terminal mass estimate and
+\eqref{eq:interacting-activity-input} give respectively
+\[
+ \frac12\ell_*^3e_*^{1/4-6\varepsilon},
+ \qquad K_0\ell_*^3e_*^{1/4-7\varepsilon}.
+\]
+For the activity sum, substitute the terminal
+field maps in the coefficient norm, then sum
+$\mathrm e^{-\kappa d_M(X)}$ by assigning each polymer
+one of its $M$-cubes and using the polymer
+sum bound $K_0$. We have used
+$4e_*^\varepsilon\le1$.
+Consequently
+\[
+ |V_t|_{a_w}\le
+ \ell_*^3(2C_K+K_0+4)e_*^{1/4-7\varepsilon}
+ \le\frac14e_*^{1/4-9\varepsilon}.
+\]
+The inequality $\mathrm e^x-1\le2x$ proves
+\eqref{eq:interacting-factor-bound}.
+The denominator in \eqref{eq:interacting-factor-definition}
+is analytic and nonzero, so $f_{\rm int}$ is analytic.
+
+By \cite[(16)]{TerminalPressure} the terminal density has the form
+\[
+ Y_*^{\rm x}(A';C)=
+ (\det D_*(0))^{-1}
+ \exp\left(-\varepsilon_*^{\rm v}\ell_*^3+
+                         \sum_X\mathfrak P_*(X,C)\right)
+ Z_{\rm in}(H_*^{\rm ph}A',C).
+\]
+Its gauge invariance in \cite[Theorem~B]{TerminalPressure}
+permits replacing $A$ by
+$A^g$. The photon minimizer preserves real
+constants. Dividing the density at $C=\mathscr C(t)$
+by its value at zero proves
+\eqref{eq:interacting-terminal-ratio}; the quotient
+also shows that the result is independent of
+the chosen gauge representative. For continuity,
+use the ungauged linear map
+$A+c_\theta\mapsto H_*^{\rm ph}(A+c_\theta)$
+in the displayed formula. The terminal Grassmann
+integral is analytic in its two field arguments,
+and its zero-mark denominator is nonzero.
+
+The required logarithm is
+\begin{equation}\label{eq:interacting-logarithm}
+ \mathcal G(t;\theta,A)=
+ \int_0^1\sum_ct_c
+       \frac{\partial_{t_c}R_{\rm tm}(st;\theta,A)}
+            {R_{\rm tm}(st;\theta,A)}\,\dd s .
+\end{equation}
+Local Cauchy formulas show that the derivatives
+in this integrand are jointly continuous;
+integration over $[0,1]$ preserves continuity
+and analyticity. Along a ray the integrand is
+the logarithmic derivative of $R_{\rm tm}(st)$.
+Differentiating the product of this ratio with
+the exponential of minus the integrated
+logarithmic derivative gives zero, and its
+value at $s=0$ is one. Hence
+$\mathrm e^{\mathcal G}=R_{\rm tm}$.
+Any two continuous logarithms differ by
+$2\pi i$ times an integer-valued continuous
+function on the connected polydisc. Their
+common value at zero proves uniqueness.
+\end{proof}
+

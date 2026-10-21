@@ -1,0 +1,70 @@
+% doc:RP1M1 -- embedded introduction proof overview.
+\begin{tikzpicture}[proof map]
+\node[flow setup,text width=140mm,anchor=north] (standing) at (0,0) {
+  \FlowRole{Setup}
+  Standing hypotheses: those of \Cref{thm:main}.};
+
+\node[flow interface,text width=62mm,minimum height=28mm,anchor=north]
+  (cone) at (-39mm,-28mm) {
+  \FlowRole{Interface}
+  \FlowHeading{Spectral cone}
+  $H\geq|P|$ permits holomorphic translations.
+  \FlowRef{\Cref{prop:cone}}};
+\node[flow interface,text width=62mm,minimum height=28mm,anchor=north]
+  (positivity) at (39mm,-28mm) {
+  \FlowRole{Interface}
+  \FlowHeading{Continuation of positivity}
+  Positivity extends to conjugate complex parameters.
+  \FlowRef{\Cref{lem:analytic-positivity}}};
+
+\node[flow interface,text width=62mm,minimum height=36mm,anchor=north]
+  (growth) at (-39mm,-69mm) {
+  \FlowRole{Interface}
+  \FlowHeading{Angular growth}
+  Field insertion estimates give $M_N\leq3N$ near narrow configurations.
+  \FlowRef{\Cref{prop:final-growth}; \eqref{eq:point-bound}}};
+\node[flow interface,text width=62mm,minimum height=36mm,anchor=north]
+  (geometry) at (39mm,-69mm) {
+  \FlowRole{Interface}
+  \FlowHeading{Geometric reductions}
+  \Cref{lem:reduction,prop:narrowing,lem:small_angle} give
+  \Cref{thm:weaker}$\Rightarrow$\Cref{thm:weak}$\Rightarrow$\Cref{thm:main}.};
+
+\node[flow join] (fourierjoin) at (0,-115mm) {};
+\node[flow label,right=2mm of fourierjoin] {both};
+\node[flow interface,text width=140mm,anchor=north]
+  (narrow) at (0,-124mm) {
+  \FlowRole{Interface}
+  \FlowHeading{\Cref{thm:weaker}: eliminate the Fourier coefficients}
+  Positivity gives $2M_{a+b}\leq M_{2a}+M_{2b}$ and $M_{2a}\in8\bbZ$.
+  Together with the growth bound, these force $M_N=0$.
+  \FlowRef{\Cref{lem:testing,lem:integer};
+    \eqref{eq:convexity}, \eqref{eq:8}}};
+
+\node[flow join] (finaljoin) at (0,-168mm) {};
+\node[flow label,above right=1mm and 2mm of finaljoin] {both};
+\node[flow interface,flow target,text width=140mm,anchor=north]
+  (main) at (0,-177mm) {
+  \FlowRole{Interface}
+  \FlowHeading{\Cref{thm:main}}
+  $\operatorname{O}(d)$-covariance of the correlation functions
+  away from coincidences.};
+
+\draw[flow dependency] (cone.south) -- (growth.north);
+% Route above positivity, then along the outside; no crossing in the gutter.
+\draw[flow dependency] (cone.east) -- (-3mm,0 |- cone.east)
+  -- (-3mm,-22mm) -- (80mm,-22mm)
+  -- (80mm,0 |- geometry.east) -- (geometry.east);
+\draw[draw=black!75,line width=.65pt]
+  (positivity.west) -- (0,0 |- positivity.west) -- (fourierjoin);
+\draw[draw=black!75,line width=.65pt]
+  (growth.south) |- (fourierjoin);
+\draw[flow dependency] (fourierjoin) -- (narrow.north);
+\draw[draw=black!75,line width=.65pt] (narrow.south) -- (finaljoin);
+\draw[draw=black!75,line width=.65pt]
+  (geometry.south) -- (39mm,-110mm) -- (80mm,-110mm)
+  -- (80mm,-168mm) -- (finaljoin);
+\draw[flow dependency] (finaljoin) -- (main.north);
+\end{tikzpicture}
+\par\smallskip
+\FlowLegend

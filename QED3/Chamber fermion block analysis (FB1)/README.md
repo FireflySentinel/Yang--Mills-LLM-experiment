@@ -5,7 +5,7 @@
 Project codename: **FB1**.
 
 - **FBO1** — [Chamber fermion locality and local integration](FBO1.pdf).
-- **AI-written manuscript:** **FBM1** — *Chamber fermion locality and local integration* (manuscript to be added).
+- **AI-written manuscript:** **FBM1** — [Chamber fermion locality and local integration](FBM1.pdf) · [TeX source](FBM1-source/FBM1.tex).
 - **Human-written manuscript:** to be added.
 
 ## Role in the QEM1 assembly
@@ -293,4 +293,4 @@ Theorem B of FBM1 (Section 5, “Weighted Grassmann block integration”) gives 
 
 ## Navigation
 
-[QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Links to published outlines use their repository locations; links to withheld manuscripts open the corresponding README. Citations to material outside this assembly remain visible without a download link.
+[QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Links to published outlines use their repository locations; links to manuscripts open the corresponding README. Citations to material outside this assembly remain visible without a download link.

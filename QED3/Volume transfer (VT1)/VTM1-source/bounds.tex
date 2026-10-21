@@ -1,0 +1,248 @@
+\section{Reference scales and the loss of charge exponent}\label{sec:vtm-bounds}
+
+The reference side is chosen from the logarithmic charge
+scale. Use $L,M,h$ from the introduction and the localization
+power two. Thus
+\begin{equation}\label{eq:transfer-scale-choice}
+ e_K=e\sqrt h,\qquad v_K=-\log e_K,\qquad
+ r_K=\min\{L^i:L^i\ge v_K^2,\ i\in\Z_{\ge0}\},
+ \qquad R^*=\frac{hMr_K}{L}.
+\end{equation}
+Assume $v_K\ge8$, $e\le1/3$, $e_K\log h\le1$, and
+\begin{equation}\label{eq:transfer-tail-condition}
+ 6N_*Mv_K^2 \exp(-v_K)
+                 \left(v_K\exp(-v_K)+\tfrac12\right)\le\pi^2.
+\end{equation}
+These are finite charge conditions after $h,L,M$ are fixed.
+They hold on a sufficiently small charge interval:
+$v_K\to\infty$ as $e\to0$, and the polynomial times
+exponential in \eqref{eq:transfer-tail-condition}
+tends to zero.
+
+Minimality gives $v_K^2\le r_K<Lv_K^2$.
+Consequently $T^*=\log_L(Mr_K)-1$ is an integer at
+least one, $R^*=hL^{T^*}$, and
+$\ell_c=R^*/(2L)\to\infty$ as $e\to0$.
+Moreover $1/L<\bar mh\le1$, so
+\begin{equation}\label{eq:transfer-volume-error}
+ \bar mR^*>\frac{Mr_K}{L^2}\ge r_K\ge v_K,
+ \qquad \exp(-\bar mR^*)\le e\sqrt h.
+\end{equation}
+The same upper bound on $r_K$ gives
+\begin{align*}
+ e^2R^*\log(1/e)
+ &<Mv_K^2 \exp(-2v_K)
+                          (v_K+\tfrac12\log h)\\
+ &\le Mv_K^2 \exp(-v_K)
+                          (v_K\exp(-v_K)+\tfrac12).
+\end{align*}
+Thus \eqref{eq:transfer-tail-condition} implies
+\eqref{eq:transfer-W3}.
+The probe fits every sufficiently small charge and
+sufficiently fine mesh, since $D_\beta^{\mathrm{buf}}$
+is fixed and $\ell_c\to\infty$.
+
+We now isolate the two reference estimates used in the
+passage to arbitrary volumes. Their dependence on the
+charge matters: a bounded partition defect still loses
+a small power of $e$ through its photon contribution.
+Let $C_{\mathrm{mat}}$ and $C_{\mathrm{ref}}$ be finite constants
+independent of the charge, mesh and placement. Assume
+that for $N\ge N_{\mathrm{ref}}(e)$ the mass assignment and reference
+response satisfy
+\begin{align}
+ D^{\mathrm{mat}}&\le C_{\mathrm{mat}},\notag\\
+ \Theta_4^{(0)}&\le C_{\mathrm{ref}} e^{\mathfrak e},\qquad
+ (1+|c_2|)\Theta_2^{(0)}
+                          \le C_{\mathrm{ref}} e^{\mathfrak e},
+                                   \label{eq:transfer-terminal-input}
+\end{align}
+where
+\begin{equation}\label{eq:transfer-charge-exponents}
+ \mathfrak e=\tfrac12(1/4-9\varepsilon)-12\varepsilon,\qquad
+ \sigma=\mathfrak e-\frac{2a_L}{N_*}>0,\qquad
+ 0<\varepsilon\le1/200.
+\end{equation}
+Here $N_{\mathrm{ref}}(e)$ is a fixed finite mesh threshold.
+These are the reference hypotheses of \cref{thm:vtm-main}.
+For the common tuned mass, the matter estimate is
+\cite[Theorem~A, (5)]{TerminalPressure}, and the response
+estimate is \cite[Theorem~A]{ReferenceResponse}.
+Their joint charge interval and cutoff threshold are part
+of the construction data assumed here.
+
+On the reference torus take the free coefficients
+$c_m=N_0^{(m)}(0)$ from
+\eqref{eq:response-coefficient-relations}, using the
+source associated with the same placed probe.
+\cite[Proposition~5.2]{PositiveProbe}
+and the support fit give a constant, enlarged into
+$C_{\mathrm{ref}}$ if necessary, such that
+\begin{equation}\label{eq:transfer-free-input}
+ |c_2|+|c_4|^{1/2}\le C_{\mathrm{ref}},\qquad
+ |c_4-3c_2^2-b(f)|
+              \le C_{\mathrm{ref}}(e+\eta^{1/4}).
+\end{equation}
+Indeed $R^*\ge D_\beta+1$, and
+\eqref{eq:transfer-volume-error} bounds the finite-volume
+error in \cite[Theorem~B]{PositiveProbe}.
+The coefficients are real and independent of placement.
+
+\begin{proposition}\label{prop:transfer-UV-inputs}
+Fix the probe and the scale data above, and assume
+\eqref{eq:cells-fit}, \eqref{eq:transfer-terminal-input} and \eqref{eq:transfer-free-input}.
+There is a finite
+constant $C_U$, independent of $e,N,T$ and placement,
+such that for all the stated reference charges and
+$N\ge N_{\mathrm{ref}}(e)$,
+\begin{equation}\label{eq:transfer-small-Wick}
+ u_4\le C_Ue^\sigma,\qquad
+ (1+|c_2|)u_2\le C_Ue^\sigma,\qquad
+ |c_4-3c_2^2-b(f)|\le C_U(e^\sigma+\eta^{1/4}).
+\end{equation}
+On every cutoff torus with $T\ge T^*+1$, every finite
+set $Y\subset(R^*/L)\Z^3$ of points incongruent
+modulo $R\Z^3$ satisfies
+\begin{equation}\label{eq:transfer-translated-Wick}
+ \left|\E_{N,T}\prod_{y\in Y}
+       W_m(F^\sharp(\tau_yf^\eta);v_\eta,c_m)\right|
+                          \le u_m^{|Y|},\qquad m=2,4,
+\end{equation}
+Here $W_m$ is the polynomial in \eqref{eq:vtm-Wick}.
+The fourth cumulant of the fixed smooth test obeys
+\begin{equation}\label{eq:transfer-smooth-cumulant}
+ |\kappa_4(F^\sharp(f))-e^4b(f)|
+ \le(8C_U+3C_U^2)e^{4+\sigma}
+                  +C_U(\eta^2+e^4\eta^{1/4}).
+\end{equation}
+The tests $f^\eta$ have one fixed compact support,
+$f^\eta\to f$ in $L^2$, and $v_\eta\to\|f\|_2^2$.
+Thus \eqref{eq:transfer-small-Wick} and
+\eqref{eq:transfer-translated-Wick} give exactly the
+cutoff hypotheses of Proposition~\ref{prop:UV-component-cumulant}.
+\end{proposition}
+
+\begin{proof}
+Write
+\[
+ s_\beta=\|f\|_2+\|\beta\|_{H^4},\qquad
+ C_\Gamma^{\mathrm{tr}}=(2\pi)^{a_L/N_*}
+         \exp\left(\frac{K_L+C_{\mathrm{mat}}+1}
+                                  {(L-1)^3N_*}\right).
+\]
+Since $R^*\ge1$, \eqref{eq:transfer-delta} gives
+\begin{equation}\label{eq:transfer-Gamma-loss}
+ \exp(\delta)\le C_\Gamma^{\mathrm{tr}} e^{-2a_L/N_*}.
+\end{equation}
+The inverse power here is a power of the charge.
+The source-curvature identity and Jensen's inequality
+for the disjoint averaging cubes give
+$v_\eta^{1/2}\le\|f^\eta\|_2\le s_\beta$.
+Use this and \eqref{eq:transfer-free-input} in
+\eqref{eq:transfer-Wick-data}:
+\begin{align*}
+ T_4
+ &\le C_{\mathrm{ref}} e^{\mathfrak e}
+           +1200N_*^2s_\beta^4e^2+2C_{\mathrm{ref}}^2e^6\\
+ &\le(C_{\mathrm{ref}}+1200N_*^2s_\beta^4+2C_{\mathrm{ref}}^2)e^{\mathfrak e},\\
+ (1+|c_2|)T_2
+ &\le C_{\mathrm{ref}} e^{\mathfrak e}
+      +2e^6(12N_*s_\beta^2e^{-2}+C_{\mathrm{ref}})(1+C_{\mathrm{ref}})\\
+ &\le[C_{\mathrm{ref}}+2(12N_*s_\beta^2+C_{\mathrm{ref}})(1+C_{\mathrm{ref}})]
+                                                    e^{\mathfrak e}.
+\end{align*}
+Here $0<\mathfrak e<1/4$, from
+\eqref{eq:transfer-charge-exponents}.
+One possible constant is
+\begin{equation}\label{eq:transfer-CU}
+ \begin{split}
+ C_U=\max\{&
+ C_\Gamma^{\mathrm{tr}}(C_{\mathrm{ref}}+1200N_*^2s_\beta^4+2C_{\mathrm{ref}}^2),\\
+ &C_\Gamma^{\mathrm{tr}}[C_{\mathrm{ref}}+2(12N_*s_\beta^2+C_{\mathrm{ref}})(1+C_{\mathrm{ref}})],
+              \ C_{\mathrm{ref}},\ 60s_\beta^4\}.
+ \end{split}
+\end{equation}
+Multiplication by \eqref{eq:transfer-Gamma-loss}
+proves the first two bounds in
+\eqref{eq:transfer-small-Wick}. The last follows from
+\eqref{eq:transfer-free-input}, since $e\le e^\sigma$.
+
+For a cutoff side $n=8hL^{T+N}$ with $T\ge T^*+1$,
+one has $n=8L^{T-T^*}n_*$, a multiple of $p_{\rm cell}$ with
+$n\ge Ln_*$. For $y\in(R^*/L)\Z^3$ use the even
+cell index $c(y)$ of
+\eqref{eq:cells-translation-observable}.
+Incongruent points give distinct cells.
+Proposition~\ref{prop:transfer-Wick} applies to their
+product, and lattice translation invariance removes
+the common placement. This proves
+\eqref{eq:transfer-translated-Wick}.
+For a fixed finite set of distinct points it applies
+as soon as $R>2\max_{y\in Y}|y|_\infty$.
+
+It remains to replace the discrete smooth test
+$f^\eta$ by $f$ in the cumulant. We give the
+quantitative multilinear estimate used for this purpose.
+For a real two-cochain $g$, charge conjugation and
+Gaussian domination give
+\[
+ \E\cosh(t\langle g,F^{\mathrm u}\rangle)
+                          \le\exp(t^2\|g\|^2/2).
+\]
+Extract its nonnegative term of degree $2i$ and choose
+$t^2=2i/\|g\|^2$. This gives
+\[
+ \E\langle g,F^{\mathrm u}\rangle^{2i}
+    \le(2i)!\left(\frac{\|g\|^2}{2i}\right)^i \exp(i).
+\]
+For $i=2$ the bound is $(3/2)\exp(2)\|g\|^4$.
+H\"older bounds the four-field moment by
+\[
+ \tfrac32\exp(2)\prod_a\|g_a\|.
+\]
+The variance bound bounds each of its three pair subtractions
+by $\prod_a\|g_a\|$. Since $(3/2)\exp(2)+3<15$,
+the symmetric multilinear forms $K_2,K_4$ obey
+\begin{equation}\label{eq:transfer-multilinear-cumulants}
+ |K_2(g_1,g_2)|\le\|g_1\|\|g_2\|,\qquad
+ |K_4(g_1,g_2,g_3,g_4)|\le15\prod_a\|g_a\|.
+\end{equation}
+For $g=0$ the corresponding moment is zero.
+
+Let $g$ and $g'$ be the periodizations of the normalized
+covering cochains $f_{[\eta]}$ and $(f^\eta)_{[\eta]}$
+from \cref{sec:reference-cells} onto the cutoff torus.
+The common support cube has side less than $R$.
+The averaging bound and \eqref{eq:cells-test-error} give
+\[
+ \|g\|,\|g'\|\le s_\beta,\qquad
+ \|g-g'\|\le\eta^2\|\beta\|_{H^4}.
+\]
+The observables paired with these cochains are
+$F^\sharp(f)$ and $F^\sharp(f^\eta)$.
+Telescope the four slots of $K_4$ and the two slots
+of $K_2$ in \eqref{eq:transfer-multilinear-cumulants}.
+This proves
+\begin{align}
+ |\kappa_4(F^\sharp(f))-\kappa_4(F^\sharp(f^\eta))|
+                              &\le60s_\beta^4\eta^2,\notag\\
+ |\kappa_2(F^\sharp(f))-\kappa_2(F^\sharp(f^\eta))|
+                              &\le2s_\beta^2\eta^2.
+                                   \label{eq:transfer-test-replacement}
+\end{align}
+One-cell transfer and \eqref{eq:transfer-small-Wick}
+bound the fourth cumulant of $F^\sharp(f^\eta)$ by
+\[
+ |\kappa_4(F^\sharp(f^\eta))-e^4(c_4-3c_2^2)|
+                     \le(7C_U+3C_U^2)e^{4+\sigma}.
+\]
+Adding the free-coefficient error and the first bound
+in \eqref{eq:transfer-test-replacement} proves
+\eqref{eq:transfer-smooth-cumulant}.
+Finally the compact support, $L^2$ convergence and
+variance convergence are respectively
+\eqref{eq:cells-smooth-test}, \eqref{eq:cells-test-error}
+and \eqref{eq:cells-variance-limit}.
+\end{proof}
+
+

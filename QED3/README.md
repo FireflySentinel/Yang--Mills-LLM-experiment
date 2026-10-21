@@ -11,10 +11,11 @@ There exists a non-Gaussian probability measure on the space of closed real temp
 The measure can be chosen as a translation-ergodic component of a volume-first continuum limit of the all-flux chamber QED3 field-strength laws, at sufficiently small positive charge with suitably tuned bare masses.
 
 - **QEO1** — [The QED3 construction: theorem contracts and proof assignments](QEO1.pdf).
-- **AI-written manuscript:** **QEM1** — *The continuum field-strength construction for QED in three dimensions* (manuscript to be added).
+- **AI-written manuscript:** **QEM1** — [The continuum field-strength construction for QED in three dimensions](QEM1.pdf) · [TeX source](QEM1-source/QEM1.tex).
+- **AI-written manuscript:** **QCM1** — [Massless photons and interacting field-strength theories in three-dimensional QED](qed3-consequences.pdf) · [TeX source](QCM1-source/QCM1.tex).
 - **Human-written manuscript:** to be added.
 
-- **Main manuscript:** [Comprehensive edition](qed3.pdf) — 263 pages, including the corrections of October 20, 2026.
+- **AI-written main manuscript:** [Comprehensive edition](qed3.pdf) — 263 pages, including the corrections of October 20, 2026 · [TeX source of comprehensive edition](qed3.tex).
 
 ## Role in the QEM1 assembly
 
@@ -50,4 +51,4 @@ The early source identities in RRM1 enter TPM1; the later response estimate in R
 
 ## Navigation
 
-The published PDFs retain their mathematical text. Links to published outlines use their repository locations; links to withheld manuscripts open the corresponding README. Citations to material outside this assembly remain visible without a download link.
+The published PDFs retain their mathematical text. Links to published outlines use their repository locations; links to manuscripts open the corresponding README. Citations to material outside this assembly remain visible without a download link.

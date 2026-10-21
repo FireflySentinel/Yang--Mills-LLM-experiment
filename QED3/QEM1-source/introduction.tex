@@ -1,0 +1,193 @@
+\section{Introduction}
+
+The observable in this paper is the field strength. We regard it as a real
+tempered two-form on $\R^3$, and write $F(f)$ for its pairing with a test
+two-form $f$. The regularization uses a noncompact gauge field and
+four-component chamber fermions, with all flux sectors included.
+The order of limits is part of the construction: the volume tends to
+infinity at a fixed lattice spacing, and the spacing then tends to zero.
+
+For a lattice curvature $u$, the physical field $F^\sharp$ is the
+centered plaquette step interpolation of $\eta^{-3/2}u$ at spacing
+$\eta$; see \cref{sec:regularization,sec:continuum-limits} for the
+finite law and interpolation. A volume-first limit is a weak limit
+of fixed-spacing infinite-volume laws as $\eta\to0$. We take these
+weak limits on the Hilbert space $H_{-4}$ of tempered two-forms
+defined in \cref{sec:probability}. In the following statement
+$\gamma_j=\operatorname{diag}(\sigma_j,-\sigma_j)$, where $\sigma_j$
+are the Pauli matrices, and $d^*$ is the Euclidean adjoint of $d$.
+
+\begin{theorem}[Field-strength OS theorem]\label{thm:main}
+Fix $0<\rho<1$ and $0<\bar m\le1$, the chamber Wilson parameter and
+reference mass parameter in physical units. Use the standard chamber weights
+$(6,6\sqrt2,6\sqrt2,6)$. There are an odd scale factor $L\ge5$,
+numbers $e_{\mathrm{phys}},\sigma>0$, and real volume-independent bare mass shifts
+$m_{0,N}(e)$ for $N\in\Z_{\ge0}$ and $0<e\le e_{\mathrm{phys}}$, with
+$|m_{0,N}(e)|<1/8$, with the following property.
+
+Fix a real $\beta\in C_c^\infty(\R^3;\Lambda^2)$ such that
+$f=dd^*\beta$ has
+\begin{equation}\label{eq:positive-coefficient}
+ b(f):=-6\tr\bigl[(S_{\bar m}\,i\gamma\cdot d^*\beta)^4\bigr]>0,
+ \qquad S_{\bar m}=(\bar m+\gamma\cdot\partial)^{-1}.
+\end{equation}
+Such probes exist. There is $e_\beta\in(0,e_{\mathrm{phys}}]$ such that, for $0<e\le e_\beta$,
+the all-flux chamber laws on the coordinate cubic tori of unit
+side $n=R/\eta$, with periodic gauge fields and fermions
+antiperiodic in all three coordinate directions, and with
+\begin{equation}\label{eq:cutoff-scales}
+ \eta=L^{-N},\quad R=8hL^T,\quad
+ h=L^{\lfloor\log_L\bar m^{-1}\rfloor},\quad
+ q=e\eta^{1/2},\quad \boldsymbol\mu_N=\bar m\eta+m_{0,N}(e)
+\end{equation}
+with $N,T\in\Z_{\ge0}$ have volume-first limit points.
+Every such limit point is carried by closed tempered two-forms,
+satisfies Gaussian domination with constant one, and has tensor
+Schwinger functions satisfying \textup{(E0$'$)}--\textup{(E3)} below.
+Let $\mu$ be any such limit point and
+$\mu=\int\mu_\xi\,\dd\nu(\xi)$ its decomposition into
+translation-ergodic laws. For $\nu$-almost every $\xi$, $\mu_\xi$ is
+carried by closed tempered two-forms and satisfies
+\begin{equation}\label{eq:main-domination}
+ \int e^{F(g)}\,\dd\mu_\xi(F)\le e^{\|g\|_{L^2}^2/2}
+ \qquad(g\in\Sspace(\R^3;\Lambda^2)\text{ real}).
+\end{equation}
+Its Schwinger functions
+$S_n^\xi(g_1\otimes\cdots\otimes g_n)
+=\int\prod_{a=1}^nF(g_a)\,\dd\mu_\xi(F)$
+extend to the complex tensor Schwartz spaces
+$\Sspace_n=\Sspace(\R^{3n};(\Lambda^2\C^3)^{\otimes n})$
+and obey the following conditions, with $S_0^\xi=1$.
+\begin{enumerate}
+\item[\textup{(E0$'$)}] For $n\ge1$ and $\Psi\in\Sspace_n$,
+\begin{equation}\label{eq:main-growth}
+ |S_n^\xi(\Psi)|\le2\,66^n\sqrt{n!}\,q_{6n}(\Psi),\qquad
+ q_m(\Psi)=\max_{|\alpha|\le m}\sup_y
+ (1+|y|^2)^{m/2}|\partial^\alpha\Psi(y)|,
+\end{equation}
+where the maximum is also over tensor components.
+\item[\textup{(E1)}] For every Euclidean motion $g(x)=Qx+a$,
+$Q\in O(3)$, $S_n^\xi(g\cdot\Psi)=S_n^\xi(\Psi)$, where
+\[
+ (g\cdot\Psi)(x_1,\ldots,x_n)
+ =(\Lambda^2Q)^{\otimes n}\Psi(g^{-1}x_1,\ldots,g^{-1}x_n).
+\]
+\item[\textup{(E2)}] Let $r$ be reflection in a plane through the origin
+and $H$ either closed half-space bounded by that plane.
+If $\Psi_0\in\C$ and $\Psi_k\in\Sspace_k$, $1\le k\le M$,
+have $\supp\Psi_k\subset H^k$, then
+\begin{equation}\label{eq:main-rp}
+ \sum_{k,l=0}^M S_{k+l}^\xi
+ \bigl(\Theta_k\Psi_k\otimes\Psi_l\bigr)\ge0,
+ \qquad \Theta_k\Psi_k=\overline{r\cdot\Psi_k},\quad
+ \Theta_0c=\overline c.
+\end{equation}
+\item[\textup{(E3)}] $S_n^\xi$ is unchanged by simultaneous permutation
+of the arguments and their tensor indices.
+\item[\textup{(E4)}] For $\Psi\in\Sspace_k$ and $\Phi\in\Sspace_l$,
+\begin{equation}\label{eq:main-cluster}
+ S_{k+l}^\xi(\Psi\otimes\tau_a^{\otimes l}\Phi)
+ \longrightarrow S_k^\xi(\Psi)S_l^\xi(\Phi)
+ \quad\text{as }|a|\longrightarrow\infty,
+\end{equation}
+where
+\[
+ (\tau_a^{\otimes l}\Phi)(x_1,\ldots,x_l)
+ =\Phi(x_1-a,\ldots,x_l-a).
+\]
+\end{enumerate}
+Moreover, for a constant $C_f$ depending only on the fixed
+construction, reference mass and probe, and independent of
+$0<e\le e_\beta$, the limit point and $\xi$,
+\begin{equation}\label{eq:main-cumulant}
+ \bigl|\kappa_4^{\mu_\xi}(f)-e^4b(f)\bigr|
+ \le C_f e^{4+\sigma},\qquad
+ \kappa_4^{\mu_\xi}(f)\ge\tfrac12e^4b(f)>0.
+\end{equation}
+In particular, $\mu_\xi$ is non-Gaussian.
+The full-measure component set is asserted for each fixed parent
+law, charge and probe.
+\end{theorem}
+
+Here $\kappa_4^\lambda(f)$ is the fourth cumulant of $F(f)$ under a
+law $\lambda$. For the Gaussian-dominated laws considered here,
+$F(f)$ has mean zero, so
+$\kappa_4^\lambda(f)=S_4^\lambda(f^{\otimes4})
+-3S_2^\lambda(f^{\otimes2})^2$.
+The charge threshold may depend on the fixed probe.
+The factorization in \textup{(E4)} is a conclusion for the
+translation-ergodic components.
+
+The tensor action in \textup{(E1)} is essential to
+\textup{(E2)}. For reflection in $x_1=0$, the components $F_{12}$ and
+$F_{13}$ change sign, while $F_{23}$ does not. Replacing this action
+by scalar reflection changes the positivity assertion.
+The growth condition is stated on all tensor tests, including tests
+meeting the diagonals; bounds on products of separately smeared fields
+alone do not state \textup{(E0$'$)}.
+
+
+\subsection{The proof and its relation to earlier work}
+
+\Cref{thm:main} states the tensor form of the axioms of
+Osterwalder and Schrader \cite{OS1973,OS1975}. Uniform Gaussian
+estimates give tightness of the cutoff laws and convergence of their
+moments along weakly convergent sequences. The lattice reflection
+argument supplies positivity at the
+three coordinate and six diagonal mirror directions; the comparison
+with mirror-adapted tori requires taking the volume limit first.
+These properties pass to every prescribed volume-first limit by
+\cite{ChamberLattice,ContinuumLimits}. Reflection-positive lattice
+gauge theories and their transfer matrices were developed by
+Osterwalder and Seiler \cite{OsterwalderSeiler1978}; the chamber
+crossings and the comparison of the two torus geometries are the
+construction-specific inputs used here.
+
+The nine mirror directions give the spectral inequalities
+$H_j\ge|\mathsf P_i|$ for $i\ne j$. Together with Gaussian
+domination, they bound the angular frequencies of the Schwinger
+functions. Closedness gives the required tensor weight at two
+points; reflection positivity and the regular-polygon argument then
+give that weight at every order. The proof in \cref{sec:rotations}
+also treats coincidences and excludes contact terms. We apply it
+to almost every ergodic component, after obtaining the Gaussian
+bound and the nine reflection-positive forms on a common component
+set from \cite{ErgodicComponents}. The same spectral inequalities,
+together with the local correlation estimate, give clustering in
+each component. The supported-tensor argument
+in \cref{sec:tensor-axioms} extends these conclusions to the tests
+in \textup{(E0$'$)}--\textup{(E4)}, including closed-half-space
+supports in reflection positivity.
+
+The renormalization estimates select the volume-independent mass
+and control the fourth-order response. Dimock \cite{DimockUVS2022}
+proves ultraviolet stability at weak coupling in a fixed finite
+volume using Ba{\l}aban's renormalization group. The block analysis
+used here adapts this framework to chamber fermions and two
+reference tori. Decay estimates for the local inverses control the
+polymer activities; extraction of the vacuum and mass terms leaves
+a normalized interaction that contracts under block averaging.
+The nonlinear step and the common tuning theorem give controlled
+trajectories for one mass and vacuum assignment on both reference
+tori \cite{NormalizedContraction,NonlinearStep,CoverTuning}.
+Terminal pressure estimates then enter the quantitative response
+bound \cite{TerminalPressure,ReferenceResponse}. This control of
+the interacting flow supplies the non-Gaussianity estimate, while
+the Gaussian bounds supply the compactness and moment bounds used
+in the limit passage.
+
+The transfer from the reference tori uses chessboard estimates,
+whose general framework is due to Fr\"ohlich, Israel, Lieb, and
+Simon \cite{FILS1978}. The volume-transfer theorem of
+\cite{VolumeTransfer} controls products of translated Wick
+powers as well as the fourth cumulant. For a prescribed parent law,
+these product bounds control invariant conditional expectations
+and yield the cumulant estimate in almost every ergodic component
+of that same law. The free fourth coefficient converges to $b(f)$,
+and the continuum calculation in \cite{PositiveProbe} provides a
+compact probe with $b(f)>0$. Intersecting the resulting full-measure
+component set with the structural one, and reducing the
+probe-dependent charge interval, gives \eqref{eq:main-cumulant}
+along with all five tensor axioms.
+The proof of \cref{thm:main} is completed in
+\cref{sec:main-theorem-closure}.

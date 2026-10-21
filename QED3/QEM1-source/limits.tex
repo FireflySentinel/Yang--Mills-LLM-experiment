@@ -1,0 +1,234 @@
+\section{Volume and continuum limits}\label{sec:continuum-limits}
+
+Gaussian domination gives compactness of the curvature laws at all
+cutoffs. Diagonal reflection positivity uses a further identification:
+at a fixed spacing, a volume limit is the step-field image of an
+infinite lattice law. This permits the nine-mirror theorem to be
+applied before the spacing is removed.
+
+\subsection{The test map and its bounds}
+
+Write $\eta=L^{-N}$, $R=8hL^T$, and $n=R/\eta$, as in
+\eqref{eq:cutoff-scales}. A plaquette of the unit covering lattice is
+$\sigma=(x;\mu\nu)$, with $\mu<\nu$ and centre
+$y_\sigma=x+(e_\mu+e_\nu)/2$. Its averaging cube is
+\[
+ Q_\eta(\sigma)=\eta\bigl(y_\sigma+[-1/2,1/2)^3\bigr).
+\]
+For each fixed orientation these cubes partition $\R^3$.
+If $u$ is a real lattice curvature, its physical step field is
+$\eta^{-3/2}u(\sigma)$ on $Q_\eta(\sigma)$ in component $\mu\nu$.
+For a Schwartz two-form $f$, define
+\begin{align}
+ f_{[\eta]}(\sigma)
+   &=\eta^{-3/2}\int_{Q_\eta(\sigma)}f_{\mu\nu}(y)\,\dd y,
+                                                   \label{eq:limit-test-cover}\\
+ f^R(y)&=\sum_{k\in\Z^3}f(y+Rk),\notag\\
+ f_\eta([\sigma])
+   &=\eta^{-3}\int_{Q_\eta(\sigma)}f^R_{\mu\nu}(y)\,\dd y.
+                                                   \label{eq:limit-test-torus}
+\end{align}
+Here $[\sigma]$ is the plaquette class modulo $n\Z^3$.
+The torus cochain norm is $|v|_\eta^2=\eta^3\sum_{[\sigma]}|v([\sigma])|^2$.
+The covering cochain norm $\|\cdot\|$ is the unweighted $\ell^2$ norm.
+For the periodic extension $\widetilde u$ of $u$,
+\begin{equation}\label{eq:limit-step-pairing}
+ F^\sharp(f)=\eta^{3/2}\sum_{[\sigma]}f_\eta([\sigma])u(\sigma)
+            =\sum_\sigma f_{[\eta]}(\sigma)\widetilde u(\sigma).
+\end{equation}
+The normalization in the first equality combines the cell volume
+$\eta^3$ with the physical field factor $\eta^{-3/2}$.
+
+The estimates needed below are
+\begin{align}
+ \|f_{[\eta]}\|&\le\|f\|_2, \label{eq:limit-cover-norm}\\
+ \sum_\sigma|f_{[\eta]}(\sigma)|(1+|x(\sigma)|_\infty)
+ &\le\eta^{-3/2}\int_{\R^3}\sum_{\mu<\nu}|f_{\mu\nu}(y)|
+                         (2+|y|_\infty/\eta)\,\dd y, \label{eq:limit-cover-sum}\\
+ |f_\eta|_\eta&\le\|f^R\|_{L^2(\R^3/R\Z^3)}\le p_R(f),\label{eq:limit-torus-norm}
+\end{align}
+where, with $Q_R=[-R/2,R/2)^3$,
+\begin{equation}\label{eq:limit-periodic-seminorm}
+ p_R(f)=\|f\|_2+
+        26R^{-2}\||y|^2f\|_{L^2(\R^3\setminus Q_R)}.
+\end{equation}
+One also has $|f_\eta|_\eta\le\|f\|_2$ if the support of $f$ lies
+in a translate of an open cube of side $R$. For $R\ge1$,
+$p_R(f)\le p_1(f)$, and $p_R(f)\to\|f\|_2$ as $R\to\infty$.
+The seminorm $p_1$ is continuous on Schwartz space.
+
+The first bound follows from Cauchy--Schwarz on each averaging
+cube. On that cube $1+|x(\sigma)|_\infty\le2+|y|_\infty/\eta$,
+which gives the second. Absolute convergence permits unfolding:
+\[
+ \eta^{3/2}f_\eta([\sigma])
+       =\sum_{k\in\Z^3}f_{[\eta]}(\sigma+nk).
+\]
+This proves \eqref{eq:limit-step-pairing}. Applying the cube
+Cauchy--Schwarz inequality to $f^R$ gives the first inequality in
+\eqref{eq:limit-torus-norm}. If the support lies in one open
+$R$-cube, its distinct $R\Z^3$ translates are disjoint, so
+$\|f^R\|_{L^2(\R^3/R\Z^3)}=\|f\|_2$.
+
+For the remaining estimate put $a_k=\|f\|_{L^2(Q_R+Rk)}$.
+Minkowski's inequality bounds the periodized norm by $\sum_k a_k$.
+On $Q_R+Rk$, $k\ne0$, one has $|y|\ge R|k|_\infty/2$; hence
+\[
+ \sum_{k\ne0}a_k
+ \le4R^{-2}\left(\sum_{k\ne0}|k|_\infty^{-4}\right)^{1/2}
+                   \||y|^2f\|_{L^2(\R^3\setminus Q_R)}.
+\]
+The number of points with $|k|_\infty=j$ is $24j^2+2$, so
+the sum in parentheses is $4\pi^2+\pi^4/45<41.65$ and its
+square root times four is less than $26$.
+This proves \eqref{eq:limit-torus-norm} and
+\eqref{eq:limit-periodic-seminorm}. The comparison with $p_1$
+and the limit of $p_R$ follow by inclusion of the cubes and
+integrability of $|y|^4|f(y)|^2$.
+
+For the Hermite two-forms of \cref{sec:probability},
+\begin{equation}\label{eq:limit-Hermite-norm}
+ p_1(h_\kappa)\le31\lambda_\kappa.
+\end{equation}
+Here is the weighted estimate behind this bound. Let
+$\mathsf M=1+|y|^2$, $P_j=-i\partial_j$, and
+$\mathsf A=\mathsf M-\Delta$. Since
+$[P_j,[P_j,\mathsf M]]=-2$,
+\[
+ \|\mathsf A v\|_2^2
+ =\|\mathsf Mv\|_2^2+\|\Delta v\|_2^2
+      +2\sum_j\langle P_jv,\mathsf MP_jv\rangle-6\|v\|_2^2
+ \ge\|\mathsf Mv\|_2^2-6\|v\|_2^2.
+\]
+The Hermite eigenvalues satisfy $\lambda_\kappa\ge4$, and therefore
+$\|\mathsf Mv\|_2^2\le(11/8)\|\mathsf Av\|_2^2$.
+Taking $v=h_\kappa$ gives
+$p_1(h_\kappa)\le1+26\sqrt{11/8}\lambda_\kappa
+\le31\lambda_\kappa$.
+
+The test map respects the affine cubic symmetries. For a signed
+permutation and lattice translation $g$ of the unit lattice, let
+$\mathfrak g(y)=\eta g(y/\eta)$. With the exterior-square action
+on two-forms and the cochain pull-back,
+\begin{equation}\label{eq:limit-test-equivariance}
+ (\mathfrak g\cdot f)_{[\eta]}=(g^{-1})^*f_{[\eta]},
+ \qquad
+ (\mathfrak g\cdot f)_\eta=(g^{-1})^*f_\eta.
+\end{equation}
+Indeed, $g$ sends centres to centres and the averaging cubes to
+averaging cubes up to null boundaries. Its orientation sign is
+the sign of $\wedge^2\vec g$ on the corresponding plaquette.
+Changing variables gives the first formula; periodization and
+the bijection $k\mapsto\vec gk$ give the second.
+
+\subsection{Compactness and convergence of moments}
+
+Let $P_{N,T}$ be the law of $F^\sharp$ for the all-flux chamber
+measure. The mass assignment may be any real sequence independent of
+$T$. Proposition~\extref{5.1}{ChamberLattice} and
+\eqref{eq:limit-step-pairing} give
+\begin{equation}\label{eq:limit-cutoff-G}
+ \E_{N,T}e^{F^\sharp(f)}
+       \le e^{|f_\eta|_\eta^2/2}\le e^{p_R(f)^2/2}
+       \qquad(f\text{ real}).
+\end{equation}
+The random-linear-form proof of Proposition~\extref{2.1}{ContinuumLimits}
+applies here with the Hilbert seminorm $f\mapsto|f_\eta|_\eta$.
+In particular its variance bound and \eqref{eq:limit-Hermite-norm}
+give
+\begin{equation}\label{eq:limit-uniform-tightness}
+ \E_{N,T}\|F^\sharp\|_{-3}^2
+ \le\sum_\kappa\lambda_\kappa^{-6}p_1(h_\kappa)^2
+ \le961\sum_\kappa\lambda_\kappa^{-4}<61.
+\end{equation}
+Tonelli's theorem justifies the first sum. Every finite lattice
+cochain has a step field in $H_{-3}$: Cauchy--Schwarz in
+\eqref{eq:limit-step-pairing} bounds its $\kappa$-th Hermite
+coordinate by $31\lambda_\kappa\|u\|_{\ell^2(C(n)^{(2)})}$,
+with the unweighted norm on the unit-lattice torus plaquettes.
+The step map from this finite-dimensional cochain space to $H_{-3}$
+is consequently continuous.
+
+The compact embedding recalled in \cref{sec:probability}
+now applies. The laws $P_{N,T}$ are uniformly tight on $H_{-4}$,
+and their fixed-spacing volume limits are uniformly tight there.
+Thus the sets $\mathcal V_N$ and the set of volume-first limits
+are nonempty.
+
+For a joint sequence $N_k,T_k\to\infty$ suppose
+$P_{N_k,T_k}\to\mu$ weakly on $H_{-4}$. Truncating $e^{F(f)}$
+above by a constant, passing to the weak limit, and then removing
+the truncation gives
+\begin{equation}\label{eq:limit-continuum-G}
+ \E_\mu e^{F(f)}\le e^{\|f\|_2^2/2}.
+\end{equation}
+The limiting constant follows from $p_{R_k}(f)\to\|f\|_2$.
+For a fixed finite family of complex tests $f_1,\ldots,f_s$, define
+\[
+ Z_k(z)=\E_{N_k,T_k}\exp\left(\sum_a z_aF^\sharp(f_a)\right),
+ \qquad
+ Z(z)=\E_\mu\exp\left(\sum_a z_aF(f_a)\right).
+\]
+The evaluations $F\mapsto(F(f_a))_a$ are continuous on $H_{-4}$.
+Moreover,
+\[
+ \E_{N_k,T_k}\left|\exp\left(\sum_a z_aF^\sharp(f_a)\right)\right|^2
+ \le\exp\left(2p_1\left(\operatorname{Re}\sum_a z_af_a\right)^2\right).
+\]
+This bound is uniform in $k$ and on compact sets of $z$.
+Uniform integrability therefore gives pointwise convergence
+$Z_k\to Z$. The same exponential bounds give local uniform
+bounds on the entire functions $Z_k$. Cauchy's estimates make them
+equi-Lipschitz on compact sets, so their convergence is locally
+uniform. Cauchy's formula then passes every derivative to the limit.
+In particular all joint moments converge.
+
+On each compact subset of
+$\{\sum_a|z_a|\|f_a\|_2<2/5\}$, the test-map bounds give
+$\sum_a|z_a||(f_a)_{\eta_k}|_{\eta_k}<2/5$ for all large $k$.
+The zero-free estimate \exteq{17}{ContinuumLimits}, with this
+seminorm, bounds $|Z_k-1|$ by $1/2$. The principal logarithms
+therefore converge locally uniformly near zero, and their
+derivatives give convergence of every joint cumulant.
+
+\subsection{The prescribed parent and its components}
+
+The finite-periodic moment passage just proved applies to a
+diagonal realization of any prescribed volume-first limit.
+The fixed-spacing recovery in \cite[Proposition~7.3]{ContinuumLimits}
+identifies each intermediate volume law with the interpolation
+of an infinite-lattice law. Its nine reflection forms then pass
+to the continuum limit by \cite[Corollary~7.4]{ContinuumLimits}.
+We record the resulting input to the construction.
+
+\begin{proposition}\label{prop:limit-nine-mirrors}
+Let $\mu$ be any volume-first limit for a real, volume-independent
+mass assignment. Then $\mu$ is carried by closed tempered two-forms,
+is translation invariant and cubic invariant, and satisfies
+\eqref{eq:limit-continuum-G}. It is invariant and reflection
+positive at each plane in the nine families
+\[
+ x_j=c\quad(1\le j\le3),\qquad
+ x_j\pm x_k=c\quad(1\le j<k\le3),\qquad c\in\R.
+\]
+There is a sequence of finite laws $P_{N_i,T_i}\to\mu$ with
+$N_i,T_i\to\infty$ along which every fixed finite-family moment
+and cumulant converges. In the translation-ergodic decomposition
+of $\mu$, a single full-measure set of components has the same
+closedness, Gaussian bound, cubic symmetries and nine reflection
+forms. Its component laws have clustering for all $L^2$ observables
+in all directions.
+\end{proposition}
+
+\begin{proof}
+The parent-law conclusions and the weak finite-law diagonal are
+\cite[Corollary~7.4]{ContinuumLimits}; its hypotheses hold by
+the all-flux lattice theorem of \cite[Theorem~A]{ChamberLattice}
+and \eqref{eq:limit-cutoff-G}. The preceding moment passage
+applies to that diagonal. The component conclusions are
+\cite[Theorem~A]{ErgodicComponents}, with closedness taken as the
+specified event of full parent measure. That theorem gives all
+real Schwartz Gaussian bounds simultaneously and the full
+translation action on the same component set.
+\end{proof}
+

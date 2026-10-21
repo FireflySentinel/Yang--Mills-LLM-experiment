@@ -5,7 +5,7 @@
 Project codename: **TP1**.
 
 - **TPO1** — [The terminal measure and pressure estimates](TPO1.pdf).
-- **AI-written manuscript:** **TPM1** — *The terminal measure and pressure estimates for lattice QED in three dimensions* (manuscript to be added).
+- **AI-written manuscript:** **TPM1** — [The terminal measure and pressure estimates for lattice QED in three dimensions](TPM1.pdf) · [TeX source](TPM1-source/TPM1.tex).
 - **Human-written manuscript:** to be added.
 
 ## Role in the QEM1 assembly
@@ -256,4 +256,4 @@ TPM1 also contains **Theorem B in Section 3.2**, the exact terminal-density iden
 
 ## Navigation
 
-[QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Links to published outlines use their repository locations; links to withheld manuscripts open the corresponding README. Citations to material outside this assembly remain visible without a download link.
+[QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Links to published outlines use their repository locations; links to manuscripts open the corresponding README. Citations to material outside this assembly remain visible without a download link.

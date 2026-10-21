@@ -1,0 +1,163 @@
+\section{Introduction}
+\label{sec:introduction}
+
+Let \(L\ge5\) be odd, let \(M=L^m\) with \(m\in\Z_{\ge2}\), and put
+\(\eta_k=L^{-k}\), \(k\in\Z_{\ge0}\). We use the photon torus
+\(\eta_k\Z^3/\ell\Z^3\) and its chamber sites \((c,g)\), where \(g\)
+is one of the \(48\) signed permutation matrices. Spinors have four
+components and are antiperiodic in each coordinate. A polymer is a
+face-connected union of the partition \(M\)-cubes. Its size parameter
+\(Md_M(X)\) is the infimum of the lengths of connected finite nets
+meeting every cube of \(X\); it is called small if \(d_M(X)\le L\).
+The net convention and its estimates are given in
+Appendix~\ref{app:polymer-geometry}.
+
+An activity is a family of Grassmann polynomials in independent
+ordinary generators \(\psi,\bar\psi\) and ordered-pair generators
+\(\chi,\bar\chi\). The latter represent covariant H\"older differences
+only when the fields are evaluated. We work with the space
+\(K_k^{x,\C}(\ell)\) defined in
+Section~\ref{sec:activities}: its families are balanced, holomorphic
+on \(\widetilde R_k\times\mathfrak X_k\), local in the stated
+ordinary and pair indices and in the connection bonds, and covariant
+under the specified lattice, independent real-gauge and charge
+actions. The real subspace \(K_k^x\) satisfies the additional
+antilinear identity there. The two generator weights and family norm are
+\[
+ h_{k,1}=e_k^{-1/4},\qquad h_{k,2}=e_k^{-1/4+\varepsilon},\qquad
+ \|\mathscr E\|_k^x
+ =\sup_X e^{\kappa d_M(X)}
+   \sup_{\widetilde R_k\times\mathfrak X_k}
+                 \|\mathscr E(X)\|_{h_k}.
+\]
+Here \(0<e_k<1\); the weighted coefficient norm and the two
+connection domains are specified in
+\eqref{eq:rg-activity-coefficient-norm} and
+\eqref{eq:connection-domains}. There is no smallness assumption
+on the activity in the following linear theorem.
+
+Set
+\[
+ \bar\varepsilon=\frac1{200},\quad c_X=54,\quad
+ \kappa_0=54\log72,\quad K_0=\frac{e^{\kappa_0}}{36},\quad
+ c_{\mathrm{rb}}=c_XK_0,\quad c_{\mathrm{fl}}=61c_{\mathrm{rb}}.
+\]
+
+\begin{theorem}[Extraction and normalized contraction]\label{thm:main}
+Assume that both \(\ell/(LM)\) and \(\ell/(L^2M)\) are odd
+integers at least \(13\). Suppose
+\begin{equation}\label{eq:rg-contraction-parameters}
+ \begin{gathered}
+ 0<\varepsilon\le\bar\varepsilon,\qquad 1-\varepsilon<\alpha<1,
+ \qquad L^{1/8-3\bar\varepsilon/2}\ge2400,\qquad e_k^\varepsilon\le1/4,\\
+ 160L^{1+3\varepsilon/2}Me_k^\varepsilon\le1,\qquad
+ 9ML^\varepsilon e_k^{2\varepsilon}\le1,\qquad
+ 90c_XLMe_k^\varepsilon\le1,
+ \end{gathered}
+\end{equation}
+and
+\begin{equation}\label{eq:rg-contraction-polymer-parameters}
+ \kappa\ge7\kappa_0+7,\qquad
+ L(\kappa-6\kappa_0-4)-1\ge\kappa.
+\end{equation}
+Let \(\mathscr E\in K_k^{x,\C}(\ell)\) and
+\(e_{k+1}=L^{1/2}e_k\).
+
+\begin{enumerate}[label=\textup{(\roman*)},leftmargin=*]
+\item There are complex-linear vacuum and mass maps, real on
+\(K_k^x\), with
+\[
+ |\varepsilon_{\mathrm v}(\mathscr E)|
+       \le K_0M^{-3}\|\mathscr E\|_k^x,\qquad
+ |m(\mathscr E)|
+       \le K_0M^{-3}e_k^{1/2}\|\mathscr E\|_k^x .
+\]
+The extracted mass matrix is \(m(\mathscr E)1_4\).
+The local subtraction \(R\) of \eqref{eq:rg-normalized-remainder}
+satisfies \(\|R\mathscr E\|_k^x\le2\|\mathscr E\|_k^x\) and the
+exact independent-generator identity
+\[
+ \sum_X\mathscr E(X)
+ =-\varepsilon_{\mathrm v}(\mathscr E)\ell^3
+       -m(\mathscr E)\langle\bar\psi,\psi\rangle
+       +\sum_X(R\mathscr E)(X).
+\]
+On a small polymer its zero-field vacuum kernel and the integral
+of its zero-field ordinary quadratic kernel vanish.
+
+\item The shortest-chain adjustment of
+\eqref{eq:rg-adjustment-definition} gives
+\(E=(R\mathscr E)^{\mathrm{nat}}\in K_k^{x,\C}(\ell)\), with
+\(\|E\|_k^x\le20\|\mathscr E\|_k^x\). It leaves the evaluated
+value of \(R\mathscr E\) unchanged whenever
+\(\chi=\delta_{\alpha,\mathscr A+\mathscr C}\psi\) and
+\(\bar\chi=\delta_{\alpha,-(\mathscr A+\mathscr C)}\bar\psi\).
+On every small polymer it has the stronger normalization
+\[
+ E_{00}(X;0,0)=0,\qquad E_{20}(X;0,0;\cdot,\cdot)=0
+\]
+as full antisymmetric kernels. Both subtraction and adjustment
+leave large-polymer activities unchanged.
+
+\item Scale connections by
+\(A_L(b)=L^{-1/2}A(b/L)\), ordinary generators by \(L^{-1}\),
+and pair generators by \(L^{-1-\alpha}\).
+Let \(\bar X^L\) be the union of \(LM\)-cubes containing \(X\), and set
+\[
+ (\mathcal LE)(Y;\mathscr A,\mathscr C)
+       =\sum_{\bar X^L=LY}S_LE(X;\mathscr A_L,\mathscr C_L).
+\]
+Then \(\mathscr E\mapsto\mathcal L(R\mathscr E)^{\mathrm{nat}}\)
+is a linear map into \(K_{k+1}^{x,\C}(\ell/L)\) and
+\[
+ \|\mathcal LE\|_{k+1}^x
+       \le c_{\mathrm{fl}}L^{-1/4+3\varepsilon/2}\|\mathscr E\|_k^x.
+\]
+For \(w_j^{\mathrm E}=e_j^{1/4-7\varepsilon}\), the relative estimate is
+\[
+ \frac{\|\mathcal LE\|_{k+1}^x}{w_{k+1}^{\mathrm E}}
+ \le c_{\mathrm{fl}}L^{-3/8+11\varepsilon/2}
+                 \frac{\|\mathscr E\|_k^x}{w_k^{\mathrm E}}.
+\]
+Its factor is at most \(1/16\) if, in addition,
+\(c_{\mathrm{fl}}L^{-3/8+6\bar\varepsilon}\le1/16\).
+\end{enumerate}
+All the stated maps preserve the real subspaces and commute with
+setting the second connection argument to zero.
+\end{theorem}
+
+The proof reproduces the extraction, adjustment and contraction
+arguments of \cite[\S12]{QED3Manuscript}. The first obstruction is
+the ordinary quadratic term. Subtracting a local mass makes its
+integral vanish, but does not make its kernel vanish at each pair
+of points. We transport both legs along shortest chains of cubes
+and average their terminal points. The remaining ordinary
+quadratic term then factors through the integral of its kernel.
+The other terms contain difference generators, whose scaling is
+stronger. This construction also explains why the independent
+generators are retained until evaluation.
+
+The two lowest degrees require more than degree scaling. On a
+small polymer, a real quadratic gauge removes the real constant
+and symmetric linear parts of a scaled connection. Two cutoffs,
+one for the Taylor remainder and one for the residual linear
+field, produce global representatives in an analytic disk of
+radius \(L^{7/4}\). The constant complex fields left over are
+removed by holomorphic continuation of real-gauge identities.
+The zero vacuum value and charge evenness give a second-order
+Cauchy gain; the full quadratic normalization gives a first-order
+gain. After reblocking, these estimates yield Theorem~\ref{thm:main}.
+Sections~\ref{sec:extraction}--\ref{subsec:rg-activity-contraction}
+give the proof.
+
+Local reconstruction is a separate estimate, used when unit-scale
+mean-field generators are replaced by ordinary and boundary-pair
+legs. Theorem~\ref{thm:reconstruction}, stated with its own
+hypotheses in Section~\ref{subsec:rg-field-reconstruction}, gives
+uniform row bounds for that substitution. The apparent
+\(\eta_k^{-1}\) loss in the Dirac stencil cancels before estimation.
+The remaining phase defect is summed according to the first scale
+at which two neighboring sites have the same block center. Recovery
+of a mean field additionally assumes the fine operator is invertible
+at the connection in question. No inverse is needed for the row
+estimates or for Theorem~\ref{thm:main}.

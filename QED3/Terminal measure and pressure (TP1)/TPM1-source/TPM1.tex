@@ -1,0 +1,2535 @@
+\documentclass[11pt,letterpaper,reqno]{amsart}
+\usepackage[bibliography]{manuscript-style}
+\usepackage{mathrsfs}
+\input{notation}
+\allowdisplaybreaks
+\hypersetup{pdftitle={The terminal measure and pressure estimates for lattice QED in three dimensions},pdfauthor={}}
+\title[Terminal measure and pressure for lattice QED]{The terminal measure and pressure estimates\\
+for lattice QED in three dimensions}
+\date{}
+\begin{document}
+\begin{abstract}
+We identify the terminal measure in the block construction of
+three-dimensional lattice QED with chamber fermions and prove
+a common-pressure estimate on its prescribed family of tori.
+The measure identity holds for arbitrary bounded Borel
+observables and retains the normalization of every restricted
+Gaussian integral. A zero-flux Gaussian bound controls the
+large-field complement. A mesh-uniform determinant estimate
+then yields a partition comparison for two reference tori,
+with a bound independent of the ultraviolet cutoff.
+\end{abstract}
+\maketitle
+\tableofcontents
+
+\section{Introduction}
+
+We use the chamber regulator with weights $(6,6\sqrt2,6\sqrt2,6)$
+and Wilson parameter $0<\rho<1$. On the unit cubic torus $C_n$
+with $n$ sites per side, let
+$\mathcal F_n=dC^1(C_n;\R)$ be the space of exact real two-cochains,
+with counting inner product and standard Gaussian measure $\gamma_n$.
+Write $A(u)$ for the mean-zero coclosed potential of $u\in\mathcal F_n$.
+For $q>0$ and a real lattice mass $\boldsymbol\mu$, define the matter factor
+\begin{equation}\label{eq:tpm-matter-factor}
+ z_{r,n}(q,\boldsymbol\mu)=
+ \int_{[-\pi,\pi]^3}\frac{\dd\theta}{(2\pi)^3}
+ \int_{\mathcal F_n}
+ \det\bigl(D^{\rm ch}[q(A(u)+H_\theta)]+\boldsymbol\mu\bigr)
+ \,\dd\gamma_n(u),\qquad
+ H_{\theta,\nu}=\frac{\theta_\nu}{qn}.
+\end{equation}
+Here $D^{\rm ch}[qB]$ is the unit-mesh, four-spin-component
+chamber Dirac operator of \cite[\S2]{ChamberLattice}, with $48$
+chamber labels per site and antiperiodic spinors. Its argument $qB$
+is the bond phase; the subscript $r$ in $z_{r,n}$ denotes the regulator.
+The harmonic average in \eqref{eq:tpm-matter-factor} is the
+zero-flux matter factor of \cite[(37)--(40)]{ReferenceResponse}.
+
+Fix once and for all a choice of the block construction constants
+satisfying \cite[Proposition~4.1]{QED3Integration}, through its
+charge ceilings $e_1\le e_0<1$ and terminal scalar conditions.
+Thus $L$ is odd, $M$ is a power of $L$, $M\ge L^2$,
+$0<\varepsilon\le1/200$, and the exponents are
+$r=2$, $p_0=9$, $p=19$.
+The fixed ceilings denoted by $e_0,e_1$ here are the
+$\bar e_0,\bar e_1$ of \cite{QED3Integration};
+they are distinct from the running charge $e_j$ at $j=0$.
+This choice includes the photon and fermion primitive bounds,
+the exact normalized block step, and its field domains.
+For $0<\bar m\le1$ and $N\in\Z_{\ge0}$ put
+\[
+ h=L^{\lfloor\log_L\bar m^{-1}\rfloor},\qquad
+ \eta=L^{-N},\qquad K=N+\log_Lh,\qquad
+ a_j=L^{j-N},\quad e_j=e\sqrt{a_j},\quad \mu_j=\bar m a_j.
+\]
+We distinguish the initial charge $q=e\sqrt\eta$ from the fixed
+ceiling $e_0$. Set $v_j=-\log e_j$, $p_j=v_j^{19}$,
+$p_{0,j}=v_j^9$, and let $r_j$ be the least nonnegative
+integer power of $L$ which is at least $v_j^2$. Define
+\[
+ R_{\rm top}=hMr_K,\qquad R_*=R_{\rm top}/L,\qquad
+ \mathcal T(e)=\{hL^t:t\in\Z_{\ge0},\ hL^t\le R_{\rm top}\}.
+\]
+For $R\in\mathcal T(e)$, the threshold $N_{\min}(R,e)$
+and first stopping level $k_*(R)\ge1$ are those of
+\cite[Proposition~6.1 and (52)]{CoverTuning}:
+the stop is the first level with $\ell_j=Mr_j$, where
+$\ell_j=R/a_j$. At cutoffs $N\ge N_{\min}(R,e)$, write
+$a_*=a_{k_*}$, $e_*=e_{k_*}$, $\mu_*=\mu_{k_*}$ and
+$\ell_*=\ell_{k_*}$. These physical quantities are independent of $N$,
+and
+\begin{equation}\label{eq:tpm-stop-scales}
+ Mv_*^2\le\ell_*<LMv_*^2,\qquad
+ \mu_*^{-1}<L\ell_*,\qquad 0<e_*\le e_K=e\sqrt h,\qquad
+ 0<\mu_*\le1.
+\end{equation}
+The threshold is finite and nonincreasing in $R$.
+The numerical consequences of the fixed scheme used below are
+listed and verified in \cref{subsec:term-remainder}.
+
+Use the real pair
+$P_N(e)=(m_{0,N}(e),\varepsilon_{0,N}^{\rm v}(e))$
+of \cite[Theorem~D]{CoverTuning}: it is selected on
+$R_{\rm top}$ with zero initial activity and zero terminal
+mass shift and vacuum term there. The same pair gives a controlled
+trajectory on every $R\in\mathcal T(e)$ above its stated threshold.
+In particular,
+$|m_{0,N}(e)|\le\frac18 q^{3/4-8\varepsilon}$.
+Set $\boldsymbol\mu_N=\bar m\eta+m_{0,N}(e)$ and abbreviate
+$z_{r,n}=z_{r,n}(q,\boldsymbol\mu_N)$, $n=R/\eta$.
+The total mass $\boldsymbol\mu_N$ may have either sign.
+Its free comparison uses the positive reference mass:
+\[
+ z_{r,n}^{\rm free}
+   =\int_{[-\pi,\pi]^3}
+        \det(D^{\rm ch}[qH_\theta]+\bar m\eta)
+                      \frac{\dd\theta}{(2\pi)^3}.
+\]
+Let $\mathcal D_m(p)$ denote the $192\times192$ chamber Fourier
+symbol at mass $m>0$, and set
+\begin{equation}\label{eq:term-common-pressure}
+ p_{\rm ch}^0(m)=\int_{[-\pi,\pi]^3}
+                   \log\det\mathcal D_m(p)\frac{\dd p}{(2\pi)^3},
+ \qquad
+ p_F=p_{\rm ch}^0(\bar m\eta)+\varepsilon_{0,N}^{\rm v}(e).
+\end{equation}
+The positive constants $C_6,\kappa_{(0)}$, depending only on $\rho$
+and the fixed weights, are given in
+\cref{prop:term-free-pressure}. Write
+$\varepsilon_5(x)=C_6\log(1-e^{-\kappa_{(0)}x})^{-1}$ and
+$N_{\rm ref}(e)=N_{\min}(R_*,e)$.
+\begin{theorem}[Common pressure and the two-torus comparison]\label{thm:term-common-partition}
+Fix the construction and the common pair specified above, and
+assume $0<e\sqrt h\le e_1$. For every $R\in\mathcal T(e)$ and
+$N\ge N_{\min}(R,e)$, the matter factors $z_{r,n}$ and $z_{r,n}^{\rm free}$ are positive, and
+\begin{align}
+ \left|\log z_{r,n}-\log z_{r,n}^{\rm free}
+                      -\varepsilon_{0,N}^{\rm v}(e)n^3\right|
+          &\le3e_*^{1/4-9\varepsilon},\nonumber\\
+ \left|\log z_{r,n}-p_Fn^3\right|
+          &\le\varepsilon_P(R)
+             :=\varepsilon_5(\bar mR)+3e_*^{1/4-9\varepsilon}
+          \le\varepsilon_5(1/L)+3e_K^{1/4-9\varepsilon}.
+                                     \label{eq:term-common-pressure-bound}
+\end{align}
+In particular let $R_*=R_{\mathrm{top}}/L$,
+$n_*=R_*/\eta$, and $N\ge N_{\rm ref}(e)$.
+The two tori $R_*$ and $LR_*$ use the same mass and
+the same pressure. Their matter comparison satisfies
+\begin{align}
+ |D_{\rm mat}|
+ &:=\left|L^3\log z_{r,n_*}-\log z_{r,Ln_*}\right|
+       \le L^3\varepsilon_P(R_*)+\varepsilon_P(LR_*)
+       \nonumber\\
+ &\le (L^3+1)
+          \left[\varepsilon_5(\bar mR_*)
+                                      +3e_K^{1/4-9\varepsilon}\right]
+       \le C_{\rm mat},\nonumber\\
+ C_{\rm mat}&=(L^3+1)\bigl(\varepsilon_5(1/L)+1\bigr).
+                                     \label{eq:term-matter-comparison}
+\end{align}
+The same $p_F=p_F(N,e,\bar m)$ is used for every asserted side.
+The displayed error bounds are uniform in $N$; $C_{\rm mat}$
+depends only on $L,\rho$ and the fixed chamber weights.
+\end{theorem}
+
+The theorem compares volumes within one fixed construction.
+Its pressure $p_F$ may depend on the cutoff. The estimate
+does not require a limit of that pressure: the common bulk term
+cancels exactly between the two reference tori.
+
+The proof is the terminal integration argument for the block
+construction in \cite[\S21--22]{QED3Master}. Its block averaging
+and background-field methods belong to the approach of
+Ba{\l}aban and collaborators; Dimock develops this approach for
+QED in three dimensions in \cite[\S1--2]{DimockUVS2022}.
+The chamber determinant, harmonic averaging, and comparison
+proved here are those of \cite[\S22]{QED3Master}.
+We use the previously proved actual block transformation and
+common tuning in \cite{MaxwellBlock,FermionBlock,NormalizedContraction,NonlinearStep,CoverTuning}.
+
+Two estimates connect that transformation to the finite-volume
+matter factor. First, Gaussian domination in the zero-flux
+sector bounds the probability of leaving any fluctuation box
+or the terminal small-curvature set. The sector projection
+remains inside the trace proof. Second, the exact change from
+curvature to all photon fluctuation coordinates identifies the
+restricted measure with a terminal fermion integral. The Gaussian
+normalization and the restriction to each box are kept in this
+identity, which holds for every bounded Borel observable.
+
+On the terminal small-field set the interacting integral differs
+from a positive twisted free determinant by a relative error
+of order $e_*^{1/4-9\varepsilon}$. The coefficient-norm estimates
+which prove this are collected in
+\cref{subsec:interacting-terminal-operators}.
+The free determinant has an explicit bulk pressure; a separate
+Bloch estimate makes the twist dependence of the block penalty
+exponentially small in $\ell_*$, uniformly in its fine mesh.
+Combining these bounds with the positive small-field mass gives
+two-sided partition estimates. Taking their logarithms and
+bounding the terminal vacuum proves \cref{thm:term-common-partition};
+the closing argument is in \cref{subsec:tpm-common-proof}.
+
+The generic differentiated block estimates are recorded in
+\cref{sec:tpm-marked} for their use in terminal response
+estimates. The fixed reference-mass interval used there is
+separate from the variable range $0<\mu_*\le1$ in the pressure proof.
+\section{Gaussian domination in the zero-flux sector}
+\label{subsec:interacting-zero-flux-Gaussian}
+
+The complement estimate below concerns the normalized
+zero-flux law, denoted $\bar\mu$: on a cubic torus it is the
+probability measure obtained by normalizing the integrand of
+\eqref{eq:tpm-matter-factor} after harmonic averaging.
+Write $F^{\rm u}$ for the random curvature in unit-lattice
+coordinates and $F_N=dC^1(C(n_1,n_2,n_3);\R)$ for its exact
+curvature space; on the cubic torus this is $\mathcal F_n$.
+The all-flux Gaussian bound does not directly
+give a bound for this conditional law.
+We therefore retain the sector projection in
+the coordinate-slice trace.
+
+Let $Z^{(0)}[\Phi]$ be the unnormalized zero-flux partition
+functional with curvature observable $\Phi$, as in
+\cite[(34)]{ReferenceResponse}. Put $r_q=2\pi/q$ and
+$g_1(t)=(2\pi)^{-1/2}e^{-t^2/2}$.
+On $C(n_1,n_2,n_3)$ use the spaces $H^s,H^l$,
+$P_G$, $E$, and $M_0$ of
+\cite[(80)]{ChamberLattice} and
+\cite[(82)]{ChamberLattice}.
+Here $H^s,H^l$ are the slice Hilbert spaces at site and link
+planes, $P_G$ is the gauge-invariant projection, $E$ is the
+electric momentum operator, and $M_0$ is the half-slab
+multiplier including the magnetic Gaussian factor.
+Let $P_k$ project onto the magnetic-flux
+summand $k$. Choose coordinate slice cycles
+$S_2,S_3$, through a fixed slice site, and
+for $\xi\in[0,1]^2$ set
+$b_\xi=q(\xi_2\mathbf1_{S_2}+\xi_3\mathbf1_{S_3})$.
+For bounded magnetic factors $u_j$ and
+electric factors $v_j$ with sub-Gaussian growth,
+let $K_j^\xi$ have the periodized convolution kernel
+\[
+ v_j(A'-A)e^{i\langle b_\xi,A'-A\rangle}
+                         \prod_bg_1(A'(b)-A(b)).
+\]
+The zero-flux trace formula is
+\begin{equation}\label{eq:interacting-zero-flux-Bloch}
+ Z^{(0)}\left[\prod_ju_j(F_j^{\rm mag})v_j(F_j^{\rm el})\right]
+ =(2\pi)^{n_1n_2n_3}\int_{[0,1]^2}
+ \tr\left(P_0\prod_{j=n_1-1,\ldots,0}
+                  r_q^{n_2n_3}K_j^\xi P_GM_0u_j(F^{\rm mag})M_0^*\right)
+                                                        \,\dd\xi .
+\end{equation}
+To derive it, sum the electric curvature along
+$S_2,S_3$ and over time. The sums are
+$r_qk_{12}$ and $r_qk_{13}$.
+The added electric phases are therefore
+$e^{2\pi i(\xi_2k_{12}+\xi_3k_{13})}$.
+Restricting the first magnetic slice to
+flux $k_{23}$ inserts $P_{k_{23}}$ in the
+word trace, since the sum of $d_sA$ on
+the slice vanishes. All operators preserve
+that summand. The flux sum is absolutely
+convergent by the curvature Gaussian bound
+on the modulus of the integrand.
+Set $k_{23}=0$ and integrate over $\xi$;
+Fourier orthogonality keeps precisely
+$k_{12}=k_{13}=0$. This proves
+\eqref{eq:interacting-zero-flux-Bloch}.
+
+\begin{proposition}\label{prop:interacting-zero-flux-domination}
+For the harmonic-average zero-flux law at every
+real lattice mass, every coordinate side
+$n_\mu\ge4$, and every real two-cochain $g$,
+\begin{equation}\label{eq:interacting-zero-flux-Gaussian}
+ \bar\mu(e^{\langle g,F^{\rm u}\rangle})
+                  \le e^{\|\operatorname{Pr}_{F_N}g\|^2/2}.
+\end{equation}
+In particular, for $\phi\in F_N$ with
+$\|\phi\|\le1$ and $a\ge0$,
+$\bar\mu\{|\langle\phi,F^{\rm u}\rangle|>a\}\le2e^{-a^2/2}$.
+\end{proposition}
+
+\begin{proof}
+For a real two-cochain $\beta$, put $\mathcal Z(\beta)=
+Z^{(0)}[e^{-\langle\beta,F\rangle-\|\beta\|^2/2}]$.
+It is finite by the all-flux bound and is
+positive because the sector contains the
+$z=0$ term, which has positive integral;
+the shifted photon weight is strictly positive.
+For time direction $1$, split $\beta$
+into electric parts $\beta_j^{\rm el}$ and
+magnetic parts $\beta_j^{\rm mag}$.
+Take the corresponding exponential $u_j$
+and $v_j$ in
+\eqref{eq:interacting-zero-flux-Bloch}, replacing
+$u_j$ first by $u_j^\delta=\min(u_j,\delta^{-1})$.
+The bounded magnetic factors make the
+word trace applicable.
+
+Completing the electric Gaussian gives
+\[
+ K_j^\xi=z_jU_j e^{-|E-b_\xi|^2/2},\qquad
+ U_j=e^{i\langle\beta_j^{\rm el},E\rangle},\qquad
+ |z_j|=1 .
+\]
+Let $K_\xi=r_q^{n_2n_3}e^{-|E-b_\xi|^2/2}P_G$.
+It is positive, and its square root is
+$r_q^{n_2n_3/2}e^{-|E-b_\xi|^2/4}P_G$.
+The operator $K_\xi^{1/2}M_0$ is Hilbert--Schmidt.
+The periodized square-root Gaussian has the
+additional phase $e^{i\langle b_\xi,A'-A\rangle}$;
+its modulus is bounded by the kernel majorant
+used in \cite[(83)]{ChamberLattice}.
+The same real-slice integral and flux sum
+therefore proves this assertion uniformly
+in $\xi$. Multiplication by bounded
+$(u_j^\delta)^{1/2}$ preserves it.
+
+Put $Y_j=K_\xi^{1/2}M_0(u_j^\delta)^{1/2}$.
+Cyclicity turns the trace into
+$\prod_jz_j$ times the closed chain
+\[
+ \tr\prod_j U_jP_0Y_j(P_0Y_j)^*.
+\]
+All factors preserve the magnetic-flux
+summand; $U_j$ is unitary. Schatten Hölder
+\cite[slides~53--56]{PongeSchatten2025}
+with $2n_1$ factors of exponent $2n_1$
+bounds this trace by
+\[
+ \prod_j\left(\tr_{H^s}P_0(Y_j^*Y_j)^{n_1}\right)^{1/n_1}.
+\]
+Hölder in $\xi$ and the Bloch trace formula
+identify its $j$th integrated factor with
+the zero-flux functional having the same
+magnetic factor at every slice and no
+electric factor. Let $\beta^{(j)}$ denote
+that purely magnetic two-cochain. Monotone
+convergence as $\delta\downarrow0$ gives
+\[
+ \mathcal Z(\beta)\le
+                \prod_j\mathcal Z(\beta^{(j)})^{1/n_1}.
+\]
+Rotate the torus by an orientation-preserving
+cyclic coordinate permutation. Zero flux
+and the pairing are preserved, and
+$\beta^{(j)}$ becomes purely electric for
+the new time direction. The same inequality
+then bounds $\mathcal Z(\beta^{(j)})$
+by $\mathcal Z(0)$. Hence
+$\mathcal Z(\beta)\le Z^{(0)}[1]$.
+
+The zero-sector identity
+\cite[(34)]{ReferenceResponse} identifies its
+normalized curvature law with $\bar\mu$.
+Since this law is supported on $F_N$,
+the pairing with $g$ equals that with
+$\operatorname{Pr}_{F_N}g$. Apply the
+preceding inequality with the negative of
+that projection and divide by the positive
+zero-sector partition function. This proves
+\eqref{eq:interacting-zero-flux-Gaussian}.
+Exponential Markov applied to the two
+signs and optimized at parameter $a$
+gives the stated tail bound.
+\end{proof}
+
+
+\section{The terminal measure}
+\label{sec:terminal-partition}
+
+We first put the curvature Gaussian in coordinates
+adapted to all block steps. The energy splits into
+the terminal photon energy and independent unit
+Gaussian fluctuation coordinates. Iterating the exact
+density identity in these coordinates then gives
+the terminal fermion integral on the small-field set.
+
+\subsection{The downward photon coordinates}
+\label{subsec:term-photon-tower}
+
+Fix a flow side and cutoff as in
+\cite[Proposition~6.1]{CoverTuning}. Put $k=k_*(R)$ and
+$n=R/\eta=L^k\ell_*$.
+On the unit torus $T_j^0=\Z^3/\ell_j\Z^3$ of side
+$\ell_j=n/L^j$ use the
+fluctuation space $V_j$ and its fixed orthonormal
+basis, and the maps $A_j^{\min},\mathrm{Sq}_j$ of
+the photon construction \cite[\S3.2--3.3]{MaxwellBlock}.
+The map $A_j^{\min}$ is the constrained photon minimizer,
+and $\mathrm{Sq}_j$ is the fluctuation map formed from the
+positive covariance square root and the coordinate embedding
+into constrained bond fields. We write $\mu_I$ for the standard Gaussian
+on $V_j$ and
+$\mathrm{Box}_j=\{\zeta_j:|\zeta_j(\Upsilon)|\le p_{0,j}
+\text{ for every basis coordinate }\Upsilon\}$.
+For a real terminal unit bond field $A$ and
+$\zeta=(\zeta_j)_{j<k}$ define
+\begin{equation}\label{eq:term-downward-recursion}
+ A_k^\downarrow=A,\qquad
+ A_j^\downarrow=A_j^{\min}(A_{j+1}^\downarrow)
+                         +\mathrm{Sq}_j\zeta_j,\qquad j=k-1,\ldots,0 .
+\end{equation}
+The last field is denoted $A_0^\downarrow(A,\zeta)$.
+These fields are linear in their data.
+
+For any fine unit field $A_0$ define its block fields by
+$A_j=(\mathbf Q^{(j)}A_0)^{[j]}$, where $\mathbf Q^{(j)}$
+is the $j$-fold photon average on the original unit torus and
+$B^{[j]}(b)=L^{j/2}B(L^jb)$.
+The block-averaging/scaling identities give
+$(A_{j+1})_L=\mathbf QA_j$.
+Let $\mathrm{Ax}_k$ be the fields $A_0$ for which
+$\tau A_j=0$ for $j<k$.
+For each unit torus put
+$V_{\mathrm t}=\delta C^2$, the real coclosed bond
+fields with mean zero.
+On the fine torus let $F_N=dC^1(n)$ with its
+counting inner product and standard Gaussian
+$\gamma_N$. The slice is
+\[
+ \mathrm{Sl}_k=\{A_0\in\mathrm{Ax}_k:A_k\in V_{\mathrm t}(T_k^0)\}.
+\]
+
+We will use the elementary cochain identities
+\begin{equation}\label{eq:term-unit-Hodge}
+ C^1=dC^0\oplus\{\text{constant bond fields}\}\oplus\delta C^2,
+       \qquad \ker d=dC^0\oplus\{\text{constant bond fields}\}.
+\end{equation}
+The sum is orthogonal. Indeed $dd=0$, so $dC^0$
+and $\delta C^2$ are orthogonal, and their common
+orthogonal complement is $\ker(d\delta+\delta d)$.
+Commuting lattice differences make this operator
+the scalar Laplacian in each component.
+Its kernel consists of constants: the energy identity
+forces every nearest-neighbor difference to vanish.
+This proves \eqref{eq:term-unit-Hodge}.
+Consequently $d$ is injective on $V_{\mathrm t}$ and,
+on a unit torus with $\ell^3$ sites,
+$\dim V_{\mathrm t}=\dim dC^1=2\ell^3-2$.
+
+\begin{proposition}\label{prop:term-photon-tower}
+The map $(A,\zeta)\mapsto A_0^\downarrow(A,\zeta)$
+is a linear bijection from
+$C^1(T_k^0)\times\prod_{j<k}V_j$ to $\mathrm{Ax}_k$.
+The block fields of its image are exactly
+$A_j^\downarrow$.
+The coboundary is a linear bijection
+$d:\mathrm{Sl}_k\to F_N$.
+Thus curvature has coordinates
+\begin{equation}\label{eq:term-curvature-coordinates}
+ \mathcal J_{\mathrm{ph}}:
+ F\longmapsto(A_*;\zeta_0,\ldots,\zeta_{k-1}),\qquad
+ F=dA_0^\downarrow(A_*,\zeta),
+\end{equation}
+where $A_*\in V_{\mathrm t}(T_k^0)$.
+They satisfy the exact energy identity
+\begin{equation}\label{eq:term-tower-energy}
+ \|F\|^2=\|dH_k^{\mathrm{ph}}A_*\|_2^2
+                                  +\sum_{j<k}\|\zeta_j\|^2 .
+\end{equation}
+The image of $\gamma_N$ under
+$\mathcal J_{\mathrm{ph}}$ is
+\begin{equation}\label{eq:term-tower-Gaussian}
+                  \dd\mathsf m_*(A_*)\prod_{j<k}\dd\mu_I(\zeta_j),
+\end{equation}
+where the terminal centered Gaussian on
+$V_{\mathrm t}(T_k^0)$ is nondegenerate and has density
+proportional to
+\[
+                  \exp(-\|dH_k^{\mathrm{ph}}A\|_2^2/2).
+\]
+
+There are orthonormal vectors
+$\phi_{j,\Upsilon}\in F_N$ such that
+$\zeta_j(\Upsilon)=\langle\phi_{j,\Upsilon},F\rangle$.
+For each terminal unit plaquette $p$ there is
+$\phi_p\in F_N$ with
+\begin{equation}\label{eq:term-tower-row-norms}
+ (dA_*)(p)=\langle\phi_p,F\rangle,\qquad \|\phi_p\|\le1.
+\end{equation}
+There are $3\ell_*^3$ such plaquettes, and
+\begin{equation}\label{eq:term-tower-coordinate-count}
+ \dim V_j=(2-2L^{-3})\ell_j^3
+                       \le2\ell_*^3L^{3(k-j)} .
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The one-step minimizer and fluctuation maps obey
+$\mathbf QA_j^{\min}(A')=A'_L$, $\tau A_j^{\min}(A')=0$,
+$\mathbf Q\mathrm{Sq}_j=0$ and $\tau\mathrm{Sq}_j=0$.
+Apply $\mathbf Q$ to \eqref{eq:term-downward-recursion};
+the injective scaling map then identifies the next
+block field with $A_{j+1}^\downarrow$.
+Starting from $A_0=A_0^\downarrow$ proves this at all
+levels, including $\tau A_j=0$.
+Conversely, for $A_0\in\mathrm{Ax}_k$ its difference
+$A_j-A_j^{\min}(A_{j+1})$ is annihilated by $\mathbf Q$ and
+$\tau$. The coordinate bijection
+\cite[(21)]{MaxwellBlock} and the invertible
+square root give exactly one $\zeta_j$ with this
+difference equal to $\mathrm{Sq}_j\zeta_j$.
+Downward recursion recovers $A_0$.
+This proves the first bijection and its inverse.
+
+The orthogonality
+\cite[(28)]{MaxwellBlock}
+and the Gaussian fluctuation decomposition give
+at each level
+\[
+ \|dH_j^{\mathrm{ph}}A_j\|_2^2
+       =\|dH_{j+1}^{\mathrm{ph}}A_{j+1}\|_2^2+\|\zeta_j\|^2 .
+\]
+Summing, and using $H_0^{\mathrm{ph}}=I$, proves
+\eqref{eq:term-tower-energy}.
+The dimension of the slice is
+\[
+ 2\ell_k^3-2+\sum_{j<k}(2\ell_j^3-2\ell_{j+1}^3)
+                                                    =2n^3-2=\dim F_N.
+\]
+If $dA_0=0$ on the slice, the energy identity forces
+every $\zeta_j=0$ and $dH_k^{\mathrm{ph}}A_k=0$.
+Since $\mathbf Q_kH_k^{\mathrm{ph}}=I$ and
+$d\mathbf Q_k=\mathbf Q_k^{(2)}d$,
+this implies $dA_k=0$.
+The injectivity of $d$ on $V_{\mathrm t}$ gives
+$A_k=0$, whence $A_0=0$ by the downward bijection.
+Equality of dimensions therefore proves that
+$d:\mathrm{Sl}_k\to F_N$ is bijective and gives
+\eqref{eq:term-curvature-coordinates}.
+
+Equip the coordinate space with the scalar product
+\[
+ \langle(A,\zeta),(A',\zeta')\rangle_{\mathrm{ph}}
+       =\langle A,\Delta_kA'\rangle
+                                      +\sum_{j<k}\langle\zeta_j,\zeta_j'\rangle.
+\]
+Its terminal part is positive definite:
+$\langle A,\Delta_kA\rangle
+=\|dH_k^{\mathrm{ph}}A\|_2^2\ge\|dA\|_2^2>0$
+for nonzero $A\in V_{\mathrm t}$.
+Here the block curvature contraction follows from
+\cite[(5)]{MaxwellBlock}.
+The energy identity and polarization make
+$\mathcal J_{\mathrm{ph}}$ a linear isometry for
+this scalar product.
+It maps orthonormal bases to orthonormal bases;
+the Jacobian is therefore $1$ for their Euclidean
+volume measures. These are the measures in the
+normalized standard Gaussians.
+In an orthogonal direct sum, that volume measure
+and the Gaussian density factor into those of
+the summands. This proves
+\eqref{eq:term-tower-Gaussian}, including its normalization.
+The volume measure for the terminal scalar product
+differs from the ordinary Lebesgue measure on
+$V_{\mathrm t}$ by one constant factor.
+Thus its Gaussian has exactly the stated density.
+Its quadratic form is positive definite, so it is
+nondegenerate.
+
+For a basis vector $\Upsilon$ in $V_j$, let
+$\mathbf e_{j,\Upsilon}$ be the coordinate vector
+with that single nonzero entry.
+Its inverse image under the isometry is
+$\phi_{j,\Upsilon}$.
+The coordinate vectors are orthonormal, proving
+orthonormality and the required coordinate formula.
+The terminal curvature functional satisfies
+\[
+ |(dA_*)(p)|
+ \le\|dA_*\|_2
+   =\|\mathbf Q_k^{(2)}dH_k^{\mathrm{ph}}A_*\|_2
+ \le\|dH_k^{\mathrm{ph}}A_*\|_2\le\|F\|.
+\]
+It is consequently represented by a vector of norm
+at most $1$ in the finite Euclidean space $F_N$,
+giving \eqref{eq:term-tower-row-norms}.
+Finally \cite[(19)]{MaxwellBlock} and
+$\ell_j=L^{k-j}\ell_*$ give
+\eqref{eq:term-tower-coordinate-count}.
+\end{proof}
+
+
+If a terminal field $A^c$ is closed, linearity gives
+the difference of downward fields as
+$A_0^\downarrow(A^c,0)$.
+For a closed input the background identity
+\cite[(30)]{MaxwellBlock} gives zero
+curvature energy at the preceding level. Applying
+the average shows that its block minimizer is closed.
+The identity $\mathbf QA_j^{\min}(A')=A'_L$ and
+preservation of means by the block average give
+$\operatorname{mean}(A_j^{\min}(A'))=
+L^{-1/2}\operatorname{mean}(A')$.
+Its final mean is $L^{-k/2}\operatorname{mean}(A^c)$.
+Equation~\eqref{eq:term-unit-Hodge} therefore gives
+\begin{equation}\label{eq:term-closed-terminal-shift}
+ A_0^\downarrow(A+A^c,\zeta)
+    =A_0^\downarrow(A,\zeta)
+        +L^{-k/2}\operatorname{mean}(A^c)+d\lambda .
+\end{equation}
+In particular adding a coarse gradient adds a fine
+gradient. For the harmonic twist
+$c_{\theta,\mu}=\theta_\mu/(e_*\ell_*)$,
+$L^{-k/2}c_\theta=H_\theta$, where
+$H_{\theta,\mu}=\theta_\mu/(qn)$.
+Thus its downward shift is $H_\theta+d\lambda$.
+
+\subsection{The terminal density with an external connection}
+\label{subsec:term-density}
+
+Let $(m_{\mathrm{in}},\varepsilon_{\mathrm{in}}^{\mathrm v})$
+be a controlled real pair on $R$, with the trajectory
+of \cite[\S7.1]{CoverTuning}. Thus its initial activity is zero,
+the actual block recursion exists through $k=k_*(R)$, and
+$|m_j|\le w_j^{\rm m}=e_j^{3/4-8\varepsilon}$ for $j\le k$.
+Its activity satisfies
+$\|E_j\|_j\le\|\mathscr E_j\|_j^x\le
+4e_j^{1/4-6\varepsilon}\le w_j^{\rm E}
+=e_j^{1/4-7\varepsilon}$
+by \cite[Proposition~7.1]{CoverTuning}.
+We retain the block field domains and the weighted polymer
+norms of \cite[\S2.2--2.3]{NormalizedContraction} and \cite[\S2.3, \S5.1]{NonlinearStep}. The fine mesh at level
+$j$ is $\eta_j=L^{-j}$. In particular,
+\begin{align*}
+ \mathrm{Dom}_j
+  &=\{A\text{ real unit bond field}:
+           H_j^{\rm ph}A\in\tfrac14\widetilde R_j\},\\*
+ \mathfrak X_j
+  &=\{\mathscr C:\|\mathscr C\|_\infty<e_j^{-1+2\varepsilon},\
+                 \|\partial\mathscr C\|_\infty<e_j^{-1+3\varepsilon}\}.
+\end{align*}
+The domain $\widetilde R_j$ allows a global complex small field
+and local real-gauge representatives with the three bounds
+$e_j^{-3/4+i\varepsilon}$, $i=1,2,3$, in the supremum,
+first-difference and H\"older first-difference norms;
+its precise enlarged cubes are those of
+\cite[\S6]{MaxwellBlock}.
+An external connection is a complex fine unit bond
+field $a$ satisfying
+$a^{[j]}\in\mathfrak X_j$ for every $j\le k$;
+here $a^{[j]}(b)=L^{j/2}a(L^jb)$.
+Write $\mathscr C_*=a^{[k]}$.
+For $A\in\mathrm{Dom}_k$ put
+$\mathscr A=H_k^{\mathrm{ph}}A$,
+$B=\mathscr A+\mathscr C_*$, and insert the fermion
+fields $H_k^\#(B)\Psi$ and their barred partners.
+The notation $H_k^\#$ includes $H_k\Psi$ and its covariant
+H\"older differences, together with
+$\bar H_k\bar\Psi$ and their barred differences;
+the operators are defined in
+\eqref{eq:interacting-terminal-operators}.
+The kernel $\mathscr E_k(X;\mathscr A,\mathscr C,\psi,\chi)$
+is the resulting Grassmann activity on an $M$-polymer $X$,
+and $\mathfrak P_k(X,\mathscr C)$ is its external scalar family.
+They are the actual recursively constructed families in
+\cite[(7)]{NonlinearStep} and \cite[(55)--(57)]{CoverTuning}.
+The terminal function is
+\begin{align}
+ Y_*^x(A;\mathscr C_*)
+   ={}&\det D_k(0)^{-1}
+        \exp\left(-\varepsilon_k^{\mathrm v}\ell_*^3
+                       +\sum_X\mathfrak P_k(X,\mathscr C_*)\right)
+       \nonumber\\
+   &\times\int\mathrm D\Psi\,
+      \exp\left(-\langle\bar\Psi,D_k(B)\Psi\rangle
+                -m_k\langle\bar\psi,\psi\rangle
+                       +\sum_X\mathscr E_k(X;\mathscr A,\mathscr C_*,
+                                                        \psi,\chi)\right).
+                                      \label{eq:term-Y-density}
+\end{align}
+Since $k\ge1$, this Berezin integral has $4\ell_*^3$
+pairs with weight $1$. The inserted chamber fields
+and kernels retain their fine weight $\eta_k^3/48$.
+The inverse and field maps of \cite[Theorem~A and \S4.2]{FermionBlock},
+together with the activity domains and exact density of
+\cite[\S2.3 and \S3]{NonlinearStep}, make every term well defined.
+At zero connection, the positive-reference-mass inverse formula in
+\cite[Proposition~3.1]{NonlinearStep}
+gives $\det D_k(0)\ne0$.
+At zero external slot,
+$\mathfrak P_k(X,0)=0$ and $\mathscr E_k|_0=E_k$;
+we write $Y_*(A)=Y_*^x(A;0)$.
+
+For the original fine unit field let
+\begin{equation}\label{eq:term-fine-weight}
+ w_N(B)=
+ \exp(-\varepsilon_{\mathrm{in}}^{\mathrm v}n^3)
+       \frac{\det(D^{\mathrm{ch}}[qB]+\bar m\eta+m_{\mathrm{in}})}
+                              {\det(D^{\mathrm{ch}}[0]+\bar m\eta)} .
+\end{equation}
+The matrices have size $192n^3$.
+The bracket argument of $D^{\mathrm{ch}}$ is the bond phase,
+as in \cite[\S1.1, (6)]{PositiveProbe}; an unabsorbed unit
+connection $B$ therefore has argument $qB$.
+The denominator is nonzero by the free positive-mass
+coercivity estimate; no invertibility of the numerator
+is required.
+The weighted Gaussian Berezin identity gives
+the initial integrated density exactly as $w_N(A_0+a)$.
+In particular all initial measure and vacuum factors
+are included in \eqref{eq:term-fine-weight}.
+
+This fine weight is entire in $B$ and is invariant
+under real gauge shifts.
+Its entries involve only the four chamber neighbors,
+with link phases in the fourth neighbor.
+Multiplication by $\exp(-\mathrm i q\lambda(c))$ on
+all chamber components over $c$ conjugates the operator
+at $B$ to the operator at $B+d\lambda$: the endpoint
+phases cancel the gradient in the fourth hopping phase,
+and the other hops stay over the same $c$.
+The determinants therefore agree.
+The same stencil bounds every row sum at $B_0+a$,
+with $B_0$ real, by
+$|\boldsymbol\mu|+41+6\exp(q\|\operatorname{Im}a\|_\infty)$,
+where $\boldsymbol\mu=\bar m\eta+m_{\mathrm{in}}$.
+Indeed the three internal hopping block norms sum
+with the diagonal to less than $|\boldsymbol\mu|+41$,
+and the fourth has row norm at most
+$6\exp(q\|\operatorname{Im}a\|_\infty)$.
+The determinant expansion bounds its modulus by
+the product of the absolute row sums: its permutation
+sum is a subsum of the sum over all column choices.
+Consequently
+\begin{equation}\label{eq:term-finite-density-bound}
+ |w_N(B_0+a)|\le B_N(a):=
+ \frac{\exp(-\varepsilon_{\mathrm{in}}^{\mathrm v}n^3)}
+            {|\det(D^{\mathrm{ch}}[0]+\bar m\eta)|}
+       \big(|\boldsymbol\mu|+41
+                     +6\exp(q\|\operatorname{Im}a\|_\infty)\big)^{192n^3}
+                                                        <\infty .
+\end{equation}
+This bound is used for integrability at a fixed cutoff.
+
+Let $A(F)\in V_{\mathrm t}$ be the transverse fine
+potential of $F\in F_N$, and define the finite complex
+measure
+\[
+ \dd\nu^{\theta,a}(F)=
+               w_N(A(F)+H_\theta+a)\dd\gamma_N(F).
+\]
+The small-field event and the terminal indicator are
+\begin{equation}\label{eq:term-small-field-event}
+ \mathfrak G=\{F:|\zeta_j(\Upsilon)|\le p_{0,j}\ (j<k),
+                                 \ \|dA_*\|_\infty\le p_*\},\qquad
+ \chi_*(A)=\mathbf1[\|dA\|_\infty\le p_*].
+\end{equation}
+Here $A_*,\zeta$ are the actual coordinates
+\eqref{eq:term-curvature-coordinates}.
+Products with $\chi_*$ are extended by zero off
+its support.
+
+\begin{theorem}\label{thm:term-density}
+For every $A\in\mathrm{Dom}_k$,
+\begin{equation}\label{eq:term-iterated-density}
+ Y_*^x(A;\mathscr C_*)
+      =\int\prod_{j<k}
+                    \big(\mathbf1_{\mathrm{Box}_j}(\zeta_j)
+                                             \dd\mu_I(\zeta_j)\big)
+                       w_N(A_0^\downarrow(A,\zeta)+a).
+\end{equation}
+The integrand is continuous on the compact product
+of boxes.
+If $A,A+d\lambda\in\mathrm{Dom}_k$, with $\lambda$
+real, their terminal functions agree.
+For every bounded Borel function $\Phi$ on
+$V_{\mathrm t}(T_k^0)$ and every real twist $\theta$,
+\begin{equation}\label{eq:term-Borel-observable}
+ \nu^{\theta,a}(\mathbf1_{\mathfrak G}\Phi(A_*))
+    =\int\dd\mathsf m_*(A)\,
+                        \Phi(A)\chi_*(A)Y_*^x(A+c_\theta;\mathscr C_*).
+\end{equation}
+Its right-hand density is bounded and Borel, and
+$Y_*^x(A+c_\theta;\mathscr C_*)$ is jointly continuous
+in $(\theta,A)$ on $\{\chi_*=1\}$.
+\end{theorem}
+
+\begin{proof}
+The photon domain conditions
+\cite[(43)]{MaxwellBlock} hold at each
+running scale by the fixed charge choice.
+\cite[Theorem~B]{MaxwellBlock} gives
+two consequences used here: a real unit field with
+curvature bounded by $p_j$ lies in $\mathrm{Dom}_j$;
+and a field in $\mathrm{Dom}_{j+1}$ descends to
+$\mathrm{Dom}_j$ after addition of any box fluctuation.
+Downward induction therefore puts every field of
+\eqref{eq:term-downward-recursion} in its respective
+domain whenever its top field lies in $\mathrm{Dom}_k$ and
+all fluctuations lie in their boxes.
+
+Let $y_j^x(A;a^{[j]})$ be the integrated density
+at level $j$ along this trajectory.
+The exact integrated step \cite[(9)]{NonlinearStep} gives
+\[
+ y_{j+1}^x(A';a^{[j+1]})
+     =\int_{\mathrm{Box}_j}\dd\mu_I(\zeta_j)\,
+                   y_j^x(A_j^{\min}(A')+\mathrm{Sq}_j\zeta_j;
+                                                               a^{[j]}).
+\]
+Its external slot is the required one because
+$(a^{[j+1]})_L=a^{[j]}$, directly from the two
+scaling factors.
+Its coupling maps are the actual trajectory maps,
+and its vacuum includes the box normalization.
+The first such identity integrates the full
+$192n^3$ weighted chamber pairs into
+$4\ell_1^3$ coarse pairs.
+
+For a top field in $\mathrm{Dom}_j$, the function
+$w_N(A_0^\downarrow(A,\zeta)+a)$ is continuous in
+the finitely many fluctuation coordinates.
+Every finite product of boxes is compact,
+and \eqref{eq:term-finite-density-bound} bounds it.
+Thus all repeated integrals are absolutely integrable.
+Starting with the initial identity
+$y_0^x(A_0;a)=w_N(A_0+a)$, use the one-step formula,
+the downward recursion and Fubini at each level.
+This proves \eqref{eq:term-iterated-density} at $j=k$,
+with its unnormalized factors
+$\mathbf1_{\mathrm{Box}_j}\dd\mu_I$.
+The continuity assertion follows from the same
+finite-dimensional composition.
+Equation~\eqref{eq:term-closed-terminal-shift}
+turns a coarse real gradient into a fine gradient;
+gauge invariance of $w_N$ inside this integral
+then proves gauge invariance of $Y_*^x$.
+
+To integrate against an arbitrary bounded Borel
+observable, first express the fine density in the
+curvature coordinates.
+The slice potential $A_0^\downarrow(A_*,\zeta)$
+has mean zero: its block average has the mean of
+the fine field, and its top field has mean zero.
+Its difference from $A(F)$ is closed and has mean
+zero, hence is a gradient by
+\eqref{eq:term-unit-Hodge}.
+The harmonic shift identity gives
+\[
+ w_N(A(F)+H_\theta+a)
+             =w_N(A_0^\downarrow(A_*+c_\theta,\zeta)+a).
+\]
+Under the tower isometry the Gaussian becomes
+\eqref{eq:term-tower-Gaussian}, and the event
+$\mathfrak G$ has indicator
+\[
+              \chi_*(A_*)\prod_{j<k}\mathbf1_{\mathrm{Box}_j}(\zeta_j).
+\]
+The integrand is a bounded Borel function with bound
+$\|\Phi\|_\infty B_N(a)$.
+The change-of-variables identity for its image
+measure and Fubini therefore give
+\begin{align*}
+ \nu^{\theta,a}(\mathbf1_{\mathfrak G}\Phi(A_*))
+   =\int\dd\mathsf m_*(A)\,\Phi(A)\chi_*(A)
+      \int\prod_{j<k}
+                      \big(\mathbf1_{\mathrm{Box}_j}\dd\mu_I(\zeta_j)\big)
+                         w_N(A_0^\downarrow(A+c_\theta,\zeta)+a).
+\end{align*}
+Where $\chi_*(A)=1$, the field $A+c_\theta$ has
+the same curvature bound and belongs to
+$\mathrm{Dom}_k$. The inner integral is
+$Y_*^x(A+c_\theta;\mathscr C_*)$ by
+\eqref{eq:term-iterated-density}, proving
+\eqref{eq:term-Borel-observable}.
+
+The inner integral defines a function on all real
+$(\theta,A)$, whether or not $A+c_\theta\in\mathrm{Dom}_k$.
+Its modulus is at most $B_N(a)$.
+Its integrand is continuous and uniformly continuous
+on a compact neighborhood of any $(\theta,A)$
+times the compact box product. Integrating this
+uniform bound proves joint continuity.
+Multiplying by $\chi_*$ gives a bounded Borel
+function, since $\{\chi_*=1\}$ is closed.
+On that set it is the asserted terminal density.
+\end{proof}
+
+\subsection{The large-field complement}
+\label{subsec:term-complement}
+
+At zero external connection write $\nu^\theta=\nu^{\theta,0}$,
+and let $\bar\nu$ be its average over $[-\pi,\pi]^3$
+with measure $\dd\theta/(2\pi)^3$.
+The real chamber operator has two adjoint spin blocks;
+thus its determinant at every real lattice mass is
+the squared modulus of the determinant of one block.
+Consequently $\nu^\theta$ is positive.
+The zero-sector identity
+\cite[(40)]{ReferenceResponse} gives
+$0<\bar\nu(1)<\infty$ and identifies
+$\bar\mu=\bar\nu/\bar\nu(1)$ with the zero-flux
+curvature probability law.
+
+Use the fixed constant $C_0\ge1$ of
+\cite[(25)]{QED3Integration}, recalled in
+\cref{subsec:term-remainder}. It also bounds the terminal
+field maps and Dirac form in
+\cref{subsec:interacting-terminal-norms}. Set
+\begin{equation}\label{eq:term-complement-errors}
+ \varepsilon_3
+ =6\ell_*^3\left(e^{-p_{0,*}/2}
+                    +e^{-p_*^2/(2C_0^2)}\right),\qquad
+ \varepsilon_4=6\ell_*^3e^{-p_*^2/(2C_0^2)}.
+\end{equation}
+
+\begin{proposition}\label{prop:term-complement}
+Suppose $v_*\ge8$, the integer $p_0\ge1$ satisfies
+$p_0v_*^{p_0-1}\ge28$, and $L\ge5$. Then, at every
+real initial pair,
+\begin{equation}\label{eq:term-complement-bound}
+ \bar\mu(\mathfrak G^c)\le\varepsilon_3,\qquad
+             \mathsf m_*(\chi_*=0)\le\varepsilon_4.
+\end{equation}
+For fixed $(\bar m,e,R)$, these bounds are independent
+of the ultraviolet cutoff and of the initial pair.
+\end{proposition}
+
+\begin{proof}
+The zero-flux domination estimate in
+\cref{prop:interacting-zero-flux-domination}
+and the rows of \eqref{eq:term-tower-row-norms} give
+\[
+ \bar\mu\{|\zeta_j(\Upsilon)|>p_{0,j}\}
+                   \le2e^{-p_{0,j}^2/2},\qquad
+ \bar\mu\{|(dA_*)(p)|>p_*\}\le2e^{-p_*^2/2}.
+\]
+Using the coordinate counts in
+\eqref{eq:term-tower-coordinate-count}, the union bound is
+\begin{equation}\label{eq:term-complement-union}
+ \bar\mu(\mathfrak G^c)
+ \le4\ell_*^3\sum_{i=1}^{k}L^{3i}
+                  e^{-(v_*+i\log L/2)^{2p_0}/2}
+                +6\ell_*^3e^{-p_*^2/2}.
+\end{equation}
+Here $i=k-j$ and $v_j=v_*+i\log L/2$.
+The first two terms of the binomial expansion give
+\[
+ p_{0,j}=(v_*+i\log L/2)^{p_0}
+       \ge p_{0,*}+28i\log L/2.
+\]
+Since $p_{0,j}\ge1$, its square is at least $p_{0,j}$.
+It follows that
+\[
+ L^{3i}e^{-p_{0,j}^2/2}
+                  \le e^{-p_{0,*}/2}L^{-4i}.
+\]
+Summing the geometric series, whose sum is
+$(L^4-1)^{-1}\le1$, bounds
+\eqref{eq:term-complement-union} by
+$4\ell_*^3e^{-p_{0,*}/2}+6\ell_*^3e^{-p_*^2/2}$.
+This is at most $\varepsilon_3$, since $C_0\ge1$.
+
+The image of $\gamma_N$ under $F\mapsto A_*$ is
+$\mathsf m_*$ by \eqref{eq:term-tower-Gaussian}.
+For each plaquette the variable
+$\langle\phi_p,F\rangle$ is Gaussian with variance
+$\|\phi_p\|^2\le1$. Its two-sided exponential Markov
+bound is $2e^{-p_*^2/2}$.
+Summing over the $3\ell_*^3$ plaquettes proves
+$\mathsf m_*(\chi_*=0)\le6\ell_*^3e^{-p_*^2/2}
+\le\varepsilon_4$.
+Finally, $\ell_*$ and $e_*$ are independent of $N$
+after the mesh threshold, by
+\cite[Proposition~6.1]{CoverTuning}; hence the displayed
+errors have the asserted dependence.
+\end{proof}
+
+\section{Free pressure and harmonic twists}
+\label{subsec:term-free-determinants}
+
+The partition comparison requires an error in the free pressure
+which depends on the physical size, rather than on the number of
+lattice sites. It also requires a twist estimate for the operator
+with a block penalty. The latter penalty removes the small-mass
+singularity before the fine mesh is taken to zero.
+
+For $0<m\le1$ let
+$\mathfrak d_m(p)=\det\mathcal D_m(p)$, where
+$\mathcal D_m$ is the $192$-dimensional chamber symbol in
+\cite[\S2.2]{FermionBlock}, and set
+\begin{equation}\label{eq:term-free-pressure}
+ p_{\rm ch}^0(m)=
+       \int_{[-\pi,\pi]^3}\log\mathfrak d_m(p)
+                                      \frac{\dd p}{(2\pi)^3}.
+\end{equation}
+The spin-block identity and positive real part imply
+$\mathfrak d_m(p)>0$ for real $p$.
+In this subsection $|z|=|z|_\infty$ for $z\in\Z^3$.
+Write $\kappa_{(0)}=\kappa_{\mathrm{strip}}$ from
+\cite[Proposition~2.2]{FermionBlock}.
+
+\begin{proposition}\label{prop:term-free-pressure}
+There is a finite $C_6$, depending only on $\rho$, such that,
+with
+\begin{equation}\label{eq:term-epsilon-five}
+ \varepsilon_5(x)=
+ C_6\log\frac1{1-e^{-\kappa_{(0)}x}}\qquad(x>0),
+\end{equation}
+the free twisted determinant on a unit torus of side $n\ge1$
+satisfies
+\begin{equation}\label{eq:term-free-pressure-error}
+ \left|\log\det(D^{\rm ch}[qH_\theta]+m)
+                     -n^3p_{\rm ch}^0(m)\right|
+                                 \le\varepsilon_5(mn).
+\end{equation}
+Here $H_{\theta,\mu}=\theta_\mu/(qn)$ and $\theta\in\R^3$.
+For $m=\bar m\eta$ and $n=R/\eta$ define
+\[
+ z_{r,n}^{\rm free}
+       =\int_{[-\pi,\pi]^3}
+            \det(D^{\rm ch}[qH_\theta]+\bar m\eta)
+                                         \frac{\dd\theta}{(2\pi)^3}.
+\]
+Then $z_{r,n}^{\rm free}>0$ and
+\begin{equation}\label{eq:term-free-average-error}
+ \left|\log z_{r,n}^{\rm free}
+                 -n^3p_{\rm ch}^0(\bar m\eta)\right|
+                              \le\varepsilon_5(\bar mR).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The plane waves with momenta
+$P_{n,\theta}=\{(2\pi j+\pi\mathbf1+\theta)/n:
+j\in\{0,\ldots,n-1\}^3\}$ diagonalize the translation
+part of the chamber operator. Inserting a plane wave
+in the fourth hop shifts its momentum by $\theta/n$,
+whereas the internal hops are unchanged. Thus
+\begin{equation}\label{eq:term-free-product}
+ \det(D^{\rm ch}[qH_\theta]+m)
+                   =\prod_{p\in P_{n,\theta}}\mathfrak d_m(p)>0.
+\end{equation}
+The phases contain $qH_\theta=\theta/n$, so the determinant
+is independent of $q$.
+
+Factor the determinant by the light--heavy decomposition:
+\[
+ \log\mathfrak d_m(p)=f_H(p)+f_S(p),\qquad
+ f_H(p)=\log\det D_{\rm hh}(p),\quad
+ f_S(p)=\log\det B_m(p).
+\]
+Both logarithms are real and smooth on real momenta.
+Their derivatives, which suffice for contour shifting, are
+\[
+ \partial_\mu f_H=\tr(D_{\rm hh}^{-1}\partial_\mu D_{\rm hh}),
+ \qquad
+ \partial_\mu f_S=\tr(B_m^{-1}\partial_\mu B_m).
+\]
+The heavy block has dimension $188$. On the strip of
+width $\theta_0$ its inverse has norm at most $2/g_{\rm h}$,
+and the fourth-hop derivative has norm at most
+$3(1+\rho)e^{\theta_0}=3(1+\rho)+g_{\rm h}/2$.
+Hence
+\[
+ |\partial_\mu f_H|\le
+ C_{\rm lH}:=188\left(1+\frac{6(1+\rho)}{g_{\rm h}}\right).
+\]
+For $z\ne0$ choose $|z_\mu|=|z|$. One integration by parts
+and a shift of that contour by
+$-\mathrm i\theta_0\operatorname{sgn}(z_\mu)$ give
+\begin{equation}\label{eq:term-heavy-log-Fourier}
+ |\widehat f_H(z)|\le C_{\rm lH}|z|^{-1}e^{-\theta_0|z|}.
+\end{equation}
+The derivative trace is holomorphic in a neighborhood of
+the closed strip. Its periodicity cancels the vertical sides
+of the contour rectangle; no choice of a complex logarithm
+is needed.
+
+For the light factor put $r_m(p')=(|p'|_2^2+m^2)^{1/2}$.
+The inverse derivative bounds
+\cite[(15)]{FermionBlock} hold on
+$|\operatorname{Im}p_\nu|\le\kappa_{(0)}m$.
+The bound $K_s$ for $B_m$ on the strip of width $\theta_0$
+and Cauchy's formula on polydiscs of radius $\theta_0/2$
+give
+$\|\partial^\beta B_m\|
+\le24K_s(2/\theta_0)^{|\beta|}$ for $1\le|\beta|\le4$.
+Leibniz's rule in the derivative trace therefore gives
+\begin{equation}\label{eq:term-light-log-derivatives}
+ |\partial^\alpha\partial_\mu f_S(p'+\mathrm ip'')|
+ \le C_{\rm lS}\,r_m(p')^{-1-|\alpha|}
+ \le C_{\rm lS}|p'|_2^{-1-|\alpha|}
+       \quad(|\alpha|\le3,\ p'\ne0),
+\end{equation}
+where one may take
+\[
+ C_{\rm lS}
+ =\max_{|\alpha|\le3}96K_s
+   \sum_{\beta\le\alpha}
+    \binom{\alpha}{\beta}C_\beta(\rho)
+    (2/\theta_0)^{|\alpha|-|\beta|+1}
+    (3\pi^2+1)^{(|\alpha|-|\beta|)/2}.
+\]
+This constant is independent of $m$.
+Shift the differentiated Fourier integral by
+$-\mathrm i\kappa_{(0)}m\operatorname{sgn}(z_\mu)e_\mu$.
+The periodic Fourier estimate proved in
+\cite[Proposition~2.3]{FermionBlock}, with singular
+order $1$ and three derivatives, bounds this integral by
+$c_{\rm F}C_{\rm lS}(1+|z|)^{-2}$, where $c_{\rm F}$
+is its constant at those orders. Thus
+\begin{equation}\label{eq:term-light-log-Fourier}
+ |\widehat f_S(z)|
+    \le c_{\rm F}C_{\rm lS}|z|^{-1}(1+|z|)^{-2}
+                          e^{-\kappa_{(0)}m|z|}.
+\end{equation}
+The strip is contained in the heavy strip since
+$\kappa_{(0)}m\le\theta_0/2$.
+The inverse is holomorphic near the closed strip, so
+the contour shift is legitimate.
+
+The Fourier coefficients of $f=f_H+f_S$ are summable.
+For a summable periodic Fourier series, summing over
+$P_{n,\theta}$ keeps precisely the indices $z=nw$:
+\begin{equation}\label{eq:term-Fourier-sampling}
+ \sum_{p\in P_{n,\theta}}f(p)
+ =n^3\sum_{w\in\Z^3}\widehat f(nw)
+                       (-1)^{w_1+w_2+w_3}e^{\mathrm i\theta\cdot w}.
+\end{equation}
+This follows by summing the geometric progression in each
+coordinate; absolute convergence permits the interchange.
+Its $w=0$ term is $n^3p_{\rm ch}^0(m)$.
+There are $24t^2+2\le26t^2$ indices with $|w|=t$.
+The contribution of \eqref{eq:term-light-log-Fourier} is at most
+\[
+ 26c_{\rm F}C_{\rm lS}
+                  \sum_{t\ge1}t^{-1}e^{-\kappa_{(0)}mnt}.
+\]
+For the heavy term use
+$\kappa_{(0)}m\le\theta_0/2$ and
+$x^2e^{-\theta_0x/2}\le16/(\exp(1)\theta_0)^2$.
+Its contribution is at most
+\[
+ \frac{416C_{\rm lH}}{(\exp(1)\theta_0)^2}
+                     \sum_{t\ge1}t^{-1}e^{-\kappa_{(0)}mnt}.
+\]
+Since $\sum_{t\ge1}e^{-xt}/t=\log(1-e^{-x})^{-1}$,
+\eqref{eq:term-free-pressure-error} follows with
+$C_6=26[c_{\rm F}C_{\rm lS}
+          +16C_{\rm lH}/(\exp(1)\theta_0)^2]$.
+Finally every twisted determinant lies between
+$\exp(n^3p_{\rm ch}^0(m)\pm\varepsilon_5(mn))$.
+Its harmonic average lies in the same positive interval.
+Taking logarithms proves \eqref{eq:term-free-average-error}.
+\end{proof}
+
+We next retain the block penalty. Let $\mathfrak N\ge3$
+be odd and put $\tau=\mathfrak N^{-1}$.
+On the fine torus of side $\ell\in\N$ let
+$\mathcal H_\theta$ be the chamber spinors with mesh $\tau$
+and boundary multipliers $-e^{\mathrm i\theta_\mu}$,
+where $\theta\in\R^3$.
+The scalar product uses $\tau^3/48$.
+The coarse space has four components per unit site and
+counting scalar product. The average $Q$ takes the mean
+over each unit block and its $48$ labels, and $Q^*$
+extends a coarse field constantly on that block.
+Thus $QQ^*=1$, $\|Q\|=\|Q^*\|=1$, and
+$\Pi_{\rm bl}=Q^*Q$ is an orthogonal projection.
+Fix $0<b_-\le b_+<\infty$; the block construction uses
+$b_-=1-L^{-1}$ and $b_+=1$.
+Let $D$ be the free chamber Dirac operator at mesh $\tau$
+on $\mathcal H_\theta$. For $0<\mu\le1$ and $b_-\le b\le b_+$ set
+\begin{equation}\label{eq:term-free-block-operators}
+ T_\theta=D+\mu+b\Pi_{\rm bl},\qquad
+ D_\theta^{\rm bl}=b-b^2QT_\theta^{-1}Q^*.
+\end{equation}
+All determinants below are determinants of linear maps.
+The weighting of a scalar product changes their matrix
+representations, but does not add a determinant factor.
+
+\begin{proposition}\label{prop:term-block-twist}
+The determinants of $T_\theta$, $D+\mu$, and
+$D_\theta^{\rm bl}$ are positive, and
+\begin{align}
+ (D_\theta^{\rm bl})^{-1}
+     &=b^{-1}+Q(D+\mu)^{-1}Q^*,
+                                    \label{eq:term-free-block-inverse}\\
+ \det D_\theta^{\rm bl}
+     &=b^{4\ell^3}\frac{\det(D+\mu)}{\det T_\theta}.
+                                    \label{eq:term-free-block-determinant}
+\end{align}
+There are $C_\Sigma<\infty$ and $0<\gamma_\Sigma\le1$,
+depending only on $(b_-,b_+,\rho)$, such that
+\begin{equation}\label{eq:term-penalty-twist-bound}
+ \left|\log\frac{\det T_\theta}{\det T_0}\right|
+                  \le C_\Sigma\ell^{-1}e^{-\gamma_\Sigma\ell}.
+\end{equation}
+For the level $k\ge1$ data
+\[
+             (\mathfrak N,\ell,\mu,b)=(L^k,\ell_*,\mu_*,b_k),
+             \qquad c_{\theta,\mu}=\theta_\mu/(e_*\ell_*),
+\]
+put
+$R_\theta^{\rm tw}=\det D_k(c_\theta)/\det D_k(0)$.
+Then
+\begin{equation}\label{eq:term-twist-determinant-identity}
+ R_\theta^{\rm tw}
+ =\frac{\det(D^{\rm ch}[qH_\theta]+\bar m\eta)}
+              {\det(D^{\rm ch}[0]+\bar m\eta)}
+                  \frac{\det T_0}{\det T_\theta}>0.
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The real part of $D+\mu$ is at least $\mu$.
+The same holds for $T_\theta$, since its penalty is positive.
+Both operators have two adjoint spin blocks; their determinants
+are therefore positive. Put $G=(D+\mu)^{-1}$,
+$S=QGQ^*$ and $Z=(b^{-1}+S)^{-1}$.
+Their inverses exist since $\operatorname{Re}G\ge0$ and
+$\operatorname{Re}(b^{-1}+S)\ge b^{-1}$.
+Multiplication gives
+$T_\theta^{-1}=G-GQ^*ZQG$ and
+$D_\theta^{\rm bl}=Z$, proving
+\eqref{eq:term-free-block-inverse}.
+Sylvester's determinant identity, applied to
+$-\!bQ$ and $T_\theta^{-1}Q^*$, gives
+\eqref{eq:term-free-block-determinant}. Its right side is
+positive.
+
+We prove \eqref{eq:term-penalty-twist-bound} with constants
+independent of $\tau$ and $\mu$.
+Let
+\[
+ c_{\rm nz}=\min\left\{\frac\rho\pi,
+             \frac{g_{\rm h}\rho^2}{49\sqrt3\,\pi^3}\right\}>0.
+\]
+For real $q'\in[-\pi,\pi]^3$,
+\begin{equation}\label{eq:term-symbol-nozero}
+             \|\mathcal D_0(q')u\|
+                         \ge c_{\rm nz}|q'|_2\|u\|.
+\end{equation}
+Normalize $\|u\|=1$ and
+write $u=Pu+\Pi_{\rm h}u$ for its light and heavy parts,
+where $\Pi_{\rm h}=1-P$ is the cluster-heavy projection.
+If $d=\|\mathcal D_0(q')u\|$, then
+$g_{\rm h}\|\Pi_{\rm h}u\|^2\le d$.
+The light compression is
+$W(q')=\rho\sum_\mu(1-\cos q'_\mu)+
+\mathrm i\gamma\cdot\sin q'$; its squared modulus is
+at least $(2\rho/\pi)^2|q'|_2^2$.
+Also $J^*\mathcal D_0(0)=0$, and the fourth-hop
+difference has norm at most $6|q'|_2$.
+Projecting $\mathcal D_0(q')u$ onto the light space gives
+\[
+ d\ge |q'|_2\left(\frac{2\rho}{\pi}-7\|\Pi_{\rm h}u\|\right).
+\]
+If $\|\Pi_{\rm h}u\|\le\rho/(7\pi)$ this is at least
+$(\rho/\pi)|q'|_2$. Otherwise
+$d\ge g_{\rm h}\rho^2/(49\pi^2)$; since
+$|q'|_2\le\sqrt3\pi$, this proves
+\eqref{eq:term-symbol-nozero}.
+
+On one unit cell use the Bloch space
+$\mathcal H(p)=\{f(c+e_\mu,g)=e^{\mathrm ip_\mu}f(c,g)\}$.
+Its modes are $p_j=p+2\pi j$, with
+$j\in I_{\mathfrak N}^3$,
+$I_{\mathfrak N}=\{-(\mathfrak N-1)/2,\ldots,
+(\mathfrak N-1)/2\}$.
+The map
+$\{u_j\}\mapsto\sum_j e^{\mathrm ip_j\cdot c}u_j(g)$
+is unitary for the one-cell scalar product $\tau^3/48$.
+It diagonalizes $D$ with blocks
+$X_j=\tau^{-1}\mathcal D_0(\tau p_j)$.
+Define
+\[
+ u_1(t)=\mathfrak N^{-1}\sum_{s\in I_{\mathfrak N}}
+                                      e^{-\mathrm its/\mathfrak N},
+ \qquad u(p)=\prod_\mu u_1(p_\mu).
+\]
+The block projection in this representation has kernel
+$u(p_j)u(p_{j'})P$. This follows by averaging the plane
+waves on the centered unit block; discrete Fourier
+orthogonality expands the constant block extension.
+For $p\in[-\pi,\pi]^3$ one has $\tau p_j\in[-\pi,\pi]^3$
+and $|p_j|_2\ge\pi|j|$ when $j\ne0$.
+Hence \eqref{eq:term-symbol-nozero} gives
+$\|X_ju\|\ge c_{\rm nz}|p_j|_2\|u\|$.
+
+The inverse on $\mathcal H(p)$ is uniformly bounded.
+To see this, let $\|f\|=1$ and
+$d=\|(D+\mu+b\Pi_{\rm bl})f\|\le1$.
+The real-part estimate gives
+\[
+ \mu\le d,\qquad
+ \|\Pi_{\rm bl}f\|\le(d/b_-)^{1/2},\qquad
+ \|\Pi_{\rm h}f\|\le(d/(3g_{\rm h}))^{1/2},
+ \qquad \|Df\|\le(2+\sqrt{b_+})\sqrt d.
+\]
+Separate the mode $j=0$ from $f^{\rm r}$, the remaining
+modes. The bound on $X_j$ gives
+$\|f^{\rm r}\|\le\|Df\|/(\pi c_{\rm nz})$.
+Moreover
+$u_1(t)=\sin(t/2)/[\mathfrak N\sin(t/(2\mathfrak N))]
+\ge2/\pi$ for $|t|\le\pi$, with value $1$ at zero.
+Thus the block projection of the zero mode controls
+its light part by the factor $8/\pi^3$.
+Using $\|\Pi_{\rm bl}\|=1$ and subtracting the other modes,
+\[
+ \sqrt{d/b_-}\ge
+ \frac8{\pi^3}(1-\|\Pi_{\rm h}f\|)
+                     -(1+8/\pi^3)\|f^{\rm r}\|.
+\]
+It follows that $8/\pi^3\le K_{\rm iv}\sqrt d$, where
+\[
+ K_{\rm iv}=b_-^{-1/2}+\frac8{\pi^3}(3g_{\rm h})^{-1/2}
+       +(1+8/\pi^3)\frac{2+\sqrt{b_+}}{\pi c_{\rm nz}}.
+\]
+Consequently the inverse norm is at most
+$C_{\rm iv}=\max\{1,(\pi^3K_{\rm iv}/8)^2\}$.
+
+For complex momenta use the periodic gauge
+$f(c,g)\mapsto e^{\mathrm ip\cdot c}f(c,g)$ to work
+on the fixed periodic one-cell space. Let $D(p)$
+and $\Pi(p)$ be the resulting operators, so
+$\mathcal T(p)=D(p)+\mu+b\Pi(p)$.
+The fourth hopping phase is
+$e^{\mathrm i\tau p\cdot ge_1}$, and the block kernel is
+$e^{-\mathrm ip\cdot(c-c')}$. A shift of $p_\nu$
+by $2\pi$ conjugates these operators by multiplication
+by $e^{2\pi\mathrm ic_\nu}$.
+Thus their determinant and derivative traces are periodic.
+For $p=p'+\mathrm it e_\nu$, $|t|\le1$, and $1\le j\le4$,
+direct differentiation gives
+\begin{equation}\label{eq:term-Bloch-derivatives}
+ \|\partial_\nu^jD(p)\|\le9\tau^{j-1},\qquad
+ \|\partial_\nu^j\Pi(p)\|\le\exp(1),\qquad
+ \operatorname{rank}\partial_\nu^j\Pi(p)\le4(j+1).
+\end{equation}
+The last bound follows by expanding $(c_\nu-c'_\nu)^j$
+into $j+1$ products of a function of $c$ and a function
+of $c'$, each with four spin components.
+The norm estimates use $|c_\nu-c'_\nu|<1$ in one block,
+$\tau\le1/3$, and $\|M_3\|\le6$.
+The difference from the real momentum has norm at most
+$(6+b_+)|t|e^{|t|}$. With
+\[
+ \gamma_\Sigma=
+ \min\{1,[2\exp(1)(6+b_+)C_{\rm iv}]^{-1}\},
+\]
+a Neumann series gives
+$\|\mathcal T(p)^{-1}\|\le2C_{\rm iv}$ on this strip.
+Its singular values are at most twice those at $p'$.
+
+The growing dimension of the fine cell cannot be used
+in a trace bound. Instead write $G(p)=\mathcal T(p)^{-1}$
+and compare at real $p'$ with $(D(p')+1)^{-1}$.
+The resolvent identity, the bound just proved, and the
+singular-value multiplication inequality
+\cite[slides~3--9]{PongeSchatten2025} imply
+\[
+ s_j(G(p))\le C_{\rm sv}s_j((D(p')+1)^{-1}),\qquad
+ C_{\rm sv}=2[1+(1+b_+)C_{\rm iv}].
+\]
+The comparison operator is the direct sum of
+$(X_j+1)^{-1}$. Since $\operatorname{Re}X_j\ge0$,
+each of its $192$ singular values is at most
+$(1+c_{\rm nz}^2|p'_j|_2^2)^{-1/2}$.
+Set
+\[
+ S_4=\sum_{j\in\Z^3\setminus\{0\}}|j|^{-4}
+        =4\pi^2+\pi^4/45,\quad
+ C_{\rm uv}=(1+3\pi^2c_{\rm nz}^2)^{1/2},\quad
+ S_{\rm jf}=1+S_4/(\pi c_{\rm nz})^4.
+\]
+For $1\le s\le4$ we obtain
+\begin{equation}\label{eq:term-Bloch-Schatten}
+ \tau^{4-s}\|G(p)\|_{\mathfrak S_s}^{\,s}
+           \le192C_{\rm sv}^{\,s}C_{\rm uv}^{\,4-s}S_{\rm jf}.
+\end{equation}
+Indeed
+$\tau^2(1+c_{\rm nz}^2|p'_j|_2^2)\le C_{\rm uv}^2$,
+so multiplication by $\tau^{4-s}$ makes each summand
+a multiple of $(1+c_{\rm nz}^2|p'_j|_2^2)^{-2}$.
+The nonzero indices are bounded by
+$(\pi c_{\rm nz}|j|)^{-4}$ and have the summable
+majorant displayed above.
+
+Let $F(p)=\log\det\mathcal T(p)$ on real momenta.
+The fourth derivative is the trace expression
+\begin{align}
+ F_4(p)={}&\tr(GT_4)-4\tr(GT_1GT_3)
+                  -3\tr(GT_2GT_2)\nonumber\\
+          &+12\tr(GT_1GT_1GT_2)-6\tr((GT_1)^4),
+                                      \label{eq:term-Bloch-fourth}
+\end{align}
+where $T_j=\partial_\nu^j\mathcal T$.
+This follows by differentiating
+$\partial_\nu F=\tr(GT_1)$ and
+$\partial_\nu G=-GT_1G$, using trace cyclicity.
+The expression is holomorphic near the closed strip
+in the $\nu$ coordinate.
+Each trace in \eqref{eq:term-Bloch-fourth} has $s\le4$
+inverse factors and derivatives of total order four.
+Expand every $T_j$ as $D_j+b\Pi_j$.
+For the term with only $D_j$, Schatten Hölder and
+\eqref{eq:term-Bloch-derivatives} give the bound
+$9^s\tau^{4-s}\|G\|_{\mathfrak S_s}^{\,s}$.
+Equation~\eqref{eq:term-Bloch-Schatten} bounds this by
+$9^4\,192C_{\rm sv}^4C_{\rm uv}^3S_{\rm jf}$.
+In each other term estimate one $b\Pi_j$ in trace norm:
+its rank bound gives $\|b\Pi_j\|_{\mathfrak S_1}
+\le20\exp(1)b_+$. The other factors have operator
+norms at most $2C_{\rm iv}$ and
+$\max\{9,\exp(1)b_+\}$.
+There are at most $15$ such terms in any trace.
+Since the five numerical coefficients have absolute
+sum $26$, this proves $|F_4(p)|\le C_{\rm Flg}$, where
+\[
+ C_{\rm Flg}=26\left[
+       9^4\,192C_{\rm sv}^4C_{\rm uv}^3S_{\rm jf}
+       +300\exp(1)b_+(2C_{\rm iv})^4
+                           \max\{9,\exp(1)b_+\}^3\right].
+\]
+All Schatten applications are on a finite-dimensional
+space, with $s$ factors of exponent $s$ and reciprocal
+exponents summing to one
+\cite[slides~54--56]{PongeSchatten2025}.
+
+For $z\ne0$ choose $|z_\nu|=|z|$.
+Four integrations by parts and a contour shift by
+$-\mathrm i\gamma_\Sigma\operatorname{sgn}(z_\nu)e_\nu$
+now give
+$|\widehat F(z)|\le C_{\rm Flg}|z|^{-4}
+e^{-\gamma_\Sigma|z|}$.
+The trace expression is periodic by the preceding
+conjugacy and is holomorphic near the closed strip.
+Decomposition into unit-cell Bloch spaces gives
+$\log\det T_\theta=\sum_{p\in P_{\ell,\theta}}F(p)$.
+Using \eqref{eq:term-Fourier-sampling} at $\theta$ and
+at zero, and subtracting, proves
+\[
+ \left|\log\frac{\det T_\theta}{\det T_0}\right|
+ \le2\ell^3\sum_{w\ne0}C_{\rm Flg}(\ell|w|)^{-4}
+                                    e^{-\gamma_\Sigma\ell|w|}
+ \le2S_4C_{\rm Flg}\ell^{-1}e^{-\gamma_\Sigma\ell}.
+\]
+Thus $C_\Sigma=2S_4C_{\rm Flg}$.
+
+Finally constant connections are twists by multiplication
+by $e^{\mathrm i\theta\cdot c/\ell_*}$.
+Every rectilinear path contributing to the average has
+the same constant-connection integral, so its phase is
+$e^{\mathrm i\theta\cdot(c-y)/\ell_*}$.
+Consequently the covariant chamber averages and fine
+inverse are conjugate to $Q,Q^*$ and $T_\theta^{-1}$,
+and $D_k(c_\theta)$ is conjugate to $D_\theta^{\rm bl}$.
+Dilating the mesh $\tau$ to one gives
+\[
+ \det(D+\mu\text{ on }\mathcal H_\theta)
+          =\tau^{-192n^3}\det(D^{\rm ch}[qH_\theta]+\tau\mu),
+                \qquad n=\ell_*\mathfrak N .
+\]
+Here $\tau\mu_*=\bar m\eta$.
+Divide \eqref{eq:term-free-block-determinant} at the two
+twists. The factors $b^{4\ell_*^3}$ and
+$\tau^{-192n^3}$ cancel, proving
+\eqref{eq:term-twist-determinant-identity}.
+\end{proof}
+
+\section{The terminal remainder and partition comparison}
+\label{subsec:term-remainder}
+
+Use the constant already fixed in the construction
+\cite[(25)]{QED3Integration}:
+\[
+ C_0=\max\{C_P^{\rm ph}c_{\rm bd}(\gamma_P),\,
+               C^F,\,4b_++16C^Fc(\gamma^F)\},\qquad b_+=1,
+\]
+where $c(\gamma)=\sum_{z\in\Z^3}e^{-\gamma|z|_\infty}$ and
+$c_{\rm bd}(\gamma)=3e^{3\gamma}c(\gamma)$.
+Here $C_P^{\rm ph},\gamma_P$ are the photon kernel constants
+and $C^F,\gamma^F$ are the fermion constants. Thus $C_0\ge1$
+bounds the photon row sums, both field maps, and the Dirac form
+proved in \cref{subsec:interacting-terminal-norms}.
+Put $b_-=1-L^{-1}$ and
+\[
+ c_\kappa=\sup_\square\sum_{X\supset\square}
+                                      e^{-\kappa d_M(X)}\le K_0.
+\]
+The fixed scheme gives the following inequalities at every
+allowed stop:
+\begin{align}
+ 8C_0^2\ell_*^6(b_-^{-1}+\mu_*^{-1})
+                   &\le e_*^{-\varepsilon/2},\nonumber\\
+ 4(2C_0+c_\kappa+5c_{\rm fl}+6)\ell_*^3
+                   &\le e_*^{-\varepsilon},\nonumber\\
+ e_*^{1/4-9\varepsilon}&\le\tfrac18,\qquad
+ 4C_0\ell_*^2p_*<e_*^{-\varepsilon},\nonumber\\
+ 12\ell_*^3\left(e^{-p_{0,*}/2}
+                         +e^{-p_*^2/(2C_0^2)}\right)&\le e_*,
+ \qquad
+ C_\Sigma e^{-\gamma_\Sigma\ell_*}\le e_*.
+                                      \label{eq:term-stop-conditions}
+\end{align}
+Indeed, the scalar inventory \cite[(29)]{QED3Integration}
+holds for every $v\ge-\log e_1$. Write $\ell(v)=LMv^2$.
+By \eqref{eq:tpm-stop-scales}, $v_*\ge-\log e_1$,
+$\ell_*<\ell(v_*)$, $\mu_*^{-1}<L\ell(v_*)$, and
+$\ell_*\ge Mv_*^2$. At $v=v_*$ the covariance condition follows from
+\[
+ 8C_0^2\ell_*^6(b_-^{-1}+\mu_*^{-1})
+ \le8C_0^2\ell(v_*)^6(b_-^{-1}+L\ell(v_*))
+ \le e_*^{-\varepsilon/2}.
+\]
+The same upper bound for $\ell_*$ gives the second and fourth
+inequalities of \eqref{eq:term-stop-conditions} from the
+corresponding polynomial bounds in the inventory; its third
+inequality is the inventory's charge bound. For the two tails,
+the supplied estimates give
+\begin{align*}
+12\ell_*^3\big(e^{-p_{0,*}/2}+e^{-p_*^2/(2C_0^2)}\big)
+ &\le12\ell(v_*)^3
+       \big(e^{-v_*^9/2}+e^{-v_*^{38}/(2C_0^2)}\big)\le e_*,
+\\
+C_\Sigma e^{-\gamma_\Sigma\ell_*}
+ &\le C_\Sigma e^{-\gamma_\Sigma Mv_*^2}\le e_*.
+\end{align*}
+This verification applies to every $R\in\mathcal T(e)$ above
+its mesh threshold. The same inventory at $v_K$ gives
+$e_K^{1/4-9\varepsilon}\le1/8$. All these conditions are
+uniform in the cutoff.
+
+Put
+\begin{equation}\label{eq:term-remainder-errors}
+ \varepsilon_1=\tfrac12e_*^{1/4-9\varepsilon},\qquad
+ \varepsilon_2=C_\Sigma\ell_*^{-1}e^{-\gamma_\Sigma\ell_*}.
+\end{equation}
+Together with \eqref{eq:term-complement-errors},
+\eqref{eq:term-stop-conditions} gives
+$\varepsilon_1\le1/16$, $\varepsilon_2\le e_*$,
+and $\varepsilon_4\le\varepsilon_3\le e_*/2$.
+
+\begin{proposition}\label{prop:term-remainder}
+For a controlled real pair, every mean-zero real coarse
+field $A$ with $\|dA\|_\infty\le p_*$ and every
+$\theta\in\R^3$ satisfy
+\begin{equation}\label{eq:term-density-remainder}
+ Y_*(A+c_\theta)
+     =e^{-\varepsilon_k^{\rm v}\ell_*^3}
+                R_\theta^{\rm tw}(1+r_*(\theta,A)),
+                         \qquad |r_*(\theta,A)|\le\varepsilon_1.
+\end{equation}
+The remainder is continuous in $(\theta,A)$ on this set.
+\end{proposition}
+
+\begin{proof}
+The gauge construction in
+\cite[(32)--(33)]{MaxwellBlock}
+gives a real $\lambda$ such that
+$A^g=A-d\lambda$ satisfies $\|A^g\|_\infty\le2\ell_*^2p_*$.
+The curvature bound puts both $A+c_\theta$ and
+$A^g+c_\theta$ in $\mathrm{Dom}_k$, by
+\cite[Theorem~B]{MaxwellBlock};
+\cref{thm:term-density} gives equality of their
+terminal densities.
+Set $\mathscr A^0=H_k^{\rm ph}A^g$.
+Summing each of the three photon kernel bounds gives
+a norm at most $C_0\|A^g\|_\infty$; hence
+\[
+ \|\mathscr A^0\|_{\rm each}
+                    \le2C_0\ell_*^2p_*<\tfrac12e_*^{-\varepsilon}.
+\]
+The photon minimizer preserves constants, so the
+background is $\mathscr A=\mathscr A^0+c_\theta$.
+For $\rho_*=e_*^{-3/4+4\varepsilon}\ge8$ and
+$|t|<2\rho_*$, each norm of $t\mathscr A^0$ is
+less than $e_*^{-3/4+3\varepsilon}$, the smallest
+analytic-domain threshold. Invariance under real
+constant shifts gives
+\begin{equation}\label{eq:term-terminal-disc}
+ \mathscr A^{(t)}=t\mathscr A^0+c_\theta
+                  \in\widetilde R_k\subset\widetilde G_k
+                         \qquad(|t|<2\rho_*).
+\end{equation}
+
+Let $D^{\rm tw}=D_k(c_\theta)$ and
+$C_\theta=(D^{\rm tw})^{-1}$.
+The free block formula and its twist conjugacy give
+$\|C_\theta\|_{\rm op}\le b_-^{-1}+\mu_*^{-1}$.
+At the connection $\mathscr A$, after the fermion
+field substitution, put
+\begin{align}
+ V_*={}&-\langle\bar\Psi,
+          [D_k(\mathscr A)-D_k(c_\theta)]\Psi\rangle
+               -m_k\langle\bar\psi,\psi\rangle\nonumber\\
+       &+\sum_XE_k(X;\mathscr A,\psi,\chi).
+                                      \label{eq:term-terminal-interaction}
+\end{align}
+All terms are even. Completing the Grassmann Gaussian
+in \eqref{eq:term-Y-density}, at zero external slot, gives
+\begin{equation}\label{eq:term-terminal-Gaussian}
+ Y_*(A+c_\theta)=e^{-\varepsilon_k^{\rm v}\ell_*^3}
+             R_\theta^{\rm tw}\int\dd\mu_{C_\theta}(\Psi)e^{V_*}.
+\end{equation}
+This is the weight-one identity of the terminal coarse
+space; the fine fields retain their $\eta_k^3/48$
+pairing in $V_*$.
+
+We estimate the three terms before integrating.
+Let $a_1=e_*^{-1/4}$ and
+$a_2=C_0^{-1}e_*^{-1/4+\varepsilon}\le a_1$.
+The analytic quadratic form
+$f(t)=\langle\bar\Psi,D_k(\mathscr A^{(t)})\Psi\rangle$
+has $|f(t)|_{a_1}\le C_0e_*^{-1/2}\ell_*^3$ on
+\eqref{eq:term-terminal-disc}, by
+\eqref{eq:interacting-terminal-Dirac-form}.
+Coefficientwise Cauchy's formula with kernel
+$[t(t-1)]^{-1}$ on $|t|=\rho_*$ gives
+\[
+ |f(1)-f(0)|_{a_2}
+ \le |f(1)-f(0)|_{a_1}
+ \le\frac{C_0e_*^{-1/2}\ell_*^3}{\rho_*-1}
+                  \le2C_0e_*^{1/4-4\varepsilon}\ell_*^3 .
+\]
+The mass-form and activity-substitution bounds
+\eqref{eq:interacting-terminal-mass-form} and
+\eqref{eq:interacting-terminal-substitution} give
+\[
+ |m_k\langle\bar\psi,\psi\rangle|_{a_2}
+                \le4e_*^{1/4-8\varepsilon}\ell_*^3,\qquad
+ |E_k(X;\mathscr A,\psi,\chi)|_{a_2}
+                 \le e^{-\kappa d_M(X)}w_k^{\rm E}.
+\]
+Here $|m_k|\le e_*^{3/4-8\varepsilon}$ and
+$w_k^{\rm E}=e_*^{1/4-7\varepsilon}$.
+These norm estimates include the ordered pairs within
+one chamber cluster. The mass pairing uses the fine site measure
+$\eta_k^3/48$;
+the four spin components in the mass form therefore
+contribute $4\ell_*^3$, rather than $192\ell_*^3$.
+Every polymer contains an $M$-cube, so
+$\sum_Xe^{-\kappa d_M(X)}
+\le(\ell_*/M)^3c_\kappa\le c_\kappa\ell_*^3$.
+Consequently
+\begin{equation}\label{eq:term-terminal-interaction-bound}
+ |V_*|_{a_2}\le
+            (2C_0+c_\kappa+4)e_*^{1/4-8\varepsilon}\ell_*^3.
+\end{equation}
+
+The covariance integral is the unit-covariance integral
+after the one-sided substitution
+$\Psi\mapsto C_\theta\Psi$, $\bar\Psi\mapsto\bar\Psi$.
+Each covariance row has $4\ell_*^3$ entries of modulus
+at most $b_-^{-1}+\mu_*^{-1}$.
+Its row norm, together with the identity on barred
+variables, is bounded by
+\[
+ 4\ell_*^3(b_-^{-1}+\mu_*^{-1})
+ \le\frac{e_*^{-\varepsilon/2}}{2C_0^2\ell_*^3}
+ =a_2\,\frac{e_*^{1/4-3\varepsilon/2}}{2C_0\ell_*^3}
+ \le a_2.
+\]
+The weighted substitution estimate therefore sends
+$V_*$ to $V_*'$ with $|V_*'|_1\le|V_*|_{a_2}$.
+The second inequality of \eqref{eq:term-stop-conditions}
+and \eqref{eq:term-terminal-interaction-bound} imply
+$|V_*'|_1\le e_*^{1/4-9\varepsilon}/4\le1/32$.
+The unit-covariance Wick integral is bounded by the
+weight-one Grassmann norm and integrates $1$ to $1$.
+Thus
+\[
+ \left|\int\dd\mu_{C_\theta}e^{V_*}-1\right|
+ \le |e^{V_*'}-1|_1
+ \le e^{|V_*'|_1}-1
+ \le2|V_*'|_1\le\varepsilon_1.
+\]
+Together with \eqref{eq:term-terminal-Gaussian}, this
+proves \eqref{eq:term-density-remainder}.
+The density is jointly continuous by
+\cref{thm:term-density}. The twist determinant
+is a continuous positive function, so its quotient
+in \eqref{eq:term-density-remainder} is continuous
+on the asserted set.
+\end{proof}
+
+\subsection{Partition bounds and comparison of torus sizes}
+\label{subsec:term-partition-bounds}
+
+Let $z_{r,n}$ be the matter factor in
+\eqref{eq:tpm-matter-factor}, formed at the real mass
+$\bar m\eta+m_{\mathrm{in}}$. The fine normalization is
+\begin{equation}\label{eq:term-matter-normalization}
+ z_{r,n}
+ =e^{\varepsilon_{\mathrm{in}}^{\rm v}n^3}
+       \det(D^{\rm ch}[0]+\bar m\eta)\,\bar\nu(1)>0.
+\end{equation}
+Both signs of the total lattice mass are allowed here.
+The positive free reference mass $\bar m\eta$ is used
+only in the determinant normalization.
+
+\begin{proposition}\label{prop:term-partition-bounds}
+For every controlled real pair on $R$, the following
+two-sided estimates hold:
+\begin{align}
+ e^{-\varepsilon_k^{\rm v}\ell_*^3}
+ R_\theta^{\rm tw}(1-\varepsilon_1)(1-\varepsilon_4)
+ &\le\nu^\theta(\mathfrak G)
+ \le e^{-\varepsilon_k^{\rm v}\ell_*^3}
+ R_\theta^{\rm tw}(1+\varepsilon_1),
+                                   \label{eq:term-small-field-mass}\\
+ (1-\varepsilon_3)\bar\nu(1)
+ &\le\bar\nu(\mathfrak G)\le\bar\nu(1).
+                                   \label{eq:term-full-mass}
+\end{align}
+In particular
+\begin{align}
+ \left|\log z_{r,n}-\log z_{r,n}^{\rm free}
+       -\varepsilon_{\mathrm{in}}^{\rm v}n^3
+                   +\varepsilon_k^{\rm v}\ell_*^3\right|
+ &\le2\varepsilon_1+\varepsilon_2
+                              +2\varepsilon_3+2\varepsilon_4
+ \le2e_*^{1/4-9\varepsilon},\label{eq:term-partition-free-bound}\\
+ \left|\log z_{r,n}
+       -[p_{\rm ch}^0(\bar m\eta)
+                     +\varepsilon_{\mathrm{in}}^{\rm v}]n^3
+                    +\varepsilon_k^{\rm v}\ell_*^3\right|
+ &\le\varepsilon_5(\bar mR)+2e_*^{1/4-9\varepsilon}.
+                                   \label{eq:term-partition-pressure-bound}
+\end{align}
+\end{proposition}
+
+\begin{proof}
+Apply \eqref{eq:term-Borel-observable} at $a=0$ and
+$\Phi=1$, then insert \eqref{eq:term-density-remainder}.
+The result is
+\[
+ \nu^\theta(\mathfrak G)=
+ e^{-\varepsilon_k^{\rm v}\ell_*^3}R_\theta^{\rm tw}
+       \int\chi_*(A)(1+r_*(\theta,A))\,\dd\mathsf m_*(A).
+\]
+The left side and the prefactor are real, and the
+prefactor is positive. The last integral therefore
+equals its real part.
+The remainder bound and
+$1-\varepsilon_4\le\mathsf m_*(\chi_*)\le1$
+give \eqref{eq:term-small-field-mass}.
+The first inequality of \eqref{eq:term-complement-bound}
+gives
+$\bar\nu(\mathfrak G^c)\le\varepsilon_3\bar\nu(1)$.
+This and positivity prove \eqref{eq:term-full-mass}.
+
+Multiply \eqref{eq:term-small-field-mass} by
+$\det(D^{\rm ch}[0]+\bar m\eta)>0$.
+The determinant identity
+\eqref{eq:term-twist-determinant-identity} and the
+penalty twist bound replace this product by the fine
+twisted free determinant, with factors between
+$e^{-\varepsilon_2}$ and $e^{\varepsilon_2}$.
+Integrating in $\theta$ gives
+\begin{align*}
+ &e^{-\varepsilon_k^{\rm v}\ell_*^3}z_{r,n}^{\rm free}
+       e^{-\varepsilon_2}(1-\varepsilon_1)(1-\varepsilon_4)
+ \\
+ &\hspace{15mm}\le
+     \det(D^{\rm ch}[0]+\bar m\eta)\bar\nu(\mathfrak G)
+ \le e^{-\varepsilon_k^{\rm v}\ell_*^3}z_{r,n}^{\rm free}
+                              e^{\varepsilon_2}(1+\varepsilon_1).
+\end{align*}
+All integrands are continuous in $\theta$, and the
+factors being compared are positive.
+Use \eqref{eq:term-full-mass} and
+\eqref{eq:term-matter-normalization}, then take logarithms.
+Writing the expression on the left of
+\eqref{eq:term-partition-free-bound} without absolute
+values as $Q_n$, we obtain
+\[
+ -\varepsilon_2+\log(1-\varepsilon_1)+\log(1-\varepsilon_4)
+ \le Q_n\le
+ \varepsilon_2+\log(1+\varepsilon_1)-\log(1-\varepsilon_3).
+\]
+The errors lie in $[0,1/2]$. The inequalities
+$-\log(1-x)\le2x$ and $\log(1+x)\le x$ therefore give
+the first bound in \eqref{eq:term-partition-free-bound}.
+Its right side is at most
+$e_*^{1/4-9\varepsilon}+3e_*$.
+Since $e_*^{1/4}\le1/8$, we have
+$3e_*\le e_*^{1/4}\le e_*^{1/4-9\varepsilon}$,
+which gives the second bound.
+Adding \eqref{eq:term-free-average-error} proves
+\eqref{eq:term-partition-pressure-bound}.
+\end{proof}
+
+\subsection{Proof of the common-pressure theorem}
+\label{subsec:tpm-common-proof}
+
+
+
+\begin{proof}[Proof of \Cref{thm:term-common-partition}]
+The common pair is controlled on every torus in the
+asserted range, by \cite[Theorem~D]{CoverTuning}.
+Its terminal vacuum obeys
+$|\varepsilon_k^{\rm v}|
+\le5c_{\rm fl}e_*^{1/4-6\varepsilon}$.
+The second inequality of \eqref{eq:term-stop-conditions}
+therefore gives
+\[
+ |\varepsilon_k^{\rm v}|\ell_*^3
+          \le\tfrac14e_*^{1/4-7\varepsilon}
+          \le e_*^{1/4-9\varepsilon}.
+\]
+Remove this term from
+\eqref{eq:term-partition-free-bound} and
+\eqref{eq:term-partition-pressure-bound}. This proves
+the first two estimates in
+\eqref{eq:term-common-pressure-bound}.
+The function $\varepsilon_5$ is decreasing.
+The scheme's scale bounds give
+$\bar mR\ge\mu_K>1/L$ and $e_*\le e_K$.
+Since $1/4-9\varepsilon>0$, they prove its last estimate.
+
+Both $R_*$ and $LR_*=R_{\mathrm{top}}$ belong to
+$\mathcal T(e)$. The mesh threshold is monotone:
+$N_{\min}(LR_*,e)\le N_{\min}(R_*,e)=N_{\rm ref}(e)$.
+Thus the common pair and pressure are available on
+both tori at every cutoff in the theorem.
+The bulk pressure cancels exactly:
+\[
+ D_{\rm mat}=
+ L^3(\log z_{r,n_*}-p_Fn_*^3)
+             -(\log z_{r,Ln_*}-p_F(Ln_*)^3).
+\]
+The pressure bounds give the first inequality in
+\eqref{eq:term-matter-comparison}.
+Monotonicity of $\varepsilon_5$ and $e_*\le e_K$
+give the second. Finally
+$\bar mR_*>1/L$ and
+$e_K^{1/4-9\varepsilon}\le1/8$ show that the bracket
+is at most $\varepsilon_5(1/L)+1$.
+The terminal scales, $R_*$ and $e_K$, are independent
+of $N$; this proves the stated uniformity.
+\end{proof}
+
+
+\section{Terminal fermion estimates}
+\label{subsec:interacting-terminal-operators}
+
+We prove the operator and coefficient estimates used in
+the terminal remainder. The reference mass remains variable
+throughout this section; the interaction mass is part of the
+Grassmann polynomial in \eqref{eq:term-terminal-interaction}.
+The block operators and their field domains are those of
+\cite[Theorem~A and \S4.2]{FermionBlock} and \cite[\S6]{MaxwellBlock}.
+
+At the stop level write $\eta_*=L^{-k_*}$,
+$T_*=\eta_*\Z^3/\ell_*\Z^3$ and
+$T_*^0=\Z^3/\ell_*\Z^3$. The fine chamber spinors
+have counting measure $\eta_*^3\,48^{-1}\sum_{c,g}$,
+and the coarse spinors have four components per unit
+site and weight one. We use
+\[
+ \begin{gathered}
+ k_*\ge1,\qquad \ell_*>2M+2,\qquad \gamma^FM\ge16,\\
+ 1-L^{-1}=:b_-\le b_*\le1,\qquad
+ 0<\mu_*\le1.
+ \end{gathered}
+\]
+The running mass $\mu_*$ is positive; the bare mass
+coupling is treated separately. Let
+\begin{align}
+ F_*(A)&=D_A+\mu_*+b_*JP_*(A)J^*,&
+ S_*(A)&=F_*(A)^{-1},\notag\\
+ H_*(A)&=b_*S_*(A)JQ_*^T(-A),&
+ D_*(A)&=b_*-b_*Q_*(A)J^*H_*(A).
+                                  \label{eq:interacting-terminal-operators}
+\end{align}
+These are the blocked operators already constructed
+in \cite[(51)]{FermionBlock} and
+\cite[(52)]{FermionBlock}, at $k=k_*$.
+The symbol $F_*$ here is an operator on spinors,
+distinct from the curvature variable in the external
+partition function.
+
+For a unit site $y$ let $\Delta_y$ be its fine block.
+The averaging phases have the form
+$\varphi_A(y,c)=e^{i\phi_A(y,c)}$, where
+$\phi_A=e_*\eta_*\tau_{k_*}A$ is linear in $A$.
+The nested block centers give
+\begin{equation}\label{eq:interacting-phase-bounds}
+ |\phi_B(y,c)|\le\tfrac32e_*|B|_\infty,\qquad
+ |\upsilon_B(c,c')|\le3|c-c'|e_*|B|_\infty.
+\end{equation}
+The first phase uses only bonds inside $\Delta_y$;
+the second, which defines $U_A(c,c')=e^{i\upsilon_A(c,c')}$,
+uses only bonds in the coordinate box between its endpoints.
+For the first bound, the path lengths at block scales
+$L^j\eta_*$ add up to
+$\frac32(L-1)\eta_*\sum_{j<k_*}L^j\le\frac32$.
+Each of the six coordinate-order paths between
+$c$ and $c'$ has length at most $3|c-c'|$,
+which gives the second bound.
+
+Fix the exponent $1-\varepsilon<\alpha<1$ from the construction.
+For distinct chamber sites $x=(c,g)$ and $x'=(c',g')$, the
+pair convention of \cite[\S2.2]{NormalizedContraction} is
+\[
+ d_X(x,x')=\max\{|c-c'|_\infty,\eta_*\}\le M,\qquad
+ (\delta_{\alpha,A}v)(x,x')
+   =\frac{U_A(c,c')v(x')-v(x)}{d_X(x,x')^\alpha}.
+\]
+Distances use the shortest simultaneous periodic lift.
+For pairs within one cluster, $d_X=\eta_*$ and $U_A=1$.
+The barred quotient uses $U_A^{-1}$.
+The admissible pairs for each polymer, including its boundary
+pairs of chamber bond type $3$, are as in that convention.
+
+For a complex direction $B$, let $P_B$ be the unit sites
+$y$ whose block $\Delta_y$ contains an endpoint of a bond
+in $\supp B$. Define
+\[
+ \epsilon_B=e_*|B|_\infty,\qquad
+ P_B^+=\{y:d(y,P_B)\le M+1\}.
+\]
+The distance is the periodic sup distance on the unit
+lattice. For an operator $O$ between fine, coarse or
+pair spaces, localize each fine spinor in its unit
+block and each pair at its first point, and put
+\begin{align}
+ |O|(y,y')&=\sup_{\|v\|_\infty\le1}
+                         \|\mathbf1_yO\mathbf1_{y'}v\|_\infty,\notag\\
+ \|O\|_\gamma&=\max\left\{
+       \sup_y\sum_{y'}|O|(y,y')e^{\gamma d(y,y')},
+       \sup_{y'}\sum_y|O|(y,y')e^{\gamma d(y,y')}\right\}.
+                                  \label{eq:interacting-operator-majorants}
+\end{align}
+The spinor sup norm uses the maximum of component
+moduli. Inserting the unit-block partition between
+two factors gives
+$|O_1O_2|\le|O_1||O_2|$ and
+$\|O_1O_2\|_\gamma\le\|O_1\|_\gamma\|O_2\|_\gamma$.
+For coarse spinor operators,
+\begin{equation}\label{eq:interacting-matrix-norms}
+ \|O\|_{\ell^2\to\ell^2}\le2\|O\|_0,\qquad
+ \|O\|_{\mathfrak S_1}\le4\sum_{y,y'}|O|(y,y').
+\end{equation}
+Indeed the matrix row sums are bounded by $\|O\|_0$
+and the column sums by $4\|O\|_0$, so Schur's test
+gives the first bound. Polar decomposition bounds
+the trace norm by the sum of all entry moduli, and
+the entries in one block have total modulus at most
+four times its maximum row sum.
+
+We use the fixed constants $C^F,\gamma^F$
+of the fermion construction, with its calibration
+$a'\ge1$ and
+\[
+ C^F\ge608\exp(1)\max(1,b)a',
+ \qquad C^F\ge64\exp(1)b^2a',\qquad b=1.
+\]
+The first inequality also dominates the component
+norm bounds $64a'$ and $608a'$ for the fine
+inverse and its short covariant quotients.
+The charge ceiling satisfies
+$6Le_*^\varepsilon\le1$ and
+$3Me_*^\varepsilon\le1$; on $\widetilde G_*$,
+$\mathfrak i(A)<e_*^\varepsilon$. The phase
+estimates therefore give
+$|\varphi_A^{\pm1}|,|U_A^{\pm1}|\le\exp(1)$,
+including every allowed long pair.
+The unweakened estimate
+\cite[(43)]{FermionBlock}, at its
+spectral parameter $y=\infty$, and the block
+phases give the following terminal bounds.
+On the outer field domain $\widetilde G_*$ the inverse
+$S_*$ is analytic, and, with
+$E(y,y')=e^{-\gamma^Fd(y,y')}$,
+\begin{equation}\label{eq:interacting-terminal-input}
+ |S_*|,\quad|\delta_{\alpha,A}S_*|,\quad
+ |H_*|,\quad|\delta_{\alpha,A}H_*|
+                                  \le C^FE.
+\end{equation}
+The two pair majorants are restricted to $d_X<1$,
+including pairs inside a chamber cluster.
+The field domain
+\[
+ \mathcal W=\{A_r+\mathscr C:
+          A_r\in\widetilde R_*\text{ real},\
+          \mathscr C\in\mathfrak X_*\}
+\]
+is contained in $\widetilde G_*$, is invariant under
+$A\mapsto-A$, and satisfies
+$\mathfrak i(A):=e_*|\operatorname{Im}A|_\infty<1/16$
+and $3M\mathfrak i(A)<1/4$. For long pairs,
+$|\delta_{\alpha,A}v(x,x')|_c
+\le\mathrm e|v(x')|_c+|v(x)|_c$.
+The constants $C^F\ge1$ and $0<\gamma^F\le1$ are
+uniform in the mesh, allowed torus and running mass. These
+are the stop-level forms of the walk and local inverse estimates
+of \cite[\S3]{FermionBlock}, uniform for $0<\mu_*\le1$. To obtain the bounds
+for $H_*$, write
+$H_*=b_*S_*JQ_*^T(-A)$. The last factor has
+Euclidean spinor sup norm at most $\exp(1)$,
+preserves each unit block, and has no chamber
+factor: it repeats the same coarse spinor over
+the $48$ labels, multiplied by the block phase.
+Composition with the localized inverse bounds
+gives constants $32\exp(1)ba'$ and
+$304\exp(1)ba'$. Since
+$|v|_c\le|v|_2\le2|v|_c$ on $\C^4$,
+their component sup norms are at most twice
+these constants, hence at most $C^F$.
+
+We shall also need the global component row
+bound, without an exponential weight:
+\begin{equation}\label{eq:interacting-global-field-rows}
+ |H_*^\#(A)|_{1,\infty}\le C^F,\qquad
+ |\bar H_*^\#(A)|_{1,\infty}\le C^F .
+\end{equation}
+Here the rows include every allowed pair, and
+the columns are the four coarse components
+at the unit sites. Indeed, the unweighted
+consequences of \cite[(43)]{FermionBlock}
+give
+\[
+ \|H_*(A)v\|_{\mathrm{su}}
+       \le32\exp(1)ba'\|v\|_{\mathrm{su}},\qquad
+ \|\delta_{\alpha,A}H_*(A)v\|_{\mathrm{su}}
+       \le304\exp(1)ba'\|v\|_{\mathrm{su}}
+\]
+for short pairs. These include distinct
+labels at the same photon site.
+For a long pair, $1\le d_X(x,x')\le M$,
+so $d_X^{-\alpha}\le1$ and $|U_A|\le\exp(1)$.
+Consequently
+\[
+ |(\delta_{\alpha,A}H_*(A)v)(x,x')|_2
+ \le(1+\exp(1))\|H_*(A)v\|_{\mathrm{su}}
+ \le128\exp(1)ba'\|v\|_{\mathrm{su}} .
+\]
+Thus $304\exp(1)ba'$ bounds the Euclidean
+sup norm for all pair rows. Conversion to
+the component sup norm costs a factor of
+two, and the calibration of $C^F$ gives
+\eqref{eq:interacting-global-field-rows}.
+To identify this operator norm with the row
+sum, fix one output component and prescribe
+each input component to have the conjugate
+phase of its matrix entry. The coarse
+spinor values on a fundamental domain can
+be prescribed independently; their
+antiperiodic extension does not affect
+the entry moduli. All unit sites have
+weight one.
+
+The barred bound follows from
+$\bar H_*(A)=\mathsf C^{-1}H_*(-A)\mathsf C$.
+The charge-conjugation matrix $\mathsf C$
+is a signed permutation of the four
+components, and commutes with the scalar
+phases in the covariant quotient. It
+preserves both spinor norms. Applying
+the preceding argument at $-A$ proves
+the second inequality in
+\eqref{eq:interacting-global-field-rows}.
+Finally, localization of the long-pair
+argument gives the bound
+$C^F\exp(-\gamma^F\min\{d([x],y'),d([x'],y')\})$
+for the coefficient at a coarse site $y'$.
+The intermediate Euclidean constant is
+$128\exp(1)ba'$, and its component constant
+$256\exp(1)ba'$ is again at most $C^F$.
+
+\subsection{The real covariance}
+\label{subsec:interacting-covariance}
+
+The covariance at a real field requires no
+small-field hypothesis. If $A_r$ is real,
+$R=D_{A_r}+\mu_*$ has real part at least $\mu_*$.
+The averaging map $Q=Q_*(A_r)J^*$ satisfies
+$Q^*=JQ_*^T(-A_r)$ and $QQ^*=1$, because its
+phases have modulus one and every block has
+fine measure one. Thus $F_*(A_r)=R+b_*Q^*Q$
+also has real part at least $\mu_*$.
+Set $C=QR^{-1}Q^*$ and $Y=(b_*^{-1}+C)^{-1}$.
+The inverse $R^{-1}$ is accretive, so
+$b_*^{-1}+C$ is invertible. Multiplication
+verifies
+\[
+ S_*=R^{-1}-R^{-1}Q^*YQR^{-1},\qquad
+ Q S_*Q^*=b_*^{-1}(1-b_*^{-1}Y).
+\]
+The definition of $D_*$ therefore gives
+\begin{equation}\label{eq:interacting-coarse-covariance}
+ D_*(A_r)^{-1}=b_*^{-1}+QR^{-1}Q^*,\qquad
+ \|D_*(A_r)^{-1}\|_2\le b_*^{-1}+\mu_*^{-1}.
+\end{equation}
+
+Its block decay follows by conjugating the fine
+inverse with a weight. Fix $y'$ and put
+$\psi(c)=\vartheta\,d(c,\Delta_{y'})$ on the
+periodic fine lattice, with
+$\vartheta=\mu_*/(12\mathrm e)\le1$.
+This weight is zero on $\Delta_{y'}$, is
+$\vartheta$-Lipschitz, and on $\Delta_y$ is
+at least $\vartheta(d(y,y')-1)$.
+Only the external Dirac hop changes under
+conjugation by $e^\psi$, since the internal
+hops stay over one photon site. Consequently
+\[
+ \|e^\psi D_{A_r}e^{-\psi}-D_{A_r}\|_2
+ \le6\eta_*^{-1}(e^{\vartheta\eta_*}-1)
+ \le6\mathrm e\vartheta=\mu_*/2.
+\]
+The conjugated $R$ has real part at least
+$\mu_*/2$, so its inverse has norm at most
+$2/\mu_*$. Apply it between $Q^*$ times
+unit spinors at $y$ and $y'$; these have
+norm one and supports in their respective
+blocks. Moving the weight across the
+scalar product gives
+\begin{equation}\label{eq:interacting-real-covariance-decay}
+ \|D_*(A_r)^{-1}(y,y')\|_2
+  \le b_*^{-1}1_{\{y=y'\}}+
+       \frac{2\mathrm e}{\mu_*}
+                       e^{-\mu_*d(y,y')/(12\mathrm e)}.
+\end{equation}
+The factor $\mathrm e$ accounts for the unit
+block diameter in the lower bound for $\psi$.
+\subsection{The terminal Grassmann norms}
+\label{subsec:interacting-terminal-norms}
+
+The terminal integral is over four coarse
+components per unit site, with Grassmann
+weight one. For a polynomial
+$F=\sum_I F_I\Psi_I$ in ordered distinct generators,
+write $|F|_a=\sum_I|F_I|a^{|I|}$.
+The fine norm $\|F\|_{h_*}$ uses the prescribed fine measure
+and the two weights for spinor and H\"older-pair generators,
+as in \cite[(4)--(5)]{NormalizedContraction};
+the weighted substitution estimate is proved in
+\cite[Proposition~5.1]{FermionBlock}.
+Set
+\[
+ a_1=e_*^{-1/4},\qquad
+ a_2=C_0^{-1}e_*^{-1/4+\varepsilon},\qquad
+ h_*=(e_*^{-1/4},e_*^{-1/4+\varepsilon}).
+\]
+By \eqref{eq:interacting-global-field-rows},
+the substitution $H_*^\#(A)\Psi$ has row
+norm at most $C^F\le C_0$, for both spinor
+and H\"older legs, including all long
+and cluster pairs. The coarse kernel
+$b_*-D_*(A)=b_*^2Q_*J^*S_*JQ_*^T(-A)$
+is bounded by $C^FE(y,y')$: block
+compression gives Euclidean constant
+$32\exp(1)b^2a'$ by
+\cite[(60)]{FermionBlock}, and
+conversion to the component norm doubles
+it. The calibration of $C^F$ applies.
+
+The weighted Grassmann substitution estimate
+applies with $C_0a_2=h_{*,2}\le h_{*,1}$.
+Therefore
+\begin{equation}\label{eq:interacting-terminal-substitution}
+ |F(H_*^\#(A)\Psi)|_{a_2}\le\|F\|_{h_*}.
+\end{equation}
+For the mass form before substitution, the
+fine measure sums to $\ell_*^3$ and there
+are four spin components. Its norm at
+weight $C_0a_2$ is exactly
+$4\ell_*^3(C_0a_2)^2$. In particular
+\begin{equation}\label{eq:interacting-terminal-mass-form}
+ |\langle\bar\psi,\psi\rangle|_{a_2}
+                   \le4e_*^{-1/2+2\varepsilon}\ell_*^3.
+\end{equation}
+The $48$ labels are canceled by the fine
+measure $1/48$; there is no factor $192$
+in this estimate. Similarly the coarse
+bilinear form has norm $a_1^2$ times the
+sum of its matrix entry moduli. Its diagonal
+term contributes $4b_*$ per unit site,
+and its decaying kernel contributes at
+most $4C^F\sum_{y'}E(y,y')$.
+For $c(\gamma)=\sum_{z\in\Z^3}e^{-\gamma|z|_\infty}$,
+the lattice-sum estimate in \cref{sec:tpm-marked} gives
+$c(\gamma)\le(12/\gamma)^3$ when $0<\gamma\le6$.
+The chosen $C_0\ge4+16C^Fc(\gamma^F)$ therefore gives
+\begin{equation}\label{eq:interacting-terminal-Dirac-form}
+ |\langle\bar\Psi,D_*(A)\Psi\rangle|_{a_1}
+                                  \le C_0e_*^{-1/2}\ell_*^3.
+\end{equation}
+These estimates hold on $\widetilde G_*$.
+For the external activity evaluated at
+$\mathscr T=\mathscr A+\mathscr C$, the
+same substitution applies because
+$\widetilde R_*+\mathfrak X_*\subset\widetilde G_*$.
+
+
+\appendix
+\section{Marked insertions and reference-mass covariance}
+\label{sec:tpm-marked}
+
+The terminal operators of \cref{subsec:interacting-terminal-operators}
+also give estimates for local variations of the connection.
+These estimates are used for the differentiated terminal integral.
+The first subsection uses the field domain $\mathcal W$ and
+the operator bounds already stated. For the neighborhood and
+covariance constants in the second subsection we additionally fix
+\[
+                    L^{-3}=:\mu_-<\mu_*\le L^{-1}.
+\]
+This interval holds at the reference stop; it is not imposed
+in \cref{thm:term-common-partition}.
+
+\subsection{Local derivatives of the block operator}
+
+Put
+\[
+ \mathcal S=C^F(24/\gamma^F)^3,\qquad
+ h_{\mathrm L}=6\mathcal S,\qquad
+ C_H=203M(C^F)^2,\qquad C_K=226\mathcal S^2.
+\]
+The lattice sum
+$\sum_{y'}e^{-\gamma d(y,y')}\le(12/\gamma)^3$,
+$0<\gamma\le6$, follows by choosing nearest periodic
+representatives and summing
+$e^{-\gamma|z|_\infty}\le e^{-\gamma|z|_1/3}$ over
+$\Z^3$. The one-dimensional sum is
+$\coth(\gamma/6)\le12/\gamma$.
+
+For a fine spinor or Hölder-pair index $u$, let
+$\operatorname{Leg}_A(u;y',\beta')$ be the coefficient
+of $\Psi_{\beta'}(y')$ after substituting
+$H_*^\#(A)\Psi$ in that generator. Barred generators
+use the corresponding barred coefficient.
+The set $\operatorname{pos}(u)$ consists of the unit
+block containing the first endpoint, and, for a
+pair with $d_X(x,x')\ge1$, also the block
+containing its second endpoint. Thus it has at
+most two elements.
+
+\begin{proposition}\label{prop:interacting-local-insertions}
+For $A\in\mathcal W$, the blocked field maps and
+their Hölder maps are analytic in $A$. The first
+coarse-operator derivative satisfies
+\begin{align}
+ |\partial_BD_*(A)|(y,y')
+  &\le226(C^F)^2\epsilon_B
+       \sum_{z\in P_B}E(y,z)E(z,y'),\notag\\
+ \|\partial_BD_*(A)\|_{\gamma^F/2}
+  &\le C_K\epsilon_B,\qquad
+ \sum_{y,y'}|\partial_BD_*(A)|(y,y')
+                           \le C_K\epsilon_B|P_B|.
+                                  \label{eq:interacting-coarse-first}
+\end{align}
+If $d(P_B,P_{B'})\ge M+2$, then
+\begin{align}
+ |\partial_B\partial_{B'}D_*(A)|(y,y')
+ \le{}& C_H^2\epsilon_B\epsilon_{B'}
+       \sum_{z\in P_B,z'\in P_{B'}}
+       \big(E(y,z)E(z,z')E(z',y')\notag\\*
+       &\hspace{38mm}+E(y,z')E(z',z)E(z,y')\big).
+                                  \label{eq:interacting-coarse-mixed}
+\end{align}
+The corresponding fine-field legs satisfy
+\begin{align}
+ |\operatorname{Leg}_A|(u;y')
+   &\le3C^F\sum_{w\in\operatorname{pos}(u)}E(w,y'),\notag\\
+ |\partial_B\operatorname{Leg}_A|(u;y')
+   &\le C_H\epsilon_B
+       \sum_{w\in\operatorname{pos}(u),z\in P_B^+}E(w,z)E(z,y'),
+                                  \label{eq:interacting-leg-first}\\
+ |\partial_B\partial_{B'}\operatorname{Leg}_A|(u;y')
+   &\le C_H^2\epsilon_B\epsilon_{B'}
+       \sum_{\substack{w\in\operatorname{pos}(u)\\z\in P_B^+,z'\in P_{B'}^+}}
+       \big(E(w,z)E(z,z')E(z',y')\notag\\
+   &\hspace{37mm}+E(w,z')E(z',z)E(z,y')\big).
+                                  \label{eq:interacting-leg-mixed}
+\end{align}
+The last bound has the same separation hypothesis.
+These estimates hold for barred and unbarred legs.
+\end{proposition}
+
+\begin{proof}
+The block averages and their transposes are diagonal
+in unit blocks. From
+\eqref{eq:interacting-phase-bounds} and
+$\mathfrak i(A)\le1/4$ their majorants are at most
+$3/2$. Their directional derivatives are bounded by
+\[
+                 (9/4)\epsilon_B1_{\{y\in P_B\}}.
+\]
+Differentiating the only phased Dirac hop gives
+\[
+ (\partial_BD_Av)(x)=
+        -ie_*B(c,c_3)M_3(x)u_A(c,c_3)v(x^{(3)}).
+\]
+Its majorant is at most $8\epsilon_B$, vanishes
+unless the unit blocks coincide or are neighbors,
+and vanishes unless both belong to $P_B$.
+The derivative of $JP_*(A)J^*$ has diagonal
+majorant at most $7\epsilon_B$. Thus for
+$F_B=\partial_BF_*(A)$,
+\[
+ |F_B|(z,z')\le\epsilon_B
+       (15\,1_{\{z=z'\}}+8\,1_{\{z,z'\text{ neighbors}\}})
+                                      1_{\{z,z'\in P_B\}}.
+\]
+Summing the six neighboring blocks gives
+$\|F_B\|_\gamma\le146\epsilon_B$ for $0\le\gamma\le1$.
+Also, since $E(z',y')\le\mathrm eE(z,y')$ for
+neighboring $z,z'$,
+\begin{equation}\label{eq:interacting-insertion-chain}
+ \sum_{z,z'}E(y,z)|F_B|(z,z')E(z',y')
+        \le146\epsilon_B\sum_{z\in P_B}E(y,z)E(z,y').
+\end{equation}
+
+If the supports are separated by $M+2$, the mixed
+derivatives of $D_A$, the averages, $JP_*J^*$,
+$F_*$ and $\delta_{\alpha,A}$ vanish. Each entry
+is an exponential of a linear phase supported
+in a unit block, a single external bond or a
+coordinate box of diameter at most $M$.
+Two separated directions cannot both occur in
+one phase. For $JP_*J^*$ the remaining product
+terms have disjoint unit-block supports.
+
+The inverse derivative and the blocked-field
+definition give
+\[
+ \partial_BH_*=-S_*F_BH_*+
+               b_*S_*\partial_B(JQ_*^T(-A)).
+\]
+Use \eqref{eq:interacting-terminal-input} and
+\eqref{eq:interacting-insertion-chain} in the first
+term. The diagonal derivative in the second
+is absorbed as the summand $z=y'$. The combined
+coefficient is at most $149(C^F)^2$:
+\begin{equation}\label{eq:interacting-H-first}
+ |\partial_BH_*|(y,y')
+ \le149(C^F)^2\epsilon_B
+                    \sum_{z\in P_B}E(y,z)E(z,y').
+\end{equation}
+The same estimate holds for
+$\delta_{\alpha,A}\partial_BH_*$ on short pairs,
+since the first factor $S_*$ can be replaced
+by $\delta_{\alpha,A}S_*$.
+
+For separated directions differentiating once more
+leaves four terms:
+\begin{align*}
+ \partial_B\partial_{B'}H_*={}&
+ S_*F_BS_*F_{B'}H_*+S_*F_{B'}S_*F_BH_*\\*
+ &-b_*S_*F_BS_*\partial_{B'}(JQ_*^T(-A))
+  -b_*S_*F_{B'}S_*\partial_B(JQ_*^T(-A)).
+\end{align*}
+Apply \eqref{eq:interacting-insertion-chain} twice
+to the first two terms. Each gives an ordered
+three-link exponential chain with coefficient
+$146^2(C^F)^3$. The diagonal last factors in
+the other two terms give the same chains, with
+coefficient $(657/2)(C^F)^2$. Each ordered
+chain therefore has coefficient at most
+$21645(C^F)^3$. Again the first factor may
+be replaced by the short-pair Hölder inverse.
+
+Differentiate $D_*=b_*-b_*Q_*J^*H_*$.
+The derivative of the average contributes
+$(9/4)C^F$ to the first exponential chain and
+the derivative of $H_*$ contributes
+$(3/2)149(C^F)^2$. Their sum is at most
+$226(C^F)^2$, proving the first line of
+\eqref{eq:interacting-coarse-first}.
+Weighted row and column sums give two factors
+$(24/\gamma^F)^3$, hence $C_K$; without weights
+the same sum retains one factor $|P_B|$.
+For the mixed derivative the three product
+terms contain one derivative on each factor,
+or the mixed derivative of $H_*$. Each chain
+has coefficient at most
+$(1341/4)(C^F)^2+(64935/2)(C^F)^3
+\le32803(C^F)^3\le C_H^2$.
+This proves \eqref{eq:interacting-coarse-mixed}.
+
+A leg is a component row of $H_*$ or of
+$\delta_{\alpha,A}H_*$. For a short pair its
+position is its first unit block; for a long
+pair its position set contains both endpoint
+blocks. The sum over spin components of the
+row is bounded by the relevant majorant.
+For long pairs use
+$|\delta_{\alpha,A}v|\le\mathrm e|v(x')|+|v(x)|$;
+for short pairs use the Hölder input directly.
+This gives the first line of
+\eqref{eq:interacting-leg-first}, and its
+weighted row sum is at most $h_{\mathrm L}$.
+
+The derivative of a Hölder leg has two terms:
+$(\partial_B\delta_{\alpha,A})H_*+
+\delta_{\alpha,A}\partial_BH_*$.
+The first is bounded by
+$4d_X^{1-\alpha}\epsilon_B|H_*v(x')|$,
+and vanishes unless the pair is within $M$
+of $P_B$. It vanishes for pairs inside a
+cluster, since their phase is one.
+For short pairs this adds at most
+$11C^F$ to $149(C^F)^2$; for long pairs
+it adds $4MC^F$ to $(4/3)149(C^F)^2$.
+Both are at most $C_H$, after enlarging
+$P_B$ to $P_B^+$. This proves the derivative
+bound in \eqref{eq:interacting-leg-first}.
+
+For its mixed derivative the second derivative
+of the Hölder phase vanishes by separation.
+There remain
+$(\partial_B\delta_{\alpha,A})\partial_{B'}H_*$
+and its interchange, and
+$\delta_{\alpha,A}\partial_B\partial_{B'}H_*$.
+On short pairs each ordered chain has
+coefficient at most
+$1639(C^F)^2+21645(C^F)^3$.
+On long pairs the coefficient at the second
+endpoint is at most
+$596M(C^F)^2+28860(C^F)^3$;
+the first endpoint has the smaller coefficient
+$21645(C^F)^3$. All are at most $C_H^2$,
+proving \eqref{eq:interacting-leg-mixed}.
+Barred legs follow by the monomial charge
+conjugation matrix and the replacement $A\mapsto-A$,
+which preserve component row sums; the domain
+is invariant under that replacement.
+\end{proof}
+
+
+\subsection{A complex neighborhood and covariance bounds}
+
+Choose
+\[
+ c_\tau=\min\{1/8,\mu_-/48,(292\mathcal S)^{-1}\},\qquad
+ C_K'=1328\mathcal S^2,\qquad
+ \mathcal W^+=\{A+A_1:A\in\mathcal W,\ e_*|A_1|_\infty\le c_\tau\}.
+\]
+Every point of $\mathcal W^+$ has imaginary part
+$\mathfrak i<1/4$. The elementary averages and
+$F_*$ therefore satisfy the same local derivative
+bounds as above, although the exponential propagator
+input is initially given only on $\mathcal W$.
+The enlargement preserves invertibility:
+\begin{equation}\label{eq:interacting-enlarged-inverse}
+ \|S_*(A+A_1)\|_{\gamma^F/2}\le2\mathcal S.
+\end{equation}
+To prove this, integrate $\partial_{A_1}F_*$
+along the segment to get
+$\|F_*(A+A_1)-F_*(A)\|_{\gamma^F/2}
+\le146c_\tau$. Multiplying by $S_*(A)$ gives
+norm at most $146c_\tau\mathcal S\le1/2$.
+The Neumann inverse in the submultiplicative
+majorant norm proves \eqref{eq:interacting-enlarged-inverse}.
+Since its finite-dimensional determinant is
+nonzero, $S_*$ is analytic in a neighborhood
+of each point of $\mathcal W^+$, as is $D_*$.
+
+Differentiate
+$D_*=b_*-b_*^2Q_*J^*S_*JQ_*^T(-A)$.
+The three terms have majorant-norm coefficients
+\[
+ \tfrac94(2\mathcal S)\tfrac32,\qquad
+ \tfrac32(2\mathcal S)146(2\mathcal S)\tfrac32,\qquad
+ \tfrac32(2\mathcal S)\tfrac94.
+\]
+Their sum is
+$\frac{27}{2}\mathcal S+1314\mathcal S^2\le C_K'$.
+Keeping the support indicator of either the
+average derivative or $F_B$ gives, respectively,
+\begin{equation}\label{eq:interacting-enlarged-derivative}
+ \|\partial_BD_*(A)\|_{\gamma^F/2}\le C_K'\epsilon_B,\qquad
+ \sum_{y,y'}|\partial_BD_*(A)|(y,y')
+                                  \le C_K'\epsilon_B|P_B|,
+                                      \qquad A\in\mathcal W^+.
+\end{equation}
+In the middle term, sum first the two outer
+$S_*$ factors using their row and column bounds
+$2\mathcal S$, and then sum the local derivative
+over its first endpoint in $P_B$. Integrating
+\eqref{eq:interacting-enlarged-derivative} along
+any segment inside $\mathcal W^+$ gives the
+same two bounds for $D_*(A+B)-D_*(A)$.
+
+
+Set
+\[
+ g=(b_-^{-1}+\mu_-^{-1})^{1/2},\qquad
+ h_G=1+g,\qquad g_1=b_-^{-1}+4/\mu_-,
+ \qquad \theta_{\mathrm{CT}}=\mu_-/(12\mathrm e),
+\]
+\[
+ \vartheta_0=\min\{\theta_{\mathrm{CT}}/2,\gamma^F/8,1/M\},
+ \qquad
+ \alpha_G=2b_-^{-1}
+        +4\mathrm e\mu_-^{-1}(24/\theta_{\mathrm{CT}})^3.
+\]
+A component row or column of a $4\times4$ matrix
+has sum at most twice its Hilbert-space norm.
+Using \eqref{eq:interacting-real-covariance-decay}
+and the lattice exponential sum, every row and
+column of $G=D_*(A_r)^{-1}$ therefore satisfies
+\begin{equation}\label{eq:interacting-Gaussian-covariance}
+ \sum_{u'}|G(u,u')|e^{\vartheta_0d(u,u')}
+       \le\alpha_G,\qquad
+ \sum_u|G(u,u')|e^{\vartheta_0d(u,u')}
+       \le\alpha_G,\qquad \|G\|_2\le g^2.
+\end{equation}
+These constants depend on $L,C^F,\gamma^F,M$,
+not on the size of the real connection.
+
+The same inverse identity gives a bound for the
+coarse covariance at complex fields. Suppose
+$A=A_r+A_1$, with $A_r$ real,
+$e_*|A_1|_\infty\le\mu_*/24$, and $F_*(A)$
+invertible. The external-hop phase difference
+gives $\|D_A-D_{A_r}\|_2\le12e_*|A_1|_\infty
+\le\mu_*/2$. Hence $D_A+\mu_*$ is accretive
+with inverse norm at most $2/\mu_*$. Its two
+average maps have norm at most $\sqrt2$,
+because $|\varphi_A^{\pm1}|\le e^{1/16}\le\sqrt2$.
+The same finite-rank inversion calculation
+then gives
+\begin{equation}\label{eq:interacting-complex-covariance}
+ D_*(A)^{-1}=b_*^{-1}+
+ Q_*(A)J^*(D_A+\mu_*)^{-1}JQ_*^T(-A),
+ \qquad
+ \|D_*(A)^{-1}\|_2\le g_1.
+\end{equation}
+Here invertibility of $b_*^{-1}+QR^{-1}Q'$
+follows from that of $F_*(A)$ and $R$:
+$\det(1+b_*R^{-1}Q'Q)=\det(1+b_*QR^{-1}Q')$.
+This determinant identity follows by the two
+block-triangular factorizations of
+$\left(\begin{smallmatrix}1&-b_*R^{-1}Q'\\Q&1\end{smallmatrix}\right)$.
+The inverse formula is then checked by
+multiplication exactly as above.
+Each covariance entry is bounded by $g_1$,
+so each row has sum at most $4\ell_*^3g_1$.
+
+
+\printbibliography
+\end{document}

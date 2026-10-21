@@ -5,7 +5,7 @@
 Project codename: **CV1**.
 
 - **CVO1** — [Agreement across covers and common tuning](CVO1.pdf).
-- **AI-written manuscript:** **CVM1** — *Agreement across covers and common tuning for lattice QED in three dimensions* (manuscript to be added).
+- **AI-written manuscript:** **CVM1** — [Agreement across covers and common tuning for lattice QED in three dimensions](CVM1.pdf) · [TeX source](CVM1-source/CVM1.tex).
 - **Human-written manuscript:** to be added.
 
 ## Role in the QEM1 assembly
@@ -281,4 +281,4 @@ a_*\in\{h/L,h/L^2\},\qquad
 
 ## Navigation
 
-[QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Links to published outlines use their repository locations; links to withheld manuscripts open the corresponding README. Citations to material outside this assembly remain visible without a download link.
+[QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Links to published outlines use their repository locations; links to manuscripts open the corresponding README. Citations to material outside this assembly remain visible without a download link.

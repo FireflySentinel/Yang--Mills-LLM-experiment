@@ -1,0 +1,113 @@
+\section{Reflection positivity of the original limit}\label{sec:completion}
+
+\subsection{Convex separation and the nine mirror families}\label{subsec:diag-separation}
+
+Fix an integer $c_0$. Let $\mathcal R(c_0)$ be the set of
+laws on $\Omega$ satisfying Gaussian domination and both
+invariance and reflection positivity at
+$(x_1-x_2,c_0)$. This is convex and weakly compact. Gaussian
+domination gives a common tail
+$\lambda(|F_\sigma|\ge R)\le2e^{-R^2/2}$ and hence uniform
+tightness. It is weakly closed by truncation of its exponential
+integrals. Mirror invariance and positivity against continuous
+local tests are also closed, and the approximation in \cref{subsec:coordinate-limits}
+extends the latter to the full open-side $L^2$ space. Each condition is affine
+or an affine inequality in the law, proving convexity.
+
+We claim that, for every real local trigonometric polynomial
+$O$ and every cubic limit $\nu$ along an arbitrary sequence of sides tending to infinity, some $\nu_0\in\mathcal R(c_0)$ satisfies
+\eqref{eq:diag-dominating-state}. The polynomial need not
+initially fit in a cell having its lower wall at $c_0$.
+Let $\supp O\subset y_0+[-r,r]^3$, with $r\ge1$, and choose
+an admissible even width $h>8r+8$. Choose an even integer
+$a$ in
+\[
+ (c_0+2r-\ell_-(y_0),\ c_0+h-2r-\ell_-(y_0)).
+\]
+The interval has length greater than two. For $v=ae_1$ and
+$y=y_0+v$ its defining inequalities place the translated
+box between the two $\ell_-$ walls. Choose integer $c_+$
+and half-integer $c_3$ so that
+\[
+ c_+<\ell_+(y)-2r<\ell_+(y)+2r<c_++h,
+ \qquad c_3<y_3-r<y_3+r<c_3+h.
+\]
+The available intervals have length greater than one.
+The box therefore lies in the open diagonal cell, since
+$|\ell_\pm(x)-\ell_\pm(y)|\le2r$ on it. Form the tilted
+law with the translated polynomial $O^{\tau_v}$.
+
+Choose companion sides by \cref{lem:companions-exist} and form a
+comparison state on those sides, subordinate to the original volume
+subsequence defining $\nu$. It belongs to $\mathcal R(c_0)$,
+and \cref{thm:comparison-any-side} gives
+$\nu(O^{\tau_v})\le\nu_0(O^{\tau_v})$. The original cubic
+laws are invariant under every lattice translation, and
+this invariance passes to $\nu$. Equation
+\eqref{eq:diag-even-translation} gives the same invariance
+under this particular $v$ for $\nu_0$. Hence
+\begin{equation}\label{eq:diag-dominating-state}
+ \nu(O)=\nu(O^{\tau_v})
+       \le\nu_0(O^{\tau_v})=\nu_0(O).
+\end{equation}
+The comparison state may depend on $O$. Convex separation
+is what turns these individual inequalities into reflection
+positivity of the original law.
+
+\begin{lemma}\label{lem:diag-separation}
+Let $\mathcal R$ be a convex weakly compact set of laws on
+$\Omega$. If for every real local trigonometric polynomial
+$O$ some $\lambda\in\mathcal R$ satisfies
+$\nu(O)\le\lambda(O)$, then $\nu\in\mathcal R$.
+\end{lemma}
+
+\begin{proof}
+Give the real vector space of finite signed measures on
+$\Omega$ the weak topology defined by integration against
+these polynomials. It is locally convex and Hausdorff:
+if every such integral of a signed measure vanishes, its
+finite-coordinate marginals have zero Fourier transform,
+so its positive and negative parts agree on cylinder sets
+and hence on every Borel set. Its continuous linear
+functionals are precisely integration against the test
+space; a continuous linear functional for a topology
+defined by these seminorms depends on finitely many of
+them, and their finite real span is still that space.
+Since the tests are bounded and continuous, the inclusion
+from the usual weak topology of laws is continuous.
+Thus $\mathcal R$ is a compact convex subset of this
+locally convex Hausdorff vector space. It is nonempty
+by the hypothesis at $O=0$.
+
+If $\nu$ were outside $\mathcal R$, strict separation
+\cite[Theorem~6.2.9]{Peterson2017} of
+a compact convex set and a disjoint closed point would
+give a continuous linear functional with
+$\max_{\lambda\in\mathcal R}\lambda(O)<\nu(O)$ for some
+test $O$. Its maximum exists by compactness. This contradicts
+the assumed inequality for that $O$.
+\end{proof}
+
+\begin{proof}[Proof of \Cref{thm:main}]
+
+The coordinate part of the theorem, including tightness, Gaussian
+domination, all lattice symmetries and coordinate reflection positivity,
+was proved in \cref{subsec:coordinate-limits} for arbitrary integer
+sides. Let $\nu$ be any limit along a prescribed original sequence.
+For the diagonal mirror $(x_1-x_2,c_0)$,
+\eqref{eq:diag-dominating-state} holds for every real
+trigonometric polynomial. \Cref{lem:diag-separation}
+therefore gives $\nu\in\mathcal R(c_0)$, proving its
+diagonal positivity. This is valid for every integer
+$c_0$.
+
+A signed permutation transports this diagonal mirror
+and its positive half-space to any plane
+$x_\mu\pm x_\nu=c$. The corresponding reflection is the
+conjugate of the original one. Pull a positive-side test
+back by this isometry; invariance of $\nu$ identifies
+its reflected form with the already nonnegative one.
+This gives the six diagonal families and completes
+the proof.
+\end{proof}
+

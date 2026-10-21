@@ -1,0 +1,197 @@
+% QEM1:10142--10371; RG balls and mean-field specialization omitted.
+\subsection{The local Grassmann algebra}
+\label{subsec:rg-activity-spaces}
+
+Fix a level $k$, mesh $\eta_k=L^{-k}$ and an admissible side
+$\ell$, with $\ell/(LM)$ odd and at least $13$.
+Let $\mathcal P_k$ be the collection of face-connected polymers
+of $M$-cubes on this torus. A polymer is small when
+$d_M(X)\le L$. A small polymer has an injective lift, unique up
+to a period translation, by the diameter and lifting estimates
+of Appendix~\ref{app:polymer-geometry}.
+Write $\operatorname{Vol}(X)=M^3|X|_M$.
+
+The independent Grassmann generators are $\psi$, $\bar\psi$ on
+the chamber sites $x=(c,g)$ and $\chi$, $\bar\chi$ on ordered
+pairs. For distinct chamber sites on the covering lattice, put
+$d_X(x,x')=\max(|c-c'|_\infty,\eta_k)$ and restrict pairs to
+$d_X\le M$. Pairs on the torus are simultaneous period classes;
+their shortest lifts are unique since $2M<\ell$. A pair is
+admissible for $X$ when its photon sites and all six rectilinear
+paths between them lie in $X$, or when it is $(x,x^{(3)})$ and
+one of its photon sites belongs to $X$.
+Thus a pair may leave $X$ only along a bond of type $3$.
+Pairs inside a cluster have $d_X=\eta_k$ and are admissible when
+their common photon site belongs to $X$.
+Ordinary generators acquire the sign $(-1)^{n_1+n_2+n_3}$
+under translation by $\ell n$. Pair generators acquire the same
+sign when both endpoints are translated by $\ell n$.
+The kernels are antiperiodic in each ordinary argument and in
+each simultaneous pair argument with these conventions.
+
+Let $\xi=(x,\beta,\omega)$ index an ordinary leg and
+$\zeta=(x,x',\beta,\omega)$ a H\"older leg, where
+$\omega=0$ is unbarred and $\omega=1$ is barred.
+We use the index measures
+\[
+ \nu(\xi)=\eta_k^3/48,\qquad
+ \nu(\zeta)=(\eta_k^3/48)^2.
+\]
+Integrals sum the spin and bar indices as well. An activity
+has a unique expansion with separately antisymmetric kernels,
+\begin{equation}\label{eq:rg-activity-kernels}
+ \mathscr E(X;\mathscr A,\mathscr C)
+ =\sum_{n,m}\frac1{n!m!}\int\dd\xi\,\dd\zeta\,
+      \mathscr E_{nm}(X;\mathscr A,\mathscr C;\xi;\zeta)
+                       \psi(\xi_1)\cdots\psi(\xi_n)
+                       \chi(\zeta_1)\cdots\chi(\zeta_m).
+\end{equation}
+Barred generators are included in this notation.
+The generator weights, as distinct from the index measures, are
+\[
+ h_{k,1}=e_k^{-1/4},\qquad h_{k,2}=e_k^{-1/4+\varepsilon}.
+\]
+For an element $F$ the weighted coefficient norm is
+\begin{equation}\label{eq:rg-activity-coefficient-norm}
+ \|F\|_{h_k}
+       =\sum_{n,m}\frac{h_{k,1}^nh_{k,2}^m}{n!m!}
+                                   \int\dd\xi\,\dd\zeta\,|F_{nm}|.
+\end{equation}
+In particular a generator has norm $h_{k,i}$;
+the weight $\nu$ enters only when coefficients are written as
+integral kernels.
+
+An activity family in $K_k^{x,\C}$ is balanced: every monomial
+has as many barred as unbarred legs. Its kernels are holomorphic
+on $\widetilde R_k\times\mathfrak X_k$, vanish unless all ordinary
+legs lie over $X$ and all pairs are admissible for $X$, and read
+the two connections only on bonds meeting $X$. The norm is
+\begin{equation}\label{eq:rg-activity-norm}
+ \|\mathscr E\|_k^x
+  =\sup_{X\in\mathcal P_k}\exp(\kappa d_M(X))
+    \sup_{(\mathscr A,\mathscr C)\in\widetilde R_k\times\mathfrak X_k}
+                          \|\mathscr E(X;\mathscr A,\mathscr C)\|_{h_k}.
+\end{equation}
+We require $\kappa\ge\kappa_0$ and finite norm.
+
+The required symmetries act on both the connections and the
+generators. For $\tilde g=(S,a)$ with the coordinate sign action
+$r(S)$ and $a\in M\Z^3$, put
+\[
+ \tilde g(c,g)=(r(S)c+a,r(S)g),\qquad
+ a_{\tilde g}\psi(x)=S\psi(\tilde g^{-1}x),\qquad
+ a_{\tilde g}\bar\psi(x)=(S^{-1})^T\bar\psi(\tilde g^{-1}x).
+\]
+The same spin matrices act on pair generators after transforming
+both endpoints. Local gauge transformations multiply an unbarred
+ordinary or pair leg by $\exp(ie_k\Lambda(c))$, using the photon
+site of its first point, and a barred leg by the inverse phase.
+Write this automorphism as $G_\Lambda$.
+Charge conjugation and the antilinear reality map act by
+\[
+ \mathrm{Cg}\,\psi=\mathsf C\bar\psi,\qquad
+ \mathrm{Cg}\,\bar\psi=-\mathsf C\psi,\qquad
+ \mathbf K\psi=\varkappa\psi,\qquad
+ \mathbf K\bar\psi=\varkappa\bar\psi,
+\]
+and by the same rules on the H\"older generators.
+
+The covariance requirements on a family are
+\begin{equation}\label{eq:rg-activity-symmetries}
+ \begin{split}
+ a_{\tilde g}\mathscr E(\tilde gX;\tilde g\mathscr A,
+                                      \tilde g\mathscr C)
+                                  &=\mathscr E(X;\mathscr A,\mathscr C),\\
+ \mathrm{Cg}\,\mathscr E(X;-\mathscr A,-\mathscr C)
+                                  &=\mathscr E(X;\mathscr A,\mathscr C).
+ \end{split}
+\end{equation}
+For real scalar functions $\lambda,\lambda'$ on the photon torus
+and two connection pairs in the domain
+which satisfy $\mathscr A^1=\mathscr A-d\lambda$ and
+$\mathscr C^1=\mathscr C-d\lambda'$ on bonds at distance at
+most one from $X$, the local gauge requirement is
+\[
+ G_{\lambda+\lambda'}\mathscr E(X;\mathscr A^1,\mathscr C^1)
+                               =\mathscr E(X;\mathscr A,\mathscr C).
+\]
+The real subspace $K_k^x$ has in addition
+\[
+ \mathbf K\mathscr E(X;-\overline{\mathscr A},-\overline{\mathscr C})
+                               =\mathscr E(X;\mathscr A,\mathscr C).
+\]
+All requirements refer to the generators before evaluating fields.
+They are essential to the form of the counterterms.
+
+The spaces $K_k^\C,K_k$ without the second connection argument
+have the same definitions on $\widetilde R_k$. Restriction
+$\mathscr E|_0(X;\mathscr A)=\mathscr E(X;\mathscr A,0)$ maps
+$K_k^{x,\C}$ into $K_k^\C$ and has norm at most one. The real
+subspaces also restrict. Analyticity, locality and the symmetries
+follow by setting the second argument and its gauge function to
+zero; the norm bound follows from the smaller supremum.
+
+\subsection{Total connections}
+\label{subsec:rg-total-connection-domain}
+
+The comparison domain $\widetilde G_k$ consists of fields $B_0+B_1$
+with $B_0$ real and $\|B_1\|_\infty<e_k^{-1+\varepsilon}$,
+where on each $\square^{\sim5}$ the field $B_0$ has a real-gauge
+representative of supremum norm below $e_k^{-1+\varepsilon}$.
+Here $\square^{\sim5}$ has the same center and side $11M$.
+The real-gauge representatives in the domains defined above may
+be chosen independently on each enlarged cube.
+
+Assume $L\ge5$, $0<\varepsilon\le1/200$ and
+\begin{equation}\label{eq:rg-domain-charge-conditions}
+ e_k^\varepsilon\le\tfrac14,\qquad
+ e_k^{1/4}+e_k^\varepsilon\le1,\qquad
+ 4e_k^{1/4+2\varepsilon}+2e_k^{3\varepsilon}\le1.
+\end{equation}
+Then
+\begin{equation}\label{eq:rg-total-domain-inclusion}
+ \widetilde R_k+\mathfrak X_k\subset\widetilde G_k.
+\end{equation}
+Indeed, write $\mathscr A=A_0+A_1$ with $A_1\in R_k$ and
+$A_0$ locally real-gauge equivalent on $\square^\dagger$ to
+$A_\square^b$ with the three threshold bounds. Restrict the
+representative to $\square^{\sim5}\subset\square^\dagger$.
+Its supremum norm is below
+$e_k^{-3/4+\varepsilon}\le e_k^{-1+\varepsilon}$, and
+\[
+ \|A_1+\mathscr C\|_\infty
+ <e_k^{-3/4+\varepsilon}+e_k^{-1+2\varepsilon}
+ =(e_k^{1/4}+e_k^\varepsilon)e_k^{-1+\varepsilon}
+ \le e_k^{-1+\varepsilon}.
+\]
+This is the required decomposition of the total connection.
+Real gauge transformations can absorb any real constant part,
+locally on the nonwrapping cubes.
+
+Put $\mathfrak i(B)=e_k\|\operatorname{Im}B\|_\infty$ and
+$q_d(B)=e_k\|dB\|_\infty$. The same decomposition gives
+\begin{equation}\label{eq:rg-total-imaginary-curvature-bounds}
+ \mathfrak i(\mathscr A+\mathscr C)
+       \le e_k^{1/4+\varepsilon}+e_k^{2\varepsilon}\le1,
+ \qquad
+ q_d(\mathscr A+\mathscr C)
+       \le4e_k^{1/4+2\varepsilon}+2e_k^{3\varepsilon}\le1.
+\end{equation}
+For the curvature, every plaquette lies in an enlarged cube,
+and $dA_0=dA_\square^b$ there. This costs at most
+$2\|\partial A_\square^b\|_\infty$; the global small field
+costs another $2\|\partial A_1\|_\infty$, and the external
+field costs $2\|\partial\mathscr C\|_\infty$.
+The imaginary bound uses only that $A_0$ is real.
+
+The domains are open: the strict inequalities define open
+sets for the global summand, which can absorb a sufficiently
+small complex perturbation while the local real representative
+is kept fixed. The norm-defined sets are invariant under sign
+and conjugation; the local real-gauge definitions are also
+invariant under real gauges and real constant additions.
+Coordinate sign changes and $M$ translations preserve them.
+Their derivative and H\"older norms are preserved, with a
+possible reversal of a bond and translation of its base point.
+Thus \eqref{eq:rg-total-domain-inclusion} applies also at the
+signs, conjugates and real gauges used below.

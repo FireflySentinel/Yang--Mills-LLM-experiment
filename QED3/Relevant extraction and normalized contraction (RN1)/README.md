@@ -5,7 +5,7 @@
 Project codename: **RN1**.
 
 - **RNO1** — [Relevant extraction and contraction of local interactions](RNO1.pdf).
-- **AI-written manuscript:** **RNM1** — *Relevant extraction and contraction of local interactions* (manuscript to be added).
+- **AI-written manuscript:** **RNM1** — [Relevant extraction and contraction of local interactions](RNM1.pdf) · [TeX source](RNM1-source/RNM1.tex).
 - **Human-written manuscript:** to be added.
 
 ## Role in the QEM1 assembly
@@ -226,4 +226,4 @@ Theorem B of RNM1 (Section 7, “Local reconstruction of a mean field”) gives 
 
 ## Navigation
 
-[QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Links to published outlines use their repository locations; links to withheld manuscripts open the corresponding README. Citations to material outside this assembly remain visible without a download link.
+[QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Links to published outlines use their repository locations; links to manuscripts open the corresponding README. Citations to material outside this assembly remain visible without a download link.

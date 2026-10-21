@@ -1,0 +1,254 @@
+\section{Reference scales and rescaled probes}
+\label{subsec:interacting-stop-probe}
+
+We use the reference torus of the tuned flow and prove the
+uniform probe estimates from \cite[\S21.1]{QED3Master}.
+Fix $\bar m\in(0,1]$, put
+$h=L^{\lfloor\log_L(1/\bar m)\rfloor}$, and assume
+$0<e\sqrt h\le e_1$ and $N\ge N_{\rm ref}(e)$.
+By \cite[(47)]{CoverTuning} and
+\cite[(53)]{CoverTuning},
+\begin{equation}\label{eq:interacting-physical-scales}
+ \begin{aligned}
+ \eta=L^{-N},\qquad K=N+\log_Lh,\qquad
+ &a_j=L^{j-N},\\
+ e_j=e\sqrt{a_j},\qquad
+ &\eta_j=L^{-j}=\eta/a_j,\qquad \ell_j=R^*/a_j .
+ \end{aligned}
+\end{equation}
+Thus a point with level-$j$ coordinates $c$
+has physical coordinates $a_jc$, and
+$T_j=\eta_j\Z^3/\ell_j\Z^3$.
+At $j=0$ the charge is $q=e\sqrt\eta$.
+The symbols $e_0,e_1$ without a running
+index retain their meanings as charge ceilings.
+Set $v_j=-\log e_j$, $p_{0,j}=v_j^{p_0}$ and $p_j=v_j^p$;
+$r_j$ is the least nonnegative integer power of $L$ at least
+$v_j^{r_{\rm loc}}$.
+For a bond cochain $a$ on the fine unit torus,
+its rescaling is
+\begin{equation}\label{eq:interacting-connection-rescaling}
+                    a^{[j]}(b)=L^{j/2}a(L^jb).
+\end{equation}
+The physical scale $a_j$ is a number, while
+$a$ denotes a connection.
+On the reference torus,
+\cite[(54)]{CoverTuning} and
+\cite[(50)]{CoverTuning} give
+\[
+ k_*\in\{K-1,K-2\},\qquad
+ a_*\in\{h/L,h/L^2\},\qquad
+ \ell_*=Mr_*,\qquad r_*>31L+16.
+\]
+These stop-scale quantities are independent
+of $N\ge N_{\rm ref}(e)$.
+Write $r_{\rm loc}$ for the localization
+power in \cite[\S6.1]{CoverTuning}.
+
+Let $\beta\in C_c^\infty(\R^3;\Lambda^2)$ be real
+and nonzero. Use the cube
+$Q_\beta=z_\beta+[-D_\beta^{\rm buf}/2,D_\beta^{\rm buf}/2]^3$
+of \Cref{sec:reference-cells},
+where $D_\beta^{\rm buf}=D_\beta+4$.
+In this section a placement $v\in\eta\Z^3$
+is admitted if, in physical coordinates,
+\begin{equation}\label{eq:interacting-admitted-placement}
+              v+Q_\beta\subset[\ell_c/8,7\ell_c/8]^3,
+              \qquad \ell_c=R^*/(2L).
+\end{equation}
+A centered placement has
+$|v+z_\beta-(\ell_c/2)(1,1,1)|_\infty\le\eta/2$.
+It is admitted when
+$D_\beta^{\rm buf}/2+\eta/2\le3\ell_c/8$.
+This follows by adding the displacement
+of the cube center to its half-side.
+
+Form $\widehat{\mathfrak a}$ with $\tau_v\beta$
+as in \eqref{eq:cells-midpoint-source}, and
+periodize it on $C(n_*)$, $n_*=R^*/\eta$.
+For $c\in\mathcal C_*=\{0,\ldots,2L-1\}^3$,
+write $\widehat{\mathfrak a}_c$ for its
+cell copy; thus $\widehat{\mathfrak a}_c=\widehat a_c$ in the
+introduction. In physical coordinates the
+wall map carrying the first cell to cell $c$
+acts in coordinate $\mu$ by translation through
+$2i\ell_c$ if $c_\mu=2i$, and by reflection
+$y_\mu\mapsto(2i+2)\ell_c-y_\mu$ if $c_\mu=2i+1$.
+Define the marked connections by
+\begin{equation}\label{eq:interacting-marked-connections}
+ a(t)=e^{-1}\sum_ct_c\widehat{\mathfrak a}_c,\qquad
+ \widehat c_c=e^{-1}\widehat{\mathfrak a}_c^{[k_*]},\qquad
+ \mathscr C(t)=a(t)^{[k_*]}=\sum_ct_c\widehat c_c .
+\end{equation}
+For a level-$j$ bond function $A$, $\partial A$
+uses forward differences divided by $\eta_j$,
+and
+\[
+ |\delta_\alpha\partial A|_\infty
+  =\sup_{\mu,\nu}\sup_{0<d(x,x')\le1}
+     \frac{|\partial_\nu A_\mu(x')-\partial_\nu A_\mu(x)|}
+          {d(x,x')^\alpha}.
+\]
+The external norm of a fine connection is
+$|a|_{\rm ext}=|a^{[k_*]}|_\infty+
+|\partial a^{[k_*]}|_\infty+
+|\delta_\alpha\partial a^{[k_*]}|_\infty$.
+
+We define the uniform probe constants over both
+possible stop scales. For $\eta'=L^{-N'}$ put
+\[
+ g_\nu^{\eta'}[\beta']
+      =-\sum_{\mu\ne\nu}\delta_{\eta',\mu}J_{\eta'}\beta'_{\mu\nu}.
+\]
+This is the smooth vector field
+$J_{\eta'}a'_{\eta'}$ in the midpoint formula.
+Let $\mathcal I_\beta$ consist of triples
+$(N',a_{\rm s},r')$ with
+$N'\ge0$, $a_{\rm s}\in\{h/L,h/L^2\}$,
+$N'+\log_La_{\rm s}\ge1$, and
+$r'\in\{\pm1\}^3$.
+$r'$ is identified with its diagonal orthogonal
+matrix, and $U_{r'}\beta(x)=(\wedge^2r')\beta(r'^{-1}x)$.
+At such a triple set $\eta''=\eta'/a_{\rm s}$,
+$g^0=g^{\eta'}[U_{r'}\beta]$, and
+\[
+ G_\nu(c)=\sqrt{a_{\rm s}}\,
+                  g_\nu^0(a_{\rm s}c+\eta'e_\nu/2)
+                       \quad(c\in\eta''\Z^3),\qquad
+ W_\nu(x)=\sqrt{\eta'}\,g_\nu^0(\eta'x+\eta'e_\nu/2)
+                       \quad(x\in\Z^3).
+\]
+The three norms of $G$ are taken at mesh $\eta''$.
+Set
+\begin{equation}\label{eq:interacting-uniform-probe-constants}
+ C_\beta=\sup_{\mathcal I_\beta}
+              (|G|_\infty+|\partial G|_\infty+
+                                    |\delta_\alpha\partial G|_\infty),
+ \qquad
+ \mathbf D=\sup_{\mathcal I_\beta}\|dW\|_{\ell^2(\text{plaquettes})}^2.
+\end{equation}
+These suprema depend on $\bar m,L,\alpha,\beta$,
+and contain no charge, torus, or placement.
+They have the finite bounds
+\begin{equation}\label{eq:interacting-uniform-probe-finite}
+ C_\beta\le2\sqrt h(1+h+3h^2)|\beta|_{C^3},
+ \qquad
+ \mathbf D\le48|\beta|_{C^2}^2(D_\beta^{\rm buf}+3)^3 .
+\end{equation}
+
+Indeed the centered difference is the average
+of the corresponding derivative along its
+segment, and $J_{\eta'}$ has norm one on
+each derivative sup norm. Each component
+of $g^0$ has two summands, hence
+$|D^ig_\nu^0|_\infty\le2|\beta|_{C^{i+1}}$ for
+$i=0,1,2$. This gives
+$|G|_\infty\le2a_{\rm s}^{1/2}|\beta|_{C^1}$.
+A first lattice difference of $G$ is
+$a_{\rm s}^{3/2}$ times an average of
+$\partial_\mu g_\nu^0$, so
+$|\partial G|_\infty\le2a_{\rm s}^{3/2}|\beta|_{C^2}$.
+The difference of these averages at $c,c'$
+is bounded by
+$6a_{\rm s}|c-c'|\,|\beta|_{C^3}$.
+Since $|c-c'|\le1$ and $\alpha<1$,
+the third norm is at most
+$6a_{\rm s}^{5/2}|\beta|_{C^3}$.
+Sum these bounds and use $a_{\rm s}\le h$.
+
+For the energy, each curl component of $W$
+is a difference of two first differences,
+and has modulus at most
+$4(\eta')^{3/2}|\beta|_{C^2}$.
+A supporting plaquette has a supporting
+bond, whose endpoints in physical coordinates
+lie in $r'Q_\beta$.
+Its basepoint is therefore in that cube
+enlarged by $\eta'$ in each negative
+coordinate direction. There are at most
+$(D_\beta^{\rm buf}/\eta'+2)^3$ basepoints
+and three plaquette directions. Squaring
+the pointwise curl bound gives
+$48|\beta|_{C^2}^2(D_\beta^{\rm buf}+2\eta')^3$,
+which implies \eqref{eq:interacting-uniform-probe-finite}.
+
+At the reference stop, $(N,a_*,1)\in\mathcal I_\beta$.
+The midpoint formula and
+\eqref{eq:interacting-connection-rescaling} give
+\[
+ \widehat{\mathfrak a}^{[k_*]}_\nu(c)
+       =\sum_{z\in\Z^3}G_\nu(c-v/a_*+\ell_*z).
+\]
+Supporting bond endpoints lie in
+$a_*^{-1}(v+Q_\beta)$.
+Distinct periodic copies of that cube have
+distance at least
+$\ell_*-3\ell_*/(8L)>\ell_*/2>1+2\eta_*$.
+Each functional defining one of the three
+norms reads only bonds with endpoint distances
+at most $1+2\eta_*$. It therefore reads
+at most one periodic copy. Taking its
+supremum identifies each torus norm with
+the corresponding norm of $G$.
+Translations and coordinate reflections
+preserve these norms, including the one-bond
+shift that reverses an oriented component.
+The same argument applies to the cell copies.
+
+The image of $v+Q_\beta$ under each wall map
+lies in
+$\prod_\mu[c_\mu\ell_c+\ell_c/8,(c_\mu+1)\ell_c-\ell_c/8]$.
+For distinct cells, a separating coordinate
+on the periodic circle gives distance
+at least $\ell_c/4$: any joining arc
+contains the two margins of size $\ell_c/8$.
+Thus supporting endpoints of distinct
+$\widehat c_c$ have stop-coordinate distance
+at least $\ell_*/(8L)$, which is larger
+than $1+2\eta_*$. Again each external-norm
+functional reads at most one copy, so
+\begin{equation}\label{eq:interacting-external-probe-bound}
+ |a(t)|_{\rm ext}\le C_\beta|t|_\infty/e,\qquad
+                 v_\eta=\|d\widehat{\mathfrak a}\|^2\le\mathbf D.
+\end{equation}
+For the second bound, the covering curvature
+$dW$ is supported in the cube of side
+$D_\beta^{\rm buf}/\eta+2<n_*$
+obtained by enlarging $\eta^{-1}(v+Q_\beta)$.
+Its periodic translates do not overlap,
+so periodization preserves its counting
+norm. Distinct cell curvatures also have
+disjoint plaquette supports: a common
+plaquette would have vertices in both
+endpoint sets at physical distance at
+most $\eta\le1$, whereas $\ell_c/4>1$.
+This gives \eqref{eq:cells-orthogonality}
+for every admitted placement.
+
+Let $P_c$ be the unit-block centers whose
+blocks contain an endpoint of a supporting
+bond of $\widehat c_c$, and let $P_c^+$
+be their $(M+1)$-neighborhood.
+For $y\in P_c$, $y'\in P_{c'}$ choose the
+corresponding endpoints in $\Delta_y,\Delta_{y'}$.
+Each endpoint is at distance less than $1/2$
+from its center. Consequently
+\begin{align}
+ d_{\rm sep}:=\min_{c\ne c'}d(P_c,P_{c'})
+    &\ge\ell_*/(8L)-1=Mr_*/(8L)-1,
+                              \label{eq:interacting-probe-separation}\\
+ |P_c^+|&\le p_\beta:=
+                  (D_\beta^{\rm buf}/a_*+2M+4)^3 .
+                              \label{eq:interacting-support-number}
+\end{align}
+For the count, the endpoints have a lift in
+a cube of side $D_\beta^{\rm buf}/a_*$.
+A center adds less than $1/2$ to each
+coordinate bound, and its neighborhood adds
+$M+1$. The resulting open interval has
+length $D_\beta^{\rm buf}/a_*+2M+3$
+and contains fewer than one plus that
+many integers. Multiply the three counts.
+If the lattice probe vanishes, all these
+sets are empty and $d_{\rm sep}=\infty$.
+
