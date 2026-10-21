@@ -5,7 +5,7 @@
 Project codename: **CV1**.
 
 - **CVO1** — [Agreement across covers and common tuning](CVO1.pdf).
-- **AI-written manuscript:** **CVM1** — [Agreement across covers and common tuning for lattice QED in three dimensions](CVM1.pdf) · [TeX source](CVM1-source/CVM1.tex).
+- **AI-written manuscript:** **CVM1** — [Agreement across covers and common tuning for lattice QED in three dimensions](CVM1.pdf) · [TeX source](CVM1.tex).
 - **Human-written manuscript:** to be added.
 
 ## Role in the QEM1 assembly
@@ -36,8 +36,8 @@ h=L^{\lfloor\log_L(1/\bar m)\rfloor},\qquad
 -->
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="../../assets/math/eq-038-1b1b96ff6c.dark.svg">
-    <img src="../../assets/math/eq-038-1b1b96ff6c.light.svg" alt="h=L^{\lfloor\log_L(1/\bar m)\rfloor},\qquad \eta=L^{-N},\quad K=N+\log_Lh,\quad a_j=L^{j-N},\quad e_j=e\sqrt{a_j},\quad \mu_j=\bar m a_j." width="627">
+    <source media="(prefers-color-scheme: dark)" srcset="../../assets/eq-038-1b1b96ff6c.dark.svg">
+    <img src="../../assets/eq-038-1b1b96ff6c.light.svg" alt="h=L^{\lfloor\log_L(1/\bar m)\rfloor},\qquad \eta=L^{-N},\quad K=N+\log_Lh,\quad a_j=L^{j-N},\quad e_j=e\sqrt{a_j},\quad \mu_j=\bar m a_j." width="627">
   </picture>
 </p>
 
@@ -53,8 +53,8 @@ R_{\rm top}=hMr_K,\quad R^*=R_{\rm top}/L,\qquad
 -->
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="../../assets/math/eq-039-1eb7b89538.dark.svg">
-    <img src="../../assets/math/eq-039-1eb7b89538.light.svg" alt="R_{\rm top}=hMr_K,\quad R^*=R_{\rm top}/L,\qquad \mathcal T(e)=\{hL^T:T\in\mathbb N\cup\{0\},\ hL^T\le R_{\rm top}\}." width="549">
+    <source media="(prefers-color-scheme: dark)" srcset="../../assets/eq-039-1eb7b89538.dark.svg">
+    <img src="../../assets/eq-039-1eb7b89538.light.svg" alt="R_{\rm top}=hMr_K,\quad R^*=R_{\rm top}/L,\qquad \mathcal T(e)=\{hL^T:T\in\mathbb N\cup\{0\},\ hL^T\le R_{\rm top}\}." width="549">
   </picture>
 </p>
 
@@ -79,8 +79,8 @@ Assume
 -->
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="../../assets/math/eq-040-912104fc4f.dark.svg">
-    <img src="../../assets/math/eq-040-912104fc4f.light.svg" alt="\begin{gathered} 0&lt;e\sqrt h\le\bar e_1\le\min(\bar e_0,1/3),\qquad \bar e_0^\varepsilon\le1/4,\\[0pt] c_{\rm fl}L^{-3/8+6/200}\le1/16,\qquad L^{-5/8}\le1/4, \end{gathered}" width="313">
+    <source media="(prefers-color-scheme: dark)" srcset="../../assets/eq-040-912104fc4f.dark.svg">
+    <img src="../../assets/eq-040-912104fc4f.light.svg" alt="\begin{gathered} 0&lt;e\sqrt h\le\bar e_1\le\min(\bar e_0,1/3),\qquad \bar e_0^\varepsilon\le1/4,\\[0pt] c_{\rm fl}L^{-3/8+6/200}\le1/16,\qquad L^{-5/8}\le1/4, \end{gathered}" width="313">
   </picture>
 </p>
 
@@ -97,8 +97,8 @@ and, for every $`v\ge-\log\bar e_1`$,
 -->
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="../../assets/math/eq-041-a5530b901e.dark.svg">
-    <img src="../../assets/math/eq-041-a5530b901e.light.svg" alt="\begin{gathered} v\ge8,\qquad \left(1+\frac{3\log L}{2v}\right)^r&lt;L,\qquad v^r&gt;31L+16,\\[0pt] (c_{\rm fl}+2)e^{-\varepsilon v} \le\frac{1-L^{-\varepsilon/2}}{16}. \end{gathered}" width="368">
+    <source media="(prefers-color-scheme: dark)" srcset="../../assets/eq-041-a5530b901e.dark.svg">
+    <img src="../../assets/eq-041-a5530b901e.light.svg" alt="\begin{gathered} v\ge8,\qquad \left(1+\frac{3\log L}{2v}\right)^r&lt;L,\qquad v^r&gt;31L+16,\\[0pt] (c_{\rm fl}+2)e^{-\varepsilon v} \le\frac{1-L^{-\varepsilon/2}}{16}. \end{gathered}" width="368">
   </picture>
 </p>
 
@@ -162,8 +162,8 @@ m_{j+1}&=L(m_j+m(E_j)),&
 -->
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="../../assets/math/eq-042-4e7e72252d.dark.svg">
-    <img src="../../assets/math/eq-042-4e7e72252d.light.svg" alt="\begin{aligned} m_{j+1}&amp;=L(m_j+m(E_j)),&amp; \varepsilon_{j+1}^v&amp;=L^3(\varepsilon_j^v+\varepsilon_v(E_j)+\delta\varepsilon_j^0), \\[0pt] E_{j+1}&amp;=\Phi_j(m_j,E_j),&amp; \Phi_j(m,E)&amp;=\mathcal L(RE)^{\rm nat} +\mathcal LE_j^{\det}+E_j^*(m,E). \end{aligned}" width="509">
+    <source media="(prefers-color-scheme: dark)" srcset="../../assets/eq-042-4e7e72252d.dark.svg">
+    <img src="../../assets/eq-042-4e7e72252d.light.svg" alt="\begin{aligned} m_{j+1}&amp;=L(m_j+m(E_j)),&amp; \varepsilon_{j+1}^v&amp;=L^3(\varepsilon_j^v+\varepsilon_v(E_j)+\delta\varepsilon_j^0), \\[0pt] E_{j+1}&amp;=\Phi_j(m_j,E_j),&amp; \Phi_j(m,E)&amp;=\mathcal L(RE)^{\rm nat} +\mathcal LE_j^{\det}+E_j^*(m,E). \end{aligned}" width="509">
   </picture>
 </p>
 
@@ -177,8 +177,8 @@ and does not increase its norm. Scalar extraction is linear and real,
 -->
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="../../assets/math/eq-043-16fbc07414.dark.svg">
-    <img src="../../assets/math/eq-043-16fbc07414.light.svg" alt="|m(E)|\le c_{\rm fl}e_j^{1/2}\|E\|_j,\qquad |\varepsilon_v(E)|\le c_{\rm fl}\|E\|_j,\qquad 0\le\delta\varepsilon_j^0\le e_j^7." width="441">
+    <source media="(prefers-color-scheme: dark)" srcset="../../assets/eq-043-16fbc07414.dark.svg">
+    <img src="../../assets/eq-043-16fbc07414.light.svg" alt="|m(E)|\le c_{\rm fl}e_j^{1/2}\|E\|_j,\qquad |\varepsilon_v(E)|\le c_{\rm fl}\|E\|_j,\qquad 0\le\delta\varepsilon_j^0\le e_j^7." width="441">
   </picture>
 </p>
 
@@ -197,8 +197,8 @@ On the unit ball the normalized size and difference estimates are
 -->
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="../../assets/math/eq-044-1f4c44bd21.dark.svg">
-    <img src="../../assets/math/eq-044-1f4c44bd21.light.svg" alt="\begin{aligned} L^{-1}w_{j+1}^m/w_j^{\mathrm m}&amp;\le1/4,\\[0pt] \|\Phi_j(m,E)\|_{j+1}/w_{j+1}^E &amp;\le\tfrac1{16}\|E\|_j/w_j^{\mathrm E}+2e_{j+1}^{\varepsilon},\\[0pt] |m(E)-m(\widetilde E)|/w_j^{\mathrm m} &amp;\le c_{\rm fl}e_j^\varepsilon d_E,\\[0pt] \|\Phi_j(m,E)-\Phi_j(\widetilde m,\widetilde E)\|_{j+1}/w_{j+1}^E &amp;\le\tfrac1{16}d_E+e_{j+1}^\varepsilon(d_m+d_E), \end{aligned}" width="411">
+    <source media="(prefers-color-scheme: dark)" srcset="../../assets/eq-044-1f4c44bd21.dark.svg">
+    <img src="../../assets/eq-044-1f4c44bd21.light.svg" alt="\begin{aligned} L^{-1}w_{j+1}^m/w_j^{\mathrm m}&amp;\le1/4,\\[0pt] \|\Phi_j(m,E)\|_{j+1}/w_{j+1}^E &amp;\le\tfrac1{16}\|E\|_j/w_j^{\mathrm E}+2e_{j+1}^{\varepsilon},\\[0pt] |m(E)-m(\widetilde E)|/w_j^{\mathrm m} &amp;\le c_{\rm fl}e_j^\varepsilon d_E,\\[0pt] \|\Phi_j(m,E)-\Phi_j(\widetilde m,\widetilde E)\|_{j+1}/w_{j+1}^E &amp;\le\tfrac1{16}d_E+e_{j+1}^\varepsilon(d_m+d_E), \end{aligned}" width="411">
   </picture>
 </p>
 
@@ -239,8 +239,8 @@ lifts under the algebra identification of Proposition 5.1. On each such torus,
 -->
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="../../assets/math/eq-045-e53f5891ec.dark.svg">
-    <img src="../../assets/math/eq-045-e53f5891ec.light.svg" alt="|m_j|\le\tfrac18e_j^{3/4-8\varepsilon},\qquad \|E_j\|_j\le\|\mathscr E_j\|_j^x\le4e_j^{1/4-6\varepsilon},\qquad |\varepsilon_j^v|\le5c_{\rm fl}e_j^{1/4-6\varepsilon}." width="488">
+    <source media="(prefers-color-scheme: dark)" srcset="../../assets/eq-045-e53f5891ec.dark.svg">
+    <img src="../../assets/eq-045-e53f5891ec.light.svg" alt="|m_j|\le\tfrac18e_j^{3/4-8\varepsilon},\qquad \|E_j\|_j\le\|\mathscr E_j\|_j^x\le4e_j^{1/4-6\varepsilon},\qquad |\varepsilon_j^v|\le5c_{\rm fl}e_j^{1/4-6\varepsilon}." width="488">
   </picture>
 </p>
 
@@ -257,8 +257,8 @@ m_{0,N}(e)\in\mathbb R,\qquad
 -->
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="../../assets/math/eq-046-6515f1be90.dark.svg">
-    <img src="../../assets/math/eq-046-6515f1be90.light.svg" alt="m_{0,N}(e)\in\mathbb R,\qquad |m_{0,N}(e)|\le\tfrac18q^{3/4-8\varepsilon}&lt;\tfrac18 ." width="315">
+    <source media="(prefers-color-scheme: dark)" srcset="../../assets/eq-046-6515f1be90.dark.svg">
+    <img src="../../assets/eq-046-6515f1be90.light.svg" alt="m_{0,N}(e)\in\mathbb R,\qquad |m_{0,N}(e)|\le\tfrac18q^{3/4-8\varepsilon}&lt;\tfrac18 ." width="315">
   </picture>
 </p>
 
@@ -273,8 +273,8 @@ a_*\in\{h/L,h/L^2\},\qquad
 -->
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="../../assets/math/eq-047-19fd70f498.dark.svg">
-    <img src="../../assets/math/eq-047-19fd70f498.light.svg" alt="a_*\in\{h/L,h/L^2\},\qquad \ell_*=Mr_*,\qquad r_*&gt;31L+16,\qquad L^{-3}&lt;\mu_*\le L^{-1}." width="528">
+    <source media="(prefers-color-scheme: dark)" srcset="../../assets/eq-047-19fd70f498.dark.svg">
+    <img src="../../assets/eq-047-19fd70f498.light.svg" alt="a_*\in\{h/L,h/L^2\},\qquad \ell_*=Mr_*,\qquad r_*&gt;31L+16,\qquad L^{-3}&lt;\mu_*\le L^{-1}." width="528">
   </picture>
 </p>
 
@@ -282,3 +282,17 @@ a_*\in\{h/L,h/L^2\},\qquad
 ## Navigation
 
 [QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Links to published outlines use their repository locations; links to manuscripts open the corresponding README. Citations to material outside this assembly remain visible without a download link.
+
+## Building the manuscript
+
+The TeX sources are beside the PDFs. Build in a temporary copy of these files, retain the resulting PDF, and remove the temporary build directory.
+
+For `CVM1.tex`:
+
+```sh
+pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error CVM1.tex
+biber CVM1
+pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error CVM1.tex
+pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error CVM1.tex
+pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error CVM1.tex
+```

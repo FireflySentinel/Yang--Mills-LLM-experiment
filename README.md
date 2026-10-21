@@ -10,4 +10,4 @@ I take blame for the immodesty of the previous sentence! However we have been ma
 - **AI-written manuscripts:** [QED3](QED3/README.md) and the [RP O(d) trick](RP%20O%28d%29%20trick%20%28RP1%29/README.md), with PDFs and TeX sources.
 - **Human-written manuscript:** to be added.
 
-Each manuscript source package has one complete TeX file, with its bibliography and style files alongside it. `BUILD.txt` gives the compilation commands. The chamber-QED reference supplement is preserved separately because the manuscript cites it.
+Each manuscript has one complete TeX file beside its PDF, with the required bibliography and style files in the same folder. The local README gives the build commands. The cited chamber-QED reference supplement is preserved as a separate file.

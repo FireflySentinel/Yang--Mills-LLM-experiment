@@ -5,7 +5,7 @@
 Project codename: **RP1**.
 
 - **RPO1** — [Reflection positivity to rotations: expanded proof outline](RP1O1.pdf).
-- **AI-written manuscript:** **RPM1** — [Rotation invariance from lattice symmetry and reflection positivity](RPM1.pdf) · [TeX source](RPM1-source/RPM1.tex).
+- **AI-written manuscript:** **RPM1** — [Rotation invariance from lattice symmetry and reflection positivity](RPM1.pdf) · [TeX source](RPM1.tex).
 - **Human-written manuscript:** to be added.
 
 ## Main theorem
@@ -28,8 +28,8 @@ By a “random distribution” is meant a Borel probability measure
 -->
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="../assets/math/eq-168-f98781a9cc.dark.svg">
-    <img src="../assets/math/eq-168-f98781a9cc.light.svg" alt="\mu:\mathrm{Borel}(\mathcal{S}&#x27;)\to [0,1]" width="154">
+    <source media="(prefers-color-scheme: dark)" srcset="../assets/eq-168-f98781a9cc.dark.svg">
+    <img src="../assets/eq-168-f98781a9cc.light.svg" alt="\mu:\mathrm{Borel}(\mathcal{S}&#x27;)\to [0,1]" width="154">
   </picture>
 </p>
 
@@ -40,8 +40,8 @@ on $`\mathcal{S}'`$, which we assume possesses well-defined moments $`S_N: \math
 -->
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="../assets/math/eq-169-96b1f0387e.dark.svg">
-    <img src="../assets/math/eq-169-96b1f0387e.light.svg" alt="\Phi(\chi) = \int_{\mathcal{S}&#x27;} e^{iF(\chi)} \,\mathrm{d} \mu(F)" width="170">
+    <source media="(prefers-color-scheme: dark)" srcset="../assets/eq-169-96b1f0387e.dark.svg">
+    <img src="../assets/eq-169-96b1f0387e.light.svg" alt="\Phi(\chi) = \int_{\mathcal{S}&#x27;} e^{iF(\chi)} \,\mathrm{d} \mu(F)" width="170">
   </picture>
 </p>
 
@@ -56,8 +56,8 @@ Let $`\mathcal{N}`$ denote the set of all hyperplanes $`\subset \mathbb{R}^d`$ o
 -->
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="../assets/math/eq-170-735497e9c8.dark.svg">
-    <img src="../assets/math/eq-170-735497e9c8.light.svg" alt="\{x_j=0\}\quad(0\leq j\leq d-1),\qquad \{x_j+x_k=0\},\quad \{x_j-x_k=0\}" width="446">
+    <source media="(prefers-color-scheme: dark)" srcset="../assets/eq-170-735497e9c8.dark.svg">
+    <img src="../assets/eq-170-735497e9c8.light.svg" alt="\{x_j=0\}\quad(0\leq j\leq d-1),\qquad \{x_j+x_k=0\},\quad \{x_j-x_k=0\}" width="446">
   </picture>
 </p>
 
@@ -71,8 +71,8 @@ For an isometry $`T(\mathbf{x})=g\mathbf{x}+\mathbf{a}`$, our pullback conventio
 -->
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="../assets/math/eq-171-94025f21a5.dark.svg">
-    <img src="../assets/math/eq-171-94025f21a5.light.svg" alt="(T^*\chi)(\mathbf{x})=\rho(g)\chi(T\mathbf{x}),\qquad (T_1T_2)^*=T_2^*T_1^*." width="321">
+    <source media="(prefers-color-scheme: dark)" srcset="../assets/eq-171-94025f21a5.dark.svg">
+    <img src="../assets/eq-171-94025f21a5.light.svg" alt="(T^*\chi)(\mathbf{x})=\rho(g)\chi(T\mathbf{x}),\qquad (T_1T_2)^*=T_2^*T_1^*." width="321">
   </picture>
 </p>
 
@@ -90,8 +90,8 @@ Suppose that:
 -->
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="../assets/math/eq-172-4cde52454c.dark.svg">
-    <img src="../assets/math/eq-172-4cde52454c.light.svg" alt="\int_{\mathcal{S}&#x27;} e^{F(\chi)} \,\mathrm{d} \mu(F) \leq e^{C(\lVert\chi\rVert_{L^1}+\lVert\chi\rVert_{L^2}^2)}" width="226">
+    <source media="(prefers-color-scheme: dark)" srcset="../assets/eq-172-4cde52454c.dark.svg">
+    <img src="../assets/eq-172-4cde52454c.light.svg" alt="\int_{\mathcal{S}&#x27;} e^{F(\chi)} \,\mathrm{d} \mu(F) \leq e^{C(\lVert\chi\rVert_{L^1}+\lVert\chi\rVert_{L^2}^2)}" width="226">
   </picture>
 </p>
 
@@ -105,8 +105,8 @@ The measure is invariant under spacetime translations. That is, for any $`T:\mat
 -->
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="../assets/math/eq-173-dbc34c76f6.dark.svg">
-    <img src="../assets/math/eq-173-dbc34c76f6.light.svg" alt="\Phi(T^* \chi) = \Phi(\chi)." width="121">
+    <source media="(prefers-color-scheme: dark)" srcset="../assets/eq-173-dbc34c76f6.dark.svg">
+    <img src="../assets/eq-173-dbc34c76f6.light.svg" alt="\Phi(T^* \chi) = \Phi(\chi)." width="121">
   </picture>
 </p>
 
@@ -117,8 +117,8 @@ The measure is invariant under spacetime translations. That is, for any $`T:\mat
 -->
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="../assets/math/eq-174-3e40b7bfcd.dark.svg">
-    <img src="../assets/math/eq-174-3e40b7bfcd.light.svg" alt="\sum_{a,b} \bar{z}_a z_b \Phi(\chi_a - \Theta^* \chi_b ) \geq 0," width="193">
+    <source media="(prefers-color-scheme: dark)" srcset="../assets/eq-174-3e40b7bfcd.dark.svg">
+    <img src="../assets/eq-174-3e40b7bfcd.light.svg" alt="\sum_{a,b} \bar{z}_a z_b \Phi(\chi_a - \Theta^* \chi_b ) \geq 0," width="193">
   </picture>
 </p>
 
@@ -127,3 +127,19 @@ where $`\Theta:\mathbb{R}^d\to\mathbb{R}^d`$ denotes reflection across the hyper
 Then the measure is rotationally-invariant in the sense of Osterwalder--Schrader, meaning $`S_N(R^* \chi) = S_N(\chi)`$ for all $`R\in \mathrm{O}(d)`$ and $`\chi\in \mathcal{S}_N`$.
 
 Here, $`R^* \chi=(R^* \chi_1,\dots,R^* \chi_N)`$.
+
+## Building the manuscript
+
+The TeX sources are beside the PDFs. Build in a temporary copy of these files, retain the resulting PDF, and remove the temporary build directory.
+
+For `RPM1.tex`:
+
+```sh
+pdflatex -no-shell-escape -interaction=nonstopmode RPM1.tex
+biber RPM1
+pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error RPM1.tex
+pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error RPM1.tex
+pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error RPM1.tex
+```
+
+The first pass may report symbol-footnote counter errors before page assignments settle; the later passes must finish successfully.

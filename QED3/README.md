@@ -11,8 +11,8 @@ There exists a non-Gaussian probability measure on the space of closed real temp
 The measure can be chosen as a translation-ergodic component of a volume-first continuum limit of the all-flux chamber QED3 field-strength laws, at sufficiently small positive charge with suitably tuned bare masses.
 
 - **QEO1** — [The QED3 construction: theorem contracts and proof assignments](QEO1.pdf).
-- **AI-written manuscript:** **QEM1** — [The continuum field-strength construction for QED in three dimensions](QEM1.pdf) · [TeX source](QEM1-source/QEM1.tex).
-- **AI-written manuscript:** **QCM1** — [Massless photons and interacting field-strength theories in three-dimensional QED](qed3-consequences.pdf) · [TeX source](QCM1-source/QCM1.tex).
+- **AI-written manuscript:** **QEM1** — [The continuum field-strength construction for QED in three dimensions](QEM1.pdf) · [TeX source](QEM1.tex).
+- **AI-written manuscript:** **QCM1** — [Massless photons and interacting field-strength theories in three-dimensional QED](qed3-consequences.pdf) · [TeX source](QCM1.tex).
 - **Human-written manuscript:** to be added.
 
 - **AI-written main manuscript:** [Comprehensive edition](qed3.pdf) — 263 pages, including the corrections of October 20, 2026 · [TeX source of comprehensive edition](qed3.tex).
@@ -52,3 +52,26 @@ The early source identities in RRM1 enter TPM1; the later response estimate in R
 ## Navigation
 
 The published PDFs retain their mathematical text. Links to published outlines use their repository locations; links to manuscripts open the corresponding README. Citations to material outside this assembly remain visible without a download link.
+
+## Building the manuscript
+
+The TeX sources are beside the PDFs. Build in a temporary copy of these files, retain the resulting PDF, and remove the temporary build directory.
+
+For `QEM1.tex`:
+
+```sh
+pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error QEM1.tex
+biber QEM1
+pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error QEM1.tex
+pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error QEM1.tex
+pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error QEM1.tex
+```
+
+For `QCM1.tex`:
+
+```sh
+pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error QCM1.tex
+pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error QCM1.tex
+pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error QCM1.tex
+pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error QCM1.tex
+```

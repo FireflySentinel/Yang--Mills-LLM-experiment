@@ -5,7 +5,7 @@
 Project codename: **RN1**.
 
 - **RNO1** — [Relevant extraction and contraction of local interactions](RNO1.pdf).
-- **AI-written manuscript:** **RNM1** — [Relevant extraction and contraction of local interactions](RNM1.pdf) · [TeX source](RNM1-source/RNM1.tex).
+- **AI-written manuscript:** **RNM1** — [Relevant extraction and contraction of local interactions](RNM1.pdf) · [TeX source](RNM1.tex).
 - **Human-written manuscript:** to be added.
 
 ## Role in the QEM1 assembly
@@ -50,8 +50,8 @@ h_{k,1}=e_k^{-1/4},\qquad h_{k,2}=e_k^{-1/4+\varepsilon},\qquad
 -->
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="../../assets/math/eq-115-8e93bf6797.dark.svg">
-    <img src="../../assets/math/eq-115-8e93bf6797.light.svg" alt="h_{k,1}=e_k^{-1/4},\qquad h_{k,2}=e_k^{-1/4+\varepsilon},\qquad \|\mathscr E\|_k^x =\sup_X e^{\kappa d_M(X)} \sup_{\widetilde R_k\times\mathfrak X_k} \|\mathscr E(X)\|_{h_k}." width="507">
+    <source media="(prefers-color-scheme: dark)" srcset="../../assets/eq-115-8e93bf6797.dark.svg">
+    <img src="../../assets/eq-115-8e93bf6797.light.svg" alt="h_{k,1}=e_k^{-1/4},\qquad h_{k,2}=e_k^{-1/4+\varepsilon},\qquad \|\mathscr E\|_k^x =\sup_X e^{\kappa d_M(X)} \sup_{\widetilde R_k\times\mathfrak X_k} \|\mathscr E(X)\|_{h_k}." width="507">
   </picture>
 </p>
 
@@ -70,8 +70,8 @@ Set
 -->
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="../../assets/math/eq-116-c6c3720168.dark.svg">
-    <img src="../../assets/math/eq-116-c6c3720168.light.svg" alt="\bar\varepsilon=\frac1{200},\quad c_X=54,\quad \kappa_0=54\log72,\quad K_0=\frac{e^{\kappa_0}}{36},\quad c_{\mathrm{rb}}=c_XK_0,\quad c_{\mathrm{fl}}=61c_{\mathrm{rb}}." width="558">
+    <source media="(prefers-color-scheme: dark)" srcset="../../assets/eq-116-c6c3720168.dark.svg">
+    <img src="../../assets/eq-116-c6c3720168.light.svg" alt="\bar\varepsilon=\frac1{200},\quad c_X=54,\quad \kappa_0=54\log72,\quad K_0=\frac{e^{\kappa_0}}{36},\quad c_{\mathrm{rb}}=c_XK_0,\quad c_{\mathrm{fl}}=61c_{\mathrm{rb}}." width="558">
   </picture>
 </p>
 
@@ -91,8 +91,8 @@ integers at least $`13`$. Suppose
 -->
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="../../assets/math/eq-117-12b9af66c6.dark.svg">
-    <img src="../../assets/math/eq-117-12b9af66c6.light.svg" alt="\begin{gathered} 0&lt;\varepsilon\le\bar\varepsilon,\qquad 1-\varepsilon&lt;\alpha&lt;1, \qquad L^{1/8-3\bar\varepsilon/2}\ge2400,\qquad e_k^\varepsilon\le1/4,\\[0pt] 160L^{1+3\varepsilon/2}Me_k^\varepsilon\le1,\qquad 9ML^\varepsilon e_k^{2\varepsilon}\le1,\qquad 90c_XLMe_k^\varepsilon\le1, \end{gathered}" width="465">
+    <source media="(prefers-color-scheme: dark)" srcset="../../assets/eq-117-12b9af66c6.dark.svg">
+    <img src="../../assets/eq-117-12b9af66c6.light.svg" alt="\begin{gathered} 0&lt;\varepsilon\le\bar\varepsilon,\qquad 1-\varepsilon&lt;\alpha&lt;1, \qquad L^{1/8-3\bar\varepsilon/2}\ge2400,\qquad e_k^\varepsilon\le1/4,\\[0pt] 160L^{1+3\varepsilon/2}Me_k^\varepsilon\le1,\qquad 9ML^\varepsilon e_k^{2\varepsilon}\le1,\qquad 90c_XLMe_k^\varepsilon\le1, \end{gathered}" width="465">
   </picture>
 </p>
 
@@ -104,8 +104,8 @@ and
 -->
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="../../assets/math/eq-118-6775e9bcae.dark.svg">
-    <img src="../../assets/math/eq-118-6775e9bcae.light.svg" alt="\kappa\ge7\kappa_0+7,\qquad L(\kappa-6\kappa_0-4)-1\ge\kappa." width="296">
+    <source media="(prefers-color-scheme: dark)" srcset="../../assets/eq-118-6775e9bcae.dark.svg">
+    <img src="../../assets/eq-118-6775e9bcae.light.svg" alt="\kappa\ge7\kappa_0+7,\qquad L(\kappa-6\kappa_0-4)-1\ge\kappa." width="296">
   </picture>
 </p>
 
@@ -123,8 +123,8 @@ $`K_k^x`$, with
 -->
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="../../assets/math/eq-119-8c9df07089.dark.svg">
-    <img src="../../assets/math/eq-119-8c9df07089.light.svg" alt="|\varepsilon_{\mathrm v}(\mathscr E)| \le K_0M^{-3}\|\mathscr E\|_k^x,\qquad |m(\mathscr E)| \le K_0M^{-3}e_k^{1/2}\|\mathscr E\|_k^x ." width="394">
+    <source media="(prefers-color-scheme: dark)" srcset="../../assets/eq-119-8c9df07089.dark.svg">
+    <img src="../../assets/eq-119-8c9df07089.light.svg" alt="|\varepsilon_{\mathrm v}(\mathscr E)| \le K_0M^{-3}\|\mathscr E\|_k^x,\qquad |m(\mathscr E)| \le K_0M^{-3}e_k^{1/2}\|\mathscr E\|_k^x ." width="394">
   </picture>
 </p>
 
@@ -141,8 +141,8 @@ exact independent-generator identity
 -->
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="../../assets/math/eq-120-0f84a221aa.dark.svg">
-    <img src="../../assets/math/eq-120-0f84a221aa.light.svg" alt="\sum_X\mathscr E(X) =-\varepsilon_{\mathrm v}(\mathscr E)\ell^3 -m(\mathscr E)\langle\bar\psi,\psi\rangle +\sum_X(R\mathscr E)(X)." width="365">
+    <source media="(prefers-color-scheme: dark)" srcset="../../assets/eq-120-0f84a221aa.dark.svg">
+    <img src="../../assets/eq-120-0f84a221aa.light.svg" alt="\sum_X\mathscr E(X) =-\varepsilon_{\mathrm v}(\mathscr E)\ell^3 -m(\mathscr E)\langle\bar\psi,\psi\rangle +\sum_X(R\mathscr E)(X)." width="365">
   </picture>
 </p>
 
@@ -163,8 +163,8 @@ E_{00}(X;0,0)=0,\qquad E_{20}(X;0,0;\cdot,\cdot)=0
 -->
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="../../assets/math/eq-121-02b74ae9ed.dark.svg">
-    <img src="../../assets/math/eq-121-02b74ae9ed.light.svg" alt="E_{00}(X;0,0)=0,\qquad E_{20}(X;0,0;\cdot,\cdot)=0" width="291">
+    <source media="(prefers-color-scheme: dark)" srcset="../../assets/eq-121-02b74ae9ed.dark.svg">
+    <img src="../../assets/eq-121-02b74ae9ed.light.svg" alt="E_{00}(X;0,0)=0,\qquad E_{20}(X;0,0;\cdot,\cdot)=0" width="291">
   </picture>
 </p>
 
@@ -182,8 +182,8 @@ Let $`\bar X^L`$ be the union of $`LM`$-cubes containing $`X`$, and set
 -->
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="../../assets/math/eq-122-ffd8ab8139.dark.svg">
-    <img src="../../assets/math/eq-122-ffd8ab8139.light.svg" alt="(\mathcal LE)(Y;\mathscr A,\mathscr C) =\sum_{\bar X^L=LY}S_LE(X;\mathscr A_L,\mathscr C_L)." width="296">
+    <source media="(prefers-color-scheme: dark)" srcset="../../assets/eq-122-ffd8ab8139.dark.svg">
+    <img src="../../assets/eq-122-ffd8ab8139.light.svg" alt="(\mathcal LE)(Y;\mathscr A,\mathscr C) =\sum_{\bar X^L=LY}S_LE(X;\mathscr A_L,\mathscr C_L)." width="296">
   </picture>
 </p>
 
@@ -196,8 +196,8 @@ is a linear map into $`K_{k+1}^{x,\mathbb{C}}(\ell/L)`$ and
 -->
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="../../assets/math/eq-123-0c85ce4de3.dark.svg">
-    <img src="../../assets/math/eq-123-0c85ce4de3.light.svg" alt="\|\mathcal LE\|_{k+1}^x \le c_{\mathrm{fl}}L^{-1/4+3\varepsilon/2}\|\mathscr E\|_k^x." width="214">
+    <source media="(prefers-color-scheme: dark)" srcset="../../assets/eq-123-0c85ce4de3.dark.svg">
+    <img src="../../assets/eq-123-0c85ce4de3.light.svg" alt="\|\mathcal LE\|_{k+1}^x \le c_{\mathrm{fl}}L^{-1/4+3\varepsilon/2}\|\mathscr E\|_k^x." width="214">
   </picture>
 </p>
 
@@ -210,8 +210,8 @@ For $`w_j^{\mathrm E}=e_j^{1/4-7\varepsilon}`$, the relative estimate is
 -->
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="../../assets/math/eq-124-0cf832d897.dark.svg">
-    <img src="../../assets/math/eq-124-0cf832d897.light.svg" alt="\frac{\|\mathcal LE\|_{k+1}^x}{w_{k+1}^{\mathrm E}} \le c_{\mathrm{fl}}L^{-3/8+11\varepsilon/2} \frac{\|\mathscr E\|_k^x}{w_k^{\mathrm E}}." width="234">
+    <source media="(prefers-color-scheme: dark)" srcset="../../assets/eq-124-0cf832d897.dark.svg">
+    <img src="../../assets/eq-124-0cf832d897.light.svg" alt="\frac{\|\mathcal LE\|_{k+1}^x}{w_{k+1}^{\mathrm E}} \le c_{\mathrm{fl}}L^{-3/8+11\varepsilon/2} \frac{\|\mathscr E\|_k^x}{w_k^{\mathrm E}}." width="234">
   </picture>
 </p>
 
@@ -227,3 +227,17 @@ Theorem B of RNM1 (Section 7, “Local reconstruction of a mean field”) gives 
 ## Navigation
 
 [QEM1 assembly index](../README.md). The published PDFs retain their mathematical text. Links to published outlines use their repository locations; links to manuscripts open the corresponding README. Citations to material outside this assembly remain visible without a download link.
+
+## Building the manuscript
+
+The TeX sources are beside the PDFs. Build in a temporary copy of these files, retain the resulting PDF, and remove the temporary build directory.
+
+For `RNM1.tex`:
+
+```sh
+pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error RNM1.tex
+biber RNM1
+pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error RNM1.tex
+pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error RNM1.tex
+pdflatex -no-shell-escape -interaction=nonstopmode -halt-on-error RNM1.tex
+```
