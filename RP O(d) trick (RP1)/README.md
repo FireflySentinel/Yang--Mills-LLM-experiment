@@ -4,13 +4,13 @@
 
 Project codename: **RP1**.
 
-- **RP1O1** — [Reflection positivity to rotations: expanded proof outline](RP1O1.pdf).
+- **RPO1** — [Reflection positivity to rotations: expanded proof outline](RP1O1.pdf).
 - **AI-written manuscript:** **RPM1** — [Rotation invariance from lattice symmetry and reflection positivity](RPM1.pdf) · [TeX source](RPM1-source/RPM1.tex).
 - **Human-written manuscript:** to be added.
 
 ## Main theorem
 
-The statement below is taken from Theorem A of **RP1M1**, with its notation from the manuscript. The TeX formatting and macros have been adapted for GitHub.
+The statement below is taken from Theorem A of **RPM1**, with its notation from the manuscript. The TeX formatting and macros have been adapted for GitHub.
 
 Fix a number $`d\geq 2`$, and consider $`d`$-dimensional Euclidean spacetime $`\mathbb{R}^d`$.
 
