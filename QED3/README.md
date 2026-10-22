@@ -18,3 +18,5 @@ See [QEM1, Theorem A](QEM1.pdf) for the precise statement and hypotheses.
 - **Human-written manuscript:** to be added.
 
 - **AI-written main manuscript:** [Comprehensive edition](qed3.pdf) — 263 pages.
+
+See yoh-tanimoto:digestingQED3 for work on digestion, in particular a comparison with Dimock.
