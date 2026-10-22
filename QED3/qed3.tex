@@ -20130,8 +20130,16 @@ For long pairs use
 $|\delta_{\alpha,A}v|\le\mathrm e|v(x')|+|v(x)|$;
 for short pairs use the Hölder input directly.
 This gives the first line of
-\eqref{eq:interacting-leg-first}, and its
-weighted row sum is at most $h_{\mathrm L}$.
+\eqref{eq:interacting-leg-first}. In particular, with
+$d(y',\operatorname{pos}(u))=\min_{w\in\operatorname{pos}(u)}d(y',w)$,
+\[
+ \sum_{y',\beta'}|\operatorname{Leg}_A(u;y',\beta')|
+       e^{(\gamma^F/2)d(y',\operatorname{pos}(u))}
+ \le3C^F|\operatorname{pos}(u)|(24/\gamma^F)^3
+ \le h_{\mathrm L}.
+\]
+Indeed, multiplying each endpoint decay by this weight leaves
+decay rate at least $\gamma^F/2$, and there are at most two endpoints.
 
 The derivative of a Hölder leg has two terms:
 $(\partial_B\delta_{\alpha,A})H_*+
