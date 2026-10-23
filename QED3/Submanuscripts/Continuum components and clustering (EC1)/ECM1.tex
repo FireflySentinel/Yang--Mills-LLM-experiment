@@ -395,54 +395,38 @@ $h(a)\overline{h(c)}$ yields the decisive bound
 All integrations are justified by the finite variation of the
 spectral measures and the $L^1$ assumption on $h$.
 
-We choose transforms whose two axis suprema have bounded product,
-but whose modulus grows exponentially outside $|\arg z|\le\pi/4$.
-For $s=\pm1$ and $n\ge1$ use the principal-power functions
+Fix $\epsilon>0$, $s\in\{-1,1\}$ and an integer $n\ge1$. The function
+\[
+ h_{\epsilon,s,n}(a)
+ =\frac{\epsilon e^{-\pi n/4}}{\Gamma(1+isn)}
+   a^{isn}e^{-\epsilon a},\qquad a>0,
+\]
+lies in $L^1(0,\infty)$ since $|a^{isn}|=1$. The Gamma integral gives
 \begin{equation}\label{eq:cone-Laplace-tests}
- \widetilde h_n(z)
- =e^{-n}z^{1-4isn/\pi}(1+z)^{-3},\qquad
- \widetilde h_n(0)=0.
+ \widetilde h_{\epsilon,s,n}(z)
+ =\epsilon e^{-\pi n/4}(\epsilon+z)^{-1-isn},
+ \qquad \operatorname{Re}z\ge0,
 \end{equation}
-Their suprema on the positive and imaginary axes are at most
-$e^{-n}$ and $e^n$, respectively. Each is the Laplace transform of
-an $L^1$ function. Here is the factorization that verifies this
-point, including the boundary of the half-plane. For
-$\nu=1-4isn/\pi$,
+with the principal branch. Writing $\theta=\arg(\epsilon+z)$, we have
 \[
- z^\nu(1+z)^{-3}
- =\bigl(1-(1+z)^{-1}\bigr)^\nu(1+z)^{-(3-\nu)}.
+ |\widetilde h_{\epsilon,s,n}(z)|
+ =\frac{\epsilon}{|\epsilon+z|}
+   \exp\bigl(n(s\theta-\pi/4)\bigr).
 \]
-The second factor is the transform of
-$a^{2-\nu}e^{-a}/\Gamma(3-\nu)$, an integrable function.
-The binomial coefficients of the first factor are absolutely
-summable, since $|\binom\nu k|=O(k^{-2})$. It is therefore the
-transform of the finite complex measure
+The suprema on the positive real and imaginary axes are at most
+$e^{-\pi n/4}$ and $e^{\pi n/4}$, respectively. Their product is
+at most one, so \eqref{eq:two-Laplace-bound} gives
 \[
- \delta_0+
- \sum_{k\ge1}(-1)^k\binom\nu k
- \frac{a^{k-1}e^{-a}}{(k-1)!}\,\dd a.
-\]
-Convolution gives $h_n\in L^1$. Absolute convergence and
-$\operatorname{Re}\nu=1$ also give the stated boundary value at
-$z=0$.
-
-Fix $\delta>0$ and the sector
-$S_\delta=\{z\ne0:\operatorname{Re}z\ge0,
-\ s\arg z\ge\pi/4+\delta\}$. On this sector,
-\[
- |\widetilde h_n(z)|^2
- \ge e^{8\delta n/\pi}|z|^2|1+z|^{-6}.
-\]
-Substitution in \eqref{eq:two-Laplace-bound} gives
-\[
- e^{8\delta n/\pi}
- \int_{S_\delta}e^{-2DE}|z|^2|1+z|^{-6}\,\dd\varrho
+ \int e^{-2DE}\frac{\epsilon^2}{|\epsilon+z|^2}
+   \exp\bigl(2n(s\arg(\epsilon+z)-\pi/4)\bigr)\,\dd\varrho
  \le\|A\|_2^2.
 \]
-The integrand is positive on $S_\delta$, so letting $n\to\infty$
-shows $\varrho(S_\delta)=0$. Taking both signs and rational
-$\delta>0$ gives $|\arg z|\le\pi/4$ on its support, or
-$E\ge|p_i|$.
+The weight $e^{-2DE}\epsilon^2/|\epsilon+z|^2$ is strictly positive.
+Fatou's lemma as $n\to\infty$ therefore gives
+$\varrho\{s\arg(\epsilon+z)>\pi/4\}=0$.
+Taking both signs yields $\varrho\{|p_i|>E+\epsilon\}=0$.
+Finally, taking $\epsilon=1/k$, $k\ge1$, gives $E\ge|p_i|$
+$\varrho$-almost everywhere.
 
 Finite linear combinations of characters with compact positive-side
 tests lie in some such $B$ and have dense quotient classes in
