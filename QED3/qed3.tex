@@ -177,7 +177,7 @@ eliminating the outer layers, using the fermion equations of motion
 and an imaginary shift of the gauge integration contour; the remaining
 error tends to zero with the perturbation strength.
 Translation removes the restriction to an
-observable inside one cell, and convex separation gives diagonal
+observable inside one cell, and direct reflection tests give diagonal
 positivity of the original limit. Taking volume before spacing
 preserves this input in the continuum.
 
@@ -2614,7 +2614,7 @@ on layers. The argument uses local operators inserted into a coordinate
 crossing and then eliminates the fields outside its two adjacent
 fermion layers. The resulting comparison states have enough translation
 invariance to apply the fold inequality to an arbitrary local observable.
-Convex separation will then give the required diagonal positivity.
+Testing the reflected form will then give the required diagonal positivity.
 
 Fix $q>0$, $0<\rho<1$, positive weights $w_i$ and a real mass $M$.
 All volume limits in this section keep these parameters fixed. We
@@ -4050,23 +4050,12 @@ by $2e_\mu$, so
 We need only these even translations. The original wall
 periods alone would not have permitted the next placement.
 
-\subsection{Convex separation and the nine mirror families}\label{subsec:diag-separation}
+\subsection{Direct reflection tests and the nine mirror families}\label{subsec:diag-separation}
 
-Fix an integer $c_0$. Let $\mathcal R(c_0)$ be the set of
-laws on $\Omega$ satisfying Gaussian domination and both
-invariance and reflection positivity at
-$(x_1-x_2,c_0)$. This is convex and weakly compact. Gaussian
-domination gives a common tail
-$\lambda(|F_\sigma|\ge R)\le2e^{-R^2/2}$ and hence uniform
-tightness. It is weakly closed by truncation of its exponential
-integrals. Mirror invariance and positivity against continuous
-local tests are also closed, and the $L^2$ approximation
-extends the latter to Borel tests. Each condition is affine
-or an affine inequality in the law, proving convexity.
-
-We claim that, for every real local trigonometric polynomial
-$O$ and every cubic limit $\nu$ along our divisible side
-sequence, some $\nu_0\in\mathcal R(c_0)$ satisfies
+Fix an integer $c_0$. We claim that, for every real local
+trigonometric polynomial $O$ and every cubic limit $\nu$ along our
+divisible side sequence, a comparison state $\nu_0$, invariant and
+reflection positive at $(x_1-x_2,c_0)$, satisfies
 \eqref{eq:diag-comparison-order}. The polynomial need not
 initially fit in a cell having its lower wall at $c_0$.
 Let $\supp O\subset y_0+[-r,r]^3$, with $r\ge1$, and choose
@@ -4089,7 +4078,8 @@ $|\ell_\pm(x)-\ell_\pm(y)|\le2r$ on it. Form the tilted
 law with the translated polynomial $O^{\tau_v}$.
 
 Choose a comparison state subordinate to the volume
-subsequence defining $\nu$. It belongs to $\mathcal R(c_0)$,
+subsequence defining $\nu$. It is invariant and reflection positive
+at $(x_1-x_2,c_0)$,
 and the fold inequality gives
 $\nu(O^{\tau_v})\le\nu_0(O^{\tau_v})$. The original cubic
 laws are invariant under every lattice translation, and
@@ -4100,42 +4090,6 @@ under this particular $v$ for $\nu_0$. Hence
  \nu(O)=\nu(O^{\tau_v})
        \le\nu_0(O^{\tau_v})=\nu_0(O).
 \end{equation}
-The comparison state may depend on $O$. Convex separation
-is what turns these individual inequalities into reflection
-positivity of the original law.
-
-\begin{lemma}\label{lem:diag-separation}
-Let $\mathcal R$ be a convex weakly compact set of laws on
-$\Omega$. If for every real local trigonometric polynomial
-$O$ some $\lambda\in\mathcal R$ satisfies
-$\nu(O)\le\lambda(O)$, then $\nu\in\mathcal R$.
-\end{lemma}
-
-\begin{proof}
-Give the real vector space of finite signed measures on
-$\Omega$ the weak topology defined by integration against
-these polynomials. It is locally convex and Hausdorff:
-if every such integral of a signed measure vanishes, its
-finite-coordinate marginals have zero Fourier transform,
-so its positive and negative parts agree on cylinder sets
-and hence on every Borel set. Its continuous linear
-functionals are precisely integration against the test
-space; a continuous linear functional for a topology
-defined by these seminorms depends on finitely many of
-them, and their finite real span is still that space.
-Since the tests are bounded and continuous, the inclusion
-from the usual weak topology of laws is continuous.
-Thus $\mathcal R$ is a compact convex subset of this
-locally convex Hausdorff vector space. It is nonempty
-by the hypothesis at $O=0$.
-
-If $\nu$ were outside $\mathcal R$, strict separation of
-a compact convex set and a disjoint closed point would
-give a continuous linear functional with
-$\max_{\lambda\in\mathcal R}\lambda(O)<\nu(O)$ for some
-test $O$. Its maximum exists by compactness. This contradicts
-the assumed inequality for that $O$.
-\end{proof}
 
 \begin{theorem}\label{thm:diag-lattice-limits}
 At fixed $q>0$, $0<\rho<1$, positive chamber weights and
@@ -4168,12 +4122,24 @@ for all large sides. The cubic torus is adapted to this
 mirror, and its reflected slab trace gives nonnegativity
 of the reflected form. Weak convergence and the $L^2$
 extension give coordinate reflection positivity of the
-limit. For the diagonal mirror $(x_1-x_2,c_0)$,
-\eqref{eq:diag-dominating-state} holds for every real
-trigonometric polynomial. Lemma~\ref{lem:diag-separation}
-therefore gives $\nu\in\mathcal R(c_0)$, proving its
-diagonal positivity. This is valid for every integer
-$c_0$.
+limit. For the diagonal mirror $\Pi=\{x_1-x_2=c_0\}$, let $A$ be a
+finite character sum supported in its open positive side and put
+$\Theta A=\overline{A\circ\theta_\Pi^*}$.
+Then $O=-\operatorname{Re}[(\Theta A)A]$ is a real local
+trigonometric polynomial. Its comparison state in
+\eqref{eq:diag-dominating-state} is reflection positive, so
+\[
+ -\operatorname{Re}\nu((\Theta A)A)=\nu(O)\le\nu_0(O)\le0.
+\]
+The reflection $\theta_\Pi$ is a composition of a lattice translation
+and a coordinate permutation. Invariance of $\nu$ under these
+maps makes $\nu((\Theta A)A)$ real, hence nonnegative.
+Character sums are dense in the positive-side $L^2$ space by
+finite-dimensional Fourier uniqueness and approximation by
+finite-coordinate observables. Reflection invariance and
+Cauchy--Schwarz make the reflected form continuous there,
+so positivity extends to the whole space. This is valid for
+every integer $c_0$.
 
 A signed permutation transports this diagonal mirror
 and its positive half-space to any plane
