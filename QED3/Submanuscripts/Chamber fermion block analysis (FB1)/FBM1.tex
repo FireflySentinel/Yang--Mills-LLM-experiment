@@ -40,10 +40,10 @@
 \RequirePackage{perpage}
 \RequirePackage{xcolor}
 \definecolor{manuscriptred}{rgb}{0.6,0.1,0.1}
-\definecolor{manuscriptcyan}{rgb}{0.1,0.3,0.5}
-\definecolor{manuscriptmagenta}{HTML}{8B008B}
+\definecolor{manuscriptblue}{rgb}{0.1,0.3,0.5}
+\definecolor{manuscriptmagenta}{HTML}{60445C}
 \RequirePackage[breaklinks=true,colorlinks=true,
-  linkcolor=manuscriptred,citecolor=manuscriptcyan,urlcolor=manuscriptmagenta]{hyperref}
+  linkcolor=manuscriptred,citecolor=manuscriptblue,urlcolor=manuscriptmagenta]{hyperref}
 \RequirePackage{cleveref}
 \hypersetup{pdfauthor={}}
 
@@ -179,7 +179,7 @@ Use the Pauli and Dirac matrices
 \]
 Let \(s_0\) reverse the third coordinate, \(s_1\) interchange
 coordinates \(2,3\), and \(s_2\) interchange \(1,2\); let \(r_{e_1}\)
-reverse the first coordinate. The four neighbours, inward normals,
+reverse the first coordinate. The four neighbors, inward normals,
 and weights are
 \[
  \begin{gathered}
@@ -202,7 +202,7 @@ where internal transports are one and the external transport is
 The unit blocks are
 \(\Delta_z=\{c:|c-z|_\infty<1/2\}\), \(z\in\Z^3/\ell\Z^3\).
 For \(c\in\Delta_z\), let \(c=c_0,c_1,\ldots,c_k=z\) be the
-centres of its nested blocks of sides \(L^j\eta\).
+centers of its nested blocks of sides \(L^j\eta\).
 Write \(\tau A(u,v)\) for the arithmetic mean of the oriented
 fine-bond sums along the six coordinate-order paths from \(u\) to \(v\).
 Set
@@ -214,7 +214,8 @@ Set
  (Q_k^T(-A)v)(c)&=\varphi_A(z,c)^{-1}v(z).&&
  \end{aligned}
 \]
-For \(z'\in L\Z^3/\ell\Z^3\), put \(B(z')=\{z:|z-z'|_\infty<L/2\}\).
+For \(z'\in L\Z^3/\ell\Z^3\), put
+\(B(z')=\{z\in\Z^3:|z-z'|_\infty<L/2\}\), modulo \(\ell\Z^3\).
 The next average and its algebraic reverse are
 \[
  \begin{aligned}
@@ -250,7 +251,7 @@ For \(0<\mu\le1\), the penalized operators are
 The data \(k,\mu,\ell,e_k\) are independent.
 
 Let \(M\ge L^2\) be a power of \(L\), with partition \(M\)-cubes
-centred in \(M\Z^3/\ell\Z^3\), and assume \(\ell/(LM)\) is odd
+centered in \(M\Z^3/\ell\Z^3\), and assume \(\ell/(LM)\) is odd
 and at least \(13\). A connection belongs to
 \(\widetilde{\mathcal G}_k\) if \(A=A_0+A_1\), \(A_0\) is real,
 \(\|A_1\|_\infty<e_k^{-1+\varepsilon}\), and on every concentric
@@ -535,7 +536,7 @@ $H_m$ as well as $D_{\mathrm{ll}}$.
 \begin{proposition}\label{prop:schur-symbol}
 There are positive constants $\theta_0,c_{\mathrm e},\kappa_{\mathrm{strip}}$, depending
 on $\rho$ only, such that $H_m$ and $B_m$ are holomorphic in a
-neighbourhood of $\{|\operatorname{Im}p_\mu|\le\theta_0\}$ and
+neighborhood of $\{|\operatorname{Im}p_\mu|\le\theta_0\}$ and
 $2\pi\Z^3$-periodic. On the real cube $[-\pi,\pi]^3$,
 \begin{align}
  \|H_m(p)\|&\le(g_{\mathrm h}+m)^{-1},\label{eq:symbol-heavy}\\
@@ -795,7 +796,7 @@ For \eqref{eq:chamber-poincare}, first apply the scalar lattice
 Poincar\'e bound
 $\|\xi-P_E\xi\|_{2,E}^2\le\ell_E^2\|\nabla_0\xi\|_{2,E}^2/8$.
 In one dimension this follows by writing each difference as a sum of
-nearest-neighbour differences; the coefficient of a bond at position
+nearest-neighbor differences; the coefficient of a bond at position
 $j$ is $j(n-j)/2\le n^2/8$. In three dimensions use the three commuting
 line averages, whose successive remainders are orthogonal.
 Now $f-P_Ef=J(\xi-P_E\xi)+Qf$. Its two parts are orthogonal, and the
@@ -1048,7 +1049,7 @@ is at most $42\exp(\gamma)\exp(\delta)\delta$. The two averaging
 penalties contribute respectively
 $3b\delta\exp(3\delta)$ and
 $3b\delta\exp(\gamma(L-1))\exp(3L\delta)$. Indeed, the nested paths
-have total length at most $3/2$, and the path to an $L$-block centre
+have total length at most $3/2$, and the path to an $L$-block center
 has length at most $3L/2$. Summing their normalized block kernels
 removes the numbers of sites. The bounds $\gamma L\le\log2$ and
 $3L\delta\le1$ give $N_\gamma(V)\le C_V\delta$.
@@ -1064,7 +1065,7 @@ form gives $N_\gamma(\delta_{\alpha,0}F_y(B)^{-1})\le2a'$.
 For distinct photon sites in a short pair,
 $d_X^{-\alpha}|U_B-1|\le3\delta\exp(3\delta)\le1/4$;
 for intracluster pairs the expression is zero. Evaluation at the
-second point of a short pair uses at most $27$ neighbouring blocks,
+second point of a short pair uses at most $27$ neighboring blocks,
 and costs at most $27\exp(\gamma)$. Its contribution to the covariant
 quotient is at most $16a'$, proving the second bound. At level zero,
 the second form of the Neumann series keeps the kernel norm in the
@@ -1082,12 +1083,12 @@ This follows by restricting $B_0+A_1$ and $\lambda$ to that cube.
 The domain is open: a sufficiently small complex perturbation can be
 added to $A_1$. It is invariant under real gauge transformations.
 
-For a lift $z_\square$ of the cube centre put
+For a lift $z_\square$ of the cube center put
 $W_\square=\{|c-z_\square|_\infty<3M/2\}$ and
 $W_\square^-=\{|c-z_\square|_\infty<3M/2-\eta_k\}$.
 Embed $W_\square$ in the positive chamber of the periodic torus of
 side $6M$, whose lattice is translated by $\eta_k(1,1,1)/2$.
-Its level-$j$ block centres are
+Its level-$j$ block centers are
 $L^j\eta_k(1,1,1)/2+L^j\eta_k\Z^3$ for $0\le j\le k+1$.
 Translation by $L(1,1,1)/2$ identifies these blocks with the
 unshifted nested blocks, because $L^{k+1-j}$ is odd. The zero-field
@@ -1132,7 +1133,7 @@ over $W_\square$ and
  S_\square(A)F_y(A)f=f.
 \end{equation}
 For \eqref{eq:local-right-identity}, the rows at an interior site use
-only its internal neighbours, its external neighbour, and its
+only its internal neighbors, its external neighbor, and its
 $L$-block. These lie in $W_\square$, where the original and folded
 operators agree. For \eqref{eq:local-left-identity}, the support
 margin ensures that applying $F_y$ cannot leave $W_\square$.
@@ -1145,7 +1146,7 @@ only in $W_\square$ and is analytic in those connection variables.
 
 \subsection{The parametrix and the walk expansion}\label{subsec:propagator-walks}
 
-Choose the product cutoff $h_\square$ with centre $z_\square$ and
+Choose the product cutoff $h_\square$ with center $z_\square$ and
 one-dimensional factor
 \[
  h_0(t)=\begin{cases}
@@ -1161,7 +1162,7 @@ On a lift of the cube set
  h_\square(c,g)=h_\square(c).
 \]
 Extend this with period $R$ and set it to zero away from the periodic
-images of the lifted cube neighbourhood.
+images of the lifted cube neighborhood.
 The cutoffs satisfy $\sum_\square h_\square^2=1$,
 $\supp h_\square\subset\{|c-z_\square|_\infty<3M/4\}$, and
 $|h_\square(c)-h_\square(c')|\le\pi|c-c'|_1/M$.
@@ -1205,7 +1206,7 @@ $R^{\mathrm p\prime}=-\sum_\square h_\square S_\square C_\square$.
 
 The terms in \eqref{eq:global-parametrix-inverse} have a local
 description. A walk of length $n$ is a sequence
-$\omega=(\square_0,\ldots,\square_n)$ with successive centres at
+$\omega=(\square_0,\ldots,\square_n)$ with successive centers at
 distance at most $M$. Its term is
 \[
  S_\omega=(h_0S_0h_0)(C_1S_1h_1)\cdots(C_nS_nh_n),
@@ -1290,7 +1291,7 @@ at level zero.
 \section{Localized propagators and coarse covariances}\label{sec:fermion-primitives}
 
 We use the local integration construction of \cite[Section~11]{QED3Manuscript}. The walk expansion provides its localization. A parameter is attached to each $M$-cube traversed
-by a walk, together with its one-layer neighbourhood. Setting parameters
+by a walk, together with its one-layer neighborhood. Setting parameters
 to zero then separates the operator into components. The coarse
 covariance is obtained from this expansion by an exact resolvent
 identity. At parameter value one it agrees with the exact covariance;
@@ -1312,8 +1313,8 @@ $Y_k=\R\cup\{\infty\}$ at $k\ge1$, with $-\infty=\infty$
 as in the preceding resolvent construction.
 
 Let $\pi_k$ be the partition into $M$-cubes. For integers $j\ge0$, write
-$\square^{\sim j}$ for the union of partition cubes whose centres
-are within periodic sup distance $jM$ of the centre of $\square$.
+$\square^{\sim j}$ for the union of partition cubes whose centers
+are within periodic sup distance $jM$ of the center of $\square$.
 When this enlargement does not wrap, it has side $(2j+1)M$.
 Let $\mathcal P_k$ be the set of
 nonempty unions of these cubes connected through faces. For $X\in\mathcal P_k$
@@ -1323,7 +1324,7 @@ conventions of \cref{app:polymer-geometry}, set
  M d_M(X)=\inf\{\operatorname{length}(\mathcal N):
        \mathcal N\text{ is a net meeting every closed cube of }X\}.
 \]
-For a face-connected union of cubes, joining successive cube centres gives
+For a face-connected union of cubes, joining successive cube centers gives
 $d_M(X)\le |X|_M-1$.
 
 For a walk $\omega=(\square_0,\ldots,\square_n)$ from
@@ -1337,8 +1338,8 @@ The union $X_\omega$ is a polymer and
 \begin{equation}\label{eq:walk-polymer-size}
  |X_\omega|_M\le27(n+1),\qquad d_M(X_\omega)\le27(n+1).
 \end{equation}
-Indeed, each one-layer neighbourhood contains $27$ cubes. Successive
-centres differ by at most $M$ in each coordinate, so their neighbourhoods
+Indeed, each one-layer neighborhood contains $27$ cubes. Successive
+centers differ by at most $M$ in each coordinate, so their neighborhoods
 are joined through faces. The preceding bound on $d_M$ applies.
 Every walk, including a walk of length zero, carries the parameters of
 all cubes in $X_\omega$.
@@ -1389,7 +1390,7 @@ At parameter value one,
  S_y^\#(1,A)=S_y(A)=\sum_{X\in\mathcal P_k}S_y^\#(X,A).
 \end{equation}
 The weakened operators are continuous on the closed parameter
-polydisk, jointly analytic in its interior and in $A$, and analytic in
+polydisc, jointly analytic in its interior and in $A$, and analytic in
 $A$ for each fixed parameter value, including boundary values.
 For finite real $y$ the families are continuous in $y$.
 
@@ -1430,7 +1431,7 @@ The local inverse is continuous at every real resolvent parameter.
 Its walk terms inherit this property, and their tails are uniform in
 $y$ since $w_k(y)\le1$. The sums are therefore continuous in real $y$.
 
-A walk term is a product of local factors on the neighbourhoods
+A walk term is a product of local factors on the neighborhoods
 $\square_i^{\sim1}$. Its row and column cutoffs, its commutators, and
 all connection variables consequently lie in $X_\omega$. If the first
 row is nonzero, its photon site satisfies
@@ -1479,7 +1480,10 @@ Here $Q_k$ averages the fine lattice onto the unit lattice, and $Q$
 averages the unit lattice onto the lattice of spacing $L$.
 The notation $\sharp$ denotes the displayed algebraic transpose with
 reversed connection; for complex $A$ it is not a Hermitian adjoint.
-Here $B(z')=E_{z'}$ is the $L$-block from the preceding section.
+Here $B(z')=E_{z'}\cap\Z^3
+=\{z\in\Z^3:|z-z'|_\infty<L/2\}$ is the unit-lattice
+part of the $L$-block in \cref{subsec:blocked-zero-inverse};
+the blocks are taken modulo the torus periods.
 To specify the phases, if $c\in\Delta_z$ and $z\in B(z')$, set
 \[
  \varphi_A(z,c)=e^{ie_k\eta_k(\tau_kA)(z,c)},\qquad
@@ -1487,7 +1491,7 @@ To specify the phases, if $c\in\Delta_z$ and $z\in B(z')$, set
 \]
 The path average $\tau A$ is the arithmetic mean of the oriented bond
 sums in the six coordinate orders, and $\tau_kA$ is their sum along
-the nested block centres. Then
+the nested block centers. Then
 \begin{align*}
  (\mathcal Q_kf)(z)&=\eta_k^3\sum_{c\in\Delta_z}
                 \varphi_A(z,c)\frac1{48}\sum_gf(c,g),\\
@@ -1542,7 +1546,9 @@ $\delta Z_k(A)=\det(D_k+b_LP_L)\ne0$.
 
 \begin{proof}
 Set $Z=b_k^2\mathcal Q_k^\sharp\mathcal B_{k,y}\mathcal Q_k$.
-The two fine inverses exist by the preceding section, and
+The two fine inverses are constructed in
+\cref{subsec:propagator-walks} and recovered at parameter value
+one in \cref{prop:weakened-polymer-propagators}. Equation
 \eqref{eq:fine-resolvent-perturbation} gives both identities
 \[
  S_y-S_k=S_kZS_y=S_yZS_k.
@@ -1694,7 +1700,7 @@ $2(1+2\exp(1))b_-^{-1}e^{-\gamma d(z,z')}$, proving
 The odd block partitions are nested, and every unit block and every
 $L$-block belongs to a single $M$-cube. Moreover, the paths entering
 $\varphi_A(z,c)$ lie in $\Delta_z$, and the paths entering
-$U_A(z',z)$ lie in the fine block of side $L$ centred at $z'$:
+$U_A(z',z)$ lie in the fine block of side $L$ centered at $z'$:
 each coordinate of a rectilinear path remains between those of its
 endpoints. Consequently the averaging maps and $\mathcal B_{k,0}$
 preserve every union of $M$-cubes and depend only on its connection.
@@ -2212,7 +2218,7 @@ and using $\kappa_{\mathrm w}-1\ge\kappa+1$, proves
 \eqref{eq:local-determinant-bound} for $\widetilde E_k$ and hence
 for its four-term mean. The majorants are independent of $A$ and
 integrable in $y$. Each integrand is analytic in $A$; Cauchy's
-formula on a compact polydisk and the majorant permit its contour
+formula on a compact polydisc and the majorant permit its contour
 integrals to be exchanged with the $y$ integral. The result is
 analytic.
 
@@ -2235,7 +2241,7 @@ For real connections, sum the polymer propagators and use
 \eqref{eq:determinant-integral-level-zero}. This proves the first
 identity of \eqref{eq:local-determinant-quotient} there. Both sides
 are analytic on $\widetilde{\mathcal G}_k$, which is open and
-star-shaped. They agree on a real neighbourhood of zero, so their
+star-shaped. They agree on a real neighborhood of zero, so their
 Taylor series agree there and analytic continuation proves the
 identity throughout the domain.
 
@@ -2290,10 +2296,12 @@ three local bounds hold for $A'$. The external connection domain is
 \]
 If $e_k^{1/4}+e_k^\varepsilon<1$, both $\mathfrak X_k$ and
 $\widetilde R_k+\mathfrak X_k$ lie in
-$\widetilde{\mathcal G}_k$: on the local cubes the real part has
-a representative of size $e_k^{-3/4+\varepsilon}$, and the
-remaining part has size at most
+$\widetilde{\mathcal G}_k$: for $\mathscr A=A_0+A_1\in\widetilde R_k$,
+the real summand $A_0$ has on the local cubes a representative
+of size $e_k^{-3/4+\varepsilon}$, and the remainder
+$A_1+\mathscr C$ has size at most
 $(e_k^{1/4}+e_k^\varepsilon)e_k^{-1+\varepsilon}$.
+For $\mathfrak X_k$ alone take $A_0=A_1=0$.
 
 Put $v_k=-\log e_k$. Assume
 \begin{equation}\label{eq:determinant-gain-conditions}
@@ -2389,7 +2397,7 @@ terms, their bound, symmetries and normalized quotient.
 
 We use the geometric arguments of \cite[Appendix~A]{QED3Manuscript}.
 Let $L$ be odd, $M$ a power of $L$, and $\ell$ a multiple of $LM$
-with $\ell\ge13LM$. The $M$-cubes have centres in
+with $\ell\ge13LM$. The $M$-cubes have centers in
 $M\Z^3/\ell\Z^3$. They partition the lattice sites; their closed
 continuum versions may meet along faces and edges. A polymer is a
 nonempty union of $M$-cubes connected through faces. Denote its number
@@ -2477,8 +2485,8 @@ asserted injectivity, adjacency, and connectedness.
 
 Any other face-connected injective lift can be translated so that it
 contains the chosen lift of the cube of $p_0$. There are no two
-different neighbours of one lifted cube with the same projection:
-their centres differ by at most $2M<\ell$. Propagate this observation
+different neighbors of one lifted cube with the same projection:
+their centers differ by at most $2M<\ell$. Propagate this observation
 along a chain of adjacent cubes. Every cube of the other lift equals
 the corresponding cube of $\widetilde X$, proving uniqueness.
 

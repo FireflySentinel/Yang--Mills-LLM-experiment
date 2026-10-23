@@ -59,10 +59,10 @@
 \RequirePackage{perpage}
 \RequirePackage{xcolor}
 \definecolor{manuscriptred}{rgb}{0.6,0.1,0.1}
-\definecolor{manuscriptcyan}{rgb}{0.1,0.3,0.5}
-\definecolor{manuscriptmagenta}{HTML}{8B008B}
+\definecolor{manuscriptblue}{rgb}{0.1,0.3,0.5}
+\definecolor{manuscriptmagenta}{HTML}{60445C}
 \RequirePackage[breaklinks=true,colorlinks=true,
-  linkcolor=manuscriptred,citecolor=manuscriptcyan,urlcolor=manuscriptmagenta]{hyperref}
+  linkcolor=manuscriptred,citecolor=manuscriptblue,urlcolor=manuscriptmagenta]{hyperref}
 \RequirePackage{cleveref}
 \hypersetup{pdfauthor={}}
 
@@ -478,7 +478,7 @@ propagators. Changing $(x,y)$ then changes four Lipschitz factors and
 the middle propagator. On $|x|,|y|,|x'|,|y'|\le r$, the resulting
 difference is bounded by
 \begin{multline}\label{eq:probe-kernel-continuity}
- C_{a,r}\bigl((|x-x'|+|y-y'|)\|s^{*5}\|_\infty\\
+ C_{a,r}\bigl((|x-x'|+|y-y'|)\|s^{*5}\|_\infty\\*
  +\|s^{*4}\|_\infty
        \|S_M-S_M(\,\cdot+(x'-y')-(x-y))\|_{L^1}\bigr).
 \end{multline}
@@ -721,7 +721,7 @@ $\tau\coth\tau=1+\tau^2/3-\tau^4/45+O(\tau^6)$.
 \subsection{Integration and dilation}
 
 Integrate \eqref{eq:probe-field-strength-reduction} over the unit
-neighbourhood of $\supp a$, and use \eqref{eq:probe-spatial-tail}
+neighborhood of $\supp a$, and use \eqref{eq:probe-spatial-tail}
 on its complement. Equations \eqref{eq:probe-mass-derivative} and
 \eqref{eq:probe-constant-field} give
 \[

@@ -62,10 +62,10 @@
 \RequirePackage{perpage}
 \RequirePackage{xcolor}
 \definecolor{manuscriptred}{rgb}{0.6,0.1,0.1}
-\definecolor{manuscriptcyan}{rgb}{0.1,0.3,0.5}
-\definecolor{manuscriptmagenta}{HTML}{8B008B}
+\definecolor{manuscriptblue}{rgb}{0.1,0.3,0.5}
+\definecolor{manuscriptmagenta}{HTML}{60445C}
 \RequirePackage[breaklinks=true,colorlinks=true,
-  linkcolor=manuscriptred,citecolor=manuscriptcyan,urlcolor=manuscriptmagenta]{hyperref}
+  linkcolor=manuscriptred,citecolor=manuscriptblue,urlcolor=manuscriptmagenta]{hyperref}
 \RequirePackage{cleveref}
 \hypersetup{pdfauthor={}}
 
@@ -194,7 +194,7 @@ $W=\Z^3\rtimes\bigl(O(3)\cap\operatorname{GL}(3,\Z)\bigr)$ and
 $C_0=\{0<x_3<x_2<x_1<1/2\}$. Fix $v_0\in C_0$, and let
 $s_0,s_1,s_2,s_3$ be the reflections in its walls
 $x_3=0$, $x_2=x_3$, $x_1=x_2$, $x_1=1/2$, respectively.
-The fermion sites are $\mathcal X=Wv_0$, and the four neighbours
+The fermion sites are $\mathcal X=Wv_0$, and the four neighbors
 of $x=gv_0$ are $x^{(i)}=gs_iv_0$. Write $\pi(x)$ for the nearest
 point of $\Z^3$ to $x$. With $\gamma_j=\operatorname{diag}(\sigma_j,-\sigma_j)$,
 where $\sigma_j$ are the Pauli matrices, put $\gamma_v=\sum_jv_j\gamma_j$.
@@ -484,7 +484,7 @@ Denote the walls by $\Pi_i$ and their inward unit normals by
  \quad n_2=(e_1-e_2)/\sqrt2,\quad n_3=-e_1.
 \end{equation}
 
-Fix $v_0=(v_1,v_2,v_3)\in C_0$. The fermion sites and their neighbours
+Fix $v_0=(v_1,v_2,v_3)\in C_0$. The fermion sites and their neighbors
 are
 \begin{equation}\label{eq:reg-fermion-sites}
  \mathcal X=Wv_0,\qquad (gv_0)^{(i)}=gs_iv_0.
@@ -505,7 +505,7 @@ the same photon site at both ends; a type-$3$ bond joins two nearest
 photon sites. Exactly eight fermion bonds lie over each photon link.
 If a mirror does not cut the link and its open segment lies on one
 side, all eight bonds lie on that side.
-The graph is connected and bipartite, and each site has one neighbour
+The graph is connected and bipartite, and each site has one neighbor
 of each type.
 \end{proposition}
 
@@ -536,14 +536,14 @@ mirror. Each half of the bond, except its midpoint, lies in one of
 the two adjacent chambers. Transport by $g\in W$ proves the bond
 assertion at every site.
 
-In the coordinates $x=k+rv_0$, the first three neighbours are
+In the coordinates $x=k+rv_0$, the first three neighbors are
 $k+rs_iv_0$, whereas the fourth is
 $k+re_1+rr_{e_1}v_0$, where $r_{e_1}$ changes the sign of the first
 coordinate. This proves the statements about $\pi$ and its
 equivariance. Over $(k,\mu)$ the lower ends are exactly the eight
 sites for which $y_\mu=v_1$: the remaining two absolute values can
 be ordered in two ways, with four choices of their signs. Their
-type-$3$ neighbours are the upper ends of these eight bonds.
+type-$3$ neighbors are the upper ends of these eight bonds.
 
 The bond over $b=(k,\mu)$ has the segment
 $k+te_\mu+y_\perp$, $v_1\le t\le1-v_1$, where the other two
@@ -562,7 +562,7 @@ The generators $s_0,s_1,s_2$ generate the signed permutations, and
 $s_3r_{e_1}=\tau_{e_1}$; conjugation gives all coordinate translations.
 Thus the four wall reflections generate $W$, proving connectivity.
 The two parts are the sites $gv_0$ with $\det r=1$ and with
-$\det r=-1$, since each neighbour changes this determinant.
+$\det r=-1$, since each neighbor changes this determinant.
 \end{proof}
 
 The geometric location records reflection, while $(k,r)$ labels the
@@ -675,7 +675,7 @@ blocks of $J_A$ have opposite signs. It follows that
  \qquad \det \mathcal D_A^{\mathbb T}=|\det\check{\mathcal D}_A^{\mathbb T}|^2.
 \end{equation}
 Each hopping matrix has norm $w_i(1+\rho)/2$, while the associated
-translation with phase is unitary. Their sum gives the norm bound.
+phase-weighted permutation of sites is unitary. Their sum gives the norm bound.
 
 For the last assertion we view the determinant as a Laurent
 polynomial $P_{\mathbb T}$ in the independent variables $u_b$.
@@ -692,8 +692,8 @@ the increasing values
 \[
  y_\mu=-v_1,-v_2,-v_3,v_3,v_2,v_1.
 \]
-Each layer has $8V$ sites. Each site has one upward neighbour,
-one downward neighbour, and two neighbours in its own layer. The
+Each layer has $8V$ sites. Each site has one upward neighbor,
+one downward neighbor, and two neighbors in its own layer. The
 upward map is a permutation of the sites and visits successive layers
 modulo six. Its bond types are
 \begin{equation}\label{eq:reg-upward-types}
@@ -702,7 +702,7 @@ modulo six. Its bond types are
 For layers $1,\ldots,5$ the upward phase is one; in layer six it is
 $u_b$ for the link $(\pi(x),\mu)$. These facts follow by changing the
 smallest sign or exchanging successive absolute values in the
-neighbour formulas above. The sixth step changes $v_1$ to $-v_1$
+neighbor formulas above. The sixth step changes $v_1$ to $-v_1$
 and increases the photon coordinate by one.
 
 There are eight lower and eight upper fermion ends over each photon
@@ -989,8 +989,8 @@ fermion sites of the torus. Let $S_+$ contain the mass terms and
 oriented bonds entirely in $U_+$, and set
 $\theta=\theta_\Pi$, $\Theta=\Theta_\Pi$; the second boundary mirror
 induces the same geometric reflection on the torus.
-The reflected part is $\Theta S_+$. Its coefficient functions
-involve only links in the closed upper slab.
+The coefficient functions of $S_+$ involve only links in the closed
+upper slab; the reflected part is $\Theta S_+$.
 
 The crossing modes at $\Pi$ lie in
 $\operatorname{Gr}(\mathcal X_+)$. At $\Pi'$ their upper endpoints
@@ -1189,7 +1189,8 @@ Integration of the cut links over one period gives
  =r_q^{|B_\times|}
    1_{\{d^*k+\mathfrak q(I\cup I')=0\text{ on }B_\times\}}.
 \end{equation}
-The quantities in the exponent are integers. This is precisely
+The coefficients $(d^*k)(b)+\mathfrak q(I\cup I')(b)$ are integers.
+This is precisely
 Gauss' law at the cut links, with a nonnegative multiplier. When
 there are no cut links the condition is empty.
 
@@ -1200,8 +1201,10 @@ Let $\mathcal B^+$ be the Grassmann-valued integrands whose
 generators are in $\mathcal X_+$ and whose bounded measurable
 coefficient functions depend only on the upper and mirror
 curvatures and link phases. For the later operator estimates we
-also use $\mathcal G^+$: its coefficients $\Phi$ satisfy, for some
-$C<\infty$ and $\varepsilon>0$,
+also use $\mathcal G^+$, with the same generator support and
+coefficient-variable dependence as $\mathcal B^+$, but with boundedness
+replaced by the following condition: for some $C<\infty$ and
+$\varepsilon>0$, each coefficient $\Phi$ satisfies
 \begin{equation}\label{eq:reg-upper-growth}
  W_+|\Phi|\le C\prod_{\sigma\in P_+}e^{-\varepsilon F_\sigma^2}.
 \end{equation}
@@ -1745,7 +1748,7 @@ $U_{\mathrm f}\mathfrak S[G]=(-1)^{\deg G}\mathfrak S[G]U_{\mathrm f}$.
 \end{proposition}
 
 \begin{proof}
-The coefficient of the finite Grassmann polynomial
+Each coefficient of the finite Grassmann polynomial
 $e^{-S_{(c,c')}(A)}$ is bounded uniformly in real $A$. Each coefficient
 in the matrix in \eqref{eq:slab-kernel} is consequently bounded by a
 fixed multiple of the majorant for $G$. The phases have modulus one.
@@ -2178,8 +2181,8 @@ $z_0^{\mathrm{mag}}-k\mathbf1_{\sigma_0}=d_sk'$ for an integer
 one-cochain $k'$. Integer exactness follows from the dual graph whose
 vertices are the plaquettes. A link of
 $\Sigma$ is a dual edge directed toward the plaquette where its
-coefficient in $d_s$ is positive. The dual graph is connected. Fix
-a root and a spanning tree. Unit signed flow along the path from the
+coefficient in $d_s$ is positive. The dual graph is connected. Choose a spanning tree rooted at
+$\sigma_0$. Unit signed flow along the path from the
 root to a vertex $\sigma$ has divergence
 $\delta_\sigma-\delta_{\sigma_0}$. Summing these paths with the
 integer coefficients of a zero-sum two-cochain gives precisely that
@@ -2357,7 +2360,8 @@ electric and magnetic slices. Then
  \quad X_{n_1}=X_0.
 \end{equation}
 
-Here is the conversion from the unfolded path integral. The electric
+Here is the conversion from the unfolded path integral. Write
+$g_t(x)=(2\pi t)^{-1/2}\exp(-x^2/(2t))$ for $t>0$. The electric
 Maxwell factors are the kernels
 \[
  e^{-|A_{j+1}-A_j-d_sa_j+\beta_j^{\mathrm{el}}|^2/2}
@@ -3058,8 +3062,9 @@ Both kernels satisfy \eqref{eq:diag-kernel-conditions}. To see their
 decay, consider one normal-form term $e^{i\delta A}\Upsilon(E)$ with
 $\Upsilon(\xi)=e^{-Q(\xi)+\lambda\xi}\Upsilon_0$. Identify $Q$
 with its symmetric matrix, so $Q(\xi)=\langle\xi,Q\xi\rangle$,
-extending $Q$ by
-zero to the other links. With $Q_s=4sI+2Q$ and
+extending both $Q$ and $\lambda$ by zero to the other links.
+The brackets in the following exponent are the complex-bilinear
+extension of the real Euclidean pairing. With $Q_s=4sI+2Q$ and
 $\lambda_s=\lambda-2s\delta$, its kernel is
 \begin{equation}\label{eq:diag-regularized-kernel}
  \begin{split}
@@ -3862,8 +3867,9 @@ there are constants $C_P$, $k_P$ and a volume threshold with
              \le C_P\gamma_{t,i}(k_P),\qquad t\ge0.
 \end{equation}
 One may take
-$C_P=\sum_a|b_a|2^{|S_a|/2}\|X'_{Y_a}\|$, with the summand
-one for $Y_a=1$. All support boxes in the finite normal form
+$C_P=\sum_a|b_a|2^{|S_a|/2}\|X'_{Y_a}\|$, where the factor
+$2^{|S_a|/2}\|X'_{Y_a}\|$ is one for $Y_a=1$. Such a term
+therefore contributes $|b_a|$. All support boxes in the finite normal form
 and $B_0$ fit in one fixed box; its radius determines $k_P$.
 The size of $\beta$ does not enter the bound. Reflected
 polynomials have the same kind of bound, since the normal
@@ -3920,8 +3926,9 @@ $(A,z_0+dk)$ represents the same configuration as
 $(A+\frac{2\pi}{q}k,z_0)$.
 
 For fixed $z_0$ and the other real links, choose an integer
-primitive of $z_0$ in the local box. Adding it to $A$ gives
-a local lift affine in the complex variables $\zeta=A_S$.
+one-cochain $k'$ with $dk'=z_0$ in the local box. Then
+$A+\frac{2\pi}{q}k'$ is a local lift affine in the complex
+variables $\zeta=A_S$.
 The Berezin coefficients of $e^{-S_T(A)}$ are polynomials
 in the link phases, so the full integrand extends to an
 entire function $f(\zeta)$. On the strip
@@ -3942,7 +3949,7 @@ endpoints $\pm R$ and imaginary displacement $-iu_b$. The
 vertical sides tend to zero by \eqref{eq:diag-contour-strip}.
 Fubini then gives $\int f(\xi)\,\dd\xi=
 \int f(\xi-iu)\,\dd\xi$. At the shifted arguments the
-Maxwell exponent becomes
+Maxwell exponent, using the complex-bilinear cochain pairing, becomes
 \[
  -\tfrac12\langle F-idu,F-idu\rangle
        =-\tfrac12\|F\|^2+i\langle du,F\rangle+\tfrac12\|du\|^2.

@@ -44,10 +44,10 @@
 \RequirePackage{perpage}
 \RequirePackage{xcolor}
 \definecolor{manuscriptred}{rgb}{0.6,0.1,0.1}
-\definecolor{manuscriptcyan}{rgb}{0.1,0.3,0.5}
-\definecolor{manuscriptmagenta}{HTML}{8B008B}
+\definecolor{manuscriptblue}{rgb}{0.1,0.3,0.5}
+\definecolor{manuscriptmagenta}{HTML}{60445C}
 \RequirePackage[breaklinks=true,colorlinks=true,
-  linkcolor=manuscriptred,citecolor=manuscriptcyan,urlcolor=manuscriptmagenta]{hyperref}
+  linkcolor=manuscriptred,citecolor=manuscriptblue,urlcolor=manuscriptmagenta]{hyperref}
 \RequirePackage{cleveref}
 \hypersetup{pdfauthor={}}
 
@@ -611,7 +611,8 @@ These arrays satisfy the rectangular chessboard estimate
 For the coordinate cells used here, its fold proof also applies
 at half-integer width: all walls remain admissible, paired
 reflections translate by the integer $2w$, and the even cell
-counts give integer torus sides at least four.
+counts give integer torus sides at least four. For each layer, the fold
+identity is applied with the trace based at that layer's own lower boundary.
 For a support box $B=y+[-r,r]^3\subset Q_c^\circ$ one has
 $2r<w$. A nonzero period has sup norm at least $2w>4r$
 and at least four. Thus its enlarged boxes $B+[-1,1]^3$

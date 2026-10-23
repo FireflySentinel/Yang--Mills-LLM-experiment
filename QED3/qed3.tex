@@ -1,6 +1,6 @@
 \documentclass[11pt]{amsart}
 \usepackage[margin=1.05in]{geometry}
-\usepackage{amsmath,amssymb,mathrsfs}
+\usepackage{amsmath,amssymb,mathrsfs,longtable}
 \usepackage{hyperref}
 \hypersetup{hidelinks,pdftitle={The field-strength Osterwalder--Schrader axioms for QED in three dimensions},pdfauthor={}}
 \allowdisplaybreaks
@@ -29,8 +29,10 @@
 \date{}
 \begin{document}
 \begin{abstract}
-We construct non-Gaussian laws of closed two-form fields from noncompact
-lattice QED with chamber fermions. Their Schwinger functions satisfy the
+At sufficiently small positive physical charge, almost every
+translation-ergodic component of every volume-first continuum limit of
+noncompact lattice QED with chamber fermions is a non-Gaussian law of
+closed two-form fields. Its Schwinger functions satisfy the
 Osterwalder--Schrader axioms, including clustering.
 \end{abstract}
 \maketitle
@@ -61,8 +63,8 @@ $f=dd^*\beta$ has
  \qquad S_{\bar m}=(\bar m+\gamma\cdot\partial)^{-1}.
 \end{equation}
 Such probes exist. There is $e_\beta\in(0,e_{\mathrm{phys}}]$ such that, for $0<e\le e_\beta$,
-the all-flux chamber laws on the coordinate cubic tori of unit
-side $n=R/\eta$, with periodic gauge fields and fermions
+the all-flux chamber laws on the coordinate cubic tori of side
+length $n=R/\eta$ in lattice units, with periodic gauge fields and fermions
 antiperiodic in all three coordinate directions, and with
 \begin{equation}\label{eq:cutoff-scales}
  \eta=L^{-N},\quad R=8hL^T,\quad
@@ -122,8 +124,9 @@ where
  =\Phi(x_1-a,\ldots,x_l-a).
 \]
 \end{enumerate}
-Moreover, for a constant $C_f$ independent of the limit point and of
-$\xi$,
+Moreover, for a constant $C_f$ depending only on the fixed
+construction, reference mass and probe, and independent of
+$0<e\le e_\beta$, the limit point and $\xi$,
 \begin{equation}\label{eq:main-cumulant}
  \bigl|\kappa_4^{\mu_\xi}(f)-e^4b(f)\bigr|
  \le C_f e^{4+\sigma},\qquad
@@ -204,8 +207,9 @@ then exclude contact terms, allowing passage to general tests.
 This proves full covariance of the law, and hence reflection
 positivity at every plane.
 
-For clustering, the sharp cone identifies invariance under one
-coordinate translation with invariance under all translations.
+For clustering, the sharp cone identifies invariance under the
+one-parameter translation group in one coordinate direction with
+invariance under all translations.
 The local correlation estimate then yields factorization in an
 ergodic law. The required bounds and mirror positivity are first
 proved for almost every component; the rotation argument is applied
@@ -281,8 +285,7 @@ rotation argument.
 The physical and level coordinates have different unit lengths.
 The following dictionary collects the conventions used in the
 renormalization estimates.
-\begin{center}
-\begin{tabular}{@{}p{0.25\linewidth}p{0.69\linewidth}@{}}
+\begin{longtable}{@{}p{0.25\linewidth}p{0.69\linewidth}@{}}
 Physical cutoff &
 $\eta=L^{-N}$, $R=8hL^T$ and unit-lattice side $n=R/\eta$.\\[4pt]
 Level $j$ &
@@ -307,8 +310,7 @@ two-form; see Section~\ref{sec:continuum-limits}.\\[4pt]
 Reference cells &
 $R^*$ is the reference side, $\ell_c=R^*/(2L)$ its cell
 side, and $N_*=8L^3$ the number of cells.\\
-\end{tabular}
-\end{center}
+\end{longtable}
 
 \section{The chamber regularization}\label{sec:regularization}
 
@@ -460,7 +462,7 @@ Denote the walls by $\Pi_i$ and their inward unit normals by
  \quad n_2=(e_1-e_2)/\sqrt2,\quad n_3=-e_1.
 \end{equation}
 
-Fix $v_0=(v_1,v_2,v_3)\in C_0$. The fermion sites and their neighbours
+Fix $v_0=(v_1,v_2,v_3)\in C_0$. The fermion sites and their neighbors
 are
 \begin{equation}\label{eq:reg-fermion-sites}
  \mathcal X=Wv_0,\qquad (gv_0)^{(i)}=gs_iv_0.
@@ -481,7 +483,7 @@ the same photon site at both ends; a type-$3$ bond joins two nearest
 photon sites. Exactly eight fermion bonds lie over each photon link.
 If a mirror does not cut the link and its open segment lies on one
 side, all eight bonds lie on that side.
-The graph is connected and bipartite, and each site has one neighbour
+The graph is connected and bipartite, and each site has one neighbor
 of each type.
 \end{proposition}
 
@@ -512,14 +514,14 @@ mirror. Each half of the bond, except its midpoint, lies in one of
 the two adjacent chambers. Transport by $g\in W$ proves the bond
 assertion at every site.
 
-In the coordinates $x=k+rv_0$, the first three neighbours are
+In the coordinates $x=k+rv_0$, the first three neighbors are
 $k+rs_iv_0$, whereas the fourth is
 $k+re_1+rr_{e_1}v_0$, where $r_{e_1}$ changes the sign of the first
 coordinate. This proves the statements about $\pi$ and its
 equivariance. Over $(k,\mu)$ the lower ends are exactly the eight
 sites for which $y_\mu=v_1$: the remaining two absolute values can
 be ordered in two ways, with four choices of their signs. Their
-type-$3$ neighbours are the upper ends of these eight bonds.
+type-$3$ neighbors are the upper ends of these eight bonds.
 
 The bond over $b=(k,\mu)$ has the segment
 $k+te_\mu+y_\perp$, $v_1\le t\le1-v_1$, where the other two
@@ -538,11 +540,11 @@ The generators $s_0,s_1,s_2$ generate the signed permutations, and
 $s_3r_{e_1}=\tau_{e_1}$; conjugation gives all coordinate translations.
 Thus the four wall reflections generate $W$, proving connectivity.
 The two parts are the sites $gv_0$ with $\det r=1$ and with
-$\det r=-1$, since each neighbour changes this determinant.
+$\det r=-1$, since each neighbor changes this determinant.
 \end{proof}
 
 The geometric location is useful for reflection, while the coordinates
-$(k,r)$ are useful for the renormalisation analysis. If
+$(k,r)$ are useful for the renormalization analysis. If
 $d_i=\operatorname{dist}(v_0,\Pi_i)$, then
 \[
  x^{(i)}-x=-2d_i\,rn_i,
@@ -556,7 +558,8 @@ The standard weights are
  w_i=48|\Pi_i\cap\overline C_0|,
  \qquad (w_0,w_1,w_2,w_3)=(6,6\sqrt2,6\sqrt2,6).
 \end{equation}
-Their inward normals satisfy $\sum_iw_in_i=0$.
+Here the bars denote two-dimensional Euclidean area.
+The inward normals $n_i$ satisfy $\sum_iw_in_i=0$.
 
 \subsection{The chamber operator and the finite-volume law}
 \label{subsec:reg-law}
@@ -668,7 +671,7 @@ blocks of $J_A$ have opposite signs. It follows that
  \qquad \det \mathcal D_A^{\mathbb T}=|\det\check{\mathcal D}_A^{\mathbb T}|^2.
 \end{equation}
 Each hopping matrix has norm $w_i(1+\rho)/2$, while the associated
-translation with phase is unitary. Their sum gives the norm bound.
+phase-weighted permutation of sites is unitary. Their sum gives the norm bound.
 
 For the last assertion we view the determinant as a Laurent
 polynomial $P_{\mathbb T}$ in the independent variables $u_b$.
@@ -685,8 +688,8 @@ the increasing values
 \[
  y_\mu=-v_1,-v_2,-v_3,v_3,v_2,v_1.
 \]
-Each layer has $8V$ sites. Each site has one upward neighbour,
-one downward neighbour, and two neighbours in its own layer. The
+Each layer has $8V$ sites. Each site has one upward neighbor,
+one downward neighbor, and two neighbors in its own layer. The
 upward map is a permutation of the sites and visits successive layers
 modulo six. Its bond types are
 \begin{equation}\label{eq:reg-upward-types}
@@ -695,7 +698,7 @@ modulo six. Its bond types are
 For layers $1,\ldots,5$ the upward phase is one; in layer six it is
 $u_b$ for the link $(\pi(x),\mu)$. These facts follow by changing the
 smallest sign or exchanging successive absolute values in the
-neighbour formulas above. The sixth step changes $v_1$ to $-v_1$
+neighbor formulas above. The sixth step changes $v_1$ to $-v_1$
 and increases the photon coordinate by one.
 
 There are eight lower and eight upper fermion ends over each photon
@@ -972,8 +975,8 @@ fermion sites of the torus. Let $S_+$ contain the mass terms and
 oriented bonds entirely in $U_+$, and set
 $\theta=\theta_\Pi$, $\Theta=\Theta_\Pi$; the second boundary mirror
 induces the same geometric reflection on the torus.
-The reflected part is $\Theta S_+$. Its coefficient functions
-involve only links in the closed upper slab.
+The coefficient functions of $S_+$ involve only links in the closed
+upper slab; the reflected part is $\Theta S_+$.
 
 The crossing modes at $\Pi$ lie in
 $\operatorname{Gr}(\mathcal X_+)$. At $\Pi'$ their upper endpoints
@@ -1172,7 +1175,8 @@ Integration of the cut links over one period gives
  =r_q^{|B_\times|}
    1_{\{d^*k+\mathfrak q(I\cup I')=0\text{ on }B_\times\}}.
 \end{equation}
-The quantities in the exponent are integers. This is precisely
+The coefficients $(d^*k)(b)+\mathfrak q(I\cup I')(b)$ are integers.
+This is precisely
 Gauss' law at the cut links, with a nonnegative multiplier. When
 there are no cut links the condition is empty.
 
@@ -1183,8 +1187,10 @@ Let $\mathcal B^+$ be the Grassmann-valued integrands whose
 generators are in $\mathcal X_+$ and whose bounded measurable
 coefficient functions depend only on the upper and mirror
 curvatures and link phases. For the later operator estimates we
-also use $\mathcal G^+$: its coefficients $\Phi$ satisfy, for some
-$C<\infty$ and $\varepsilon>0$,
+also use $\mathcal G^+$, with the same generator support and
+coefficient-variable dependence as $\mathcal B^+$, but with boundedness
+replaced by the following condition: for some $C<\infty$ and
+$\varepsilon>0$, each coefficient $\Phi$ satisfies
 \begin{equation}\label{eq:reg-upper-growth}
  W_+|\Phi|\le C\prod_{\sigma\in P_+}e^{-\varepsilon F_\sigma^2}.
 \end{equation}
@@ -1354,7 +1360,7 @@ volume $V$. With the pairing
 \[
  \langle\bar\Psi,O\Psi\rangle_{\mathrm{ch}}
        =\frac1{48}\sum_x\bar\Psi(x)(O\Psi)(x),
- \qquad \mathrm D\Psi=48^{192V}\int_{\mathbb T},
+ \qquad \int\mathrm D\Psi:=48^{192V}\int_{\mathbb T},
 \]
 one has
 \[
@@ -1746,7 +1752,7 @@ $U_{\mathrm f}\mathfrak S[G]=(-1)^{\deg G}\mathfrak S[G]U_{\mathrm f}$.
 \end{theorem}
 
 \begin{proof}
-The coefficient of the finite Grassmann polynomial
+Each coefficient of the finite Grassmann polynomial
 $e^{-S_{(c,c')}(A)}$ is bounded uniformly in real $A$. Each coefficient
 in the matrix in \eqref{eq:slab-kernel} is consequently bounded by a
 fixed multiple of the majorant for $G$. The phases have modulus one.
@@ -1875,8 +1881,10 @@ In particular every folded factor on the right is nonnegative.
 \end{proposition}
 
 \begin{proof}
-Translate the starting slab, if necessary, to $[c_0,c_1]$, and put
-$Y=\mathfrak S[G]$. Let
+Fix $j$ and write $a=c_{j-1}$. Put
+$Y=\mathfrak S[G_j]:\mathcal H(a)\to\mathcal H(a+h')$, and form
+the fold on $[a,a+p]$, with initial boundary $a$ in the trace formula.
+Let
 $v=2h'n_\ell/|n_\ell|^2$, which is integer because both mirror
 positions are admissible. The first reflected pair has product
 $V_vY^*Y$ by \eqref{eq:slab-operator-rules}. Its translate by $sv$
@@ -1887,9 +1895,10 @@ telescopes to
 \]
 Since $kv=g^0$ and $\chi^0(g^0)=-1$, the closing translation in
 \eqref{eq:slab-trace} cancels $V_{g^0}$ and introduces no parity.
-The trace is $\operatorname{Tr}(Y^*Y)^k$, proving the first identity.
-Translation of a different starting slab changes neither this trace
-nor the singular values.
+The trace is
+$\operatorname{Tr}_{\mathcal H(a)}(Y^*Y)^k=\|Y\|_{2k}^{2k}$.
+This calculation takes place at the starting boundary of each slab
+and proves the first identity for every $G_j$.
 
 For the original torus, the operator
 $V_g^{-1}U_{\mathrm f}^{(1+\chi(g))/2}$ is unitary. Apply
@@ -2158,8 +2167,8 @@ $z_0^{\mathrm{mag}}-k\mathbf1_{\sigma_0}=d_sk'$ for an integer
 one-cochain $k'$. Integer exactness follows from the dual graph whose
 vertices are the plaquettes. A link of
 $\Sigma$ is a dual edge directed toward the plaquette where its
-coefficient in $d_s$ is positive. The dual graph is connected. Fix
-a root and a spanning tree. Unit signed flow along the path from the
+coefficient in $d_s$ is positive. The dual graph is connected. Choose a spanning tree rooted at
+$\sigma_0$. Unit signed flow along the path from the
 root to a vertex $\sigma$ has divergence
 $\delta_\sigma-\delta_{\sigma_0}$. Summing these paths with the
 integer coefficients of a zero-sum two-cochain gives precisely that
@@ -2337,7 +2346,8 @@ electric and magnetic slices. Then
  \quad X_{n_1}=X_0.
 \end{equation}
 
-Here is the conversion from the unfolded path integral. The electric
+Here is the conversion from the unfolded path integral. Write
+$g_t(x)=(2\pi t)^{-1/2}\exp(-x^2/(2t))$ for $t>0$. The electric
 Maxwell factors are the kernels
 \[
  e^{-|A_{j+1}-A_j-d_sa_j+\beta_j^{\mathrm{el}}|^2/2}
@@ -2614,7 +2624,7 @@ large sides and the set
  \mathcal D=\{m\in\N:m\mid n_i\text{ for all sufficiently large }i\}
 \]
 is infinite. The set $\mathcal D$ is closed under divisors and least
-common multiples. The cutoff sides $8L^{a+T+N}$ have this property
+common multiples. The cutoff sides $8hL^{T+N}$ have this property
 at fixed $N$, since $8L^j\in\mathcal D$ for each $j\ge0$.
 
 \subsection{The tilted law at its walls}\label{subsec:diag-wall-law}
@@ -2918,8 +2928,9 @@ Both kernels satisfy \eqref{eq:diag-kernel-conditions}. To see their
 decay, consider one normal-form term $e^{i\delta A}\Upsilon(E)$ with
 $\Upsilon(\xi)=e^{-Q(\xi)+\lambda\xi}\Upsilon_0$. Identify $Q$
 with its symmetric matrix, so $Q(\xi)=\langle\xi,Q\xi\rangle$,
-extending $Q$ by
-zero to the other links. With $Q_s=4sI+2Q$ and
+extending both $Q$ and $\lambda$ by zero to the other links.
+The brackets in the following exponent are the complex-bilinear
+extension of the real Euclidean pairing. With $Q_s=4sI+2Q$ and
 $\lambda_s=\lambda-2s\delta$, its kernel is
 \begin{equation}\label{eq:diag-regularized-kernel}
  \begin{split}
@@ -3334,7 +3345,7 @@ At a coordinate link plane $c=j+\tfrac12$, a two-layer polynomial
 reads photon links in the planes $j$ and $j+1$ and between them,
 and fermion fields only at the two ends of the bonds crossing
 $c$. These are the thin layers $\mathcal X_{j,6}$ and
-$\mathcal X_{j+1,1}$; the other thin layers of the two chambers do
+$\mathcal X_{j+1,1}$; the other thin layers of the two adjacent thick layers do
 not occur. Call this subclass $\mathcal P_1(c)$. For a monomial
 $Y=e^{i\delta\widehat A}\Psi$, write its exponent as
 $(\delta_0,\delta_1,\delta_\perp)$ on the lower spatial, upper
@@ -3675,8 +3686,9 @@ there are constants $C_P$, $k_P$ and a volume threshold with
              \le C_P\gamma_{t,i}(k_P),\qquad t\ge0.
 \end{equation}
 One may take
-$C_P=\sum_a|b_a|2^{|S_a|/2}\|X'_{Y_a}\|$, with the summand
-one for $Y_a=1$. All support boxes in the finite normal form
+$C_P=\sum_a|b_a|2^{|S_a|/2}\|X'_{Y_a}\|$, where the factor
+$2^{|S_a|/2}\|X'_{Y_a}\|$ is one for $Y_a=1$. Such a term
+therefore contributes $|b_a|$. All support boxes in the finite normal form
 and $B_0$ fit in one fixed box; its radius determines $k_P$.
 The size of $\beta$ does not enter the bound. Reflected
 polynomials have the same kind of bound, since the normal
@@ -3733,8 +3745,9 @@ $(A,z_0+dk)$ represents the same configuration as
 $(A+\frac{2\pi}{q}k,z_0)$.
 
 For fixed $z_0$ and the other real links, choose an integer
-primitive of $z_0$ in the local box. Adding it to $A$ gives
-a local lift affine in the complex variables $\zeta=A_S$.
+one-cochain $k'$ with $dk'=z_0$ in the local box. Then
+$A+\frac{2\pi}{q}k'$ is a local lift affine in the complex
+variables $\zeta=A_S$.
 The Berezin coefficients of $e^{-S_T(A)}$ are polynomials
 in the link phases, so the full integrand extends to an
 entire function $f(\zeta)$. On the strip
@@ -3755,7 +3768,7 @@ endpoints $\pm R$ and imaginary displacement $-iu_b$. The
 vertical sides tend to zero by \eqref{eq:diag-contour-strip}.
 Fubini then gives $\int f(\xi)\,\dd\xi=
 \int f(\xi-iu)\,\dd\xi$. At the shifted arguments the
-Maxwell exponent becomes
+Maxwell exponent, using the complex-bilinear cochain pairing, becomes
 \[
  -\tfrac12\langle F-idu,F-idu\rangle
        =-\tfrac12\|F\|^2+i\langle du,F\rangle+\tfrac12\|du\|^2.
@@ -4433,7 +4446,7 @@ applied before the spacing is removed.
 
 Write $\eta=L^{-N}$, $R=8hL^T$, and $n=R/\eta$, as in
 \eqref{eq:cutoff-scales}. A plaquette of the unit covering lattice is
-$\sigma=(x;\mu\nu)$, with $\mu<\nu$ and centre
+$\sigma=(x;\mu\nu)$, with $\mu<\nu$ and center
 $y_\sigma=x+(e_\mu+e_\nu)/2$. Its averaging cube is
 \[
  Q_\eta(\sigma)=\eta\bigl(y_\sigma+[-1/2,1/2)^3\bigr).
@@ -4538,7 +4551,7 @@ on two-forms and the cochain pull-back,
  \qquad
  (\mathfrak g\cdot f)_\eta=(g^{-1})^*f_\eta.
 \end{equation}
-Indeed, $g$ sends centres to centres and the averaging cubes to
+Indeed, $g$ sends centers to centers and the averaging cubes to
 averaging cubes up to null boundaries. Its orientation sign is
 the sign of $\wedge^2\vec g$ on the corresponding plaquette.
 Changing variables gives the first formula; periodization and
@@ -5270,14 +5283,14 @@ density extends the statements to the full positive-side algebra
 in each conditional law. Translation invariance moves the mirror
 to every real height.
 
-This argument also transfers any further fixed mirror normal $n$.
+This argument also transfers any further fixed mirror with unit normal $n$.
 Choose $Q\in O(3)$ with $Qe_1=n$ and apply the axis argument to
 the transported law $(Q^{-1})_*\lambda$. The transported law is
 reflection positive at $x_1=0$; it need not equal $\lambda$.
 The map $Q_*$ sends translation-ergodic laws to translation-ergodic
 laws and transports their reflection forms. By uniqueness of the
 ergodic decomposition, its image decomposition is that of $\lambda$.
-Applying this to the six diagonal normals, and intersecting the
+Applying this to the six diagonal mirrors, and intersecting the
 resulting nine full-measure sets, transfers all required mirrors.
 
 Suppose now that the parent law satisfies
@@ -5685,10 +5698,11 @@ left, \eqref{eq:rotation-regularized-point-bound} gives the
 integrable majorant
 $2k_2\|\chi\|_2|\alpha(y)|/(d-d')$ for sufficiently small $\delta$.
 Dominated convergence identifies the limiting matrix elements.
-Holomorphy makes the limiting integrand norm continuous on the
-support, and \eqref{eq:rotation-point-bound} bounds its norm.
-It is therefore Bochner integrable, proving the formula and its
-stated norm bound.
+Holomorphy makes the operator factor norm continuous on the
+support. Multiplication by the measurable scalar $\alpha$ gives
+a strongly measurable integrand, whose norm is integrable by
+\eqref{eq:rotation-point-bound} and $\alpha\in L^1$. This proves
+Bochner integrability, the formula and its stated norm bound.
 \end{proof}
 
 \subsection{Ordered field kernels}\label{subsec:rotation-ordered-kernels}
@@ -5808,7 +5822,7 @@ Use \eqref{eq:rotation-point-integral} to write
 On the compact supports all these operators are norm bounded;
 the $\alpha_j$ are integrable. The product in
 \eqref{eq:rotation-ordered-product-class} is therefore one Bochner
-integral. Absorb each gap semigroup into a neighbouring point plate.
+integral. Absorb each gap semigroup into a neighboring point plate.
 The inner arguments between plates $j$ and $j+1$ then add to
 $y_{j+1}-y_j$. Replace them by equal halves using the product
 identity above. The initial argument becomes $y_1$, and the
@@ -5830,7 +5844,7 @@ The translation identity follows by shifting the first argument.
 
 Conjugating \eqref{eq:rotation-ordered-density} replaces the plates
 by $\bar\alpha_a\otimes\bar\lambda_a$. Testing in small ordered
-product neighbourhoods identifies
+product neighborhoods identifies
 $\overline{G_N(\xi;\lambda)}=G_N(\xi;\bar\lambda)$ on real
 $\xi\in\mathcal W^{N-1}$. Both sides, with $\xi$ conjugated on
 the first, are holomorphic, and this domain is connected.
@@ -5913,9 +5927,15 @@ gives \eqref{eq:rotation-spectral-CS}.
 
 On $A_n=\{a_0>1/n\}$, which is bounded, one may divide
 \eqref{eq:rotation-spectral-reference} by $a_0$ using bounded
-spectral calculus. This proves \eqref{eq:rotation-one-field-spectrum}
-with the measures restricted to $A_n$.
-As $A_n$ increase to the whole spectral space,
+spectral calculus. Thus
+\[
+ \big\langle\mathsf E_j(A_n)[\mathbb B_a(u)]_j,
+             \mathsf E_j(A_n)[\mathbb B_b(u')]_j\big\rangle
+       =\int_{A_n}\overline{\widetilde u}\,\widetilde u'
+                                                  \,\dd\varrho_{ab}.
+\]
+As $A_n$ increase to the whole spectral space and
+$\mathsf E_j(A_n)\to I$ strongly,
 the diagonal identity follows by monotone convergence; its integral
 is $\|[\mathbb B_a(u)]_j\|^2\le\|u\|_2^2$.
 Equation \eqref{eq:rotation-spectral-CS} then makes the mixed
@@ -6036,7 +6056,7 @@ By quarter-turn invariance and
 \eqref{eq:rotation-plate-actions}, this is the two-point density
 for supports ordered along $n_\upsilon$.
 Two such densities agree on overlaps: test them on small product
-neighbourhoods ordered in both directions and use continuity.
+neighborhoods ordered in both directions and use continuity.
 The four half-planes cover $\R^2\setminus\{0\}$, so they define
 one smooth kernel $G_{\lambda\lambda'}$ there.
 It computes the two-point function for any two disjoint compact
@@ -6059,7 +6079,7 @@ their real overlap. They give an entire function $h$ with
  |h(t+i\beta)|\le C_{\chi,\chi'}r^{-2}e^{2|\beta|},
 \end{equation}
 where $C_{\chi,\chi'}=72\|\chi\|_2\|\chi'\|_2/\pi$.
-For the bound, choose a strip centre within $\pi/4$ of $t$ and
+For the bound, choose a strip center within $\pi/4$ of $t$ and
 apply \eqref{eq:rotation-two-point-strip}.
 
 The entire function $e^{-iw\zeta}h(\zeta)$ has period $\pi/2$,
@@ -6094,7 +6114,7 @@ $\partial_z=(\partial_{y^0}-i\partial_{y^1})/2$,
 \]
 Pair this gradient with a second plate whose plane support is
 disjoint. Apply the density identities and integrate by parts.
-Testing on small disjoint product neighbourhoods gives
+Testing on small disjoint product neighborhoods gives
 \begin{equation}\label{eq:rotation-two-point-Bianchi}
  \partial_zG_{(+,\chi_0)\lambda'}
        +\partial_{\bar z}G_{(-,\chi_0)\lambda'}
@@ -6671,8 +6691,9 @@ Move the $J$ group by $se_2$. The points remain distinct for
 every real $s$, since the groups are separated in time.
 A sufficiently small positive $s_0$ removes every
 second-coordinate coincidence across the cut and creates none:
-take it smaller than every nonzero initial difference of
-second coordinates.
+take it smaller than every nonzero absolute difference of the
+initial second coordinates. If all these coordinates agree, any
+sufficiently small positive $s_0$ works.
 There are fewer coincident pairs at $X(s_0)$.
 
 The induction hypothesis gives a radius $2r$ near $X(s_0)$
@@ -6700,10 +6721,10 @@ radius $2r$ at $X(s_0)$, so $F(s)=0$.
 The real analytic identity theorem gives $F(0)=0$.
 This proves local vanishing near $X$ and completes the induction.
 For general disjoint compact supports, finitely many of these
-product-disc neighbourhoods cover their product.
+product-disc neighborhoods cover their product.
 Partition each support into sufficiently small half-open
 squares. Every product of nonzero pieces lies in one of the
-larger vanishing neighbourhoods: choose a point of the
+larger vanishing neighborhoods: choose a point of the
 product support in it and make each square diameter smaller
 than the available half-radius.
 Multilinearity and finite summation prove
@@ -6788,7 +6809,7 @@ the inverses on small tori are combined into an inverse on the full torus.
 
 Let $a>0$ be a mesh. A fermion site is written $x=(c,g)$, where
 $c\in a\Z^3$ and $g\in O_{\mathrm{cub}}$. In these coordinates the four
-neighbours are
+neighbors are
 \[
  x^{(i)}=(c,gs_i)\quad(0\le i\le2),\qquad
  x^{(3)}=(c+age_1,gr_{e_1}).
@@ -6989,7 +7010,7 @@ $H_m$ as well as $D_{\mathrm{ll}}$.
 \begin{proposition}\label{prop:schur-symbol}
 There are positive constants $\theta_0,c_{\mathrm e},\kappa_{\mathrm{strip}}$, depending
 on $\rho$ only, such that $H_m$ and $B_m$ are holomorphic in a
-neighbourhood of $\{|\operatorname{Im}p_\mu|\le\theta_0\}$ and
+neighborhood of $\{|\operatorname{Im}p_\mu|\le\theta_0\}$ and
 $2\pi\Z^3$-periodic. On the real cube $[-\pi,\pi]^3$,
 \begin{align}
  \|H_m(p)\|&\le(g_{\mathrm h}+m)^{-1},\label{eq:symbol-heavy}\\
@@ -7249,7 +7270,7 @@ For \eqref{eq:chamber-poincare}, first apply the scalar lattice
 Poincar\'e bound
 $\|\xi-P_E\xi\|_{2,E}^2\le\ell_E^2\|\nabla_0\xi\|_{2,E}^2/8$.
 In one dimension this follows by writing each difference as a sum of
-nearest-neighbour differences; the coefficient of a bond at position
+nearest-neighbor differences; the coefficient of a bond at position
 $j$ is $j(n-j)/2\le n^2/8$. In three dimensions use the three commuting
 line averages, whose successive remainders are orthogonal.
 Now $f-P_Ef=J(\xi-P_E\xi)+Qf$. Its two parts are orthogonal, and the
@@ -7473,7 +7494,7 @@ integral of resolvents.
 The covariant block means are defined by the same nested blocks.
 Let $\tau A(c,c')$ be the arithmetic average of the oriented bond sums
 over the six coordinate-order paths
-from $c$ to $c'$, and let $c=c_0,c_1,\ldots,c_k=z$ be the centres
+from $c$ to $c'$, and let $c=c_0,c_1,\ldots,c_k=z$ be the centers
 of the nested blocks containing $c$. Put
 \[
  \varphi_A(z,c)=\exp\left(ie_k\eta_k
@@ -7554,7 +7575,7 @@ is at most $42\exp(\gamma)\exp(\delta)\delta$. The two averaging
 penalties contribute respectively
 $3b\delta\exp(3\delta)$ and
 $3b\delta\exp(\gamma(L-1))\exp(3L\delta)$. Indeed, the nested paths
-have total length at most $3/2$, and the path to an $L$-block centre
+have total length at most $3/2$, and the path to an $L$-block center
 has length at most $3L/2$. Summing their normalized block kernels
 removes the numbers of sites. The bounds $\gamma L\le\log2$ and
 $3L\delta\le1$ give $N_\gamma(V)\le C_V\delta$.
@@ -7570,7 +7591,7 @@ form gives $N_\gamma(\delta_{\alpha,0}F_y(B)^{-1})\le2a'$.
 For distinct photon sites in a short pair,
 $d_X^{-\alpha}|U_B-1|\le3\delta\exp(3\delta)\le1/4$;
 for intracluster pairs the expression is zero. Evaluation at the
-second point of a short pair uses at most $27$ neighbouring blocks,
+second point of a short pair uses at most $27$ neighboring blocks,
 and costs at most $27\exp(\gamma)$. Its contribution to the covariant
 quotient is at most $16a'$, proving the second bound. At level zero,
 the second form of the Neumann series keeps the kernel norm in the
@@ -7581,7 +7602,7 @@ Fix a positive exponent $\varepsilon$; its choice in the flow will
 be made with the other renormalization parameters. The connection
 domain used by the RG is the following. Write $\ell=R$ for the side,
 and assume $\ell/(LM)$ is odd and at least $13$.
-Here $M$ is a power of $L$ with $M\ge L^2$. The $M$-cubes have centres
+Here $M$ is a power of $L$ with $M\ge L^2$. The $M$-cubes have centers
 $z_\square\in M\Z^3/\ell\Z^3$ and are the periodic images of
 $\{c:|c-z_\square|_\infty<M/2\}$. The differential of
 a scalar in a connection is normalized by
@@ -7600,12 +7621,12 @@ This follows by restricting $B_0+A_1$ and $\lambda$ to that cube.
 The domain is open: a sufficiently small complex perturbation can be
 added to $A_1$. It is invariant under real gauge transformations.
 
-For a lift $z_\square$ of the cube centre put
+For a lift $z_\square$ of the cube center put
 $W_\square=\{|c-z_\square|_\infty<3M/2\}$ and
 $W_\square^-=\{|c-z_\square|_\infty<3M/2-\eta_k\}$.
 Embed $W_\square$ in the positive chamber of the periodic torus of
 side $6M$, whose lattice is translated by $\eta_k(1,1,1)/2$.
-Its level-$j$ block centres are
+Its level-$j$ block centers are
 $L^j\eta_k(1,1,1)/2+L^j\eta_k\Z^3$ for $0\le j\le k+1$.
 Translation by $L(1,1,1)/2$ identifies these blocks with the
 unshifted nested blocks, because $L^{k+1-j}$ is odd. The zero-field
@@ -7650,7 +7671,7 @@ over $W_\square$ and
  S_\square(A)F_y(A)f=f.
 \end{equation}
 For \eqref{eq:local-right-identity}, the rows at an interior site use
-only its internal neighbours, its external neighbour, and its
+only its internal neighbors, its external neighbor, and its
 $L$-block. These lie in $W_\square$, where the original and folded
 operators agree. For \eqref{eq:local-left-identity}, the support
 margin ensures that applying $F_y$ cannot leave $W_\square$.
@@ -7663,7 +7684,7 @@ only in $W_\square$ and is analytic in those connection variables.
 
 \subsection{The parametrix and the walk expansion}\label{subsec:propagator-walks}
 
-Choose the product cutoff $h_\square$ with centre $z_\square$ and
+Choose the product cutoff $h_\square$ with center $z_\square$ and
 one-dimensional factor
 \[
  h_0(t)=\begin{cases}
@@ -7679,7 +7700,7 @@ On a lift of the cube set
  h_\square(c,g)=h_\square(c).
 \]
 Extend this with period $R$ and set it to zero away from the periodic
-images of the lifted cube neighbourhood.
+images of the lifted cube neighborhood.
 The cutoffs satisfy $\sum_\square h_\square^2=1$,
 $\supp h_\square\subset\{|c-z_\square|_\infty<3M/4\}$, and
 $|h_\square(c)-h_\square(c')|\le\pi|c-c'|_1/M$.
@@ -7723,7 +7744,7 @@ $R^{\mathrm p\prime}=-\sum_\square h_\square S_\square C_\square$.
 
 The terms in \eqref{eq:global-parametrix-inverse} have a local
 description. A walk of length $n$ is a sequence
-$\omega=(\square_0,\ldots,\square_n)$ with successive centres at
+$\omega=(\square_0,\ldots,\square_n)$ with successive centers at
 distance at most $M$. Its term is
 \[
  S_\omega=(h_0S_0h_0)(C_1S_1h_1)\cdots(C_nS_nh_n),
@@ -7944,7 +7965,7 @@ closed fields. Finally $\mathbf Q_0=1$ gives the level-zero assertion.
 \subsection{Axial coercivity on a block}\label{subsec:photon-axial-coercivity}
 
 On the unit lattice, let
-$B(y)=\{z\in\Z^3:|z-y|_\infty<L/2\}$, with centres in $L\Z^3$.
+$B(y)=\{z\in\Z^3:|z-y|_\infty<L/2\}$, with centers in $L\Z^3$.
 The one-step bond average and axial functional are
 \[
  (\mathbf QA)(y,y+Le_\mu)
@@ -7992,7 +8013,7 @@ coarse-average term. In particular, on the axial fluctuation space,
 \end{equation}
 For the second inequality, square the local bound and replace each
 local curvature maximum by its sum of squares. An interior plaquette
-belongs to the neighbourhoods of at most $3L^3+3L^2\le4L^3$ bonds;
+belongs to the neighborhoods of at most $3L^3+3L^2\le4L^3$ bonds;
 a face plaquette to those of at most $L^2$ bonds. Summation gives
 $(9/4)L^4\cdot4L^3=9L^7$.
 
@@ -9071,7 +9092,7 @@ proves \eqref{eq:photon-minimizer-cover-consistency}.
 
 The walk expansion also provides the localization required by the
 renormalization step. A parameter is attached to each $M$-cube traversed
-by a walk, together with its one-layer neighbourhood. Setting parameters
+by a walk, together with its one-layer neighborhood. Setting parameters
 to zero then separates the operator into components. The coarse
 covariance is obtained from this expansion by an exact resolvent
 identity. At parameter value one it agrees with the exact covariance;
@@ -9100,7 +9121,7 @@ conventions of Appendix~\ref{app:polymer-geometry}, set
  M d_M(X)=\inf\{\operatorname{length}(\mathcal N):
        \mathcal N\text{ is a net meeting every closed cube of }X\}.
 \]
-For a face-connected union of cubes, joining successive cube centres gives
+For a face-connected union of cubes, joining successive cube centers gives
 $d_M(X)\le |X|_M-1$.
 
 For a walk $\omega=(\square_0,\ldots,\square_n)$ from
@@ -9114,8 +9135,8 @@ The union $X_\omega$ is a polymer and
 \begin{equation}\label{eq:walk-polymer-size}
  |X_\omega|_M\le27(n+1),\qquad d_M(X_\omega)\le27(n+1).
 \end{equation}
-Indeed, each one-layer neighbourhood contains $27$ cubes. Successive
-centres differ by at most $M$ in each coordinate, so their neighbourhoods
+Indeed, each one-layer neighborhood contains $27$ cubes. Successive
+centers differ by at most $M$ in each coordinate, so their neighborhoods
 are joined through faces. The preceding bound on $d_M$ applies.
 Every walk, including a walk of length zero, carries the parameters of
 all cubes in $X_\omega$.
@@ -9166,7 +9187,7 @@ At parameter value one,
  S_y^\#(1,A)=S_y(A)=\sum_{X\in\mathcal P_k}S_y^\#(X,A).
 \end{equation}
 The weakened operators are continuous on the closed parameter
-polydisk, jointly analytic in its interior and in $A$, and analytic in
+polydisc, jointly analytic in its interior and in $A$, and analytic in
 $A$ for each fixed parameter value, including boundary values.
 For finite real $y$ the families are continuous in $y$.
 
@@ -9207,7 +9228,7 @@ The local inverse is continuous at every real resolvent parameter.
 Its walk terms inherit this property, and their tails are uniform in
 $y$ since $w_k(y)\le1$. The sums are therefore continuous in real $y$.
 
-A walk term is a product of local factors on the neighbourhoods
+A walk term is a product of local factors on the neighborhoods
 $\square_i^{\sim1}$. Its row and column cutoffs, its commutators, and
 all connection variables consequently lie in $X_\omega$. If the first
 row is nonzero, its photon site satisfies
@@ -9256,7 +9277,10 @@ Here $Q_k$ averages the fine lattice onto the unit lattice, and $Q$
 averages the unit lattice onto the lattice of spacing $L$.
 The notation $\sharp$ denotes the displayed algebraic transpose with
 reversed connection; for complex $A$ it is not a Hermitian adjoint.
-Here $B(z')=E_{z'}$ is the $L$-block from the preceding section.
+Here $B(z')=E_{z'}\cap\Z^3
+=\{z\in\Z^3:|z-z'|_\infty<L/2\}$ is the unit-lattice
+part of the $L$-block in Section~\ref{subsec:blocked-zero-inverse};
+the blocks are taken modulo the torus periods.
 To specify the phases, if $c\in\Delta_z$ and $z\in B(z')$, set
 \[
  \varphi_A(z,c)=e^{ie_k\eta_k(\tau_kA)(z,c)},\qquad
@@ -9264,7 +9288,7 @@ To specify the phases, if $c\in\Delta_z$ and $z\in B(z')$, set
 \]
 The path average $\tau A$ is the arithmetic mean of the oriented bond
 sums in the six coordinate orders, and $\tau_kA$ is their sum along
-the nested block centres. Then
+the nested block centers. Then
 \begin{align*}
  (\mathcal Q_kf)(z)&=\eta_k^3\sum_{c\in\Delta_z}
                 \varphi_A(z,c)\frac1{48}\sum_gf(c,g),\\
@@ -9319,7 +9343,9 @@ $\delta Z_k(A)=\det(D_k+b_LP_L)\ne0$.
 
 \begin{proof}
 Set $Z=b_k^2\mathcal Q_k^\sharp\mathcal B_{k,y}\mathcal Q_k$.
-The two fine inverses exist by the preceding section, and
+The two fine inverses are constructed in
+Section~\ref{subsec:propagator-walks} and recovered at parameter value
+one in Proposition~\ref{prop:weakened-polymer-propagators}. Equation
 \eqref{eq:fine-resolvent-perturbation} gives both identities
 \[
  S_y-S_k=S_kZS_y=S_yZS_k.
@@ -9471,7 +9497,7 @@ $2(1+2\exp(1))b_-^{-1}e^{-\gamma d(z,z')}$, proving
 The odd block partitions are nested, and every unit block and every
 $L$-block belongs to a single $M$-cube. Moreover, the paths entering
 $\varphi_A(z,c)$ lie in $\Delta_z$, and the paths entering
-$U_A(z',z)$ lie in the fine block of side $L$ centred at $z'$:
+$U_A(z',z)$ lie in the fine block of side $L$ centered at $z'$:
 each coordinate of a rectilinear path remains between those of its
 endpoints. Consequently the averaging maps and $\mathcal B_{k,0}$
 preserve every union of $M$-cubes and depend only on its connection.
@@ -9949,7 +9975,7 @@ and using $\kappa_{\mathrm w}-1\ge\kappa+1$, proves
 \eqref{eq:local-determinant-bound} for $\widetilde E_k$ and hence
 for its four-term mean. The majorants are independent of $A$ and
 integrable in $y$. Each integrand is analytic in $A$; Cauchy's
-formula on a compact polydisk and the majorant permit its contour
+formula on a compact polydisc and the majorant permit its contour
 integrals to be exchanged with the $y$ integral. The result is
 analytic.
 
@@ -9972,7 +9998,7 @@ For real connections, sum the polymer propagators and use
 \eqref{eq:determinant-integral-level-zero}. This proves the first
 identity of \eqref{eq:local-determinant-quotient} there. Both sides
 are analytic on $\widetilde{\mathcal G}_k$, which is open and
-star-shaped. They agree on a real neighbourhood of zero, so their
+star-shaped. They agree on a real neighborhood of zero, so their
 Taylor series agree there and analytic continuation proves the
 identity throughout the domain.
 
@@ -10027,10 +10053,12 @@ three local bounds hold for $A'$. The external connection domain is
 \]
 If $e_k^{1/4}+e_k^\varepsilon<1$, both $\mathfrak X_k$ and
 $\widetilde R_k+\mathfrak X_k$ lie in
-$\widetilde{\mathcal G}_k$: on the local cubes the real part has
-a representative of size $e_k^{-3/4+\varepsilon}$, and the
-remaining part has size at most
+$\widetilde{\mathcal G}_k$: for $\mathscr A=A_0+A_1\in\widetilde R_k$,
+the real summand $A_0$ has on the local cubes a representative
+of size $e_k^{-3/4+\varepsilon}$, and the remainder
+$A_1+\mathscr C$ has size at most
 $(e_k^{1/4}+e_k^\varepsilon)e_k^{-1+\varepsilon}$.
+For $\mathfrak X_k$ alone take $A_0=A_1=0$.
 
 Put $v_k=-\log e_k$. Assume
 \begin{equation}\label{eq:determinant-gain-conditions}
@@ -10416,7 +10444,9 @@ Translations by $M\Z^3$ identify the small-polymer sets over
 different cubes. They leave the two extracted quantities
 unchanged. Thus the two sums do not depend on $\square$.
 Write their values as $\varepsilon_{\mathrm v}(\mathscr E)$ and
-$M(\mathscr E)$.
+$M(\mathscr E)$. Let $K_{\mathrm{pol}}=e^{\kappa_0}/36=72^{54}/36$
+be the scalar polymer-sum constant in \eqref{eq:polymer-counting};
+it is distinct from the level-zero operator $K_0$.
 
 \begin{proposition}\label{prop:rg-scalar-counterterms}
 There is a complex-linear scalar map $m(\mathscr E)$ such that
@@ -10424,9 +10454,9 @@ $M(\mathscr E)=m(\mathscr E)1$. Both $m$ and
 $\varepsilon_{\mathrm v}$ are real on $K_k^x$, and
 \begin{equation}\label{eq:rg-counterterm-bounds}
  |\varepsilon_{\mathrm v}(\mathscr E)|
-                  \le K_0M^{-3}\|\mathscr E\|_k^x,
+                  \le K_{\mathrm{pol}}M^{-3}\|\mathscr E\|_k^x,
  \qquad
- |m(\mathscr E)|\le K_0M^{-3}e_k^{1/2}\|\mathscr E\|_k^x.
+ |m(\mathscr E)|\le K_{\mathrm{pol}}M^{-3}e_k^{1/2}\|\mathscr E\|_k^x.
 \end{equation}
 They commute with restriction of the second connection argument
 to zero.
@@ -10482,11 +10512,12 @@ The coefficient norm gives, for each small $X$,
  \end{split}
 \end{equation}
 Use $h_{k,1}^{-2}=e_k^{1/2}$ and
-$\operatorname{Vol}(X)\ge M^3$. Each contribution is bounded
-by the corresponding right side of
-\eqref{eq:rg-counterterm-bounds}, times $\exp(-\kappa d_M(X))$.
-The polymer sum over a fixed cube is at most $K_0$ by
-$\kappa\ge\kappa_0$. For the mass use one diagonal entry of
+$\operatorname{Vol}(X)\ge M^3$. The individual vacuum and mass
+contributions are bounded by $M^{-3}\|\mathscr E\|_k^x$ and
+$M^{-3}e_k^{1/2}\|\mathscr E\|_k^x$, respectively, times
+$\exp(-\kappa d_M(X))$.
+The polymer sum over a fixed cube is at most $K_{\mathrm{pol}}$ by
+\eqref{eq:polymer-counting} and $\kappa\ge\kappa_0$. For the mass use one diagonal entry of
 the matrix sum, now known to be scalar. This proves the bounds.
 Linearity follows from uniqueness of the antisymmetric kernels.
 Restriction gives the same kernels at $(0,0)$, proving the
@@ -10862,7 +10893,7 @@ Changing variables in the two rows therefore proves
  T_{\tilde gY}^{(i)}(\tilde gA)\tilde g
                            =\tilde gT_Y^{(i)}(A).
 \end{equation}
-Complex conjugation changes the phases to those at $-A$, and
+Conjugating the phases evaluated at $\overline A$ gives those at $-A$, and
 $\overline{M_i}=\varkappa^{-1}M_i\varkappa$, giving
 \begin{equation}\label{eq:rg-reconstruction-reality}
  \overline{T_Y^{(i)}(\overline A)}
@@ -13104,7 +13135,7 @@ Keep the admissible sides, mass and charge of
 Section~\ref{sec:rg-step}, and assume in addition
 $\ell\ge Mr_k$. Put $e=e_k$, $h=(h_{k,1},h_{k,2})$.
 The weakened photon and fermion primitives are taken on the
-polydisk
+polydisc
 \[
  \mathrm{Pd}_k=\{s=(s',s''):|s_{\mathrm{pc}}|\le M^{\alpha_0}\}.
 \]
@@ -13143,7 +13174,7 @@ $C_w\ge4\exp(2\gamma_w)M^{27\alpha_0}$.
 The parameter radius satisfies
 $M^{\alpha_0}-1\ge\exp(N_c\kappa+\log(6c_X))$,
 where $N_c=(2L+1)^3$.
-For later use put $c_S=10^5c_X^5K_0^5\exp(6\kappa)$.
+For later use put $c_S=10^5c_X^5K_{\mathrm{pol}}^5\exp(6\kappa)$.
 The running charge lies in the fixed range on which
 \begin{align}
  &p_{0,k}\le e^{-\varepsilon/4},\qquad
@@ -13298,8 +13329,8 @@ the corresponding components of $W_k^\#$.
 The auxiliary generators $W$ have weight
 $\mathsf w_W=1$ for $k\ge1$ and $\sqrt{48}$ for $k=0$.
 
-These fields are continuous in all closed polydisk and box
-variables and analytic in the open parameter polydisk and the
+These fields are continuous in all closed polydisc and box
+variables and analytic in the open parameter polydisc and the
 connection variables. For the H\"older rows this follows
 directly from
 \[
@@ -13344,14 +13375,14 @@ the later logarithm is used here.
 \begin{lemma}\label{lem:rgnl-resummation}
 Suppose
 $\|G(s,X)\|\le B_0\exp(-\kappa'd_M(X))$ on the parameter
-polydisk, where $\kappa_0\le\kappa'\le\kappa$.
+polydisc, where $\kappa_0\le\kappa'\le\kappa$.
 Assume $\mathcal T_PG(X)=0$ whenever $Y'(X,P)$ is
 disconnected. Then
 \begin{gather}
  \sum_Y\operatorname{Loc}G(Y)=\sum_XG(1,X),
                          \label{eq:rgnl-localization-sum}\\
  \|\operatorname{Loc}G(Y)\|
-   \le4c_XK_0B_0
+   \le4c_XK_{\mathrm{pol}}B_0
              \exp\big(-(\kappa'-\kappa_0-1)d_M(Y)\big).
                          \label{eq:rgnl-resummation-bound}
 \end{gather}
@@ -13364,7 +13395,7 @@ The sums are finite. After removing the vanishing disconnected
 terms, each term belongs to exactly one polymer $Y'(X,P)$.
 This proves \eqref{eq:rgnl-localization-sum}.
 
-Put $R=M^{\alpha_0}$. Cauchy's estimate on a polydisk of
+Put $R=M^{\alpha_0}$. Cauchy's estimate on a polydisc of
 radius less than $R-1$ about each integration point, followed
 by the limit of these radii to $R-1$, gives
 \[
@@ -13401,11 +13432,11 @@ Hence
 The polymer counting and size estimates give
 \[
  \sum_{X\subseteq Y}\exp(-\kappa_0d_M(X))
-   \le K_0|Y|_M
-   \le2c_XK_0\exp(d_M(Y)/2).
+   \le K_{\mathrm{pol}}|Y|_M
+   \le2c_XK_{\mathrm{pol}}\exp(d_M(Y)/2).
 \]
 The product of the last two bounds is at most
-$4c_XK_0\exp(d_M(Y))$. Summing the estimate for
+$4c_XK_{\mathrm{pol}}\exp(d_M(Y))$. Summing the estimate for
 $\mathcal T_PG(X)$ proves
 \eqref{eq:rgnl-resummation-bound}.
 \end{proof}
@@ -13493,9 +13524,11 @@ We give the component argument which is responsible for
 locality. Let $\mathrm{Ps}=P_0(X)\cup P$, let
 $Y'=Y'(X,P)$ and let $Y'_1$ be its component containing $X$.
 Set the weakening parameters to zero outside $\mathrm{Ps}$.
-For each of the three parameter kinds, any link-component
-$\mathrm{Lnk}$ of $\mathrm{Ps}$ is contained in the polymer
-formed by the $M$-cubes meeting it. This polymer lies in one
+For each photon parameter kind, take components linked by shared
+lattice sites; for the fermion kind $\pi_k$, take face-connected
+components of the active partition $M$-cubes. In either case,
+a component $\mathrm{Lnk}$ of $\mathrm{Ps}$ is contained in the
+polymer formed by the $M$-cubes meeting it. This polymer lies in one
 component of $Y'$. If a site of $Y'_1$ lies in $\mathrm{Lnk}$,
 or in the enlarged parameter cube of a photon kind, that
 polymer has a cube in common with $Y'_1$, and hence lies
@@ -13523,9 +13556,10 @@ is kept.
 
 For a chamber site $x=(c,g)$ at distance at most $1$ from
 $Y'_1$, the fermion row is zero unless every parameter cube
-meeting $K_c$ is present. These cubes form one
-link-component. When the row is nonzero, that component
-contains $c$ and a site of $Y'_1$, so it lies in $Y'_1$.
+meeting $K_c$ is present. These partition cubes form a
+face-connected set. When the row is nonzero, their active
+face-connected component contains $c$ and a site of $Y'_1$,
+so it lies in $Y'_1$.
 The row of $H_k(s'',B)$, and its barred counterpart,
 then has columns in that component and reads $B$ only on
 bonds meeting it. At a column of this row, the corresponding
@@ -13627,13 +13661,16 @@ The reconstruction substitution contains only the fixed
 finite $T_k^{(i)},\bar T_k^{(i)}$ rows at unit sites of its
 own subpolymer.
 
-Consequently two systems with the stated hypotheses on this torus give the
-same finite expressions on $Y$ if these entries agree
+Consequently two systems with the stated hypotheses on this torus,
+with the same $m'$ and the same incoming $\mathscr E^r(X)$
+for every $X\subseteq Y$, give the same finite expressions on $Y$
+if these entries agree
 for every parameter family zero outside $Y$, at the
 connections formed with their respective photon fields.
 The restricted photon sum first gives equality of the
-fields on bonds meeting $Y$; the transports and incoming
-activities there then agree by their locality.
+fields on bonds meeting $Y$; the transports then agree. The
+incoming activities agree by the common-data hypothesis and
+their locality.
 The listed fermion and Dirac entries give equal first
 functions, their localizations and reconstruction
 substitutions. They give equal second functions and
@@ -13658,7 +13695,7 @@ Set
  \kappa_w=\kappa+\kappa_0+3,\qquad
  a_1=\kappa-\kappa_0-1,\qquad a_2=\kappa-2\kappa_0-2,\\
  C_W=28C_w^2c_\gamma,
- \qquad H_{\mathrm{cl}}=36c_X^2K_0^2e^{1/4-5\varepsilon}.
+ \qquad H_{\mathrm{cl}}=36c_X^2K_{\mathrm{pol}}^2e^{1/4-5\varepsilon}.
  \end{gathered}
 \]
 The notation $H_{\mathrm{cl}}$ is a scalar cluster bound.
@@ -13696,7 +13733,7 @@ and $\mathsf w_W\le7$ give \eqref{eq:rgnl-W-bound}.
 For the data of Proposition~\ref{prop:rgnl-finite-locality},
 \begin{align}
  \|E_{\le3}(Y)\|_{h/2}
-       &\le8c_XK_0e^{1/4-5\varepsilon}\exp(-a_1d_M(Y)),
+       &\le8c_XK_{\mathrm{pol}}e^{1/4-5\varepsilon}\exp(-a_1d_M(Y)),
                                       \label{eq:rgnl-E3-bound}\\
  \|F(Y)\|_{(h/4;\mathsf w_W)}
        &\le H_{\mathrm{cl}}\exp(-a_2d_M(Y)).
@@ -13775,12 +13812,12 @@ to the $h/2$ norm at $t=1$ and to the $h$ norm on
 the contour $|t|=r_4$. The three input bounds are
 \begin{align*}
  \|G_{\le3}^{\,W}(s'',X)\|
-       &\le8c_XK_0e^{1/4-5\varepsilon}\exp(-a_1d_M(X)),\\
+       &\le8c_XK_{\mathrm{pol}}e^{1/4-5\varepsilon}\exp(-a_1d_M(X)),\\
  \|G_4(s'',X)\|&\le24e^{1/2-10\varepsilon}\exp(-\kappa d_M(X)),\\
  \|G_5(s'',\square)\|&\le64M^3e^{1/2-11\varepsilon}.
 \end{align*}
 Their sum is at most
-$9c_XK_0e^{1/4-5\varepsilon}\exp(-a_1d_M(X))$,
+$9c_XK_{\mathrm{pol}}e^{1/4-5\varepsilon}\exp(-a_1d_M(X))$,
 again by $88M^3e^{1/4-6\varepsilon}\le1$.
 Since $\kappa_0\le a_1\le\kappa$, resummation gives
 \eqref{eq:rgnl-F-bound}.
@@ -13892,11 +13929,11 @@ The last series converges absolutely in the $w$ norm and
        &=\exp\left\{\sum_YE^\#(Y)\right\},
                                       \label{eq:rgnl-log-identity}\\
  \|E^\#(Y)\|_w
-       &\le c_S'H_{\mathrm{cl}}\exp(-a_3d_M(Y)),
+       &\le c_S'H_{\mathrm{cl}}\exp(-a_3d_M(Y)).
                                       \label{eq:rgnl-log-bound}
 \end{align}
 Here $a_3=\kappa-5\kappa_0-4$ and
-$c_S'=14c_X^2K_0^2\exp(3\kappa)$.
+$c_S'=14c_X^2K_{\mathrm{pol}}^2\exp(3\kappa)$.
 The sum of the norms of the terms with $n>N$ in
 \eqref{eq:rgnl-log-activity} is at most $2^{-N}$ times the
 right side of \eqref{eq:rgnl-log-bound}.
@@ -13909,27 +13946,29 @@ Set
  a_4=\kappa-3\kappa_0-3,\quad
  a_5=\kappa-3\kappa_0-2,\quad
  a_6=\kappa-5\kappa_0-3,\\
- H_1=7c_XK_0\exp(3a_5)H_{\mathrm{cl}},\qquad
- z_S=28H_1\exp(\kappa_0)K_0\exp(3a_6).
+ H_1=7c_XK_{\mathrm{pol}}\exp(3a_5)H_{\mathrm{cl}},\qquad
+ z_S=28H_1\exp(\kappa_0)K_{\mathrm{pol}}\exp(3a_6).
  \end{gathered}
 \]
 The fixed small-charge choice
 \[
  c_S e^{1/4-5\varepsilon}\le1,\qquad
- c_S=10^5c_X^5K_0^5\exp(6\kappa)
+ c_S=10^5c_X^5K_{\mathrm{pol}}^5\exp(6\kappa)
 \]
 implies
 \begin{equation}\label{eq:rgnl-cluster-smallness}
  H_{\mathrm{cl}}\le1,\qquad
- 4H_{\mathrm{cl}}K_0c_X\exp(3a_5)\le1,\qquad
+ 4H_{\mathrm{cl}}K_{\mathrm{pol}}c_X\exp(3a_5)\le1,\qquad
                                       z_S\le\tfrac12.
 \end{equation}
 Indeed the second left side is
-$144c_X^3K_0^3\exp(3a_5)e^{1/4-5\varepsilon}$.
+$144c_X^3K_{\mathrm{pol}}^3\exp(3a_5)e^{1/4-5\varepsilon}$.
 For the third,
-$2z_S=14112c_X^3K_0^4
-\exp(3a_5+3a_6+\kappa_0)e^{1/4-5\varepsilon}$, and
-$3a_5+3a_6+\kappa_0\le6\kappa$.
+\[
+ 2z_S=14112c_X^3K_{\mathrm{pol}}^4
+ \exp(3a_5+3a_6+\kappa_0)e^{1/4-5\varepsilon},
+\]
+and $3a_5+3a_6+\kappa_0\le6\kappa$.
 
 Even elements commute, so expanding their exponential
 gives $\exp(\sum_XV(X))=\sum_YK(Y)$.
@@ -13963,13 +14002,13 @@ Replace distinct sets by ordered tuples with factor $1/n!$,
 and use the counting bound for subpolymers of $Y$. The result is
 \[
  \|K(Y)\|\le \exp(-a_5d_M(Y))x_Y\exp(x_Y),\qquad
- x_Y=2H_{\mathrm{cl}}K_0\exp(3a_5)|Y|_M.
+ x_Y=2H_{\mathrm{cl}}K_{\mathrm{pol}}\exp(3a_5)|Y|_M.
 \]
 By \eqref{eq:rgnl-cluster-smallness},
 \[
  \begin{gathered}
  x_Y\le(d_M(Y)+1)/2,\\
- x_Y\le4H_{\mathrm{cl}}K_0c_X\exp(3a_5)\exp(d_M(Y)/2).
+ x_Y\le4H_{\mathrm{cl}}K_{\mathrm{pol}}c_X\exp(3a_5)\exp(d_M(Y)/2).
  \end{gathered}
 \]
 Since $4\exp(1/2)\le7$ and $a_5-1=a_4$, we obtain
@@ -14019,12 +14058,12 @@ $a^q\le q!\exp(a)$, the counting estimate gives
 \begin{align*}
  \sum_{Z\text{ incompatible with }Y'}
       \exp(-2\kappa_0d_M(Z))|Z|_M^{q}
-            &\le7q!\exp(\kappa_0)K_0|Y'|_M,\\
+            &\le7q!\exp(\kappa_0)K_{\mathrm{pol}}|Y'|_M,\\
  \sum_{Z\subseteq Y}\exp(-2\kappa_0d_M(Z))|Z|_M^q
-            &\le q!\exp(\kappa_0)K_0|Y|_M.
+            &\le q!\exp(\kappa_0)K_{\mathrm{pol}}|Y|_M.
 \end{align*}
 Summing from leaves to root thus costs at most
-$(7\exp(\kappa_0)K_0)^n|Y|_M\prod_jq_j!$.
+$(7\exp(\kappa_0)K_{\mathrm{pol}})^n|Y|_M\prod_jq_j!$.
 For prescribed children counts, Cayley's degree formula
 \cite[Proposition~4]{PostnikovLin2019}
 counts
@@ -14040,14 +14079,14 @@ Consequently
 Collecting the factors, also for $n=1$, gives
 \begin{equation}\label{eq:rgnl-connected-n-bound}
  \frac{S_n(Y)}{n!}
- \le7H_1\exp(\kappa_0)K_0|Y|_M
+ \le7H_1\exp(\kappa_0)K_{\mathrm{pol}}|Y|_M
                                       \exp(-a_6d_M(Y))z_S^{n-1}.
 \end{equation}
 Since $z_S\le1/2$, sum the geometric series and use
 $|Y|_M\le c_X\exp(d_M(Y))$ and $a_6-1=a_3$.
 The bound becomes
 \[
- 98c_X^2K_0^2\exp(\kappa_0+3a_5)
+ 98c_X^2K_{\mathrm{pol}}^2\exp(\kappa_0+3a_5)
                                  H_{\mathrm{cl}}\exp(-a_3d_M(Y))
  \le c_S'H_{\mathrm{cl}}\exp(-a_3d_M(Y)),
 \]
@@ -14104,7 +14143,7 @@ most $n\delta_N\prod_i\mu(Y_i)$. Summing
 $\sum_{n\ge1}n2^{-(n-1)}=4$, and adding the tail yields
 \[
  \sup_Y\|E^\#(Y)-E_N^\#(Y)\|
- \le28\delta_NH_1\exp(\kappa_0)K_0(\ell/M)^3
+ \le28\delta_NH_1\exp(\kappa_0)K_{\mathrm{pol}}(\ell/M)^3
                                   +2^{-N}c_S'H_{\mathrm{cl}}.
 \]
 This convergence is uniform in the connections and the
@@ -14254,7 +14293,7 @@ The finite operations and integration therefore prove
 For reality, the photon primitives are real on real
 parameter families. Their analytic dependence extends
 this identity to
-$\overline{O(\bar s')}=O(s')$ on the full polydisk.
+$\overline{O(\bar s')}=O(s')$ on the full polydisc.
 Since $C$ is real,
 \[
  Z(\bar s')[-\zeta]=-\overline{Z(s')[\zeta]}.
@@ -14459,15 +14498,15 @@ Splitting $a_3=(a_3-\kappa_0)+\kappa_0$ therefore yields
  \sum_{\bar X^L=LY}\exp(-a_3d_M(X))
   &\le \exp(-L(a_3-\kappa_0)d_M(Y))
                          \sum_{X\subseteq LY}\exp(-\kappa_0d_M(X))\\
-  &\le c_XK_0L^3
-                  \exp(-[L(\kappa-6\kappa_0-4)-1]d_M(Y))
-   \le c_XK_0L^3\exp(-\kappa d_M(Y)).
+  &\le c_XK_{\mathrm{pol}}L^3
+                  \exp(-[L(\kappa-6\kappa_0-4)-1]d_M(Y))\\
+  &\le c_XK_{\mathrm{pol}}L^3\exp(-\kappa d_M(Y)).
 \end{align*}
 Together with \eqref{eq:rgnl-log-bound} this gives
 \[
  \|E_k^*\|_{k+1}^x
-  \le c_XK_0L^3c_S'H_{\mathrm{cl}}
-  =504c_X^5K_0^5\exp(3\kappa)L^3e^{1/4-5\varepsilon}
+  \le c_XK_{\mathrm{pol}}L^3c_S'H_{\mathrm{cl}}
+  =504c_X^5K_{\mathrm{pol}}^5\exp(3\kappa)L^3e^{1/4-5\varepsilon}
   \le e^{1/4-6\varepsilon},
 \]
 using $c_SL^3e^\varepsilon\le1$.
@@ -14880,8 +14919,8 @@ $w\in(\Z/J_c\Z)^3$. The two characters cancel in
 each paired summand, and the weight is the same on both
 tori. At zero the chamber weight remains $1/48$.
 
-Pullback maps the parameter polydisk, including its interior,
-into the corresponding larger polydisk, since
+Pullback maps the parameter polydisc, including its interior,
+into the corresponding larger polydisc, since
 $(p^*s)_{\mathrm{pc}}=s_{p\,\mathrm{pc}}$.
 It also maps
 $\widetilde{\mathcal G}_k(T_1)$ into
@@ -15040,11 +15079,11 @@ $M$-cube on $T_2$. By
 \begin{equation}\label{eq:rgcov-polymer-image-sum}
  \sum_{\substack{pX'=X\\X'\supseteq\square_t}}
     \exp\big(-(\kappa_w+\kappa_0)d_M(X')\big)
-                 \le K_0\exp\big(-\kappa_wd_M(X)\big).
+                 \le K_{\mathrm{pol}}\exp\big(-\kappa_wd_M(X)\big).
 \end{equation}
 Indeed the factor with rate $\kappa_w$ is at most
 the factor on the right; the remaining sum is bounded
-by $\sum_{X'\supseteq\square_t}\exp(-\kappa_0d_M(X'))\le K_0$.
+by $\sum_{X'\supseteq\square_t}\exp(-\kappa_0d_M(X'))\le K_{\mathrm{pol}}$.
 The additional top-system decay $\kappa_0$ pays for the
 polymer image sum.
 
@@ -15058,7 +15097,7 @@ with parameters
 Its projection has the corresponding properties on $T_1$
 with
 \begin{equation}\label{eq:rgcov-common-constant}
-                          C_w=64K_0C_w^{(1)}
+                          C_w=64K_{\mathrm{pol}}C_w^{(1)}
 \end{equation}
 and parameters $(\alpha_0,\gamma_w,\kappa_w;C_w)$.
 In particular it satisfies the primitive hypotheses of
@@ -15083,7 +15122,7 @@ Equation~\eqref{eq:rgcov-exact-fermion-intertwining}
 then identifies the sum with the exact operator on $T_1$.
 All projected entries are finite sums of original entries
 composed with the linear pullback. Continuity on the
-closed parameter polydisk, holomorphy in its interior and
+closed parameter polydisc, holomorphy in its interior and
 in the connection for any fixed parameter, and Borel
 dependence on the resolvent parameter follow from these
 finite sums.
@@ -15122,10 +15161,13 @@ terms of both image sums and remains on the right.
 All column weights are unchanged, so no further
 factor $48$ appears.
 
-For component locality, an index of one parameter kind
-whose support is contained in its active union belongs
-to exactly one link-component. Here is the geometric
-point. Site supports are singletons. For a bond of
+For component locality, use shared-site linked components for
+the photon parameter cubes and face-connected components for
+the fermion partition $M$-cubes. An index whose support is
+contained in its active union belongs to exactly one such
+component. Fermion site supports are singletons, each in one
+partition cube. For the photon kinds, the geometric argument
+is as follows. For a bond of
 length $a\in\{\eta_k,1\}$, cubes of radius $M$ meeting
 its support either share an endpoint or would have
 centers differing in that direction by $2M+a$.
@@ -15143,8 +15185,9 @@ by lifting the support and these cubes into a
 nonwrapping neighborhood.
 
 Pull back the active parameter cubes on $T_1$.
-A link-component on $T_2$ maps into one component
-on $T_1$, since the covering map preserves links.
+A component on $T_2$ maps into one component on $T_1$,
+since the covering map preserves shared sites for photon
+cubes and common faces for fermion partition cubes.
 For a row in a small-torus component, the unique
 large-torus component containing its lift maps into
 that component. Original component restriction
@@ -15216,7 +15259,7 @@ decay rate in \eqref{eq:zero-row-bounds}. Define
                                 \gamma^P=\gamma_P/2, \notag\\
  C^P=116C_P^{\mathrm{ph}}M^{402\alpha_0},\qquad
  C_w^{(1)}=\max\{C^F,C^P,4\exp(2\gamma_w)M^{27\alpha_0}\},
- \qquad C_w=64K_0C_w^{(1)}.             \label{eq:rgcov-top-constants}
+ \qquad C_w=64K_{\mathrm{pol}}C_w^{(1)}.             \label{eq:rgcov-top-constants}
 \end{gather}
 Here $C^F,\gamma^F$ are the constants of the fermion
 construction at the indicated polymer rate.
@@ -15472,9 +15515,11 @@ then
 These centers differ by a multiple of $M$, hence the
 cube is contained in $\square(t)^{\sim2L}$.
 
-Let $\mathscr Y$ be all parameter cubes contained in $Z$,
-and let $\mathscr Y_1$ be their link component containing
-the cube just chosen. The $M$-cubes meeting
+Let $\mathscr Y$ be all parameter cubes of the chosen kind
+contained in $Z$, and let $\mathscr Y_1$ be the component
+containing the cube just chosen, using shared-site links for
+photon cubes and face adjacency for fermion partition cubes.
+The $M$-cubes meeting
 $\bigcup\mathscr Y_1$ form a face-connected polymer
 contained in $Z$. It meets $\square(t)\subset Z_1$,
 and therefore is contained in the component $Z_1$.
@@ -15917,7 +15962,7 @@ Assign common parameter values of modulus at most
 $M^{\alpha_0}$ to the parameter cubes contained in
 $\widetilde U$, and set all other parameters to zero.
 These data will be denoted by $\zeta_i,s_i$.
-They belong to the respective box and polydisk
+They belong to the respective box and polydisc
 because indices on the lift are injective.
 
 The fine fluctuation fields have the same lifts on
@@ -16030,12 +16075,12 @@ Its summand is therefore
 \begin{equation}\label{eq:rgcov-localization-term}
  \int_{[0,1]^{\widetilde P}}\dd u\,
        \prod_{\mathrm{pc}\in\widetilde P}\partial_{u_{\mathrm{pc}}}
-                       G_i(s_i[u],\operatorname{pr}_i\widetilde X),
+                       G_a^{(i)}(s_i[u],\operatorname{pr}_i\widetilde X),\qquad a=1,2,3,
 \end{equation}
 where $s_i[u]$ is $1$ on $P_0(\widetilde X)$, $u$ on
 $\widetilde P$, and zero elsewhere.
 Identity \eqref{eq:rgcov-first-G} holds throughout
-the parameter polydisk. Since $M^{\alpha_0}>1$,
+the parameter polydisc. Since $M^{\alpha_0}>1$,
 the integration cube is in its interior, and
 coefficient differentiation and integration preserve
 the equality. This proves equality of
@@ -17014,7 +17059,7 @@ propagators. Changing $(x,y)$ then changes four Lipschitz factors and
 the middle propagator. On $|x|,|y|,|x'|,|y'|\le r$, the resulting
 difference is bounded by
 \begin{multline}\label{eq:probe-kernel-continuity}
- C_{a,r}\bigl((|x-x'|+|y-y'|)\|s^{*5}\|_\infty\\
+ C_{a,r}\bigl((|x-x'|+|y-y'|)\|s^{*5}\|_\infty\\*
  +\|s^{*4}\|_\infty
        \|S_M-S_M(\,\cdot+(x'-y')-(x-y))\|_{L^1}\bigr).
 \end{multline}
@@ -17257,7 +17302,7 @@ $\tau\coth\tau=1+\tau^2/3-\tau^4/45+O(\tau^6)$.
 \subsection{Integration and dilation}
 
 Integrate \eqref{eq:probe-field-strength-reduction} over the unit
-neighbourhood of $\supp a$, and use \eqref{eq:probe-spatial-tail}
+neighborhood of $\supp a$, and use \eqref{eq:probe-spatial-tail}
 on its complement. Equations \eqref{eq:probe-mass-derivative} and
 \eqref{eq:probe-constant-field} give
 \[
@@ -18374,7 +18419,7 @@ Section~\ref{subsec:response-conventions}, and write
 $D_\beta^{\mathrm{buf}}=D_\beta+4$. Choose a cube
 $Q_\beta=z_\beta+[-D_\beta^{\mathrm{buf}}/2,
 D_\beta^{\mathrm{buf}}/2]^3$ containing
-$\supp\beta+[-2,2]^3$. Use the centred differences
+$\supp\beta+[-2,2]^3$. Use the centered differences
 $\delta_{\eta,\mu}$ and cube average $J_\eta$ of that section.
 Put
 \begin{align}
@@ -18384,7 +18429,7 @@ Put
                          -\delta_{\eta,\nu}a'_{\eta,\mu}.
                                       \label{eq:cells-smooth-test}
 \end{align}
-All these functions are smooth and real. Since each centred
+All these functions are smooth and real. Since each centered
 difference enlarges support by at most $\eta/2$ in its direction,
 \[
  \supp f^\eta,\ \supp J_\eta a'_\eta
@@ -18419,10 +18464,10 @@ midpoint identities yield
                         =f^\eta_{[\eta]}(\sigma).
 \end{equation}
 Indeed, the bond values in the curl are evaluated at the two
-points displaced by $\pm\eta e_\mu/2$ from the plaquette centre.
+points displaced by $\pm\eta e_\mu/2$ from the plaquette center.
 Their difference is $\eta\delta_{\eta,\mu}J_\eta a'_{\eta,\nu}$.
 Commutation of the average and differences then gives
-$\eta^{3/2}J_\eta f^\eta$ at that centre, which is the right
+$\eta^{3/2}J_\eta f^\eta$ at that center, which is the right
 side of \eqref{eq:cells-source-curvature}.
 
 Periodize the cochain on a torus $C(n)$ of physical side
@@ -18485,7 +18530,7 @@ A placement is a vector $v\in\eta\Z^3$ satisfying
 \]
 Such a vector always exists by coordinatewise rounding.
 It translates $Q_\beta$ into $[\eta,\ell_c-\eta]^3$:
-the displacement of its centre is at most $\eta/2$, and
+the displacement of its center is at most $\eta/2$, and
 the half-side is at most $(\ell_c-3\eta)/2$.
 Hence
 \begin{equation}\label{eq:cells-probe-margin}
@@ -18604,7 +18649,7 @@ $v_\eta=|(f^\eta)_\eta|_\eta^2$. Let $\Pi_\eta f^\eta$
 be its componentwise cell-average step function on a
 period cube. Its $L^2$ norm is $\sqrt{v_\eta}$.
 Each first derivative of $f^\eta_{\mu\nu}$ is bounded
-by $4|\beta|_{C^3}$, from the four centred-difference
+by $4|\beta|_{C^3}$, from the four centered-difference
 terms in \eqref{eq:cells-smooth-test} and the identity
 $\delta_{\eta,\mu}g=\int_{-1/2}^{1/2}
 (\partial_\mu g)(\,\cdot+t\eta e_\mu)\,\dd t$.
@@ -18777,7 +18822,9 @@ Let
  \qquad e_p(c)=V^{-1/2}e^{ip\cdot c},\qquad
  \xi_\mu(p)=e^{ip_\mu}-1.
 \]
-The characters $e_p$ are orthonormal. At each momentum $p$ the
+For the Fourier calculation we use the auxiliary Hermitian counting
+inner product, under which the characters $e_p$ are orthonormal.
+The analytic cochain pairings remain complex bilinear. At each momentum $p$ the
 coboundary on exterior-valued cochains is exterior multiplication
 by $\xi(p)$. If $\iota_{\bar\xi}$ denotes contraction by $\bar\xi$,
 then
@@ -18866,8 +18913,8 @@ kernel. Write
  \mathcal L(n)=\log\det{}'\Delta_0.
 \end{equation}
 At each nonzero momentum the transverse one-cochains
-are the two-dimensional space $\xi(p)^\perp$.
-For $v\in\C^3$,
+are the two-dimensional space $\xi(p)^\perp$, with orthogonality
+in the same Hermitian inner product. For $v\in\C^3$,
 \[
  \sum_{\mu<\nu}|\xi_\mu v_\nu-\xi_\nu v_\mu|^2
            =|\xi|^2|v|^2-|\bar\xi\cdot v|^2.
@@ -19534,8 +19581,9 @@ On the reference torus,
  a_*\in\{h/L,h/L^2\},\qquad
  \ell_*=Mr_*,\qquad r_*>31L+16.
 \]
-These stop-scale quantities are independent
-of $N\ge N_{\rm ref}(e)$.
+The offset $K-k_*$ and the quantities $a_*,\ell_*,r_*$ are
+independent of $N\ge N_{\rm ref}(e)$; the index $k_*$
+depends on $N$ through $K$.
 Write $r_{\rm loc}$ for the localization
 power in Section~\ref{sec:rg-flow}.
 
@@ -19820,10 +19868,12 @@ moduli. Inserting the unit-block partition between
 two factors gives
 $|O_1O_2|\le|O_1||O_2|$ and
 $\|O_1O_2\|_\gamma\le\|O_1\|_\gamma\|O_2\|_\gamma$.
-For coarse spinor operators,
+Write $\|\cdot\|_{\mathrm{op}}$ for the Hilbert-space operator norm
+and $\|\cdot\|_{\mathfrak S_1}$ for the trace norm. For coarse
+spinor operators,
 \begin{equation}\label{eq:interacting-matrix-norms}
- \|O\|_{\ell^2\to\ell^2}\le2\|O\|_0,\qquad
- \|O\|_1\le4\sum_{y,y'}|O|(y,y').
+ \|O\|_{\mathrm{op}}\le2\|O\|_0,\qquad
+ \|O\|_{\mathfrak S_1}\le4\sum_{y,y'}|O|(y,y').
 \end{equation}
 Indeed the matrix row sums are bounded by $\|O\|_0$
 and the column sums by $4\|O\|_0$, so Schur's test
@@ -20251,7 +20301,7 @@ verifies
 The definition of $D_*$ therefore gives
 \begin{equation}\label{eq:interacting-coarse-covariance}
  D_*(A_r)^{-1}=b_*^{-1}+QR^{-1}Q^*,\qquad
- \|D_*(A_r)^{-1}\|_2\le b_*^{-1}+\mu_*^{-1}.
+ \|D_*(A_r)^{-1}\|_{\mathrm{op}}\le b_*^{-1}+\mu_*^{-1}.
 \end{equation}
 
 Its block decay follows by conjugating the fine
@@ -20266,7 +20316,7 @@ Only the external Dirac hop changes under
 conjugation by $e^\psi$, since the internal
 hops stay over one photon site. Consequently
 \[
- \|e^\psi D_{A_r}e^{-\psi}-D_{A_r}\|_2
+ \|e^\psi D_{A_r}e^{-\psi}-D_{A_r}\|_{\mathrm{op}}
  \le6\eta_*^{-1}(e^{\vartheta\eta_*}-1)
  \le6\mathrm e\vartheta=\mu_*/2.
 \]
@@ -20278,7 +20328,7 @@ norm one and supports in their respective
 blocks. Moving the weight across the
 scalar product gives
 \begin{equation}\label{eq:interacting-real-covariance-decay}
- \|D_*(A_r)^{-1}(y,y')\|_2
+ \|D_*(A_r)^{-1}(y,y')\|_{\mathrm{op}}
   \le b_*^{-1}1_{\{y=y'\}}+
        \frac{2\mathrm e}{\mu_*}
                        e^{-\mu_*d(y,y')/(12\mathrm e)}.
@@ -20307,7 +20357,7 @@ column of $G=D_*(A_r)^{-1}$ therefore satisfies
  \sum_{u'}|G(u,u')|e^{\vartheta_0d(u,u')}
        \le\alpha_G,\qquad
  \sum_u|G(u,u')|e^{\vartheta_0d(u,u')}
-       \le\alpha_G,\qquad \|G\|_2\le g^2.
+       \le\alpha_G,\qquad \|G\|_{\mathrm{op}}\le g^2.
 \end{equation}
 These constants depend on $L,C^F,\gamma^F,M$,
 not on the size of the real connection.
@@ -20317,7 +20367,7 @@ coarse inverse away from real fields. Suppose
 $A=A_r+A_1$, with $A_r$ real,
 $e_*|A_1|_\infty\le\mu_*/24$, and $F_*(A)$
 invertible. The external-hop phase difference
-gives $\|D_A-D_{A_r}\|_2\le12e_*|A_1|_\infty
+gives $\|D_A-D_{A_r}\|_{\mathrm{op}}\le12e_*|A_1|_\infty
 \le\mu_*/2$. Hence $D_A+\mu_*$ is accretive
 with inverse norm at most $2/\mu_*$. Its two
 average maps have norm at most $\sqrt2$,
@@ -20328,7 +20378,7 @@ then gives
  D_*(A)^{-1}=b_*^{-1}+
  Q_*(A)J^*(D_A+\mu_*)^{-1}JQ_*^T(-A),
  \qquad
- \|D_*(A)^{-1}\|_2\le g_1.
+ \|D_*(A)^{-1}\|_{\mathrm{op}}\le g_1.
 \end{equation}
 Here invertibility of $b_*^{-1}+QR^{-1}Q'$
 follows from that of $F_*(A)$ and $R$:
@@ -20462,7 +20512,7 @@ $n_\mu\ge4$,
                   \le e^{\|\operatorname{Pr}_{F_N}g\|^2/2}.
 \end{equation}
 In particular, for $\phi\in F_N$ with
-$\|\phi\|\le1$,
+$\|\phi\|\le1$ and every $a\ge0$,
 $\bar\mu\{|\langle\phi,F^{\rm u}\rangle|>a\}\le2e^{-a^2/2}$.
 \end{proposition}
 
@@ -20498,7 +20548,7 @@ additional phase $e^{i\langle b_\xi,A'-A\rangle}$;
 its modulus is bounded by the kernel majorant
 used in \eqref{eq:slab-shifted-hs}.
 The same real-slice integral and flux sum
-therefore proves this assertion uniformly
+therefore prove this assertion uniformly
 in $\xi$. Multiplication by bounded
 $(u_j^\delta)^{1/2}$ preserves it.
 
@@ -21162,11 +21212,11 @@ Then $z_{r,n}^{\rm free}>0$ and
 \end{proposition}
 
 \begin{proof}
-The plane waves with momenta
-$P_{n,\theta}=\{(2\pi j+\pi\mathbf1+\theta)/n:
-j\in\{0,\ldots,n-1\}^3\}$ diagonalize the translation
-part of the chamber operator. Inserting a plane wave
-in the fourth hop shifts its momentum by $\theta/n$,
+Put $P_{n,\theta}=\{(2\pi j+\pi\mathbf1+\theta)/n:
+j\in\{0,\ldots,n-1\}^3\}$. The antiperiodic plane waves
+have momenta $p\in P_{n,0}$ and diagonalize the translation
+part of the chamber operator. The external phase in the
+fourth hop evaluates its symbol at $p+\theta/n\in P_{n,\theta}$,
 whereas the internal hops are unchanged. Thus
 \begin{equation}\label{eq:term-free-product}
  \det(D^{\rm ch}[qH_\theta]+m)
@@ -21606,7 +21656,7 @@ Section~\ref{subsec:interacting-terminal-norms}.
 Set
 \[
  c_\kappa=\sup_\square\sum_{X\supset\square}
-                                      e^{-\kappa d_M(X)}\le K_0.
+                                      e^{-\kappa d_M(X)}\le K_{\mathrm{pol}}.
 \]
 In addition to the primitive and flow hypotheses, impose
 the following inequalities at the stop:
@@ -22116,8 +22166,8 @@ At $j=0$ the incoming determinant has dimension
 $192n_0$, the outgoing one dimension $4n_1$;
 the factor $b^{4n_1}$ cancels in the ratio.
 
-Fix a coarse real photon field $A$ with
-$\chi_*(A)=1$, and a real twist $\theta$.
+Fix $A\in V_{\mathrm t}(T_*^0)$ with $\chi_*(A)=1$
+and a real twist $\theta$. In particular, $A$ is real and has mean zero.
 The real gauge construction in
 \eqref{eq:photon-inner-basepoint-bound}--%
 \eqref{eq:photon-seam-basepoint-bound}
@@ -22196,7 +22246,7 @@ $\mathbb D(t_x^+)$.
 Suppose
 \begin{gather}
  4C_0\ell_*^3g_1\le e_*^{-1/4+\varepsilon},\qquad
- 4\ell_*^3(2C_K+K_0+4)\le e_*^{-2\varepsilon},\qquad
+ 4\ell_*^3(2C_K+K_{\mathrm{pol}}+4)\le e_*^{-2\varepsilon},\qquad
  e_*^{1/4-9\varepsilon}\le1/8,
                                       \label{eq:interacting-factor-conditions}\\
  48e_*^{2\varepsilon}\le\mu_- .
@@ -22217,7 +22267,7 @@ polydisc. The normalized terminal ratio
        \frac{Z_{\rm tm}(t)}{Z_{\rm tm}(0)}
 \end{equation}
 is nonzero, continuous in $(t,\theta,A)$ on
-$\mathbb D(t_x^+)\times\R^3\times\{\chi_*=1\}$,
+$\mathbb D(t_x^+)\times\R^3\times\{A\in V_{\mathrm t}(T_*^0):\chi_*(A)=1\}$,
 and analytic in $t$. It has a unique continuous
 logarithm $\mathcal G(t;\theta,A)$ that vanishes
 at zero, and this logarithm is analytic in $t$.
@@ -22268,18 +22318,18 @@ The terminal mass estimate and
 \eqref{eq:interacting-activity-input} give respectively
 \[
  \frac12\ell_*^3e_*^{1/4-6\varepsilon},
- \qquad K_0\ell_*^3e_*^{1/4-7\varepsilon}.
+ \qquad K_{\mathrm{pol}}\ell_*^3e_*^{1/4-7\varepsilon}.
 \]
 For the activity sum, substitute the terminal
 field maps in the coefficient norm, then sum
 $e^{-\kappa d_M(X)}$ by assigning each polymer
 one of its $M$-cubes and using the polymer
-sum bound $K_0$. We have used
+sum bound $K_{\mathrm{pol}}$. We have used
 $4e_*^\varepsilon\le1$.
 Consequently
 \[
  |V_t|_{a_w}\le
- \ell_*^3(2C_K+K_0+4)e_*^{1/4-7\varepsilon}
+ \ell_*^3(2C_K+K_{\mathrm{pol}}+4)e_*^{1/4-7\varepsilon}
  \le\frac14e_*^{1/4-9\varepsilon}.
 \]
 The inequality $e^x-1\le2x$ proves
@@ -22343,10 +22393,10 @@ For a fixed cell $c$ and real twist $\theta$, let
 The logarithm here is the matrix power series.
 Set
 \begin{align}
- C_{\rm fr}&=2592C_dK_0C_\beta^2
+ C_{\rm fr}&=2592C_dK_{\mathrm{pol}}C_\beta^2
        \left(M^2(D_\beta^{\rm buf})^3L^4h^{-2}+8M^5h\right),
                                                    \notag\\
- B_{\rm wr}&=16\exp(6)C_dM^3K_0p_\beta e^{-r_*},
+ B_{\rm wr}&=16\exp(6)C_dM^3K_{\mathrm{pol}}p_\beta e^{-r_*},
  \qquad B_1=16g_1C_K'p_\beta e_*^{2\varepsilon},       \notag\\
  B_0&=C_{\rm fr}e_*^{4\varepsilon}+B_{\rm wr}+B_1 .
                                 \label{eq:interacting-free-log-constants}
@@ -22391,9 +22441,9 @@ Write $K=D_*(c_\theta+t\widehat c_c)-D_*(c_\theta)$.
 The real covariance and the integrated insertion
 bounds give
 \[
- \|D_*(c_\theta)^{-1}K\|_2\le
+ \|D_*(c_\theta)^{-1}K\|_{\mathrm{op}}\le
            2g_1C_Ke_*^{2\varepsilon}\le1/2,\qquad
- \|D_*(c_\theta)^{-1}K\|_1
+ \|D_*(c_\theta)^{-1}K\|_{\mathfrak S_1}
            \le4g_1C_Kp_\beta e_*^{2\varepsilon}.
 \]
 Thus the series in \eqref{eq:interacting-free-coarse-log}
@@ -22486,14 +22536,14 @@ summing \eqref{eq:interacting-local-constant-removal}
 over cubes and polymers gives at level $j$
 the bound
 \[
- 648C_dK_0C_\beta^2|t|^2e_j^{-2\varepsilon}a_*^{-3}
+ 648C_dK_{\mathrm{pol}}C_\beta^2|t|^2e_j^{-2\varepsilon}a_*^{-3}
            \left(M^2(D_\beta^{\rm buf})^3a_j+8M^5a_j^4\right).
 \]
 For the remaining polymers $2s_X\ge\ell_j$,
 $d\ge r_*L^i/2-3$. The extra exponential in
 the primitive bound then gives at level $j$
 \[
- 2\exp(6)C_dM^3K_0p_\beta L^{3i}e^{-r_*L^i}.
+ 2\exp(6)C_dM^3K_{\mathrm{pol}}p_\beta L^{3i}e^{-r_*L^i}.
 \]
 Sum over $i\ge1$, using $a_j=L^{-i}a_*$,
 $e_j^{-2\varepsilon}=e_*^{-2\varepsilon}L^{i\varepsilon}$,
@@ -22521,7 +22571,7 @@ It remains to control the twist. For
 $|\operatorname{Im}\theta_\mu|\le\tau_s$
 the connections $c_\theta+st\widehat c_c$
 lie in $\mathcal W^+$, and
-$\|D_*(c_\theta)^{-1}\|_2\le g_1$.
+$\|D_*(c_\theta)^{-1}\|_{\mathrm{op}}\le g_1$.
 There is a positive strip margin
 $\ell_*(e_*^{2\varepsilon}-e_*^{3\varepsilon})$:
 split the imaginary constant connection
@@ -22688,13 +22738,13 @@ Suppose
  \alpha_G\bar r\le1/2,
  \quad
  \bar r=4h_G^2C_Ke_*^{2\varepsilon}
-                            +650K_0e_*^{1/4-7\varepsilon}.
+                            +650K_{\mathrm{pol}}e_*^{1/4-7\varepsilon}.
 \end{equation}
 Let $d_{\rm sep}=\min_{c\ne c'}d(P_c,P_{c'})$ and
 suppose $d_{\rm sep}\ge6M+8$.
 With
 $s_F=(24/\gamma^F)^3$ and
-$C_V^{\mathrm{ins}}=10^3C_H^2s_F^4K_0$, we have
+$C_V^{\mathrm{ins}}=10^3C_H^2s_F^4K_{\mathrm{pol}}$, we have
 \begin{align}
  \rho_G(V_+(t);w_\delta)&\le\bar r
                                       &&(|t|_\infty\le t_x),\notag\\
@@ -22757,7 +22807,7 @@ permits $c_w=e^{d_M(X)+3}$.
 The needed rooted polymer sum is
 \begin{equation}\label{eq:interacting-rooted-polymer-sum}
  \sum_X e^{-(\gamma^F/4)d(u,X^+)}
-                       e^{-(\kappa-1)d_M(X)}\le32K_0.
+                       e^{-(\kappa-1)d_M(X)}\le32K_{\mathrm{pol}}.
 \end{equation}
 Indeed the sum of
 $e^{-(\gamma^F/4)d(u,\square^+)}$ over $M$-cubes
@@ -22767,7 +22817,7 @@ away has distance at least $(j-1)M$ and there
 are at most $(2j+1)^3$ such cubes.
 Use $\gamma^FM/4\ge4$ to sum the remaining
 geometric tail. Assigning a cube of $X$
-and applying the anchored polymer sum $K_0$
+and applying the anchored polymer sum $K_{\mathrm{pol}}$
 proves \eqref{eq:interacting-rooted-polymer-sum}.
 
 Apply \eqref{eq:interacting-absorbed-activity}
@@ -22776,12 +22826,12 @@ absorbs the polynomial degree factors.
 The preceding full and rooted sums give
 \[
  \rho_G\left(\sum_X E^a(X;t)[H_*^\#\Psi]_+;w_\delta\right)
-                                       \le650K_0w_*^{\rm E}.
+                                       \le650K_{\mathrm{pol}}w_*^{\rm E}.
 \]
 More generally, for kernels bounded by
 $\mathcal B e^{-\kappa d_M(X)}$ at that
 weight, these sums give
-$650K_0\mathcal B$ in $\rho_G$ and
+$650K_{\mathrm{pol}}\mathcal B$ in $\rho_G$ and
 $\exp(3)\mathcal B\sum_Xe^{-(\kappa-1)d_M(X)}$
 in $N_G$. This follows by summing
 $\sum_{p\ge2}p5^{-p}=9/80$ in the rooted
@@ -22808,9 +22858,9 @@ point and \eqref{eq:interacting-X-diameter}.
 The Cauchy bound multiplies
 $\mathcal B=w_*^{\rm E}$ by $q_x$, and
 the sum of polymers meeting $P_c$ is at most
-$K_0p_\beta$. Its $N_G$ bound is
-$\exp(3)K_0p_\beta q_xw_*^{\rm E}$ and its
-$\rho_G$ bound is $650K_0q_xw_*^{\rm E}$.
+$K_{\mathrm{pol}}p_\beta$. Its $N_G$ bound is
+$\exp(3)K_{\mathrm{pol}}p_\beta q_xw_*^{\rm E}$ and its
+$\rho_G$ bound is $650K_{\mathrm{pol}}q_xw_*^{\rm E}$.
 
 For a differentiated leg at position $j$, the
 insertion estimate has a chain
@@ -22837,7 +22887,7 @@ factor $p$, and $p^2\le5^p$ absorbs both.
 Use \eqref{eq:interacting-rooted-polymer-sum}
 with $\gamma^F/2$ in place of $\gamma^F/4$.
 The result is bounded by
-$9500C_Hs_FK_0w_*^{\rm E}p_\beta\epsilon_c$
+$9500C_Hs_FK_{\mathrm{pol}}w_*^{\rm E}p_\beta\epsilon_c$
 in $N_G$.
 
 For $\rho_G$, if the fixed argument lies on
@@ -22850,13 +22900,13 @@ that leg supplies the same rooted exponential,
 and the differentiated leg contributes
 $2C_H\epsilon_cs_F^2$.
 Both cases therefore have the bound
-$9500C_Hs_F^2K_0w_*^{\rm E}\epsilon_c$.
+$9500C_Hs_F^2K_{\mathrm{pol}}w_*^{\rm E}\epsilon_c$.
 Here the degree sum is
 $\sum_{p\ge2}p^25^{-p}=43/160$.
 Adding the three types of term, using
 $w_*^{\rm E}\le1/8$, $C_K\le C_Hs_F^2$,
 and $C_H\ge2$, proves the second line with
-$C_V^{\mathrm{ins}}=10^3C_H^2s_F^4K_0$.
+$C_V^{\mathrm{ins}}=10^3C_H^2s_F^4K_{\mathrm{pol}}$.
 
 For the mixed derivative, put
 \[
@@ -22916,7 +22966,7 @@ one kernel term with no legs, and the same
 bound controls $\partial_c\partial_{c'}V_0$.
 The four kernel types contribute in total
 at most
-$256C_H^2s_F^4K_0p_\beta q_x^2
+$256C_H^2s_F^4K_{\mathrm{pol}}p_\beta q_x^2
 e^{-\vartheta_0(d_{\rm sep}-4M-4)}$.
 Adding the quadratic term proves the last
 line of \eqref{eq:interacting-differentiated-norms}.
@@ -23013,7 +23063,7 @@ two vertices remain connected, namely
 $s_{ij}^F$. Wick's formula and the Gram
 inequality therefore bound a residual monomial
 of degree $p$ under $e^{\Delta[s^F]}$
-by $g^p$, where $\|G\|_2\le g^2$.
+by $g^p$, where $\|G\|_{\mathrm{op}}\le g^2$.
 Indeed, its determinant entries are
 $\langle\omega_i\otimes\delta_x,\omega_j\otimes G\delta_y\rangle$.
 These facts apply whether or not the
@@ -23140,7 +23190,7 @@ For $|S|\ge2$, the normalized logarithm satisfies
 where
 \begin{align}
  C_W^{\mathrm{mix}}&=3C_V^{\mathrm{ins}}h_G^2+2\alpha_G(C_V^{\mathrm{ins}})^2h_G^4
-                             +4\exp(6)C_dM^3K_0,\notag\\
+                             +4\exp(6)C_dM^3K_{\mathrm{pol}},\notag\\
  \varpi_{\rm sep}&=2^{N_*}C_W^{\mathrm{mix}}p_\beta
                     e^{-\vartheta_0(d_{\rm sep}-4M-6)},\notag\\
  \varpi_{\rm sep}^+&=2^{N_*}C_W^{\mathrm{mix}}p_\beta
@@ -23164,7 +23214,7 @@ polymers anchored at one of at most $p_\beta$
 cubes, and keep $e^{-2d_M(X)}$ from
 $\kappa-\kappa_0\ge2$.
 Its total contribution is at most
-$2^{|S|}2\exp(4)C_dM^3K_0p_\beta
+$2^{|S|}2\exp(4)C_dM^3K_{\mathrm{pol}}p_\beta
 e^{-\vartheta_0d_{\rm sep}}$.
 
 Apply \eqref{eq:interacting-tree-mixed}
@@ -23240,7 +23290,7 @@ Assume
  \varpi_0\le1/4,\quad 8N_*t_2\le t_x .
 \end{equation}
 There is a finite positive measure $v_{\rm sf}$
-on $[-\pi,\pi]^3\times\{\chi_*=1\}$, of
+on $[-\pi,\pi]^3\times\{A\in V_{\mathrm t}(T_*^0):\chi_*(A)=1\}$, of
 mass in $[1-\varpi_0,1]$, such that
 \begin{equation}\label{eq:interacting-small-field-representation}
  \frac{\bar\nu^{a(t)}(\mathfrak G)}{\bar\nu(F_N)}
@@ -23293,8 +23343,8 @@ nonnegative bounded Borel $\Phi$,
        =\nu^{\theta,a(t)}(\mathbf1_{\mathfrak G}\Phi(A_*))\ge0.
 \]
 The terminal density is continuous. On the
-interior of the compact convex set
-$\{\chi_*=1\}=\{|dA|_\infty\le p_*\}$, a
+interior, relative to $V_{\mathrm t}(T_*^0)$, of the compact
+convex set $\{A\in V_{\mathrm t}(T_*^0):|dA|_\infty\le p_*\}$, a
 nonzero imaginary part or negative real
 part would persist on a ball of positive
 Gaussian measure, contradicting this identity.
@@ -23817,8 +23867,8 @@ $\sigma>0$ and $C_fe^\sigma\le b(dd^*\beta)/2$.
 \subsection{The geometric scales and the positive exponent}
 
 \noindent\emph{Proof.} Set $\bar\varepsilon=1/200$, $c_X=54$,
-$\kappa_0=54\log72$, $K_0=72^{54}/36$,
-$c_{\mathrm{rb}}=54K_0$ and $c_{\mathrm{fl}}=61c_XK_0$.
+$\kappa_0=54\log72$, $K_{\mathrm{pol}}=72^{54}/36$,
+$c_{\mathrm{rb}}=54K_{\mathrm{pol}}$ and $c_{\mathrm{fl}}=61c_XK_{\mathrm{pol}}$.
 Choose
 \[
  1-\bar\varepsilon<\alpha<1,\qquad
@@ -23944,7 +23994,7 @@ Take the common primitive constants
 \[
  C^P=116C_P^{\mathrm{ph}}M^{402\alpha_0},\qquad
  C_w^{(1)}=\max\{C^F,C^P,4\exp(2\gamma_w)M^{27\alpha_0}\},
- \qquad C_w=64K_0C_w^{(1)}.
+ \qquad C_w=64K_{\mathrm{pol}}C_w^{(1)}.
 \]
 These are precisely \eqref{eq:rgcov-top-constants}.
 The top systems and their projections therefore satisfy
@@ -23977,7 +24027,7 @@ The photon row sums, both field-map row norms and the
 terminal Dirac form in
 Section~\ref{subsec:interacting-terminal-norms} are then
 bounded by this $C_0$. In particular $C_0\ge1$.
-The polymer sum has $1\le c_\kappa\le K_0$.
+The polymer sum has $1\le c_\kappa\le K_{\mathrm{pol}}$.
 The free Bloch construction fixes the twist constants
 $C_\Sigma<\infty$ and $\gamma_\Sigma>0$ independently of
 the running charge, mass in its prescribed range, mesh
@@ -23991,7 +24041,7 @@ $C_H=203M(C^F)^2$. The real covariance coefficients
 $g,h_G,g_1,\alpha_G$ and its rate $\vartheta_0$ are
 defined with \eqref{eq:interacting-Gaussian-covariance}.
 The insertion and mixed-logarithm coefficients are
-$C_V^{\mathrm{ins}}=10^3C_H^2(24/\gamma^F)^{12}K_0$ and
+$C_V^{\mathrm{ins}}=10^3C_H^2(24/\gamma^F)^{12}K_{\mathrm{pol}}$ and
 $C_W^{\mathrm{mix}}$ in \eqref{eq:interacting-separation-errors}.
 Their inverse-decay rates are positive and their
 coefficients finite because $b_->0$,
@@ -24050,7 +24100,7 @@ The polynomial-exponential conditions are
  T(112C_w^2c_\gamma,0,2\varepsilon)&\le3,\notag\\
  T(c_S,0,1/4-5\varepsilon)&\le1,&
  T(c_SL^3,0,\varepsilon)&\le1,\notag\\
- T(36c_X^2K_0^2,0,1/4-5\varepsilon)&\le1,&
+ T(36c_X^2K_{\mathrm{pol}}^2,0,1/4-5\varepsilon)&\le1,&
  T(1,0,\varepsilon)&\le\tfrac14,\notag\\
  T(3M,0,1/4+\varepsilon)+T(3M,0,2\varepsilon)&\le1,\notag\\
  T(1,0,1/4)+T(1,0,\varepsilon)&\le1,\notag\\
@@ -24066,11 +24116,11 @@ The polynomial-exponential conditions are
  T(8c_{\mathrm{rb}}L^3C_dM^3,0,2\varepsilon)&\le1.
                                       \label{eq:constants-running-inventory}
 \end{align}
-Here $c_S=10^5c_X^5K_0^5\exp(6\kappa)$.
+Here $c_S=10^5c_X^5K_{\mathrm{pol}}^5\exp(6\kappa)$.
 The inequality with $96M^3$ controls the first step;
 the one with $C_T^2M^3$ controls the positive-level
 fluctuation substitution. The conditions with $c_S$
-and $36c_X^2K_0^2$ control the connected logarithm and its scaling.
+and $36c_X^2K_{\mathrm{pol}}^2$ control the connected logarithm and its scaling.
 The domain conditions occur with target $1/4$,
 with rates $(1/4,\varepsilon)$, with coefficients
 $8C_B,8$, and with coefficients $4,2$.
@@ -24270,9 +24320,11 @@ The copies use the antilinear reflection action, including
 conjugation of scalar coefficients.
 
 These arrays satisfy the rectangular chessboard estimate
-\eqref{eq:slab-chessboard-rectangular}. The half-integer width
-causes no change in its proof: all walls remain admissible,
-and the torus sides are integers at least four.
+\eqref{eq:slab-chessboard-rectangular}. Its fold proof also applies
+at half-integer width: all walls remain admissible, paired reflections
+translate by the integer $2w$, and the even cell counts give integer
+torus sides at least four. For each layer, the fold identity is applied
+with the trace based at that layer's own lower boundary.
 For a support box $B=y+[-r,r]^3\subset Q_c^\circ$ one has
 $2r<w$. A nonzero period has sup norm at least $2w>4r$
 and at least four. Thus its enlarged boxes $B+[-1,1]^3$
@@ -25151,7 +25203,8 @@ then give an error at most
 \]
 This tends to zero. The moments of the fixed tests converge
 by Section~\ref{sec:continuum-limits}, and the polynomial
-coefficients converge by \eqref{eq:UV-test-convergence}.
+coefficients converge by \eqref{eq:UV-test-convergence}
+and the subsequence chosen above.
 There are only finitely many monomials for each fixed $Y$.
 This proves \eqref{eq:UV-law-product-bound}.
 
@@ -25339,7 +25392,7 @@ Therefore
    =\sum_{k,l=0}^MS_{k+l}(\Theta_k\Psi_k\otimes\Psi_l).
 \]
 This is the tensor reflection form with the conjugation and signs
-in the first-page statement.
+in Theorem~\ref{thm:main}.
 
 Finally, \eqref{eq:tensor-product-rule} and translation covariance
 identify the expression in \textup{(E4)} with
@@ -25375,7 +25428,7 @@ $|m_{0,N}(e)|<1/8$ for every $N$.
 The all-flux laws at \eqref{eq:cutoff-scales} are therefore
 defined at every cutoff, even when the total lattice mass
 has either sign.
-The physical ceiling in the first-page statement is
+The physical ceiling in Theorem~\ref{thm:main} is
 $e_{\mathrm{phys}}=e_G$.
 Proposition~\ref{prop:positive-probe} proves the existence
 of the probes in \eqref{eq:positive-coefficient}.
@@ -25454,7 +25507,7 @@ Proposition~\ref{prop:tensor-OS} gives
 \textup{(E0$'$)}--\textup{(E3)} for the parent law and
 \textup{(E0$'$)}--\textup{(E4)} for these components,
 with exactly the tensor action and growth bound of
-the first-page statement.
+Theorem~\ref{thm:main}.
 In particular, supported tensor evaluations belong
 to the positive-side $L^2$ space even when their
 supports meet the reflection plane, by
@@ -25549,7 +25602,7 @@ set is non-Gaussian.
 \section{Polymer geometry}\label{app:polymer-geometry}
 
 Let $L$ be odd, $M$ a power of $L$, and $\ell$ a multiple of $LM$
-with $\ell\ge13LM$. The $M$-cubes have centres in
+with $\ell\ge13LM$. The $M$-cubes have centers in
 $M\Z^3/\ell\Z^3$. They partition the lattice sites; their closed
 continuum versions may meet along faces and edges. A polymer is a
 nonempty union of $M$-cubes connected through faces. Denote its number
@@ -25571,7 +25624,7 @@ $M$-cubes in $\R^3$, with nets in $\R^3$. Distances are sup distances.
 Put
 \[
  c_X=54,\qquad \kappa_0=54\log72,\qquad
- K_0=e^{\kappa_0}/36,\qquad c_{\mathrm{rb}}=c_XK_0.
+ K_{\mathrm{pol}}=e^{\kappa_0}/36,\qquad c_{\mathrm{rb}}=c_XK_{\mathrm{pol}}.
 \]
 The following estimates are uniform in $M$ and $\ell$:
 \begin{align}
@@ -25580,8 +25633,8 @@ The following estimates are uniform in $M$ and $\ell$:
  d(p,q)&\le M(d_M(X)+2)
        &&(p,q\text{ in the closed cubes of }X),
                                   \label{eq:polymer-diameter}\\
- \sum_{X\supset\square}e^{-\kappa_0d_M(X)}&\le K_0,&
- \sum_{X\subset Y}e^{-\kappa_0d_M(X)}&\le K_0|Y|_M.
+ \sum_{X\supset\square}e^{-\kappa_0d_M(X)}&\le K_{\mathrm{pol}},&
+ \sum_{X\subset Y}e^{-\kappa_0d_M(X)}&\le K_{\mathrm{pol}}|Y|_M.
                                   \label{eq:polymer-counting}
 \end{align}
 Here $Y$ is any union of $M$-cubes. If $\ell/L$ satisfies the same
@@ -25634,7 +25687,7 @@ walks. By the size estimate, $d_M(X)\ge n/c_X-1$. Summing over $n$
 gives
 \[
  \sum_{X\supset\square}e^{-\kappa_0d_M(X)}
-       \le e^{\kappa_0}\sum_{n\ge1}36^{n-1}72^{-n}=K_0.
+       \le e^{\kappa_0}\sum_{n\ge1}36^{n-1}72^{-n}=K_{\mathrm{pol}}.
 \]
 Sum this bound over the cubes of $Y$ to obtain the second inequality
 of \eqref{eq:polymer-counting}.
@@ -25650,7 +25703,7 @@ split the decay into rates $\kappa_0$ and $\kappa'-\kappa_0$ and use
 which has $L^3|Y|_M$ fine cubes, so
 \[
  \sum_{X:\bar X^L=LY}e^{-\kappa_0d_M(X)}
-      \le K_0L^3|Y|_M\le c_XK_0L^3e^{d_M(Y)}.
+      \le K_{\mathrm{pol}}L^3|Y|_M\le c_XK_{\mathrm{pol}}L^3e^{d_M(Y)}.
 \]
 Combining the two factors proves the stated bound.
 
@@ -25686,8 +25739,8 @@ asserted injectivity, adjacency, and connectedness.
 
 Any other face-connected injective lift can be translated so that it
 contains the chosen lift of the cube of $p_0$. There are no two
-different neighbours of one lifted cube with the same projection:
-their centres differ by at most $2M<\ell$. Propagate this observation
+different neighbors of one lifted cube with the same projection:
+their centers differ by at most $2M<\ell$. Propagate this observation
 along a chain of adjacent cubes. Every cube of the other lift equals
 the corresponding cube of $\widetilde X$, proving uniqueness.
 

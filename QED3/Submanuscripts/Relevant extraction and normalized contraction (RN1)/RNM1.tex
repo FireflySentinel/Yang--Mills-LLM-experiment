@@ -25,10 +25,10 @@
 \RequirePackage{perpage}
 \RequirePackage{xcolor}
 \definecolor{manuscriptred}{rgb}{0.6,0.1,0.1}
-\definecolor{manuscriptcyan}{rgb}{0.1,0.3,0.5}
-\definecolor{manuscriptmagenta}{HTML}{8B008B}
+\definecolor{manuscriptblue}{rgb}{0.1,0.3,0.5}
+\definecolor{manuscriptmagenta}{HTML}{60445C}
 \RequirePackage[breaklinks=true,colorlinks=true,
-  linkcolor=manuscriptred,citecolor=manuscriptcyan,urlcolor=manuscriptmagenta]{hyperref}
+  linkcolor=manuscriptred,citecolor=manuscriptblue,urlcolor=manuscriptmagenta]{hyperref}
 \RequirePackage{cleveref}
 \hypersetup{pdfauthor={}}
 
@@ -177,9 +177,11 @@ on the activity in the following linear theorem.
 Set
 \[
  \bar\varepsilon=\frac1{200},\quad c_X=54,\quad
- \kappa_0=54\log72,\quad K_0=\frac{e^{\kappa_0}}{36},\quad
- c_{\mathrm{rb}}=c_XK_0,\quad c_{\mathrm{fl}}=61c_{\mathrm{rb}}.
+ \kappa_0=54\log72,\quad K_{\mathrm{pol}}=\frac{e^{\kappa_0}}{36},\quad
+ c_{\mathrm{rb}}=c_XK_{\mathrm{pol}},\quad c_{\mathrm{fl}}=61c_{\mathrm{rb}}.
 \]
+The scalar $K_{\mathrm{pol}}$ is the polymer-sum constant in
+\eqref{eq:polymer-counting}.
 
 \begin{theorem}[Extraction and normalized contraction]\label{thm:main}
 Assume that both \(\ell/(LM)\) and \(\ell/(L^2M)\) are odd
@@ -206,9 +208,9 @@ Let \(\mathscr E\in K_k^{x,\C}(\ell)\) and
 \(K_k^x\), with
 \[
  |\varepsilon_{\mathrm v}(\mathscr E)|
-       \le K_0M^{-3}\|\mathscr E\|_k^x,\qquad
+       \le K_{\mathrm{pol}}M^{-3}\|\mathscr E\|_k^x,\qquad
  |m(\mathscr E)|
-       \le K_0M^{-3}e_k^{1/2}\|\mathscr E\|_k^x .
+       \le K_{\mathrm{pol}}M^{-3}e_k^{1/2}\|\mathscr E\|_k^x .
 \]
 The extracted mass matrix is \(m(\mathscr E)1_4\).
 The local subtraction \(R\) of \eqref{eq:rg-normalized-remainder}
@@ -696,9 +698,9 @@ $M(\mathscr E)=m(\mathscr E)1$. Both $m$ and
 $\varepsilon_{\mathrm v}$ are real on $K_k^x$, and
 \begin{equation}\label{eq:rg-counterterm-bounds}
  |\varepsilon_{\mathrm v}(\mathscr E)|
-                  \le K_0M^{-3}\|\mathscr E\|_k^x,
+                  \le K_{\mathrm{pol}}M^{-3}\|\mathscr E\|_k^x,
  \qquad
- |m(\mathscr E)|\le K_0M^{-3}e_k^{1/2}\|\mathscr E\|_k^x.
+ |m(\mathscr E)|\le K_{\mathrm{pol}}M^{-3}e_k^{1/2}\|\mathscr E\|_k^x.
 \end{equation}
 They commute with restriction of the second connection argument
 to zero.
@@ -754,11 +756,12 @@ The coefficient norm gives, for each small $X$,
  \end{split}
 \end{equation}
 Use $h_{k,1}^{-2}=e_k^{1/2}$ and
-$\operatorname{Vol}(X)\ge M^3$. Each contribution is bounded
-by the corresponding right side of
-\eqref{eq:rg-counterterm-bounds}, times $\exp(-\kappa d_M(X))$.
-The polymer sum over a fixed cube is at most $K_0$ by
-$\kappa\ge\kappa_0$. For the mass use one diagonal entry of
+$\operatorname{Vol}(X)\ge M^3$. The individual vacuum and mass
+contributions are bounded by $M^{-3}\|\mathscr E\|_k^x$ and
+$M^{-3}e_k^{1/2}\|\mathscr E\|_k^x$, respectively, times
+$\exp(-\kappa d_M(X))$.
+The polymer sum over a fixed cube is at most $K_{\mathrm{pol}}$ by
+\eqref{eq:polymer-counting} and $\kappa\ge\kappa_0$. For the mass use one diagonal entry of
 the matrix sum, now known to be scalar. This proves the bounds.
 Linearity follows from uniqueness of the antisymmetric kernels.
 Restriction gives the same kernels at $(0,0)$, proving the
@@ -2201,7 +2204,7 @@ Changing variables in the two rows therefore proves
  T_{\tilde gY}^{(i)}(\tilde gA)\tilde g
                            =\tilde gT_Y^{(i)}(A).
 \end{equation}
-Complex conjugation changes the phases to those at $-A$, and
+Conjugating the phases evaluated at $\overline A$ gives those at $-A$, and
 $\overline{M_i}=\varkappa^{-1}M_i\varkappa$, giving
 \begin{equation}\label{eq:rg-reconstruction-reality}
  \overline{T_Y^{(i)}(\overline A)}
@@ -2521,7 +2524,7 @@ We give the geometric estimates used above, following
 \cite[Appendix~A]{QED3Manuscript}.
 
 Let $L$ be odd, $M$ a power of $L$, and $\ell$ a multiple of $LM$
-with $\ell\ge13LM$. The $M$-cubes have centres in
+with $\ell\ge13LM$. The $M$-cubes have centers in
 $M\Z^3/\ell\Z^3$. They partition the lattice sites; their closed
 continuum versions may meet along faces and edges. A polymer is a
 nonempty union of $M$-cubes connected through faces. Denote its number
@@ -2543,7 +2546,7 @@ $M$-cubes in $\R^3$, with nets in $\R^3$. Distances are sup distances.
 Put
 \[
  c_X=54,\qquad \kappa_0=54\log72,\qquad
- K_0=e^{\kappa_0}/36,\qquad c_{\mathrm{rb}}=c_XK_0.
+ K_{\mathrm{pol}}=e^{\kappa_0}/36,\qquad c_{\mathrm{rb}}=c_XK_{\mathrm{pol}}.
 \]
 The following estimates are uniform in $M$ and $\ell$:
 \begin{align}
@@ -2552,8 +2555,8 @@ The following estimates are uniform in $M$ and $\ell$:
  d(p,q)&\le M(d_M(X)+2)
        &&(p,q\text{ in the closed cubes of }X),
                                   \label{eq:polymer-diameter}\\
- \sum_{X\supset\square}e^{-\kappa_0d_M(X)}&\le K_0,&
- \sum_{X\subset Y}e^{-\kappa_0d_M(X)}&\le K_0|Y|_M.
+ \sum_{X\supset\square}e^{-\kappa_0d_M(X)}&\le K_{\mathrm{pol}},&
+ \sum_{X\subset Y}e^{-\kappa_0d_M(X)}&\le K_{\mathrm{pol}}|Y|_M.
                                   \label{eq:polymer-counting}
 \end{align}
 Here $Y$ is any union of $M$-cubes. If $\ell/L$ satisfies the same
@@ -2606,7 +2609,7 @@ walks. By the size estimate, $d_M(X)\ge n/c_X-1$. Summing over $n$
 gives
 \[
  \sum_{X\supset\square}e^{-\kappa_0d_M(X)}
-       \le e^{\kappa_0}\sum_{n\ge1}36^{n-1}72^{-n}=K_0.
+       \le e^{\kappa_0}\sum_{n\ge1}36^{n-1}72^{-n}=K_{\mathrm{pol}}.
 \]
 Sum this bound over the cubes of $Y$ to obtain the second inequality
 of \eqref{eq:polymer-counting}.
@@ -2622,7 +2625,7 @@ split the decay into rates $\kappa_0$ and $\kappa'-\kappa_0$ and use
 which has $L^3|Y|_M$ fine cubes, so
 \[
  \sum_{X:\bar X^L=LY}e^{-\kappa_0d_M(X)}
-      \le K_0L^3|Y|_M\le c_XK_0L^3e^{d_M(Y)}.
+      \le K_{\mathrm{pol}}L^3|Y|_M\le c_XK_{\mathrm{pol}}L^3e^{d_M(Y)}.
 \]
 Combining the two factors proves the stated bound.
 
@@ -2658,8 +2661,8 @@ asserted injectivity, adjacency, and connectedness.
 
 Any other face-connected injective lift can be translated so that it
 contains the chosen lift of the cube of $p_0$. There are no two
-different neighbours of one lifted cube with the same projection:
-their centres differ by at most $2M<\ell$. Propagate this observation
+different neighbors of one lifted cube with the same projection:
+their centers differ by at most $2M<\ell$. Propagate this observation
 along a chain of adjacent cubes. Every cube of the other lift equals
 the corresponding cube of $\widetilde X$, proving uniqueness.
 

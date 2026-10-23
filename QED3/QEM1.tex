@@ -104,10 +104,10 @@
 \RequirePackage{perpage}
 \RequirePackage{xcolor}
 \definecolor{manuscriptred}{rgb}{0.6,0.1,0.1}
-\definecolor{manuscriptcyan}{rgb}{0.1,0.3,0.5}
-\definecolor{manuscriptmagenta}{HTML}{8B008B}
+\definecolor{manuscriptblue}{rgb}{0.1,0.3,0.5}
+\definecolor{manuscriptmagenta}{HTML}{60445C}
 \RequirePackage[breaklinks=true,colorlinks=true,
-  linkcolor=manuscriptred,citecolor=manuscriptcyan,urlcolor=manuscriptmagenta]{hyperref}
+  linkcolor=manuscriptred,citecolor=manuscriptblue,urlcolor=manuscriptmagenta]{hyperref}
 \RequirePackage{cleveref}
 \hypersetup{pdfauthor={}}
 
@@ -207,7 +207,7 @@
 \hypersetup{pdftitle={The continuum field-strength construction for QED in three dimensions},pdfauthor={}}
 \begin{document}
 \begin{abstract}
-We construct non-Gaussian laws of closed two-form fields from noncompact lattice QED with chamber fermions. Their Schwinger functions satisfy the Osterwalder--Schrader axioms, including clustering. The bare mass is chosen independently of the volume. Almost every translation-ergodic component of every volume-first limit has these properties. For each compact probe with a positive free fourth coefficient, its fourth cumulant is positive at sufficiently small charge.
+At sufficiently small positive physical charge, almost every translation-ergodic component of every volume-first continuum limit of noncompact lattice QED with chamber fermions is a non-Gaussian law of closed two-form fields. Its Schwinger functions satisfy the Osterwalder--Schrader axioms, including clustering. The bare mass is chosen independently of the volume. For each compact probe with a positive free fourth coefficient, its fourth cumulant is positive at sufficiently small charge.
 \end{abstract}
 \maketitle
 \tableofcontents
@@ -245,8 +245,8 @@ $f=dd^*\beta$ has
  \qquad S_{\bar m}=(\bar m+\gamma\cdot\partial)^{-1}.
 \end{equation}
 Such probes exist. There is $e_\beta\in(0,e_{\mathrm{phys}}]$ such that, for $0<e\le e_\beta$,
-the all-flux chamber laws on the coordinate cubic tori of unit
-side $n=R/\eta$, with periodic gauge fields and fermions
+the all-flux chamber laws on the coordinate cubic tori of side
+length $n=R/\eta$ in lattice units, with periodic gauge fields and fermions
 antiperiodic in all three coordinate directions, and with
 \begin{equation}\label{eq:cutoff-scales}
  \eta=L^{-N},\quad R=8hL^T,\quad
@@ -583,7 +583,7 @@ applied before the spacing is removed.
 
 Write $\eta=L^{-N}$, $R=8hL^T$, and $n=R/\eta$, as in
 \eqref{eq:cutoff-scales}. A plaquette of the unit covering lattice is
-$\sigma=(x;\mu\nu)$, with $\mu<\nu$ and centre
+$\sigma=(x;\mu\nu)$, with $\mu<\nu$ and center
 $y_\sigma=x+(e_\mu+e_\nu)/2$. Its averaging cube is
 \[
  Q_\eta(\sigma)=\eta\bigl(y_\sigma+[-1/2,1/2)^3\bigr).
@@ -688,7 +688,7 @@ on two-forms and the cochain pull-back,
  \qquad
  (\mathfrak g\cdot f)_\eta=(g^{-1})^*f_\eta.
 \end{equation}
-Indeed, $g$ sends centres to centres and the averaging cubes to
+Indeed, $g$ sends centers to centers and the averaging cubes to
 averaging cubes up to null boundaries. Its orientation sign is
 the sign of $\wedge^2\vec g$ on the corresponding plaquette.
 Changing variables gives the first formula; periodization and
@@ -835,9 +835,10 @@ $0<e\le e_G$.
 \subsection{The geometric scales and the positive exponent}
 
 \begin{proof} Set $\bar\varepsilon=1/200$, $c_X=54$,
-$\kappa_0=54\log72$, $K_0=72^{54}/36$,
-$c_{\mathrm{rb}}=54K_0$ and $c_{\mathrm{fl}}=61c_XK_0$.
-Choose
+$\kappa_0=54\log72$, $K_{\mathrm{pol}}=72^{54}/36$,
+$c_{\mathrm{rb}}=54K_{\mathrm{pol}}$ and $c_{\mathrm{fl}}=61c_XK_{\mathrm{pol}}$.
+Here $K_{\mathrm{pol}}$ is the scalar polymer-sum constant of
+\cite[Appendix~B, (81)]{NormalizedContraction}. Choose
 \[
  1-\bar\varepsilon<\alpha<1,\qquad
  \kappa\ge7\kappa_0+7.
@@ -962,7 +963,7 @@ Take the common primitive constants
 \[
  C^P=116C_P^{\mathrm{ph}}M^{402\alpha_0},\qquad
  C_w^{(1)}=\max\{C^F,C^P,4\exp(2\gamma_w)M^{27\alpha_0}\},
- \qquad C_w=64K_0C_w^{(1)}.
+ \qquad C_w=64K_{\mathrm{pol}}C_w^{(1)}.
 \]
 These are precisely \exteq{23}{CoverTuning}.
 The top systems and their projections therefore satisfy
@@ -995,7 +996,7 @@ The photon row sums, both field-map row norms and the
 terminal Dirac form in
 Section~\extref{6.2}{TerminalPressure} are then
 bounded by this $C_0$. In particular $C_0\ge1$.
-The polymer sum has $1\le c_\kappa\le K_0$.
+The polymer sum has $1\le c_\kappa\le K_{\mathrm{pol}}$.
 The free Bloch construction fixes the twist constants
 $C_\Sigma<\infty$ and $\gamma_\Sigma>0$ independently of
 the running charge, mass in its prescribed range, mesh
@@ -1009,7 +1010,7 @@ $C_H=203M(C^F)^2$. The real covariance coefficients
 $g,h_G,g_1,\alpha_G$ and its rate $\vartheta_0$ are
 defined with \exteq{74}{TerminalPressure}.
 The insertion and mixed-logarithm coefficients are
-$C_V^{\mathrm{ins}}=10^3C_H^2(24/\gamma^F)^{12}K_0$ and
+$C_V^{\mathrm{ins}}=10^3C_H^2(24/\gamma^F)^{12}K_{\mathrm{pol}}$ and
 $C_W^{\mathrm{mix}}$ in \exteq{109}{ReferenceResponse}.
 Their inverse-decay rates are positive and their
 coefficients finite because $b_->0$,
@@ -1078,7 +1079,7 @@ The polynomial-exponential conditions are
  T(112C_w^2c_\gamma,0,2\varepsilon)&\le3,\notag\\
  T(c_S,0,1/4-5\varepsilon)&\le1,&
  T(c_SL^3,0,\varepsilon)&\le1,\notag\\
- T(36c_X^2K_0^2,0,1/4-5\varepsilon)&\le1,&
+ T(36c_X^2K_{\mathrm{pol}}^2,0,1/4-5\varepsilon)&\le1,&
  T(1,0,\varepsilon)&\le\tfrac14,\notag\\
  T(3M,0,1/4+\varepsilon)+T(3M,0,2\varepsilon)&\le1,\notag\\
  T(1,0,1/4)+T(1,0,\varepsilon)&\le1,\notag\\
@@ -1094,11 +1095,11 @@ The polynomial-exponential conditions are
  T(8c_{\mathrm{rb}}L^3C_dM^3,0,2\varepsilon)&\le1.
                                       \label{eq:constants-running-inventory}
 \end{align}
-Here $c_S=10^5c_X^5K_0^5\exp(6\kappa)$.
+Here $c_S=10^5c_X^5K_{\mathrm{pol}}^5\exp(6\kappa)$.
 The inequality with $96M^3$ controls the first step;
 the one with $C_T^2M^3$ controls the positive-level
 fluctuation substitution. The conditions with $c_S$
-and $36c_X^2K_0^2$ control the connected logarithm and its scaling.
+and $36c_X^2K_{\mathrm{pol}}^2$ control the connected logarithm and its scaling.
 The domain conditions occur with target $1/4$,
 with rates $(1/4,\varepsilon)$, with coefficients
 $8C_B,8$, and with coefficients $4,2$.
@@ -2117,10 +2118,11 @@ left, \eqref{eq:rotation-regularized-point-bound} gives the
 integrable majorant
 $2k_2\|\chi\|_2|\alpha(y)|/(d-d')$ for sufficiently small $\delta$.
 Dominated convergence identifies the limiting matrix elements.
-Holomorphy makes the limiting integrand norm continuous on the
-support, and \eqref{eq:rotation-point-bound} bounds its norm.
-It is therefore Bochner integrable, proving the formula and its
-stated norm bound.
+Holomorphy makes the operator factor norm continuous on the
+support. Multiplication by the measurable scalar $\alpha$ gives
+a strongly measurable integrand, whose norm is integrable by
+\eqref{eq:rotation-point-bound} and $\alpha\in L^1$. This proves
+Bochner integrability, the formula and its stated norm bound.
 \end{proof}
 
 \subsection{Ordered field kernels}\label{subsec:rotation-ordered-kernels}
@@ -2240,7 +2242,7 @@ Use \eqref{eq:rotation-point-integral} to write
 On the compact supports all these operators are norm bounded;
 the $\alpha_j$ are integrable. The product in
 \eqref{eq:rotation-ordered-product-class} is therefore one Bochner
-integral. Absorb each gap semigroup into a neighbouring point plate.
+integral. Absorb each gap semigroup into a neighboring point plate.
 The inner arguments between plates $j$ and $j+1$ then add to
 $y_{j+1}-y_j$. Replace them by equal halves using the product
 identity above. The initial argument becomes $y_1$, and the
@@ -2262,7 +2264,7 @@ The translation identity follows by shifting the first argument.
 
 Conjugating \eqref{eq:rotation-ordered-density} replaces the plates
 by $\bar\alpha_a\otimes\bar\lambda_a$. Testing in small ordered
-product neighbourhoods identifies
+product neighborhoods identifies
 $\overline{G_N(\xi;\lambda)}=G_N(\xi;\bar\lambda)$ on real
 $\xi\in\mathcal W^{N-1}$. Both sides, with $\xi$ conjugated on
 the first, are holomorphic, and this domain is connected.
@@ -2345,9 +2347,15 @@ gives \eqref{eq:rotation-spectral-CS}.
 
 On $A_n=\{a_0>1/n\}$, which is bounded, one may divide
 \eqref{eq:rotation-spectral-reference} by $a_0$ using bounded
-spectral calculus. This proves \eqref{eq:rotation-one-field-spectrum}
-with the measures restricted to $A_n$.
-As $A_n$ increase to the whole spectral space,
+spectral calculus. Thus
+\[
+ \big\langle\mathsf E_j(A_n)[\mathbb B_a(u)]_j,
+             \mathsf E_j(A_n)[\mathbb B_b(u')]_j\big\rangle
+       =\int_{A_n}\overline{\widetilde u}\,\widetilde u'
+                                                  \,\dd\varrho_{ab}.
+\]
+As $A_n$ increase to the whole spectral space and
+$\mathsf E_j(A_n)\to I$ strongly,
 the diagonal identity follows by monotone convergence; its integral
 is $\|[\mathbb B_a(u)]_j\|^2\le\|u\|_2^2$.
 Equation \eqref{eq:rotation-spectral-CS} then makes the mixed
@@ -2468,7 +2476,7 @@ By quarter-turn invariance and
 \eqref{eq:rotation-plate-actions}, this is the two-point density
 for supports ordered along $n_\upsilon$.
 Two such densities agree on overlaps: test them on small product
-neighbourhoods ordered in both directions and use continuity.
+neighborhoods ordered in both directions and use continuity.
 The four half-planes cover $\R^2\setminus\{0\}$, so they define
 one smooth kernel $G_{\lambda\lambda'}$ there.
 It computes the two-point function for any two disjoint compact
@@ -2491,7 +2499,7 @@ their real overlap. They give an entire function $h$ with
  |h(t+i\beta)|\le C_{\chi,\chi'}r^{-2}e^{2|\beta|},
 \end{equation}
 where $C_{\chi,\chi'}=72\|\chi\|_2\|\chi'\|_2/\pi$.
-For the bound, choose a strip centre within $\pi/4$ of $t$ and
+For the bound, choose a strip center within $\pi/4$ of $t$ and
 apply \eqref{eq:rotation-two-point-strip}.
 
 The entire function $e^{-iw\zeta}h(\zeta)$ has period $\pi/2$,
@@ -2526,7 +2534,7 @@ $\partial_z=(\partial_{y^0}-i\partial_{y^1})/2$,
 \]
 Pair this gradient with a second plate whose plane support is
 disjoint. Apply the density identities and integrate by parts.
-Testing on small disjoint product neighbourhoods gives
+Testing on small disjoint product neighborhoods gives
 \begin{equation}\label{eq:rotation-two-point-Bianchi}
  \partial_zG_{(+,\chi_0)\lambda'}
        +\partial_{\bar z}G_{(-,\chi_0)\lambda'}
@@ -3103,8 +3111,9 @@ Move the $J$ group by $se_2$. The points remain distinct for
 every real $s$, since the groups are separated in time.
 A sufficiently small positive $s_0$ removes every
 second-coordinate coincidence across the cut and creates none:
-take it smaller than every nonzero initial difference of
-second coordinates.
+take it smaller than every nonzero absolute difference of the
+initial second coordinates. If all these coordinates agree, any
+sufficiently small positive $s_0$ works.
 There are fewer coincident pairs at $X(s_0)$.
 
 The induction hypothesis gives a radius $2r$ near $X(s_0)$
@@ -3132,10 +3141,10 @@ radius $2r$ at $X(s_0)$, so $F(s)=0$.
 The real analytic identity theorem gives $F(0)=0$.
 This proves local vanishing near $X$ and completes the induction.
 For general disjoint compact supports, finitely many of these
-product-disc neighbourhoods cover their product.
+product-disc neighborhoods cover their product.
 Partition each support into sufficiently small half-open
 squares. Every product of nonzero pieces lies in one of the
-larger vanishing neighbourhoods: choose a point of the
+larger vanishing neighborhoods: choose a point of the
 product support in it and make each square diameter smaller
 than the available half-radius.
 Multilinearity and finite summation prove

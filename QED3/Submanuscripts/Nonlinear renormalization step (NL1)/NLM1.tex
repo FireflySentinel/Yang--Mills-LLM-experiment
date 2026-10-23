@@ -36,10 +36,10 @@
 \RequirePackage{perpage}
 \RequirePackage{xcolor}
 \definecolor{manuscriptred}{rgb}{0.6,0.1,0.1}
-\definecolor{manuscriptcyan}{rgb}{0.1,0.3,0.5}
-\definecolor{manuscriptmagenta}{HTML}{8B008B}
+\definecolor{manuscriptblue}{rgb}{0.1,0.3,0.5}
+\definecolor{manuscriptmagenta}{HTML}{60445C}
 \RequirePackage[breaklinks=true,colorlinks=true,
-  linkcolor=manuscriptred,citecolor=manuscriptcyan,urlcolor=manuscriptmagenta]{hyperref}
+  linkcolor=manuscriptred,citecolor=manuscriptblue,urlcolor=manuscriptmagenta]{hyperref}
 \RequirePackage{cleveref}
 \hypersetup{pdfauthor={}}
 
@@ -214,15 +214,17 @@ The quantitative constants are
  \begin{gathered}
  \bar\varepsilon=1/200,\qquad
  0<\varepsilon\le\bar\varepsilon,\qquad 1-\varepsilon<\alpha<1,\\
- c_X=54,\quad \kappa_0=54\log72,\quad K_0=\exp(\kappa_0)/36,\quad
- c_{\rm rb}=c_XK_0,\quad c_{\rm fl}=61c_{\rm rb},\\
+ c_X=54,\quad \kappa_0=54\log72,\quad K_{\mathrm{pol}}=\exp(\kappa_0)/36,\quad
+ c_{\rm rb}=c_XK_{\mathrm{pol}},\quad c_{\rm fl}=61c_{\rm rb},\\
  c_C=3L^{9/2},\quad b=1,\quad b_L=b/L,\quad b_-=1-L^{-1},\\
  C_T=2\exp(3/2)
        [1+b_-^{-1}(54L\exp(6)+12\exp(1)+1)],\\
- c_S=10^5c_X^5K_0^5\exp(6\kappa),\qquad
+ c_S=10^5c_X^5K_{\mathrm{pol}}^5\exp(6\kappa),\qquad
  \kappa_w=\kappa+\kappa_0+3 .
  \end{gathered}
 \]
+Here $K_{\mathrm{pol}}$ is the scalar polymer-sum constant of
+\cite[Appendix~B, (81)]{NormalizedContraction}.
 The primitive constants \(C_w,\gamma_w,\alpha_0>0\), the photon
 local-gauge constant \(C_B\), and the two exponential-sum bounds
 \(c_\gamma\) are those of the photon and fermion families in hypothesis~(i) below; \(C_w,c_\gamma\ge1\).
@@ -434,7 +436,7 @@ terms vanish before any infinite expansion is taken.
 The resulting activity satisfies
 \[
  \|F(Y)\|_{(h_k/4;\mathsf w_W)}
- \le36c_X^2K_0^2e_k^{1/4-5\varepsilon}
+ \le36c_X^2K_{\mathrm{pol}}^2e_k^{1/4-5\varepsilon}
                  \exp[-(\kappa-2\kappa_0-2)d_M(Y)].
 \]
 The connected-polymer expansion in \cref{subsec:rgnl-cluster-logarithm}
@@ -1861,7 +1863,7 @@ Keep the admissible sides, mass and charge of
 \cref{sec:rg-step}, and assume in addition
 $\ell\ge Mr_k$. Put $e=e_k$, $h=(h_{k,1},h_{k,2})$.
 The weakened photon and fermion primitives are taken on the
-polydisk
+polydisc
 \[
  \mathrm{Pd}_k=\{s=(s',s''):|s_{\mathrm{pc}}|\le M^{\alpha_0}\}.
 \]
@@ -2022,8 +2024,8 @@ the corresponding components of $W_k^\#$.
 The auxiliary generators $W$ have weight
 $\mathsf w_W=1$ for $k\ge1$ and $\sqrt{48}$ for $k=0$.
 
-These fields are continuous in all closed polydisk and box
-variables and analytic in the open parameter polydisk and the
+These fields are continuous in all closed polydisc and box
+variables and analytic in the open parameter polydisc and the
 connection variables. For the H\"older rows this follows
 directly from
 \[
@@ -2068,14 +2070,14 @@ the later logarithm is used here.
 \begin{lemma}\label{lem:rgnl-resummation}
 Suppose
 $\|G(s,X)\|\le B_0\exp(-\kappa'd_M(X))$ on the parameter
-polydisk, where $\kappa_0\le\kappa'\le\kappa$.
+polydisc, where $\kappa_0\le\kappa'\le\kappa$.
 Assume $\mathcal T_PG(X)=0$ whenever $Y'(X,P)$ is
 disconnected. Then
 \begin{gather}
  \sum_Y\operatorname{Loc}G(Y)=\sum_XG(1,X),
                          \label{eq:rgnl-localization-sum}\\
  \|\operatorname{Loc}G(Y)\|
-   \le4c_XK_0B_0
+   \le4c_XK_{\mathrm{pol}}B_0
              \exp\big(-(\kappa'-\kappa_0-1)d_M(Y)\big).
                          \label{eq:rgnl-resummation-bound}
 \end{gather}
@@ -2088,7 +2090,7 @@ The sums are finite. After removing the vanishing disconnected
 terms, each term belongs to exactly one polymer $Y'(X,P)$.
 This proves \eqref{eq:rgnl-localization-sum}.
 
-Put $R=M^{\alpha_0}$. Cauchy's estimate on a polydisk of
+Put $R=M^{\alpha_0}$. Cauchy's estimate on a polydisc of
 radius less than $R-1$ about each integration point, followed
 by the limit of these radii to $R-1$, gives
 \[
@@ -2125,11 +2127,11 @@ Hence
 The polymer counting and size estimates give
 \[
  \sum_{X\subseteq Y}\exp(-\kappa_0d_M(X))
-   \le K_0|Y|_M
-   \le2c_XK_0\exp(d_M(Y)/2).
+   \le K_{\mathrm{pol}}|Y|_M
+   \le2c_XK_{\mathrm{pol}}\exp(d_M(Y)/2).
 \]
 The product of the last two bounds is at most
-$4c_XK_0\exp(d_M(Y))$. Summing the estimate for
+$4c_XK_{\mathrm{pol}}\exp(d_M(Y))$. Summing the estimate for
 $\mathcal T_PG(X)$ proves
 \eqref{eq:rgnl-resummation-bound}.
 \end{proof}
@@ -2217,9 +2219,11 @@ We give the component argument which is responsible for
 locality. Let $\mathrm{Ps}=P_0(X)\cup P$, let
 $Y'=Y'(X,P)$ and let $Y'_1$ be its component containing $X$.
 Set the weakening parameters to zero outside $\mathrm{Ps}$.
-For each of the three parameter kinds, any link-component
-$\mathrm{Lnk}$ of $\mathrm{Ps}$ is contained in the polymer
-formed by the $M$-cubes meeting it. This polymer lies in one
+For each photon parameter kind, take components linked by shared
+lattice sites; for the fermion kind $\pi_k$, take face-connected
+components of the active partition $M$-cubes. In either case,
+a component $\mathrm{Lnk}$ of $\mathrm{Ps}$ is contained in the
+polymer formed by the $M$-cubes meeting it. This polymer lies in one
 component of $Y'$. If a site of $Y'_1$ lies in $\mathrm{Lnk}$,
 or in the enlarged parameter cube of a photon kind, that
 polymer has a cube in common with $Y'_1$, and hence lies
@@ -2249,9 +2253,10 @@ For a chamber site $x=(c,g)$ at distance at most $1$ from
 $Y'_1$, put $K_c=\{c':|c'-c|_\infty\le2L\}$, as in
 \cite[Proposition~4.1]{FermionBlockManuscript}.
 The fermion row is zero unless every parameter cube
-meeting $K_c$ is present. These cubes form one
-link-component. When the row is nonzero, that component
-contains $c$ and a site of $Y'_1$, so it lies in $Y'_1$.
+meeting $K_c$ is present. These partition cubes form a
+face-connected set. When the row is nonzero, their active
+face-connected component contains $c$ and a site of $Y'_1$,
+so it lies in $Y'_1$.
 The row of $H_k(s'',B)$, and its barred counterpart,
 then has columns in that component and reads $B$ only on
 bonds meeting it. At a column of this row, the corresponding
@@ -2353,13 +2358,16 @@ The reconstruction substitution contains only the fixed
 finite $T_k^{(i)},\bar T_k^{(i)}$ rows at unit sites of its
 own subpolymer.
 
-Consequently two systems with the stated hypotheses on this torus give the
-same finite expressions on $Y$ if these entries agree
+Consequently two systems with the stated hypotheses on this torus,
+with the same $m'$ and the same incoming $\mathscr E^r(X)$
+for every $X\subseteq Y$, give the same finite expressions on $Y$
+if these entries agree
 for every parameter family zero outside $Y$, at the
 connections formed with their respective photon fields.
 The restricted photon sum first gives equality of the
-fields on bonds meeting $Y$; the transports and incoming
-activities there then agree by their locality.
+fields on bonds meeting $Y$; the transports then agree. The
+incoming activities agree by the common-data hypothesis and
+their locality.
 The listed fermion and Dirac entries give equal first
 functions, their localizations and reconstruction
 substitutions. They give equal second functions and
@@ -2384,7 +2392,7 @@ Set
  \kappa_w=\kappa+\kappa_0+3,\qquad
  a_1=\kappa-\kappa_0-1,\qquad a_2=\kappa-2\kappa_0-2,\\
  C_W=28C_w^2c_\gamma,
- \qquad H_{\mathrm{cl}}=36c_X^2K_0^2e^{1/4-5\varepsilon}.
+ \qquad H_{\mathrm{cl}}=36c_X^2K_{\mathrm{pol}}^2e^{1/4-5\varepsilon}.
  \end{gathered}
 \]
 The notation $H_{\mathrm{cl}}$ is a scalar cluster bound. For a
@@ -2425,7 +2433,7 @@ and $\mathsf w_W\le7$ give \eqref{eq:rgnl-W-bound}.
 For the data of \cref{prop:rgnl-finite-locality},
 \begin{align}
  \|E_{\le3}(Y)\|_{h/2}
-       &\le8c_XK_0e^{1/4-5\varepsilon}\exp(-a_1d_M(Y)),
+       &\le8c_XK_{\mathrm{pol}}e^{1/4-5\varepsilon}\exp(-a_1d_M(Y)),
                                       \label{eq:rgnl-E3-bound}\\
  \|F(Y)\|_{(h/4;\mathsf w_W)}
        &\le H_{\mathrm{cl}}\exp(-a_2d_M(Y)).
@@ -2504,12 +2512,12 @@ to the $h/2$ norm at $t=1$ and to the $h$ norm on
 the contour $|t|=r_4$. The three input bounds are
 \begin{align*}
  \|G_{\le3}^{\,W}(s'',X)\|
-       &\le8c_XK_0e^{1/4-5\varepsilon}\exp(-a_1d_M(X)),\\
+       &\le8c_XK_{\mathrm{pol}}e^{1/4-5\varepsilon}\exp(-a_1d_M(X)),\\
  \|G_4(s'',X)\|&\le24e^{1/2-10\varepsilon}\exp(-\kappa d_M(X)),\\
  \|G_5(s'',\square)\|&\le64M^3e^{1/2-11\varepsilon}.
 \end{align*}
 Their sum is at most
-$9c_XK_0e^{1/4-5\varepsilon}\exp(-a_1d_M(X))$,
+$9c_XK_{\mathrm{pol}}e^{1/4-5\varepsilon}\exp(-a_1d_M(X))$,
 again by $88M^3e^{1/4-6\varepsilon}\le1$.
 Since $\kappa_0\le a_1\le\kappa$, resummation gives
 \eqref{eq:rgnl-F-bound}.
@@ -2623,11 +2631,11 @@ The last series converges absolutely in the $w$ norm and
        &=\exp\left\{\sum_YE^\#(Y)\right\},
                                       \label{eq:rgnl-log-identity}\\
  \|E^\#(Y)\|_w
-       &\le c_S'H_{\mathrm{cl}}\exp(-a_3d_M(Y)),
+       &\le c_S'H_{\mathrm{cl}}\exp(-a_3d_M(Y)).
                                       \label{eq:rgnl-log-bound}
 \end{align}
 Here $a_3=\kappa-5\kappa_0-4$ and
-$c_S'=14c_X^2K_0^2\exp(3\kappa)$.
+$c_S'=14c_X^2K_{\mathrm{pol}}^2\exp(3\kappa)$.
 The sum of the norms of the terms with $n>N$ in
 \eqref{eq:rgnl-log-activity} is at most $2^{-N}$ times the
 right side of \eqref{eq:rgnl-log-bound}.
@@ -2640,25 +2648,25 @@ Set
  a_4=\kappa-3\kappa_0-3,\quad
  a_5=\kappa-3\kappa_0-2,\quad
  a_6=\kappa-5\kappa_0-3,\\
- H_1=7c_XK_0\exp(3a_5)H_{\mathrm{cl}},\qquad
- z_S=28H_1\exp(\kappa_0)K_0\exp(3a_6).
+ H_1=7c_XK_{\mathrm{pol}}\exp(3a_5)H_{\mathrm{cl}},\qquad
+ z_S=28H_1\exp(\kappa_0)K_{\mathrm{pol}}\exp(3a_6).
  \end{gathered}
 \]
 The fixed small-charge choice
 \[
  c_S e^{1/4-5\varepsilon}\le1,\qquad
- c_S=10^5c_X^5K_0^5\exp(6\kappa)
+ c_S=10^5c_X^5K_{\mathrm{pol}}^5\exp(6\kappa)
 \]
 implies
 \begin{equation}\label{eq:rgnl-cluster-smallness}
  H_{\mathrm{cl}}\le1,\qquad
- 4H_{\mathrm{cl}}K_0c_X\exp(3a_5)\le1,\qquad
+ 4H_{\mathrm{cl}}K_{\mathrm{pol}}c_X\exp(3a_5)\le1,\qquad
                                       z_S\le\tfrac12.
 \end{equation}
 Indeed the second left side is
-$144c_X^3K_0^3\exp(3a_5)e^{1/4-5\varepsilon}$.
+$144c_X^3K_{\mathrm{pol}}^3\exp(3a_5)e^{1/4-5\varepsilon}$.
 For the third,
-$2z_S=14112c_X^3K_0^4
+$2z_S=14112c_X^3K_{\mathrm{pol}}^4
 \exp(3a_5+3a_6+\kappa_0)e^{1/4-5\varepsilon}$, and
 $3a_5+3a_6+\kappa_0\le6\kappa$.
 
@@ -2694,13 +2702,13 @@ Replace distinct sets by ordered tuples with factor $1/n!$,
 and use the counting bound for subpolymers of $Y$. The result is
 \[
  \|K(Y)\|\le \exp(-a_5d_M(Y))x_Y\exp(x_Y),\qquad
- x_Y=2H_{\mathrm{cl}}K_0\exp(3a_5)|Y|_M.
+ x_Y=2H_{\mathrm{cl}}K_{\mathrm{pol}}\exp(3a_5)|Y|_M.
 \]
 By \eqref{eq:rgnl-cluster-smallness},
 \[
  \begin{gathered}
  x_Y\le(d_M(Y)+1)/2,\\
- x_Y\le4H_{\mathrm{cl}}K_0c_X\exp(3a_5)\exp(d_M(Y)/2).
+ x_Y\le4H_{\mathrm{cl}}K_{\mathrm{pol}}c_X\exp(3a_5)\exp(d_M(Y)/2).
  \end{gathered}
 \]
 Since $4\exp(1/2)\le7$ and $a_5-1=a_4$, we obtain
@@ -2750,12 +2758,12 @@ $a^q\le q!\exp(a)$, the counting estimate gives
 \begin{align*}
  \sum_{Z\text{ incompatible with }Y'}
       \exp(-2\kappa_0d_M(Z))|Z|_M^{q}
-            &\le7q!\exp(\kappa_0)K_0|Y'|_M,\\
+            &\le7q!\exp(\kappa_0)K_{\mathrm{pol}}|Y'|_M,\\
  \sum_{Z\subseteq Y}\exp(-2\kappa_0d_M(Z))|Z|_M^q
-            &\le q!\exp(\kappa_0)K_0|Y|_M.
+            &\le q!\exp(\kappa_0)K_{\mathrm{pol}}|Y|_M.
 \end{align*}
 Summing from leaves to root thus costs at most
-$(7\exp(\kappa_0)K_0)^n|Y|_M\prod_jq_j!$.
+$(7\exp(\kappa_0)K_{\mathrm{pol}})^n|Y|_M\prod_jq_j!$.
 For prescribed children counts, Cayley's degree formula
 \cite[Proposition~4]{PostnikovLin2019}
 counts
@@ -2771,14 +2779,14 @@ Consequently
 Collecting the factors, also for $n=1$, gives
 \begin{equation}\label{eq:rgnl-connected-n-bound}
  \frac{S_n(Y)}{n!}
- \le7H_1\exp(\kappa_0)K_0|Y|_M
+ \le7H_1\exp(\kappa_0)K_{\mathrm{pol}}|Y|_M
                                       \exp(-a_6d_M(Y))z_S^{n-1}.
 \end{equation}
 Since $z_S\le1/2$, sum the geometric series and use
 $|Y|_M\le c_X\exp(d_M(Y))$ and $a_6-1=a_3$.
 The bound becomes
 \[
- 98c_X^2K_0^2\exp(\kappa_0+3a_5)
+ 98c_X^2K_{\mathrm{pol}}^2\exp(\kappa_0+3a_5)
                                  H_{\mathrm{cl}}\exp(-a_3d_M(Y))
  \le c_S'H_{\mathrm{cl}}\exp(-a_3d_M(Y)),
 \]
@@ -2837,7 +2845,7 @@ most $n\delta_N\prod_i\mu(Y_i)$. Summing
 $\sum_{n\ge1}n2^{-(n-1)}=4$, and adding the tail yields
 \[
  \sup_Y\|E^\#(Y)-E_N^\#(Y)\|
- \le28\delta_NH_1\exp(\kappa_0)K_0(\ell/M)^3
+ \le28\delta_NH_1\exp(\kappa_0)K_{\mathrm{pol}}(\ell/M)^3
                                   +2^{-N}c_S'H_{\mathrm{cl}}.
 \]
 This convergence is uniform in the connections and the
@@ -2987,7 +2995,7 @@ The finite operations and integration therefore prove
 For reality, the photon primitives are real on real
 parameter families. Their analytic dependence extends
 this identity to
-$\overline{O(\bar s')}=O(s')$ on the full polydisk.
+$\overline{O(\bar s')}=O(s')$ on the full polydisc.
 Since $C$ is real,
 \[
  Z(\bar s')[-\zeta]=-\overline{Z(s')[\zeta]}.
@@ -3192,15 +3200,15 @@ Splitting $a_3=(a_3-\kappa_0)+\kappa_0$ therefore yields
  \sum_{\bar X^L=LY}\exp(-a_3d_M(X))
   &\le \exp(-L(a_3-\kappa_0)d_M(Y))
                          \sum_{X\subseteq LY}\exp(-\kappa_0d_M(X))\\
-  &\le c_XK_0L^3
-                  \exp(-[L(\kappa-6\kappa_0-4)-1]d_M(Y))
-   \le c_XK_0L^3\exp(-\kappa d_M(Y)).
+  &\le c_XK_{\mathrm{pol}}L^3
+                  \exp(-[L(\kappa-6\kappa_0-4)-1]d_M(Y))\\
+  &\le c_XK_{\mathrm{pol}}L^3\exp(-\kappa d_M(Y)).
 \end{align*}
 Together with \eqref{eq:rgnl-log-bound} this gives
 \[
  \|E_k^*\|_{k+1}^x
-  \le c_XK_0L^3c_S'H_{\mathrm{cl}}
-  =504c_X^5K_0^5\exp(3\kappa)L^3e^{1/4-5\varepsilon}
+  \le c_XK_{\mathrm{pol}}L^3c_S'H_{\mathrm{cl}}
+  =504c_X^5K_{\mathrm{pol}}^5\exp(3\kappa)L^3e^{1/4-5\varepsilon}
   \le e^{1/4-6\varepsilon},
 \]
 using $c_SL^3e^\varepsilon\le1$.

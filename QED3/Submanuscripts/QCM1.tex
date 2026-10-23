@@ -4362,7 +4362,7 @@ Let $0<\rho<1$, let the weights be standard, let $\bar m\in(0,1]$, and let $e>0$
 the data of \cite[Theorem~44]{QEDIII} satisfy this condition.
 Let $N\ge N_{\min}(R_{\mathrm{top}}(e),e)$, and denote by $(\varepsilon^{\mathrm v,t}_k,m_k,E_k)$ the trajectory of the tuned pair $P_N(e)$ on $R_{\mathrm{top}}(e)$ \cite[Definition before Proposition~28.3]{QEDIII};
 in particular $m_{k_\star}=0$, where $k_\star:=k_{\mathrm{top}}$.
-The numbers $L$, $M$, $K_0$, $c_{\mathrm{fl}}$, $C_0$, $\varepsilon$, $b=1$, $b_k$, $b_L$ and $c_b$ are those of \cite{QEDIII}.
+The numbers $L$, $M$, $c_{\mathrm{fl}}$, $C_0$, $\varepsilon$, $b=1$, $b_k$, $b_L$ and $c_b$ are those of \cite{QEDIII}. Write $K_{\mathrm{pol}}=72^{54}/36$ for the scalar polymer-sum constant denoted by $K_0$ in \cite[Section~I.8.2, (C0)]{QEDIII}.
 The index $\star$ refers to the level $k_\star$:
 the numbers $a_\star\in\{h,h/L\}$, $e_\star=e\,a_\star^{1/2}\le e_K$, $\mu_\star=\bar m\,a_\star\in(L^{-2},1]$ and $\ell_\star$ are independent of $N$, and $L^{-k_\star}=\eta/a_\star$ \cite[Section~G4.0.2, (Sc1), (Sc3), (Sc5); Section~I.6.1]{QEDIII}.
 For $0\le j\le k_\star$ put $a_j:=L^{j-N}$;
@@ -4546,15 +4546,15 @@ Let $a,b$ be indices with $\Sigma_3=+1$ and $c,d$ indices with $\Sigma_3=-1$.
 As $\delta\mathcal D_{ad}=\delta\mathcal D_{cb}=0$ by (P1), the coefficient of $\bar\Psi_a\Psi_b\bar\Psi_c\Psi_d$ in $\mathcal A_4$ is $\pm\mathsf E_N\bigl[\delta\mathcal D_{ab}\,\allowbreak \delta\mathcal D_{cd}\bigr]$.
 
 \emph{Step 9} (sizes).
-From \cite[Proposition~20.1\,(c)]{QEDIII}, from \cite[(k6)]{QEDIII}, from $c_\kappa\le K_0$ \cite{QEDIII} and from the bound $\|E_{k_\star}\|_{k_\star}\le4e_\star^{1/4-6\varepsilon}$ of \cite[Proposition~28.3\,(b)]{QEDIII} one obtains
+From \cite[Proposition~20.1\,(c)]{QEDIII}, from \cite[(k6)]{QEDIII}, from $c_\kappa\le K_{\mathrm{pol}}$ \cite{QEDIII} and from the bound $\|E_{k_\star}\|_{k_\star}\le4e_\star^{1/4-6\varepsilon}$ of \cite[Proposition~28.3\,(b)]{QEDIII} one obtains
 \begin{equation*}
-\Bigl|\sum_XE_{k_\star}\bigl(X;\Omega,H^\#_{k_\star}(\Omega)\Psi\bigr)\Bigr|_{\mathrm{aw}_2}\le4e_\star^{1/4-6\varepsilon}K_0\,\Bigl(\frac{\ell_\star}{M}\Bigr)^3,\qquad\mathrm{aw}_2=C_0^{-1}e_\star^{-1/4+\varepsilon}.
+\Bigl|\sum_XE_{k_\star}\bigl(X;\Omega,H^\#_{k_\star}(\Omega)\Psi\bigr)\Bigr|_{\mathrm{aw}_2}\le4e_\star^{1/4-6\varepsilon}K_{\mathrm{pol}}\,\Bigl(\frac{\ell_\star}{M}\Bigr)^3,\qquad\mathrm{aw}_2=C_0^{-1}e_\star^{-1/4+\varepsilon}.
 \end{equation*}
 Therefore the moduli of the entries of $K_E$ have a sum not larger than $\ell_\star^3\delta_\star$, and $|\mathcal A_4|_1\le\ell_\star^3\delta_2$, with
 \begin{equation*}
-\delta_\star:=4C_0^2K_0M^{-3}e_\star^{3/4-8\varepsilon},\qquad\delta_2:=4C_0^4K_0M^{-3}e_\star^{5/4-10\varepsilon}.
+\delta_\star:=4C_0^2K_{\mathrm{pol}}M^{-3}e_\star^{3/4-8\varepsilon},\qquad\delta_2:=4C_0^4K_{\mathrm{pol}}M^{-3}e_\star^{5/4-10\varepsilon}.
 \end{equation*}
-By \cite[(T2)]{QEDIII}, valid by \cite[(Sc6)]{QEDIII}, and by $c_{\mathrm{fl}}=3294K_0$ \cite{QEDIII},
+By \cite[(T2)]{QEDIII}, valid by \cite[(Sc6)]{QEDIII}, and by $c_{\mathrm{fl}}=3294K_{\mathrm{pol}}$ \cite{QEDIII},
 \begin{equation*}
 \ell_\star^3\delta_\star\le10^{-5}e_\star^{3/4-10\varepsilon}d_\star,\qquad\delta_2\le10^{-6}e_\star^{5/4-12\varepsilon}d_\star^2 .
 \end{equation*}
@@ -4771,7 +4771,7 @@ the inclusion $a_\star\in\{h,h/L\}$ results from $k_\star\in\{K,K-1\}$, which is
 On the other hand, $b_\star=b_{k_\star}=b_-/(1-\eta/a_\star)$ depends on $N$, and $b_-:=1-\frac1L\le b_\star\le1$.
 Further, $\mu_k=ma_k$, and
 \begin{equation*}
-d_k(\mu):=\frac{b_k\mu}{b_k+\mu},\qquad Z_k(\mu):=\frac{b_k^2}{(b_k+\mu)^2}=d_k'(\mu),\qquad\delta^\flat_k:=4K_0M^{-3}e_k^{2\varepsilon}w_k.
+d_k(\mu):=\frac{b_k\mu}{b_k+\mu},\qquad Z_k(\mu):=\frac{b_k^2}{(b_k+\mu)^2}=d_k'(\mu),\qquad\delta^\flat_k:=4K_{\mathrm{pol}}M^{-3}e_k^{2\varepsilon}w_k.
 \end{equation*}
 Let the flow data (FL) of \cite[Sections~I.1.8 and~G4.0.1]{QEDIII} hold on $R$ at $\bar m=m$;
 the set $\mathrm{Tor}(e)$ to which $R$ belongs, the side $R_{\mathrm{top}}(e)$, the number $N_{\min}(R,e)$ and the stop level $k_*(R)$ are those of \cite[Section~I.6.2]{QEDIII}.
@@ -4978,7 +4978,7 @@ and $|f|^2=\ell_k^{-3}$.
 Moreover, \cite[(k6)]{QEDIII} holds with a rate $\kappa\ge7\kappa_0+7\ge\kappa_0$ \cite[Section~I.8.2, line~(C2)]{QEDIII};
 by \cite[Proposition~5.58\,(t2)]{QEDI}, \cite[Chapter~24, Section~0.6, (t2)]{QEDIII}, applied to the whole torus, which is the union of $(\ell_k/M)^3$ $M$-cubes,
 \begin{equation*}
-\sum_{X\in D_k}\exp\bigl(-\kappa_0\,d_M(X)\bigr)\le K_0\Bigl(\frac{\ell_k}M\Bigr)^3 ;
+\sum_{X\in D_k}\exp\bigl(-\kappa_0\,d_M(X)\bigr)\le K_{\mathrm{pol}}\Bigl(\frac{\ell_k}M\Bigr)^3 ;
 \end{equation*}
 and, for the flow of $(m;t)$, $\|E_k\|_k\le4e_k^{1/4-6\varepsilon}$ by \cite[Proposition~28.1]{QEDIII}.
 It follows that the sum in the last term of Step~2,
@@ -4987,7 +4987,7 @@ It follows that the sum in the last term of Step~2,
 \end{equation*}
 satisfies
 \begin{equation*}
-|\varkappa_k|\le4K_0M^{-3}e_k^{3/4-6\varepsilon}=\delta^\flat_k .
+|\varkappa_k|\le4K_{\mathrm{pol}}M^{-3}e_k^{3/4-6\varepsilon}=\delta^\flat_k .
 \end{equation*}
 By Step~1, $\mathsf z_k$ is determined by $(e,N,R,k,t)$, by the spinor $u$ and by constants, the basis $\{e_i^0\}$ among them, so that it does not depend on $m$;
 the identity of Step~2, read with $m_k=m_k(t;m)$ and with $\varkappa_k$ formed from $E_k$ of the flow of $(m;t)$, and the bound on $\varkappa_k$ prove (b).
@@ -5059,7 +5059,7 @@ With Step~5 it follows that
 Let $[m',m'']$ be divided into $\lceil2a_\star(m''-m')/w_\star\rceil$ intervals of equal length, each of which is a link as in Step~5.
 By \cite[(fl)]{QEDIII},
 \begin{equation*}
-\frac{\delta^\flat_\star}{w_\star}=4K_0M^{-3}e_\star^{2\varepsilon}\le10^{-4}e_\star^{\varepsilon},
+\frac{\delta^\flat_\star}{w_\star}=4K_{\mathrm{pol}}M^{-3}e_\star^{2\varepsilon}\le10^{-4}e_\star^{\varepsilon},
 \end{equation*}
 and the sum over the links of the inequality for one link yields (c).
 
@@ -5313,7 +5313,7 @@ Since $m_{k_\star}=0=\varepsilon^{\mathrm v,t}_{k_\star}$, the definition of $\m
 \mathsf E^{A'}\det\mathcal D=\frac{Y_*(A')}{\mathscr F_{k_\star}(A';0)}=\det D_{k_\star}(c_\theta)\,(1+\mathrm{vrem})\exp\Bigl(-\sum_XE_{\star,00}\Bigr)\le1.21\,\det D_{k_\star}(c_\theta),
 \end{equation*}
 by \cite[Proposition~30.3\,(f)]{QEDIII} and because $|\sum_XE_{\star,00}|\le e_\star^{1/4-7\varepsilon}\le\frac18$.
-Here the bound of Step~9 of the proof of Theorem~5.16, taken at $\mathscr A'$, gives $|\sum_XE_{\star,00}|\le4e_\star^{1/4-6\varepsilon}K_0(\ell_\star/M)^3$, and the second and third clauses of \cite[(T2)]{QEDIII}, with $c_{\mathrm{fl}}=3294K_0$, give the two inequalities.
+Here the bound of Step~9 of the proof of Theorem~5.16, taken at $\mathscr A'$, gives $|\sum_XE_{\star,00}|\le4e_\star^{1/4-6\varepsilon}K_{\mathrm{pol}}(\ell_\star/M)^3$, and the second and third clauses of \cite[(T2)]{QEDIII}, with $c_{\mathrm{fl}}=3294K_{\mathrm{pol}}$, give the two inequalities.
 On the event $\{\|\mathcal D-D_{k_\star}(\mathscr A')\|\le\varkappa_D\}$, two applications of (K23), together with $g_\star\varkappa_D\le g_-\varkappa_D=(16\ell_\star^3)^{-1}$, give $\det\mathcal D\ge\frac9{16}\det D_{k_\star}(c_\theta)$.
 By the first clause of \cite[(T2)]{QEDIII}, which reads $8C_0^2\ell_\star^6g_-\le e_\star^{-\varepsilon/2}$, and by \cite[(fl)]{QEDIII}, one has $\|K_E\|\le\frac12\varkappa_D$;
 by Chebyshev's inequality,

@@ -78,10 +78,10 @@
 \RequirePackage{perpage}
 \RequirePackage{xcolor}
 \definecolor{manuscriptred}{rgb}{0.6,0.1,0.1}
-\definecolor{manuscriptcyan}{rgb}{0.1,0.3,0.5}
-\definecolor{manuscriptmagenta}{HTML}{8B008B}
+\definecolor{manuscriptblue}{rgb}{0.1,0.3,0.5}
+\definecolor{manuscriptmagenta}{HTML}{60445C}
 \RequirePackage[breaklinks=true,colorlinks=true,
-  linkcolor=manuscriptred,citecolor=manuscriptcyan,urlcolor=manuscriptmagenta]{hyperref}
+  linkcolor=manuscriptred,citecolor=manuscriptblue,urlcolor=manuscriptmagenta]{hyperref}
 \RequirePackage{cleveref}
 \hypersetup{pdfauthor={}}
 
@@ -472,7 +472,7 @@ additional phase $e^{i\langle b_\xi,A'-A\rangle}$;
 its modulus is bounded by the kernel majorant
 used in \cite[(83)]{ChamberLattice}.
 The same real-slice integral and flux sum
-therefore proves this assertion uniformly
+therefore prove this assertion uniformly
 in $\xi$. Multiplication by bounded
 $(u_j^\delta)^{1/2}$ preserves it.
 
@@ -1184,11 +1184,11 @@ Then $z_{r,n}^{\rm free}>0$ and
 \end{proposition}
 
 \begin{proof}
-The plane waves with momenta
-$P_{n,\theta}=\{(2\pi j+\pi\mathbf1+\theta)/n:
-j\in\{0,\ldots,n-1\}^3\}$ diagonalize the translation
-part of the chamber operator. Inserting a plane wave
-in the fourth hop shifts its momentum by $\theta/n$,
+Put $P_{n,\theta}=\{(2\pi j+\pi\mathbf1+\theta)/n:
+j\in\{0,\ldots,n-1\}^3\}$. The antiperiodic plane waves
+have momenta $p\in P_{n,0}$ and diagonalize the translation
+part of the chamber operator. The external phase in the
+fourth hop evaluates its symbol at $p+\theta/n\in P_{n,\theta}$,
 whereas the internal hops are unchanged. Thus
 \begin{equation}\label{eq:term-free-product}
  \det(D^{\rm ch}[qH_\theta]+m)
@@ -1638,10 +1638,13 @@ Here $C_P^{\rm ph},\gamma_P$ are the photon kernel constants
 and $C^F,\gamma^F$ are the fermion constants. Thus $C_0\ge1$
 bounds the photon row sums, both field maps, and the Dirac form
 proved in \cref{subsec:interacting-terminal-norms}.
-Put $b_-=1-L^{-1}$ and
+Put $b_-=1-L^{-1}$ and let
+$K_{\mathrm{pol}}=e^{\kappa_0}/36$, $\kappa_0=54\log72$,
+be the scalar polymer-sum constant of
+\cite[Appendix~B, (81)]{NormalizedContraction}. For $\kappa\ge\kappa_0$,
 \[
  c_\kappa=\sup_\square\sum_{X\supset\square}
-                                      e^{-\kappa d_M(X)}\le K_0.
+                                      e^{-\kappa d_M(X)}\le K_{\mathrm{pol}}.
 \]
 The fixed scheme gives the following inequalities at every
 allowed stop:
@@ -2093,9 +2096,11 @@ moduli. Inserting the unit-block partition between
 two factors gives
 $|O_1O_2|\le|O_1||O_2|$ and
 $\|O_1O_2\|_\gamma\le\|O_1\|_\gamma\|O_2\|_\gamma$.
-For coarse spinor operators,
+Write $\|\cdot\|_{\mathrm{op}}$ for the Hilbert-space operator norm
+and $\|\cdot\|_{\mathfrak S_1}$ for the trace norm. For coarse
+spinor operators,
 \begin{equation}\label{eq:interacting-matrix-norms}
- \|O\|_{\ell^2\to\ell^2}\le2\|O\|_0,\qquad
+ \|O\|_{\mathrm{op}}\le2\|O\|_0,\qquad
  \|O\|_{\mathfrak S_1}\le4\sum_{y,y'}|O|(y,y').
 \end{equation}
 Indeed the matrix row sums are bounded by $\|O\|_0$
@@ -2247,7 +2252,7 @@ verifies
 The definition of $D_*$ therefore gives
 \begin{equation}\label{eq:interacting-coarse-covariance}
  D_*(A_r)^{-1}=b_*^{-1}+QR^{-1}Q^*,\qquad
- \|D_*(A_r)^{-1}\|_2\le b_*^{-1}+\mu_*^{-1}.
+ \|D_*(A_r)^{-1}\|_{\mathrm{op}}\le b_*^{-1}+\mu_*^{-1}.
 \end{equation}
 
 Its block decay follows by conjugating the fine
@@ -2262,7 +2267,7 @@ Only the external Dirac hop changes under
 conjugation by $e^\psi$, since the internal
 hops stay over one photon site. Consequently
 \[
- \|e^\psi D_{A_r}e^{-\psi}-D_{A_r}\|_2
+ \|e^\psi D_{A_r}e^{-\psi}-D_{A_r}\|_{\mathrm{op}}
  \le6\eta_*^{-1}(e^{\vartheta\eta_*}-1)
  \le6\mathrm e\vartheta=\mu_*/2.
 \]
@@ -2274,7 +2279,7 @@ norm one and supports in their respective
 blocks. Moving the weight across the
 scalar product gives
 \begin{equation}\label{eq:interacting-real-covariance-decay}
- \|D_*(A_r)^{-1}(y,y')\|_2
+ \|D_*(A_r)^{-1}(y,y')\|_{\mathrm{op}}
   \le b_*^{-1}1_{\{y=y'\}}+
        \frac{2\mathrm e}{\mu_*}
                        e^{-\mu_*d(y,y')/(12\mathrm e)}.
@@ -2671,7 +2676,7 @@ column of $G=D_*(A_r)^{-1}$ therefore satisfies
  \sum_{u'}|G(u,u')|e^{\vartheta_0d(u,u')}
        \le\alpha_G,\qquad
  \sum_u|G(u,u')|e^{\vartheta_0d(u,u')}
-       \le\alpha_G,\qquad \|G\|_2\le g^2.
+       \le\alpha_G,\qquad \|G\|_{\mathrm{op}}\le g^2.
 \end{equation}
 These constants depend on $L,C^F,\gamma^F,M$,
 not on the size of the real connection.
@@ -2681,7 +2686,7 @@ coarse covariance at complex fields. Suppose
 $A=A_r+A_1$, with $A_r$ real,
 $e_*|A_1|_\infty\le\mu_*/24$, and $F_*(A)$
 invertible. The external-hop phase difference
-gives $\|D_A-D_{A_r}\|_2\le12e_*|A_1|_\infty
+gives $\|D_A-D_{A_r}\|_{\mathrm{op}}\le12e_*|A_1|_\infty
 \le\mu_*/2$. Hence $D_A+\mu_*$ is accretive
 with inverse norm at most $2/\mu_*$. Its two
 average maps have norm at most $\sqrt2$,
@@ -2692,7 +2697,7 @@ then gives
  D_*(A)^{-1}=b_*^{-1}+
  Q_*(A)J^*(D_A+\mu_*)^{-1}JQ_*^T(-A),
  \qquad
- \|D_*(A)^{-1}\|_2\le g_1.
+ \|D_*(A)^{-1}\|_{\mathrm{op}}\le g_1.
 \end{equation}
 Here invertibility of $b_*^{-1}+QR^{-1}Q'$
 follows from that of $F_*(A)$ and $R$:

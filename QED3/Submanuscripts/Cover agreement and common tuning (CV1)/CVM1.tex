@@ -58,10 +58,10 @@
 \RequirePackage{perpage}
 \RequirePackage{xcolor}
 \definecolor{manuscriptred}{rgb}{0.6,0.1,0.1}
-\definecolor{manuscriptcyan}{rgb}{0.1,0.3,0.5}
-\definecolor{manuscriptmagenta}{HTML}{8B008B}
+\definecolor{manuscriptblue}{rgb}{0.1,0.3,0.5}
+\definecolor{manuscriptmagenta}{HTML}{60445C}
 \RequirePackage[breaklinks=true,colorlinks=true,
-  linkcolor=manuscriptred,citecolor=manuscriptcyan,urlcolor=manuscriptmagenta]{hyperref}
+  linkcolor=manuscriptred,citecolor=manuscriptblue,urlcolor=manuscriptmagenta]{hyperref}
 \RequirePackage{cleveref}
 \hypersetup{pdfauthor={}}
 
@@ -243,7 +243,9 @@ On the top torus choose the photon and fermion families of
 \cref{subsec:rgcov-top-system}, with polymer decay
 \(\kappa_w+\kappa_0\), where \(\kappa_w=\kappa+\kappa_0+3\).
 On each smaller odd quotient use their projections, with common
-constant \(C_w=64K_0C_w^{(1)}\), \(K_0=\exp(\kappa_0)/36\).
+constant \(C_w=64K_{\mathrm{pol}}C_w^{(1)}\), where
+\(K_{\mathrm{pol}}=\exp(\kappa_0)/36\) is the scalar polymer-sum
+constant of \cite[Appendix~B, (81)]{NormalizedContraction}.
 Both incoming and outgoing sides are required to have
 \(\ell/(LM)\) odd and at least 13. The step comparison requires
 \(\ell_{\rm small}/L>(31L+16)M\); the stopping calculation verifies
@@ -767,12 +769,12 @@ is imposed at every active step.
 The constants in the block estimates are
 \[
  \begin{gathered}
- c_X=54,\qquad \kappa_0=54\log72,\qquad K_0=\exp(\kappa_0)/36,\qquad
- c_{\rm rb}=c_XK_0,\qquad c_{\rm fl}=61c_{\rm rb},\\
+ c_X=54,\qquad \kappa_0=54\log72,\qquad K_{\mathrm{pol}}=\exp(\kappa_0)/36,\qquad
+ c_{\rm rb}=c_XK_{\mathrm{pol}},\qquad c_{\rm fl}=61c_{\rm rb},\\
  c_C=3L^{9/2},\qquad b=1,\qquad b_L=b/L,\qquad b_-=1-L^{-1},\\
  C_T=2\exp(3/2)
        [1+b_-^{-1}(54L\exp(6)+12\exp(1)+1)],\\
- c_S=10^5c_X^5K_0^5\exp(6\kappa),\qquad
+ c_S=10^5c_X^5K_{\mathrm{pol}}^5\exp(6\kappa),\qquad
  \kappa_w=\kappa+\kappa_0+3.
  \end{gathered}
 \]
@@ -785,7 +787,7 @@ coordinate and unit-bond index sets. The determinant constant is
                          2+58\exp(1)+b\exp(1)\}.
 \]
 For related tori \(C_w\) always means the common constant after
-projection, \(64K_0C_w^{(1)}\).
+projection, \(64K_{\mathrm{pol}}C_w^{(1)}\).
 
 \paragraph{Primitive hypotheses.}
 Use the full hypotheses and conclusions of
@@ -1009,8 +1011,8 @@ $w\in(\Z/J_c\Z)^3$. The two characters cancel in
 each paired summand, and the weight is the same on both
 tori. At zero the chamber weight remains $1/48$.
 
-Pullback maps the parameter polydisk, including its interior,
-into the corresponding larger polydisk, since
+Pullback maps the parameter polydisc, including its interior,
+into the corresponding larger polydisc, since
 $(p^*s)_{\mathrm{pc}}=s_{p\,\mathrm{pc}}$.
 It also maps
 $\widetilde{\mathcal G}_k(T_1)$ into
@@ -1169,11 +1171,11 @@ $M$-cube on $T_2$. By
 \begin{equation}\label{eq:rgcov-polymer-image-sum}
  \sum_{\substack{pX'=X\\X'\supseteq\square_t}}
     \exp\big(-(\kappa_w+\kappa_0)d_M(X')\big)
-                 \le K_0\exp\big(-\kappa_wd_M(X)\big).
+                 \le K_{\mathrm{pol}}\exp\big(-\kappa_wd_M(X)\big).
 \end{equation}
 Indeed the factor with rate $\kappa_w$ is at most
 the factor on the right; the remaining sum is bounded
-by $\sum_{X'\supseteq\square_t}\exp(-\kappa_0d_M(X'))\le K_0$.
+by $\sum_{X'\supseteq\square_t}\exp(-\kappa_0d_M(X'))\le K_{\mathrm{pol}}$.
 The additional top-system decay $\kappa_0$ pays for the
 polymer image sum.
 
@@ -1187,7 +1189,7 @@ with parameters
 Its projection has the corresponding properties on $T_1$
 with
 \begin{equation}\label{eq:rgcov-common-constant}
-                          C_w=64K_0C_w^{(1)}
+                          C_w=64K_{\mathrm{pol}}C_w^{(1)}
 \end{equation}
 and parameters $(\alpha_0,\gamma_w,\kappa_w;C_w)$.
 In particular it satisfies the primitive hypotheses of
@@ -1212,7 +1214,7 @@ Equation~\eqref{eq:rgcov-exact-fermion-intertwining}
 then identifies the sum with the exact operator on $T_1$.
 All projected entries are finite sums of original entries
 composed with the linear pullback. Continuity on the
-closed parameter polydisk, holomorphy in its interior and
+closed parameter polydisc, holomorphy in its interior and
 in the connection for any fixed parameter, and Borel
 dependence on the resolvent parameter follow from these
 finite sums.
@@ -1251,10 +1253,13 @@ terms of both image sums and remains on the right.
 All column weights are unchanged, so no further
 factor $48$ appears.
 
-For component locality, an index of one parameter kind
-whose support is contained in its active union belongs
-to exactly one link-component. Here is the geometric
-point. Site supports are singletons. For a bond of
+For component locality, use shared-site linked components for
+the photon parameter cubes and face-connected components for
+the fermion partition $M$-cubes. An index whose support is
+contained in its active union belongs to exactly one such
+component. Fermion site supports are singletons, each in one
+partition cube. For the photon kinds, the geometric argument
+is as follows. For a bond of
 length $a\in\{\eta_k,1\}$, cubes of radius $M$ meeting
 its support either share an endpoint or would have
 centers differing in that direction by $2M+a$.
@@ -1272,8 +1277,9 @@ by lifting the support and these cubes into a
 nonwrapping neighborhood.
 
 Pull back the active parameter cubes on $T_1$.
-A link-component on $T_2$ maps into one component
-on $T_1$, since the covering map preserves links.
+A component on $T_2$ maps into one component on $T_1$,
+since the covering map preserves shared sites for photon
+cubes and common faces for fermion partition cubes.
 For a row in a small-torus component, the unique
 large-torus component containing its lift maps into
 that component. Original component restriction
@@ -1344,7 +1350,7 @@ decay rate in \exteq{31}{FermionBlockManuscript}. Define
                                 \gamma^P=\gamma_P/2, \notag\\
  C^P=116C_P^{\mathrm{ph}}M^{402\alpha_0},\qquad
  C_w^{(1)}=\max\{C^F,C^P,4\exp(2\gamma_w)M^{27\alpha_0}\},
- \qquad C_w=64K_0C_w^{(1)}.             \label{eq:rgcov-top-constants}
+ \qquad C_w=64K_{\mathrm{pol}}C_w^{(1)}.             \label{eq:rgcov-top-constants}
 \end{gather}
 Here $C^F,\gamma^F$ are the constants of the fermion
 construction at the indicated polymer rate.
@@ -1626,9 +1632,11 @@ then
 These centers differ by a multiple of $M$, hence the
 cube is contained in $\square(t)^{\sim2L}$.
 
-Let $\mathscr Y$ be all parameter cubes contained in $Z$,
-and let $\mathscr Y_1$ be their link component containing
-the cube just chosen. The $M$-cubes meeting
+Let $\mathscr Y$ be all parameter cubes of the chosen kind
+contained in $Z$, and let $\mathscr Y_1$ be the component
+containing the cube just chosen, using shared-site links for
+photon cubes and face adjacency for fermion partition cubes.
+The $M$-cubes meeting
 $\bigcup\mathscr Y_1$ form a face-connected polymer
 contained in $Z$. It meets $\square(t)\subset Z_1$,
 and therefore is contained in the component $Z_1$.
@@ -2071,7 +2079,7 @@ Assign common parameter values of modulus at most
 $M^{\alpha_0}$ to the parameter cubes contained in
 $\widetilde U$, and set all other parameters to zero.
 These data will be denoted by $\zeta_i,s_i$.
-They belong to the respective box and polydisk
+They belong to the respective box and polydisc
 because indices on the lift are injective.
 
 The fine fluctuation fields have the same lifts on
@@ -2185,12 +2193,12 @@ Its summand is therefore
 \begin{equation}\label{eq:rgcov-localization-term}
  \int_{[0,1]^{\widetilde P}}\dd u\,
        \prod_{\mathrm{pc}\in\widetilde P}\partial_{u_{\mathrm{pc}}}
-                       G_i(s_i[u],\operatorname{pr}_i\widetilde X),
+                       G_a^{(i)}(s_i[u],\operatorname{pr}_i\widetilde X),\qquad a=1,2,3,
 \end{equation}
 where $s_i[u]$ is $1$ on $P_0(\widetilde X)$, $u$ on
 $\widetilde P$, and zero elsewhere.
 Identity \eqref{eq:rgcov-first-G} holds throughout
-the parameter polydisk. Since $M^{\alpha_0}>1$,
+the parameter polydisc. Since $M^{\alpha_0}>1$,
 the integration cube is in its interior, and
 coefficient differentiation and integration preserve
 the equality. This proves equality of

@@ -68,10 +68,10 @@
 \RequirePackage{perpage}
 \RequirePackage{xcolor}
 \definecolor{manuscriptred}{rgb}{0.6,0.1,0.1}
-\definecolor{manuscriptcyan}{rgb}{0.1,0.3,0.5}
-\definecolor{manuscriptmagenta}{HTML}{8B008B}
+\definecolor{manuscriptblue}{rgb}{0.1,0.3,0.5}
+\definecolor{manuscriptmagenta}{HTML}{60445C}
 \RequirePackage[breaklinks=true,colorlinks=true,
-  linkcolor=manuscriptred,citecolor=manuscriptcyan,urlcolor=manuscriptmagenta]{hyperref}
+  linkcolor=manuscriptred,citecolor=manuscriptblue,urlcolor=manuscriptmagenta]{hyperref}
 \RequirePackage{cleveref}
 \hypersetup{pdfauthor={}}
 
@@ -407,7 +407,7 @@ Put
                          -\delta_{\eta,\nu}a'_{\eta,\mu}.
                                       \label{eq:cells-smooth-test}
 \end{align}
-All these functions are smooth and real. Since each centred
+All these functions are smooth and real. Since each centered
 difference enlarges support by at most $\eta/2$ in its direction,
 \[
  \supp f^\eta,\ \supp J_\eta a'_\eta
@@ -440,10 +440,10 @@ midpoint identities yield
                         =f^\eta_{[\eta]}(\sigma).
 \end{equation}
 Indeed, the bond values in the curl are evaluated at the two
-points displaced by $\pm\eta e_\mu/2$ from the plaquette centre.
+points displaced by $\pm\eta e_\mu/2$ from the plaquette center.
 Their difference is $\eta\delta_{\eta,\mu}J_\eta a'_{\eta,\nu}$.
 Commutation of the average and differences then gives
-$\eta^{3/2}J_\eta f^\eta$ at that centre, which is the right
+$\eta^{3/2}J_\eta f^\eta$ at that center, which is the right
 side of \eqref{eq:cells-source-curvature}.
 
 For a compactly supported smooth two-form $g$, let $g_{[\eta]}$
@@ -507,7 +507,7 @@ A placement is a vector $v\in\eta\Z^3$ satisfying
 \]
 Such a vector always exists by coordinatewise rounding.
 It translates $Q_\beta$ into $[\eta,\ell_c-\eta]^3$:
-the displacement of its centre is at most $\eta/2$, and
+the displacement of its center is at most $\eta/2$, and
 the half-side is at most $(\ell_c-3\eta)/2$.
 Hence
 \begin{equation}\label{eq:cells-probe-margin}
@@ -628,7 +628,7 @@ Let $\Pi_\eta f^\eta$ be the componentwise cell-average step
 function on a period cube. By \eqref{eq:cells-source-curvature},
 its $L^2$ norm is $\sqrt{v_\eta}$.
 Each first derivative of $f^\eta_{\mu\nu}$ is bounded
-by $4|\beta|_{C^3}$, from the four centred-difference
+by $4|\beta|_{C^3}$, from the four centered-difference
 terms in \eqref{eq:cells-smooth-test} and the identity
 $\delta_{\eta,\mu}g=\int_{-1/2}^{1/2}
 (\partial_\mu g)(\,\cdot+t\eta e_\mu)\,\dd t$.
@@ -802,7 +802,9 @@ Let
  \qquad e_p(c)=V^{-1/2}\mathrm e^{ip\cdot c},\qquad
  \xi_\mu(p)=\mathrm e^{ip_\mu}-1.
 \]
-The characters $e_p$ are orthonormal. At each momentum $p$ the
+For the Fourier calculation we use the auxiliary Hermitian counting
+inner product, under which the characters $e_p$ are orthonormal.
+The analytic cochain pairings remain complex bilinear. At each momentum $p$ the
 coboundary on exterior-valued cochains is exterior multiplication
 by $\xi(p)$. If $\iota_{\bar\xi}$ denotes contraction by $\bar\xi$,
 then
@@ -891,8 +893,8 @@ kernel. Write
  \mathcal L(n)=\log\det{}'\Delta_0.
 \end{equation}
 At each nonzero momentum the transverse one-cochains
-are the two-dimensional space $\xi(p)^\perp$.
-For $v\in\C^3$,
+are the two-dimensional space $\xi(p)^\perp$, with orthogonality
+in the same Hermitian inner product. For $v\in\C^3$,
 \[
  \sum_{\mu<\nu}|\xi_\mu v_\nu-\xi_\nu v_\mu|^2
            =|\xi|^2|v|^2-|\bar\xi\cdot v|^2.
@@ -1563,8 +1565,9 @@ On the reference torus,
  a_*\in\{h/L,h/L^2\},\qquad
  \ell_*=Mr_*,\qquad r_*>31L+16.
 \]
-These stop-scale quantities are independent
-of $N\ge N_{\rm ref}(e)$.
+The offset $K-k_*$ and the quantities $a_*,\ell_*,r_*$ are
+independent of $N\ge N_{\rm ref}(e)$; the index $k_*$
+depends on $N$ through $K$.
 Write $r_{\rm loc}$ for the localization
 power in \cite[\S6.1]{CoverTuning}.
 
@@ -1840,9 +1843,10 @@ point. For an operator $O$ define
  \sup_{y'}\sum_y|O|(y,y')\mathrm e^{\gamma d(y,y')}\right\}.&
 \end{align*}
 The spinor norm here is the maximum component modulus.
-For coarse operators, $\|O\|_2\le2\|O\|_0$ and
-$\|O\|_1\le4\sum_{y,y'}|O|(y,y')$, where the subscripts
-$2$ and $1$ denote operator and trace norm, respectively.
+For coarse operators, $\|O\|_{\mathrm{op}}\le2\|O\|_0$ and
+$\|O\|_{\mathfrak S_1}\le4\sum_{y,y'}|O|(y,y')$, where
+$\mathrm{op}$ and $\mathfrak S_1$ denote the Hilbert-space operator
+norm and trace norm, respectively.
 
 For a direction $B$, let $P_B$ be the unit blocks containing
 an endpoint of a bond in its support, put
@@ -1875,14 +1879,14 @@ Set $\theta_{\rm CT}=\mu_-/(12\mathrm e)$ and
            +4\mathrm e\mu_-^{-1}(24/\theta_{\rm CT})^3.
 \]
 The real covariance $G=D_*(A_r)^{-1}$, for every real $A_r$,
-satisfies $\|G\|_2\le g^2$ and has weighted component row and
+satisfies $\|G\|_{\mathrm{op}}\le g^2$ and has weighted component row and
 column sums at most $\alpha_G$, with weight
 $\mathrm e^{\vartheta_0d(u,u')}$.
 On $\mathcal W^+=\{A+A_1:A\in\mathcal W,\ e_*|A_1|_\infty\le c_\tau\}$,
 the first derivative bound holds with $C_K'$.
 If $A=A_r+A_1$, $A_r$ is real, $e_*|A_1|_\infty\le\mu_*/24$
 and $F_*(A)$ is invertible, then $D_*(A)$ is invertible and
-$\|D_*(A)^{-1}\|_2\le g_1$.
+$\|D_*(A)^{-1}\|_{\mathrm{op}}\le g_1$.
 These are \cite[(72)--(75)]{TerminalPressure}.
 
 The activity space, independent ordinary and pair generators, and
@@ -1899,11 +1903,11 @@ of images of closed straight segments in the continuum torus;
 its length is the sum of their Euclidean lengths, with the infimum
 also taken over segment representations. A point is allowed as a
 segment. We use the construction constants
-$\kappa_0=54\log72$, $K_0=72^{54}/36$,
-$c_{\rm rb}=54K_0$ and $\kappa\ge7\kappa_0+7$.
-The anchored polymer sum is bounded by $K_0$, and its reblocking
+$\kappa_0=54\log72$, $K_{\mathrm{pol}}=72^{54}/36$,
+$c_{\rm rb}=54K_{\mathrm{pol}}$ and $\kappa\ge7\kappa_0+7$.
+The anchored polymer sum is bounded by $K_{\mathrm{pol}}$, and its reblocking
 bound has constant $c_{\rm rb}$, as proved in
-\cite[Appendix~B, (79)--(83)]{NormalizedContraction}.
+\cite[Appendix~B, (81) and (83)]{NormalizedContraction}.
 The fixed constant $C_0\ge C^F$ bounds the photon kernel rows and
 the field substitution; in particular at
 $a_2=C_0^{-1}e_*^{-1/4+\varepsilon}$,
@@ -2100,8 +2104,8 @@ At $j=0$ the incoming determinant has dimension
 $192n_0$, the outgoing one dimension $4n_1$;
 the factor $b^{4n_1}$ cancels in the ratio.
 
-Fix a coarse real photon field $A$ with
-$\chi_*(A)=1$, and a real twist $\theta$.
+Fix $A\in V_{\mathrm t}(T_*^0)$ with $\chi_*(A)=1$
+and a real twist $\theta$. In particular, $A$ is real and has mean zero.
 The real gauge construction in
 \cite[(32)]{MaxwellBlock}--%
 \cite[(33)]{MaxwellBlock}
@@ -2180,7 +2184,7 @@ $\mathbb D(t_x^+)$.
 Suppose
 \begin{gather}
  4C_0\ell_*^3g_1\le e_*^{-1/4+\varepsilon},\qquad
- 4\ell_*^3(2C_K+K_0+4)\le e_*^{-2\varepsilon},\qquad
+ 4\ell_*^3(2C_K+K_{\mathrm{pol}}+4)\le e_*^{-2\varepsilon},\qquad
  e_*^{1/4-9\varepsilon}\le1/8,
                                       \label{eq:interacting-factor-conditions}\\
  48e_*^{2\varepsilon}\le\mu_- .
@@ -2201,7 +2205,7 @@ polydisc. The normalized terminal ratio
        \frac{Z_{\rm tm}(t)}{Z_{\rm tm}(0)}
 \end{equation}
 is nonzero, continuous in $(t,\theta,A)$ on
-$\mathbb D(t_x^+)\times\R^3\times\{\chi_*=1\}$,
+$\mathbb D(t_x^+)\times\R^3\times\{A\in V_{\mathrm t}(T_*^0):\chi_*(A)=1\}$,
 and analytic in $t$. It has a unique continuous
 logarithm $\mathcal G(t;\theta,A)$ that vanishes
 at zero, and this logarithm is analytic in $t$.
@@ -2252,18 +2256,18 @@ The terminal mass estimate and
 \eqref{eq:interacting-activity-input} give respectively
 \[
  \frac12\ell_*^3e_*^{1/4-6\varepsilon},
- \qquad K_0\ell_*^3e_*^{1/4-7\varepsilon}.
+ \qquad K_{\mathrm{pol}}\ell_*^3e_*^{1/4-7\varepsilon}.
 \]
 For the activity sum, substitute the terminal
 field maps in the coefficient norm, then sum
 $\mathrm e^{-\kappa d_M(X)}$ by assigning each polymer
 one of its $M$-cubes and using the polymer
-sum bound $K_0$. We have used
+sum bound $K_{\mathrm{pol}}$. We have used
 $4e_*^\varepsilon\le1$.
 Consequently
 \[
  |V_t|_{a_w}\le
- \ell_*^3(2C_K+K_0+4)e_*^{1/4-7\varepsilon}
+ \ell_*^3(2C_K+K_{\mathrm{pol}}+4)e_*^{1/4-7\varepsilon}
  \le\frac14e_*^{1/4-9\varepsilon}.
 \]
 The inequality $\mathrm e^x-1\le2x$ proves
@@ -2327,10 +2331,10 @@ For a fixed cell $c$ and real twist $\theta$, let
 The logarithm here is the matrix power series.
 Set
 \begin{align}
- C_{\rm fr}&=2592C_dK_0C_\beta^2
+ C_{\rm fr}&=2592C_dK_{\mathrm{pol}}C_\beta^2
        \left(M^2(D_\beta^{\rm buf})^3L^4h^{-2}+8M^5h\right),
                                                    \notag\\
- B_{\rm wr}&=16\exp(6)C_dM^3K_0p_\beta \mathrm e^{-r_*},
+ B_{\rm wr}&=16\exp(6)C_dM^3K_{\mathrm{pol}}p_\beta \mathrm e^{-r_*},
  \qquad B_1=16g_1C_K'p_\beta e_*^{2\varepsilon},       \notag\\
  B_0&=C_{\rm fr}e_*^{4\varepsilon}+B_{\rm wr}+B_1 .
                                 \label{eq:interacting-free-log-constants}
@@ -2375,9 +2379,9 @@ Write $K=D_*(c_\theta+t\widehat c_c)-D_*(c_\theta)$.
 The real covariance and the integrated insertion
 bounds give
 \[
- \|D_*(c_\theta)^{-1}K\|_2\le
+ \|D_*(c_\theta)^{-1}K\|_{\mathrm{op}}\le
            2g_1C_Ke_*^{2\varepsilon}\le1/2,\qquad
- \|D_*(c_\theta)^{-1}K\|_1
+ \|D_*(c_\theta)^{-1}K\|_{\mathfrak S_1}
            \le4g_1C_Kp_\beta e_*^{2\varepsilon}.
 \]
 Thus the series in \eqref{eq:interacting-free-coarse-log}
@@ -2470,14 +2474,14 @@ summing \eqref{eq:interacting-local-constant-removal}
 over cubes and polymers gives at level $j$
 the bound
 \[
- 648C_dK_0C_\beta^2|t|^2e_j^{-2\varepsilon}a_*^{-3}
+ 648C_dK_{\mathrm{pol}}C_\beta^2|t|^2e_j^{-2\varepsilon}a_*^{-3}
            \left(M^2(D_\beta^{\rm buf})^3a_j+8M^5a_j^4\right).
 \]
 For the remaining polymers $2s_X\ge\ell_j$,
 $d\ge r_*L^i/2-3$. The extra exponential in
 the primitive bound then gives at level $j$
 \[
- 2\exp(6)C_dM^3K_0p_\beta L^{3i}\mathrm e^{-r_*L^i}.
+ 2\exp(6)C_dM^3K_{\mathrm{pol}}p_\beta L^{3i}\mathrm e^{-r_*L^i}.
 \]
 Sum over $i\ge1$, using $a_j=L^{-i}a_*$,
 $e_j^{-2\varepsilon}=e_*^{-2\varepsilon}L^{i\varepsilon}$,
@@ -2505,7 +2509,7 @@ It remains to control the twist. For
 $|\operatorname{Im}\theta_\mu|\le\tau_s$
 the connections $c_\theta+st\widehat c_c$
 lie in $\mathcal W^+$, and
-$\|D_*(c_\theta)^{-1}\|_2\le g_1$.
+$\|D_*(c_\theta)^{-1}\|_{\mathrm{op}}\le g_1$.
 There is a positive strip margin
 $\ell_*(e_*^{2\varepsilon}-e_*^{3\varepsilon})$:
 split the imaginary constant connection
@@ -2674,13 +2678,13 @@ Suppose
  \alpha_G\bar r\le1/2,
  \quad
  \bar r=4h_G^2C_Ke_*^{2\varepsilon}
-                            +650K_0e_*^{1/4-7\varepsilon}.
+                            +650K_{\mathrm{pol}}e_*^{1/4-7\varepsilon}.
 \end{equation}
 Let $d_{\rm sep}=\min_{c\ne c'}d(P_c,P_{c'})$ and
 suppose $d_{\rm sep}\ge6M+8$.
 With
 $s_F=(24/\gamma^F)^3$ and
-$C_V^{\mathrm{ins}}=10^3C_H^2s_F^4K_0$, we have
+$C_V^{\mathrm{ins}}=10^3C_H^2s_F^4K_{\mathrm{pol}}$, we have
 \begin{align}
  \rho_G(V_+(t);w_\delta)&\le\bar r
                                       &&(|t|_\infty\le t_x),\notag\\
@@ -2743,7 +2747,7 @@ permits $c_w=\mathrm e^{d_M(X)+3}$.
 The needed rooted polymer sum is
 \begin{equation}\label{eq:interacting-rooted-polymer-sum}
  \sum_X \mathrm e^{-(\gamma^F/4)d(u,X^+)}
-                       \mathrm e^{-(\kappa-1)d_M(X)}\le32K_0.
+                       \mathrm e^{-(\kappa-1)d_M(X)}\le32K_{\mathrm{pol}}.
 \end{equation}
 Indeed the sum of
 $\mathrm e^{-(\gamma^F/4)d(u,\square^+)}$ over $M$-cubes
@@ -2753,7 +2757,7 @@ away has distance at least $(j-1)M$ and there
 are at most $(2j+1)^3$ such cubes.
 Use $\gamma^FM/4\ge4$ to sum the remaining
 geometric tail. Assigning a cube of $X$
-and applying the anchored polymer sum $K_0$
+and applying the anchored polymer sum $K_{\mathrm{pol}}$
 proves \eqref{eq:interacting-rooted-polymer-sum}.
 
 Apply \eqref{eq:interacting-absorbed-activity}
@@ -2762,12 +2766,12 @@ absorbs the polynomial degree factors.
 The preceding full and rooted sums give
 \[
  \rho_G\left(\sum_X E^a(X;t)[H_*^\#\Psi]_+;w_\delta\right)
-                                       \le650K_0w_*^{\rm E}.
+                                       \le650K_{\mathrm{pol}}w_*^{\rm E}.
 \]
 More generally, for kernels bounded by
 $\mathcal B \mathrm e^{-\kappa d_M(X)}$ at that
 weight, these sums give
-$650K_0\mathcal B$ in $\rho_G$ and
+$650K_{\mathrm{pol}}\mathcal B$ in $\rho_G$ and
 $\exp(3)\mathcal B\sum_X\mathrm e^{-(\kappa-1)d_M(X)}$
 in $N_G$. This follows by summing
 $\sum_{p\ge2}p5^{-p}=9/80$ in the rooted
@@ -2794,9 +2798,9 @@ point and \eqref{eq:interacting-X-diameter}.
 The Cauchy bound multiplies
 $\mathcal B=w_*^{\rm E}$ by $q_x$, and
 the sum of polymers meeting $P_c$ is at most
-$K_0p_\beta$. Its $N_G$ bound is
-$\exp(3)K_0p_\beta q_xw_*^{\rm E}$ and its
-$\rho_G$ bound is $650K_0q_xw_*^{\rm E}$.
+$K_{\mathrm{pol}}p_\beta$. Its $N_G$ bound is
+$\exp(3)K_{\mathrm{pol}}p_\beta q_xw_*^{\rm E}$ and its
+$\rho_G$ bound is $650K_{\mathrm{pol}}q_xw_*^{\rm E}$.
 
 For a differentiated leg at position $j$, the
 insertion estimate has a chain
@@ -2823,7 +2827,7 @@ factor $p$, and $p^2\le5^p$ absorbs both.
 Use \eqref{eq:interacting-rooted-polymer-sum}
 with $\gamma^F/2$ in place of $\gamma^F/4$.
 The result is bounded by
-$9500C_Hs_FK_0w_*^{\rm E}p_\beta\epsilon_c$
+$9500C_Hs_FK_{\mathrm{pol}}w_*^{\rm E}p_\beta\epsilon_c$
 in $N_G$.
 
 For $\rho_G$, if the fixed argument lies on
@@ -2836,13 +2840,13 @@ that leg supplies the same rooted exponential,
 and the differentiated leg contributes
 $2C_H\epsilon_cs_F^2$.
 Both cases therefore have the bound
-$9500C_Hs_F^2K_0w_*^{\rm E}\epsilon_c$.
+$9500C_Hs_F^2K_{\mathrm{pol}}w_*^{\rm E}\epsilon_c$.
 Here the degree sum is
 $\sum_{p\ge2}p^25^{-p}=43/160$.
 Adding the three types of term, using
 $w_*^{\rm E}\le1/8$, $C_K\le C_Hs_F^2$,
 and $C_H\ge2$, proves the second line with
-$C_V^{\mathrm{ins}}=10^3C_H^2s_F^4K_0$.
+$C_V^{\mathrm{ins}}=10^3C_H^2s_F^4K_{\mathrm{pol}}$.
 
 For the mixed derivative, put
 \[
@@ -2902,7 +2906,7 @@ one kernel term with no legs, and the same
 bound controls $\partial_c\partial_{c'}V_0$.
 The four kernel types contribute in total
 at most
-$256C_H^2s_F^4K_0p_\beta q_x^2
+$256C_H^2s_F^4K_{\mathrm{pol}}p_\beta q_x^2
 \mathrm e^{-\vartheta_0(d_{\rm sep}-4M-4)}$.
 Adding the quadratic term proves the last
 line of \eqref{eq:interacting-differentiated-norms}.
@@ -2999,7 +3003,7 @@ two vertices remain connected, namely
 $s_{ij}^F$. Wick's formula and the Gram
 inequality therefore bound a residual monomial
 of degree $p$ under $\mathrm e^{\Delta[s^F]}$
-by $g^p$, where $\|G\|_2\le g^2$.
+by $g^p$, where $\|G\|_{\mathrm{op}}\le g^2$.
 Indeed, its determinant entries are
 $\langle\omega_i\otimes\delta_x,\omega_j\otimes G\delta_y\rangle$.
 These facts apply whether or not the
@@ -3131,7 +3135,7 @@ $d_{\rm sep}\ge6M+8$. For $|S|\ge2$, the normalized logarithm satisfies
 where
 \begin{align}
  C_W^{\mathrm{mix}}&=3C_V^{\mathrm{ins}}h_G^2+2\alpha_G(C_V^{\mathrm{ins}})^2h_G^4
-                             +4\exp(6)C_dM^3K_0,\notag\\
+                             +4\exp(6)C_dM^3K_{\mathrm{pol}},\notag\\
  \varpi_{\rm sep}&=2^{N_*}C_W^{\mathrm{mix}}p_\beta
                     \mathrm e^{-\vartheta_0(d_{\rm sep}-4M-6)},\notag\\
  \varpi_{\rm sep}^+&=2^{N_*}C_W^{\mathrm{mix}}p_\beta
@@ -3155,7 +3159,7 @@ polymers anchored at one of at most $p_\beta$
 cubes, and keep $\mathrm e^{-2d_M(X)}$ from
 $\kappa-\kappa_0\ge2$.
 Its total contribution is at most
-$2^{|S|}2\exp(4)C_dM^3K_0p_\beta
+$2^{|S|}2\exp(4)C_dM^3K_{\mathrm{pol}}p_\beta
 \mathrm e^{-\vartheta_0d_{\rm sep}}$.
 
 Apply \eqref{eq:interacting-tree-mixed}
@@ -3232,7 +3236,7 @@ Assume
  \varpi_0\le1/4,\quad 8N_*t_2\le t_x .
 \end{equation}
 There is a finite positive measure $v_{\rm sf}$
-on $[-\pi,\pi]^3\times\{\chi_*=1\}$, of
+on $[-\pi,\pi]^3\times\{A\in V_{\mathrm t}(T_*^0):\chi_*(A)=1\}$, of
 mass in $[1-\varpi_0,1]$, such that
 \begin{equation}\label{eq:interacting-small-field-representation}
  \frac{\bar\nu^{a(t)}(\mathfrak G)}{\bar\nu(F_N)}
@@ -3285,8 +3289,8 @@ nonnegative bounded Borel $\Phi$,
        =\nu^{\theta,a(t)}(\mathbf1_{\mathfrak G}\Phi(A_*))\ge0.
 \]
 The terminal density is continuous. On the
-interior of the compact convex set
-$\{\chi_*=1\}=\{|dA|_\infty\le p_*\}$, a
+interior, relative to $V_{\mathrm t}(T_*^0)$, of the compact
+convex set $\{A\in V_{\mathrm t}(T_*^0):|dA|_\infty\le p_*\}$, a
 nonzero imaginary part or negative real
 part would persist on a ball of positive
 Gaussian measure, contradicting this identity.
