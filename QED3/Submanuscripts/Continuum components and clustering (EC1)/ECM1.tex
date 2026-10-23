@@ -625,33 +625,41 @@ Since $\mathcal A_0$ determines laws, $\lambda_F=\eta$.
 Taking the distribution of $\lambda_F$ under the mixture shows
 that its image measure is $\pi$, proving uniqueness.
 
-Fix an axis mirror. A bounded invariant weight $h$ satisfies
-$\mathcal R_jh=h$ by \eqref{eq:invariant-reflection-fixed} and has a
-representative in either half-space. If $h\ge0$ and
-$A\in\mathcal E_j^+$, reflection positivity applied to $\sqrt hA$
-gives
+Fix any of the nine mirrors $r$, with positive side $H^+$.
+Every $B\in L^2(\mathcal I)$ belongs to $L^2(\Sigma_{H^+},\lambda)$:
+translate compactly supported character approximants into $H^+$;
+translation invariance of $B$ preserves their approximation error.
+The relation $U(a)\mathcal R_r=\mathcal R_rU(ra)$ shows that
+$\mathcal R_rB$ is also translation invariant. Thus
+$C=B-\mathcal R_rB$ belongs to the same positive-side space, and
+reflection positivity gives
+\[
+ 0\le\E_\lambda[\overline{\mathcal R_rC}\,C]=-\|C\|_2^2.
+\]
+Consequently $\mathcal R_rB=B$.
+
+A bounded nonnegative invariant weight $h$ therefore has a
+positive-side representative and satisfies $\mathcal R_rh=h$.
+For a positive-side character sum $A$, apply reflection positivity
+to $\sqrt hA$ to obtain
 \begin{equation}\label{eq:weighted-component-rp}
- \E_\lambda[h(\Theta_jA)A]\ge0.
+ \E_\lambda[h\,\overline{\mathcal R_rA}\,A]\ge0.
 \end{equation}
 Reflection invariance similarly gives
-$\E_\lambda[h\mathcal R_jA]=\E_\lambda[hA]$.
-Taking all bounded $\mathcal I$-measurable weights in these identities
-proves that the corresponding conditional reflection form is
-nonnegative and the conditional character expectations are reflection
-invariant. Countably many positive-side character sums suffice;
-density extends the statements to the full positive-side algebra
-in each conditional law. Translation invariance moves the mirror
-to every real height.
-
-This argument also transfers any further fixed mirror with unit normal $n$.
-Choose $Q\in O(3)$ with $Qe_1=n$ and apply the axis argument to
-the transported law $(Q^{-1})_*\lambda$. The transported law is
-reflection positive at $x_1=0$; it need not equal $\lambda$.
-The map $Q_*$ sends translation-ergodic laws to translation-ergodic
-laws and transports their reflection forms. By uniqueness of the
-ergodic decomposition, its image decomposition is that of $\lambda$.
-Applying this to the six diagonal mirrors, and intersecting the
-resulting nine full-measure sets, transfers all required mirrors.
+$\E_\lambda[h\mathcal R_rA]=\E_\lambda[hA]$
+for every bounded global observable $A$.
+Testing against all such invariant weights proves conditional
+reflection positivity and invariance. For invariance use the
+countable determining character family above; for positivity choose,
+separately for each mirror, a countable $\mathbb Q$-linear family of
+real tests supported in $H^+$, dense in the corresponding Schwartz
+space, and character sums with rational complex coefficients. The same Fourier
+argument gives density in the positive-side $L^2$ space of each
+conditional law. On a common full-measure set, reflection invariance
+makes the reflection form continuous, so positivity extends to this
+whole space. Intersect these sets for the nine mirrors. Translation
+invariance of each component then moves every mirror to all real
+heights.
 
 The nine reflections generate the cubic group, so these components
 are cubically invariant. \Cref{prop:all-direction-mixing} applies
