@@ -6130,12 +6130,17 @@ Letting $i\to\infty$ along a subsequence that realises $c_W$, one arrives at
 
 \emph{Step 10} (partitions).
 As a function of $(\Psi_\alpha)\in L^2(\mu)^m$, the left side of \eqref{eq:weighted-continuum} is continuous.
-Let $(B_\alpha)\subset I$ be a finite partition; by (S1) one may choose $\Psi_\alpha'\in\mathcal A_{\mathrm c}$ converging to $1_{B_\alpha}$ in $L^2(\mu)$.
-Fix smooth functions $\sigma_\delta\colon\mathbb R\to[0,1]$ with $|\sigma_\delta(t)-t|\le\delta$ on $[0,1]$ and $\zeta_\delta$ with $\max(1,t)\le\zeta_\delta(t)\le\max(1,t)+\delta$, and set
+Let $(B_\alpha)_{\alpha=1}^m\subset I$ be a finite partition; by (S1) one may choose real $\Psi_\alpha'\in\mathcal A_{\mathrm c}$ converging to $1_{B_\alpha}$ in $L^2(\mu)$.
+Set
 \begin{equation*}
-\Psi_\alpha:=\frac{\sigma_\delta(\Psi_\alpha')}{\zeta_\delta\bigl(\sum_{\alpha'}\sigma_\delta(\Psi_{\alpha'}')\bigr)}.
+D(t):=\sum_{\beta=1}^m t_\beta^2+\Bigl(1-\sum_{\beta=1}^m t_\beta\Bigr)^2,
+\qquad
+\Psi_\alpha:=\frac{(\Psi_\alpha')^2}{D((\Psi_\beta')_{\beta=1}^m)}.
 \end{equation*}
-These functions are admissible in Step~7, and, the map $(t_{\alpha'})_{\alpha'}\mapsto\sigma_\delta(t_\alpha)/\zeta_\delta(\sum_{\alpha'}\sigma_\delta(t_{\alpha'}))$ being Lipschitz, $\limsup\|\Psi_\alpha-1_{B_\alpha}\|_2\le\mathsf c\,m\,\delta$.
+The Cauchy--Schwarz inequality gives $D(t)\ge1/(m+1)$ on $\mathbb R^m$.
+The normalization map is smooth, has nonnegative components with sum at most one, and fixes every standard basis vector.
+Combining the cylinder coordinates and using the bounded range of their coefficient functions, the chain rule shows that the new coefficient functions have all derivatives bounded; hence the $\Psi_\alpha$ are admissible in Step~7.
+The input tuple converges in probability to the partition indicator vector, so the bounded continuous normalization gives $\Psi_\alpha\to1_{B_\alpha}$ in probability and in $L^2(\mu)$.
 Since $P1_{B_\alpha}=1_{B_\alpha}$, the inequality \eqref{eq:weighted-continuum} yields in the limit $(\mathrm{FI}^I_\mu)$ with $C'=1+c_W$.
 Suppose first that $c_W<\infty$.
 For $m=1$ and $B_1=\mathcal S'$, the condition $(\mathrm{FI}^I_\mu)$ is the inequality
