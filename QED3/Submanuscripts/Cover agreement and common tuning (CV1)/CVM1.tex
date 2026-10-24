@@ -915,8 +915,8 @@ By \cite[Proposition 5.1]{NonlinearStep},
 The finite activities have the local ordinary, pair and fluctuation
 supports and read bonds stated in
 \cite[Proposition 5.3]{NonlinearStep}.
-Their connected union expansion converges absolutely in the weighted
-norm and its exponential is the original finite fluctuation integral,
+Their local logarithm is defined by finite differences of normalized
+regional logarithms, and its exponential is the original fluctuation integral,
 by \cite[Proposition 6.1]{NonlinearStep}.
 
 For every complex datum in \(\operatorname{Ball}_k^x(4)\), the resulting
@@ -2256,43 +2256,23 @@ one kind. Consequently
                        \iota_{\widetilde U}F_1(U_1)=F_2(U_2).
 \end{equation}
 
-We now pass to the local connected logarithm.
-Its finite Mayer activity is
+We now pass to the local logarithm. For every cube union
+$\widetilde V\subseteq\widetilde X$ and $|u|\le2$, compare
 \[
- K_i(X_i)=\sum_{\{\widetilde X_a\}:\,\bigcup_a\widetilde X_a=\widetilde X}
-                \prod_a\big(\exp(F_i(\operatorname{pr}_i
-                                                    \widetilde X_a))-1\big),
+ Z_{V_i}^{(i)}(u,\mathbf1)
+  =\int\dd\mu_I(W)\,\dd\widehat\mu_k(\zeta)
+                  \exp\left(u\sum_{U_i\subseteq V_i}F_i(U_i)\right),
+ \qquad V_i=\operatorname{pr}_i\widetilde V.
 \]
-where the $\widetilde X_a$ are distinct connected
-subpolymers of $\widetilde X$.
-The products are even. Their index sets and factors
-are the same on both tori by
-\eqref{eq:rgcov-finite-F}; coordinate locality allows
-their evaluation with common coordinates on
-$\widetilde X$.
-For the integrated activity $H_i(X_i)$,
-\eqref{eq:rgcov-W-integration} identifies the Wick
-integrals. The other photon coordinates integrate
-to $1$, leaving the same product of restricted normal
-laws over the coordinates supported in
-$\widetilde X$. Hence $\iota_{\widetilde X}H_1(X_1)=H_2(X_2)$.
-
-The logarithm has the expansion
-\[
- E_k^{\#,(i)}(X_i)=
-   \sum_{n\ge1}\frac1{n!}
-    \sum_{\bigcup_{a=1}^n\widetilde X_a=\widetilde X}
-       u^T(\operatorname{pr}_i\widetilde X_1,\ldots,
-                    \operatorname{pr}_i\widetilde X_n)
-                      \prod_{a=1}^n H_i(\operatorname{pr}_i\widetilde X_a).
-\]
-Projection preserves incompatibility inside this lift,
-so the graph determining $u^T$ is the same.
-Every summand agrees under the common algebra map.
-Both series converge absolutely in the weighted norm
-by Proposition~\extref{6.1}{NonlinearStep}.
-The map $\iota_{\widetilde X}$ preserves that norm,
-so equality passes to their sums:
+The factors agree by \eqref{eq:rgcov-finite-F}; coordinate locality
+allows their evaluation with common coordinates on $\widetilde V$.
+Equation \eqref{eq:rgcov-W-integration} identifies the Wick integrals.
+Unused photon coordinates integrate to one, leaving the same
+product of restricted normal laws. Thus the regional integrals
+agree under $\iota_{\widetilde X}$ for every $u$.
+Their logarithms normalized to zero at $u=0$ agree as well,
+by uniqueness. Applying the same finite subset difference on
+$\widetilde X$ to both logarithms proves
 \begin{equation}\label{eq:rgcov-logarithm-agreement}
        \iota_{\widetilde X}E_k^{\#,(1)}(X_1;A_1,\mathscr C_1)
                       =E_k^{\#,(2)}(X_2;A_2,\mathscr C_2).
@@ -2854,7 +2834,7 @@ Adjustment followed by reblocking is linear in
 the activity at fixed connection.
 The local determinant term is independent of the
 sequence. The correction's coupling estimate
-\exteq{93}{NonlinearStep} therefore gives
+\exteq{87}{NonlinearStep} therefore gives
 \[
  \widehat d_{j+1}^{\mathrm E}
       \le\tfrac1{16}d_j^{\mathrm E}
@@ -3339,22 +3319,23 @@ At $k=0$ the term $G_4$ is zero and $m'=m$.
 
 \subsection{Integration, logarithm and reblocking}
 For the even activity $F$ just defined, set
-\begin{align*}
- K(Y)&=\sum_{\substack{\{X_i\}\text{ distinct}\\\bigcup_iX_i=Y}}
-             \prod_i(\exp F(X_i)-1),\qquad K(\varnothing)=1,\\
- H(Y)&=\int\dd\mu_I(W)\,\dd\widehat\mu_k(\zeta)\,K(Y),\\
- E_k^\#(Y)&=\sum_{n\ge1}\frac1{n!}
-       \sum_{\bigcup_iY_i=Y}u^T(Y_1,\ldots,Y_n)\prod_iH(Y_i).
-\end{align*}
+\[
+ Z_U(u)=\int\dd\mu_I(W)\,\dd\widehat\mu_k(\zeta)\,
+                   \exp\left(u\sum_{X\subseteq U}F(X)\right).
+\]
 Here $\widehat\mu_k$ is the product of the normal laws restricted
 and normalized on $[-p_{0,k},p_{0,k}]$. The measure $\mu_I(W)$ is
 the normalized identity-covariance Grassmann measure: the covariance
-kernel is the inverse mode weight. The coefficient $u^T$ is the
-sum of $(-1)^{|E(G)|}$ over connected spanning subgraphs of the
-incompatibility graph of the tuple. Two polymers are incompatible
-when their union is connected; in particular repetitions are incompatible.
-Absolute convergence in the weighted coefficient norm is supplied by
-\cite[Proposition~6.1]{NonlinearStep}.
+kernel is the inverse mode weight. By
+\cite[Proposition~6.1]{NonlinearStep}, $Z_U(u)$ has a unique analytic
+logarithm $\mathcal L_U(u)$ on $|u|\le2$ with $\mathcal L_U(0)=0$.
+Define
+\[
+ E_k^\#(Y)=\sum_{U\subseteq Y}(-1)^{|Y\setminus U|_M}\mathcal L_U(1).
+\]
+This vanishes for disconnected $Y$, and its sum exponentiates to
+the original fluctuation integral. The same proposition supplies
+the weighted coefficient bound used in reblocking.
 
 For an outgoing polymer $Y$, put
 \[

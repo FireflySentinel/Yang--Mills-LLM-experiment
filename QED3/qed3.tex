@@ -13123,9 +13123,9 @@ The finite fluctuation integral in
 sum of local activities. Its construction has two localizations.
 The first resolves the change of background and reconstructs
 the coarse mean; the second resolves the fermion fluctuations.
-After these finite operations, a connected-polymer expansion
-gives the logarithm. The estimates below apply also to the first
-step, where the fluctuation generators have chamber measure
+After these finite operations, normalized regional logarithms
+and finite differences give the local coefficients. The estimates below
+apply also to the first step, where the fluctuation generators have chamber measure
 $1/48$.
 
 \subsection{Contour domains and localization}
@@ -13674,17 +13674,16 @@ their locality.
 The listed fermion and Dirac entries give equal first
 functions, their localizations and reconstruction
 substitutions. They give equal second functions and
-localizations in turn, and then equal activities $K(Y)$ and
-$H(Y)$ in \eqref{eq:rgnl-Mayer-activity} and
-\eqref{eq:rgnl-integrated-activity}, and each term of the
-connected series \eqref{eq:rgnl-log-activity}.
+localizations in turn. The regional integrals
+\eqref{eq:rgnl-regional-integral} then agree for every amplitude $u$,
+as do their normalized logarithms and the finite differences
+\eqref{eq:rgnl-log-activity}.
 Agreement of the photon
 entries and agreement of the fermion entries as functions
 on the full operator domain is sufficient: if the two
 composed connections differ outside $Y$, local row
 dependence removes that difference first.
-The same comparison passes to the convergent logarithm
-once its convergence has been established.
+The regional logarithms are well defined by the estimates below.
 
 \subsection{Bounds before fluctuation integration}
 \label{subsec:rgnl-finite-bounds}
@@ -13832,73 +13831,20 @@ contour functionals are linear.
 \subsection{Connected polymers and the logarithm}
 \label{subsec:rgnl-cluster-logarithm}
 
-Two polymers are incompatible when their union is connected
-through faces. In particular a polymer is incompatible with
-itself. For an ordered tuple $(X_1,\ldots,X_n)$ define
-$u^T(X_1)=1$ and
+For this section and the symmetry proof, write
+$\widehat\mu=\widehat\mu_k$ for the normalized product box law in
+\eqref{eq:rg-step-box-normalization}, and write $\mathbb E$ for
+integration against $\dd\mu_I(W)\,\dd\widehat\mu(\zeta)$.
+We use the complete unital even coefficient algebra with its
+submultiplicative norm; all preintegration norms include the supremum
+over the photon box.
+Set
 \[
- u^T(X_1,\ldots,X_n)=\sum_{G\text{ connected}}
-                                      (-1)^{|G|},\quad n\ge2,
+ b_{\mathrm{cl}}=\frac{\kappa-3\kappa_0-2}{c_X}-\log4,\qquad
+ r_{\mathrm{cl}}=1+\exp(b_{\mathrm{cl}}),\qquad
+ \delta_{\mathrm{cl}}=H_{\mathrm{cl}}K_{\mathrm{pol}}
+                                      \exp(\kappa-3\kappa_0-2).
 \]
-where $G$ ranges over spanning subgraphs of the incompatibility
-graph of the tuple. The coefficient is zero when that graph
-is disconnected.
-
-We will use the formal connected-graph identity
-\begin{equation}\label{eq:rgnl-connected-graph-identity}
- \sum_{\{X_i\}\text{ compatible}}\prod_i z_{X_i}
- =\exp\left\{\sum_{n\ge1}\frac1{n!}
-       \sum_{(X_1,\ldots,X_n)}u^T(X_1,\ldots,X_n)
-                                           \prod_i z_{X_i}\right\}
-\end{equation}
-and the tree bound
-\begin{equation}\label{eq:rgnl-tree-domination}
- |u^T(X_1,\ldots,X_n)|
-       \le\#\{\text{spanning trees of the incompatibility graph}\}.
-\end{equation}
-Here the identity is one of formal series in commuting
-variables, before substitution into a normed algebra.
-For its proof, express the left side as an ordered sum with
-factor $1/n!$ and multiply by
-$\prod_{i<j}(1-\mathbf1_{\{X_i,X_j\}\text{ incompatible}})$.
-Expanding this product sums over all graphs. A graph is
-uniquely the union of its connected components. Grouping by
-their vertex sets gives the exponential on the right:
-an ordered list of component sizes $n_1,\ldots,n_r$ has
-$n!/(n_1!\cdots n_r!)$ vertex assignments, and division
-by $r!$ removes the order of its components.
-Only finitely many terms contribute to a fixed degree.
-
-For \eqref{eq:rgnl-tree-domination}, let $\mathbf G$ be
-the incompatibility graph and suppose it is connected.
-For a connected spanning subgraph $G$, root at $1$ and,
-for $i\ne1$, choose as its parent the least labelled
-neighbor at distance $d_G(i)-1$ from the root.
-These edges form a tree $T(G)$ with the same root distances
-as $G$. Given a spanning tree $\tau$, let $R(\tau)$ contain
-its edges, all edges of $\mathbf G$ within one distance
-level, and all edges from $i$ to the preceding level whose
-other endpoint exceeds the parent of $i$ in $\tau$.
-Then
-\[
- T(G)=\tau\quad\Longleftrightarrow\quad
-                                      \tau\subseteq G\subseteq R(\tau).
-\]
-In one direction the distances and least parents force
-every edge of $G$ to belong to $R(\tau)$.
-Conversely, along any edge of $R(\tau)$ the tree distance
-changes by at most one. Thus a graph between $\tau$ and
-$R(\tau)$ has the tree's distances, and the least neighbor
-in the preceding level is its tree parent.
-The connected subgraphs are therefore partitioned into
-these intervals, and their signed sum is
-\[
- \sum_\tau(-1)^{n-1}
-           \sum_{A\subseteq R(\tau)\setminus\tau}(-1)^{|A|}
- =(-1)^{n-1}\#\{\tau:R(\tau)=\tau\}.
-\]
-This proves the tree bound, including the cases
-of a disconnected graph and $n=1$.
 
 \begin{proposition}\label{prop:rgnl-cluster-logarithm}
 Let $V(X)$ be even elements in the old and fluctuation
@@ -13909,259 +13855,179 @@ generators, continuous on $\mathrm{Box}_k$, with
 \]
 Assume that $V(X)$ has fluctuation indices only in $X$ and
 depends on $\zeta$ only through coordinates supported in $X$.
-For any union $Y$ of $M$-cubes put
-\begin{align}
- K(Y)&=\sum_{\substack{\{X_i\}\text{ distinct}\\\bigcup_iX_i=Y}}
-                    \prod_i(\exp V(X_i)-1),\qquad K(\varnothing)=1,
-                                      \label{eq:rgnl-Mayer-activity}\\
- H(Y)&=\int\dd\mu_I(W)\,\dd\widehat\mu(\zeta)\,K(Y).
-                                      \label{eq:rgnl-integrated-activity}
-\end{align}
-For a connected $Y$ define
-\begin{equation}\label{eq:rgnl-log-activity}
- E^\#(Y)=\sum_{n\ge1}\frac1{n!}
-   \sum_{\bigcup_iY_i=Y}u^T(Y_1,\ldots,Y_n)\prod_iH(Y_i).
+For any union $U$ of $M$-cubes define
+\begin{equation}\label{eq:rgnl-regional-integral}
+ Z_U(u,t)=\mathbb E\exp\left(u\sum_{X\subseteq U}t_XV(X)\right),
+ \qquad t_X=\prod_{a\subseteq X}t_a,\qquad Z_\varnothing=1,
 \end{equation}
-The last series converges absolutely in the $w$ norm and
+where $a$ ranges over $M$-cubes. On $|u|\le2$ and
+$|t_a|\le r_{\mathrm{cl}}$, these elements are invertible
+and have holomorphic logarithms $\mathcal L_U(u,t)$ normalized by
+$\mathcal L_U(0,t)=0$.
+For nonempty $Y$ put
+\begin{equation}\label{eq:rgnl-log-activity}
+ E^\#(Y)=\sum_{U\subseteq Y}(-1)^{|Y\setminus U|_M}
+                                      \mathcal L_U(1,\mathbf1).
+\end{equation}
+This coefficient vanishes for disconnected $Y$, and
 \begin{align}
- \int\dd\mu_I(W)\,\dd\widehat\mu(\zeta)
-                         \exp\left\{\sum_XV(X)\right\}
+ \mathbb E\exp\left\{\sum_XV(X)\right\}
        &=\exp\left\{\sum_YE^\#(Y)\right\},
                                       \label{eq:rgnl-log-identity}\\
  \|E^\#(Y)\|_w
-       &\le c_S'H_{\mathrm{cl}}\exp(-a_3d_M(Y)).
+       &\le2\delta_{\mathrm{cl}}|Y|_M
+                                 \exp(-b_{\mathrm{cl}}|Y|_M).
                                       \label{eq:rgnl-log-bound}
 \end{align}
-Here $a_3=\kappa-5\kappa_0-4$ and
-$c_S'=14c_X^2K_{\mathrm{pol}}^2\exp(3\kappa)$.
-The sum of the norms of the terms with $n>N$ in
-\eqref{eq:rgnl-log-activity} is at most $2^{-N}$ times the
-right side of \eqref{eq:rgnl-log-bound}.
 \end{proposition}
 
 \begin{proof}
-Set
+Assign each fluctuation fermion pair to its site's $M$-cube,
+and each independent photon coordinate to one cube meeting its support.
+A coordinate used by $V(X)$ has its entire support in $X$,
+so its assigned cube lies in $X$. Write $\mathbb E_S$ for
+integration of the variables assigned to cubes in $S$.
+These partial integrations commute, are normalized, preserve even
+parity, and are contractive in the coefficient norms, with the
+supremum over the remaining photon coordinates. Indeed each paired
+Berezin moment has magnitude $1$ at positive levels and $48$ at zero,
+compensated by the generator weights $1$ and $\sqrt{48}$,
+respectively. Each truncated photon factor is a probability measure.
+The maps also satisfy
+$\mathbb E_S(AB)=A\mathbb E_SB$ when the even element $A$
+is independent of the variables in $S$.
+
+We first prove a bound valid for any even interactions $v_X$
+with auxiliary support in $X$. Put
 \[
- \begin{gathered}
- a_4=\kappa-3\kappa_0-3,\quad
- a_5=\kappa-3\kappa_0-2,\quad
- a_6=\kappa-5\kappa_0-3,\\
- H_1=7c_XK_{\mathrm{pol}}\exp(3a_5)H_{\mathrm{cl}},\qquad
- z_S=28H_1\exp(\kappa_0)K_{\mathrm{pol}}\exp(3a_6).
- \end{gathered}
+ d=\sup_a\sum_{X\ni a}2^{|X|_M}\|v_X\|\le\tfrac14,\qquad
+ H_U=\sum_{X\subseteq U}v_X,\qquad P_U=\mathbb E_U\exp(H_U).
 \]
-The fixed small-charge choice
+Simultaneous induction on $|U|_M$ proves invertibility and the bounds
 \[
- c_S e^{1/4-5\varepsilon}\le1,\qquad
- c_S=10^5c_X^5K_{\mathrm{pol}}^5\exp(6\kappa)
+ \|P_UP_{U\setminus\{a\}}^{-1}-1\|\le \exp(d)-1,\qquad
+ \|P_U^{-1}\mathbb E_U(O\exp(H_U))\|\le2^{|S|_M}\|O\|,
 \]
-implies
+where $a\in U$ and $O$ is any even insertion with auxiliary
+support in $S\subseteq U$. Its external coefficients are unrestricted.
+The empty case follows from the module identity. For the induction
+step set $\mathcal M_T(B)=P_T^{-1}\mathbb E_T(B\exp(H_T))$
+on smaller regions. Expanding the interactions containing $a$ gives
+\[
+ R_{U,a}-1:=P_UP_{U\setminus\{a\}}^{-1}-1
+ =\sum_{n\ge1}\frac1{n!}
+   \sum_{\substack{X_1,\ldots,X_n\subseteq U\\X_j\ni a}}
+   \mathcal M_{U\setminus\{a\}}
+           \left(\mathbb E_{\{a\}}\prod_jv_{X_j}\right).
+\]
+The insertion is supported in $(\bigcup_jX_j)\setminus\{a\}$.
+Contractivity and the smaller-region bound therefore bound each
+term by $\prod_j(2^{|X_j|_M}\|v_{X_j}\|)$, and the sum by
+$\exp(d)-1$. Thus $R_{U,a}$ and $P_U$ are invertible, with
+\[
+ \|R_{U,a}^{-1}\|\le A_d:=\frac1{2-\exp(d)}.
+\]
+This proves the ratio assertion for every $a\in U$ before using
+any insertion estimate on $U$.
+
+For nonempty $S\subseteq U$, successive deletion of its cubes gives
+$\|P_{U\setminus S}P_U^{-1}\|\le A_d^{|S|_M}$.
+Put $B_S=\sum_{X\subseteq U,\,X\cap S\ne\varnothing}v_X$. Then
+\[
+ P_U^{-1}\mathbb E_U(O\exp(H_U))
+ =P_{U\setminus S}P_U^{-1}
+       \mathcal M_{U\setminus S}\bigl(\mathbb E_S(O\exp(B_S))\bigr).
+\]
+In the exponential series an insertion indexed by $X_1,\ldots,X_n$
+has remaining auxiliary support in $(\bigcup_jX_j)\setminus S$.
+The smaller-region bound and contractivity give
+\[
+ \left\|\mathcal M_{U\setminus S}
+                \bigl(\mathbb E_S(O\exp(B_S))\bigr)\right\|
+ \le\|O\|\exp\left(\sum_{X\cap S\ne\varnothing}
+                          2^{|X\setminus S|_M}\|v_X\|\right)
+ \le\|O\|\exp(d|S|_M).
+\]
+Since $\exp(1/4)<4/3$, one has $A_d\exp(d)\le2$, proving the
+insertion bound. The empty-support case again follows from the
+module identity. The Mercator series also gives
+\[
+ \|\log R_{U,a}\|\le-\log(2-\exp(d))\le2d;
+\]
+the last inequality follows by integrating
+$\exp(x)/(2-\exp(x))\le2$ for $0\le x\le1/4$.
+
+We apply this induction to $v_X=ut_XV(X)$. The geometric
+bounds $|X|_M\le c_X(d_M(X)+1)$ and
+$\sum_{X\ni a}\exp(-\kappa_0d_M(X))\le K_{\mathrm{pol}}$ imply
+\[
+ \sup_a\sum_{X\ni a}(2r_{\mathrm{cl}})^{|X|_M}
+                           \|V(X)\|\le\delta_{\mathrm{cl}}.
+\]
+Indeed $b_{\mathrm{cl}}>0$, $2r_{\mathrm{cl}}\le4\exp(b_{\mathrm{cl}})$,
+and
+\[
+ (2r_{\mathrm{cl}})^{|X|_M}\exp(-a_2d_M(X))
+ \le \exp(\kappa-3\kappa_0-2)\exp(-\kappa_0d_M(X)).
+\]
+The original condition $c_Se^{1/4-5\varepsilon}\le1$ gives
 \begin{equation}\label{eq:rgnl-cluster-smallness}
- H_{\mathrm{cl}}\le1,\qquad
- 4H_{\mathrm{cl}}K_{\mathrm{pol}}c_X\exp(3a_5)\le1,\qquad
-                                      z_S\le\tfrac12.
+ 2\delta_{\mathrm{cl}}
+ \le\frac{72}{10^5c_X^3K_{\mathrm{pol}}^2}
+                       \exp(-5\kappa-3\kappa_0-2)<\tfrac14.
 \end{equation}
-Indeed the second left side is
-$144c_X^3K_{\mathrm{pol}}^3\exp(3a_5)e^{1/4-5\varepsilon}$.
-For the third,
+Thus the induction applies throughout the stated polydisc with
+$d\le|u|\delta_{\mathrm{cl}}$.
+Sum the Mercator logarithms of the ratios along any deletion
+order to define $\mathcal L_U$. They are holomorphic, and
 \[
- 2z_S=14112c_X^3K_{\mathrm{pol}}^4
- \exp(3a_5+3a_6+\kappa_0)e^{1/4-5\varepsilon},
+ \exp(\mathcal L_U)=Z_U,\qquad \mathcal L_U(0,t)=0,\qquad
+ \|\mathcal L_U(u,t)\|_w\le2|u|\delta_{\mathrm{cl}}|U|_M.
 \]
-and $3a_5+3a_6+\kappa_0\le6\kappa$.
+Commutativity gives
+$\partial_u\mathcal L_U=Z_U^{-1}\partial_uZ_U$.
+Together with the value at zero, this proves uniqueness and
+independence of the deletion order, also for coefficients with
+nilpotents. It proves additivity over disconnected components
+of $U$, since their partition functions factor. Moreover
+$Z_U$ equals the full integral in \eqref{eq:rgnl-regional-integral};
+unused variables integrate to one. Hence neither its logarithm
+nor the resulting coefficients depend on the auxiliary assignment
+of photon coordinates.
 
-Even elements commute, so expanding their exponential
-gives $\exp(\sum_XV(X))=\sum_YK(Y)$.
-Moreover $K(Y)$ factors over the connected components
-of $Y$: every polymer in its defining set belongs to
-exactly one component.
-If distinct polymers $X_1,\ldots,X_n$ have connected
-union $Y$, their incompatibility graph is connected.
-Otherwise two nonempty groups would partition their
-union; connectedness of $Y$ would give coincident or
-adjacent cubes in different groups and hence an edge
-between them.
-For each incompatibility-tree edge, choose coincident or
-face-adjacent cubes in the two polymers and points
-where their nets meet these cubes. The two points
-lie in a box of side lengths $M,M,2M$, so they
-can be joined by a segment of length at most
-$\sqrt6M<3M$. Joining near-minimal nets along
-the tree proves
+At indicator markers, $Z_Y(u,\mathbf1_U)=Z_U(u,\mathbf1)$;
+uniqueness gives the same identity for their logarithms.
+Formula \eqref{eq:rgnl-log-activity} is therefore the full finite
+difference of $\mathcal L_Y(1,t)$ between zero and one in every
+coordinate. Integrating its mixed derivative over $[0,1]^Y$,
+and applying Cauchy's formula on circles of radius
+$r_{\mathrm{cl}}-1$ about the integration points, gives
 \[
- d_M(Y)\le\sum_i d_M(X_i)+3(n-1).
+ \|E^\#(Y)\|_w\le2\delta_{\mathrm{cl}}|Y|_M
+                          (r_{\mathrm{cl}}-1)^{-|Y|_M}.
 \]
-Using $\|\exp V-1\|\le2\|V\|$ and $a_2=a_5+\kappa_0$
-therefore bounds the product by
-\[
- \exp(-a_5d_M(Y))
-       \big(2H_{\mathrm{cl}}\exp(3a_5)\big)^n
-                                  \prod_i \exp(-\kappa_0d_M(X_i)).
-\]
-Replace distinct sets by ordered tuples with factor $1/n!$,
-and use the counting bound for subpolymers of $Y$. The result is
-\[
- \|K(Y)\|\le \exp(-a_5d_M(Y))x_Y\exp(x_Y),\qquad
- x_Y=2H_{\mathrm{cl}}K_{\mathrm{pol}}\exp(3a_5)|Y|_M.
-\]
-By \eqref{eq:rgnl-cluster-smallness},
-\[
- \begin{gathered}
- x_Y\le(d_M(Y)+1)/2,\\
- x_Y\le4H_{\mathrm{cl}}K_{\mathrm{pol}}c_X\exp(3a_5)\exp(d_M(Y)/2).
- \end{gathered}
-\]
-Since $4\exp(1/2)\le7$ and $a_5-1=a_4$, we obtain
-\begin{equation}\label{eq:rgnl-Mayer-bound}
- \|K(Y)\|_{(w;\mathsf w_W)}
-                         \le H_1\exp(-a_4d_M(Y))=:\mu(Y).
-\end{equation}
-
-Weighted Berezin integration costs no norm here:
-each paired moment at level zero is
-$\pm48^{|J|/2}$, which is exactly covered by the
-weight $(\sqrt{48})^{|J|}$ of its generators.
-The corresponding moment is $\pm1$ at positive levels.
-The photon measure is a probability measure on its compact
-box. Hence $\|H(Y)\|_w\le\mu(Y)$.
-These integrals produce even elements, since a nonzero
-Berezin moment uses an even number of generators.
-For compatible polymers the fluctuation modes and
-supported photon coordinates are disjoint. The two
-product measures therefore factor, with the external
-old generators left as coefficients. It follows that
-\begin{equation}\label{eq:rgnl-compatible-partition}
- \int\dd\mu_I(W)\,\dd\widehat\mu(\zeta)e^{\sum_XV(X)}
-             =\sum_{\{Y_i\}\text{ compatible}}\prod_iH(Y_i).
-\end{equation}
-
-We now bound the infinite connected series. Let
-\[
- S_n(Y)=\sum_{\bigcup_iY_i=Y}
-                   |u^T(Y_1,\ldots,Y_n)|\prod_i\mu(Y_i).
-\]
-For $n\ge2$, apply \eqref{eq:rgnl-tree-domination}.
-For every contributing tree the union estimate and
-$a_4=a_6+2\kappa_0$ give
-\[
- \prod_i \exp(-a_4d_M(Y_i))
- \le \exp(-a_6d_M(Y))\exp(3a_6(n-1))
-                                  \prod_i \exp(-2\kappa_0d_M(Y_i)).
-\]
-Drop the prescribed union, retaining $Y_i\subseteq Y$,
-and root the tree at $1$. Write $q_j$ for the number
-of children at $j$. A polymer incompatible with $Y'$
-contains one of at most $7|Y'|_M$ cubes consisting of
-its cubes and their face neighbors. Since
-$|Z|_M\le c_X(d_M(Z)+1)\le\kappa_0(d_M(Z)+1)$ and
-$a^q\le q!\exp(a)$, the counting estimate gives
-\begin{align*}
- \sum_{Z\text{ incompatible with }Y'}
-      \exp(-2\kappa_0d_M(Z))|Z|_M^{q}
-            &\le7q!\exp(\kappa_0)K_{\mathrm{pol}}|Y'|_M,\\
- \sum_{Z\subseteq Y}\exp(-2\kappa_0d_M(Z))|Z|_M^q
-            &\le q!\exp(\kappa_0)K_{\mathrm{pol}}|Y|_M.
-\end{align*}
-Summing from leaves to root thus costs at most
-$(7\exp(\kappa_0)K_{\mathrm{pol}})^n|Y|_M\prod_jq_j!$.
-For prescribed children counts, Cayley's degree formula
-\cite[Proposition~4]{PostnikovLin2019}
-counts
-$(n-2)!/((q_1-1)!\prod_{j\ge2}q_j!)$ trees, where
-$q_1\ge1$ and $\sum_jq_j=n-1$.
-Consequently
-\[
- \sum_{\text{trees}}\prod_jq_j!
-   =(n-2)!\sum_{(q_j)}q_1
-   \le(n-1)!\binom{2n-2}{n-1}
-   \le(n-1)!4^{n-1}.
-\]
-Collecting the factors, also for $n=1$, gives
-\begin{equation}\label{eq:rgnl-connected-n-bound}
- \frac{S_n(Y)}{n!}
- \le7H_1\exp(\kappa_0)K_{\mathrm{pol}}|Y|_M
-                                      \exp(-a_6d_M(Y))z_S^{n-1}.
-\end{equation}
-Since $z_S\le1/2$, sum the geometric series and use
-$|Y|_M\le c_X\exp(d_M(Y))$ and $a_6-1=a_3$.
-The bound becomes
-\[
- 98c_X^2K_{\mathrm{pol}}^2\exp(\kappa_0+3a_5)
-                                 H_{\mathrm{cl}}\exp(-a_3d_M(Y))
- \le c_S'H_{\mathrm{cl}}\exp(-a_3d_M(Y)),
-\]
-because $\kappa_0+3a_5=3\kappa-8\kappa_0-6$.
-Summing only $n>N$ gives the additional factor $2^{-N}$.
-This proves absolute convergence and the claimed estimates.
-
-It remains to justify the logarithm identity after
-substitution in \eqref{eq:rgnl-connected-graph-identity}.
-The even subalgebra with the coefficient norm is a
-commutative Banach algebra, and the polymer set is finite.
-The total norm sum of the connected terms is finite by
-\eqref{eq:rgnl-connected-n-bound}.
-In the exponential of their sum, the norm sum of all
-products of connected terms is bounded by the exponential
-of that total norm sum. Regrouping is therefore permitted.
-Regroup by monomials in the formal variables $z_Y$.
-The coefficients are those of
-\eqref{eq:rgnl-connected-graph-identity}, namely one
-for compatible sets and zero for all other monomials.
-Its substitution $z_Y=H(Y)$ gives
-\eqref{eq:rgnl-compatible-partition}. Grouping the
-connected terms by their union gives
-$\sum_YE^\#(Y)$ and proves \eqref{eq:rgnl-log-identity}.
+One may first use smaller circles and then take their limit.
+If $Y$ is disconnected, additivity makes the subset sum zero:
+each component term cancels upon summing over another component.
+Finally finite subset inversion gives
+$\sum_{Y\subseteq U}E^\#(Y)=\mathcal L_U(1,\mathbf1)$,
+which proves the exponential identity. The same identity for
+$uV$, normalized to zero at $u=0$, uniquely determines every
+local coefficient by finite subset inversion.
 \end{proof}
-
-There are also polynomial approximants to this logarithm
-which converge uniformly for all families satisfying the
-preceding bound, at fixed side. Replace $\exp V-1$ by
-$p_N(V)=\sum_{1\le j\le N}V^j/j!$ in $K,H$, and stop
-the connected series at $n=N$; denote the result $E_N^\#$.
-It is a polynomial in integrals of products of $V(X_i)$,
-$X_i\subseteq Y$, and has the same bound
-\eqref{eq:rgnl-log-bound}. To verify uniform convergence,
-write $D=|\mathcal P_k|$. Since $\|V(X)\|\le1$,
-\[
- \|\exp V(X)-1-p_N(V(X))\|
-                                  \le\frac{\exp(1)}{(N+1)!}.
-\]
-Telescoping each finite product in $K$ gives
-\[
- \|H(Y)-H_N(Y)\|\le
-                             \frac{4^DD\exp(1)}{(N+1)!}.
-\]
-Thus this difference is at most $\delta_N\mu(Y)$, where
-\[
- \delta_N=\frac{4^DD\exp(1)}
-                      {(N+1)!\min_{Y\in\mathcal P_k}\mu(Y)}
-                                                   \longrightarrow0.
-\]
-Replacing the $n$ factors in a connected term costs at
-most $n\delta_N\prod_i\mu(Y_i)$. Summing
-\eqref{eq:rgnl-connected-n-bound} with this factor, using
-$\sum_{n\ge1}n2^{-(n-1)}=4$, and adding the tail yields
-\[
- \sup_Y\|E^\#(Y)-E_N^\#(Y)\|
- \le28\delta_NH_1\exp(\kappa_0)K_{\mathrm{pol}}(\ell/M)^3
-                                  +2^{-N}c_S'H_{\mathrm{cl}}.
-\]
-This convergence is uniform in the connections and the
-allowed data. The displayed error depends on the side;
-no volume-independent approximation is claimed.
 
 \subsection{Symmetries of the local logarithm}
 \label{subsec:rgnl-symmetries}
 
 Apply Proposition~\ref{prop:rgnl-cluster-logarithm} with
 $V=F$, $w=h/4$ and denote its output by
-$E_k^\#(m,\mathscr E)$. Each connected term assigned to
-$Y$ is a product of integrated activities on subpolymers
-of $Y$. Thus ordinary and admissible pair support, local
-connection dependence, and dependence only on $m'$ and
-$\mathscr E^r(X)$, $X\subseteq Y$, pass to the sum.
-The uniform bound and the polynomial approximants prove
-analyticity of its coefficients in $(A,\mathscr C)$.
+$E_k^\#(m,\mathscr E)$. Its coefficient on $Y$ uses only
+regional integrals over subsets of $Y$. Thus ordinary and
+admissible pair support, local connection dependence, and
+dependence only on $m'$ and $\mathscr E^r(X)$, $X\subseteq Y$,
+pass to it. Bounded integration, uniformly invertible ratios
+and their uniformly convergent Mercator series prove analyticity
+of the coefficients in $(A,\mathscr C)$.
 
 Let $\mathbb G_k^L$ denote the chamber symmetry group with
 translations in $LM\Z^3$, so that it preserves every
@@ -14206,7 +14072,12 @@ Real-coefficient finite differences
 \eqref{eq:rgnl-finite-difference} then commute with these
 actions. A lattice symmetry also permutes the parameter
 cubes and localization summands. It preserves face
-connectedness, incidence relations and the Ursell coefficient.
+connectedness and permutes subsets of each region.
+The actions also commute with normalized regional logarithms:
+transform their amplitude $u$ by conjugation for the antilinear
+action, and use the defining derivative and value at $u=0$.
+They then commute with the real finite subset differences
+\eqref{eq:rgnl-log-activity}.
 
 The contour functional commutes with the linear actions.
 For the antilinear action, parametrize $t=r\exp(i\theta)$:
@@ -14253,7 +14124,8 @@ commutes with the action by
 The box measure is invariant under $\zeta\mapsto\tilde g\zeta$.
 Apply these identities to $G_1,G_2,G_3$, the first
 localization and substitution, then to the second
-localization, $K,H$, and the convergent connected sum.
+localization, regional integrals, normalized logarithms and finite
+subset differences.
 They prove \eqref{eq:rgnl-lattice-symmetry}.
 
 For the gauge identity set $\Lambda=\lambda+\lambda'$.
@@ -14416,21 +14288,15 @@ generators: each monomial integral is the Pfaffian of
 its pair expectations, with old generators as coefficients.
 
 Apply this equality to the exponential of
-$\sum_{X\subseteq U}\mathcal V(X)$ and use
+$u\sum_{X\subseteq U}\mathcal V(X)$ for $|u|\le2$ and use
 $\zeta\mapsto-\zeta$. By
-\eqref{eq:rgnl-subvolume-substitution}, the integrated
-subvolume expression
-$\Xi_U=\int\dd\mu_I(W)\dd\widehat\mu(\zeta)
-\exp(\sum_{Y\subseteq U}F(Y))$
-has charge-conjugation symmetry.
-But $\Xi_U=\sum_{Z\subseteq U}H(Z)$, by the finite
-Mayer expansion. Inverting this finite subset sum gives
-\[
- H(Z)=\sum_{U\subseteq Z}(-1)^{|Z\setminus U|_M}\Xi_U.
-\]
-Thus each $H(Z)$ has the symmetry, and the real
-coefficients and absolute convergence of the connected
-series prove \eqref{eq:rgnl-charge-symmetry}.
+\eqref{eq:rgnl-subvolume-substitution}, the regional integral
+$Z_U(u,\mathbf1)=\mathbb E\exp(u\sum_{Y\subseteq U}F(Y))$
+has charge-conjugation symmetry for every $u$.
+Uniqueness of its logarithm normalized at $u=0$ gives the
+same symmetry for $\mathcal L_U(u,\mathbf1)$.
+The finite subset formula \eqref{eq:rgnl-log-activity}
+then proves \eqref{eq:rgnl-charge-symmetry}.
 
 Finally take a constant $\lambda$ and $\lambda'=0$
 in \eqref{eq:rgnl-gauge-symmetry}. A monomial with
@@ -14491,25 +14357,46 @@ The scaling identity gives
 \]
 since $h_{k+1,1}=L^{-1/8}h_{k,1}$,
 $h_{k+1,2}=L^{-1/8+\varepsilon/2}h_{k,2}$ and $L\ge4$.
-The polymer sum in \eqref{eq:rgnl-scaled-correction}
-uses $Ld_M(Y)\le d_M(X)$ and $X\subseteq LY$.
-Splitting $a_3=(a_3-\kappa_0)+\kappa_0$ therefore yields
-\begin{align*}
- \sum_{\bar X^L=LY}\exp(-a_3d_M(X))
-  &\le \exp(-L(a_3-\kappa_0)d_M(Y))
-                         \sum_{X\subseteq LY}\exp(-\kappa_0d_M(X))\\
-  &\le c_XK_{\mathrm{pol}}L^3
-                  \exp(-[L(\kappa-6\kappa_0-4)-1]d_M(Y))\\
-  &\le c_XK_{\mathrm{pol}}L^3\exp(-\kappa d_M(Y)).
-\end{align*}
-Together with \eqref{eq:rgnl-log-bound} this gives
+The lower bound $\kappa\ge7\kappa_0+7$ implies
+$b_{\mathrm{cl}}>2\log72$ and
+$b_{\mathrm{cl}}\ge\kappa/(2c_X)$.
+For the latter, $c_Xb_{\mathrm{cl}}-\kappa/2$ is increasing
+in $\kappa$, and at its minimum equals
+$c_X\log(\sqrt{72}/4)+3/2>0$.
+There are at most $36^{n-1}$ connected $n$-cube sets containing
+a specified cube: choose a spanning tree deterministically and
+traverse its edges twice, obtaining a walk of length $2(n-1)$
+in a graph of degree at most six. The walk determines its visited set.
+Consequently
 \[
- \|E_k^*\|_{k+1}^x
-  \le c_XK_{\mathrm{pol}}L^3c_S'H_{\mathrm{cl}}
-  =504c_X^5K_{\mathrm{pol}}^5\exp(3\kappa)L^3e^{1/4-5\varepsilon}
-  \le e^{1/4-6\varepsilon},
+ \sum_{X\ni a}\exp(-(b_{\mathrm{cl}}/2)|X|_M)
+ \le\frac{\exp(-b_{\mathrm{cl}}/2)}
+                 {1-36\exp(-b_{\mathrm{cl}}/2)}<1.
 \]
-using $c_SL^3e^\varepsilon\le1$.
+The polymer sum in \eqref{eq:rgnl-scaled-correction}
+uses $Ld_M(Y)\le d_M(X)\le|X|_M-1$ and $X\subseteq LY$.
+Splitting the exponential in \eqref{eq:rgnl-log-bound} into
+two equal factors therefore gives
+\begin{align*}
+ \|E_k^*(Y)\|_{h_{k+1}}
+ &\le2\delta_{\mathrm{cl}}\exp(-(b_{\mathrm{cl}}L/2)d_M(Y))
+                    \sum_{X\subseteq LY}|X|_M
+                                    \exp(-(b_{\mathrm{cl}}/2)|X|_M)\\
+ &\le2\delta_{\mathrm{cl}}L^3|Y|_M
+                                    \exp(-(b_{\mathrm{cl}}L/2)d_M(Y)).
+\end{align*}
+Since $L>8c_X$ and $\kappa>1$, one has
+$b_{\mathrm{cl}}L/2-1\ge\kappa$.
+Using $|Y|_M\le c_X\exp(d_M(Y))$ yields
+\begin{align*}
+ \|E_k^*\|_{k+1}^x
+ &\le2c_X\delta_{\mathrm{cl}}L^3\\
+ &=72c_X^3K_{\mathrm{pol}}^3\exp(\kappa-3\kappa_0-2)
+                                    L^3e^{1/4-5\varepsilon}
+ \le e^{1/4-6\varepsilon}.
+\end{align*}
+The last step uses the unchanged condition $c_SL^3e^\varepsilon\le1$;
+the coefficient before $L^3e^{1/4-5\varepsilon}$ is less than $c_S$.
 
 All generators of a summand lie over $X$ or at a pair
 admissible for $X$. Scaling maps the ordinary sites
@@ -14539,21 +14426,17 @@ $(m_a+t m_b,\mathscr E_a+t\mathscr E_b)$ in the closed
 ball and denote their parameter set by $T$.
 It is closed and convex. The finite activity $F_t(X)$
 is affine in $t$ by Proposition~\ref{prop:rgnl-finite-bounds}.
-The polynomial approximants to $E_k^\#$ are therefore
-polynomials in $t$. Reblock them by
-\eqref{eq:rgnl-scaled-correction}; the resulting polynomials
-$f_N(t)$ converge uniformly on $T$ in the full activity
-norm, since both finite polymer sets are fixed and the
-error bound of the previous subsection is uniform.
-Their values have bounded full norm.
-If $T$ has more than one point, it contains infinitely
-many points. The coefficients of each polynomial are
-finite numerical linear combinations of its values at
-distinct points of $T$, by polynomial interpolation.
-Hence these coefficients have finite full norm, and the
-uniform limit is norm continuous on $T$.
-If $T$ is empty or a singleton there is no continuity
-or interior analyticity assertion to check.
+Use the even coefficient algebra with the supremum over the
+connection domains and, before integration, the photon box.
+The exponentials, bounded partial integrations, inverses with a
+uniform margin, and Mercator series in the construction of
+$\mathcal L_U$ are norm continuous on $T$ and norm analytic in its
+interior. Finite subset differences and the reblocking sum preserve
+these properties. At fixed volume both polymer sets are finite,
+so their weighted coefficient norms control the full activity norm.
+Thus $f(t)=E_k^*(m_a+t m_b,\mathscr E_a+t\mathscr E_b)$ is norm
+continuous on $T$. Its coefficientwise analyticity gives the following
+norm-convergent Taylor expansion.
 
 For a closed disk $|t-t_0|\le r$ in $T$, take its
 coefficientwise Cauchy integrals
@@ -14596,7 +14479,7 @@ Every fermion operator uses the sum of its first
 connection and $\mathscr C$; photon operations and
 measures do not use $\mathscr C$.
 At $\mathscr C=0$ the two constructions therefore have
-identical finite expressions, connected series and
+identical regional integrals, normalized logarithms and
 scaled corrections. Analyticity without a slot is
 understood in the first connection alone.
 \end{proof}
@@ -16138,43 +16021,23 @@ one kind. Consequently
                        \iota_{\widetilde U}F_1(U_1)=F_2(U_2).
 \end{equation}
 
-We now pass to the local connected logarithm.
-Its finite Mayer activity is
+We now pass to the local logarithm. For every cube union
+$\widetilde V\subseteq\widetilde X$ and $|u|\le2$, compare
 \[
- K_i(X_i)=\sum_{\{\widetilde X_a\}:\,\bigcup_a\widetilde X_a=\widetilde X}
-                \prod_a\big(\exp(F_i(\operatorname{pr}_i
-                                                    \widetilde X_a))-1\big),
+ Z_{V_i}^{(i)}(u,\mathbf1)
+  =\int\dd\mu_I(W)\,\dd\widehat\mu_k(\zeta)
+                  \exp\left(u\sum_{U_i\subseteq V_i}F_i(U_i)\right),
+ \qquad V_i=\operatorname{pr}_i\widetilde V.
 \]
-where the $\widetilde X_a$ are distinct connected
-subpolymers of $\widetilde X$.
-The products are even. Their index sets and factors
-are the same on both tori by
-\eqref{eq:rgcov-finite-F}; coordinate locality allows
-their evaluation with common coordinates on
-$\widetilde X$.
-For the integrated activity $H_i(X_i)$,
-\eqref{eq:rgcov-W-integration} identifies the Wick
-integrals. The other photon coordinates integrate
-to $1$, leaving the same product of restricted normal
-laws over the coordinates supported in
-$\widetilde X$. Hence $\iota_{\widetilde X}H_1(X_1)=H_2(X_2)$.
-
-The logarithm has the expansion
-\[
- E_k^{\#,(i)}(X_i)=
-   \sum_{n\ge1}\frac1{n!}
-    \sum_{\bigcup_{a=1}^n\widetilde X_a=\widetilde X}
-       u^T(\operatorname{pr}_i\widetilde X_1,\ldots,
-                    \operatorname{pr}_i\widetilde X_n)
-                      \prod_{a=1}^n H_i(\operatorname{pr}_i\widetilde X_a).
-\]
-Projection preserves incompatibility inside this lift,
-so the graph determining $u^T$ is the same.
-Every summand agrees under the common algebra map.
-Both series converge absolutely in the weighted norm
-by Proposition~\ref{prop:rgnl-cluster-logarithm}.
-The map $\iota_{\widetilde X}$ preserves that norm,
-so equality passes to their sums:
+The factors agree by \eqref{eq:rgcov-finite-F}; coordinate locality
+allows their evaluation with common coordinates on $\widetilde V$.
+Equation \eqref{eq:rgcov-W-integration} identifies the Wick integrals.
+Unused photon coordinates integrate to one, leaving the same
+product of restricted normal laws. Thus the regional integrals
+agree under $\iota_{\widetilde X}$ for every $u$.
+Their logarithms normalized to zero at $u=0$ agree as well,
+by uniqueness. Applying the same finite subset difference on
+$\widetilde X$ to both logarithms proves
 \begin{equation}\label{eq:rgcov-logarithm-agreement}
        \iota_{\widetilde X}E_k^{\#,(1)}(X_1;A_1,\mathscr C_1)
                       =E_k^{\#,(2)}(X_2;A_2,\mathscr C_2).
@@ -25801,10 +25664,6 @@ MIT course notes, \S22.3, Theorem~22.14.
 \bibitem{Hatcher2002} A. Hatcher, \emph{Algebraic Topology},
 Cambridge University Press, 2002.
 \url{https://math.uchicago.edu/~farb/algtop2023/Hatcher.pdf}.
-\bibitem{PostnikovLin2019} A. Postnikov, \emph{Algebraic Combinatorics},
-MIT 18.212, Lecture 23, notes by A. Lin, April 5, 2019,
-Proposition 4.
-\url{https://ocw.mit.edu/courses/18-212-algebraic-combinatorics-spring-2019/f6113618a3e085ba86b799f65934886d_MIT18_212S19_lec23.pdf}.
 \bibitem{BrightMetric2023} P. Bright, \emph{Introduction to Metric Spaces},
 MIT 18.S190, Lecture 5, January 24, 2023, Theorem 8.
 \url{https://ocw.mit.edu/courses/18-s190-introduction-to-metric-spaces-january-iap-2023/mit18_s190iap23_lec5.pdf}.
