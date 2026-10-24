@@ -3874,9 +3874,9 @@ the coordinate bounds are preserved by reflection.
 A fermion recursion removes fields from a plane but leaves its
 photon exponent. An imaginary shift of links in the next plane
 removes that exponent together with the outgoing temporal one.
-The all-flux measure is essential for this shift: summation over
-exact integer fluxes unfolds the compact link intervals to
-real lines on which the contour can move.
+The all-flux configuration measure is invariant under real link
+translations. Analytic continuation of this invariance gives the
+required imaginary shift.
 
 Let $u$ be a real cochain supported on finitely many links $S$
 of one coordinate plane, and let $P\in\mathcal P$. Choose a
@@ -3907,52 +3907,54 @@ we have
        Z_T[\Phi(F-idu)\varphi_{du}(F)V_uP^{(u)}].
 \end{equation}
 The norm here is the lattice norm, equal to the torus norm
-because its support embeds. We supply the contour justification.
-For each $b$ choose its electric plaquette leaving the plane
-in the normal direction. Its only side in $S$ is $b$, with
-coefficient $\pm1$. Consequently $d$ is injective on cochains
-supported in $S$, and the action
-$z\mapsto z+dk$, $k\in\Z^S$, on closed integer fluxes is free.
-Choose orbit representatives $z_0$. The compact $A_S$ intervals
-and the sum over $k$ become the integral over $\R^S$, since
-$(A,z_0+dk)$ represents the same configuration as
-$(A+\frac{2\pi}{q}k,z_0)$.
+because its support embeds. Periodize $u$ on the torus and
+choose a Borel real local lift $\widehat A$ on $B$. For $s\in\C$ put
+\[
+ \begin{split}
+ J(s):={}&\sum_{dz=0}\int_{[0,r_q)^{3V}}
+             e^{-\langle F+sdu,F+sdu\rangle/2}\\
+ &\qquad{}\times\int_T e^{-S_T(A+su)}
+                 \Phi(F+sdu)P(\widehat A+su)\,\dd A .
+ \end{split}
+\]
+The pairing in the exponent is complex bilinear. Two local lifts
+differ by $r_qd\lambda$ with $\lambda$ integer valued. The
+gauge-invariant exponential expansion of $P$ is invariant under
+this difference also after adding $su$, so $J$ is independent
+of the lift.
 
-For fixed $z_0$ and the other real links, choose an integer
-one-cochain $k'$ with $dk'=z_0$ in the local box. Then
-$A+\frac{2\pi}{q}k'$ is a local lift affine in the complex
-variables $\zeta=A_S$.
-The Berezin coefficients of $e^{-S_T(A)}$ are polynomials
-in the link phases, so the full integrand extends to an
-entire function $f(\zeta)$. On the strip
-$|\Im\zeta_b|\le\|u\|_\infty$ the selected plaquettes give
-\begin{equation}\label{eq:diag-contour-strip}
- |f(\zeta)|\le C
-          \prod_{b\in S}e^{-(\Re\zeta_b-a_b)^2/2}.
-\end{equation}
-Indeed each of their real curvatures is $\pm\Re\zeta_b+a'_b$,
-all imaginary curvatures are bounded in this finite strip,
-the factor $\Phi$ is bounded there, and each remaining
-exponential phase is bounded there. The constant can be
-chosen independent of the remaining real links and the
-orbit representative; only the real Gaussian centers vary.
+For each real configuration the integrand is entire in $s$:
+the Grassmann expansion of the action is finite, with coefficients
+polynomial in link phases. On $|s|\le R$ its Maxwell factor obeys
+\[
+ \left|e^{-\langle F+sdu,F+sdu\rangle/2}\right|
+       \le e^{3R^2\|du\|^2/2}e^{-\|F\|^2/4}.
+\]
+The real exponents in $P$ and the link phases give bounds independent
+of the real links and lift, and $\Phi$ is bounded by its tube
+hypothesis. Thus every coefficient is bounded by
+$C_R e^{-\|F\|^2/4}$, with $C_R$ depending on the fixed data.
+Dropping $dz=0$, its sum and integral are at most
+$C_R(r_qC_q(1/4))^{3V}$ by \eqref{eq:reg-gaussian-sum}.
+Dominated convergence, Fubini and Morera's theorem show that $J$
+is entire.
 
-Move one variable at a time along the rectangle with real
-endpoints $\pm R$ and imaginary displacement $-iu_b$. The
-vertical sides tend to zero by \eqref{eq:diag-contour-strip}.
-Fubini then gives $\int f(\xi)\,\dd\xi=
-\int f(\xi-iu)\,\dd\xi$. At the shifted arguments the
-Maxwell exponent, using the complex-bilinear cochain pairing, becomes
+For real $s$, the substitution $A'=A+su$ leaves the unshifted
+integrand on the translated box $[0,r_q)^{3V}+su$.
+Reducing its links modulo $r_q$ changes $z$ by an exact integer
+cochain and preserves curvature, link phases and the local
+observable. It also preserves Lebesgue and counting measures.
+The fundamental-domain rule \eqref{eq:reg-configuration-integral}
+therefore gives $J(s)=J(0)=Z_T[\Phi P]$.
+The identity theorem extends this equality to all $s\in\C$.
+At $s=-i$,
 \[
  -\tfrac12\langle F-idu,F-idu\rangle
        =-\tfrac12\|F\|^2+i\langle du,F\rangle+\tfrac12\|du\|^2.
 \]
-The change in the fermion action is the polynomial $V_u$,
-and the observable becomes $P^{(u)}$. Both the initial
-integrand and the resulting real integrand are absolutely
-integrable by their local bounds. Hence we may sum the
-identities over $z_0$ and integrate the remaining links,
-which proves \eqref{eq:diag-contour-identity}.
+Together with $e^{-S_T(A-iu)}=e^{-S_T(A)}V_u$ and
+$P(\widehat A-iu)=P^{(u)}(\widehat A)$, this proves
+\eqref{eq:diag-contour-identity}.
 
 We now eliminate the lowest plane $j$ read by $P$. This means
 that its fields have photon projection height at least $j$
