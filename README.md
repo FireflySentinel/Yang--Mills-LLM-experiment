@@ -1,6 +1,10 @@
 **Disclaimer** *This repository contains work-in-progress, written largely by LLM. Its content has not been satisfactorily vetted. All claims should be understood as tentative, pending verification. We take no mathematical credit for any results proven in this repository.* 
 
-We are attempting to induce LLMs to develop, push, and extend Balaban's program to construct Yang--Mills_4 (YM4). Following Dimock and others, we are beginning with QED3 and YM3, in which the ultraviolet singularities are less severe. This repository contains a manuscript which, if correct, contains a full construction of quantum electrodynamics in three dimensions (QED3), in infinite volume. It includes a proof of the Osterwalder--Schrader axioms for the field strength tensor. While we have not verified the contents of the manuscript, we believe it is essentially correct and have done our best to reach a reasonable state of confidence. The manuscript is LLM approved, but LLMs are fallible. A few parts have been checked by hand. The manuscript has been divided into a number of submanuscripts, each of which is intended to be a digestible unit. As time goes on, we hope to associate to each submanuscript a human-written equivalent. The example RPM1 is a hybrid, half-written by one of us [E] and completed by Astra.
+## This project ##
+
+We are attempting to induce LLMs to develop, push, and extend Balaban's program to construct Yang--Mills_4 (YM4) and other quantum gauge theories. Following Dimock and others, we are beginning with superrenormalizable theories in three spacetime dimensions, in which the ultraviolet singularities are less severe. 
+
+This repository contains a manuscript which, if correct, contains a full construction of quantum electrodynamics in three dimensions (QED3), in infinite volume. It includes a proof of the Osterwalder--Schrader axioms for the field strength tensor. While we have not verified the contents of the manuscript, we believe it is essentially correct and have done our best to reach a reasonable state of confidence. The manuscript is LLM approved, but LLMs are fallible. A few parts have been checked by hand. The manuscript has been divided into a number of submanuscripts, each of which is intended to be a digestible unit. As time goes on, we hope to associate to each submanuscript a human-written equivalent. The example RPM1 is a hybrid, half-written by one of us [E] and completed by Astra.
 
 For Yang--Mills in three-dimensions (YM3), we have a manuscript which, if correct, contains a verification of the Osterwalder--Schrader axioms for $\mathrm{tr}[F^2]$. We believe this manuscript is essentially correct also, but with less confidence than for QED3. We are also working on processing a sequel which handles $\mathrm{tr}[F_{jk}F_{\ell m}]$. Re. YM4, see LA's comment below. Initially, we will make less of an effort to simplify the YM3 manuscript than the QED3 manuscript. Attempts at digestion should begin with QED3 or an even simpler model (such as $\phi^4_2$ or $\phi^4_3$). For this reason, if the YM3 manuscript is mathematically correct and using the approach developed in the QED3 manuscript, we will consider that a win (for now!). The same goes for any progress we see on YM4.
 
@@ -11,7 +15,9 @@ The manuscript drafts are the result of cutting material from literally thousand
 [LA: At the moment we do (appear to) have a YM4 (i.e. $`\mathbb{R}^4`$, not just in finite volume) existence argument / slop, but it is extremely long and basically not understandable as is. Thus in the meanwhile it is being written much more methodically (thus quite slowly!) and our intention with e.g. QED3 and then YM3 (both also $`\mathbb{R}^3`$) is to show some of the coolest YM4 arguments (e.g. winning O(4)-invariance via an [RP trick](RP%20O%28d%29%20trick%20%28RP1%29/README.md)) in a much simpler, and shorter to write, setting.
 I take blame for the immodesty of the previous sentence! However we have been made aware of emails going around from groups now working on the exact same thing, making sudden progress off of the arguments above, so I wanted to be clear we are not stuck! The goal is understanding and rigor. Please, we need to not incentivize rushing out 10,000-page slop, which I think would be especially useless here!]
 
-Some other similar projects: 
+## Guide to repository contents ##
 
-(1) https://github.com/marikgoldstein/scalar-qed
-(2) https://github.com/pmaronow/3d-ym-torus
+## Other similar projects ## 
+
+1) https://github.com/marikgoldstein/scalar-qed
+2) https://github.com/pmaronow/3d-ym-torus
