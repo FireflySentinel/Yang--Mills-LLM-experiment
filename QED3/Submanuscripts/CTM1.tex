@@ -1,0 +1,498 @@
+% Document CTM1. Canonical source; see codenames.json.
+\documentclass[11pt,letterpaper,reqno]{amsart}
+% BEGIN INLINE manuscript-style
+\makeatletter
+\NeedsTeXFormat{LaTeX2e}[2020/10/01]
+% Use with \documentclass[11pt,letterpaper,reqno]{amsart}.
+% This file controls presentation only. It supplies no mathematical content.
+
+\RequirePackage[T1]{fontenc}
+\RequirePackage{lmodern}
+\RequirePackage{microtype}
+\RequirePackage[letterpaper,margin=1in,headheight=15pt]{geometry}
+\RequirePackage{amsmath,amsthm,amssymb,mathtools}
+\RequirePackage{enumitem}
+\RequirePackage{perpage}
+\RequirePackage{xcolor}
+\definecolor{manuscriptred}{rgb}{0.6,0.1,0.1}
+\definecolor{manuscriptblue}{rgb}{0.1,0.3,0.5}
+\definecolor{manuscriptmagenta}{HTML}{60445C}
+\RequirePackage[breaklinks=true,colorlinks=true,
+  linkcolor=manuscriptred,citecolor=manuscriptblue,urlcolor=manuscriptmagenta]{hyperref}
+\RequirePackage{cleveref}
+\hypersetup{pdfauthor={}}
+
+% Retain the AMS paragraph, title, heading and running-head conventions.
+% Equations retain one global Arabic sequence, as in the reference.
+\setcounter{tocdepth}{1}
+\renewcommand{\thefigure}{\Roman{figure}}
+\renewcommand{\thetable}{\Roman{table}}
+\MakePerPage{footnote}
+\renewcommand{\thefootnote}{%
+  \ifnum\value{footnote}>9\arabic{footnote}\else\fnsymbol{footnote}\fi}
+
+% Upright statements. Main results are A, B, C; supporting statements
+% share a section-local sequence. These end marks indicate typography,
+% never proof completeness, validation, or a deferred-proof status.
+\theoremstyle{definition}
+\newtheorem{ms@theorem}{Theorem}
+\renewcommand{\thems@theorem}{\Alph{ms@theorem}}
+\newtheorem*{ms@theoremstar}{Theorem}
+\newtheorem{ms@proposition}{Proposition}[section]
+\newtheorem{ms@lemma}[ms@proposition]{Lemma}
+\newtheorem{ms@definition}[ms@proposition]{Definition}
+\newtheorem{ms@corollary}[ms@proposition]{Corollary}
+\newtheorem*{ms@corollarystar}{Corollary}
+
+\newcommand{\ms@majorstart}{%
+  \pushQED{\qed}\renewcommand{\qedsymbol}{$\blacksquare\square$}}
+\newcommand{\ms@minorstart}{%
+  \pushQED{\qed}\renewcommand{\qedsymbol}{$\blacksquare$}}
+\newenvironment{theorem}[1][]{\ms@majorstart\ms@theorem[#1]}
+  {\popQED\endms@theorem}
+\newenvironment{theorem*}[1][]{\ms@majorstart\ms@theoremstar[#1]}
+  {\popQED\endms@theoremstar}
+\newenvironment{proposition}[1][]{\ms@minorstart\ms@proposition[#1]}
+  {\popQED\endms@proposition}
+\newenvironment{lemma}[1][]{\ms@minorstart\ms@lemma[#1]}
+  {\popQED\endms@lemma}
+\newenvironment{definition}[1][]{\ms@minorstart\ms@definition[#1]}
+  {\popQED\endms@definition}
+\newenvironment{corollary}[1][]{\ms@majorstart\ms@corollary[#1]}
+  {\popQED\endms@corollary}
+\newenvironment{corollary*}[1][]{\ms@majorstart\ms@corollarystar[#1]}
+  {\popQED\endms@corollarystar}
+% The source's lemma/proposition variants are deliberately not carried over:
+% choose one marker for each statement type rather than encode proof status.
+
+\theoremstyle{remark}
+\newtheorem{remark}[ms@proposition]{Remark}
+\newtheorem*{remark*}{Remark}
+% The ordinary amsthm proof environment retains its open square.
+
+\crefname{ms@theorem}{theorem}{theorems}
+\Crefname{ms@theorem}{Theorem}{Theorems}
+\crefname{ms@proposition}{proposition}{propositions}
+\Crefname{ms@proposition}{Proposition}{Propositions}
+\crefname{ms@lemma}{lemma}{lemmas}
+\Crefname{ms@lemma}{Lemma}{Lemmas}
+\crefname{ms@definition}{definition}{definitions}
+\Crefname{ms@definition}{Definition}{Definitions}
+\crefname{ms@corollary}{corollary}{corollaries}
+\Crefname{ms@corollary}{Corollary}{Corollaries}
+\crefname{remark}{remark}{remarks}
+\Crefname{remark}{Remark}{Remarks}
+
+% Bibliography configuration for this manuscript.
+\makeatother
+% END INLINE manuscript-style
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\B}{\mathbb B}
+\DeclareMathOperator{\supp}{supp}
+\newcommand{\dd}{\,\mathrm d}
+\title{Invariance at coinciding points}
+\date{}
+\hypersetup{pdftitle={Invariance at coinciding points},pdfauthor={}}
+\begin{document}
+\begin{abstract}
+A bounded multilinear form on vector-valued \(L^2(\R^3)\) vanishes
+if it vanishes on entries with disjoint planar supports and whenever
+one entry is a compactly supported gradient. We prove this statement
+and apply it to moments of closed, Gaussian-dominated two-form fields.
+It extends rotation identities from separated planar supports to all
+\(L^2\) tests and hence to the law of the field.
+\end{abstract}
+\maketitle
+\tableofcontents
+
+\section{Introduction}\label{sec:introduction}
+Write $x=(y,z)\in\R^2\times\R$, and, for an open set $U\subset\R^2$, put
+\[
+ \mathcal L_U=\{f\in L^2(\R^3;\C^3):
+       f=0\text{ almost everywhere outside }U\times\R\}.
+\]
+All norms on these spaces are $L^2$ norms. We say that a field lies over
+$K\subset\R^2$ when it vanishes almost everywhere outside $K\times\R$.
+Separation therefore concerns the projected planar supports; the
+transverse coordinate $z$ remains smeared.
+
+\begin{theorem}[Absence of contact terms]\label{thm:contact}
+Let $U\subset\R^2$ be open and $N\ge1$. Suppose that
+$D\colon\mathcal L_U^N\to\C$ is a complex multilinear form satisfying
+\[
+ |D(f_1,\ldots,f_N)|\le M\prod_{a=1}^N\|f_a\|_2
+       \qquad(f_a\in\mathcal L_U)
+\]
+for some $M<\infty$. Assume that:
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item $D(f_1,\ldots,f_N)=0$ if the entries lie over compact sets
+$K_1,\ldots,K_N\subset U$ that are pairwise disjoint;
+\item $D(f_1,\ldots,f_N)=0$ whenever one entry is $\nabla u$ for some
+$u\in C_c^\infty(U\times\R;\C)$.
+\end{enumerate}
+Then $D=0$.
+\end{theorem}
+
+An identity for correlation functions at separated arguments need not
+determine the same identity at coinciding arguments. In a
+Gaussian-dominated field theory the moments are bounded multilinear
+forms on \(L^2\), so their values are defined even when the test supports
+overlap. The gradient hypothesis above is the additional condition
+supplied by closedness of a two-form in three dimensions.
+
+The theorem is Proposition~8.4 of \cite{QEDCurrent}.
+No probability law enters its hypotheses.
+Its application to rotations is direct: the difference between a rotated and
+an unrotated moment is bounded, and closedness makes it vanish on gradients.
+The remaining hypothesis is precisely the invariance already obtained away
+from coinciding planar arguments.
+
+The proof has two different steps. For a bilinear form, locality forces its
+representing operator to commute with multiplication by functions of $y$.
+One can then multiply gradients by arbitrary bounded planar functions and
+obtain a total family of vector fields. For three or more entries, induction
+removes terms involving disjoint groups of supports. A partition into small
+squares leaves only terms for which all entries lie over the same square;
+their sum tends to zero by the $L^2$ bound. Both steps are needed. Boundedness
+alone does not remove bilinear forms supported on the diagonal.
+
+\section{Locality and gradients}
+
+We prove \cref{thm:contact} simultaneously for all open sets $U$, by
+induction on $N$. A bounded Borel function $h$ on $\R^2$ acts on
+$\mathcal L_U$ by
+\[
+ (hf)(y,z)=h(y)f(y,z).
+\]
+For a Borel set $A$, the same notation $1_A$ denotes its indicator and the
+corresponding orthogonal projection. Fields lying over compact subsets of
+$U$ are dense in $\mathcal L_U$: take an increasing compact exhaustion of
+$U$ and use dominated convergence. When $N=1$, the first hypothesis of the
+theorem therefore gives the conclusion.
+
+For $N=2$, apply the Hilbert-space representation theorem
+\cite[Theorem 3.3]{Melrose} to the bounded
+sesquilinear form $(f',f)\mapsto D(\overline{f'},f)$. There is a bounded
+operator $T$ on $\mathcal L_U$ such that
+\begin{equation}\label{eq:represent}
+ D(f_1,f_2)=\int_{U\times\R}f_1(x)\cdot(Tf_2)(x)\dd x,
+\end{equation}
+where the dot denotes the complex bilinear pairing on $\C^3$.
+
+The first hypothesis implies $1_KT1_{K'}=0$ for disjoint compact subsets
+$K,K'$ of $U$. Indeed, its matrix elements in \eqref{eq:represent} are
+$D(1_Kf_1,1_{K'}f_2)$, which vanish. The same conclusion holds for disjoint
+Borel subsets $A,A'$ of $U$. To see this, use inner regularity of planar
+Lebesgue measure on the bounded sets $A\cap\{|y|<n\}$ and
+$A'\cap\{|y|<n\}$ to choose increasing compact sets $K_n\subset A$ and
+$K_n'\subset A'$ whose unions exhaust $A$ and $A'$ up to null sets. Then
+$1_{K_n}\to1_A$ and $1_{K_n'}\to1_{A'}$ strongly on $\mathcal L_U$, so
+\[
+ 1_AT1_{A'}=\lim_{n\to\infty}1_{K_n}T1_{K_n'}=0
+\]
+in the strong operator topology.
+
+Take $A'=U\setminus A$ and then interchange the two sets. The resulting
+identities give
+\[
+ T1_A=1_AT1_A=1_AT.
+\]
+Since every bounded Borel function is a uniform limit of simple Borel
+functions, $T$ commutes with all planar multipliers. Consequently
+\begin{equation}\label{eq:balance}
+ D(hf_1,f_2)=D(f_1,hf_2).
+\end{equation}
+The gradient hypothesis and this identity imply
+\begin{equation}\label{eq:modulated}
+ D(h\nabla u,f)=0,
+ \qquad u\in C_c^\infty(U\times\R;\C),\quad f\in\mathcal L_U,
+\end{equation}
+for every bounded Borel function $h$ on $\R^2$.
+
+We now use \eqref{eq:modulated} to separate the three components of a vector
+field. Fix a compact set $A\subset U$, choose $u_0\in C_c^\infty(U)$ equal
+to one near $A$, and let $\chi\in C_c^\infty(\R)$. Write $y=(y^0,y^1)$.
+The gradients of
+\[
+ u_0(y)\chi(z),\qquad
+ u_0(y)y^0\chi(z),\qquad
+ u_0(y)y^1\chi(z)
+\]
+restrict on $A\times\R$ to
+\[
+ \chi'(z)e_3,\qquad
+ \chi(z)e_1+y^0\chi'(z)e_3,\qquad
+ \chi(z)e_2+y^1\chi'(z)e_3,
+\]
+respectively. Apply \eqref{eq:modulated} with the multiplier $h1_A$.
+The first gradient gives
+\[
+ D(h1_A\chi'e_3,f)=0.
+\]
+In the second identity the term containing $e_3$ vanishes by this formula,
+with the bounded multiplier $hy^01_A$. The third identity is treated with
+$hy^11_A$. Thus
+\begin{equation}\label{eq:three-families}
+ D(h1_A\chi e_1,f)=D(h1_A\chi e_2,f)
+                  =D(h1_A\chi'e_3,f)=0.
+\end{equation}
+
+The fields in \eqref{eq:three-families}, as $A,h,\chi$ vary, have dense
+linear span in $\mathcal L_U$. For the first two components this is the
+density of products of planar functions of compact support and smooth
+compactly supported functions of $z$. For the third component, the
+derivatives $\chi'$ are themselves total in $L^2(\R)$. A function
+orthogonal to every such derivative has zero distributional derivative,
+and hence is almost everywhere constant
+\cite[Proposition 1.4.8]{Gerard}; the only constant in $L^2(\R)$
+is zero. It follows that the continuous form $D(\cdot,f)$ vanishes on all
+of $\mathcal L_U$. This proves the theorem for two entries.
+
+\section{Several coinciding arguments}
+
+Let $N\ge3$, and suppose that the theorem holds for every smaller number
+of entries and every open subset of $\R^2$. Before partitioning the
+supports, we record two consequences of the induction hypothesis.
+
+First, fix an index $i$ and a compact set $K\subset U$. If $f_i$ lies over
+$K$ and all the other entries belong to $\mathcal L_{U\setminus K}$,
+then
+\begin{equation}\label{eq:one-separated}
+ D(f_1,\ldots,f_N)=0.
+\end{equation}
+Indeed, hold $f_i$ fixed. The remaining entries define a bounded
+$(N-1)$-linear form on $\mathcal L_{U\setminus K}$. It vanishes on
+gradients there, because a compactly supported smooth function on
+$(U\setminus K)\times\R$, extended by zero, belongs to
+$C_c^\infty(U\times\R;\C)$.
+It also vanishes on entries over pairwise disjoint compact subsets of
+$U\setminus K$: those compacts, together with $K$, satisfy the first
+hypothesis for $D$. Induction gives \eqref{eq:one-separated}.
+
+Second, partition the indices into two nonempty sets $I,J$, and let
+$K_J\subset U$ be compact. If $f_j$ lies over $K_J$ for every $j\in J$
+and $f_i\in\mathcal L_{U\setminus K_J}$ for every $i\in I$, then
+\begin{equation}\label{eq:clusters-separated}
+ D(f_1,\ldots,f_N)=0.
+\end{equation}
+Hold the entries in $J$ fixed and regard $D$ as a form with $|I|<N$
+entries on $\mathcal L_{U\setminus K_J}$. The gradient hypothesis is
+inherited. To check the other hypothesis, suppose that the entries with
+indices in $I$ lie over pairwise disjoint compact sets $K_i$ in
+$U\setminus K_J$. Choose one $i'\in I$. Every other entry lies outside
+$K_{i'}\times\R$, so \eqref{eq:one-separated}, with $K=K_{i'}$, gives
+vanishing. Induction applied to this $|I|$-linear form proves
+\eqref{eq:clusters-separated}.
+
+By density and continuity, it remains to treat entries that all lie over
+one compact set $K_0\subset U$. For $d>0$, let
+\[
+ \mathcal Q_d=\{d(k+[0,1)^2):k\in\mathbb Z^2\}.
+\]
+Only finitely many of these half-open squares meet $K_0$. Multilinearity
+therefore gives
+\begin{equation}\label{eq:partition}
+ D(f_1,\ldots,f_N)=
+ \sum_{Q_1,\ldots,Q_N\in\mathcal Q_d}
+ D(1_{Q_1}f_1,\ldots,1_{Q_N}f_N).
+\end{equation}
+The sum has only finitely many nonzero terms. We claim that every term
+with squares $Q_a$ not all equal vanishes.
+
+For such a tuple put $I=\{i:Q_i=Q_1\}$ and let $J$ be its nonempty
+complement. For $0<\varepsilon<d/2$, denote by $Q^\varepsilon$ the
+closed square of side $d-2\varepsilon$ concentric with $Q$.
+The compact sets
+\[
+ K_0\cap Q_1^\varepsilon,
+ \qquad K_J=K_0\cap\bigcup_{j\in J}Q_j^\varepsilon
+\]
+are disjoint. The entries $1_{Q_j^\varepsilon}f_j$, $j\in J$, lie
+over $K_J$, and the entries with indices in $I$ lie outside $K_J$.
+Equation~\eqref{eq:clusters-separated} gives
+\[
+ D(1_{Q_1^\varepsilon}f_1,\ldots,
+                         1_{Q_N^\varepsilon}f_N)=0.
+\]
+For each $a$, $1_{Q_a^\varepsilon}f_a\to1_{Q_a}f_a$ in $L^2$ as
+$\varepsilon\downarrow0$, since the boundary of a square has measure
+zero. Continuity proves the claim.
+
+Only the terms in which all entries lie over the same square remain in
+\eqref{eq:partition}. Their sum satisfies
+\begin{align}
+ |D(f_1,\ldots,f_N)|
+ &\le M\sum_{Q\in\mathcal Q_d}\prod_{a=1}^N\|1_Qf_a\|_2\notag\\
+ &\le M\left(\max_{Q\in\mathcal Q_d}\|1_Qf_3\|_2\right)
+             \prod_{a\ne3}\|f_a\|_2.
+ \label{eq:small-square}
+\end{align}
+For the last inequality use Cauchy--Schwarz in the sum for the first
+two entries and $\|1_Qf_a\|_2\le\|f_a\|_2$ for $a\ge4$.
+The function
+\[
+ y\longmapsto\int_\R|f_3(y,z)|^2\dd z
+\]
+belongs to $L^1(\R^2)$ by Tonelli's theorem. Each square has area $d^2$,
+so absolute continuity of its integral gives
+\[
+ \max_{Q\in\mathcal Q_d}\|1_Qf_3\|_2\longrightarrow0
+                  \qquad(d\downarrow0).
+\]
+The left side of \eqref{eq:small-square} is independent of $d$.
+It is therefore zero. This completes the induction and the proof of
+\cref{thm:contact}.\qed
+
+\section{The rotation defect}
+
+For $g\in O(3)$ we use the action on pseudovector fields
+\begin{equation}\label{eq:action}
+ (g\cdot b)(x)=\det(g)\,g\,b(g^{-1}x).
+\end{equation}
+This is the action obtained from two-forms under the Hodge isometry
+$*f=(f_{23},-f_{13},f_{12})$. Let $R_t$ be rotation by $t$ in the
+$(x_1,x_2)$-plane, fixing $x_3$.
+
+\begin{corollary}[From separated supports to all tests]\label{cor:rotation}
+Let $N\ge1$, and let $S_N$ be a bounded complex $N$-linear form on
+$L^2(\R^3;\C^3)$. Assume that it vanishes whenever one entry is
+$\nabla u$, $u\in C_c^\infty(\R^3;\C)$. Fix $t\in\R$, and suppose that
+\[
+ S_N(R_t\cdot b_1,\ldots,R_t\cdot b_N)=S_N(b_1,\ldots,b_N)
+\]
+whenever the entries lie over pairwise disjoint compact subsets of
+$\R^2$. Then the same identity holds for all entries in
+$L^2(\R^3;\C^3)$.
+\end{corollary}
+
+\begin{proof}
+Apply \cref{thm:contact}, with $U=\R^2$, to
+\[
+ D_t(b_1,\ldots,b_N)
+ =S_N(R_t\cdot b_1,\ldots,R_t\cdot b_N)-S_N(b_1,\ldots,b_N).
+\]
+The action of $R_t$ is an $L^2$ isometry, so $D_t$ is bounded.
+The first vanishing hypothesis is the assumed separated-support
+identity. For the second, use
+\[
+ R_t\cdot\nabla u=\nabla(u\circ R_{-t}).
+\]
+Since $u\circ R_{-t}\in C_c^\infty(\R^3;\C)$, both terms defining
+$D_t$ vanish when an entry is $\nabla u$.
+\end{proof}
+
+For the application to curvature, let $\mu$ be a probability law of
+real tempered two-forms $F$ on $\R^3$, with the sigma-algebra generated
+by evaluations on real Schwartz tests, and put
+$\B(b)=F(*^{-1}b)$ on Schwartz vector fields. Gaussian domination means
+\begin{equation}\label{eq:G}
+ \int e^{\B(b)}\dd\mu\le e^{\|b\|_2^2/2}
+           \qquad(b\in\mathcal S(\R^3;\R^3)).
+\end{equation}
+Closedness means $dF=0$ almost surely. In vector notation it gives
+\begin{equation}\label{eq:gradient}
+ \B(\nabla u)=0
+       \qquad(u\in C_c^\infty(\R^3;\C))
+\end{equation}
+almost surely; see \cite[Section~8.5]{QEDCurrent} for this
+vector form of closedness.
+
+By \cite[Proposition~5.1]{QEDCurrent}, the map $b\mapsto\B(b)$
+extends to a continuous complex linear map from $L^2$ to every
+$L^p(\mu)$, $1\le p<\infty$. Its moments
+\[
+ S_N(b_1,\ldots,b_N)=\int\B(b_1)\cdots\B(b_N)\dd\mu
+\]
+are bounded symmetric multilinear forms. More precisely,
+\[
+ \|\B(b)\|_{L^N(\mu)}\le c_N\|b\|_2,
+ \qquad
+ |S_N(b_1,\ldots,b_N)|\le c_N^N\prod_a\|b_a\|_2,
+\]
+with constants $c_N$ depending only on $N$.
+The moment bound follows from the field bound by H\"older's inequality.
+In particular no condition on the relative supports is needed to define
+$S_N$. Equation~\eqref{eq:gradient} gives the gradient hypothesis of
+\cref{cor:rotation}.
+
+\begin{proposition}[Invariance of a closed Gaussian-dominated law]
+\label{prop:law}
+Suppose that $\mu$ satisfies \eqref{eq:G} and is almost surely closed.
+Assume that, for every $N\ge1$ and every $t\in\R$, its moments satisfy
+the rotation identity of \cref{cor:rotation} on entries over
+pairwise disjoint compact planar sets. Then all moments satisfy that
+identity on $L^2(\R^3;\C^3)$, and $(R_t)_*\mu=\mu$ for every $t$.
+\end{proposition}
+
+\begin{proof}
+The moment bounds and \eqref{eq:gradient} verify the hypotheses of
+\cref{cor:rotation}, which proves the first assertion.
+To recover the law, take a real Schwartz field $b$. The partial sums
+of the exponential series for $e^{i\B(b)}$ have modulus at most
+\[
+ e^{|\B(b)|}\le e^{\B(b)}+e^{-\B(b)}.
+\]
+The last expression is integrable by \eqref{eq:G}. Dominated convergence
+therefore gives
+\[
+ \int e^{i\B(b)}\dd\mu
+ =1+\sum_{N\ge1}\frac{i^N}{N!}S_N(b,\ldots,b).
+\]
+The series for $R_t\cdot b$ has the same terms by the first assertion.
+The characteristic functional is thus invariant. Laws on tempered
+distributions are determined by their characteristic functionals,
+so $(R_t)_*\mu=\mu$; see also
+\cite[Section~5.2]{QEDCurrent}.
+\end{proof}
+
+This is the final step in the proof of
+\cite[Theorem~8.6]{QEDCurrent}. For that application, angular
+covariance of the plate kernels and their identification as moment
+densities on all distinct configurations
+\cite[Sections~8.9--8.10]{QEDCurrent} give the separated-support
+identity. \Cref{thm:contact} then uses the bounded moments and their
+gradient identities to remove the support restriction.
+
+\section{What the domain specifies at coincidence}
+
+The term ``invariance at coinciding arguments'' must be read through
+the domain of the correlation functional. For a distribution defined
+on the open configuration space
+\[
+ (\R^d)^N_{\ne}
+ =\{(x_1,\ldots,x_N):x_a\ne x_b\text{ for }a\ne b\},
+\]
+covariance is an identity on that open set. It gives no values of an
+extension on the diagonals. A formulation on Schwartz functions flat
+at every diagonal likewise imposes its identities on that stated
+test-function space. A functional given only on separated compactly
+supported $C^1$ tests likewise specifies no values on overlapping
+supports. This domain should be kept distinct from the unrestricted
+$L^2$ moments used here.
+
+In the Gaussian-dominated three-dimensional setting, overlapping
+supports are already allowed before invariance is proved. It remains
+to extend the covariance identity from tests with disjoint planar
+supports to all $L^2$ tests: the analytic plate kernels are first
+identified at pairwise distinct planar points.
+The corresponding rotation defect may still be supported where some
+planar arguments coincide. \Cref{thm:contact} excludes that
+defect by combining the $L^2$ bound with the gradient identities.
+It does not assign a pointwise value to a singular correlation
+kernel on the diagonal. Its conclusion is an identity between
+bounded multilinear forms for all $L^2$ test fields.
+
+\begin{thebibliography}{9}
+\bibitem{Gerard} P.~G\'erard, \emph{Distributions and Partial Differential
+Equations}, lecture notes, Fall 2019, December 12, 2019.
+\href{https://www.imo.universite-paris-saclay.fr/~patrick.gerard/Distributions2019_Chap1,2,3.pdf}{Lecture notes}.
+\bibitem{Melrose} R.~Melrose, \emph{Functional Analysis: Lecture notes
+for 18.102, Spring 2020}, Massachusetts Institute of Technology, 2020.
+\href{https://ocw.mit.edu/courses/18-102-introduction-to-functional-analysis-spring-2021/3d4cc88026d44a01f936cd6a0aa995cb_MIT18_102s20_lec_FA.pdf}{Lecture notes}.
+\bibitem{QEDCurrent}
+\emph{The field-strength Osterwalder--Schrader axioms for QED
+in three dimensions}, comprehensive edition, 263~pp., 2026.
+\url{https://github.com/ethanwsussman/Yang--Mills-LLM-experiment/blob/main/QED3/qed3.pdf}.
+\end{thebibliography}
+\end{document}

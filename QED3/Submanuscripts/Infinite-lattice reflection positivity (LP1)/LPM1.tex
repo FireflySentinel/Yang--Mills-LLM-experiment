@@ -1,14 +1,7 @@
 % BEGIN EMBEDDED BIBLIOGRAPHY
 % Bibliography data are part of this source; the compiler writes its temporary input.
 \begin{filecontents*}[overwrite]{\jobname.bib}
-@unpublished{ChamberQED,
-  shorthand = {ChQED},
-  title = {Noncompact lattice {QED} in three dimensions: chamber fermions,
-    reflection positivity at all mirrors and rotation invariance},
-  note = {Undated unpublished manuscript; author not stated.
-    The cited version contains Theorem~1.2 and Corollary~11.19
-    (All cubic tori)}
-}
+
 @article{FILS1978,
   author = {Fr\"ohlich, J. and Israel, R. and Lieb, E. H. and Simon, B.},
   title = {Phase transitions and reflection positivity.
@@ -319,13 +312,10 @@ are constructed on the companions; the final separation argument
 still applies to the prescribed limit of the original cubes.
 
 
-This paper gives a self-contained reorganization of the fixed-lattice
-arguments in \cite[Sections~3--11]{ChamberQED}. The volume-limit
-theorem, including arbitrary cubic side lengths, is already stated
-there in Theorem~1.2 and Corollary~11.19. We reproduce the finite-volume
-identities and limiting arguments, retain the unequal-slab comparison
-needed for arbitrary side lengths, and spell out the extension of the
-reflection form to the full open-side $L^2$ space. Repeated reflection and the
+We give the finite-volume identities and limiting arguments needed
+for the fixed-lattice theorem, including the unequal-slab comparison
+for arbitrary cubic side lengths and the extension of the reflection
+form to the full open-side $L^2$ space. Repeated reflection and the
 chessboard method belong to the general theory of Fr\"ohlich, Israel,
 Lieb, and Simon~\cite[Section~4]{FILS1978}. Here the slab trace must also
 retain the photon flux sum and the fermion boundary character when
@@ -343,9 +333,9 @@ then admits a positive reflected expansion. We prove this expansion and
 the resulting finite-volume reflection positivity below. The construction
 also requires a nonzero partition function when the bare mass has
 undetermined sign. For this purpose we identify a nonzero coefficient
-of the fermion determinant, independent of the mass. We reproduce the
-chamber construction and this normalization argument from
-\cite[Sections~2.1--2.3, 3.1--3.5 and 4.1--4.4]{ChamberQED}.
+of the fermion determinant, independent of the mass. The determinant
+sign and positive normalization are proved in
+\cref{prop:reg-determinant-sign,prop:reg-partition}.
 
 Throughout this section, $0<\rho<1$, $q>0$, and the mass parameter $M$
 is real. The hopping weights $w_0,\ldots,w_3$ are positive. All constants may depend on these fixed parameters unless a uniform
@@ -786,9 +776,8 @@ The chamber bonds crossing a mirror join reflected endpoints. Their
 Clifford projections give positive fermion coefficients. We combine
 this expansion with a Fourier representation of the integer closedness
 constraints to obtain a positive form, including all flux sectors.
-This is the adapted-torus reflected form of
-\cite[Sections~3.6--3.7]{ChamberQED}, whose two seam contributions
-we retain explicitly.
+The positive representation keeps the contributions from both
+reflection seams explicitly.
 
 \subsection{Symmetries and reflected Grassmann products}
 \label{subsec:reg-symmetries}
@@ -1355,10 +1344,10 @@ The resulting comparison changes the closing vector, and, when needed,
 the fermion character. Three such changes connect the cubic torus with
 the diagonal torus and with a second coordinate torus of the same volume.
 Their pressures differ by a quantity tending to zero. This is the
-finite-volume input for diagonal reflection positivity. The slab kernels
-and their composition, reflection and trace identities are those of
-\cite[Sections~5.1--5.7, Theorem~5.29]{ChamberQED}; the torus comparisons
-and pressure argument follow its Section~6.
+finite-volume input for diagonal reflection positivity. The slab
+kernel rules and trace are proved in \cref{thm:slab-operators};
+the folds and pressure estimates are proved in
+\cref{prop:slab-fold-holder,thm:slab-chessboard,prop:slab-pressure}.
 
 The same boundary construction will give the coordinate trace used in
 \cref{sec:coordinate} to prove Gaussian domination. There the real
@@ -2130,9 +2119,9 @@ copies of the observable and by the perturbation strength.
 The compactness estimate comes from the coordinate trace. We first
 retain the real slice connections and all magnetic fluxes in that
 trace, then remove the external curvature field by two applications
-of Schatten H\"older in different time directions. We give the all-flux
-trace and Gaussian-domination proof of
-\cite[Section~5.8 and Theorem~6.27]{ChamberQED}.
+of Schatten H\"older in different time directions. The all-flux trace
+\eqref{eq:slab-external-trace} gives the Gaussian bound in
+\cref{thm:slab-gaussian}.
 
 \subsection{Coordinate slices and the all-flux trace}\label{subsec:slab-coordinate-trace}
 
@@ -2832,9 +2821,9 @@ in large diagonal cells and then fold those cells in coordinate
 directions. The coordinate trace bounds each repeated operator by
 its local norm. Taking the root corresponding to the number of
 copies leaves an error that tends to one when volume tends to
-infinity before the perturbation is removed. The local norm, insertion
-bound and amplification are the constructions of
-\cite[Lemma~8.13, Proposition~8.26 and Theorem~8.32]{ChamberQED}.
+infinity before the perturbation is removed. The local norm,
+insertion bound and amplification estimate are proved in
+\cref{prop:diag-local-norm,prop:diag-coordinate-insertions,thm:diag-amplification}.
 
 The estimate to be proved is
 \[
@@ -3466,10 +3455,11 @@ To use this estimate for an arbitrary curvature character, we remove
 its outer fermion fields by exact integration identities and its
 outer photon exponents by a finite contour shift. Only finitely many
 terms of the reflected perturbation change in each shift; their
-contribution is of order its strength, uniformly in volume. We reproduce
-the two-layer regularization of \cite[Sections~8.9--8.10]{ChamberQED}
-and the elimination argument of its Section~9, culminating in
-Theorem~9.25 there.
+contribution is of order its strength, uniformly in volume. The
+two-layer regularization in \cref{subsec:diag-two-layers}, the exact
+field identities in \cref{subsec:diag-fermion-recursion}, and the
+contour shift in \cref{subsec:diag-contour} give the reduction in
+\cref{thm:diag-polynomial-reduction}.
 
 \subsection{The two adjacent fermion layers}\label{subsec:diag-two-layers}
 
@@ -4230,10 +4220,9 @@ empty slab to absorb the difference in each of the three folding
 directions. The empty slabs contribute partition functions without
 insertions. Their logarithms are controlled by a common pressure
 bound, and their total contribution is measured by their volumes
-multiplied by the corresponding H\"older exponents. This is the
-unequal-slab and companion-sequence argument of
-\cite[Sections~11.1--11.5]{ChamberQED}, restricted to the original
-cubic laws used in \cref{thm:main}.
+multiplied by the corresponding H\"older exponents.
+\Cref{prop:fold-any-side,thm:comparison-any-side} establish the
+comparison for the original cubic laws used in \cref{thm:main}.
 
 Throughout this section the parameters retain their fixed values
 $q>0$, $0<\rho<1$, $M\in\R$ and $w_i>0$. Write

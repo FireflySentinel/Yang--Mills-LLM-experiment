@@ -1,0 +1,2071 @@
+% Document DPM1. Includes the angular comparison formerly maintained as ANM1.
+\documentclass[11pt,letterpaper,reqno]{amsart}
+% BEGIN INLINE manuscript-style
+\makeatletter
+\NeedsTeXFormat{LaTeX2e}[2020/10/01]
+% Use with \documentclass[11pt,letterpaper,reqno]{amsart}.
+% This file controls presentation only. It supplies no mathematical content.
+
+\RequirePackage[T1]{fontenc}
+\RequirePackage{lmodern}
+\RequirePackage{microtype}
+\RequirePackage[letterpaper,margin=1in,headheight=15pt]{geometry}
+\RequirePackage{amsmath,amsthm,amssymb,mathtools}
+\RequirePackage{enumitem}
+\RequirePackage{perpage}
+\RequirePackage{xcolor}
+\definecolor{manuscriptred}{rgb}{0.6,0.1,0.1}
+\definecolor{manuscriptblue}{rgb}{0.1,0.3,0.5}
+\definecolor{manuscriptmagenta}{HTML}{60445C}
+\RequirePackage[breaklinks=true,colorlinks=true,
+  linkcolor=manuscriptred,citecolor=manuscriptblue,urlcolor=manuscriptmagenta]{hyperref}
+\RequirePackage{cleveref}
+\hypersetup{pdfauthor={}}
+
+% Retain the AMS paragraph, title, heading and running-head conventions.
+% Equations retain one global Arabic sequence, as in the reference.
+\setcounter{tocdepth}{1}
+\renewcommand{\thefigure}{\Roman{figure}}
+\renewcommand{\thetable}{\Roman{table}}
+\MakePerPage{footnote}
+\renewcommand{\thefootnote}{%
+  \ifnum\value{footnote}>9\arabic{footnote}\else\fnsymbol{footnote}\fi}
+
+% Upright statements. Main results are A, B, C; supporting statements
+% share a section-local sequence. These end marks indicate typography,
+% never proof completeness, validation, or a deferred-proof status.
+\theoremstyle{definition}
+\newtheorem{ms@theorem}{Theorem}
+\renewcommand{\thems@theorem}{\Alph{ms@theorem}}
+\newtheorem*{ms@theoremstar}{Theorem}
+\newtheorem{ms@proposition}{Proposition}[section]
+\newtheorem{ms@lemma}[ms@proposition]{Lemma}
+\newtheorem{ms@definition}[ms@proposition]{Definition}
+\newtheorem{ms@corollary}[ms@proposition]{Corollary}
+\newtheorem*{ms@corollarystar}{Corollary}
+
+\newcommand{\ms@majorstart}{%
+  \pushQED{\qed}\renewcommand{\qedsymbol}{$\blacksquare\square$}}
+\newcommand{\ms@minorstart}{%
+  \pushQED{\qed}\renewcommand{\qedsymbol}{$\blacksquare$}}
+\newenvironment{theorem}[1][]{\ms@majorstart\ms@theorem[#1]}
+  {\popQED\endms@theorem}
+\newenvironment{theorem*}[1][]{\ms@majorstart\ms@theoremstar[#1]}
+  {\popQED\endms@theoremstar}
+\newenvironment{proposition}[1][]{\ms@minorstart\ms@proposition[#1]}
+  {\popQED\endms@proposition}
+\newenvironment{lemma}[1][]{\ms@minorstart\ms@lemma[#1]}
+  {\popQED\endms@lemma}
+\newenvironment{definition}[1][]{\ms@minorstart\ms@definition[#1]}
+  {\popQED\endms@definition}
+\newenvironment{corollary}[1][]{\ms@majorstart\ms@corollary[#1]}
+  {\popQED\endms@corollary}
+\newenvironment{corollary*}[1][]{\ms@majorstart\ms@corollarystar[#1]}
+  {\popQED\endms@corollarystar}
+% The source's lemma/proposition variants are deliberately not carried over:
+% choose one marker for each statement type rather than encode proof status.
+
+\theoremstyle{remark}
+\newtheorem{remark}[ms@proposition]{Remark}
+\newtheorem*{remark*}{Remark}
+% The ordinary amsthm proof environment retains its open square.
+
+\crefname{ms@theorem}{theorem}{theorems}
+\Crefname{ms@theorem}{Theorem}{Theorems}
+\crefname{ms@proposition}{proposition}{propositions}
+\Crefname{ms@proposition}{Proposition}{Propositions}
+\crefname{ms@lemma}{lemma}{lemmas}
+\Crefname{ms@lemma}{Lemma}{Lemmas}
+\crefname{ms@definition}{definition}{definitions}
+\Crefname{ms@definition}{Definition}{Definitions}
+\crefname{ms@corollary}{corollary}{corollaries}
+\Crefname{ms@corollary}{Corollary}{Corollaries}
+\crefname{remark}{remark}{remarks}
+\Crefname{remark}{Remark}{Remarks}
+
+% Bibliography configuration for this manuscript.
+\makeatother
+% END INLINE manuscript-style
+\newcommand{\R}{\mathbb R}\newcommand{\C}{\mathbb C}
+\newcommand{\Z}{\mathbb Z}\newcommand{\B}{\mathbb B}
+\newcommand{\Ocub}{O_{\mathrm{cub}}}
+\DeclareMathOperator{\supp}{supp}
+\title[Diagonal positivity and rotation invariance]{Diagonal reflection positivity and\break rotation invariance without closedness}
+\date{}
+\hypersetup{hypertexnames=false,pdftitle={Diagonal reflection positivity and rotation invariance without closedness},pdfauthor={}}
+\begin{document}
+\begin{abstract}
+A Gaussian-dominated law of distributional two-forms on $\R^3$, invariant
+under translations and the cubic group and reflection positive at the
+coordinate planes, is Euclidean invariant if it is reflection positive
+at one diagonal plane. All its $L^2$ moments are covariant, including
+at overlapping supports. We also prove a two-point result under weaker
+symmetry assumptions, compare the angular criteria for scalar and
+field-strength kernels, and give examples separating diagonal positivity
+from the spectral cone and closedness.
+\end{abstract}
+\maketitle
+\tableofcontents
+
+\section{Introduction}\label{sec:introduction}
+
+Let $\mu$ be a probability law on the real tempered two-forms
+$\mathcal S'(\R^3;\Lambda^2)$, with the sigma-algebra generated by
+evaluation on real Schwartz tests. Let $F$ be the canonical random
+distribution and put
+\[
+ *f=(f_{23},-f_{13},f_{12}),\qquad \B(b)=F(*^{-1}b).
+\]
+For an isometry $\mathfrak g(x)=gx+a$ we use
+\[
+ (\mathfrak g\cdot b)(x)=\det(g)g\,b(\mathfrak g^{-1}x),\qquad
+ (\mathfrak gF)(f)=F(\mathfrak g^{-1}\cdot f).
+\]
+Here the action on two-form tests is
+$(\mathfrak g\cdot f)(x)=(\wedge^2g)f(\mathfrak g^{-1}x)$.
+Reflection positivity has the characteristic-functional meaning in
+\eqref{eq:rp} below, on tests compactly supported in the open positive
+half space.
+
+\begin{theorem}\label{thm:main}
+Suppose that $\mu$ has the following properties:
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item Gaussian domination with constant one:
+\begin{equation}\tag{G}\label{eq:G}
+ \mu(e^{\B(b)})\le e^{\|b\|_2^2/2}
+ \quad\text{for every real Schwartz vector test }b;
+\end{equation}
+\item invariance under all translations and under the signed permutation
+group $\Ocub=O(3)\cap\mathrm{GL}(3,\Z)$;
+\item reflection positivity at $\{x_j=0\}$ for $j=1,2,3$, and at one
+plane $\{x_i=\sigma x_l\}$, where $i<l$ and $\sigma\in\{1,-1\}$,
+from either chosen side.
+\end{enumerate}
+Then $\mathfrak g_*\mu=\mu$ for every Euclidean isometry $\mathfrak g$.
+For every $N\ge1$ the moment
+\[
+ S_N(b_1,\ldots,b_N)=\mu\bigl(\B(b_1)\cdots\B(b_N)\bigr)
+\]
+extends to a bounded complex multilinear form on
+$L^2(\R^3;\C^3)^N$ and satisfies
+\[
+ S_N(\mathfrak g\cdot b_1,\ldots,\mathfrak g\cdot b_N)
+   =S_N(b_1,\ldots,b_N)
+\]
+for all such tests, without a support restriction.
+\end{theorem}
+
+Hypothesis (H) means Gaussian domination, translation and cubic
+invariance, and reflection positivity at the three coordinate planes.
+The additional hypothesis of the theorem is positivity
+at one diagonal plane. No condition $dF=0$ is imposed.
+
+There are two obstacles to deriving the theorem from the spectral cone.
+At two points, the angular growth estimate permits one extra frequency
+for each of the equal circular labels. The law turned through $\pi/4$
+has the same analytic bounds, while this extra coefficient has the
+opposite sign in its reflection form. Positivity in both frames removes
+the coefficient. The higher-order harmonic argument then proves
+covariance at distinct planar points.
+
+The second obstacle is contact. The moments exist on all $L^2$ tests,
+so covariance away from coincidences does not yet prove the theorem.
+We localize two entries in normalized discs of radius $d$. Gaussian
+domination bounds their averaged products uniformly as $d\downarrow0$.
+Weak limits of the associated pair fields define bounded fields over
+the plane. The cone makes their
+two-point kernels holomorphic, and the quarter turn joins the four
+angular charts into a bounded entire function. Liouville's theorem
+forces their reconstructed vectors into the zero-energy subspace.
+In an ergodic component that subspace is the vacuum line. A further
+covariance estimate is needed to show that the fields themselves are
+constant in $L^2(\mu)$; equality of their reconstructed classes would
+not suffice. This gives factorization of a contact pair. Induction then
+removes the disjointness conditions one pair at a time.
+
+The analytic tools used before this contact argument are the cone,
+plate-kernel and harmonic arguments in \cite[Sections~7--8]{QEDCurrent}.
+We recall the exact
+forms needed below. Their hypotheses are conditions on the law; the
+proof here does not require a lattice action or a choice of
+renormalization parameters.
+The proof of \cref{thm:main} is completed in \cref{sec:components},
+where the covariance proved on the ergodic components is integrated
+and the other coordinate planes are treated by cubic symmetry.
+
+\subsection{Reflection forms, moments and the cone}
+
+For a unit vector $n$ and $c\in\R$, let
+$r_{n,c}x=x-2(n\cdot x-c)n$. Reflection positivity means
+\begin{equation}\label{eq:rp}
+ \sum_{a,b=1}^k\overline{z_a}z_b\,
+ \mu\!\left(e^{i\{F(f_b)-F(r_{n,c}\cdot f_a)\}}\right)\ge0
+\end{equation}
+for every $k\ge1$, $z\in\C^k$, and real smooth two-form tests $f_a$
+with compact support in $\{n\cdot x>c\}$. We denote its left side by
+$\mathcal Q_\mu(n,c;z;f)$.
+For a law invariant under $r_{n,c}$, the two choices of normal give
+equivalent conditions. Reflection invariance is stated separately
+whenever it is needed.
+
+Write $\theta_j=r_{e_j,0}$. Conditions $(T)$, $(R_j)$ and $(RP_j)$
+will mean translation invariance, invariance under $\theta_j$, and
+positivity at $x_j=0$, respectively. For rotations set
+\[
+ R^{ji}_te_j=\cos t\,e_j+\sin t\,e_i,\qquad
+ R^{ji}_te_i=-\sin t\,e_j+\cos t\,e_i.
+\]
+The third basis vector is fixed. Condition $(Q_{ji})$ means invariance
+under $R^{ji}_{\pi/2}$. For a law with $(T)$, $(R_j)$ and $(RP_j)$,
+the reflection-positive reconstruction has a class map
+$[\,\cdot\,]_j:L^2(\Sigma_j^+,\mu)\longrightarrow\mathcal H_j$
+with scalar product
+\begin{equation}\label{eq:reconstructed-product}
+ \langle[\Phi]_j,[\Psi]_j\rangle=\mu((\Theta_j\Phi)\Psi).
+\end{equation}
+Here $\Sigma_j^+$ is the sigma-algebra generated by evaluations on real
+smooth tests compactly supported in $\{x_j>0\}$, and
+$\Theta_j\Phi=\overline{\hat\theta_j\Phi}$, with
+$(\hat{\mathfrak g}\Phi)(F)=\Phi(\mathfrak g^{-1}F)$.
+The map is a contraction and has dense range; $\Omega_j=[1]_j$.
+The nonnegative time generator $H_j$ and the commuting transverse
+momenta have joint spectral measure $E_j$.
+We write $(C_{ji})$ for the support condition
+\begin{equation}\label{eq:cone}
+ E_j\{(\omega,p_\perp):\omega<|p_i|\}=0,
+ \quad\text{equivalently }H_j\ge|P_i|.
+\end{equation}
+
+The cone theorem \cite[Proposition~7.2]{QEDCurrent} says that
+$(T),(R_j),(RP_j)$, together with reflection invariance and positivity
+at the plane with normal $(e_j+e_i)/\sqrt2$, imply $(C_{ji})$.
+It assumes no closedness. In the $(1,2)$-plane we abbreviate
+\begin{equation}\tag{S}\label{eq:S}
+ (G),\ (T),\ (R_1),\ (RP_1),\ (Q_{12}),\ (C_{12}).
+\end{equation}
+
+For $1\le p<\infty$ and integers $N\ge1$, Gaussian domination implies
+the bounds
+\begin{equation}\label{eq:moments}
+ \|\B(b)\|_{L^p(\mu)}\le c_p\|b\|_2,\qquad
+ |S_N(b_1,\ldots,b_N)|\le c_N^N\prod_a\|b_a\|_2,
+ \qquad S_1=0,
+\end{equation}
+and $c_2=1$. These statements include the unique continuous extension
+to $L^2$ tests. In particular,
+\begin{equation}\label{eq:pair-bound}
+ \|\B(b)\B(b')\|_{L^2(\mu)}\le c_4^2\|b\|_2\|b'\|_2.
+\end{equation}
+These bounds and the entire finite-dimensional generating functions
+follow from \cite[Proposition~5.1]{QEDCurrent}.
+The Taylor coefficients determine those generating functions, hence
+the characteristic functions of all finite families of evaluations.
+Thus invariance of every moment on real Schwartz tests is equivalent
+to invariance of the law. Under a symmetry of the
+law, the action on $\B$ extends to $L^2$ tests, and moment invariance
+extends by \eqref{eq:moments}.
+
+Let $\mathcal C_9$ denote the translation-invariant laws that are
+invariant and reflection positive at every plane in the nine families
+$x_j=c$ and $x_i\pm x_l=c$, $i<l$, $c\in\R$.
+
+\begin{lemma}[Transport of diagonal positivity]\label{lem:transport}
+Under (H), positivity at one diagonal plane through the origin is
+equivalent to membership in $\mathcal C_9$.
+\end{lemma}
+
+\begin{proof}
+Each coordinate or diagonal reflection through the origin is a signed
+permutation. Hence (H) gives invariance under all of them. The signed
+permutation group acts transitively on the twelve unit vectors
+$(\pm e_i\pm e_l)/\sqrt2$, $i<l$. Conjugation gives
+\[
+ g r_{n,0}g^{-1}=r_{gn,0}.
+\]
+Changing variables in \eqref{eq:rp} therefore transports positivity
+from the chosen diagonal normal to every such normal. Coordinate
+positivity is already in (H). Finally,
+\[
+ r_{n,c}=\tau_{cn}r_{n,0}\tau_{-cn}
+\]
+and translation invariance transport both positivity and reflection
+invariance to every parallel plane. This is precisely $\mathcal C_9$.
+The converse follows from its definition.
+\end{proof}
+
+\section{Two-point covariance with one diagonal mirror}\label{sec:two-point}
+
+The two-point assertion needs less symmetry than \cref{thm:main}.
+
+Write $x=(y,x_3)$, $y=(y^0,y^1)=(x_1,x_2)$, $R_t=R^{12}_t$ and
+$n_\upsilon=(\cos\upsilon,\sin\upsilon)$, also read as a vector in
+$\R^3$. Set
+\[
+ e^\pm=e_1\pm ie_2,\quad e^3=e_3,\qquad
+ w(\pm)=\pm1,\quad w(3)=0,\qquad s(\pm)=1,\quad s(3)=-1.
+\]
+A label $\lambda=(\sigma,\chi)$, with real $\chi\in L^2(\R)$, has sign
+$s(\lambda)=s(\sigma)$ and, for $\alpha\in L^2(\R^2;\C)$, specifies the plate
+$(\alpha\otimes\lambda)(x)=\alpha(y)\chi(x_3)e^\sigma$.
+
+\begin{theorem}\label{thm:weak-two-point}
+Suppose $\mu$ satisfies $(G),(T),(R_1),(RP_1),(Q_{12})$ and is
+reflection positive at $x_1=x_2$ or at $x_1=-x_2$, from one chosen
+side. Then
+\[
+ S_2(R^{12}_t\cdot b,R^{12}_t\cdot b')=S_2(b,b')
+ \quad(t\in\R,\ b,b'\in L^2(\R^3;\C^3)).
+\]
+For labels $\lambda=(\sigma,\chi)$ and
+$\lambda'=(\sigma',\chi')$ with real $\chi,\chi'\in C_c^\infty(\R)$,
+the two-point plate kernel has the form
+\[
+ G_{\lambda\lambda'}(rn_\vartheta)
+   =a_{\lambda\lambda'}(r)e^{iw\vartheta},\qquad
+ |a_{\lambda\lambda'}(r)|\le\frac{72}{\pi}
+       \|\chi\|_2\|\chi'\|_2 r^{-2},
+\]
+for every $r>0$ and $\vartheta\in\R$, where
+$w=w(\sigma)+w(\sigma')$. The kernel represents $S_2$ on compact,
+disjoint planar supports as in \eqref{eq:global-density}.
+\end{theorem}
+
+\subsection{The angular criterion}
+
+For scalar kernels, rotation invariance means independence of the angle.
+For two-form kernels, the vector labels also rotate, and covariance
+requires a prescribed phase. The following criterion separates this
+finite-dimensional calculation from the construction of the kernels.
+Its second part will apply after the kernels have been joined.
+
+\begin{proposition}[Elimination of the remaining angular modes]
+\label{thm:criterion}
+The following assertions hold.
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item Let $h$ be entire and suppose, for some finite $A\ge0$, that
+\[
+ h(\zeta+\pi/2)=h(\zeta),\qquad
+ |h(t+i\beta)|\le A e^{4|\beta|}
+ \quad(t,\beta\in\R).
+\]
+If $h(i\beta)\ge0$ and $h(\pi/4+i\beta)\ge0$ for every
+$\beta\in\R$, then $h$ is a nonnegative constant.
+\item Let $w\in\{-2,-1,0,1,2\}$ and let $h$ be entire. Suppose, for
+some finite $A\ge0$, that
+\[
+ h(\zeta+\pi/2)=e^{iw\pi/2}h(\zeta),\qquad
+ |h(t+i\beta)|\le A e^{2|\beta|}
+ \quad(t,\beta\in\R).
+\]
+For $w=\pm2$, assume in addition that
+\[
+ h(i\beta)\ge0,\qquad e^{-iw\pi/4}h(\pi/4+i\beta)\ge0
+ \quad(\beta\in\R).
+\]
+Then $h(\zeta)=a e^{iw\zeta}$ for some $a\in\C$. For $w=\pm2$,
+one has $a\ge0$.
+\end{enumerate}
+Each inequality includes the assertion that its left side is real.
+\end{proposition}
+
+The following Fourier coefficient argument is the one used in
+\cite[Section~8.5]{QEDCurrent}, with an arbitrary growth exponent $q$.
+
+\begin{lemma}\label{lem:frequencies}
+Let $w\in\Z$ and $q\ge0$. Suppose that $h$ is entire and that,
+for some finite $A\ge0$,
+\[
+ h(\zeta+\pi/2)=e^{iw\pi/2}h(\zeta),\qquad
+ |h(t+i\beta)|\le A e^{q|\beta|}
+ \quad(t,\beta\in\R).
+\]
+Then
+\[
+ h(\zeta)=
+ \sum_{\substack{k\in\Z,\ |k|\le q\\ k-w\in4\Z}}a_k e^{ik\zeta},
+ \qquad |a_k|\le A.
+\]
+\end{lemma}
+
+\begin{proof}
+The function $h$ is $2\pi$-periodic. For $k\in\Z$, its Fourier
+coefficient can be written
+\[
+ a_k=\frac1{2\pi}\int_0^{2\pi}
+             h(t+i\beta)e^{-ik(t+i\beta)}\,dt.
+\]
+The integral is independent of $\beta$: integrate the entire periodic
+integrand around a rectangle and cancel the vertical sides. Hence
+$|a_k|\le A e^{q|\beta|+k\beta}$. Letting $\beta\to-\infty$
+for $k>q$ and $\beta\to+\infty$ for $k<-q$ removes those
+coefficients. Translation by $\pi/2$ gives $a_k=0$ unless
+$k-w\in4\Z$. Fourier uniqueness on the real axis and the identity
+theorem give the finite expansion; $\beta=0$ gives its coefficient bound.
+\end{proof}
+
+\begin{proof}[Proof of \cref{thm:criterion}]
+In the scalar case, \cref{lem:frequencies} leaves
+$h(\zeta)=c_0+c_1e^{4i\zeta}+c_{-1}e^{-4i\zeta}$. Positivity gives
+\[
+ c_0+c_1e^{-4\beta}+c_{-1}e^{4\beta}\ge0,\qquad
+ c_0-c_1e^{-4\beta}-c_{-1}e^{4\beta}\ge0.
+\]
+Divide by $e^{4\beta}$ and let $\beta\to+\infty$ to obtain
+$c_{-1}\ge0$ and $-c_{-1}\ge0$. Thus $c_{-1}=0$.
+Division by $e^{-4\beta}$ and passage to $\beta\to-\infty$
+give $c_1=0$. The remaining inequality gives $c_0\ge0$.
+
+In the tensor case, the conditions $|k|\le2$ and $k-w\in4\Z$
+leave only $k=w$, except when $w=\pm2$. In those cases write
+$h(\zeta)=a^w e^{iw\zeta}+a^{-w}e^{-iw\zeta}$.
+Since $e^{-2iw\pi/4}=-1$, positivity reads
+\[
+ a^w e^{-w\beta}+a^{-w}e^{w\beta}\ge0,\qquad
+ a^w e^{-w\beta}-a^{-w}e^{w\beta}\ge0.
+\]
+Multiply by $e^{-w\beta}$ and let $w\beta\to+\infty$.
+The two limits give $a^{-w}\ge0$ and $-a^{-w}\ge0$.
+Thus $a^{-w}=0$, and the first inequality then gives $a^w\ge0$.
+\end{proof}
+
+For a scalar plate kernel, such as a kernel associated with
+$\operatorname{tr}F\cdot F$, the first part of \cref{thm:criterion}
+applies once the following analytic inputs have been established:
+the short-distance bound
+$t^8\Gamma(t)\to0$, where $\Gamma$ is the Laplace transform of the
+energy marginal of a positive joint energy--momentum measure; a
+contour argument leaving only the frequencies $-4,0,4$; domination
+$\widetilde\rho_{\mathrm d}\le C\widetilde\rho$ of the diagonal
+joint measure by a measure supported on the cone; and identification
+of the continued transforms with $h(i\beta)$ and
+$h(\pi/4+i\beta)$. Given these inputs, the first part of
+\cref{thm:criterion} removes the two nonconstant coefficients.
+The two-form argument below instead obtains its growth exponent two
+from Gaussian domination and retains the phase dictated by the vector
+labels.
+
+\subsection{Plates and the eight oriented mirrors}
+
+Finite sums of plates are dense in $L^2(\R^3;\C^3)$, also with a
+prescribed measurable support in the plane. Their norms and actions are
+\begin{align}
+ \|\alpha\otimes\lambda\|_2&\le\sqrt2\|\alpha\|_2\|\chi\|_2,
+ \label{eq:plate-norm}\\
+ R_t\cdot(\alpha\otimes\lambda)&=
+ e^{-iw(\sigma)t}(\alpha\circ R_{-t})\otimes\lambda,\label{eq:plate-rotation}\\
+ \Theta_1\B_\lambda(\alpha)&=
+ s(\sigma)\B_\lambda(\bar\alpha\circ\theta_1).
+ \label{eq:plate-reflection}
+\end{align}
+Here $\B_\lambda(\alpha)=\B(\alpha\otimes\lambda)$.
+The plate identities and their use in the point and ordered-kernel
+constructions are given in \cite[Sections~8.2--8.3]{QEDCurrent}.
+The density assertion follows by approximating each component by
+finite sums of products of a planar $L^2$ function and a transverse
+$L^2$ function; the planar factors can be restricted to the prescribed
+measurable set.
+
+The group generated by $\theta_1$ and $R_{\pi/2}$ contains
+$r_{n_{\pi/4},0}=R_{\pi/2}\theta_1$ and all its quarter-turn
+conjugates. Thus the law is invariant under the reflections with
+normals $n_\upsilon$, $\upsilon\in(\pi/4)\Z$.
+Quarter-turn transport of coordinate positivity gives the normals
+$\upsilon\in(\pi/2)\Z$; transport of the assumed diagonal positivity
+gives the intervening normals. Both sides of each of the four planes
+are included.
+
+For each frame $\upsilon\in(\pi/4)\Z$ put
+\[
+ \mu_\upsilon=(R_{-\upsilon})_*\mu.
+\]
+Only two laws occur, since $\mu_{\upsilon+\pi/2}=\mu_\upsilon$.
+In the frame $\upsilon$, the adjacent normals
+$n_\upsilon,n_{\upsilon+\pi/4}$ supply coordinate and diagonal
+reflection positivity. Orthogonal transport preserves $(G)$ and $(T)$
+and conjugates the symmetry assumptions. The cone theorem therefore
+gives $(C_{12})$ for every $\mu_\upsilon$. Its two-point function obeys
+\begin{equation}\label{eq:turned-moment}
+ S_2^\upsilon(b,b')=S_2(R_\upsilon\cdot b,R_\upsilon\cdot b').
+\end{equation}
+
+\subsection{Joining the kernels}
+
+Throughout this kernel construction take real
+$\chi,\chi'\in C_c^\infty(\R)$. General $L^2$ tests enter after the
+kernel identity has been proved, through plate density and the moment
+bound.
+
+The one-picture plate-kernel construction in
+\cite[Section~8.4]{QEDCurrent}
+applies to each $\mu_\upsilon$: its assumptions are $(G),(T),(R_1),
+(RP_1)$ and the cone on the one-field subspace, which follows from
+$(C_{12})$. It gives a smooth kernel $G^\upsilon_{\lambda\lambda'}$
+on $\{y^0>0\}$ and a holomorphic function
+$h^\upsilon=h^{\upsilon,r}_{\lambda\lambda'}$ on
+$|\Re\zeta|<\pi/2$. The statements we use are
+\begin{align}
+ S_2^\upsilon(\alpha\otimes\lambda,\alpha'\otimes\lambda')
+ &=\iint\alpha(y)\alpha'(y')G^\upsilon_{\lambda\lambda'}(y'-y)\,dy\,dy',
+ \label{eq:ordered-density}\\
+ h^\upsilon(\vartheta)&=G^\upsilon_{\lambda\lambda'}(rn_\vartheta),
+ \label{eq:angular-chart}\\
+ |h^\upsilon(t+i\beta)|&\le\frac{36}{\pi}\|\chi\|_2\|\chi'\|_2
+       (r\cos t)^{-2}e^{2|\beta|},\label{eq:angular-bound}\\
+ s(\sigma)h^\upsilon_{\lambda\lambda}(i\beta)&\ge0.
+ \label{eq:angular-positive}
+\end{align}
+The first formula requires compact supports ordered by
+$\sup_{\supp\alpha}y^0<\inf_{\supp\alpha'}y^0$; the next two use
+$|\vartheta|,|t|<\pi/2$. The last holds for every real $\beta$.
+
+Fix the two labels and put $w=w(\sigma)+w(\sigma')$.
+The kernel in the original coordinates of frame $\upsilon$ is
+\[
+ G^{(\upsilon)}(y)=e^{iw\upsilon}
+     G^\upsilon_{\lambda\lambda'}(R_{-\upsilon}y),
+ \qquad n_\upsilon\cdot y>0.
+\]
+By \eqref{eq:plate-rotation} and \eqref{eq:turned-moment}, it
+represents the original $S_2$ when the supports are ordered along
+$n_\upsilon$. If two frames apply, the resulting integrals agree for
+all tests in sufficiently small compact neighborhoods of any pair
+in the common domain. Equality of continuous densities gives
+$G^{(\upsilon)}=G^{(\upsilon')}$ there. These half planes cover
+$\R^2\setminus\{0\}$, so the kernels define a single smooth
+$G_{\lambda\lambda'}$ on that set.
+
+The density formula holds for every pair of compact, disjoint supports:
+\begin{equation}\label{eq:global-density}
+ S_2(\alpha\otimes\lambda,\alpha'\otimes\lambda')
+ =\iint\alpha(y)\alpha'(y')G_{\lambda\lambda'}(y'-y)\,dy\,dy'.
+\end{equation}
+To see this, partition both supports into sufficiently small squares.
+Their positive distance allows each pair of squares to be strictly
+ordered in one of the four coordinate directions. Apply the ordered
+formula to each pair and sum; only finitely many squares meet the
+supports. All integrals converge absolutely because the supports are
+compact, the tests are in $L^1$ there, and the kernel is bounded on
+their set of differences. The density is unique. It is consequently
+bilinear in the real profiles and satisfies
+\begin{equation}\label{eq:kernel-symmetry}
+ G_{\lambda\lambda'}(y)=G_{\lambda'\lambda}(-y).
+\end{equation}
+
+For a fixed $r>0$, define on $|\Re\zeta-\upsilon|<\pi/2$
+\[
+ h^{(\upsilon)}(\zeta)=e^{iw\upsilon}h^\upsilon(\zeta-\upsilon).
+\]
+On real overlaps these functions equal
+$G_{\lambda\lambda'}(rn_\vartheta)$. The identity theorem joins them
+to an entire function $h$. Choosing a frame with
+$|t-\upsilon|\le\pi/4$ in \eqref{eq:angular-bound} gives
+\begin{equation}\label{eq:entire-bound}
+ |h(t+i\beta)|\le\frac{72}{\pi}\|\chi\|_2\|\chi'\|_2
+       r^{-2}e^{2|\beta|}.
+\end{equation}
+Since the chart kernels repeat after $\pi/2$, one also has
+$h(\zeta+\pi/2)=e^{iw\pi/2}h(\zeta)$. \Cref{lem:frequencies} now gives
+\begin{equation}\label{eq:two-frequencies}
+ h(\zeta)=\sum_{\substack{|k|\le2\\ k-w\in4\Z}}a^k(r)e^{ik\zeta}.
+\end{equation}
+Each coefficient is bounded by the right side of
+\eqref{eq:entire-bound} with $\beta=0$.
+
+\subsection{The sign at the diagonal frame}
+
+Only the equal circular labels $\sigma=\sigma'=\pm$ admit a
+frequency other than $w$: then $w=\pm2$ and the other frequency
+is $-w$. Start with equal profiles, so $\lambda'=\lambda$.
+Since $s(\sigma)=1$, \eqref{eq:angular-positive} in frame $\upsilon$
+reads
+\[
+ e^{-iw\upsilon}h(\upsilon+i\beta)\ge0.
+\]
+The frames $0$ and $\pi/4$ give the two positivity assumptions in
+\cref{thm:criterion}. Together with \eqref{eq:entire-bound} and the
+quarter-turn relation, its second part gives $a^{-w}=0$.
+For unequal profiles the coefficient is bilinear and, by
+\eqref{eq:kernel-symmetry}, symmetric at the even frequency $-w$.
+Polarization gives its vanishing for those profiles as well.
+
+It follows that $h(\zeta)=a^w(r)e^{iw\zeta}$ for every pair of labels,
+and thus
+\begin{equation}\label{eq:two-covariance}
+ G_{\lambda\lambda'}(R_ty)=e^{iwt}G_{\lambda\lambda'}(y).
+\end{equation}
+This proves the kernel assertion of \cref{thm:weak-two-point}.
+Substitution in \eqref{eq:global-density} cancels the phase from
+\eqref{eq:plate-rotation}. Hence the rotation defect
+\[
+ D_t(b,b')=S_2(R_t\cdot b,R_t\cdot b')-S_2(b,b')
+\]
+vanishes for tests over disjoint compact planar sets, first for plates
+and then by density. It remains bounded on the whole space:
+\begin{equation}\label{eq:two-defect-bound}
+ |D_t(b,b')|\le2\|b\|_2\|b'\|_2.
+\end{equation}
+
+\subsection{The two-point contact defect}
+
+We need the following elementary form of locality.
+
+\begin{lemma}\label{lem:local-constant}
+Let $E$ be a bounded bilinear form on $L^2(\R^2;\C)$. If it is
+translation invariant and vanishes on tests supported in disjoint
+compact sets, then $E(\alpha,\alpha')=c\int\alpha\alpha'$ for a
+constant $c\in\C$.
+\end{lemma}
+
+\begin{proof}
+For the dyadic squares $Q_{n,k}=2^{-n}(k+[0,1)^2)$, the form vanishes
+on distinct squares. Indeed, shrink each square to a compact interior
+square, apply the hypothesis, and pass to the limit in $L^2$.
+Translation invariance makes $E(1_{Q_{n,k}},1_{Q_{n,k}})$ independent
+of $k$. Splitting a square into four children shows that this value
+is $4^{-n}c$, where $c=E(1_{[0,1)^2},1_{[0,1)^2})$.
+The required formula follows on finite dyadic step functions.
+Such functions are dense in $L^2$, and both sides are bounded
+bilinear forms, so it holds everywhere.
+\end{proof}
+
+Apply the lemma, for fixed labels and $t$, to
+$E_t(\alpha,\alpha')=D_t(\alpha\otimes\lambda,
+\alpha'\otimes\lambda')$. Translation invariance follows from
+$R_t\tau_v=\tau_{R_tv}R_t$ and $(T)$. Thus
+\[
+ E_t(\alpha,\alpha')=c_t(\lambda,\lambda')\int\alpha\alpha'.
+\]
+Under simultaneous rotation of the two plates this expression acquires
+the phase $e^{-iws}$. Quarter-turn invariance of $S_2$ makes it
+unchanged at $s=\pi/2$, so $c_t=0$ unless $w=0$. Since $|w|\le2$,
+these are all the possibilities. In either case $D_t$ is invariant
+under every simultaneous rotation, first on plates and then by density
+on all tests.
+
+The rotation defect satisfies the cocycle identity
+\[
+ D_{t+s}(b,b')=D_t(R_s\cdot b,R_s\cdot b')+D_s(b,b').
+\]
+Its just-proved invariance makes this $D_{t+s}=D_t+D_s$. For every
+integer $k\ge1$, \eqref{eq:two-defect-bound} therefore gives
+\[
+ k|D_t(b,b')|=|D_{kt}(b,b')|\le2\|b\|_2\|b'\|_2.
+\]
+Letting $k\to\infty$ proves $D_t=0$ and completes the proof of
+\cref{thm:weak-two-point}.
+
+\subsection{Comparison with closedness}
+
+There is another way to remove the same exceptional coefficient.
+Suppose that a law satisfies \textup{(S)} and is closed, so that
+$\B(\nabla u)=0$ for scalar Schwartz tests $u$. Under these assumptions,
+the two-point kernel construction in
+\cite[Section~8.5]{QEDCurrent} gives the same frequency window as
+\eqref{eq:two-frequencies}.
+For real $\chi_0,\chi'\in C_c^\infty(\R)$ and
+$\lambda'=(\sigma',\chi')$, put
+$z=y^0+iy^1$ and
+$\partial_z=(\partial_{y^0}-i\partial_{y^1})/2$.
+Take $\eta,\alpha'\in C_c^\infty(\R^2;\C)$ with disjoint supports.
+Pairing
+\[
+ \nabla(\eta(y)\chi_0(x_3))
+   =(\partial_z\eta)\otimes(+,\chi_0)
+      +(\partial_{\bar z}\eta)\otimes(-,\chi_0)
+      +\eta\otimes(3,\chi_0')
+\]
+with the plate $\alpha'\otimes\lambda'$, and integrating by
+parts in the density formula, gives
+\begin{equation}\label{eq:bianchi}
+ \partial_zG_{(+,\chi_0)\lambda'}
+ +\partial_{\bar z}G_{(-,\chi_0)\lambda'}
+ +G_{(3,\chi_0')\lambda'}=0
+ \quad\text{on }\R^2\setminus\{0\}.
+\end{equation}
+For a radial coefficient $f$,
+\[
+ \partial_z(fe^{ik\vartheta})
+   =\tfrac12e^{i(k-1)\vartheta}(f'+kf/r),\qquad
+ \partial_{\bar z}(fe^{ik\vartheta})
+   =\tfrac12e^{i(k+1)\vartheta}(f'-kf/r).
+\]
+When $\sigma'=+$, only the exceptional coefficient
+$f=a^{-2}_{++}$ contributes to frequency $-3$ in
+\eqref{eq:bianchi}; when $\sigma'=-$, only $f=a^2_{--}$
+contributes to frequency $3$. In both cases it follows that
+$f'-2f/r=0$, hence $f(r)=Cr^2$. The coefficient bound
+$|f(r)|\le c r^{-2}$ holds for every $r>0$, and passage to
+$r\to\infty$ gives $C=0$. The use of the estimate at all radii
+is necessary here.
+
+Closedness and diagonal positivity therefore supply different
+hypotheses for eliminating the exceptional frequency. Rotational
+covariance itself does not imply closedness; \cref{prop:nonclosed}
+gives an invariant law positive at every plane for which $dF\ne0$.
+At coincidences, the bounded-form theorem of
+\cite[Theorem~A]{Coincidences}
+requires vanishing both on entries over pairwise disjoint compact
+planar sets and whenever any entry is a compactly supported gradient.
+The proof in \cref{sc:section} uses localized pairs to remove the
+support restriction without this gradient condition.
+
+\section{All moments away from coincidences}\label{sec:harmonics}
+
+We next use the higher-order harmonic constructions and estimates of
+\cite[Sections~8.7--8.9]{QEDCurrent}. Their proofs use exactly (S);
+the closedness argument at two points is separate. For $N\ge2$ and a tuple of
+labels $\lambda=(\lambda_1,\ldots,\lambda_N)$, they give real analytic
+functions on
+\[
+ \mathrm{Conf}_N(\R^2)=\{(y_1,\ldots,y_N):y_a\ne y_b\ (a\ne b)\}
+\]
+with finite expansion
+\begin{equation}\label{eq:all-harmonics}
+ \widetilde G_N(R_tY;\lambda)
+ =\sum_m e^{i(w+4m)t}\widetilde c_m(Y;\lambda),
+ \qquad w=\sum_aw(\sigma_a).
+\end{equation}
+The distinct-configuration density argument in
+\cite[Section~8.10]{QEDCurrent} identifies these
+kernels as the moment densities on plates with compact, pairwise
+disjoint planar supports. Its proof moves one of two time-separated
+groups transversely. The cone makes the correlation analytic, and
+the identity theorem extends the ordered density formula to the
+configuration space of distinct planar points. This identification
+is needed in addition to the angular expansion. It does not remove
+terms supported at coincidences.
+
+For $N\ge2$, the anomaly index $\mathfrak a(N)$ is the largest
+$|m|$ for which $\widetilde c_m(\,\cdot\,;\lambda)$ is not identically
+zero for some tuple of labels. It is zero if every harmonic vanishes;
+set $\mathfrak a(0)=\mathfrak a(1)=0$. The harmonic and polygon
+results give, for nonnegative integers $a,b$ and $N$,
+\begin{align}
+ \mathfrak a(0)&=0,\qquad \mathfrak a(N)\le N/2,\label{eq:anomaly-linear}\\
+ 2\mathfrak a(a+b)&\le\mathfrak a(2a)+\mathfrak a(2b),
+ \label{eq:anomaly-convex}\\
+ a&\mid 2\mathfrak a(2a)\quad(a\ge1).
+ \label{eq:anomaly-polygon}
+\end{align}
+Complex conjugation exchanges the circular labels and replaces the
+index $m$ by $-m$. Whenever $\mathfrak a(N)>0$, both extreme indices
+occur. In particular, if
+$\mathfrak a(2)=1$, some two-point harmonic $\widetilde c_{-1}$ is
+nonzero. The top-harmonic lemma gives the positive
+semidefinite kernel
+\begin{equation}\label{eq:top-kernel}
+ K_1((x;\lambda),(z;\lambda'))
+ =s(\lambda)\widetilde c_{-1}(\theta_1x,z;\lambda,\lambda'),
+ \qquad x,z\in\{y^0>0\}.
+\end{equation}
+The harmonic extension, convexity, regular-polygon argument and
+positive top-coefficient kernel are proved in
+\cite[Sections~8.7--8.9]{QEDCurrent}. These arguments do not use
+$dF=0$.
+
+\begin{proposition}\label{prop:separated}
+Suppose $\mu$ satisfies $(G),(T),(R_1),(RP_1),(R_2),(RP_2),(Q_{12})$
+and is invariant and reflection positive at $x_1+x_2=0$.
+Then $\mathfrak a(N)=0$ for every $N$, and all its moments are
+covariant under $R_t$ on tests over pairwise disjoint compact planar
+sets.
+\end{proposition}
+
+\begin{proof}
+The cone theorem gives (S) for $\mu$. Let $g=R_{\pi/4}$ and
+$\mu'=(g^{-1})_*\mu$. The map $g$ sends the coordinate normal $e_1$
+to $n_+=(e_1+e_2)/\sqrt2$ and sends $n_+$ to $e_2$.
+Thus $\mu'$ has the coordinate and diagonal symmetries and positivity
+needed for the cone theorem as well. It has $(G),(T),(Q_{12})$ by
+transport, so it too satisfies (S).
+
+The moment transformation formula and uniqueness of the plate
+densities give
+\[
+ \widetilde G'_N(Y;\lambda)
+   =e^{-iw\pi/4}\widetilde G_N(R_{\pi/4}Y;\lambda).
+\]
+Use \eqref{eq:all-harmonics} and compare the finite Fourier expansions
+after replacing $Y$ by $R_tY$. This gives
+\begin{equation}\label{eq:sign-change}
+ \widetilde c'_m=(-1)^m\widetilde c_m.
+\end{equation}
+If $\mathfrak a(2)=1$, a nonzero $\widetilde c_{-1}$ remains nonzero
+for $\mu'$, so its index is also one. The top-harmonic kernel for
+$\mu'$ is then $-K_1$. Both $K_1$ and $-K_1$ are positive
+semidefinite, which forces their diagonal and hence the entire kernel
+to vanish. Thus $\widetilde c_{-1}$ vanishes on
+$(-\mathbb H)\times\mathbb H$, where $\mathbb H=\{y^0>0\}$.
+Real analyticity on the connected configuration space forces its
+vanishing everywhere, a contradiction. The bound
+$\mathfrak a(2)\le1$ therefore gives $\mathfrak a(2)=0$.
+
+For $\nu(a)=\mathfrak a(2a)$, \eqref{eq:anomaly-linear}--
+\eqref{eq:anomaly-polygon} give a nonnegative integer sequence with
+$\nu(0)=0$, $\nu(a)\le a$, nondecreasing increments and
+$a\mid2\nu(a)$. The integer-sequence argument in
+\cite[Section~8.9]{QEDCurrent} therefore gives
+$\mathfrak a(2a)=a\mathfrak a(2)$.
+For arbitrary $N$, choose $a=\lfloor N/2\rfloor$ and $b=N-a$
+in \eqref{eq:anomaly-convex}. Thus
+\begin{equation}\label{eq:reduction}
+ \mathfrak a(N)\le\frac N2\mathfrak a(2).
+\end{equation}
+The vanishing of the two-point index therefore gives
+$\mathfrak a(N)=0$ for every $N$.
+
+Consequently \eqref{eq:all-harmonics} reduces to
+\[
+ \widetilde G_N(R_tY;\lambda)=e^{iwt}\widetilde G_N(Y;\lambda).
+\]
+In the density formula this phase cancels the product of the plate
+phases in \eqref{eq:plate-rotation}. This proves covariance for plates
+over pairwise disjoint compact sets. Plate density with prescribed
+supports and \eqref{eq:moments} give it for all tests over those sets.
+\end{proof}
+
+\Cref{prop:separated} proves the separated-support assertion
+needed for \cref{thm:main}. We now remove the
+support restriction.
+
+
+\section{Contact pairs and invariance on all test fields}
+\label{sc:section}
+
+The angular argument gives covariance on entries over pairwise disjoint
+compact subsets of the plane. To remove one disjointness condition,
+we localize the corresponding pair in the same disc. Gaussian
+domination gives pair fields bounded from $L^1(\R^2)$ to $L^2(\mu)$,
+uniformly in the disc radius. A weak limit has a bounded reconstructed
+two-point kernel on the forward tube. Quarter-turn covariance and
+Liouville's theorem put its reconstructed classes in the zero-energy
+space. When that space is the vacuum line, reflection factorization
+and an $L^1$ strip estimate show that the field itself is constant in
+$L^2(\mu)$. This yields factorization of the localized pair; induction
+then removes the disjointness conditions one pair at a time.
+
+Throughout this section write
+\[
+\mathfrak h=L^2(\mathbb R^3;\mathbb C^3),\qquad
+x=(y,x_3),\quad y=(x_1,x_2),\qquad R_t=R^{12}_t,
+\]
+and let $R=R_{\pi/2}$. The assumptions (S) are those of \eqref{eq:S}. The unadorned norm on $\mathfrak h$ is its $L^2$ norm.
+The additional condition $\ker H_1=\mathbb C\Omega_1$ will be stated
+where it is used. Here $\mathcal H_1$, $[\,\cdot\,]_1$, $H_1$
+and $\Omega_1=[1]_1$ are the reconstruction in the first coordinate.
+For a Borel set $K\subset\mathbb R^2$ set
+\[
+\mathfrak h_K=\{f\in\mathfrak h:f=0\text{ a.e. outside }K\times\mathbb R\}.
+\]
+A bounded function $a$ on the plane acts on $\mathfrak h$ by multiplication
+in $y$. In particular, $1_K$ is the orthogonal projection onto $\mathfrak h_K$.
+
+We use the Gaussian bounds \eqref{eq:moments} and \eqref{eq:pair-bound};
+H\"older's inequality also puts every finite product of fields in
+$L^2(\mu)$. Write $U(v)=\hat\tau_v$ for planar translations.
+Symmetries act unitarily and multiplicatively on $L^2(\mu)$ and
+commute with conjugation; $\Theta_1$ is an antiunitary involution.
+The reconstructed scalar product was defined in \cref{sec:introduction}, and
+\begin{equation}\label{sc:reconstruction}
+ \langle\Omega_1,[\Phi]_1\rangle=\mu(\Phi),\qquad
+ \|[\Phi]_1\|\le\|\Phi\|_{L^2(\mu)}
+ \quad(\Phi\in L^2(\Sigma_1^+,\mu)).
+\end{equation}
+All scalar products are antilinear in their first argument.
+
+\subsection{Localization to one pair}
+
+For $d>0$ and $z\in\mathbb R^2$ let
+\[
+\varphi_{d,z}(y)=(\pi d^2)^{-1/2}1_{B(z,d)}(y).
+\]
+The normalization and covariance identities are
+\begin{align}
+&\|\varphi_{d,z}\|_2=1,\qquad
+ \int\varphi_{d,z}(y)^2\,\mathrm dz=1,\qquad
+ \int\|\varphi_{d,z}f\|^2\,\mathrm dz=\|f\|^2,
+ \label{sc:discs}\\
+&\varphi_{d,z}\circ\theta_1=\varphi_{d,\theta_1z},\qquad
+ \varphi_{d,z}\circ R_{-t}=\varphi_{d,R_tz},\qquad
+ \tau_v\varphi_{d,z}=\varphi_{d,z+v},\qquad
+ R_t\cdot(\varphi_{d,z}f)=\varphi_{d,R_tz}(R_t\cdot f).
+ \label{sc:disc-actions}
+\end{align}
+The third identity in \eqref{sc:discs} follows from the second by Tonelli's
+theorem. Both $z\mapsto\varphi_{d,z}$ in $L^2(\mathbb R^2)$ and
+$z\mapsto\varphi_{d,z}f$ in $\mathfrak h$ are norm continuous by
+dominated convergence, since the boundary circle has measure zero.
+
+\begin{lemma}[Localization of a bilinear form]\label{sc:localization}
+Let $K_1,K_2\subset\mathbb R^2$ be Borel, and let
+$\beta:\mathfrak h_{K_1}\times\mathfrak h_{K_2}\to\mathbb C$
+be bounded and bilinear. Suppose $\beta(f_1,f_2)=0$ whenever
+$f_a\in\mathfrak h_{K_a\cap A_a}$ for two disjoint compact sets
+$A_1,A_2\subset\mathbb R^2$. Then, for every Borel set $A$,
+\begin{equation}\label{sc:locality}
+\beta(1_Af_1,1_Af_2)=\beta(1_Af_1,f_2),
+\end{equation}
+and, for every $d>0$,
+\begin{equation}\label{sc:localization-identity}
+\beta(f_1,f_2)=\int\beta(\varphi_{d,z}f_1,\varphi_{d,z}f_2)\,\mathrm dz.
+\end{equation}
+The integral in \eqref{sc:localization-identity} is absolutely convergent.
+\end{lemma}
+
+\begin{proof}
+The assumed vanishing holds also for two disjoint Borel sets $A,A'$.
+To see this, exhaust each by increasing compact subsets up to a null set,
+using inner regularity on its intersections with bounded discs. The
+corresponding multiplications converge strongly on $\mathfrak h$, so
+continuity of $\beta$ gives $\beta(1_Af_1,1_{A'}f_2)=0$.
+Splitting $f_2=1_Af_2+1_{A^c}f_2$ proves \eqref{sc:locality}.
+
+For fixed $f_2$, the Riesz representation theorem gives
+$u\in\mathfrak h_{K_1}$ such that
+$\beta(f,f_2)=\int\overline{u(x)}\cdot f(x)\,\mathrm dx$.
+By \eqref{sc:locality},
+\[
+\beta(\varphi_{d,z}f_1,\varphi_{d,z}f_2)
+ =\int\varphi_{d,z}(y)^2\overline{u(x)}\cdot f_1(x)\,\mathrm dx.
+\]
+Since $\overline u\cdot f_1$ is integrable, Fubini's theorem and
+\eqref{sc:discs} prove both assertions about the integral.
+\end{proof}
+
+We use Hilbert-space integrals in their weak sense. If $V(z)$ is norm
+continuous with values in a Hilbert space and
+$\int|a(z)|\|V(z)\|\,\mathrm dz<\infty$, its integral is the unique vector
+$v$ satisfying
+\[
+\langle\eta,v\rangle=\int a(z)\langle\eta,V(z)\rangle\,\mathrm dz.
+\]
+Existence follows from the Riesz theorem \cite[Theorem 3.3]{Melrose}, and
+$\|v\|\le\int|a|\|V\|$. Bounded linear maps pass through this integral;
+an antiunitary involution $J$ gives
+$Jv=\int\overline a\,JV$. An integral of vectors in a closed subspace
+belongs to that subspace, by orthogonality to its complement. In $L^2(\mu)$
+we shall repeatedly use
+\begin{equation}\label{sc:integral-pairing}
+\mu\left(\Phi\int aV\right)=\int a(z)\mu(\Phi V(z))\,\mathrm dz
+\qquad(\Phi\in L^2(\mu)).
+\end{equation}
+
+For complex angles we use the complex linear rotation $R_\zeta$ defined by
+$(R_\zeta\xi)^\pm=e^{\pm i\zeta}\xi^\pm$, where
+$\xi^\pm=\xi^0\pm i\xi^1$. Thus
+$R_{i\beta}(\ell,0)=(\ell\cosh\beta,i\ell\sinh\beta)$.
+
+\subsection{Bounded local fields have only vacuum classes}
+
+The limiting pair will be described by a bounded map
+$X:L^1(\mathbb R^2;\mathbb C)\to L^2(\mu)$. Write $L^1_+$ for the
+functions vanishing a.e. on $\{y^0<0\}$ and $L^1_-$ for those vanishing
+a.e. on $\{y^0>0\}$. We require, for some $C\ge0$,
+$s\in\{1,-1\}$ and $w\in\mathbb Z$, that
+\begin{align}
+&X\text{ is complex linear},\qquad \|X(h)\|_{L^2(\mu)}\le C\|h\|_1,
+ \label{sc:bounded-field}\\
+&U(v)X(h)=X(\tau_vh)\quad(v\in\R^2,\ h\in L^1),
+ \label{sc:field-translation}\\
+&X(h)\in L^2(\Sigma_1^+,\mu)\quad(h\in L^1_+),
+ \label{sc:field-locality}\\
+&\Theta_1X(h)=sX(\overline h\circ\theta_1),\qquad
+ \hat RX(h)=(-i)^wX(h\circ R^{-1})\quad(h\in L^1).
+ \label{sc:field-actions}
+\end{align}
+Here $(\tau_vh)(y)=h(y-v)$.
+
+\begin{lemma}[Vacuum classes]\label{sc:vacuum-classes}
+Assume \textup{(S)}, and let $X$ satisfy
+\eqref{sc:bounded-field}--\eqref{sc:field-actions}.
+There is a vector $v_0\in\ker H_1$ such that
+\[
+[X(h)]_1=\left(\int h\right)v_0\qquad(h\in L^1_+).\qedhere
+\]
+\end{lemma}
+
+\begin{proof}
+Let $E_1$ be the joint spectral measure of the reconstruction and
+put
+\[
+\mathcal W=\{\xi\in\mathbb C^2:\Re\xi^0>|\Im\xi^1|\},\qquad
+\mathsf T(\xi)=\int e^{-\xi^0\omega+i\xi^1p_2}\,
+ \mathrm dE_1(\omega,p_\perp).
+\]
+The cone condition means that $E_1$ is carried by
+$\{\omega\ge|p_2|\}$. The cone semigroup is therefore a contraction on
+$\overline{\mathcal W}$, strongly continuous there and holomorphic in
+operator norm on $\mathcal W$. It satisfies
+\[
+\mathsf T(\xi)\mathsf T(\xi')=\mathsf T(\xi+\xi'),\qquad
+\mathsf T(\xi)^*=\mathsf T(\xi^*),\quad
+\xi^*=(\overline{\xi^0},-\overline{\xi^1}),
+\]
+and $\mathsf T(y)[\Phi]_1=[U(y)\Phi]_1$ for real $y$ with $y^0\ge0$.
+These conclusions follow from the spectral-calculus argument in
+\cite[Section~8.2]{QEDCurrent}: the multiplier has modulus at most
+one on the closed tube, and on a smaller tube its first two
+derivatives are bounded by constants times
+$\omega e^{-\varepsilon\omega}$ and
+$\omega^2e^{-\varepsilon\omega}$. Dominated convergence gives
+strong continuity, and Taylor's formula gives operator-norm
+holomorphy.
+
+Set $\psi(h)=[X(h)]_1$ for $h\in L^1_+$. The contraction in
+\eqref{sc:reconstruction} and the bound \eqref{sc:bounded-field}
+give the first assertion below. The semigroup identity just stated,
+together with \eqref{sc:field-translation}, gives the second:
+\begin{equation}\label{sc:psi}
+\|\psi(h)\|\le C\|h\|_1,\qquad
+\mathsf T(y)\psi(h)=\psi(\tau_yh)\quad(y^0\ge0).
+\end{equation}
+Take $g_n=n^2 1_{(0,1/n)^2}$. The vectors $\psi(g_n)$ are bounded, so a
+subsequence converges weakly to a vector $v_0$ with $\|v_0\|\le C$.
+Apply diagonal extraction in the separable closed span of this bounded
+sequence and then the Riesz theorem
+\cite[Proposition 3.13 and Lemma 3.11]{Melrose}; no separability of the
+whole Hilbert space is needed.
+
+For $h\in L^1_+$ we claim
+\begin{equation}\label{sc:point-vector}
+\langle\eta,\psi(h)\rangle
+ =\int h(y)\langle\eta,\mathsf T(y)v_0\rangle\,\mathrm dy.
+\end{equation}
+Indeed,
+\[
+\|h*g_n-h\|_1
+ \le\sup_{|a|\le2/n}\|\tau_ah-h\|_1\longrightarrow0.
+\]
+For fixed $\eta$, the bounded functional
+$k\mapsto\langle\eta,\psi(k)\rangle$ on $L^1_+$ is integration against a
+bounded function. Fubini's theorem, followed by \eqref{sc:psi}, consequently
+gives
+\[
+\langle\eta,\psi(h*g_n)\rangle
+ =\int h(y)\langle\mathsf T(y)^*\eta,\psi(g_n)\rangle\,\mathrm dy.
+\]
+The integrand is bounded by $C\|\eta\||h(y)|$. Weak convergence on the
+right, norm convergence on the left and dominated convergence prove
+\eqref{sc:point-vector}.
+
+To locate the spectral support of $v_0$, consider the bounded function
+\[
+L(\xi)=\langle v_0,\mathsf T(\xi)v_0\rangle
+\quad(\xi\in\overline{\mathcal W}),\qquad |L|\le C^2.
+\]
+It is continuous on $\overline{\mathcal W}$ and holomorphic on
+$\mathcal W$.
+The semigroup identity and \eqref{sc:point-vector} yield
+\begin{equation}\label{sc:psi-kernel}
+\langle\psi(h),\psi(k)\rangle
+ =\iint\overline{h(y)}k(y')L(y^*+y')\,\mathrm dy\,\mathrm dy'
+ \qquad(h,k\in L^1_+).
+\end{equation}
+All integrals converge absolutely by the bound on $L$.
+
+Write $\mathfrak B(h,k)=\mu(X(h)X(k))$. If $h$ vanishes above a line
+$y^0=c$ and $k$ vanishes below that line, then
+\begin{equation}\label{sc:ordered-kernel}
+\mathfrak B(h,k)
+ =s\iint h(u)k(y)L(y-u)\,\mathrm du\,\mathrm dy.
+\end{equation}
+Translations reduce this to $c=0$. For that case let
+$\widetilde h=\overline h\circ\theta_1\in L^1_+$. The reflection identity
+gives $X(h)=s\Theta_1X(\widetilde h)$; apply
+\eqref{eq:reconstructed-product} and \eqref{sc:psi-kernel}, then change variables
+$y'=\theta_1u$. Since $(\theta_1u)^*=-u$, this gives
+\eqref{sc:ordered-kernel}.
+
+We next use the quarter turn to continue $L$ between the four time
+directions. Let $\epsilon=(-1)^w$. The covariance of $X$ gives
+\begin{equation}\label{sc:quarter-kernel}
+\mathfrak B(h,k)=\epsilon\,
+ \mathfrak B(h\circ R^{-1},k\circ R^{-1}).
+\end{equation}
+If $y_0^0>0$ and $y_0^1<0$, choose
+$0<r<\frac12\min(y_0^0,-y_0^1)$ and set
+\[
+ h=(\pi r^2)^{-1}1_{B(0,r)},\qquad
+ k=(\pi r^2)^{-1}1_{B(y_0,r)}.
+\]
+These functions have integral one. Both this pair and its quarter turn are
+ordered across a horizontal line. Apply \eqref{sc:ordered-kernel} to the
+two sides of \eqref{sc:quarter-kernel}. Their product measure has mass
+one and concentrates on differences $y-u=y_0$ as $r\downarrow0$.
+Continuity
+of $L$ gives $L(Ry_0)=\epsilon L(y_0)$. The domain
+$\mathcal W\cap R^{-1}\mathcal W$ is open, convex and contains this real
+quadrant. The holomorphic identity theorem therefore gives
+\begin{equation}\label{sc:quarter-L}
+L(R\xi)=\epsilon L(\xi)
+\qquad(\xi\in\mathcal W\cap R^{-1}\mathcal W).
+\end{equation}
+
+To use the bound on $L$, fix $\ell>0$ and put $y_\ell=(\ell,0)$.
+On $R^{-m}\mathcal W$ define
+$L_m(\xi)=\epsilon^mL(R^m\xi)$, $m\in\mathbb Z$.
+Equation \eqref{sc:quarter-L} makes consecutive functions agree on their
+overlaps, and $L_{m+4}=L_m$. If $\zeta=t+i\beta$, then
+\[
+R_\zeta y_\ell\in R^{-m}\mathcal W
+ \quad\Longleftrightarrow\quad \cos(t+m\pi/2)>0,
+\]
+because the real parts of its two light-cone coordinates after applying
+$R^m$ are $\ell e^{\mp\beta}\cos(t+m\pi/2)$.
+These sets of angles cover $\mathbb C$. Opposite ones do not meet, and on
+each other overlap the equality of consecutive $L_m$ applies. Thus
+$L_m(R_\zeta y_\ell)$ defines one entire function of $\zeta$, bounded by
+$C^2$. Liouville's theorem \cite[Theorem 6.16]{Dunkel} makes it constant. In particular,
+\begin{equation}\label{sc:boost}
+L(R_{i\beta}y_\ell)=L(y_\ell)
+\qquad(\beta\in\mathbb R,\ \ell>0).
+\end{equation}
+
+Let $\varrho=\langle v_0,E_1(\cdot)v_0\rangle$.
+It is a finite positive measure on $\{\omega\ge|p_2|\}$, and
+\eqref{sc:boost} reads
+\begin{equation}\label{sc:boost-measure}
+\int e^{-\ell(\omega\cosh\beta+p_2\sinh\beta)}\,\mathrm d\varrho
+ =\int e^{-\ell\omega}\,\mathrm d\varrho.
+\end{equation}
+On this cone
+\[
+\omega\cosh\beta+p_2\sinh\beta
+ =\tfrac12(\omega+p_2)e^\beta+\tfrac12(\omega-p_2)e^{-\beta}\ge0.
+\]
+The integrand on the left of \eqref{sc:boost-measure} is at most one.
+As $\beta\to+\infty$ it tends to the indicator of
+$\{\omega+p_2=0\}$. With $\ell>0$ fixed, dominated convergence gives
+\[
+ \varrho\{\omega+p_2=0\}=\int e^{-\ell\omega}\,d\varrho.
+\]
+Now let $\ell\downarrow0$. Monotone convergence makes the right side
+tend to the total mass of $\varrho$, so this set carries all of the
+measure.
+Letting $\beta\to-\infty$ gives the same assertion for
+$\{\omega-p_2=0\}$. Hence $\varrho$ is carried by
+$\{\omega=p_2=0\}$.
+
+The spectral theorem now gives
+$v_0\in\operatorname{Dom}H_1$ and
+$\|H_1v_0\|^2=\int\omega^2\,\mathrm d\varrho=0$.
+It also gives $\mathsf T(y)v_0=v_0$ for real $y^0\ge0$, since
+\[
+\|\mathsf T(y)v_0-v_0\|^2
+ =\int|e^{-y^0\omega+iy^1p_2}-1|^2\,\mathrm d\varrho=0.
+\]
+Substitute this into \eqref{sc:point-vector} to conclude.
+\end{proof}
+
+\subsection{From a vacuum class to a constant random variable}
+
+The preceding lemma is an assertion in the reconstructed Hilbert space.
+The contact argument requires an assertion in $L^2(\mu)$. The $L^1$ bound
+on $X$ supplies this stronger conclusion.
+
+\begin{lemma}[Constancy of bounded local fields]\label{sc:constant-field}
+Assume \textup{(S)} and $\ker H_1=\mathbb C\Omega_1$.
+Every map $X$ satisfying
+\eqref{sc:bounded-field}--\eqref{sc:field-actions} obeys
+\[
+X(h)=\mu(X(h))\,1\quad\text{in }L^2(\mu)
+\qquad(h\in L^1(\mathbb R^2)).
+\]
+\end{lemma}
+
+\begin{proof}
+The conjugate map $X^{\mathrm c}(h)=\overline{X(\overline h)}$
+satisfies the same conditions with weight $-w$. For translations and the
+quarter turn this follows by commuting their operators with conjugation;
+the quarter-turn phase becomes $\overline{(-i)^w}=(-i)^{-w}$.
+For the reflection use that $\Theta_1$ commutes with conjugation.
+The bound and positive-side measurability are preserved as well.
+\Cref{sc:vacuum-classes} therefore gives
+\[
+[X(h)]_1,\ [X^{\mathrm c}(h)]_1\in\mathbb C\Omega_1
+\qquad(h\in L^1_+).
+\]
+If $[\Phi]_1=a\Omega_1$ and $[\Psi]_1=b\Omega_1$, then
+\eqref{sc:reconstruction} identifies $a=\mu(\Phi)$ and $b=\mu(\Psi)$.
+The reflected scalar product \eqref{eq:reconstructed-product} then gives
+\begin{equation}\label{sc:vacuum-factorization}
+\mu((\Theta_1\Phi)\Psi)=\mu(\Theta_1\Phi)\mu(\Psi).
+\end{equation}
+
+Consider the covariance
+\[
+E(h,k)=\mu(\overline{X(h)}X(k))
+ -\overline{\mu(X(h))}\mu(X(k)).
+\]
+It is sesquilinear, translation invariant, satisfies
+$E(k,h)=\overline{E(h,k)}$, and obeys
+\begin{equation}\label{sc:covariance-bound}
+|E(h,k)|\le2C^2\|h\|_1\|k\|_1.
+\end{equation}
+For $h\in L^1_-$ and $k\in L^1_+$ put
+$\Phi=sX^{\mathrm c}(h\circ\theta_1)$ and $\Psi=X(k)$.
+Both have vacuum classes, and the reflection rule gives
+$\Theta_1\Phi=\overline{X(h)}$. Thus
+\eqref{sc:vacuum-factorization} says $E(h,k)=0$.
+Translations and Hermitian symmetry show more generally that $E(h,k)=0$
+whenever $h$ and $k$ lie on opposite sides of any line $y^0=c$.
+
+For arbitrary $h,k\in L^1$ partition the plane into strips
+$A_j=\{j\delta\le y^0<(j+1)\delta\}$.
+The decompositions into these strips converge in $L^1$, and
+\eqref{sc:covariance-bound} makes the resulting double series for $E(h,k)$
+absolutely convergent. Every term with different strip indices vanishes by
+the preceding paragraph. Hence
+\[
+|E(h,k)|\le2C^2\|h\|_1\sup_j\|k1_{A_j}\|_1.
+\]
+Set $G(a)=\int|k(a,y^1)|\,\mathrm dy^1\in L^1(\mathbb R)$.
+For $M>0$,
+\[
+\|k1_{A_j}\|_1\le M\delta+\int G1_{\{G>M\}}.
+\]
+First take $M$ large and then $\delta$ small. The supremum therefore tends
+to zero, so $E=0$. Its diagonal value is
+$E(h,h)=\|X(h)-\mu(X(h))1\|_{L^2(\mu)}^2$, proving the lemma.
+\end{proof}
+
+\subsection{Limits of localized pairs}
+
+Fix labels $\lambda_a=(\sigma_a,\chi_a)$, $a=1,2$, with
+$\chi_a\in L^2(\mathbb R;\mathbb R)$, and put
+\[
+w=w(\sigma_1)+w(\sigma_2)\in\{-2,-1,0,1,2\},\qquad
+s=s(\sigma_1)s(\sigma_2),\qquad
+C_\lambda=2c_4^2\|\chi_1\|_2\|\chi_2\|_2.
+\]
+Recall that $\mathbb B_\lambda(\alpha)=\mathbb B(\alpha\otimes\lambda)$,
+where $(\alpha\otimes\lambda)(x)=\alpha(y)\chi(x_3)e^\sigma$.
+Define
+\begin{equation}\label{sc:pair-field}
+\Pi_d(z)=\mathbb B_{\lambda_1}(\varphi_{d,z})
+             \mathbb B_{\lambda_2}(\varphi_{d,z}),\qquad
+X_d(g)=\int g(z)\Pi_d(z)\,\mathrm dz.
+\end{equation}
+By \eqref{eq:pair-bound} and
+$\|\varphi_{d,z}\otimes\lambda_a\|\le\sqrt2\|\chi_a\|_2$,
+the map $\Pi_d$ is continuous with
+\begin{equation}\label{sc:pair-field-bound}
+\|\Pi_d(z)\|_{L^2(\mu)}\le C_\lambda,\qquad
+\|X_d(g)\|_{L^2(\mu)}\le C_\lambda\|g\|_1.
+\end{equation}
+In particular, the integral is well defined for every $g\in L^1$.
+
+\begin{lemma}[Localized pair fields]\label{sc:pair-limits}
+Assume $(G)$, $(T)$ and $(Q_{12})$. The translation and quarter-turn
+identities below and the mean formula hold under these assumptions.
+If $(R_1)$ holds as well, so does the reflection identity:
+\begin{align}
+&U(v)X_d(g)=X_d(\tau_vg),\qquad
+ \Theta_1X_d(g)=sX_d(\overline g\circ\theta_1),\qquad
+ \hat RX_d(g)=(-i)^wX_d(g\circ R^{-1}),
+ \label{sc:pair-covariance}\\
+&\mu(X_d(g))=\kappa_d\int g,\qquad
+ \kappa_d=\mu(\Pi_d(0)),\qquad |\kappa_d|\le C_\lambda.
+ \label{sc:pair-mean}
+\end{align}
+If $w\ne0$, then $\kappa_d=0$.
+For the remaining assertions assume also $(R_1)$ and $(RP_1)$.
+If $g$ vanishes on $\{z^0<d\}$, then
+$X_d(g)\in L^2(\Sigma_1^+,\mu)$.
+
+For the fixed labels $\lambda_1,\lambda_2$, every sequence
+$d_n\downarrow0$ has a subsequence, common to all $g\in L^1$, along
+which $X_{d_n}(g)$ converges weakly in $L^2(\mu)$.
+Its limit satisfies
+\eqref{sc:bounded-field}--\eqref{sc:field-actions} with constant
+$C_\lambda$, sign $s$ and weight $w$.
+
+If in addition \textup{(S)} holds and
+$\ker H_1=\mathbb C\Omega_1$, then, for all
+$g\in L^1$ and $\Phi\in L^2(\mu)$,
+\begin{equation}\label{sc:pair-factorization}
+\mu(\Phi X_d(g))-\mu(\Phi)\mu(X_d(g))\longrightarrow0
+\qquad(d\downarrow0).\qedhere
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+The field actions and \eqref{sc:disc-actions} give
+\[
+U(v)\Pi_d(z)=\Pi_d(z+v),\qquad
+\Theta_1\Pi_d(z)=s\Pi_d(\theta_1z),\qquad
+\hat R\Pi_d(z)=(-i)^w\Pi_d(Rz).
+\]
+The reflection formula uses that each $\varphi_{d,z}$ is real; the
+quarter-turn formula uses
+$R\cdot(\alpha\otimes\lambda)=(-i)^{w(\sigma)}
+(\alpha\circ R^{-1})\otimes\lambda$.
+Pass these operators through the integral in \eqref{sc:pair-field},
+conjugating the scalar coefficient for $\Theta_1$, and change variables.
+This proves \eqref{sc:pair-covariance}.
+Translation invariance makes $\mu(\Pi_d(z))$ independent of $z$, proving
+\eqref{sc:pair-mean}; the bound follows from
+\eqref{sc:pair-field-bound}. At $z=0$ the quarter-turn identity gives
+$\kappa_d=(-i)^w\kappa_d$. Since $w$ is a pair weight,
+$(-i)^w\ne1$ for $w\ne0$, so $\kappa_d=0$ in that case.
+For $z^0\ge d$ the disc $B(z,d)$ lies in the positive half-plane.
+Each field in $\Pi_d(z)$ is then measurable on the positive side and
+belongs to every finite $L^p(\mu)$; their product belongs to
+$L^2(\Sigma_1^+,\mu)$. The integral stays in this closed subspace.
+
+For the weak limits, choose a countable dense set $\{g_j\}$ in $L^1$,
+for example finite sums of dyadic-square indicators with coefficients
+in $\mathbb Q+i\mathbb Q$.
+The bound \eqref{sc:pair-field-bound} and successive weak
+subsequence extractions give a single subsequence along which every
+$X_{d_n}(g_j)$ converges weakly. For arbitrary $g\in L^1$ and
+$\Psi\in L^2(\mu)$,
+\[
+\begin{split}
+|\langle\Psi,X_{d_n}(g)-X_{d_m}(g)\rangle|
+\le{}&2C_\lambda\|\Psi\|\|g-g_j\|_1\\
+&+|\langle\Psi,X_{d_n}(g_j)-X_{d_m}(g_j)\rangle|.
+\end{split}
+\]
+The scalar pairings are therefore Cauchy. Their limits define, by the
+Riesz theorem, a vector $X(g)$ with
+$\|X(g)\|\le C_\lambda\|g\|_1$. Linearity and the covariance identities
+pass to the limit. This is also true for the antiunitary $\Theta_1$,
+since $\langle\Psi,\Theta_1v\rangle
+=\overline{\langle\Theta_1\Psi,v\rangle}$.
+
+It remains to check positive-side measurability of $X(g)$ when
+$g\in L^1_+$. If $g$ vanishes on $\{z^0<\delta\}$ for some $\delta>0$,
+then $X_{d_n}(g)\in L^2(\Sigma_1^+,\mu)$ once $d_n<\delta$.
+A closed subspace of a Hilbert space is weakly closed, so the same holds
+for $X(g)$. For general $g\in L^1_+$, approximate it by
+$g1_{\{z^0\ge\delta\}}$ in $L^1$ and use the bound on $X$.
+Thus all the conditions on the limiting field hold.
+
+Finally, suppose \eqref{sc:pair-factorization} fails for fixed $g,\Phi$.
+There are $\delta>0$ and $d_n\downarrow0$ for which the modulus of its
+left side is at least $\delta$. Pass to the subsequence just constructed.
+\Cref{sc:constant-field} makes its limiting field constant:
+$X(g)=\mu(X(g))1$. Weak convergence, paired with $\overline\Phi$ and
+with $1$, then sends that same left side to zero, a contradiction.
+\end{proof}
+
+\subsection{Pairs at contact}
+
+For arbitrary $f_1,f_2\in\mathfrak h$ define
+\begin{equation}\label{sc:Y-definition}
+Y_d(f_1,f_2)=\int
+ \mathbb B(\varphi_{d,z}f_1)\mathbb B(\varphi_{d,z}f_2)\,\mathrm dz.
+\end{equation}
+The next lemma compares this contact pair with the fields just studied.
+
+\begin{lemma}[Contact-pair estimates]\label{sc:contact-pairs}
+Assume \textup{(G)}. The integral \eqref{sc:Y-definition} exists in $L^2(\mu)$,
+is bilinear in its entries, and obeys
+\begin{equation}\label{sc:Y-bound}
+\|Y_d(f_1,f_2)\|_{L^2(\mu)}\le c_4^2\|f_1\|\|f_2\|.
+\end{equation}
+If $f_a=\alpha_a\otimes\lambda_a$ with
+$\alpha_a\in C_{\mathrm c}(\mathbb R^2)$, then
+\begin{equation}\label{sc:Y-X}
+\|Y_d(f_1,f_2)-X_d(\alpha_1\alpha_2)\|_{L^2(\mu)}\longrightarrow0.
+\end{equation}
+Under $(T)$ and $(Q_{12})$, for arbitrary $f_1,f_2\in\mathfrak h$
+and $t\in\mathbb R$,
+\begin{equation}\label{sc:Y-mean-rotation}
+\mu(Y_d(R_t\cdot f_1,R_t\cdot f_2))-\mu(Y_d(f_1,f_2))
+ \longrightarrow0.
+\end{equation}
+Under \textup{(S)} and $\ker H_1=\mathbb C\Omega_1$, for arbitrary
+$f_1,f_2\in\mathfrak h$ and $\Phi\in L^2(\mu)$,
+\begin{equation}\label{sc:Y-factorization}
+\mu(\Phi Y_d(f_1,f_2))-\mu(\Phi)\mu(Y_d(f_1,f_2))
+ \longrightarrow0.
+\end{equation}
+All limits are as $d\downarrow0$.
+\end{lemma}
+
+\begin{proof}
+The integrand in \eqref{sc:Y-definition} is norm continuous. By
+\eqref{eq:pair-bound}, Cauchy--Schwarz in $z$, and
+\eqref{sc:discs},
+\[
+\int\|\mathbb B(\varphi_{d,z}f_1)
+             \mathbb B(\varphi_{d,z}f_2)\|_{L^2(\mu)}\,\mathrm dz
+ \le c_4^2\int\|\varphi_{d,z}f_1\|\|\varphi_{d,z}f_2\|\,\mathrm dz
+ \le c_4^2\|f_1\|\|f_2\|.
+\]
+This proves existence, bilinearity and \eqref{sc:Y-bound}. It also permits
+pairing the integral with any $\Phi\in L^2(\mu)$ as in
+\eqref{sc:integral-pairing}.
+
+For \eqref{sc:Y-X} let
+$\omega_a(d)=\sup_{|y-z|\le d}|\alpha_a(y)-\alpha_a(z)|$.
+Uniform continuity gives $\omega_a(d)\to0$. Moreover,
+\[
+\|\varphi_{d,z}\alpha_a-\alpha_a(z)\varphi_{d,z}\|_2\le\omega_a(d),
+\qquad
+\|\varphi_{d,z}\alpha_a\|_2,
+\ \|\alpha_a(z)\varphi_{d,z}\|_2\le\|\alpha_a\|_\infty.
+\]
+Expand the difference of the two products of fields, changing one factor
+at a time, and apply \eqref{eq:pair-bound}. Its norm is at most
+\[
+C_\lambda\bigl(\omega_1(d)\|\alpha_2\|_\infty
+             +\|\alpha_1\|_\infty\omega_2(d)\bigr).
+\]
+For $d\le1$ it vanishes outside the fixed compact one-neighborhood $K$
+of $\operatorname{supp}\alpha_1\cup\operatorname{supp}\alpha_2$.
+Integration therefore bounds the left side of \eqref{sc:Y-X} by $|K|$
+times this expression, proving the limit.
+
+The bilinear forms on the left of \eqref{sc:Y-mean-rotation} are bounded
+uniformly in $d$ by \eqref{sc:Y-bound}; those on the left of
+\eqref{sc:Y-factorization} have the same property for fixed $\Phi$.
+It suffices to prove each limit on finite sums of plates with continuous
+compactly supported plane profiles. These form a dense subspace of
+$\mathfrak h$: first use totality of plates, then approximate each plane
+profile in $L^2$ by a continuous function of compact support.
+The extension follows, for any uniformly bounded family $T_d$, from
+\[
+|T_d(f_1,f_2)|\le |T_d(f'_1,f'_2)|
+ +M\bigl(\|f_1-f'_1\|\|f_2\|+\|f'_1\|\|f_2-f'_2\|\bigr).
+\]
+
+We may therefore take $f_a=\alpha_a\otimes\lambda_a$ with continuous
+compactly supported $\alpha_a$. The plate rotation formula,
+\eqref{sc:Y-X}, and \eqref{sc:pair-mean} give
+\[
+\begin{split}
+&\mu(Y_d(R_t\cdot f_1,R_t\cdot f_2))-\mu(Y_d(f_1,f_2))\\
+&\qquad=(e^{-iwt}-1)\kappa_d\int\alpha_1\alpha_2+o(1).
+\end{split}
+\]
+If $w=0$, the phase difference vanishes. If $w\ne0$, then
+$\kappa_d=0$ by \cref{sc:pair-limits}. No convergence of
+$\kappa_d$ as $d\downarrow0$ is needed. This proves
+\eqref{sc:Y-mean-rotation}. Finally, \eqref{sc:Y-X} changes the expression
+in \eqref{sc:Y-factorization} by $o(1)$ when $Y_d$ is replaced by
+$X_d(\alpha_1\alpha_2)$. The latter expression tends to zero by
+\eqref{sc:pair-factorization}. Density completes both proofs.
+\end{proof}
+
+\subsection{Removing the disjointness conditions}
+
+We now state the precise extension used in the proof of the main theorem.
+For $N\ge0$ and $t\in\mathbb R$ let
+\[
+D_N^t(f_1,\ldots,f_N)
+ =S_N(R_t\cdot f_1,\ldots,R_t\cdot f_N)-S_N(f_1,\ldots,f_N),
+\qquad S_0=1.
+\]
+The Gaussian bounds imply that each $D_N^t$ is bounded, symmetric and
+$N$-linear, and $D_0^t=D_1^t=0$.
+
+\begin{proposition}[From disjoint supports to all entries]
+\label{sc:all-entries}
+Assume \textup{(S)} and $\ker H_1=\mathbb C\Omega_1$.
+Suppose that, for every $N\ge2$ and $t\in\mathbb R$,
+\[
+D_N^t(f_1,\ldots,f_N)=0
+\]
+whenever $f_a\in\mathfrak h_{K_a}$ for compact pairwise disjoint
+$K_1,\ldots,K_N\subset\mathbb R^2$.
+Then $D_N^t=0$ for every $N\ge0$ and every $t\in\mathbb R$.
+Consequently $(R_t)_*\mu=\mu$ for all $t$.
+\end{proposition}
+
+\begin{proof}
+Fix $t$, write $D_N=D_N^t$, and suppose inductively that $D_{N-2}=0$.
+The cases $N=0,1$ have already been noted. For a collection $E$ of
+two-element subsets of $\{1,\ldots,N\}$, let $\mathcal P(E)$ mean that
+$D_N$ vanishes on entries $f_a\in\mathfrak h_{K_a}$ whenever the $K_a$
+are compact and $K_a\cap K_b=\varnothing$ for every $\{a,b\}\in E$.
+The assumed separated-support invariance gives $\mathcal P(E)$ when
+$E$ contains every pair. We show that any one pair can be removed.
+
+Suppose $\mathcal P(E)$ holds and $e=\{a,b\}\in E$.
+Fix compact sets $K_c$ satisfying all the disjointness conditions in
+$E\setminus\{e\}$ and entries $f_c\in\mathfrak h_{K_c}$.
+With the other entries fixed, regard $D_N$ as a bounded bilinear form
+$\beta$ on $\mathfrak h_{K_a}\times\mathfrak h_{K_b}$.
+If its two arguments are further restricted over disjoint compact sets
+$A,A'$, then the sets $K_a\cap A$, $K_b\cap A'$ and the remaining $K_c$
+satisfy every condition in $E$. Hence $\mathcal P(E)$ makes this value of
+$\beta$ zero. \Cref{sc:localization} applies and gives, for all $d>0$,
+\begin{equation}\label{sc:pair-removal-start}
+D_N(f_1,\ldots,f_N)
+ =\int\beta(\varphi_{d,z}f_a,\varphi_{d,z}f_b)\,\mathrm dz.
+\end{equation}
+
+Put
+\[
+\Phi=\prod_{c\ne a,b}\mathbb B(f_c),\qquad
+\Phi'=\prod_{c\ne a,b}\mathbb B(R_t\cdot f_c),
+\]
+with empty products equal to one. Both belong to $L^2(\mu)$ by Gaussian
+domination. Using \eqref{sc:disc-actions} in the rotated term of
+\eqref{sc:pair-removal-start}, and then using $R_tz$ as the integration
+variable in that term, yields
+\begin{equation}\label{sc:pair-removal-Y}
+D_N(f_1,\ldots,f_N)
+ =\mu(Y_d(R_t\cdot f_a,R_t\cdot f_b)\Phi')
+  -\mu(Y_d(f_a,f_b)\Phi).
+\end{equation}
+Each term is integrable before this change of variables, by the integral
+estimate in \cref{sc:contact-pairs} and Cauchy--Schwarz in $L^2(\mu)$.
+
+The induction hypothesis gives $\mu(\Phi')=\mu(\Phi)$. Subtract and add
+the corresponding products of means in \eqref{sc:pair-removal-Y}:
+\[
+\begin{split}
+D_N(f_1,\ldots,f_N)={}&
+ \bigl[\mu(Y_d(R_t\cdot f_a,R_t\cdot f_b)\Phi')
+  -\mu(Y_d(R_t\cdot f_a,R_t\cdot f_b))\mu(\Phi')\bigr]\\
+&-\bigl[\mu(Y_d(f_a,f_b)\Phi)
+  -\mu(Y_d(f_a,f_b))\mu(\Phi)\bigr]\\
+&+\mu(\Phi)\bigl[\mu(Y_d(R_t\cdot f_a,R_t\cdot f_b))
+  -\mu(Y_d(f_a,f_b))\bigr].
+\end{split}
+\]
+As $d\downarrow0$, the first two brackets vanish by
+\eqref{sc:Y-factorization}; the third vanishes by
+\eqref{sc:Y-mean-rotation}. The left side is independent of $d$, so it is
+zero. This proves $\mathcal P(E\setminus\{e\})$.
+
+Remove the pairs successively to obtain $\mathcal P(\varnothing)$.
+Thus $D_N$ vanishes whenever its entries each lie over a compact subset
+of the plane, without any condition on intersections. These entries are
+dense in $\mathfrak h$, since $1_{\{|y|\le n\}}f\to f$ in $L^2$.
+Continuity gives $D_N=0$ on $\mathfrak h^N$.
+Induction from $D_0=0$ for even $N$ and from $D_1=0$ for odd $N$ proves
+the assertion for all $N$ and $t$.
+
+In particular all moments of real Schwartz fields are invariant under
+$R_t$. The moment-determination consequence of Gaussian domination then
+gives $(R_t)_*\mu=\mu$.
+\end{proof}
+
+
+
+\section{Ergodic components and the full Euclidean group}\label{sec:components}
+
+We complete the proof of \cref{thm:main}. By
+\cref{lem:transport}, the law has (H) and belongs to $\mathcal C_9$.
+The ergodic-component arguments in
+\cite[Sections~7.3--7.5]{QEDCurrent} apply under these hypotheses.
+For the translation-ergodic decomposition
+\[
+ \mu=\int\mu_\xi\,d\nu(\xi),
+\]
+they give, outside a single $\nu$-null set,
+\begin{equation}\label{eq:components}
+ \mu_\xi\in\mathcal C_9,\qquad
+ \mu_\xi\text{ satisfies }(G),\qquad
+ \mu_\xi\text{ is invariant under }\R^3\rtimes\Ocub,\qquad
+ \ker H_1(\mu_\xi)=\C\Omega_1.
+\end{equation}
+In particular each such component has (H). Neither this component
+theorem nor its hypotheses require closedness.
+
+Fix one component with these properties. The cone theorem gives (S),
+and \cref{prop:separated} gives invariance under $R_t$ on
+tests over pairwise disjoint compact planar sets, at every order.
+\Cref{sc:all-entries} therefore gives
+$(R_t)_*\mu_\xi=\mu_\xi$ for every $t\in\R$.
+
+The orthogonal symmetries of $\mu_\xi$ form a group containing
+$\Ocub$ and all $R^{12}_t$. Conjugation by a cyclic permutation of
+the axes gives all $R^{23}_t$. Every matrix in $SO(3)$ is a product
+$R^{12}_{t_1}R^{23}_{t_2}R^{12}_{t_3}$: choose the first two rotations
+to send $e_3$ to its image under the matrix; the remaining factor
+fixes $e_3$ and is a rotation in its orthogonal plane. Since the cubic
+group also contains a reflection, this proves invariance under all
+of $O(3)$. It holds for every $g$ on the same full-measure set of
+components; no intersection over an uncountable family of null sets
+is being taken.
+
+For any measurable set $A$ of distributions, the action is measurable
+because its evaluation on a test $f$ is evaluation on $g^{-1}\cdot f$.
+Consequently
+\[
+ (g_*\mu)(A)=\int\mu_\xi(g^{-1}A)\,d\nu(\xi)
+            =\int\mu_\xi(A)\,d\nu(\xi)=\mu(A).
+\]
+Translation invariance gives the corresponding statement for every
+Euclidean isometry. Finally \eqref{eq:moments} and the action on
+$\B$ give moment covariance on all $L^2$ tests. This proves
+\cref{thm:main}.
+
+\section{Diagonal positivity, the cone and closedness}\label{sec:examples}
+
+The diagonal hypothesis cannot be replaced by the cone alone. We give
+explicit negative reflection forms for two laws that satisfy (H) and
+all ordered cone conditions $(C_{ji})$ but are not closed. We then
+give an invariant law positive at every plane for which closedness
+also fails. Together these examples distinguish the hypothesis of
+\cref{thm:main} from both the cone and the Bianchi identity.
+
+For real Schwartz vector tests and a bounded measurable, even, real
+symmetric positive-semidefinite matrix multiplier $M$, write
+\[
+ C_M(b,b')=(2\pi)^{-3}\int\widehat b(p)^\dagger M(p)\widehat b'(p)\,dp,
+ \qquad \widehat b(p)=\int e^{-ip\cdot x}b(x)\,dx.
+\]
+Let $\gamma_M$ be the centered Gaussian law with characteristic
+functional $\gamma_M(e^{i\B(b)})=e^{-C_M(b,b)/2}$.
+The Gaussian covariance criterion in
+\cite[Appendix~D, ``Gaussian laws and reflection positivity'']{QEDConsequences}
+gives existence, and $M\le I$ gives (G) by Plancherel's identity.
+The phases of a common translation cancel in $C_M$, so all these
+laws are translation invariant. For $g\in O(3)$, changing variables in
+the Fourier integral shows that $M(gp)=gM(p)g^T$ almost everywhere implies
+invariance under $g$. Closedness is equivalent to
+$M(p)p=0$ almost everywhere: indeed,
+\[
+ C_M(\nabla u,\nabla u)
+ =(2\pi)^{-3}\int|\widehat u(p)|^2p^TM(p)p\,dp.
+\]
+If $M(p)p=0$ almost everywhere, the displayed integral vanishes for
+every $u$. Conversely, closedness makes it vanish for a Gaussian
+$u$, whose Fourier transform never vanishes; positivity of $M$ then
+gives $M(p)p=0$ almost everywhere.
+We also use the Gaussian reflection criterion from the same reference:
+if $C_M$ is reflection invariant, its law is reflection positive
+precisely when $C_M(r\cdot b,b)\ge0$ for every real smooth test
+compactly supported in the positive half-space.
+
+\subsection{A diagonal Maxwell covariance}
+
+For $m\ge0$, define
+\[
+ M^\oplus_{ab}(p)=\delta_{ab}\frac{|p|^2-p_a^2}{|p|^2+m^2}
+ \quad(p\ne0),\qquad M^\oplus(0)=0,
+ \qquad \gamma_m^\oplus=\gamma_{M^\oplus}.
+\]
+This multiplier lies between zero and $I$ and obeys
+$M^\oplus(gp)=gM^\oplus(p)g^T$ for signed permutations $g$.
+Thus the law has (G), translation invariance and cubic symmetry.
+To verify coordinate positivity, write $p=(p_1,k)$ and
+$\omega(k)=(|k|^2+m^2)^{1/2}$. At the single point $k=0$ when
+$m=0$, set $\omega(0)=1$; this does not change any integral.
+The partial fraction decomposition is
+\[
+ M^\oplus(p)=\operatorname{diag}(0,1,1)
+  +\frac{\operatorname{diag}(|k|^2,-p_2^2-m^2,-p_3^2-m^2)}
+             {p_1^2+\omega(k)^2}.
+\]
+The residue matrix in \cref{lem:example-time-kernel} is
+$\operatorname{diag}(|k|^2,p_2^2+m^2,p_3^2+m^2)\ge0$.
+That lemma gives $(RP_1)$, and the spectral measures of all
+one-field vectors are supported on
+$\{(\omega,k):\omega=(|k|^2+m^2)^{1/2}\}$.
+The round cone $\{\omega\ge|k|\}$ is closed, contains zero and
+is stable under addition. Lemma~\ref{lem:example-gaussian-cone}
+therefore puts the whole reconstructed spectrum in this cone.
+Cubic symmetry gives all coordinate reflection positivities and
+all ordered cones $(C_{ji})$. Thus the law has (H).
+It is not closed: $p^TM^\oplus(p)p>0$ whenever $p$ has at least
+two nonzero components. The following test identifies its failure
+at every diagonal mirror.
+
+\begin{proposition}\label{prop:diagonal-maxwell}
+For every $m\ge0$, the law $\gamma_m^\oplus$ fails reflection
+positivity at every plane $x_i=\sigma x_l+c$, $i<l$, $\sigma=\pm1$,
+from either side. For a fixed plane and side one can use the same
+test forms for all $m\ge0$.
+\end{proposition}
+
+\begin{proof}
+First take $c=0$. Fix signs $\sigma,\nu\in\{1,-1\}$ and put
+\[
+ n=\frac{\nu}{\sqrt2}(e_i-\sigma e_l),\qquad
+ H_+=\{n\cdot x>0\},\qquad r=r_{n,0}.
+\]
+The reflection exchanges $e_i$ and $\sigma e_l$ and fixes the third
+basis vector. Its action on tests is $r\cdot b=-r\,b\circ r$.
+If $C_a(u',u)=C_{M^\oplus}(u'e_a,ue_a)$, the multiplier identities
+$M^\oplus_{ll}(rp)=M^\oplus_{ii}(p)$ and
+$M^\oplus_{ii}(rp)=M^\oplus_{ll}(p)$ give, for $b=ue_i+ve_l$,
+\begin{equation}\label{eq:reflected-diagonal}
+ C_{M^\oplus}(r\cdot b,r\cdot b)=C_{M^\oplus}(b,b),\qquad
+ C_{M^\oplus}(r\cdot b,b)=-2\sigma C_i(v\circ r,u).
+\end{equation}
+
+Between disjoint supports the scalar covariance has kernel
+\[
+ K_i(x)=(\partial_i^2-m^2)\frac{e^{-m|x|}}{4\pi|x|}.
+\]
+Indeed, write its multiplier as
+$1-(p_i^2+m^2)/(|p|^2+m^2)$; the identity term vanishes between
+disjoint supports, and Fourier inversion of the Yukawa potential
+followed by integration by parts gives this formula. It remains
+valid for $m=0$ by dominated convergence, since $|p|^{-2}$ is locally
+integrable in three dimensions. With $\rho=|x|$ and $s=m\rho$,
+direct differentiation yields
+\begin{equation}\label{eq:negative-kernel}
+ K_i(x)=\frac{e^{-s}}{4\pi\rho^3}
+ \left[(s^2+3s+3)\frac{x_i^2}{\rho^2}-(s^2+s+1)\right].
+\end{equation}
+In particular, since $s^2+3s+3\le3(s^2+s+1)$,
+\begin{equation}\label{eq:negative-region}
+ K_i(x)\le-\frac{e^{-m\rho}}{16\pi\rho^3}<0
+ \quad\text{if }x_i^2\le\rho^2/4.
+\end{equation}
+
+Choose $\lambda>0$ and a nonzero $\varphi\in C_c^\infty(\R^3)$
+with $\varphi\ge0$ and support in $\{|x|\le\lambda/3\}$.
+Set
+\[
+ y_1=\nu\sigma\lambda e_l,\qquad
+ u(x)=\varphi(x+y_1),\qquad
+ v(x)=-\sigma\varphi(rx-y_1),\qquad b=ue_i+ve_l.
+\]
+The two supports lie in balls centered at $-\nu\sigma\lambda e_l$
+and $\nu\lambda e_i$. Both centers have $n$-coordinate
+$\lambda/\sqrt2$, so both closed balls lie in $H_+$.
+The form $f=*^{-1}b$ is therefore an admissible test in
+\eqref{eq:rp}; it does not depend on $m$.
+
+By \eqref{eq:reflected-diagonal}, the common variance is
+$V=2C_i(\varphi,\varphi)$ and the reflected covariance is
+\[
+ J=2\iint\varphi(y)\varphi(y')
+             K_i(y-y'+2\lambda e_l)\,dy\,dy'.
+\]
+To obtain the displayed sign of the displacement from $2y_1$, use
+evenness of $K_i$ and interchange $y,y'$ if necessary.
+On the integration region,
+\[
+ |(y-y'+2\lambda e_l)_i|\le2\lambda/3,
+ \qquad4\lambda/3\le|y-y'+2\lambda e_l|\le8\lambda/3.
+\]
+Thus \eqref{eq:negative-region} applies throughout, and
+\begin{equation}\label{eq:J-negative}
+ J\le-c\lambda^{-3}e^{-8m\lambda/3}\left(\int\varphi\right)^2<0
+\end{equation}
+with an absolute constant $c>0$.
+
+For Gaussian data $f,-f$ and coefficients $1,-1$, expansion of the
+four terms in \eqref{eq:rp} gives
+\begin{equation}\label{eq:gaussian-negative}
+ \mathcal Q_{\gamma_m^\oplus}(n,0;(1,-1);(f,-f))
+       =4e^{-V}\sinh J<0.
+\end{equation}
+One may instead use tests $0,f$ and coefficients $1,-e^{V/2}$;
+their form is $e^J-1<0$. This proves failure at the chosen plane
+and side. Translation of the tests carries these same values to
+every parallel plane, because
+$r_{n,c}=\tau_{cn}r_{n,0}\tau_{-cn}$ and the law is translation
+invariant. The choice of $\nu$ includes both sides.
+\end{proof}
+
+For radial $\varphi$, the witness also has an exact expression.
+Define
+\[
+ c_\varphi(m)=\int\varphi(y)\frac{\sinh(m|y|)}{m|y|}\,dy,
+\]
+with quotient one at $m=0$. Then
+\begin{align}
+ J&=-c_\varphi(m)^2
+       \frac{(4m^2\lambda^2+2m\lambda+1)e^{-2m\lambda}}
+            {16\pi\lambda^3},\label{eq:radial-J}\\
+ V&=\frac43(2\pi)^{-3}\int|\widehat\varphi(p)|^2
+                  \frac{|p|^2}{|p|^2+m^2}\,dp.
+ \label{eq:radial-V}
+\end{align}
+To verify the first formula, a smooth solution of $\Delta G=m^2G$
+near a ball has spherical mean
+$G(0)\sinh(m\rho)/(m\rho)$. Green's formula gives the radial equation
+$S''+2\rho^{-1}S'=m^2S$, with $S(0)=G(0)$; solving for $\rho S$
+gives this mean. Radial integration therefore gives
+$\int\varphi G=c_\varphi(m)G(0)$. Apply it twice to the two
+variables in $J$, using $\Delta K_i=m^2K_i$ away from the origin.
+Then $J=2c_\varphi(m)^2K_i(2\lambda e_l)$, which is
+\eqref{eq:radial-J}. Symmetry among the three Fourier coordinates
+gives \eqref{eq:radial-V}. At $m=0$ these reduce to
+\[
+ J=-\frac{(\int\varphi)^2}{16\pi\lambda^3},\qquad
+ V=\frac43\|\varphi\|_2^2.
+\]
+
+\subsection{A mixture of white noises}
+
+Let $D_1,D_2,D_3\in(0,1]$ be pairwise distinct. For each permutation
+$\pi\in\mathfrak S_3$, let $\gamma_{\pi D}$ be the white-noise law
+with variance $D_{\pi^{-1}(a)}$ in component $a$ of $\B$, and put
+\[
+ m_1=\frac16\sum_{\pi\in\mathfrak S_3}\gamma_{\pi D}.
+\]
+Each summand satisfies (G), is translation invariant and is
+invariant under coordinate reflections. The cubic group permutes
+the six summands. Opposite open half-spaces are independent for
+each white noise, since their covariance vanishes. Consequently,
+for positive-side $\Phi,\Psi\in L^2(m_1)$,
+\[
+ m_1((\Theta_j\Phi)\Psi)
+ =\frac16\sum_{\pi\in\mathfrak S_3}
+       \overline{\gamma_{\pi D}(\Phi)}\gamma_{\pi D}(\Psi).
+\]
+The inclusion $L^2(m_1)\subset L^2(\gamma_{\pi D})$ follows from
+$m_1\ge\gamma_{\pi D}/6$. The displayed formula proves coordinate
+reflection positivity. It also identifies a reconstructed class
+by its six expectations, each unchanged by translations.
+Hence every reconstructed translation is the identity, so
+$H_j=0$ and all transverse momenta vanish. This proves (H) and
+all ordered cones. Moreover
+\[
+ m_1(\B(\nabla u)^2)
+   =\frac{D_1+D_2+D_3}{3}\|\nabla u\|_2^2>0
+\]
+for every nonzero real Schwartz function $u$, so $m_1$ is not closed.
+Although the individual white noises have no correlations between
+opposite open half-spaces, their mixture need not be reflection
+positive at a reflection that permutes the variances.
+
+Fix the plane, side and reflection from
+\cref{prop:diagonal-maxwell}. Take a nonzero real
+$\psi\in C_c^\infty(H_+)$ and set $*f_1=\psi e_i$,
+$*f_2=\psi e_l$. Let $\mathfrak t$ exchange $i,l$ and write
+\[
+ \beta_a=e^{-D_a\|\psi\|_2^2/2},\qquad
+ Z_\pi=\beta_{\pi^{-1}(i)}-\beta_{\pi^{-1}(l)}.
+\]
+For tests on the positive side, the white-noise characteristic
+functional factors between the two half spaces. Reflection permutes
+the weights by $\mathfrak t$, so its form for coefficients $(1,-1)$
+is
+\begin{align}
+ \mathcal Q_{m_1}(n,0;(1,-1);(f_1,f_2))
+ &=\frac16\sum_\pi\overline{Z_{\mathfrak t\pi}}Z_\pi\notag\\
+ &=-\frac16\sum_\pi Z_\pi^2
+  =-\frac13\sum_{a<c}(\beta_a-\beta_c)^2<0.
+ \label{eq:mixture-negative}
+\end{align}
+Here $Z_{\mathfrak t\pi}=-Z_\pi$, and the preimages of $i,l$ run
+through all six ordered pairs of distinct indices. Distinct variances
+make the last inequality strict. The calculation works for both
+values of $\nu$; translation gives the same failure at every parallel
+plane. Thus neither $m_1$ nor $\gamma_m^\oplus$ belongs to
+$\mathcal C_9$.
+
+\subsection{An invariant nonclosed law}
+
+The preceding examples fail the extra positivity hypothesis of
+\cref{thm:main}. The following example satisfies it, and shows
+that the theorem applies to nonclosed laws.
+
+\begin{proposition}[An invariant nonclosed law]\label{prop:nonclosed}
+For $m>0$, let $M(p)=I-pp^T/(|p|^2+m^2)$. The Gaussian law
+$\gamma_M$ has (H), is invariant under every Euclidean isometry,
+and is reflection positive at every affine plane. It is not closed.
+\end{proposition}
+
+\begin{proof}
+On $p^\perp$ the multiplier is $I$, and on $\R p$ its eigenvalue is
+$m^2/(|p|^2+m^2)$. Thus $0\le M\le I$; it is measurable, even and
+real symmetric. The multiplier criteria give the Gaussian law,
+translation invariance and (G). Since
+\[
+ M(gp)=gM(p)g^T\quad(g\in O(3)),\qquad
+ M(p)p=\frac{m^2}{|p|^2+m^2}p,
+\]
+the law is orthogonally invariant and not closed.
+
+For coordinate reflection positivity, split $p=(p_1,p_\perp)$ and
+put $\omega=(|p_\perp|^2+m^2)^{1/2}$.
+Lemma~\ref{lem:example-time-kernel} applies to
+\[
+ M(p)=I+\frac{N(p)}{p_1^2+\omega^2},\qquad N(p)=-pp^T.
+\]
+Its polynomial part is constant, its numerator is polynomial in
+$p_1$, and $\omega\ge m>0$. It obeys the required reflection
+symmetry $\theta_1M(-p_1,p_\perp)\theta_1=M(p)$.
+The residue matrix in that criterion, with
+$\mathsf p=(-i\omega,p_\perp)$, is
+\[
+ A=-\theta_1N(-i\omega,p_\perp)
+   =\overline{\mathsf p}\,\mathsf p^T,\qquad
+ v^\dagger Av=|\mathsf p^Tv|^2\ge0.
+\]
+The criterion therefore gives $(RP_1)$. Orthogonal and translation
+invariance transport it to every affine plane, including both sides.
+In particular all three coordinate conditions hold, so the law has
+(H).
+\end{proof}
+
+Closedness and diagonal positivity consequently play different roles.
+The cone and (H) alone do not give diagonal positivity, as
+\eqref{eq:gaussian-negative} and \eqref{eq:mixture-negative} show.
+Diagonal positivity does give rotation invariance under (H), by
+\cref{thm:main}, without forcing closedness, by
+\cref{prop:nonclosed}. The elimination of the extra two-point
+frequency by the Bianchi identity, recalled in
+\cref{eq:bianchi} and proved in \cite[Section~8.5]{QEDCurrent},
+still uses $dF=0$. The examples above show why a conclusion of
+diagonal positivity from (H) and the cone requires an additional
+hypothesis.
+
+\appendix
+\section{Gaussian reflection forms and their spectral support}
+\label{app:gaussian-examples}
+
+We record the two covariance calculations used in
+\cref{sec:examples}. Write $p=(p_1,k)$, with $k\in\R^2$, and regard
+$\theta_1$ as the matrix $\operatorname{diag}(-1,1,1)$.
+In the coordinate reconstruction, write
+$V_1(y)=\int e^{ik\cdot y}\,dE_1(\omega,k)$ for the transverse
+translation, with $y\in e_1^\perp$.
+
+\begin{lemma}[A time-kernel formula]\label{lem:example-time-kernel}
+Let $M$ be bounded, measurable, even, real symmetric and positive
+semidefinite, and suppose
+$\theta_1M(-p_1,k)\theta_1=M(p_1,k)$. Suppose that, for almost every
+$k$, there are matrix polynomials $Q_k,N_k$ and a measurable
+$\omega(k)>0$ such that
+\[
+ M(p_1,k)=Q_k(p_1)+\frac{N_k(p_1)}{p_1^2+\omega(k)^2}.
+\]
+The coefficients of these polynomials are assumed measurable in $k$.
+Put $A(k)=-\theta_1N_k(-i\omega(k))$. For a real
+$b\in C_c^\infty(\{x_1>0\};\R^3)$ define
+\[
+ L_b(k)=\int_0^\infty e^{-\omega(k)s}\widehat b_\perp(s,k)\,ds,
+ \qquad
+ \widehat b_\perp(s,k)=\int_{\R^2}e^{-ik\cdot x_\perp}b(s,x_\perp)\,dx_\perp.
+\]
+Then, for $t\ge0$ and $y\in e_1^\perp$,
+\begin{equation}\label{eq:example-time-kernel}
+ C_M(\theta_1\cdot b,\tau_{te_1+y}\cdot b)
+ =(2\pi)^{-2}\int_{\R^2}e^{-ik\cdot y}
+       \frac{e^{-\omega(k)t}}{2\omega(k)}
+       L_b(k)^\dagger A(k)L_b(k)\,dk.
+\end{equation}
+If $A(k)$ is Hermitian and positive semidefinite almost everywhere,
+$\gamma_M$ is reflection positive at $x_1=0$. Under this positivity
+hypothesis, the spectral measure of $[\B(b)]_1$ is the image under
+$k\mapsto(\omega(k),-k)$ of
+\[
+ (2\pi)^{-2}\frac{L_b(k)^\dagger A(k)L_b(k)}{2\omega(k)}\,dk.
+\]
+\end{lemma}
+
+\begin{proof}
+For $h\in C_c^\infty((0,\infty))$ and a polynomial $P$,
+Fourier inversion and the inverse transform of
+$(p_1^2+\omega^2)^{-1}$ give
+\begin{align*}
+ \frac1{2\pi}\int\widehat h(p_1)P(p_1)\,dp_1&=0,\\
+ \frac1{2\pi}\int\frac{\widehat h(p_1)P(p_1)}{p_1^2+\omega^2}\,dp_1
+ &=\frac{P(-i\omega)}{2\omega}
+                   \int_0^\infty e^{-\omega u}h(u)\,du.
+\end{align*}
+For the first identity, derivatives of $h$ vanish at zero. For the
+second, the case $P=1$ follows from the inverse transform
+$e^{-\omega|u|}/(2\omega)$; the case $P=p_1$ follows by applying it
+to $-ih'$ and integrating by parts. Polynomial division by
+$p_1^2+\omega^2$ gives the general case.
+
+The transforms of the reflected and translated tests are
+$-\theta_1\widehat b(-p_1,k)$ and
+$e^{-ip_1t-ik\cdot y}\widehat b(p_1,k)$. For each pair of components,
+the product of their time transforms is the transform of
+\[
+ h_{ac}(u;k)=\int
+       \overline{\widehat b_{\perp,a}(s,k)}
+       \widehat b_{\perp,c}(u-s-t,k)\,ds.
+\]
+This is smooth and compactly supported in $(0,\infty)$, because
+$b$ is supported a positive distance from the mirror and $t\ge0$.
+The full Fourier covariance is absolutely integrable, since $M$ is
+bounded and the tests are Schwartz. Fubini permits integration first
+in $p_1$. Applying the two preceding identities entrywise removes
+$Q_k$ and replaces $N_k(p_1)$ by $N_k(-i\omega(k))$. Substitution
+$u=s+s'+t$ factors the remaining integral into
+$e^{-\omega(k)t}\overline{L_{b,a}(k)}L_{b,c}(k)$ and proves
+\eqref{eq:example-time-kernel}.
+
+At $t=0$, $y=0$ the integrand is nonnegative when $A\ge0$.
+The Gaussian reflection criterion recalled in \cref{sec:examples}
+therefore gives reflection positivity. The same specialization
+shows that the displayed spectral measure is finite. The
+reconstruction identity identifies the left side of
+\eqref{eq:example-time-kernel} with the Fourier--Laplace transform
+of the spectral measure of $[\B(b)]_1$. The right side is the
+transform of the stated image measure, so uniqueness identifies them.
+For completeness, uniqueness for finite complex measures follows by
+first fixing integer $t\ge0$ and applying Fourier uniqueness in $y$.
+After the change $s=e^{-\omega}$, equality of all these marginals
+gives equality against every polynomial in $s$ on $[0,1]$.
+Polynomial approximation gives equality against continuous functions;
+rectangles then determine the original measures.
+\end{proof}
+
+\begin{lemma}[From one-field vectors to the Gaussian reconstruction]
+\label{lem:example-gaussian-cone}
+Let $\gamma$ be a centered Gaussian law invariant under translations
+and reflection positive and invariant at $x_1=0$. Let
+$K\subset[0,\infty)\times\R^2$ be closed, contain $(0,0)$ and
+satisfy $K+K\subset K$. If the spectral measure of $[\B(b)]_1$
+is carried by $K$ for every real smooth test compactly supported in
+$\{x_1>0\}$, then the whole joint spectral measure $E_1$ is
+carried by $K$.
+\end{lemma}
+
+\begin{proof}
+Put $C(b,b')=\gamma(\B(b)\B(b'))$. For finitely many positive-side
+real tests $b_a$ and coefficients $z_a$, let
+\[
+ \Phi=\sum_a z_a e^{i\B(b_a)},\qquad
+ z'_a=z_a e^{-C(b_a,b_a)/2},\qquad \psi_a=[\B(b_a)]_1.
+\]
+Gaussian integration and the reconstruction identity give
+\begin{align*}
+ \langle[\Phi]_1,e^{-tH_1}V_1(y)[\Phi]_1\rangle
+ &=\sum_{a,c}\overline{z'_a}z'_c
+       \exp\bigl(C(\theta_1\cdot b_a,\tau_{te_1+y}\cdot b_c)\bigr),\\
+ C(\theta_1\cdot b_a,\tau_{te_1+y}\cdot b_c)
+ &=\int e^{-t\omega+ip\cdot y}\,dm_{ac}(\omega,p),
+ \qquad m_{ac}=\langle\psi_a,E_1(\cdot)\psi_c\rangle.
+\end{align*}
+The measures $m_{ac}$ are finite and carried by $K$.
+Indeed, Cauchy--Schwarz on finite Borel partitions gives
+$|m_{ac}|(B)\le[m_{aa}(B)m_{cc}(B)]^{1/2}$.
+On the additive semigroup $[0,\infty)\times\R^2$, the measure
+\[
+ \exp_*(m)=\sum_{r\ge0}\frac{m^{*r}}{r!},\qquad
+ m^{*0}=\delta_{(0,0)},
+\]
+converges in total variation, since $\|m^{*r}\|\le\|m\|^r$.
+Its Fourier--Laplace transform is the exponential of that of $m$.
+The conditions on $K$ ensure that $\exp_*(m_{ac})$ is carried by
+$K$. Transform uniqueness, as proved above, therefore identifies
+the spectral measure of $[\Phi]_1$ with
+\[
+ \sum_{a,c}\overline{z'_a}z'_c\exp_*(m_{ac}).
+\]
+It follows that $E_1(K^c)[\Phi]_1=0$. The positive-side characters
+span a dense subspace of the positive-side $L^2$ space, and their
+classes are dense in the reconstruction; see
+\cite[Section~7.1]{QEDCurrent}. Thus $E_1(K^c)=0$.
+\end{proof}
+
+\begin{thebibliography}{9}
+\footnotesize
+\bibitem{Dunkel} J.~Dunkel, \emph{18.04 Complex analysis with applications},
+Spring 2019 lecture notes, adapted and extended from notes by
+A.~Nachbin and J.~Orloff, Massachusetts Institute of Technology, 2019.
+\href{https://math.mit.edu/~dunkel/Teach/18.04_2019S/notes/1804_Main.pdf}{Lecture notes}.
+\bibitem{Melrose} R.~Melrose, \emph{Functional Analysis: Lecture notes
+for 18.102, Spring 2020}, Massachusetts Institute of Technology, 2020.
+\href{https://ocw.mit.edu/courses/18-102-introduction-to-functional-analysis-spring-2021/3d4cc88026d44a01f936cd6a0aa995cb_MIT18_102s20_lec_FA.pdf}{Lecture notes}.
+\bibitem{QEDConsequences} \emph{Massless photons and Maxwell infrared limits
+in three-dimensional QED}, companion manuscript, revised 30 October 2026.
+\bibitem{Coincidences} \emph{Invariance at coinciding points}, companion
+paper.
+\bibitem{QEDCurrent} \emph{The field-strength Osterwalder--Schrader
+axioms for QED in three dimensions}, comprehensive edition, 263~pp., 20~October 2026,
+before the modular integration revision.
+
+\end{thebibliography}
+\end{document}
